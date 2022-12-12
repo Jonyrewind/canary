@@ -93,8 +93,8 @@ local potions = {
 	},
 	[237] = {
 		mana = {
-			115,
-			185
+			140,
+			260
 		},
 		level = 50,
 		flask = 283,
@@ -265,7 +265,7 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 
 		player:addAchievementProgress('Potion Addict', 100000)
 		target:say("Aaaah...", MESSAGE_POTION)
-		if fromPosition.x == CONTAINER_POSITION and not container == store_inbox then
+		if fromPosition.x == CONTAINER_POSITION then
 			local container = Container(item:getParent().uid)
 			container:addItem(potion.flask, 1)
 		else

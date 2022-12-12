@@ -1,6 +1,7 @@
 local stage = configManager.getNumber(configKeys.FREE_QUEST_STAGE)
 
 local questTable = {
+	{storage = Storage.BanutaSecretTunnel.DeeperBanutaShortcut, storageValue = 1},
 	{storage = Storage.BigfootBurden.QuestLine, storageValue = 2},
 	{storage = Storage.BigfootBurden.QuestLine, storageValue = 4},
 	{storage = Storage.BigfootBurden.QuestLine, storageValue = 7},
@@ -202,6 +203,7 @@ local questTable = {
 	{storage = Storage.TheInquisition.TimGuard, storageValue = 1},
 	{storage = Storage.TheInquisition.WalterGuard, storageValue = 1},
 	{storage = Storage.TheInquisition.StorkusVampiredust, storageValue = 1},
+	{storage = Storage.TheSecretLibrary.OberonAccess, storageValue =1},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Questline, storageValue = 29},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Mission01, storageValue = 3},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Mission02[1], storageValue = 4},
@@ -276,6 +278,11 @@ local questTable = {
 	{storage = Storage.WrathoftheEmperor.Mission08, storageValue = 2},
 	{storage = Storage.WrathoftheEmperor.Mission09, storageValue = 2},
 	{storage = Storage.WrathoftheEmperor.Mission10, storageValue = 1},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.Rebel, storageValue = 1},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.Zlak, storageValue = 1},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.Zizzle, storageValue = 3},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.innerSanctum, storageValue = 1},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.bossRoom, storageValue = 1},
 	{storage = Storage.TheApeCity.Started, storageValue = 1},
 	{storage = Storage.TheApeCity.Questline, storageValue = 18},
 	{storage = Storage.Oramond.QuestLine, storageValue = 1},
