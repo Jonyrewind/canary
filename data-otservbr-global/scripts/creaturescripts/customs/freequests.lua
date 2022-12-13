@@ -306,7 +306,8 @@ local questTable = {
 	{storage = Storage.ForgottenKnowledge.AccessEarth, storageValue = 1},
 	{storage = Storage.ForgottenKnowledge.AccessFire, storageValue = 1},
 	{storage = Storage.ForgottenKnowledge.AccessIce, storageValue = 1},
-	{storage = Storage.ForgottenKnowledge.AccessGolden, storageValue = 1}
+	{storage = Storage.ForgottenKnowledge.AccessGolden, storageValue = 1},
+	{storage = Storage.Kilmaresh.Sixth.Favor, storageValue = 1}
 }
 
 local function playerFreeQuestStart(playerId, index)
