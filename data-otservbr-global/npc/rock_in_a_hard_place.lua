@@ -45,8 +45,6 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
-
 npcConfig.shop = {
 	{ itemName = "animate dead rune", clientId = 3203, buy = 375 },
 	{ itemName = "arrow", clientId = 3447, buy = 3 },
@@ -253,6 +251,15 @@ npcConfig.shop = {
 	{ itemName = "wooden shield", clientId = 3412, buy = 15, sell = 5 },
 	{ itemName = "worm", clientId = 3492, buy = 1 }
 }
+
+npcConfig.Shop1 = {
+	{ itemName = "watch", clientId = 2906, buy = 20, sell = 6 },
+	{ itemName = "wild growth rune", clientId = 3156, buy = 160 },
+	{ itemName = "wooden hammer", clientId = 3459, sell = 15 },
+	{ itemName = "wooden shield", clientId = 3412, buy = 15, sell = 5 },
+	{ itemName = "worm", clientId = 3492, buy = 1 }
+}
+
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
 	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
@@ -264,5 +271,19 @@ end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType)
 end
+
+local tradeKeyword = keywordHandler:addKeyword({'trade'}, StdModule.say, {npcHandler = npcHandler, text = 'You would be surprised how many things are washed ashore here. I trade {magic stuff}, {local equipment}, {weapons}, {armor}, {ammunition}, {post things} and {creature products}.'})
+	tradeKeyword:addChildKeyword({'magic stuff'}, function(npc) npc:openShopWindow(player) end)
+
+-- Basic
+keywordHandler:addKeyword({'job'}, StdModule.say, {npcHandler = npcHandler, text = 'Have you noticed that I\'m actually the only rock on this island with a proper job? Those lazy pebbleheads! I\'m proud to announce: I\'m a trader'})
+keywordHandler:addKeyword({'name'}, StdModule.say, {npcHandler = npcHandler, text = 'No, you got it all wrong! I said I\'m stuck between a rock and a hard place!'})
+keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, text = 'I can help you buy trading stuff with you. Good for me, good for you. It\'s a win-win!'})
+
+npcHandler:setMessage(MESSAGE_GREET, 'Everyone on this island has gone crazy! Except for me and you, it seems. Let\'s {trade} like normal people would.')
+npcHandler:setMessage(MESSAGE_WALKAWAY, 'Hey! Don\'t leave me alone with all these lunatics!')
+npcHandler:setMessage(MESSAGE_FAREWELL, 'Promise to come back sometime, will ya?')
+
+npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcType:register(npcConfig)

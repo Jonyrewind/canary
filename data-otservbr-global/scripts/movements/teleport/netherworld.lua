@@ -1,10 +1,15 @@
 local teleports = {
 	{position = {x = 33544, y = 31444, z = 8}, destination = Position(33533, 31444, 8)},
-	{position = {x = 33535, y = 31444, z = 8}, destination = Position(33329, 31332, 9)},
-	{position = {x = 33484, y = 31435, z = 8}, destination = Position(33483, 31451, 9)},
-	{position = {x = 33481, y = 31452, z = 9}, destination = Position(33486, 31435, 8)},	
-	{position = {x = 33570, y = 31467, z = 9}, destination = Position(33572, 31465, 9)},
-	{position = {x = 33558, y = 31467, z = 9}, destination = Position(33556, 31469, 9)}
+	{position = {x = 33535, y = 31444, z = 8}, destination = Position(33546, 31444, 8)},
+	{position = {x = 33484, y = 31435, z = 8}, destination = Position(33482, 31452, 9)},
+	{position = {x = 33481, y = 31452, z = 9}, destination = Position(33485, 31435, 8)},	
+	{position = {x = 33570, y = 31467, z = 9}, destination = Position(33557, 31467, 9)},
+	{position = {x = 33558, y = 31467, z = 9}, destination = Position(33571, 31467, 9)},
+	{position = {x = 33539, y = 31440, z = 9}, destination = Position(33550, 31440, 9)},
+	{position = {x = 33549, y = 31440, z = 9}, destination = Position(33538, 31440, 9)},
+	{position = {x = 33531, y = 31410, z = 9}, destination = Position(33541, 31411, 9)},
+	{position = {x = 33540, y = 31411, z = 9}, destination = Position(33530, 31410, 9)}	
+	
 }
 
 local netherworld = MoveEvent()
