@@ -18,6 +18,18 @@ npcConfig.flags = {
 	floorchange = false
 }
 
+-- On buy npc shop message
+npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
+	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+end
+-- On sell npc shop message
+npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
+	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+end
+-- On check npc shop message (look item)
+npcType.onCheckItem = function(npc, player, clientId, subType)
+end
+
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
@@ -44,6 +56,8 @@ end
 npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
+
+local topic = {}
 
 npcConfig.shop = {
 	{ itemName = "animate dead rune", clientId = 3203, buy = 375 },
@@ -252,38 +266,41 @@ npcConfig.shop = {
 	{ itemName = "worm", clientId = 3492, buy = 1 }
 }
 
-npcConfig.Shop1 = {
-	{ itemName = "watch", clientId = 2906, buy = 20, sell = 6 },
-	{ itemName = "wild growth rune", clientId = 3156, buy = 160 },
-	{ itemName = "wooden hammer", clientId = 3459, sell = 15 },
-	{ itemName = "wooden shield", clientId = 3412, buy = 15, sell = 5 },
-	{ itemName = "worm", clientId = 3492, buy = 1 }
-}
+local function creatureSayCallback(npc, creature, type, message)
+	local player = Player(creature)
+	local playerId = player:getId()
 
--- On buy npc shop message
-npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
-	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
-end
--- On sell npc shop message
-npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
-end
--- On check npc shop message (look item)
-npcType.onCheckItem = function(npc, player, clientId, subType)
+	if not npcHandler:checkInteraction(npc, creature) then
+		return false
+	end
+
+	if not player or not playerId then
+		return false
+	end
+
+
+	-- roleplay
+	if MsgContains(message, "job") then
+		npcHandler:say("Have you noticed that I'm actually the only rock on this island with a proper job? Those lazy pebbleheads! I'm proud to announce: I'm a trader", npc, creature)
+	elseif MsgContains(message, "name") then
+		npcHandler:say("No, you got it all wrong! I said I'm stuck between a rock and a hard place!", npc, creature)
+	elseif MsgContains(message, "help") then
+		npcHandler:say("I can help you buy trading stuff with you. Good for me, good for you. It's a win-win!", npc, creature)
+	-- end roleplay
+	end
+	return true
 end
 
-local tradeKeyword = keywordHandler:addKeyword({'trade'}, StdModule.say, {npcHandler = npcHandler, text = 'You would be surprised how many things are washed ashore here. I trade {magic stuff}, {local equipment}, {weapons}, {armor}, {ammunition}, {post things} and {creature products}.'})
-	tradeKeyword:addChildKeyword({'magic stuff'}, function(npc) npc:openShopWindow(player) end)
-
--- Basic
-keywordHandler:addKeyword({'job'}, StdModule.say, {npcHandler = npcHandler, text = 'Have you noticed that I\'m actually the only rock on this island with a proper job? Those lazy pebbleheads! I\'m proud to announce: I\'m a trader'})
-keywordHandler:addKeyword({'name'}, StdModule.say, {npcHandler = npcHandler, text = 'No, you got it all wrong! I said I\'m stuck between a rock and a hard place!'})
-keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, text = 'I can help you buy trading stuff with you. Good for me, good for you. It\'s a win-win!'})
+local function onReleaseFocus(npc, creature)
+	local playerId = creature:getId()
+	topic[playerId] = nil
+end
 
 npcHandler:setMessage(MESSAGE_GREET, 'Everyone on this island has gone crazy! Except for me and you, it seems. Let\'s {trade} like normal people would.')
 npcHandler:setMessage(MESSAGE_WALKAWAY, 'Hey! Don\'t leave me alone with all these lunatics!')
 npcHandler:setMessage(MESSAGE_FAREWELL, 'Promise to come back sometime, will ya?')
-
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+npcHandler:setCallback(CALLBACK_REMOVE_INTERACTION, onReleaseFocus)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcType:register(npcConfig)
