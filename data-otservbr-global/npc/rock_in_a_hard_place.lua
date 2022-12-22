@@ -288,16 +288,11 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-local function onReleaseFocus(npc, creature)
-	local playerId = creature:getId()
-	topic[playerId] = nil
-end
 
 npcHandler:setMessage(MESSAGE_GREET, 'Everyone on this island has gone crazy! Except for me and you, it seems. Let\'s {trade} like normal people would.')
 npcHandler:setMessage(MESSAGE_WALKAWAY, 'Hey! Don\'t leave me alone with all these lunatics!')
 npcHandler:setMessage(MESSAGE_FAREWELL, 'Promise to come back sometime, will ya?')
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
-npcHandler:setCallback(CALLBACK_REMOVE_INTERACTION, onReleaseFocus)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcType:register(npcConfig)

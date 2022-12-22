@@ -1503,8 +1503,10 @@ function GameStore.processPreyBonusReroll(player, offerCount)
 end
 
 function GameStore.processTempleTeleportPurchase(player)
-	if player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT) or player:isPzLocked() then
-		return error({code = 0, message = "You can't use temple teleport in fight!"})
+	if not player:getTile():hasFlag(TILESTATE_PROTECTIONZONE) then
+		if player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT) or player:isPzLocked() then
+			return error({code = 0, message = "You can't use temple teleport in fight!"})
+		end
 	end
 
 	player:teleportTo(player:getTown():getTemplePosition())

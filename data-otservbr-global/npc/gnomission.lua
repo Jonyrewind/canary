@@ -161,16 +161,16 @@ end
 
 npcHandler:setMessage(MESSAGE_GREET, 'Hello |PLAYERNAME|. You are probably eager to enter the {warzones}.')
 
-local function onTradeRequest(npc, creature)
+--[[local function onTradeRequest(npc, creature)
 	if Player(creature):getStorageValue(Storage.BigfootBurden.BossKills) < 20 then
 		npcHandler:say('Only if you have killed 20 of our major enemies in the warzones I am allowed to trade with you.', npc, creature)
 		return false
 	end
 	return true
-end
+end]]--
 
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
-npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
+--npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
