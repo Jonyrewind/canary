@@ -1,8 +1,9 @@
-local mType = Game.createMonsterType("Phantasm")
+local mType = Game.createMonsterType("Phantasm Summon")
 local monster = {}
 
+monster.name = "Phantasm"
 monster.description = "a phantasm"
-monster.experience = 4400
+monster.experience = 0
 monster.outfit = {
 	lookType = 241,
 	lookHead = 0,
@@ -13,10 +14,10 @@ monster.outfit = {
 	lookMount = 0
 }
 
-monster.health = 3950
-monster.maxHealth = 3950
+monster.health = 65
+monster.maxHealth = 65
 monster.race = "undead"
-monster.corpse = 6343
+monster.corpse = 0
 monster.speed = 170
 monster.manaCost = 0
 
@@ -86,7 +87,7 @@ monster.defenses = {
 monster.elements = {
 	{type = COMBAT_PHYSICALDAMAGE, percent = 100},
 	{type = COMBAT_ENERGYDAMAGE, percent = -10},
-	{type = COMBAT_EARTHDAMAGE, percent = 20},
+	{type = COMBAT_EARTHDAMAGE, percent = 100},
 	{type = COMBAT_FIREDAMAGE, percent = -10},
 	{type = COMBAT_LIFEDRAIN, percent = 100},
 	{type = COMBAT_MANADRAIN, percent = 0},

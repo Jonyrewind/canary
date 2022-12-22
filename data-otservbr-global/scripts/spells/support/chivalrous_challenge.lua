@@ -16,7 +16,7 @@ local function chain(player)
 		if creature:isMonster() then
 			if creature:getType():isRewardBoss() then
 				return -1
-			elseif creature:getMaster() == nil and creature:getType():getTargetDistance() > 1 then
+			elseif creature:getMaster() == nil and creature:getType():getTargetDistance() >= 1 then
 				table.insert(monsters, creature)
 			elseif creature:getMaster() == nil then
 				table.insert(meleeMonsters, creature)
@@ -27,7 +27,7 @@ local function chain(player)
 	local counter = 1
 	local tempSize = #monsters
 	if tempSize < 8 and #meleeMonsters > 0 then
-		for i = tempSize, 5 do
+		for i = tempSize, 8 do
 			if meleeMonsters[counter] ~= nil then
 				table.insert(monsters, meleeMonsters[counter])
 				counter = counter + 1
