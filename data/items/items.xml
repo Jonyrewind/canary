@@ -40504,10 +40504,10 @@
 	<item id="28495" article="a" name="perfume flacon">
 		<attribute key="weight" value="240"/>
 	</item>
-	<item fromid="28496" toid="28498" article="a" name="wooden wall"/>
+	<item fromid="28496" toid="28498" article="a" name="wooden railing"/>
 	<!-- unknown item - winter update 2018 -->
 	<item id="28499" name="RESERVED SPRITE"/>
-	<item id="28500" article="a" name="wooden wall"/>
+	<item id="28500" article="a" name="wooden railing"/>
 	<item fromid="28501" toid="28507" article="a" name="stone wall"/>
 	<!-- unknown item - winter update 2018 -->
 	<item fromid="28508" toid="28510" name="unknown item"/>
