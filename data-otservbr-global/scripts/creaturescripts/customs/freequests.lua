@@ -204,6 +204,7 @@ local questTable = {
 	{storage = Storage.TheInquisition.WalterGuard, storageValue = 1},
 	{storage = Storage.TheInquisition.StorkusVampiredust, storageValue = 1},
 	{storage = Storage.TheSecretLibrary.OberonAccess, storageValue =1},
+	{storage = Storage.TheSecretLibrary.ShortcutToBastion, storageValue =1},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Questline, storageValue = 29},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Mission01, storageValue = 3},
 	{storage = Storage.Quest.U8_54.TheNewFrontier.Mission02[1], storageValue = 4},
