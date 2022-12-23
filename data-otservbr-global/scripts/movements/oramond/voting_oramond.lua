@@ -1,4 +1,4 @@
-local setting = {
+--[[local setting = {
 	["Monday"] = Position(31254, 32604, 9), --Minos
 	["Tuesday"] = Position(33459, 31715, 9), --Catacombs
 	["Wednesday"]  = Position(31061, 32605, 9), --Golem
@@ -27,4 +27,84 @@ end
 
 votingOramond:type("stepin")
 votingOramond:aid(42628)
-votingOramond:register()
+votingOramond:register()]]--
+
+local config = {
+	[1] = {name = 'Minos', action =
+		function(playerId)
+			local player = Player(playerId)
+			if not player then
+				return true
+			end
+
+			player:teleportTo(Position(31254, 32604, 9))
+			player:say("Slrrp!", TALKTYPE_MONSTER_SAY)
+		end
+	},
+	[2] = {name = 'Catacombs', action =
+		function(playerId)
+			local player = Player(playerId)
+			if not player then
+				return true
+			end
+
+			player:teleportTo(Position(33459, 31715, 9))
+			player:say("Slrrp!", TALKTYPE_MONSTER_SAY)
+		end
+	},
+	[2] = {name = 'Golem', action =
+		function(playerId)
+			local player = Player(playerId)
+			if not player then
+				return true
+			end
+
+			player:teleportTo(Position(31061, 32605, 9))
+			player:say("Slrrp!", TALKTYPE_MONSTER_SAY)
+		end
+	},
+}
+
+local votingOramond = MoveEvent()
+
+function votingOramond.onStepIn(creature, item, position, fromPosition)
+	local player = creature:getPlayer()
+	if not player then
+		return true
+	end
+
+	local cid = self:getId()
+	local window = ModalWindow {
+		title = "Teleport",
+		message = "Where would you like to be teleported to?",
+	}
+
+	for index, choice in ipairs(config) do
+		local name = string.format("%s", choice.name)
+		local choice = window:addChoice(name)
+
+        choice.index = index
+	end
+
+	window:addButton('Choose',
+		function(button, choice)
+			local self = Player(cid)
+			if self and choice then
+				local tmpChoice = config[choice.index]
+				if tmpChoice then
+					tmpChoice.action(cid)
+				end
+			end
+		end
+	)
+
+	window:addButton('Close')
+    window:setDefaultEnterButton('Choose')
+    window:setDefaultEscapeButton('Close')
+	window:sendToPlayer(self)
+	return true
+end
+
+votingOramond:type("stepin")
+votingOramond:aid(42628)
+votingOramond:register()]]
