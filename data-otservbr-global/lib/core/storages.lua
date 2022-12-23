@@ -2677,6 +2677,7 @@ Storage = {
 			DreamWarriorOutfits = {},
 			TheDreamCourts = {
 				AndrewDoor = 14900,
+				HauntedTempleDoor = 14901,
 				FacelessBaneTime = 50283
 			},
 		},

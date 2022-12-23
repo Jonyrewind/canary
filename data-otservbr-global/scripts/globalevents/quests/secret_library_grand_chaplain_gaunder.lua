@@ -4,7 +4,8 @@ local config = {
     bossPosition = Position(33370, 31327, 5),
     centerPosition = Position(33370, 31327, 5),
     rangeX = 50,
-    rangeY = 50
+    rangeY = 50,
+	spawn = configManager.getNumber(configKeys.RATE_SPAWN)
 }
 
 local function checkBoss(centerPosition, rangeX, rangeY, bossName)
@@ -31,5 +32,5 @@ function chaplaingaunder.onThink(interval, lastExecution)
     return true
 end
 
-chaplaingaunder:interval(900000)
+chaplaingaunder:interval(900000 / config.spawn)
 chaplaingaunder:register()

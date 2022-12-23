@@ -92,7 +92,8 @@ function Player:sendMainModalteleportcube()
 
         choice.index = index
 	end
-
+	
+	window:addButton('Close')
 	window:addButton('Choose',
 		function(button, choice)
 			local self = Player(cid)
@@ -104,10 +105,8 @@ function Player:sendMainModalteleportcube()
 			end
 		end
 	)
-
-	window:addButton('Close')
-    window:setDefaultEnterButton('Choose')
-    window:setDefaultEscapeButton('Close')
+    window:setDefaultEnterButton('Close')
+    window:setDefaultEscapeButton('Choose')
 	window:sendToPlayer(self)
 end
 

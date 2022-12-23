@@ -3,7 +3,8 @@ local config = {
     bossPosition = Position(33376, 31320, 2),
     centerPosition = Position(33376, 31320, 2),
     rangeX = 50,
-    rangeY = 50
+    rangeY = 50,
+	spawn = configManager.getNumber(configKeys.RATE_SPAWN)
 }
 
 local function checkBoss(centerPosition, rangeX, rangeY, bossName)
@@ -30,5 +31,5 @@ function grandCommander.onThink(interval, lastExecution)
     return true
 end
 
-grandCommander:interval(900000)
+grandCommander:interval(900000 / config.spawn)
 grandCommander:register()
