@@ -996,6 +996,198 @@ ChestUnique = {
 		timerStorage = Storage.Quest.U11_80.TheSecretLibrary.FalconBastionChestsTimer.UndergroundBastion,
 		time = 24 -- hour
 	},
+	[6111] = {
+		itemId = 28827,
+		itemPos = {x = 32381, y = 32495, z = 3},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer,
+		time = 24 -- hour
+	},
+	[6112] = {
+		itemId = 28827,
+		itemPos = {x = 32401, y = 32460, z = 5},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer1,
+		time = 24 -- hour
+	},
+	[6113] = {
+		itemId = 28827,
+		itemPos = {x = 32411, y = 32460, z = 6},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer2,
+		time = 24 -- hour
+	},
+	[6114] = {
+		itemId = 28827,
+		itemPos = {x = 32425, y = 32462, z = 5},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer3,
+		time = 24 -- hour
+	},
+	[6115] = {
+		itemId = 28827,
+		itemPos = {x = 32404, y = 32495, z = 4},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer4,
+		time = 24 -- hour
+	},
+	[6116] = {
+		itemId = 28827,
+		itemPos = {x = 32447, y = 32501, z = 10},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer5,
+		time = 24 -- hour
+	},
+	[6117] = {
+		itemId = 28827,
+		itemPos = {x = 32463, y = 32492, z = 11},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer6,
+		time = 24 -- hour
+	},
+	[6118] = {
+		itemId = 28827,
+		itemPos = {x = 32472, y = 32489, z = 8},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer7,
+		time = 24 -- hour
+	},
+	[6119] = {
+		itemId = 28827,
+		itemPos = {x = 32475, y = 32493, z = 7},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer8,
+		time = 24 -- hour
+	},
+	[6120] = {
+		itemId = 28827,
+		itemPos = {x = 32429, y = 32529, z = 9},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer9,
+		time = 24 -- hour
+	},
+	[6121] = {
+		itemId = 28828,
+		itemPos = {x = 32369, y = 32471, z = 7},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer10,
+		time = 24 -- hour
+	},
+	[6122] = {
+		itemId = 28828,
+		itemPos = {x = 32397, y = 32484, z = 4},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer11,
+		time = 24 -- hour
+	},
+	[6123] = {
+		itemId = 28828,
+		itemPos = {x = 32436, y = 32483, z = 6},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer12,
+		time = 24 -- hour
+	},
+	[6124] = {
+		itemId = 28828,
+		itemPos = {x = 32440, y = 32497, z = 6},
+		randomReward = {{9083, 1}, {34160, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}, {3035, 10}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.TheOrderOfTheLion.LionBastionChestsTimer.Timer13,
+		time = 24 -- hour
+	},
+	[6125] = {
+		itemId = 28828,
+		itemPos = {x = 33366, y = 32646, z = 7},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer,
+		time = 24 -- hour
+	},
+	[6126] = {
+		itemId = 28828,
+		itemPos = {x = 33399, y = 32644, z = 1},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer1,
+		time = 24 -- hour
+	},
+	[6127] = {
+		itemId = 28828,
+		itemPos = {x = 33392, y = 32664, z = 2},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer2,
+		time = 24 -- hour
+	},
+	[6128] = {
+		itemId = 28828,
+		itemPos = {x = 33382, y = 32690, z = 6},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer3,
+		time = 24 -- hour
+	},
+	[6129] = {
+		itemId = 28828,
+		itemPos = {x = 33371, y = 32787, z = 8},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer4,
+		time = 24 -- hour
+	},
+	[6130] = {
+		itemId = 28827,
+		itemPos = {x = 33392, y = 32637, z = 5},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer5,
+		time = 24 -- hour
+	},
+	[6131] = {
+		itemId = 28827,
+		itemPos = {x = 33401, y = 32647, z = 4},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer6,
+		time = 24 -- hour
+	},
+	[6132] = {
+		itemId = 28827,
+		itemPos = {x = 33394, y = 32654, z = 3},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer7,
+		time = 24 -- hour
+	},
+	[6133] = {
+		itemId = 28827,
+		itemPos = {x = 33404, y = 32662, z = 7},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer8,
+		time = 24 -- hour
+	},
+	[6134] = {
+		itemId = 28827,
+		itemPos = {x = 33379, y = 32692, z = 7},
+		randomReward = {{9083, 1}, {31678, 1}, {9058, 1}, {6299, 1}, {3052, 1}, {3035, 8}},
+		reward = {{nil, nil}},
+		timerStorage = Storage.GraveDanger.CobraBastionChestsTimer.Timer9,
+		time = 24 -- hour
+	},
 	-- Reward of others scrips files (varied rewards)
 	-- The First dragon Quest
 	-- Treasure chests (data\scripts\actions\quests\first_dragon\treasure_chests.lua)

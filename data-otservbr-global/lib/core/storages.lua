@@ -1704,6 +1704,17 @@ Storage = {
 		CobraBastion = {
 			Questline = 52311,
 			ScarlettTimer = 52312
+		},
+		CobraBastionChestsTimer = {
+			Timer = 52400,
+			Timer2 = 52401,
+			Timer3 = 52402,
+			Timer4 = 52403,
+			Timer5 = 52404,
+			Timer6 = 52405,
+			Timer7 = 52406,
+			Timer8 = 52407,
+			Timer9 = 52408
 		}
 	},
 	RottinWoodAndMaried = {
@@ -1730,6 +1741,21 @@ Storage = {
 			TotalLionCommanders = 52397, -- Global
 			TotalUsurperCommanders = 52398, -- Global
 			Timer = 52399
+		},
+		LionBastionChestsTimer = {
+			Timer = 52411,
+			Timer2 = 52412,
+			Timer3 = 52413,
+			Timer4 = 52414,
+			Timer5 = 52415,
+			Timer6 = 52416,
+			Timer7 = 52417,
+			Timer8 = 52418,
+			Timer9 = 52419,
+			Timer10 = 52420,
+			Timer11 = 52421,
+			Timer12 = 52422,
+			Timer13 = 52423
 		},
 	},
 	-- News quest development
@@ -2676,6 +2702,9 @@ Storage = {
 		U12_00 = { -- update 12.00 - Reserved Storages 46301 - 46600
 			DreamWarriorOutfits = {},
 			TheDreamCourts = {
+				HauntedHouse = {
+				Books = 14902,
+				},
 				AndrewDoor = 14900,
 				HauntedTempleDoor = 14901,
 				FacelessBaneTime = 50283
