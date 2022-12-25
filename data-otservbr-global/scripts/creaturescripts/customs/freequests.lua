@@ -300,6 +300,7 @@ local questTable = {
 	{storage = Storage.DangerousDepths.Scouts.Diremaw, storageValue = 2},
 	{storage = Storage.Quest.U11_40.ThreatenedDreams.QuestLine, storageValue = 1},
 	{storage = Storage.Quest.U11_40.ThreatenedDreams.Mission01[1], storageValue = 16},
+	{storage = Storage.Quest.U11_40.ThreatenedDreams.Mission02.KroazurAccess, storageValue = 1},
 	{storage = Storage.AdventurersGuild.GreatDragonHunt.WarriorSkeleton, storageValue = 1},
 	{storage = Storage.AdventurersGuild.GreatDragonHunt.WarriorSkeleton, storageValue = 2},
 	{storage = Storage.Quest.U10_55.Dawnport.Questline, storageValue = 1},

@@ -52,7 +52,7 @@ local config = {
 			player:say("Slrrp!", TALKTYPE_MONSTER_SAY)
 		end
 	},
-	[2] = {name = 'Golem', action =
+	[3] = {name = 'Golem', action =
 		function(playerId)
 			local player = Player(playerId)
 			if not player then
@@ -68,8 +68,9 @@ local config = {
 local votingOramond = MoveEvent()
 
 function votingOramond.onStepIn(creature, item, position, fromPosition)
-	local player = creature:getPlayer()
-	if not player then
+	creature:teleportTo(fromPosition)
+	local self = creature:getPlayer()
+	if not self then
 		return true
 	end
 
@@ -86,6 +87,7 @@ function votingOramond.onStepIn(creature, item, position, fromPosition)
         choice.index = index
 	end
 
+	window:addButton('Close')
 	window:addButton('Choose',
 		function(button, choice)
 			local self = Player(cid)
@@ -98,13 +100,12 @@ function votingOramond.onStepIn(creature, item, position, fromPosition)
 		end
 	)
 
-	window:addButton('Close')
-    window:setDefaultEnterButton('Choose')
-    window:setDefaultEscapeButton('Close')
+    window:setDefaultEnterButton('Close')
+    window:setDefaultEscapeButton('Choose')
 	window:sendToPlayer(self)
 	return true
 end
 
 votingOramond:type("stepin")
 votingOramond:aid(42628)
-votingOramond:register()]]
+votingOramond:register()

@@ -141,7 +141,7 @@ npcConfig.shop = {
 	{ itemname = "purple tome", clientid = 2848, sell = 2000 },
 	{ itemname = "rainbow quartz", clientid = 25737, sell = 500 },
 	{ itemname = "red crystal fragment", clientid = 16126, sell = 800 },
-	{ itemname = "red gem", clientid = 36706, sell = 1000 },
+	{ itemname = "red gem", clientid = 3039, sell = 1000 },
 	{ itemname = "Rotten Heart", clientid = 31589, sell = 74000 },
 	{ itemname = "Royal Almandine", clientid = 39038, sell = 460000 },
 	{ itemname = "Sight of Surrender's Eye", clientid = 20183, sell = 3000 },

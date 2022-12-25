@@ -13,3 +13,5 @@ dofile(DATA_DIRECTORY.. '/lib/others/load.lua')
 
 -- Quests library
 dofile(DATA_DIRECTORY.. '/lib/quests/quest.lua')
+-- Boss eye
+dofile(DATA_DIRECTORY.. '/lib/others/boss_timer.lua')

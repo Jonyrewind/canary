@@ -244,7 +244,8 @@ local setting = {
 	31580, -- mortal mace
 	31614, -- tagralt blade
 	32093, -- meat hammer
-	32616 -- phantasmal axe
+	32616, -- phantasmal axe
+	36662  -- gilded eldritch greataxe
 }
 
 local destroy = Action()

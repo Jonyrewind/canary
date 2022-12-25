@@ -6,10 +6,11 @@ function bestiaryOnKill.onKill(player, creature, lastHit)
 
 	for cid, damage in pairs(creature:getDamageMap()) do
 		local participant = Player(cid)
+		local monsterType = creature:getType()
 		if participant and participant:isPlayer() then
 			local bestAmount = 10 --(default=1) how much will increase after kill a monter in bestiary
 			for i = bestAmount, 1, -1 do 
-			participant:addBestiaryKill(creature:getName())		
+			participant:addBestiaryKill(monsterType:getTypeName():lower())
 			end
 		end
 	end
