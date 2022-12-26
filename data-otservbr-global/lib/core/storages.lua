@@ -1681,7 +1681,7 @@ Storage = {
 		Mainland = 52279
 	},
 	LionsRock = {
-		-- Reserved storage from 52290 - 52309
+		-- Reserved storage from 52290 - 52305
 		Questline = 52290,
 		OuterSanctum = {
 			Skeleton = 52291,
@@ -1699,39 +1699,85 @@ Storage = {
 		Time = 52300
 	},
 	GraveDanger = {
-		-- Reserved storage from 52310 - 52339
-		Questline = 52310,
+		-- Reserved storage from 52305 - 52339
+		Questline = 52305,
 		CobraBastion = {
-			Questline = 52311,
-			ScarlettTimer = 52312
+			Questline = 52306,
+			ScarlettTimer = 52307,
+			Cobra = 52308
+		},
+		Graves = {
+			Edron = 52309,
+			DarkCathedral = 52310,
+			Ghostlands = 52311,
+			Cormaya = 52312,
+			FemorHills = 52313,
+			Ankrahmun = 52314,
+			Kilmaresh = 52315,
+			Vengoth = 52316,
+			Darashia = 52317,
+			Thais = 52318,
+			Orclands = 52319,
+			IceIslands = 52320
 		},
 		CobraBastionChestsTimer = {
-			Timer = 52400,
-			Timer2 = 52401,
-			Timer3 = 52402,
-			Timer4 = 52403,
-			Timer5 = 52404,
-			Timer6 = 52405,
-			Timer7 = 52406,
-			Timer8 = 52407,
-			Timer9 = 52408
-		}
+			Timer = 52321,
+			Timer2 = 52322,
+			Timer3 = 52323,
+			Timer4 = 52324,
+			Timer5 = 52325,
+			Timer6 = 52326,
+			Timer7 = 52327,
+			Timer8 = 52328,
+			Timer9 = 52329
+		},
+		Bosses = {
+			CountVlarkorth = {
+				Kill = 52330,
+				Time = 52331
+			},
+			LordAzaram = {
+				Kill = 52332,
+				Time = 52333
+			},
+			EarlOsam = {
+				Kill = 52334,
+				Time = 52335
+			},
+			SirBaelocandSirNictros = {
+				Kill = 52336,
+				Kill2 = 52337,
+				Time = 52338
+			},
+			DukeKrule = {
+				Kill = 52339,
+				Time = 52340
+			},
+			KingZelos = {
+				Kill = 52341,
+				RewartheBloody = 52342,
+				TheRedKnight = 52343,
+				MagnorMournbringer = 52344,
+				NargoltheImpaler = 52345,
+				Time = 52346
+			},
+		},
 	},
 	RottinWoodAndMaried = {
-		-- Reserved storage from 52340 - 52349
-		Questline = 52340,
-		RottinStart = 52341,
-		Trap = 52342,
-		Corpse = 52343,
-		Time = 52344,
-		Mission03 = 52345,
+		-- Reserved storage from 52350 - 52355
+		Questline = 52350,
+		RottinStart = 52351,
+		Trap = 52352,
+		Corpse = 52353,
+		Time = 52354,
+		Mission03 = 52355,
 	},
 	TheMummysCurse = {
-		-- Reserved storage from 52350 - 52359
-		Time1 = 52351,
-		Time2 = 52352,
-		Time3 = 52353,
-		Time4 = 52354,
+		-- Reserved storage from 52356 - 52359
+		Time1 = 52356,
+		Time2 = 52357,
+		Time3 = 52358,
+		Time4 = 52359,
 	},
 	TheOrderOfTheLion = {
 		-- Reserved storage 52360-52395 (TheRookieGuard)
@@ -2718,22 +2764,6 @@ Storage = {
 			GoldenOutfits = {},
 		},
 		U12_20 = { -- update 12.20 - Reserved Storages 46851 - 47000
-			GraveDanger = {
-				QuestLine = 46851,
-				Graves = {
-					Edron = 46852,
-					DarkCathedral = 46853,
-					Ghostlands = 46854,
-					Cormaya = 46855,
-					FemorHills = 46856,
-					Ankrahmun = 46857,
-					Kilmaresh = 46858,
-					Vengoth = 46859,
-					Darashia = 46860,
-					Thais = 46861,
-					Orclands = 46862,
-					IceIslands = 46863},
-				Cobra = 46864},
 			HandOfTheInquisitionOutfits = {},
 			-- Kilmaresh = {}, done earlier in the file
 		},

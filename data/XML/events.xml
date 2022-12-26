@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
-	<event name="Double Expirience and Loot Event" startdate="11/12/2022" enddate="01/01/2023" script="example.lua" >
-		<ingame exprate="250" lootrate="200" spawnrate="300" skillrate="200" />
+	<event name="Double Expirience and Loot Event" startdate="12/20/2022" enddate="08/01/2023" script="example.lua" >
+		<ingame exprate="100" lootrate="100" spawnrate="250" skillrate="200" />
 		<description description="Double Expirience and Loot Event" />
 		<colors colordark="#235c00" colorlight="#2d7400" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>
-	<event name="Otservbr example 2" startdate="2/2/2022" enddate="11/7/2022" script="example.lua" >
+	<event name="Otservbr example 2" startdate="2/2/2022" enddate="12/20/2022" script="example.lua" >
 		<ingame exprate="500" lootrate="500" spawnrate="500" skillrate="500" />
 		<description description="Otserver br example 2 description 50% less exp, triple loot !chance!, 50% faster spawn and regular skill" />
 		<colors colordark="#735D10" colorlight="#8B6D05" />

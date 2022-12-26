@@ -782,7 +782,7 @@ QuestDoorAction = {
 		itemId = false,
 		itemPos = {{x = 33083, y = 31216, z = 8}}
 	},
-	[Storage.Quest.U12_20.GraveDanger.QuestLine] = {
+	[Storage.GraveDanger.Questline] = {
 		itemId = false,
 		itemPos = {
 			{x = 33264, y = 31993, z = 7},

@@ -6448,35 +6448,35 @@ if not Quests then
 		},
 		[48] = {
 			name = "Grave Danger",
-			startStorageId = Storage.Quest.U12_20.GraveDanger.QuestLine,
+			startStorageId = Storage.GraveDanger.Questline,
 			startStorageValue = 1,
 			missions = {
 				[1] = {
 					name = "* Grave Danger - The Lich Knights",
-					storageId =  Storage.Quest.U12_20.GraveDanger.QuestLine,
+					storageId =  Storage.GraveDanger.Questline,
 					missionId = 10437,
 					startValue = 1,
 					endValue = 2,
 					states = {
 						[1] = function(player) return string.format("Prevent the raising of twelve lich knights. Sanctify the graves yet untouched and destroy any lich knights that might have been raised. Graves exlored: %d/12",
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Edron) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.DarkCathedral) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Ghostlands) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Cormaya) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.FemorHills) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Ankrahmun) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Kilmaresh) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Vengoth) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Darashia) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Thais) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.Orclands) +
-							player:getStorageValue(Storage.Quest.U12_20.GraveDanger.Graves.IceIslands) - 12)
+							player:getStorageValue(Storage.GraveDanger.Graves.Edron) +
+							player:getStorageValue(Storage.GraveDanger.Graves.DarkCathedral) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Ghostlands) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Cormaya) +
+							player:getStorageValue(Storage.GraveDanger.Graves.FemorHills) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Ankrahmun) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Kilmaresh) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Vengoth) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Darashia) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Thais) +
+							player:getStorageValue(Storage.GraveDanger.Graves.Orclands) +
+							player:getStorageValue(Storage.GraveDanger.Graves.IceIslands) - 12)
 						end
 					}
 				},
 				[2] = {
 					name = "01 The grave in Edron",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Edron,
+					storageId = Storage.GraveDanger.Graves.Edron,
 					missionId = 10438,
 					startValue = 1,
 					endValue = 2,
@@ -6487,7 +6487,7 @@ if not Quests then
 				},
 				[3] = {
 					name = "02 The grave in the dark cathedral",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.DarkCathedral,
+					storageId = Storage.GraveDanger.Graves.DarkCathedral,
 					missionId = 10439,
 					startValue = 1,
 					endValue = 2,
@@ -6498,7 +6498,7 @@ if not Quests then
 				},
 				[4] = {
 					name = "03 The grave in Ghostlands",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Ghostlands,
+					storageId = Storage.GraveDanger.Graves.Ghostlands,
 					missionId = 10440,
 					startValue = 1,
 					endValue = 2,
@@ -6509,7 +6509,7 @@ if not Quests then
 				},
 				[5] = {
 					name = "04 The grave in Cormaya",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Cormaya,
+					storageId = Storage.GraveDanger.Graves.Cormaya,
 					missionId = 10441,
 					startValue = 1,
 					endValue = 2,
@@ -6520,7 +6520,7 @@ if not Quests then
 				},
 				[6] = {
 					name = "05 The grave in the Femor Hills",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.FemorHills,
+					storageId = Storage.GraveDanger.Graves.FemorHills,
 					missionId = 10442,
 					startValue = 1,
 					endValue = 2,
@@ -6531,7 +6531,7 @@ if not Quests then
 				},
 				[7] = {
 					name = "06 The grave on an isle NE of Ankrahmun",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Ankrahmun,
+					storageId = Storage.GraveDanger.Graves.Ankrahmun,
 					missionId = 10443,
 					startValue = 1,
 					endValue = 2,
@@ -6542,7 +6542,7 @@ if not Quests then
 				},
 				[8] = {
 					name = "07 The grave in Kilmaresh",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Kilmaresh,
+					storageId = Storage.GraveDanger.Graves.Kilmaresh,
 					missionId = 10444,
 					startValue = 1,
 					endValue = 2,
@@ -6553,7 +6553,7 @@ if not Quests then
 				},
 				[9] = {
 					name = "08 The grave in Vengoth",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Vengoth,
+					storageId = Storage.GraveDanger.Graves.Vengoth,
 					missionId = 10445,
 					startValue = 1,
 					endValue = 2,
@@ -6564,7 +6564,7 @@ if not Quests then
 				},
 				[10] = {
 					name = "09 The grave in Darashia",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Darashia,
+					storageId = Storage.GraveDanger.Graves.Darashia,
 					missionId = 10446,
 					startValue = 1,
 					endValue = 2,
@@ -6575,7 +6575,7 @@ if not Quests then
 				},
 				[11] = {
 					name = "10 The grave in the old Thais temple",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Thais,
+					storageId = Storage.GraveDanger.Graves.Thais,
 					missionId = 10447,
 					startValue = 1,
 					endValue = 2,
@@ -6586,7 +6586,7 @@ if not Quests then
 				},
 				[12] = {
 					name = "11 The grave at the orclands entrance",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.Orclands,
+					storageId = Storage.GraveDanger.Graves.Orclands,
 					missionId = 10448,
 					startValue = 1,
 					endValue = 2,
@@ -6597,7 +6597,7 @@ if not Quests then
 				},
 				[13] = {
 					name = "12 The grave on the southern ice islands",
-					storageId = Storage.Quest.U12_20.GraveDanger.Graves.IceIslands,
+					storageId = Storage.GraveDanger.Graves.IceIslands,
 					missionId = 10449,
 					startValue = 1,
 					endValue = 2,
@@ -6608,7 +6608,7 @@ if not Quests then
 				},
 				[14] = {
 					name = "The Order of the Cobra",
-					storageId = Storage.Quest.U12_20.GraveDanger.Cobra,
+					storageId = Storage.GraveDanger.CobraBastion.Cobra,
 					missionId = 10450,
 					startValue = 1,
 					endValue = 2,
