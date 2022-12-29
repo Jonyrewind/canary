@@ -1,0 +1,9 @@
+- name: Wipe Github Actions cache
+  # You may pin to the exact commit or the version.
+  # uses: easimon/wipe-cache@72bb4e93122a3f19f846b5249f7e2dbf5b50b067
+  uses: easimon/wipe-cache@v1
+  with:
+    # Your GITHUB_TOKEN.
+    github-token: # optional, default is ${{ github.token }}
+    # List caches only, do not clear them.
+    dry-run: # optional, default is false
