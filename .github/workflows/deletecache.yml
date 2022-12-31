@@ -1,0 +1,2 @@
+- name: Wipe Github Actions cache
+  uses: easimon/wipe-cache@v1
