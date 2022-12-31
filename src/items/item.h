@@ -1,21 +1,11 @@
 /**
- * The Forgotten Server - a free and open-source MMORPG server emulator
- * Copyright (C) 2019  Mark Samman <mark.samman@gmail.com>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- */
+ * Canary - A free and open-source MMORPG server emulator
+ * Copyright (©) 2019-2022 OpenTibiaBR <opentibiabr@outlook.com>
+ * Repository: https://github.com/opentibiabr/canary
+ * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
+ * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
+ * Website: https://docs.opentibiabr.org/
+*/
 
 #ifndef SRC_ITEMS_ITEM_H_
 #define SRC_ITEMS_ITEM_H_
@@ -154,6 +144,7 @@ class ItemAttributes
 			int64_t intValue;
 			bool boolValue;
 			double doubleValue;
+
 			bool hasStringValue = false;
 			bool hasIntValue = false;
 			bool hasBoolValue = false;
@@ -217,16 +208,22 @@ class ItemAttributes
 					propWriteStream.writeString(stringValue);
 				} else if (hasIntValue) {
 					propWriteStream.write<uint8_t>(2);
+					propWriteStream.write<int64_t>(intValue);
 				} else if (hasDoubleValue) {
 					propWriteStream.write<uint8_t>(3);
+					propWriteStream.write<double>(doubleValue);
 				} else if (hasBoolValue) {
 					propWriteStream.write<uint8_t>(4);
+					propWriteStream.write<bool>(boolValue);
+				} else {
+					propWriteStream.write<uint8_t>(0);
 				}
 			}
 
-			bool unserialize(PropStream& propStream) {
+			bool unserialize(PropStream& propStream, const std::string& function) {
 				uint8_t type;
 				if (!propStream.read<uint8_t>(type)) {
+					SPDLOG_ERROR("[{}] Failed to read type", function);
 					return false;
 				}
 
@@ -234,6 +231,7 @@ class ItemAttributes
 					case 1: {
 						std::string readString;
 						if (!propStream.readString(readString)) {
+							SPDLOG_ERROR("[{}] Failed to read string", function);
 							return false;
 						}
 						setString(readString);
@@ -242,6 +240,7 @@ class ItemAttributes
 					case 2: {
 						int64_t readInt;
 						if (!propStream.read<int64_t>(readInt)) {
+							SPDLOG_ERROR("[{}] Failed to read int64", function);
 							return false;
 						}
 						setInt64(readInt);
@@ -250,6 +249,7 @@ class ItemAttributes
 					case 3: {
 						double readDouble;
 						if (!propStream.read<double>(readDouble)) {
+							SPDLOG_ERROR("[{}] Failed to read double", function);
 							return false;
 						}
 						setDouble(readDouble);
@@ -258,13 +258,14 @@ class ItemAttributes
 					case 4: {
 						bool readBoolean;
 						if (!propStream.read<bool>(readBoolean)) {
+							SPDLOG_ERROR("[{}] Failed to read boolean", function);
 							return false;
 						}
 						setBool(readBoolean);
 						break;
 					}
 					default:
-						return false;
+						break;
 				}
 				return true;
 			}
