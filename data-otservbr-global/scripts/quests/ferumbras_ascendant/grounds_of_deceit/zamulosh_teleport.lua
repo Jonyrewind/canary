@@ -11,7 +11,7 @@ function zamuloshTeleport.onStepIn(creature, item, position, fromPosition)
 			player:teleportTo(Position(33618, 32620, 10))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE,
-			"What was wrong is not necessarily right now. Nevertheless you nade it further.")
+			"What was wrong is not necessarily right now. Nevertheless you made it further.")
 			return true
 		else
 			local pos = player:getPosition()
@@ -27,7 +27,7 @@ function zamuloshTeleport.onStepIn(creature, item, position, fromPosition)
 			player:teleportTo(Position(33618, 32620, 10))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE,
-			"What was wrong is not necessarily right now. Nevertheless you nade it further.")
+			"What was wrong is not necessarily right now. Nevertheless you made it further.")
 			player:setStorageValue(Storage.FerumbrasAscension.ZamuloshTeleports, 9)
 			return true
 		else

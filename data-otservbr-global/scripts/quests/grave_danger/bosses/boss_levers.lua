@@ -8,7 +8,7 @@ local levers = {
 	timeToDefeatBoss = 20, -- In minutes
 	daily = true,
 	requiredLevel = 250,
-	requiredPlayers = 2,
+	requiredPlayers = 1,
 	range = 12
 }
 
@@ -27,6 +27,10 @@ function lever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			for c = levers[b].leverPos.x + 1, levers[b].leverPos.x + 5 do
 				adventurer = Tile(Position(c, levers[b].leverPos.y, levers[b].leverPos.z)):getTopCreature()
 
+				if player:getPosition() ~=  Position(levers[b].leverPos.x + 1, levers[b].leverPos.y, levers[b].leverPos.z) then
+					return false
+				end
+
 				if adventurer and adventurer:isPlayer() then
 					if adventurer:getLevel() < levers.requiredLevel then
 						player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -36,7 +40,11 @@ function lever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 					
 					if levers.daily and adventurer:getStorageValue(levers[b].storage) > os.time() then
 						player:getPosition():sendMagicEffect(CONST_ME_POFF)
-						player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait ".. levers.timeToFightAgain .."  hours to face "..levers[b].bossName.." again!")
+						if levers[b].bossNames then
+							player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait ".. levers.timeToFightAgain .."  hours to face "..levers[b].bossNames[1].." and "..levers[b].bossNames[2].." again!")
+						else
+							player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait ".. levers.timeToFightAgain .."  hours to face "..levers[b].bossName.." again!")
+						end
 						return true
 					end
 					team[#team +1] = adventurer
@@ -49,12 +57,12 @@ function lever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				return true
 			end
 
-			if roomIsOccupied(levers[b].centerRoom, levers.range, levers.range) then
+			if bossroomIsOccupied(levers[b].centerRoom, levers.range, levers.range) then
 				player:getPosition():sendMagicEffect(CONST_ME_POFF)
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Someone is fighting "..levers[b].bossName.."! You need to wait awhile.")
 				return true
 			end
-		
+
 			clearRoom(levers[b].centerRoom, levers.range, levers.range, fromPosition)
 			
 			if levers[b].bossNames then
@@ -68,7 +76,7 @@ function lever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				team[i]:getPosition():sendMagicEffect(CONST_ME_POFF)
 				team[i]:teleportTo(levers[b].teleportTo)
 				team[i]:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have ".. levers.timeToDefeatBoss .." minutes to kill and loot this boss. Otherwise you will lose that chance and will be kicked out.")
-				team[i]:setStorageValue(levers[b].storage, os.time() + levers.timeToFightAgain * 60 *60)
+				team[i]:setStorageValue(levers[b].storage, os.time() + levers.timeToFightAgain * 60 * 60)
 				addEvent(function()
 					local adventurers, adventurer = Game.getSpectators(levers[b].centerRoom, false, false, 14, 14, 13, 13)
 						for i = 1, #adventurers do

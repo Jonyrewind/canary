@@ -33953,18 +33953,18 @@
 	<item id="22494" name="RESERVED SPRITE"/>
 	<item fromid="22495" toid="22497" name="unknown item"/>
 	<item fromid="22498" toid="22501" name="painted tusks"/>
-	<item id="22502" article="a" name="gate of expertise">
+	<item id="22502" article="a" name="closed door">
 		<attribute key="type" value="door"/>
 		<attribute key="blockProjectile" value="1"/>
 	</item>
-	<item id="22503" article="an" name="gate of expertise">
+	<item id="22503" article="an" name="open door">
 		<attribute key="type" value="door"/>
 	</item>
-	<item id="22504" article="a" name="gate of expertise">
+	<item id="22504" article="a" name="closed door">
 		<attribute key="type" value="door"/>
 		<attribute key="blockProjectile" value="1"/>
 	</item>
-	<item id="22505" article="an" name="gate of expertise">
+	<item id="22505" article="an" name="open door">
 		<attribute key="type" value="door"/>
 	</item>
 	<item id="22506" article="a" name="closed door">

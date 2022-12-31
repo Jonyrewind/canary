@@ -14,26 +14,38 @@ function ferumbrasAscendantColorLevers.onUse(player, item, fromPosition, target,
 	elseif item.actionid == 54382 then
 		if player:getStorageValue(Storage.FerumbrasAscension.ColorLever) == 1 then
 			player:setStorageValue(Storage.FerumbrasAscension.FirstDoor, 1)
+			player:setStorageValue(Storage.FerumbrasAscension.MonsterDoor, 1)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You select the correct colour.')
 			toPosition:sendMagicEffect(CONST_ME_POFF)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'This lever won\'t budge. Hm.')
 		end
 	elseif item.actionid == 54383 then
 		if player:getStorageValue(Storage.FerumbrasAscension.ColorLever) == 3 then
 			player:setStorageValue(Storage.FerumbrasAscension.FirstDoor, 1)
+			player:setStorageValue(Storage.FerumbrasAscension.MonsterDoor, 1)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You select the correct colour.')
 			toPosition:sendMagicEffect(CONST_ME_POFF)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'This lever won\'t budge. Hm.')
 		end
 	elseif item.actionid == 54384 then
 		if player:getStorageValue(Storage.FerumbrasAscension.ColorLever) == 4 then
 			player:setStorageValue(Storage.FerumbrasAscension.FirstDoor, 1)
+			player:setStorageValue(Storage.FerumbrasAscension.MonsterDoor, 1)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You select the correct colour.')
 			toPosition:sendMagicEffect(CONST_ME_POFF)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'This lever won\'t budge. Hm.')
 		end
 	elseif item.actionid == 54385 then
 		if player:getStorageValue(Storage.FerumbrasAscension.ColorLever) == 2 then
 			player:setStorageValue(Storage.FerumbrasAscension.FirstDoor, 1)
+			player:setStorageValue(Storage.FerumbrasAscension.MonsterDoor, 1)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You select the correct colour.')
 			toPosition:sendMagicEffect(CONST_ME_POFF)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'This lever won\'t budge. Hm.')
 		end
 	end
 	item:transform(item.itemid == 9125 and 9126 or 9125)

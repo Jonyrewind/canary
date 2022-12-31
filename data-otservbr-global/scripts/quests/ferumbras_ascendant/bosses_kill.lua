@@ -53,10 +53,10 @@ function ascendantBossesKill.onKill(creature, target)
 	end
 
 	for key, value in pairs(targetMonster:getDamageMap()) do
-		local attackerPlayer = Player(pid)
+		local attackerPlayer = Player(key)
 		if attackerPlayer then
 			if bossConfig.timer then
-				attackerPlayer:setStorageValue(bossConfig.timer, os.time() + 20 * 3600)
+				attackerPlayer:setStorageValue(bossConfig.timer, os.time() + 48 * 3600)
 			elseif targetMonster:getName():lower() == 'ferumbras mortal shell' then
 				if bossConfig.timer then
 					attackerPlayer:setStorageValue(bossConfig.timer, os.time() + 60 * 60 * 14 * 24)

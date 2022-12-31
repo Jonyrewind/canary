@@ -8,8 +8,8 @@ function desperateSoul.onStepIn(creature, item, position, fromPosition)
 
 	monster:remove()
 	position:sendMagicEffect(CONST_ME_POFF)
-	Game.setStorageValue(GlobalStorage.FerumbrasAscendant.FerumbrasEssence, 1)
-	addEvent(Game.setStorageValue, 2 * 60 * 1000, GlobalStorage.FerumbrasAscendant.FerumbrasEssence, 0)
+	Game.setStorageValue(GlobalStorage.FerumbrasAscendant.DesperateSoul, 1)
+	addEvent(Game.setStorageValue, 2 * 60 * 1000, GlobalStorage.FerumbrasAscendant.DesperateSoul, 0)
 	return true
 end
 

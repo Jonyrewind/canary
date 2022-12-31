@@ -6,6 +6,8 @@ function ferumbrasAscendantHabitatLever.onUse(player, item, fromPosition, target
 
 	if item.itemid == 9125 then
 			player:setStorageValue(Storage.FerumbrasAscension.HabitatsAccess, 1)
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "In another room south of this one, something just made a loud booming sound.")
+			toPosition:sendMagicEffect(CONST_ME_ENERGYHIT)
 		item:transform(9126)
 	elseif item.itemid == 9126 then
 		item:transform(9125)

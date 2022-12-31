@@ -36,7 +36,7 @@ function habitatsAccess.onStepIn(creature, item, position, fromPosition)
 			local pos = position
 			pos.y = pos.y + 2
 			player:teleportTo(pos)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You not proven your worth. There is no escape for you here.')
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'Nothing happens. The light this things emits is quite weak.')
 			item:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			return true
 		end
