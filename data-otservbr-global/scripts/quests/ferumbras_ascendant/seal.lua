@@ -25,11 +25,6 @@ local config = {
 		backPosition = Position(33664, 32682, 10),
 		timer = Storage.FerumbrasAscension.ZamuloshTimer
 	},
-	[24844] = {
-		toPosition = Position(33593, 32658, 14),
-		backPosition = Position(33675, 32690, 13),
-		timer = Storage.FerumbrasAscension.MazoranTimer
-	},
 	[24845] = {
 		toPosition = Position(33436, 32800, 13),
 		backPosition = Position(33477, 32701, 14),
@@ -55,28 +50,9 @@ function seal.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	if item.actionid == 24844 then
-		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 4 then
-			if player:getStorageValue(setting.timer) < os.time() then
-				player:teleportTo(setting.toPosition)
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			else
-				player:teleportTo(Position(33675, 32690, 13))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				player:say('You have to wait to challenge this enemy again!', TALKTYPE_MONSTER_SAY)
-				return true
-			end
-		else
-			local pos = position
-			pos.y = pos.y + 2
-			player:teleportTo(pos)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You not proven your worth. There is no escape for you here.')
-			item:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			return true
-		end
-	end
+
 	if item.actionid == 24845 then
-		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.FlowerPuzzleTimer) >= 1 then
+		if player:getStorageValue(Storage.FerumbrasAscension.Puzzle) >= 1 then
 			if player:getStorageValue(setting.timer) < os.time() then
 				player:teleportTo(setting.toPosition)
 				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
@@ -90,7 +66,7 @@ function seal.onStepIn(creature, item, position, fromPosition)
 			local pos = position
 			pos.y = pos.y + 2
 			player:teleportTo(pos)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You not proven your worth. There is no escape for you here.')
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You have not proven your worth. There is no escape for you here.')
 			item:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			return true
 		end

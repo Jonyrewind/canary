@@ -505,7 +505,10 @@ Storage = {
 		Ring2 = 50457,
 		Bone = 50458,
 		Reward = 50459,
-		TheShattererLever = 50460
+		TheShattererLever = 50460,
+		Elements = 50461,
+		Rite = 50462,
+		Puzzle = 50463
 	},
 	ForgottenKnowledge = {
 		-- Reserved storage from 50470 - 50519
@@ -2634,7 +2637,6 @@ Storage = {
 			TheTaintedSouls = {},
 		},
 		U10_90 = { -- update 10.90 - Reserved Storages 45201 - 45350
-			FerumbrasAscension = {},
 			Krailos = {},
 			RiftWarriorOutfits = {},
 		},
@@ -2846,7 +2848,8 @@ GlobalStorage = {
 			Four = 60063,
 			Active = 60064,
 			Done = 60065
-		}
+		},
+		FlowerPuzzleTimer = 60066
 	},
 	HeroRathleton = {
 		-- Reserved storage from 60070 - 60089

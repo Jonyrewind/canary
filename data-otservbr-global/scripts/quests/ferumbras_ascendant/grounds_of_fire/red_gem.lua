@@ -71,7 +71,6 @@ function redGem.onStepIn(creature, item, position, fromPosition)
 		leverFirst:setActionId(53820 + Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.First))
 		leverSecond:setActionId(53820 + Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Second))
 		leverThird:setActionId(53820 + Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Third))
-		leverFour:setActionId(53824)
 	end
 	Game.setStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Active, 1)
 	item:transform(8648)

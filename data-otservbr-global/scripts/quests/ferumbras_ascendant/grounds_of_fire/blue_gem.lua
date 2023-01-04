@@ -70,7 +70,6 @@ function blueGem.onStepIn(creature, item, position, fromPosition)
 		leverFirst:setActionId(53821)
 		leverSecond:setActionId(53822)
 		leverThird:setActionId(53823)
-		leverFour:setActionId(53824)
 	end
 	Game.setStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Active, 1)
 	item:transform(8648)

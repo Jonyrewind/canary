@@ -19,12 +19,15 @@ function ferumbrasAscendantLeverThird.onUse(player, item, fromPosition, target, 
 		end
 		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Four) == 4 then
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "A booming sound almost deafens you. From somewhere deep within you hear a whisper: 'Blood...'")
+			player:setStorageValue(Storage.FerumbrasAscension.Elements, 4)
 		end
 		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Four) == 5 then
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "A booming sound almost deafens you. From somewhere deep within you hear a whisper: 'Grass...'")
+			player:setStorageValue(Storage.FerumbrasAscension.Elements, 5)
 		end
 		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Four) == 6 then
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "A booming sound almost deafens you. From somewhere deep within you hear a whisper: 'Ice...'")
+			player:setStorageValue(Storage.FerumbrasAscension.Elements, 6)
 		end
 		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 3 then
 			Game.setStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done, 4)
