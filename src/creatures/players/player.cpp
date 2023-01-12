@@ -464,45 +464,38 @@ void Player::updateInventoryWeight()
 
 void Player::updateInventoryImbuement(bool init /* = false */)
 {
+	const Tile* playerTile = getTile();
+	bool isInProtectionZone = playerTile && playerTile->hasFlag(TILESTATE_PROTECTIONZONE);
+	bool isInFightMode = hasCondition(CONDITION_INFIGHT);
+	
 	uint8_t imbuementsToCheck = g_game().getPlayerActiveImbuements(getID());
-	for (int items = CONST_SLOT_FIRST; items <= CONST_SLOT_LAST; ++items) {
-		/*
-		 * Small optimization to avoid unneeded iteration.
-		 */
-		if (!init && imbuementsToCheck == 0) {
-			break;
-		}
-
-		Item* item = inventory[items];
-		if (!item) {
-			continue;
-		}
-
-		for (uint8_t slotid = 0; slotid < item->getImbuementSlot(); slotid++) {
+	for (auto item : getAllInventoryItems()) {
+		for (uint8_t slotid = 0; slotid < item->getImbuementSlot(); slotid++)
+		{
 			ImbuementInfo imbuementInfo;
-			if (!item->getImbuementInfo(slotid, &imbuementInfo)) {
+			if (!item->getImbuementInfo(slotid, &imbuementInfo))
+			{
 				continue;
 			}
 
-			// Time not decay on protection zone
-			const Tile* playerTile = getTile();
-			const CategoryImbuement *categoryImbuement = g_imbuements().getCategoryByID(imbuementInfo.imbuement->getCategory());
-			if (categoryImbuement->agressive && playerTile && playerTile->hasFlag(TILESTATE_PROTECTIONZONE)) {
-				continue;
+			const CategoryImbuement* categoryImbuement = g_imbuements().getCategoryByID(imbuementInfo.imbuement->getCategory());
+			if (categoryImbuement && categoryImbuement->agressive)
+			{
+				if (isInProtectionZone || !isInFightMode)
+				{
+					break;
+				}
 			}
 
-			// Time not decay if not is infight mode
-			if (categoryImbuement->agressive && !hasCondition(CONDITION_INFIGHT)) {
-				continue;
-			}
-
-			if (init) {
+			if (init)
+			{
 				g_game().increasePlayerActiveImbuements(getID());
 			}
 
 			int32_t duration = std::max<int32_t>(0, imbuementInfo.duration - EVENT_IMBUEMENT_INTERVAL / 1000);
 			item->decayImbuementTime(slotid, imbuementInfo.imbuement->getID(), duration);
-			if (duration == 0) {
+			if (duration == 0)
+			{
 				removeItemImbuementStats(imbuementInfo.imbuement);
 				g_game().decreasePlayerActiveImbuements(getID());
 			}
@@ -739,30 +732,27 @@ void Player::addStorageValue(const uint32_t key, const int32_t value, const bool
 	}
 
 	if (value != -1) {
-		int32_t oldValue;
-		getStorageValue(key, oldValue);
-
 		storageMap[key] = value;
 
 		if (!isLogin) {
 			auto currentFrameTime = g_dispatcher().getDispatcherCycle();
-			g_events().eventOnStorageUpdate(this, key, value, oldValue, currentFrameTime);
+			g_events().eventOnStorageUpdate(this, key, value, getStorageValue(key), currentFrameTime);
 		}
 	} else {
 		storageMap.erase(key);
 	}
 }
 
-bool Player::getStorageValue(const uint32_t key, int32_t& value) const
+int32_t Player::getStorageValue(const uint32_t key) const
 {
+	int32_t value = -1;
 	auto it = storageMap.find(key);
 	if (it == storageMap.end()) {
-		value = -1;
-		return false;
+		return value;
 	}
 
 	value = it->second;
-	return true;
+	return value;
 }
 
 bool Player::canSee(const Position& pos) const
@@ -1287,13 +1277,14 @@ void Player::onApplyImbuement(Imbuement *imbuement, Item *item, uint8_t slot, bo
 		return;
 	}
 
-	item->addImbuement(slot, imbuement->getID(), baseImbuement->duration);
-
 	// Update imbuement stats item if the item is equipped
 	if (item->getParent() == this) {
 		addItemImbuementStats(imbuement);
 	}
+
+	item->addImbuement(slot, imbuement->getID(), baseImbuement->duration);
 	openImbuementWindow(item);
+	updateInventoryImbuement();
 }
 
 void Player::onClearImbuement(Item* item, uint8_t slot)
@@ -5160,8 +5151,8 @@ void Player::sendUnjustifiedPoints()
 
 uint8_t Player::getCurrentMount() const
 {
-	int32_t value;
-	if (getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT, value)) {
+	int32_t value = getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT);
+	if (value > 0) {
 		return value;
 	}
 	return 0;
@@ -5248,8 +5239,8 @@ bool Player::tameMount(uint8_t mountId)
 	const uint8_t tmpMountId = mountId - 1;
 	const uint32_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
 
-	int32_t value;
-	if (getStorageValue(key, value)) {
+	int32_t value = getStorageValue(key);
+	if (value != -1) {
 		value |= (1 << (tmpMountId % 31));
 	} else {
 		value = (1 << (tmpMountId % 31));
@@ -5268,8 +5259,8 @@ bool Player::untameMount(uint8_t mountId)
 	const uint8_t tmpMountId = mountId - 1;
 	const uint32_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
 
-	int32_t value;
-	if (!getStorageValue(key, value)) {
+	int32_t value = getStorageValue(key);
+	if (value == -1) {
 		return true;
 	}
 
@@ -5300,8 +5291,8 @@ bool Player::hasMount(const Mount* mount) const
 
 	const uint8_t tmpMountId = mount->id - 1;
 
-	int32_t value;
-	if (!getStorageValue(PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31), value)) {
+	int32_t value = getStorageValue(PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31));
+	if (value == -1) {
 		return false;
 	}
 
@@ -5733,8 +5724,6 @@ void Player::addItemImbuementStats(const Imbuement* imbuement)
 		sendStats();
 		sendSkills();
 	}
-
-	return;
 }
 
 void Player::removeItemImbuementStats(const Imbuement* imbuement)
@@ -5771,8 +5760,6 @@ void Player::removeItemImbuementStats(const Imbuement* imbuement)
 		sendStats();
 		sendSkills();
 	}
-
-	return;
 }
 
 bool Player::addItemFromStash(uint16_t itemId, uint32_t itemCount) {
@@ -5999,7 +5986,8 @@ void Player::triggerMomentum() {
 	}
 
 	double_t chance = item->getMomentumChance();
-	if (getZone() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && uniform_random(1, 100) <= chance) {
+	double_t randomChance = uniform_random(0, 10000) / 100;
+	if (getZone() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && randomChance < chance) {
 		bool triggered = false;
 		auto it = conditions.begin();
 		while (it != conditions.end()) {
@@ -6359,10 +6347,10 @@ bool Player::saySpell(
 	}
 
 	int32_t valueEmote = 0;
-	// Send to client 
+	// Send to client
 	for (Creature* spectator : spectators) {
 		if (Player* tmpPlayer = spectator->getPlayer()) {
-			tmpPlayer->getStorageValue(STORAGEVALUE_EMOTE, valueEmote);
+			valueEmote = tmpPlayer->getStorageValue(STORAGEVALUE_EMOTE);
 			if (!ghostMode || tmpPlayer->canSeeCreature(this)) {
 				if (valueEmote == 1) {
 					tmpPlayer->sendCreatureSay(this, TALKTYPE_MONSTER_SAY, text, pos);
