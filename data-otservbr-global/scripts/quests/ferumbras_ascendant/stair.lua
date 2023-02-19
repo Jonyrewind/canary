@@ -16,10 +16,15 @@ function stair.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 	if item:getId() == 22157 then
+		local done = 0
 		local complete = false
 		for i = 1, #config do
 			local storage = config[i].storage
-			if player:getStorageValue(storage) ~= 1 then
+			local value = player:getStorageValue(storage)
+			if value == 1 then
+				done = done + 1
+			end
+			if done < 7 then
 				complete = false
 			else
 				complete = true

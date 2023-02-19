@@ -8,6 +8,7 @@ local config = {
 		Position(33434, 32788, 13),
 		Position(33434, 32789, 13)
 	},
+	range = 12,
 	newPosition = Position(33485, 32790, 13)
 }
 
@@ -28,6 +29,7 @@ function ferumbrasAscendantShulgraxLever.onUse(player, item, fromPosition, targe
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Shulgrax", config.BossPosition, true, true)
 		for y = 32785, 32789 do
 			local playerTile = Tile(Position(33434, y, 13)):getTopCreature()
@@ -37,9 +39,7 @@ function ferumbrasAscendantShulgraxLever.onUse(player, item, fromPosition, targe
 				playerTile:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		end
-		Game.setStorageValue(GlobalStorage.FerumbrasAscendant.ShulgraxTimer, 1)
-		addEvent(clearForgotten, 30 * 60 * 1000, Position(33473, 32776, 13), Position(33496, 32798, 13), Position(33319, 32318, 13), GlobalStorage.FerumbrasAscendant.ShulgraxTimer)
-		item:transform(8912)
+		addEvent(clearForgotten, 30 * 60 * 1000, Position(33473, 32776, 13), Position(33496, 32798, 13), Position(33319, 32318, 13))
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

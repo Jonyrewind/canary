@@ -7,7 +7,8 @@ local config = {
 		Position(33476, 32340, 13),
 		Position(33487, 32340, 13),
 		Position(33488, 32331, 13)
-	}
+	},
+	range = 12
 }
 
 local ferumbrasAscendantRagiaz = Action()
@@ -27,6 +28,7 @@ function ferumbrasAscendantRagiaz.onUse(player, item, fromPosition, target, toPo
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Ragiaz", config.BossPosition, true, true)
 		for d = 1, #config.deathDragons do
 			Game.createMonster('Death Dragon', config.deathDragons[d], true, true)
@@ -39,9 +41,7 @@ function ferumbrasAscendantRagiaz.onUse(player, item, fromPosition, target, toPo
 				playerTile:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		end
-		Game.setStorageValue(GlobalStorage.FerumbrasAscendant.RagiazTimer, 1)
-		addEvent(clearForgotten, 30 * 60 * 1000, Position(33472, 32323, 13), Position(33493, 32347, 13), Position(33319, 32318, 13), GlobalStorage.FerumbrasAscendant.RagiazTimer)
-		item:transform(8912)
+		addEvent(clearForgotten, 30 * 60 * 1000, Position(33472, 32323, 13), Position(33493, 32347, 13), Position(33319, 32318, 13))
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

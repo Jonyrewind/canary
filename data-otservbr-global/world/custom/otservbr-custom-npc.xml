@@ -12,6 +12,9 @@
 	<npc centerx="982" centery="1030" centerz="5" radius="1">
 		<npc name="Fadil" x="1" y="0" z="5" spawntime="60" />
 	</npc>
+	<npc centerx="1004" centery="1031" centerz="5" radius="1">
+		<npc name="Alexander" x="0" y="0" z="5" spawntime="60" />
+	</npc>
 	<npc centerx="992" centery="1036" centerz="5" radius="1">
 		<npc name="Telas" x="0" y="0" z="5" spawntime="60" />
 	</npc>

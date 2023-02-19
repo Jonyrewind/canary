@@ -5,7 +5,7 @@ local config = {
 	grassPosition = Position(33672, 32689, 13),
 	icePosition = Position(33673, 32689, 13),
 	color = Storage.FerumbrasAscension.Elements,
-	timer = Storage.FerumbrasAscension.TarbazTimer
+	timer = Storage.FerumbrasAscension.MazoranTimer
 }
 
 local ferumbrasAscendantLevelFour = Action()

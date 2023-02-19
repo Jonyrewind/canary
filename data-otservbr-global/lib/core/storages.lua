@@ -145,6 +145,74 @@ Storage = {
 	Old storages
 	Over time, this will be dropped and replaced by the table above
 	]]
+	FeasterOfSouls = {
+		-- Reserved storage from 47051 - 47100
+		QuestLine = 47051,
+		DeathKnell = {
+			Graveyard = 47052,
+			Ghostland = 47053,
+			DarkCathedral = 47054,
+			Counter = 47055
+		},
+		Potion = 47056,
+		BrainGroundsAccess = 47057,
+		TissueSamples = {
+			Status = 47058,
+			Done = 47059
+		},
+		Purifying = {
+			Status = 47060,
+			Done = 47061
+		
+		},
+		BrainHead = {
+			Access = 47062,
+			Timer = 47063,
+			Kill = 47064
+		},
+		DeathKnell2 = {
+			VampireCrypt = 47065,
+			CemeteryQuarter = 47066,
+			ShadowTomb = 47067,
+			Done = 47068
+		},
+		BurialShroud = {
+			Yarn = 47069,
+			GlitteringYarn = 47070,
+			Lom = 47071,
+			Done = 47072
+		},
+		MiniBosses = {
+			Unaz = {
+				Timer = 47073,
+				Kill = 47074
+			},
+			Irgix = {
+				Timer = 47075,
+				Kill = 47076
+			},
+			Vok = {
+				Timer = 47077,
+				Kill = 47078
+			},
+			Done = 47079
+		},
+		DeathKnell3 = {
+			KilmareshCatacombs = 47080,
+			Ramoa = 47081,
+			LionsRock = 47082,
+			Done = 47083
+		},
+		Crystals = {
+			count = 47084,
+			done = 47085
+		},
+		Thaian = {
+			timer = 47086,
+			Kill = 47087
+		},
+		Fungus = 47088	
+	},
 	DeeplingsWorldChange = {
 		-- Reserved storage from 50000 - 50009
 		Questline = 50000,
@@ -2770,9 +2838,8 @@ Storage = {
 			-- Kilmaresh = {}, done earlier in the file
 		},
 		U12_30 = { -- update 12.30 - Reserved Storages 47001 - 47200
-			FalconerOutfits = {},
-			FeasterOfSouls = {},
-			PoltergeistOutfits = {}
+			FalconerOutfits = {}, --47001 - 47050
+			PoltergeistOutfits = {} --47101 - 47200
 		},
 		U12_40 = { -- update 12.40 - Reserved Storages 47201 - 47500
 			RevenantOutfits = {},

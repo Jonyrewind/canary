@@ -8,6 +8,7 @@ local config = {
 		Position(33593, 32647, 14),
 		Position(33593, 32648, 14)
 	},
+	range = 12,
 	newPosition = Position(33585, 32693, 14)
 }
 
@@ -28,6 +29,7 @@ function ferumbrasAscendantMazoranLever.onUse(player, item, fromPosition, target
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Mazoran", config.BossPosition, true, true)
 		for y = 32644, 32648 do
 			local playerTile = Tile(Position(33593, y, 14)):getTopCreature()
@@ -37,9 +39,7 @@ function ferumbrasAscendantMazoranLever.onUse(player, item, fromPosition, target
 				playerTile:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		end
-		Game.setStorageValue(Storage.FerumbrasAscendant.MazoranTimer, 1)
-		addEvent(clearForgotten, 30 * 60 * 1000, Position(33572, 32679, 14), Position(33599, 32701, 14), Position(33319, 32318, 13), Storage.FerumbrasAscendant.MazoranTimer)
-		item:transform(8912)
+		addEvent(clearForgotten, 30 * 60 * 1000, Position(33572, 32679, 14), Position(33599, 32701, 14), Position(33319, 32318, 13))
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

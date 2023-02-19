@@ -8,6 +8,7 @@ local config = {
 		Position(33200, 31475, 11),
 		Position(33201, 31475, 11)
 	},
+	range = 12,
 	newPosition = Position(33215, 31470, 12)
 }
 
@@ -28,6 +29,7 @@ function ferumbrasAscendantRatLever.onUse(player, item, fromPosition, target, to
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("the lord of the lice", config.BossPosition, true, true)
 		for x = 33197, 33201 do
 			local playerTile = Tile(Position(x, 31475, 11)):getTopCreature()
@@ -38,7 +40,6 @@ function ferumbrasAscendantRatLever.onUse(player, item, fromPosition, target, to
 			end
 		end
 		addEvent(clearForgotten, 30 * 60 * 1000, Position(33187, 31429, 12), Position(33242, 31487, 12), Position(33319, 32318, 13))
-		item:transform(8912)
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

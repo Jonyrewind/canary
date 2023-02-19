@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ -d "logs" ]
 then
 	echo -e "\e[01;32m Starting server with gdb enabled \e[0m"

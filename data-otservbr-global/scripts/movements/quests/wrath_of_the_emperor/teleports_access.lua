@@ -65,17 +65,18 @@ local function tpX(i, player, position)
 				player:teleportTo(config[i].destinationA)
 				config[i].destinationA:sendMagicEffect(CONST_ME_TELEPORT)
 			else
-				player:teleportTo(position)
-				position:sendMagicEffect(CONST_ME_TELEPORT)
+				player:teleportTo(config[i].destinationB)
+				config[i].destinationB:sendMagicEffect(CONST_ME_TELEPORT)
 				player:say("This teleporter constantly flickers. It seems to be instable and completely unworking.", TALKTYPE_MONSTER_SAY)
+				return true
 			end
 		else
 			player:teleportTo(config[i].destinationB)
 			config[i].destinationB:sendMagicEffect(CONST_ME_TELEPORT)
 		end
 	else
-		player:teleportTo(position)
-		position:sendMagicEffect(CONST_ME_TELEPORT)
+		player:teleportTo(config[i].destinationB)
+		config[i].destinationB:sendMagicEffect(CONST_ME_TELEPORT)
 	end
 end
 local teleport = MoveEvent()

@@ -1,7 +1,8 @@
 local config = {
 	centerRoom = Position(33459, 32844, 11),
 	BossPosition = Position(33459, 32844, 11),
-	newPosition = Position(33459, 32848, 11)
+	newPosition = Position(33459, 32848, 11),
+	range = 12
 }
 
 local ferumbrasAscendantTarbazLever = Action()
@@ -21,6 +22,7 @@ function ferumbrasAscendantTarbazLever.onUse(player, item, fromPosition, target,
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Tarbaz", config.BossPosition, true, true)
 		for y = 32849, 32853 do
 			local playerTile = Tile(Position(33418, y, 11)):getTopCreature()
@@ -31,7 +33,6 @@ function ferumbrasAscendantTarbazLever.onUse(player, item, fromPosition, target,
 			end
 		end
 		addEvent(clearForgotten, 30 * 60 * 1000, Position(33446, 32833, 11), Position(33515, 32875, 12), Position(33319, 32318, 13))
-		item:transform(8912)
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

@@ -1608,6 +1608,9 @@
 	<npc centerx="32281" centery="32056" centerz="7" radius="1">
 		<npc name="Ulrik" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32628" centery="32075" centerz="7" radius="1">
+		<npc name="Para Norbet" x="-1" y="1" z="7" spawntime="60" direction="2" />
+	</npc>
 	<npc centerx="32918" centery="32075" centerz="7" radius="1">
 		<npc name="Dove" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2412,9 +2415,6 @@
 	</npc>
 	<npc centerx="32289" centery="32294" centerz="9" radius="1">
 		<npc name="A Confused Frog" x="0" y="0" z="9" spawntime="60" />
-	</npc>
-	<npc centerx="33277" centery="32390" centerz="9" radius="1">
-		<npc name="Mazarius" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33020" centery="32454" centerz="9" radius="1">
 		<npc name="Omrabas" x="0" y="0" z="9" spawntime="60" />

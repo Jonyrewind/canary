@@ -13,7 +13,6 @@ local range = {
 local ferumbrasAscendantrite = Action()
 function ferumbrasAscendantrite.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if player:getStorageValue(Storage.FerumbrasAscension.Rite) >= 1 or player:getStorageValue(Storage.FerumbrasAscension.Statue) < 1 then
-	print(1)
 		return false
 	end
 	if item.itemid == 22160 then

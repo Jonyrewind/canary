@@ -8,6 +8,7 @@ local config = {
 		Position(33229, 31503, 13),
 		Position(33229, 31504, 13)
 	},
+	range = 12,
 	newPosition = Position(33173, 31504, 13)
 }
 
@@ -28,6 +29,7 @@ function ferumbrasAscendantPlagirathLever.onUse(player, item, fromPosition, targ
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Plagirath", config.BossPosition, true, true)
 		for y = 31500, 31504 do
 			local playerTile = Tile(Position(33229, y, 13)):getTopCreature()
@@ -37,9 +39,7 @@ function ferumbrasAscendantPlagirathLever.onUse(player, item, fromPosition, targ
 				playerTile:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		end
-		Game.setStorageValue(GlobalStorage.FerumbrasAscendant.PlagirathTimer, 1)
-		addEvent(clearForgotten, 30 * 60 * 1000, Position(33159, 31491, 13), Position(33185, 31513, 13), Position(33319, 32318, 13), GlobalStorage.FerumbrasAscendant.PlagirathTimer)
-		item:transform(8912)
+		addEvent(clearForgotten, 30 * 60 * 1000, Position(33159, 31491, 13), Position(33185, 31513, 13), Position(33319, 32318, 13))
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

@@ -8,6 +8,7 @@ local config = {
 		Position(33406, 32465, 13),
 		Position(33407, 32465, 13)
 	},
+	range = 12,
 	newPosition = Position(33398, 32414, 14)
 }
 
@@ -28,6 +29,7 @@ function ferumbrasAscendantTheShattererLever.onUse(player, item, fromPosition, t
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("The Shatterer", config.BossPosition, true, true)
 		for x = 33403, 33407 do
 			local playerTile = Tile(Position(x, 32465, 13)):getTopCreature()
@@ -39,8 +41,7 @@ function ferumbrasAscendantTheShattererLever.onUse(player, item, fromPosition, t
 		end
 		Game.setStorageValue(Storage.FerumbrasAscension.TheShattererLever, 0)
 		Game.setStorageValue(Storage.FerumbrasAscension.TheShattererTimer, 1)
-		addEvent(clearForgotten, 30 * 60 * 1000, Position(33377, 32390, 14), Position(33446, 32447, 14), Position(33319, 32318, 13), Storage.FerumbrasAscension.TheShattererTimer)
-		item:transform(8912)
+		addEvent(clearForgotten, 30 * 60 * 1000, Position(33377, 32390, 14), Position(33446, 32447, 14), Position(33319, 32318, 13))
 	elseif item.itemid == 8912 then
 		item:transform(8911)
 	end

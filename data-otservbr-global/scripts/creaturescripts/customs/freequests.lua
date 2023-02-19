@@ -287,6 +287,8 @@ local questTable = {
 	{storage = Storage.WrathoftheEmperor.TeleportAccess.Zizzle, storageValue = 3},
 	{storage = Storage.WrathoftheEmperor.TeleportAccess.innerSanctum, storageValue = 1},
 	{storage = Storage.WrathoftheEmperor.TeleportAccess.bossRoom, storageValue = 1},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.sleepingDragon, storageValue = 2},
+	{storage = Storage.WrathoftheEmperor.TeleportAccess.awarnessEmperor, storageValue = 1},
 	{storage = Storage.WhiteRavenMonastery.Door, storageValue = 1},
 	{storage = Storage.TheApeCity.Started, storageValue = 1},
 	{storage = Storage.TheApeCity.Questline, storageValue = 18},
@@ -315,7 +317,8 @@ local questTable = {
 	{storage = Storage.ForgottenKnowledge.AccessGolden, storageValue = 1},
 	{storage = Storage.Kilmaresh.Sixth.Favor, storageValue = 1},
 	{storage = Storage.Quest.U12_00.TheDreamCourts.AndrewDoor, storageValue = 1},
-	{storage = Storage.Quest.U12_00.TheDreamCourts.HauntedTempleDoor, storageValue = 1}
+	{storage = Storage.Quest.U12_00.TheDreamCourts.HauntedTempleDoor, storageValue = 1},
+	{storage = Storage.FeasterOfSouls.BrainGroundsAccess, storageValue = 1}
 }
 
 local function playerFreeQuestStart(playerId, index)

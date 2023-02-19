@@ -15,15 +15,20 @@ function entrance.onStepIn(creature, item, position, fromPosition)
 	if not player then
 		return true
 	end
+	local done = 0
 	local complete = false
-	for i = 1, #config do
-		local storage = config[i].storage
-		if player:getStorageValue(storage) ~= 1 then
-			complete = false
-		else
-			complete = true
+		for i = 1, #config do
+			local storage = config[i].storage
+			local value = player:getStorageValue(storage)
+			if value == 1 then
+				done = done + 1
+			end
+			if done < 7 then
+				complete = false
+			else
+				complete = true
+			end
 		end
-	end
 	if item:getActionId() == 24837 then
 		if complete then
 			player:teleportTo(Position(33275, 32390, 9))

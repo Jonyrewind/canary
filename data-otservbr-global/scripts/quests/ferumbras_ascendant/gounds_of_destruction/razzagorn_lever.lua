@@ -1,7 +1,8 @@
 local config = {
 	centerRoom = Position(33422, 32467, 14),
 	BossPosition = Position(33422, 32467, 14),
-	newPosition = Position(33419, 32467, 14)
+	newPosition = Position(33419, 32467, 14),
+	range = 12
 }
 
 local ferumbrasAscendantRazzagornLever = Action()
@@ -21,6 +22,7 @@ function ferumbrasAscendantRazzagornLever.onUse(player, item, fromPosition, targ
 				return true
 			end
 		end
+		clearRoom(config.centerRoom, config.range, config.range, fromPosition)
 		Game.createMonster("Razzagorn", config.BossPosition, true, true)
 		for x = 33386, 33390 do
 			local playerTile = Tile(Position(x, 32455, 14)):getTopCreature()
