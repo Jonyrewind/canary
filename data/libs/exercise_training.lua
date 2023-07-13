@@ -100,10 +100,8 @@ function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
 
 	if isMagic then
 		player:addManaSpent(500 * bonusDummy)
-		player:addSkillTries(SKILL_SHIELD, 5 * bonusDummy)
 	else
 		player:addSkillTries(ExerciseWeaponsTable[weaponId].skill, 7 * bonusDummy)
-		player:addSkillTries(SKILL_SHIELD, 7 * bonusDummy)
 	end
 
 	weapon:setAttribute(ITEM_ATTRIBUTE_CHARGES, (weaponCharges - 1))

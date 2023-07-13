@@ -512,12 +512,12 @@ function Player:onReportRuleViolation(targetName, reportType, reportReason, comm
 end
 
 function Player:onReportBug(message, position, category)
---[[	if self:getAccountType() == ACCOUNT_TYPE_NORMAL then
+	if self:getAccountType() == ACCOUNT_TYPE_NORMAL then
 		return false
-	end]]--
+	end
 
 	local name = self:getName()
-	local file = io.open("".. CORE_DIRECTORY .. "/reports/bugs/" .. name .. " report.txt", "a")
+	local file = io.open(string.format("%s/reports/bugs/%s/report.txt", CORE_DIRECTORY, name), "a")
 
 	if not file then
 		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,

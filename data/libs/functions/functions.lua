@@ -213,14 +213,6 @@ function roomIsOccupied(centerPosition, rangeX, rangeY)
 	return false
 end
 
-function bossroomIsOccupied(centerPosition, rangeX, rangeY)
-	local spectators = Game.getSpectators(centerPosition, false, true, rangeX, rangeX, rangeY, rangeY)
-	if #spectators ~= 0 then
-		return true
-	end
-	return false
-end
-
 function clearForgotten(fromPosition, toPosition, exitPosition, storage)
 	for x = fromPosition.x, toPosition.x do
 		for y = fromPosition.y, toPosition.y do

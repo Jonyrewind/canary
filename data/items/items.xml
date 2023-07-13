@@ -7451,10 +7451,10 @@
 	<item id="3549" article="a" name="pair of soft boots">
 		<attribute key="showduration" value="1"/>
 		<attribute key="showAttributes" value="1"/>
-		<attribute key="manaticks" value="2000"/>
-		<attribute key="managain" value="24"/>
-		<attribute key="healthticks" value="2000"/>
-		<attribute key="healthgain" value="6"/>
+		<attribute key="manaticks" value="6000"/>
+		<attribute key="managain" value="12"/>
+		<attribute key="healthticks" value="6000"/>
+		<attribute key="healthgain" value="3"/>
 		<attribute key="duration" value="14400"/>
 		<attribute key="transformdeequipto" value="6529"/>
 		<attribute key="decayTo" value="6530"/>
@@ -34003,18 +34003,18 @@
 	<item id="22494" name="RESERVED SPRITE"/>
 	<item fromid="22495" toid="22497" name="unknown item"/>
 	<item fromid="22498" toid="22501" name="painted tusks"/>
-	<item id="22502" article="a" name="closed door">
+	<item id="22502" article="a" name="gate of expertise">
 		<attribute key="type" value="door"/>
 		<attribute key="blockProjectile" value="1"/>
 	</item>
-	<item id="22503" article="an" name="open door">
+	<item id="22503" article="an" name="gate of expertise">
 		<attribute key="type" value="door"/>
 	</item>
-	<item id="22504" article="a" name="closed door">
+	<item id="22504" article="a" name="gate of expertise">
 		<attribute key="type" value="door"/>
 		<attribute key="blockProjectile" value="1"/>
 	</item>
-	<item id="22505" article="an" name="open door">
+	<item id="22505" article="an" name="gate of expertise">
 		<attribute key="type" value="door"/>
 	</item>
 	<item id="22506" article="a" name="closed door">
@@ -40294,7 +40294,7 @@
 	<item fromid="27848" toid="27849" article="a" name="bone lever"/>
 	<item fromid="27850" toid="27865" name="unknown item"/>
 	<!-- Summer Update 2018 -->
-	<item id="27866" name="tar"/>
+	<item id="27866" article="a" name="tar"/>
 	<item id="27867" article="a" name="green energy ball">
 		<attribute key="weight" value="150"/>
 	</item>
@@ -40556,10 +40556,10 @@
 	<item id="28495" article="a" name="perfume flacon">
 		<attribute key="weight" value="240"/>
 	</item>
-	<item fromid="28496" toid="28498" article="a" name="wooden railing"/>
+	<item fromid="28496" toid="28498" article="a" name="wooden wall"/>
 	<!-- unknown item - winter update 2018 -->
 	<item id="28499" name="RESERVED SPRITE"/>
-	<item id="28500" article="a" name="wooden railing"/>
+	<item id="28500" article="a" name="wooden wall"/>
 	<item fromid="28501" toid="28507" article="a" name="stone wall"/>
 	<!-- unknown item - winter update 2018 -->
 	<item fromid="28508" toid="28510" name="unknown item"/>
@@ -41870,8 +41870,6 @@
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
 	</item>
-	<item id="28827" name="brass-shod chest"/>
-	<item id="28828" name="brass-shod chest"/>
 	<item id="28829" article="a" name="rotten demonbone">
 		<attribute key="weaponType" value="club"/>
 		<attribute key="absorbpercentpoison" value="3"/>
@@ -46000,9 +45998,7 @@
 	<item id="31726" article="a" name="box with balm">
 		<attribute key="weight" value="240"/>
 	</item>
-	<item fromid="31727" toid="31729" name="RESERVED SPRITE"/>
-	<item id="31730" name="tar"/>
-	<item id="31731" name="RESERVED SPRITE"/>
+	<item fromid="31727" toid="31731" name="RESERVED SPRITE"/>
 	<item id="31732" name="unknown item"/>
 	<item fromid="31733" toid="31734" name="unknown item"/>
 	<item id="31735" article="a" name="metal grate"/>
