@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -582,6 +582,17 @@ int ItemTypeFunctions::luaItemTypeHasSubType(lua_State* L) {
 	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
 	if (itemType) {
 		pushBoolean(L, itemType->hasSubType());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int ItemTypeFunctions::luaItemTypeGetVocationString(lua_State* L) {
+	// itemType:getVocationString()
+	const ItemType* itemType = getUserdata<const ItemType>(L, 1);
+	if (itemType) {
+		pushString(L, itemType->vocationString);
 	} else {
 		lua_pushnil(L);
 	}

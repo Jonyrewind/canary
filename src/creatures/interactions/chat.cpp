@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -222,7 +222,7 @@ bool ChatChannel::executeOnSpeakEvent(const Player &player, SpeakClasses &type, 
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[OnSpeakChannelEvent::execute - Player {}, type {}] "
 					 "Call stack overflow. Too many lua script calls being nested.",
-					 player.getName(), type);
+					 player.getName(), fmt::underlying(type));
 		return false;
 	}
 

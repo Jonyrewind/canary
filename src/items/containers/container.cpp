@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -93,6 +93,10 @@ Container* Container::getTopParentContainer() const {
 	return thing->getContainer();
 }
 
+Container* Container::getRootContainer() const {
+	return getTopParentContainer();
+}
+
 bool Container::hasParent() const {
 	return getID() != ITEM_BROWSEFIELD && dynamic_cast<const Player*>(getParent()) == nullptr;
 }
@@ -129,8 +133,8 @@ Attr_ReadValue Container::readAttr(AttrTypes_t attr, PropStream &propStream) {
 	return Item::readAttr(attr, propStream);
 }
 
-bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, PropStream &propStream) {
-	bool ret = Item::unserializeItemNode(loader, node, propStream);
+bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, PropStream &propStream, Position &itemPosition) {
+	bool ret = Item::unserializeItemNode(loader, node, propStream, itemPosition);
 	if (!ret) {
 		return false;
 	}
@@ -147,13 +151,18 @@ bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, 
 			return false;
 		}
 
-		Item* item = Item::CreateItem(itemPropStream);
-		if (!item) {
+		uint16_t id;
+		if (!itemPropStream.read<uint16_t>(id)) {
 			return false;
 		}
 
-		if (!item->unserializeItemNode(loader, itemNode, itemPropStream)) {
-			return false;
+		Item* item = Item::CreateItem(id, itemPosition);
+		if (!item) {
+			continue;
+		}
+
+		if (!item->unserializeItemNode(loader, itemNode, itemPropStream, itemPosition)) {
+			continue;
 		}
 
 		addItem(item);
@@ -186,12 +195,12 @@ uint32_t Container::getWeight() const {
 	return Item::getWeight() + totalWeight;
 }
 
-std::string Container::getContentDescription() const {
+std::string Container::getContentDescription(bool oldProtocol) const {
 	std::ostringstream os;
-	return getContentDescription(os).str();
+	return getContentDescription(os, oldProtocol).str();
 }
 
-std::ostringstream &Container::getContentDescription(std::ostringstream &os) const {
+std::ostringstream &Container::getContentDescription(std::ostringstream &os, bool oldProtocol) const {
 	bool firstitem = true;
 	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
 		Item* item = *it;
@@ -207,7 +216,11 @@ std::ostringstream &Container::getContentDescription(std::ostringstream &os) con
 			os << ", ";
 		}
 
-		os << "{" << item->getID() << "|" << item->getNameDescription() << "}";
+		if (oldProtocol) {
+			os << item->getNameDescription();
+		} else {
+			os << "{" << item->getID() << "|" << item->getNameDescription() << "}";
+		}
 	}
 
 	if (firstitem) {
@@ -260,11 +273,26 @@ bool Container::isHoldingItemWithId(const uint16_t id) const {
 	return false;
 }
 
-bool Container::isAnykindOfRewardContainer() const {
-	return getID() == ITEM_REWARD_CHEST || getID() == ITEM_REWARD_CONTAINER || isBrowseFieldAndHoldsRewardContainer();
+bool Container::isInsideContainerWithId(const uint16_t id) const {
+	auto nextParent = parent;
+	while (nextParent != nullptr && nextParent->getContainer()) {
+		if (nextParent->getContainer()->getID() == id) {
+			return true;
+		}
+		nextParent = nextParent->getRealParent();
+	}
+	return false;
 }
 
-bool Container::isBrowseFieldAndHoldsRewardContainer() const {
+bool Container::isAnyKindOfRewardChest() const {
+	return getID() == ITEM_REWARD_CHEST || getID() == ITEM_REWARD_CONTAINER && parent && parent->getContainer() && parent->getContainer()->getID() == ITEM_REWARD_CHEST || isBrowseFieldAndHoldsRewardChest();
+}
+
+bool Container::isAnyKindOfRewardContainer() const {
+	return getID() == ITEM_REWARD_CHEST || getID() == ITEM_REWARD_CONTAINER || isHoldingItemWithId(ITEM_REWARD_CONTAINER) || isInsideContainerWithId(ITEM_REWARD_CONTAINER);
+}
+
+bool Container::isBrowseFieldAndHoldsRewardChest() const {
 	return getID() == ITEM_BROWSEFIELD && isHoldingItemWithId(ITEM_REWARD_CHEST);
 }
 
@@ -418,8 +446,8 @@ ReturnValue Container::queryMaxCount(int32_t index, const Thing &thing, uint32_t
 			// Iterate through every item and check how much free stackable slots there is.
 			uint32_t slotIndex = 0;
 			for (Item* containerItem : itemlist) {
-				if (containerItem != item && containerItem->equals(item) && containerItem->getItemCount() < 100) {
-					uint32_t remainder = (100 - containerItem->getItemCount());
+				if (containerItem != item && containerItem->equals(item) && containerItem->getItemCount() < containerItem->getStackSize()) {
+					uint32_t remainder = (containerItem->getStackSize() - containerItem->getItemCount());
 					if (queryAdd(slotIndex++, *item, remainder, flags) == RETURNVALUE_NOERROR) {
 						n += remainder;
 					}
@@ -427,13 +455,13 @@ ReturnValue Container::queryMaxCount(int32_t index, const Thing &thing, uint32_t
 			}
 		} else {
 			const Item* destItem = getItemByIndex(index);
-			if (item->equals(destItem) && destItem->getItemCount() < 100) {
-				n = 100 - destItem->getItemCount();
+			if (item->equals(destItem) && destItem->getItemCount() < destItem->getStackSize()) {
+				n = destItem->getStackSize() - destItem->getItemCount();
 			}
 		}
 
 		// maxQueryCount is the limit of items I can add
-		maxQueryCount = freeSlots * 100 + n;
+		maxQueryCount = freeSlots * item->getStackSize() + n;
 		if (maxQueryCount < count) {
 			return RETURNVALUE_CONTAINERNOTENOUGHROOM;
 		}
@@ -528,14 +556,14 @@ Cylinder* Container::queryDestination(int32_t &index, const Thing &thing, Item**
 
 	bool autoStack = !hasBitSet(FLAG_IGNOREAUTOSTACK, flags);
 	if (autoStack && item->isStackable() && item->getParent() != this) {
-		if (*destItem && (*destItem)->equals(item) && (*destItem)->getItemCount() < 100) {
+		if (*destItem && (*destItem)->equals(item) && (*destItem)->getItemCount() < (*destItem)->getStackSize()) {
 			return this;
 		}
 
 		// try find a suitable item to stack with
 		uint32_t n = 0;
 		for (Item* listItem : itemlist) {
-			if (listItem != item && listItem->equals(item) && listItem->getItemCount() < 100) {
+			if (listItem != item && listItem->equals(item) && listItem->getItemCount() < listItem->getStackSize()) {
 				*destItem = listItem;
 				index = n;
 				return this;
@@ -551,6 +579,9 @@ void Container::addThing(Thing* thing) {
 }
 
 void Container::addThing(int32_t index, Thing* thing) {
+	if (!thing)
+		return /*RETURNVALUE_NOTPOSSIBLE*/;
+
 	if (index >= static_cast<int32_t>(capacity())) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -746,6 +777,9 @@ void Container::internalAddThing(Thing* thing) {
 }
 
 void Container::internalAddThing(uint32_t, Thing* thing) {
+	if (!thing)
+		return;
+
 	Item* item = thing->getItem();
 	if (item == nullptr) {
 		return;
@@ -789,6 +823,28 @@ ContainerIterator Container::iterator() const {
 		cit.cur = itemlist.begin();
 	}
 	return cit;
+}
+
+void Container::removeItem(Thing* thing, bool sendUpdateToClient /* = false*/) {
+	if (thing == nullptr) {
+		return;
+	}
+
+	auto itemToRemove = thing->getItem();
+	if (itemToRemove == nullptr) {
+		return;
+	}
+
+	auto it = std::ranges::find(itemlist.begin(), itemlist.end(), itemToRemove);
+	if (it != itemlist.end()) {
+		// Send change to client
+		if (auto thingIndex = getThingIndex(thing); sendUpdateToClient && thingIndex != -1 && getParent()) {
+			onRemoveContainerItem(thingIndex, itemToRemove);
+		}
+
+		itemlist.erase(it);
+		itemToRemove->setParent(nullptr);
+	}
 }
 
 Item* ContainerIterator::operator*() {

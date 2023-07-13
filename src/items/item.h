@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_ITEMS_ITEM_H_
@@ -30,6 +30,7 @@ class Door;
 class MagicField;
 class BedItem;
 class Imbuement;
+class Item;
 
 // This class ItemProperties that serves as an interface to access and modify attributes of an item. The item's attributes are stored in an instance of ItemAttribute. The class ItemProperties has methods to get and set integer and string attributes, check if an attribute exists, remove an attribute, get the underlying attribute bits, and get a vector of attributes. It also has methods to get and set custom attributes, which are stored in a std::map<std::string, CustomAttribute, std::less<>>. The class has a data member attributePtr of type std::unique_ptr<ItemAttribute> that stores a pointer to the item's attributes methods.
 class ItemProperties {
@@ -45,6 +46,7 @@ class ItemProperties {
 					std::numeric_limits<T>::max()
 				);
 			}
+			SPDLOG_ERROR("Failed to convert attribute for type {}", fmt::underlying(type));
 			return {};
 		}
 
@@ -124,6 +126,14 @@ class ItemProperties {
 			}
 		}
 
+		bool isStoreItem() const {
+			return getAttribute<int64_t>(ItemAttribute_t::STORE) > 0;
+		}
+
+		void setDuration(int32_t time) {
+			setAttribute(ItemAttribute_t::DURATION, std::max<int32_t>(0, time));
+		}
+
 		void setDecaying(ItemDecayState_t decayState) {
 			setAttribute(ItemAttribute_t::DECAYSTATE, static_cast<int64_t>(decayState));
 			if (decayState == DECAYING_FALSE) {
@@ -131,7 +141,8 @@ class ItemProperties {
 			}
 		}
 		ItemDecayState_t getDecaying() const {
-			return getAttribute<ItemDecayState_t>(ItemAttribute_t::DECAYSTATE);
+			auto decayState = getAttribute<int64_t>(ItemAttribute_t::DECAYSTATE);
+			return static_cast<ItemDecayState_t>(decayState);
 		}
 
 		uint32_t getCorpseOwner() const {
@@ -162,14 +173,6 @@ class ItemProperties {
 			return attributePtr;
 		}
 
-		const std::underlying_type_t<ItemAttribute_t> &getAttributeBits() const {
-			static std::underlying_type_t<ItemAttribute_t> emptyType = {};
-			if (!attributePtr) {
-				return emptyType;
-			}
-
-			return attributePtr->getAttributeBits();
-		}
 		const std::vector<Attributes> &getAttributeVector() const {
 			static std::vector<Attributes> emptyVector = {};
 			if (!attributePtr) {
@@ -206,14 +209,16 @@ class ItemProperties {
 
 	private:
 		std::unique_ptr<ItemAttribute> attributePtr;
+
+		friend class Item;
 };
 
 class Item : virtual public Thing, public ItemProperties {
 	public:
 		// Factory member to create item of right type based on type
-		static Item* CreateItem(const uint16_t type, uint16_t count = 0);
+		static Item* CreateItem(const uint16_t type, uint16_t count = 0, Position* itemPosition = nullptr);
 		static Container* CreateItemAsContainer(const uint16_t type, uint16_t size);
-		static Item* CreateItem(PropStream &propStream);
+		static Item* CreateItem(uint16_t itemId, Position &itemPosition);
 		static Items items;
 
 		// Constructor for items
@@ -271,6 +276,8 @@ class Item : virtual public Thing, public ItemProperties {
 			return nullptr;
 		}
 
+		SoundEffect_t getMovementSound(Cylinder* toCylinder) const;
+
 		void setIsLootTrackeable(bool value) {
 			isLootTrackeable = value;
 		}
@@ -280,6 +287,8 @@ class Item : virtual public Thing, public ItemProperties {
 		}
 
 		static std::string parseImbuementDescription(const Item* item);
+		static std::string parseShowDurationSpeed(int32_t speed, bool &begin);
+		static std::string parseShowDuration(const Item* item);
 		static std::string parseShowAttributesDescription(const Item* item, const uint16_t itemId);
 		static std::string parseClassificationDescription(const Item* item);
 
@@ -295,7 +304,7 @@ class Item : virtual public Thing, public ItemProperties {
 		// serialization
 		virtual Attr_ReadValue readAttr(AttrTypes_t attr, PropStream &propStream);
 		bool unserializeAttr(PropStream &propStream);
-		virtual bool unserializeItemNode(OTB::Loader &, const OTB::Node &, PropStream &propStream);
+		virtual bool unserializeItemNode(OTB::Loader &, const OTB::Node &, PropStream &propStream, Position &itemPosition);
 
 		virtual void serializeAttr(PropWriteStream &propWriteStream) const;
 
@@ -431,6 +440,9 @@ class Item : virtual public Thing, public ItemProperties {
 		bool isQuiver() const {
 			return items[id].isQuiver();
 		}
+		bool isSpellBook() const {
+			return items[id].isSpellBook();
+		}
 
 		const std::string &getName() const {
 			if (hasAttribute(ItemAttribute_t::NAME)) {
@@ -451,8 +463,19 @@ class Item : virtual public Thing, public ItemProperties {
 			return items[id].article;
 		}
 
+		uint8_t getStackSize() const {
+			if (isStackable()) {
+				return items[id].stackSize;
+			}
+			return 1;
+		}
+
 		// get the number of items
 		uint16_t getItemCount() const {
+			return count;
+		}
+		// Get item total amount
+		uint32_t getItemAmount() const {
 			return count;
 		}
 		void setItemCount(uint8_t n) {
@@ -479,9 +502,6 @@ class Item : virtual public Thing, public ItemProperties {
 				setDuration(duration);
 			}
 		}
-		void setDuration(time_t time) {
-			setAttribute(ItemAttribute_t::DURATION, std::max<time_t>(0, time));
-		}
 		uint32_t getDefaultDuration() const {
 			return items[id].decayTime * 1000;
 		}
@@ -499,6 +519,8 @@ class Item : virtual public Thing, public ItemProperties {
 
 		virtual void startDecaying();
 		virtual void stopDecaying();
+
+		Item* transform(uint16_t itemId, uint16_t itemCount = -1);
 
 		bool getLoadedFromMap() const {
 			return loadedFromMap;
@@ -630,6 +652,8 @@ class Item : virtual public Thing, public ItemProperties {
 		}
 
 		void updateTileFlags();
+		bool canBeMoved() const;
+		void checkDecayMapItemOnMove();
 
 	protected:
 		Cylinder* parent = nullptr;
@@ -648,8 +672,6 @@ class Item : virtual public Thing, public ItemProperties {
 		std::string getWeightDescription(uint32_t weight) const;
 
 		friend class Decay;
-
-		bool canBeMoved() const;
 };
 
 using ItemList = std::list<Item*>;

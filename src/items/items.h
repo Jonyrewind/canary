@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_ITEMS_ITEMS_H_
@@ -109,6 +109,9 @@ class ItemType {
 		}
 		bool isFluidContainer() const {
 			return group == ITEM_GROUP_FLUID;
+		}
+		bool isSpellBook() const {
+			return spellbook;
 		}
 
 		bool isDoor() const {
@@ -236,6 +239,8 @@ class ItemType {
 
 		CombatType_t combatType = COMBAT_NONE;
 
+		ItemAnimation_t animationType = ANIMATION_NONE;
+
 		uint16_t transformToOnUse[2] = { 0, 0 };
 		uint16_t transformToFree = 0;
 		uint16_t destroyTo = 0;
@@ -247,6 +252,7 @@ class ItemType {
 		uint16_t slotPosition = SLOTP_HAND;
 		uint16_t speed = 0;
 		uint16_t wareId = 0;
+		uint8_t stackSize = 100;
 
 		MagicEffectClasses magicEffect = CONST_ME_NONE;
 		Direction bedPartnerDir = DIRECTION_NONE;
@@ -302,6 +308,7 @@ class ItemType {
 		bool isPodium = false;
 		bool isCorpse = false;
 		bool loaded = false;
+		bool spellbook = false;
 };
 
 class Items {

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_CREATURES_MONSTERS_MONSTER_H_
@@ -78,6 +78,9 @@ class Monster final : public Creature {
 		RaceType_t getRace() const override {
 			return mType->info.race;
 		}
+		float getMitigation() const override {
+			return mType->info.mitigation;
+		}
 		int32_t getArmor() const override {
 			return mType->info.armor;
 		}
@@ -118,7 +121,6 @@ class Monster final : public Creature {
 		bool isFamiliar() const {
 			return mType->info.isFamiliar;
 		}
-		bool canSee(const Position &pos) const override;
 		bool canSeeInvisibility() const override {
 			return isImmune(CONDITION_INVISIBLE);
 		}
@@ -152,7 +154,7 @@ class Monster final : public Creature {
 
 		bool challengeCreature(Creature* creature) override;
 
-		bool changeTargetDistance(int32_t distance);
+		bool changeTargetDistance(int32_t distance, uint32_t duration = 12000);
 
 		CreatureIcon_t getIcon() const override {
 			if (challengeMeleeDuration > 0 && mType->info.targetDistance > targetDistance) {
@@ -234,7 +236,7 @@ class Monster final : public Creature {
 
 		bool isTarget(const Creature* creature) const;
 		bool isFleeing() const {
-			return !isSummon() && getHealth() <= mType->info.runAwayHealth && challengeFocusDuration <= 0;
+			return !isSummon() && getHealth() <= runAwayHealth && challengeFocusDuration <= 0 && challengeMeleeDuration <= 0;
 		}
 
 		bool getDistanceStep(const Position &targetPos, Direction &direction, bool flee = false);
@@ -256,6 +258,36 @@ class Monster final : public Creature {
 		uint16_t getRaceId() const {
 			return mType->info.raceid;
 		}
+
+		// Hazard system
+		bool getHazard() const {
+			return hazard;
+		}
+		void setHazard(bool value) {
+			hazard = value;
+		}
+
+		bool getHazardSystemCrit() const {
+			return hazardCrit;
+		}
+		void setHazardSystemCrit(bool value) {
+			hazardCrit = value;
+		}
+
+		bool getHazardSystemDodge() const {
+			return hazardDodge;
+		}
+		void setHazardSystemDodge(bool value) {
+			hazardDodge = value;
+		}
+
+		bool getHazardSystemDamageBoost() const {
+			return hazardDamageBoost;
+		}
+		void setHazardSystemDamageBoost(bool value) {
+			hazardDamageBoost = value;
+		}
+		// Hazard end
 
 		void updateTargetList();
 		void clearTargetList();
@@ -303,6 +335,10 @@ class Monster final : public Creature {
 			return timeToChangeFiendish;
 		}
 
+		MonsterType* getMonsterType() const {
+			return mType;
+		}
+
 		void clearFiendishStatus();
 		bool canDropLoot() const;
 
@@ -331,6 +367,8 @@ class Monster final : public Creature {
 		uint32_t targetChangeTicks = 0;
 		uint32_t defenseTicks = 0;
 		uint32_t yellTicks = 0;
+		uint32_t soundTicks = 0;
+
 		int32_t minCombatValue = 0;
 		int32_t maxCombatValue = 0;
 		int32_t targetChangeCooldown = 0;
@@ -339,6 +377,7 @@ class Monster final : public Creature {
 		int32_t targetDistance = 1;
 		int32_t challengeMeleeDuration = 0;
 		uint16_t totalPlayersOnScreen = 0;
+		int32_t runAwayHealth = 0;
 
 		Position masterPos;
 
@@ -346,6 +385,11 @@ class Monster final : public Creature {
 		bool extraMeleeAttack = false;
 		bool randomStepping = false;
 		bool ignoreFieldDamage = false;
+
+		bool hazard = false;
+		bool hazardCrit = false;
+		bool hazardDodge = false;
+		bool hazardDamageBoost = false;
 
 		void onCreatureEnter(Creature* creature);
 		void onCreatureLeave(Creature* creature);
@@ -385,6 +429,7 @@ class Monster final : public Creature {
 		void onThinkTarget(uint32_t interval);
 		void onThinkYell(uint32_t interval);
 		void onThinkDefense(uint32_t interval);
+		void onThinkSound(uint32_t interval);
 
 		bool isFriend(const Creature* creature) const;
 		bool isOpponent(const Creature* creature) const;

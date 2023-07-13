@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -132,7 +132,7 @@ int PositionFunctions::luaPositionSendMagicEffect(lua_State* L) {
 
 	MagicEffectClasses magicEffect = getNumber<MagicEffectClasses>(L, 2);
 	if (g_configManager().getBoolean(WARN_UNSAFE_SCRIPTS) && !g_game().isMagicEffectRegistered(magicEffect)) {
-		SPDLOG_WARN("[PositionFunctions::luaPositionSendMagicEffect] An unregistered magic effect type with id '{}' was blocked to prevent client crash.", magicEffect);
+		SPDLOG_WARN("[PositionFunctions::luaPositionSendMagicEffect] An unregistered magic effect type with id '{}' was blocked to prevent client crash.", fmt::underlying(magicEffect));
 		pushBoolean(L, false);
 		return 1;
 	}
@@ -142,6 +142,34 @@ int PositionFunctions::luaPositionSendMagicEffect(lua_State* L) {
 		Game::addMagicEffect(spectators, position, magicEffect);
 	} else {
 		g_game().addMagicEffect(position, magicEffect);
+	}
+
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PositionFunctions::luaPositionRemoveMagicEffect(lua_State* L) {
+	// position:removeMagicEffect(magicEffect[, player = nullptr])
+	SpectatorHashSet spectators;
+	if (lua_gettop(L) >= 3) {
+		Player* player = getPlayer(L, 3);
+		if (player) {
+			spectators.insert(player);
+		}
+	}
+
+	MagicEffectClasses magicEffect = getNumber<MagicEffectClasses>(L, 2);
+	if (g_configManager().getBoolean(WARN_UNSAFE_SCRIPTS) && !g_game().isMagicEffectRegistered(magicEffect)) {
+		SPDLOG_WARN("[PositionFunctions::luaPositionRemoveMagicEffect] An unregistered magic effect type with id '{}' was blocked to prevent client crash.", fmt::underlying(magicEffect));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	const Position &position = getPosition(L, 1);
+	if (!spectators.empty()) {
+		Game::removeMagicEffect(spectators, position, magicEffect);
+	} else {
+		g_game().removeMagicEffect(position, magicEffect);
 	}
 
 	pushBoolean(L, true);
@@ -162,7 +190,7 @@ int PositionFunctions::luaPositionSendDistanceEffect(lua_State* L) {
 	const Position &positionEx = getPosition(L, 2);
 	const Position &position = getPosition(L, 1);
 	if (g_configManager().getBoolean(WARN_UNSAFE_SCRIPTS) && !g_game().isDistanceEffectRegistered(distanceEffect)) {
-		SPDLOG_WARN("[PositionFunctions::luaPositionSendDistanceEffect] An unregistered distance effect type with id '{}' was blocked to prevent client crash.", distanceEffect);
+		SPDLOG_WARN("[PositionFunctions::luaPositionSendDistanceEffect] An unregistered distance effect type with id '{}' was blocked to prevent client crash.", fmt::underlying(distanceEffect));
 		return 1;
 	}
 
@@ -172,6 +200,29 @@ int PositionFunctions::luaPositionSendDistanceEffect(lua_State* L) {
 		g_game().addDistanceEffect(position, positionEx, distanceEffect);
 	}
 
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PositionFunctions::luaPositionSendSingleSoundEffect(lua_State* L) {
+	// position:sendSingleSoundEffect(soundId[, actor = nullptr])
+	const Position &position = getPosition(L, 1);
+	SoundEffect_t soundEffect = getNumber<SoundEffect_t>(L, 2);
+	Creature* actor = getCreature(L, 3);
+
+	g_game().sendSingleSoundEffect(position, soundEffect, actor);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PositionFunctions::luaPositionSendDoubleSoundEffect(lua_State* L) {
+	// position:sendDoubleSoundEffect(mainSoundId, secondarySoundId[, actor = nullptr])
+	const Position &position = getPosition(L, 1);
+	SoundEffect_t mainSoundEffect = getNumber<SoundEffect_t>(L, 2);
+	SoundEffect_t secondarySoundEffect = getNumber<SoundEffect_t>(L, 3);
+	Creature* actor = getCreature(L, 4);
+
+	g_game().sendDoubleSoundEffect(position, mainSoundEffect, secondarySoundEffect, actor);
 	pushBoolean(L, true);
 	return 1;
 }

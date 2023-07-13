@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -153,6 +153,8 @@ int CombatFunctions::luaCombatExecute(lua_State* L) {
 	Creature* creature = getCreature(L, 2);
 
 	const LuaVariant &variant = getVariant(L, 3);
+	combat->setInstantSpellName(variant.instantName);
+	combat->setRuneSpellName(variant.runeName);
 	switch (variant.type) {
 		case VARIANT_NUMBER: {
 			Creature* target = g_game().getCreatureByID(variant.number);

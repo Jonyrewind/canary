@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -564,7 +564,7 @@ ReturnValue Tile::queryAdd(int32_t, const Thing &thing, uint32_t, uint32_t tileF
 				}
 			}
 
-			if (hasBitSet(FLAG_PATHFINDING, tileFlags) && hasHarmfulField()) {
+			if (hasBitSet(FLAG_PATHFINDING, tileFlags) && hasFlag(TILESTATE_BLOCKPATH)) {
 				return RETURNVALUE_NOTPOSSIBLE;
 			}
 
@@ -843,6 +843,9 @@ void Tile::addThing(Thing* thing) {
 }
 
 void Tile::addThing(int32_t, Thing* thing) {
+	if (!thing)
+		return /*RETURNVALUE_NOTPOSSIBLE*/;
+
 	Creature* creature = thing->getCreature();
 	if (creature) {
 		g_game().map.clearSpectatorCache();
@@ -1424,7 +1427,7 @@ void Tile::postRemoveNotification(Thing* thing, const Cylinder* newParent, int32
 
 void Tile::internalAddThing(Thing* thing) {
 	internalAddThing(0, thing);
-	if (!thing->getParent()) {
+	if (!thing || !thing->getParent()) {
 		return;
 	}
 
@@ -1451,6 +1454,9 @@ void Tile::internalAddThing(Thing* thing) {
 }
 
 void Tile::internalAddThing(uint32_t, Thing* thing) {
+	if (!thing)
+		return;
+
 	thing->setParent(this);
 
 	Creature* creature = thing->getCreature();

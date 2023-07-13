@@ -46,7 +46,7 @@ QuestDoorAction = {
 		itemPos = {{x = 32455, y = 31967, z = 14}}
 	},
 	-- To Outfox a Fox Quest, mining helmet door
-	[Storage.toOutfoxAFoxQuest] = {
+	[Storage.ToOutfoxAFoxQuest] = {
 		itemId = false,
 		itemPos = {{x = 32467, y = 31969, z = 5}}
 	},
@@ -814,9 +814,111 @@ QuestDoorAction = {
 		itemId = false,
 		itemPos = {
 			{x = 33366, y = 31343, z = 7},
-			{x = 33363, y = 31346, z = 7}
+			{x = 33363, y = 31346, z = 7},
+			{x = 32191, y = 31823, z = 8}
 		}
-	}
+	},
+	[Storage.Quest.U12_20.GraveDanger.Bosses.KingZelosDoor] = {
+		itemId = false,
+		itemPos = {{x = 32173, y = 31922, z = 8}}
+	},
+	[Storage.Quest.U11_80.TheSecretLibrary.ScourgeOfOblivionDoor] = {
+		itemId = false,
+		itemPos = {{x = 32480, y = 32591, z = 15}}
+	},
+	[Storage.Quest.U12_70.AdventuresOfGalthen.AccessDoor] = {
+		itemId = false,
+		itemPos = {{x = 32466, y = 32494, z = 8}}
+	},
+	[Storage.Quest.U10_80.Grimvale.AncientFeudDoors] = {
+		itemId = false,
+		itemPos = {
+			{x = 33124, y = 32261, z = 10},
+			{x = 33123, y = 32230, z = 12},
+			{x = 33159, y = 32322, z = 12}
+		}
+	},
+	[Storage.Kilmaresh.AccessDoor] = {
+		itemId = false,
+		itemPos = {{x = 33886, y = 31476, z = 7}}
+	},
+	[Storage.Kilmaresh.CatacombDoors] = {
+		itemId = false,
+		itemPos = {
+			{ x = 33855, y = 31450, z = 9 },
+			{ x = 33912, y = 31466, z = 9 },
+			{ x = 33855, y = 31496, z = 9 },
+			{ x = 33911, y = 31496, z = 9 },
+			{ x = 33884, y = 31510, z = 9 },
+			{ x = 33884, y = 31536, z = 9 }
+		}
+	},
+	[Storage.Quest.U12_60.APiratesTail.TentuglyDoor] = {
+		itemId = false,
+		itemPos = {{x = 33793, y = 31388, z = 6}}
+	},
+	[Storage.Quest.U12_00.TheDreamCourts.HauntedHouseAccess] = {
+		itemId = false,
+		itemPos = {
+			{ x = 32700, y = 32244, z = 9 },
+			{ x = 32700, y = 32255, z = 9 },
+			{ x = 32700, y = 32275, z = 8 },
+			{ x = 33088, y = 32388, z = 8 },
+			{ x = 32671, y = 32652, z = 7 },
+			{ x = 32606, y = 32629, z = 9 }
+		}
+	},
+	[Storage.Quest.U12_00.TheDreamCourts.BuriedCathedralAccess] = {
+		itemId = false,
+		itemPos = {
+			{ x = 32719, y = 32264, z = 8 },
+			{ x = 32728, y = 32280, z = 8 }
+		}
+	},
+	[Storage.Quest.U12_00.TheDreamCourts.DreamScarAccess] = {
+		itemId = false,
+		itemPos = {
+			{ x = 31983, y = 32000, z = 14}
+		}
+	},
+	[Storage.Quest.U12_40.TheOrderOfTheLion.AccessEastSide] = {
+		itemId = false,
+		itemPos = {
+			{ x = 32429, y = 32461, z = 7 },
+			{ x = 32430, y = 32461, z = 8 }
+		}
+	},
+	[Storage.Quest.U12_40.TheOrderOfTheLion.AccessSouthernSide] = {
+		itemId = false,
+		itemPos = {
+			{ x = 32422, y = 32499, z = 8 }
+		}
+	},
+	[Storage.Quest.U13_10.CradleOfMonsters.Access.LowerIngol] = {
+		itemId = false,
+		itemPos = {
+			{ x = 33796, y = 32561, z = 8 },
+			{ x = 33796, y = 32561, z = 9 },
+			{ x = 33796, y = 32573, z = 9 },
+			{ x = 33796, y = 32573, z = 10 },
+			{ x = 33796, y = 32561, z = 10 },
+			{ x = 33796, y = 32561, z = 11 },
+			{ x = 33796, y = 32573, z = 11 },
+			{ x = 33796, y = 32573, z = 12 },
+		}
+	},
+	[Storage.Quest.U13_10.CradleOfMonsters.Access.Monster] = {
+		itemId = false,
+		itemPos = {
+			{ x = 33791, y = 32576, z = 12 },
+		}
+	},
+	[Storage.Quest.U13_10.CradleOfMonsters.Access.MutatedAbomination] = {
+		itemId = false,
+		itemPos = {
+			{ x = 33782, y = 32576, z = 12 },
+		}
+	},
 }
 
 QuestDoorUnique = {

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -99,6 +99,10 @@ bool Imbuements::loadFromXml(bool /* reloading */) {
 				continue;
 			}
 			imbuement.icon = pugi::cast<uint16_t>(iconBase.value());
+
+			if (pugi::xml_attribute soundBase = baseNode.attribute("sound")) {
+				imbuement.soundEffect = static_cast<SoundEffect_t>(pugi::cast<uint16_t>(soundBase.value()));
+			}
 
 			pugi::xml_attribute premiumBase = baseNode.attribute("premium");
 			if (premiumBase) {

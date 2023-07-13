@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_LUA_FUNCTIONS_CREATURES_PLAYER_PLAYER_FUNCTIONS_HPP_
@@ -38,7 +38,7 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "setAccountType", PlayerFunctions::luaPlayerSetAccountType);
 
 			registerMethod(L, "Player", "isMonsterBestiaryUnlocked", PlayerFunctions::luaPlayerIsMonsterBestiaryUnlocked);
-			registerMethod(L, "Player", "addBestiaryKill", PlayerFunctions::luaPlayeraddBestiaryKill);
+			registerMethod(L, "Player", "addBestiaryKill", PlayerFunctions::luaPlayerAddBestiaryKill);
 			registerMethod(L, "Player", "charmExpansion", PlayerFunctions::luaPlayercharmExpansion);
 			registerMethod(L, "Player", "getCharmMonsterType", PlayerFunctions::luaPlayergetCharmMonsterType);
 
@@ -207,6 +207,10 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "addTibiaCoins", PlayerFunctions::luaPlayerAddTibiaCoins);
 			registerMethod(L, "Player", "removeTibiaCoins", PlayerFunctions::luaPlayerRemoveTibiaCoins);
 
+			registerMethod(L, "Player", "getTransferableCoins", PlayerFunctions::luaPlayerGetTransferableCoins);
+			registerMethod(L, "Player", "addTransferableCoins", PlayerFunctions::luaPlayerAddTransferableCoins);
+			registerMethod(L, "Player", "removeTransferableCoins", PlayerFunctions::luaPlayerRemoveTransferableCoins);
+
 			registerMethod(L, "Player", "hasBlessing", PlayerFunctions::luaPlayerHasBlessing);
 			registerMethod(L, "Player", "addBlessing", PlayerFunctions::luaPlayerAddBlessing);
 			registerMethod(L, "Player", "removeBlessing", PlayerFunctions::luaPlayerRemoveBlessing);
@@ -267,6 +271,15 @@ class PlayerFunctions final : LuaScriptInterface {
 
 			registerMethod(L, "Player", "openMarket", PlayerFunctions::luaPlayerOpenMarket);
 
+			registerMethod(L, "Player", "instantSkillWOD", PlayerFunctions::luaPlayerInstantSkillWOD);
+			registerMethod(L, "Player", "upgradeSpellsWORD", PlayerFunctions::luaPlayerUpgradeSpellWOD);
+			registerMethod(L, "Player", "reloadData", PlayerFunctions::luaPlayerReloadData);
+			registerMethod(L, "Player", "onThinkWheelOfDestiny", PlayerFunctions::luaPlayerOnThinkWheelOfDestiny);
+			registerMethod(L, "Player", "avatarTimer", PlayerFunctions::luaPlayerAvatarTimer);
+			registerMethod(L, "Player", "getWheelSpellAdditionalArea", PlayerFunctions::luaPlayerGetWheelSpellAdditionalArea);
+			registerMethod(L, "Player", "getWheelSpellAdditionalTarget", PlayerFunctions::luaPlayerGetWheelSpellAdditionalTarget);
+			registerMethod(L, "Player", "getWheelSpellAdditionalDuration", PlayerFunctions::luaPlayerGetWheelSpellAdditionalDuration);
+
 			// Forge Functions
 			registerMethod(L, "Player", "openForge", PlayerFunctions::luaPlayerOpenForge);
 			registerMethod(L, "Player", "closeForge", PlayerFunctions::luaPlayerCloseForge);
@@ -294,6 +307,28 @@ class PlayerFunctions final : LuaScriptInterface {
 			registerMethod(L, "Player", "setRemoveBossTime", PlayerFunctions::luaPlayerSetRemoveBossTime);
 			registerMethod(L, "Player", "getSlotBossId", PlayerFunctions::luaPlayerGetSlotBossId);
 			registerMethod(L, "Player", "getBossBonus", PlayerFunctions::luaPlayerGetBossBonus);
+			registerMethod(L, "Player", "sendBosstiaryCooldownTimer", PlayerFunctions::luaPlayerBosstiaryCooldownTimer);
+
+			registerMethod(L, "Player", "sendSingleSoundEffect", PlayerFunctions::luaPlayerSendSingleSoundEffect);
+			registerMethod(L, "Player", "sendDoubleSoundEffect", PlayerFunctions::luaPlayerSendDoubleSoundEffect);
+
+			registerMethod(L, "Player", "getName", PlayerFunctions::luaPlayerGetName);
+
+			registerMethod(L, "Player", "hasGroupFlag", PlayerFunctions::luaPlayerHasGroupFlag);
+			registerMethod(L, "Player", "setGroupFlag", PlayerFunctions::luaPlayerSetGroupFlag);
+			registerMethod(L, "Player", "removeGroupFlag", PlayerFunctions::luaPlayerRemoveGroupFlag);
+
+			registerMethod(L, "Player", "setHazardSystemPoints", PlayerFunctions::luaPlayerAddHazardSystemPoints);
+			registerMethod(L, "Player", "getHazardSystemPoints", PlayerFunctions::luaPlayerGetHazardSystemPoints);
+
+			registerMethod(L, "Player", "setLoyaltyBonus", PlayerFunctions::luaPlayerSetLoyaltyBonus);
+			registerMethod(L, "Player", "getLoyaltyBonus", PlayerFunctions::luaPlayerGetLoyaltyBonus);
+			registerMethod(L, "Player", "getLoyaltyPoints", PlayerFunctions::luaPlayerGetLoyaltyPoints);
+			registerMethod(L, "Player", "getLoyaltyTitle", PlayerFunctions::luaPlayerGetLoyaltyTitle);
+			registerMethod(L, "Player", "setLoyaltyTitle", PlayerFunctions::luaPlayerSetLoyaltyTitle);
+
+			registerMethod(L, "Player", "updateConcoction", PlayerFunctions::luaPlayerUpdateConcoction);
+			registerMethod(L, "Player", "clearSpellCooldowns", PlayerFunctions::luaPlayerClearSpellCooldowns);
 
 			GroupFunctions::init(L);
 			GuildFunctions::init(L);
@@ -318,7 +353,7 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerGetAccountType(lua_State* L);
 		static int luaPlayerSetAccountType(lua_State* L);
 
-		static int luaPlayeraddBestiaryKill(lua_State* L);
+		static int luaPlayerAddBestiaryKill(lua_State* L);
 		static int luaPlayerIsMonsterBestiaryUnlocked(lua_State* L);
 		static int luaPlayercharmExpansion(lua_State* L);
 		static int luaPlayergetCharmMonsterType(lua_State* L);
@@ -490,6 +525,10 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerAddTibiaCoins(lua_State* L);
 		static int luaPlayerRemoveTibiaCoins(lua_State* L);
 
+		static int luaPlayerGetTransferableCoins(lua_State* L);
+		static int luaPlayerAddTransferableCoins(lua_State* L);
+		static int luaPlayerRemoveTransferableCoins(lua_State* L);
+
 		static int luaPlayerHasBlessing(lua_State* L);
 		static int luaPlayerAddBlessing(lua_State* L);
 		static int luaPlayerRemoveBlessing(lua_State* L);
@@ -554,6 +593,15 @@ class PlayerFunctions final : LuaScriptInterface {
 
 		static int luaPlayerOpenMarket(lua_State* L);
 
+		static int luaPlayerInstantSkillWOD(lua_State* L);
+		static int luaPlayerUpgradeSpellWOD(lua_State* L);
+		static int luaPlayerReloadData(lua_State* L);
+		static int luaPlayerOnThinkWheelOfDestiny(lua_State* L);
+		static int luaPlayerAvatarTimer(lua_State* L);
+		static int luaPlayerGetWheelSpellAdditionalArea(lua_State* L);
+		static int luaPlayerGetWheelSpellAdditionalTarget(lua_State* L);
+		static int luaPlayerGetWheelSpellAdditionalDuration(lua_State* L);
+
 		static int luaPlayerOpenForge(lua_State* L);
 		static int luaPlayerCloseForge(lua_State* L);
 		static int luaPlayerSendForgeError(lua_State* L);
@@ -580,6 +628,31 @@ class PlayerFunctions final : LuaScriptInterface {
 		static int luaPlayerSetRemoveBossTime(lua_State* L);
 		static int luaPlayerGetSlotBossId(lua_State* L);
 		static int luaPlayerGetBossBonus(lua_State* L);
+		static int luaPlayerBosstiaryCooldownTimer(lua_State* L);
+
+		static int luaPlayerSendSingleSoundEffect(lua_State* L);
+		static int luaPlayerSendDoubleSoundEffect(lua_State* L);
+
+		static int luaPlayerGetName(lua_State* L);
+
+		static int luaPlayerHasGroupFlag(lua_State* L);
+		static int luaPlayerSetGroupFlag(lua_State* L);
+		static int luaPlayerRemoveGroupFlag(lua_State* L);
+
+		// Hazard system
+		static int luaPlayerAddHazardSystemPoints(lua_State* L);
+		static int luaPlayerGetHazardSystemPoints(lua_State* L);
+
+		// Loyalty system
+		static int luaPlayerSetLoyaltyBonus(lua_State* L);
+		static int luaPlayerGetLoyaltyBonus(lua_State* L);
+		static int luaPlayerGetLoyaltyPoints(lua_State* L);
+		static int luaPlayerGetLoyaltyTitle(lua_State* L);
+		static int luaPlayerSetLoyaltyTitle(lua_State* L);
+
+		// Concoction system
+		static int luaPlayerUpdateConcoction(lua_State* L);
+		static int luaPlayerClearSpellCooldowns(lua_State* L);
 
 		friend class CreatureFunctions;
 };

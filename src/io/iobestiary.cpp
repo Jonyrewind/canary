@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -39,6 +39,9 @@ bool IOBestiary::parseCharmCombat(Charm* charm, Player* player, Creature* target
 		charmParams.impactEffect = charm->effect;
 		charmParams.combatType = charmDamage.primary.type;
 		charmParams.aggressive = true;
+
+		charmParams.soundImpactEffect = charm->soundImpactEffect;
+		charmParams.soundCastEffect = charm->soundCastEffect;
 
 		player->sendCancelMessage(charm->cancelMsg);
 	} else if (charm->type == CHARM_DEFENSIVE) {

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -20,10 +20,10 @@ void ConfigFunctions::init(lua_State* L) {
 	registerMethod(L, "configManager", "getFloat", ConfigFunctions::luaConfigManagerGetFloat);
 
 #define registerEnumIn(L, tableName, value)                                                     \
-	{                                                                                           \
+	do {                                                                                        \
 		std::string enumName = #value;                                                          \
 		registerVariable(L, tableName, enumName.substr(enumName.find_last_of(':') + 1), value); \
-	}
+	} while (0)
 	registerTable(L, "configKeys");
 	registerEnumIn(L, "configKeys", ALLOW_CHANGEOUTFIT);
 	registerEnumIn(L, "configKeys", ONE_PLAYER_ON_ACCOUNT);
@@ -32,7 +32,6 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", EXPERIENCE_FROM_PLAYERS);
 	registerEnumIn(L, "configKeys", FREE_PREMIUM);
 	registerEnumIn(L, "configKeys", REPLACE_KICK_ON_LOGIN);
-	registerEnumIn(L, "configKeys", ALLOW_CLONES);
 	registerEnumIn(L, "configKeys", BIND_ONLY_GLOBAL_ADDRESS);
 	registerEnumIn(L, "configKeys", OPTIMIZE_DATABASE);
 	registerEnumIn(L, "configKeys", MARKET_PREMIUM);
@@ -53,6 +52,7 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", ALL_CONSOLE_LOG);
 	registerEnumIn(L, "configKeys", GLOBAL_SERVER_SAVE_NOTIFY_MESSAGE);
 	registerEnumIn(L, "configKeys", GLOBAL_SERVER_SAVE_NOTIFY_DURATION);
+	registerEnumIn(L, "configKeys", XP_DISPLAY_MODE);
 	registerEnumIn(L, "configKeys", GLOBAL_SERVER_SAVE_CLEAN_MAP);
 	registerEnumIn(L, "configKeys", GLOBAL_SERVER_SAVE_CLOSE);
 	registerEnumIn(L, "configKeys", GLOBAL_SERVER_SAVE_SHUTDOWN);
@@ -61,12 +61,12 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", MAP_CUSTOM_NAME);
 	registerEnumIn(L, "configKeys", HOUSE_RENT_PERIOD);
 	registerEnumIn(L, "configKeys", SERVER_NAME);
+	registerEnumIn(L, "configKeys", SERVER_MOTD);
 	registerEnumIn(L, "configKeys", OWNER_NAME);
 	registerEnumIn(L, "configKeys", OWNER_EMAIL);
 	registerEnumIn(L, "configKeys", URL);
 	registerEnumIn(L, "configKeys", LOCATION);
 	registerEnumIn(L, "configKeys", IP);
-	registerEnumIn(L, "configKeys", MOTD);
 	registerEnumIn(L, "configKeys", WORLD_TYPE);
 	registerEnumIn(L, "configKeys", MYSQL_HOST);
 	registerEnumIn(L, "configKeys", MYSQL_USER);
@@ -100,7 +100,9 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", RATE_LOOT);
 	registerEnumIn(L, "configKeys", RATE_MAGIC);
 	registerEnumIn(L, "configKeys", RATE_SPAWN);
+	registerEnumIn(L, "configKeys", RATE_KILLING_IN_THE_NAME_OF_POINTS);
 	registerEnumIn(L, "configKeys", HOUSE_PRICE);
+	registerEnumIn(L, "configKeys", HOUSE_BUY_LEVEL);
 	registerEnumIn(L, "configKeys", MAX_MESSAGEBUFFER);
 	registerEnumIn(L, "configKeys", ACTIONS_DELAY_INTERVAL);
 	registerEnumIn(L, "configKeys", EX_ACTIONS_DELAY_INTERVAL);
@@ -175,10 +177,54 @@ void ConfigFunctions::init(lua_State* L) {
 	registerEnumIn(L, "configKeys", FORGE_BASE_SUCCESS_RATE);
 	registerEnumIn(L, "configKeys", FORGE_BONUS_SUCCESS_RATE);
 	registerEnumIn(L, "configKeys", FORGE_TIER_LOSS_REDUCTION);
+	registerEnumIn(L, "configKeys", FORGE_AMOUNT_MULTIPLIER);
 	registerEnumIn(L, "configKeys", FORGE_INFLUENCED_CREATURES_LIMIT);
+
+	registerEnumIn(L, "configKeys", BESTIARY_KILL_MULTIPLIER);
+	registerEnumIn(L, "configKeys", BOSSTIARY_KILL_MULTIPLIER);
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_SLOT);
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_LOOT_BONUS);
 	registerEnumIn(L, "configKeys", BOOSTED_BOSS_KILL_BONUS);
+	registerEnumIn(L, "configKeys", BESTIARY_RATE_CHARM_SHOP_PRICE);
+
+	registerEnumIn(L, "configKeys", FAMILIAR_TIME);
+
+	registerEnumIn(L, "configKeys", TOGGLE_GOLD_POUCH_ALLOW_ANYTHING);
+	registerEnumIn(L, "configKeys", TOGGLE_SERVER_IS_RETRO);
+	registerEnumIn(L, "configKeys", TOGGLE_TRAVELS_FREE);
+
+	registerEnumIn(L, "configKeys", HAZARD_SPAWN_PLUNDER_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_CRITICAL_INTERVAL);
+	registerEnumIn(L, "configKeys", HAZARD_CRITICAL_CHANCE);
+	registerEnumIn(L, "configKeys", HAZARD_CRITICAL_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_DAMAGE_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_DODGE_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_PODS_DROP_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_PODS_TIME_TO_DAMAGE);
+	registerEnumIn(L, "configKeys", HAZARD_PODS_TIME_TO_SPAWN);
+	registerEnumIn(L, "configKeys", HAZARD_EXP_BONUS_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_LOOT_BONUS_MULTIPLIER);
+	registerEnumIn(L, "configKeys", HAZARD_PODS_DAMAGE);
+	registerEnumIn(L, "configKeys", TOGGLE_HAZARDSYSTEM);
+	registerEnumIn(L, "configKeys", LOW_LEVEL_BONUS_EXP);
+	registerEnumIn(L, "configKeys", LOYALTY_ENABLED);
+	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_CREATION_DAY);
+	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_SPENT);
+	registerEnumIn(L, "configKeys", LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED);
+	registerEnumIn(L, "configKeys", LOYALTY_BONUS_PERCENTAGE_MULTIPLIER);
+
+	registerEnumIn(L, "configKeys", PARTY_SHARE_LOOT_BOOSTS);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_COOLDOWN);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_DURATION);
+	registerEnumIn(L, "configKeys", TIBIADROME_CONCOCTION_TICK_TYPE);
+
+	registerEnumIn(L, "configKeys", AUTH_TYPE);
+	registerEnumIn(L, "configKeys", RESET_SESSIONS_ON_STARTUP);
+
+	registerEnumIn(L, "configKeys", TOGGLE_ATTACK_SPEED_ONFIST);
+	registerEnumIn(L, "configKeys", MULTIPLIER_ATTACKONFIST);
+	registerEnumIn(L, "configKeys", MAX_SPEED_ATTACKONFIST);
+
 #undef registerEnumIn
 }
 

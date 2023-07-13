@@ -2,18 +2,18 @@ function Container.isContainer(self)
 	return true
 end
 
-function Container.createLootItem(self, item, charm)
+function Container.createLootItem(self, item, charm, modifier)
 	if self:getEmptySlots() == 0 then
-		return true
+		return false
 	end
 
 	local itemCount = 0
-	local randvalue = getLootRandom()
+	local randvalue = getLootRandom(modifier)
 	local lootBlockType = ItemType(item.itemId)
 	local chanceTo = item.chance
 
 	if not lootBlockType then
-		return
+		return false
 	end
 
 	-- Bestiary charm bonus
@@ -29,11 +29,11 @@ function Container.createLootItem(self, item, charm)
 			itemCount = 1
 		end
 	end
-	
+
 	while (itemCount > 0) do
 		local n = math.min(itemCount, 100)
 		itemCount = itemCount - n
-		
+
 		local tmpItem = self:addItem(item.itemId, n)
 		if not tmpItem then
 			return false

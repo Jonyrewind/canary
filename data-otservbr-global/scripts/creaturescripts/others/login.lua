@@ -6,7 +6,7 @@ local function onMovementRemoveProtection(cid, oldPos, time)
 
 	local playerPos = player:getPosition()
 	if (playerPos.x ~= oldPos.x or playerPos.y ~= oldPos.y or playerPos.z ~= oldPos.z) or player:getTarget() then
-		player:setStorageValue(Storage.combatProtectionStorage, 0)
+		player:setStorageValue(Global.Storage.CombatProtectionStorage, 0)
 		return true
 	end
 
@@ -43,7 +43,7 @@ function playerLogin.onLogin(player)
 			player:openChannel(5) -- Advertsing main
 		end
 	else
-		player:sendTextMessage(MESSAGE_STATUS, "Welcome to " .. SERVER_NAME .. "!")
+		player:sendTextMessage(MESSAGE_STATUS, SERVER_MOTD)
 		player:sendTextMessage(MESSAGE_LOGIN, string.format("Your last visit in ".. SERVER_NAME ..": %s.", os.date("%d. %b %Y %X", player:getLastLoginSaved())))
 	end
 
@@ -180,11 +180,19 @@ function playerLogin.onLogin(player)
 		end
 	end
 
+	-- Attempt to check if we're in a hazard zone
+	player:updateHazard()
+	-- Loyalty system
+	player:initializeLoyaltySystem()
+
 	-- Stamina
 	nextUseStaminaTime[playerId] = 1
 
 	-- EXP Stamina
 	nextUseXpStamina[playerId] = 1
+
+	-- Concoction Duration
+	nextUseConcoctionTime[playerId] = 1
 
 	if (player:getAccountType() == ACCOUNT_TYPE_TUTOR) then
 	local msg = [[:: Tutor Rules
@@ -221,21 +229,21 @@ function playerLogin.onLogin(player)
 		stats.playerId = player:getId()
 	end
 
-	if player:getStorageValue(Storage.combatProtectionStorage) < 1 then
-		player:setStorageValue(Storage.combatProtectionStorage, 1)
+	if player:getStorageValue(Global.Storage.CombatProtectionStorage) < 1 then
+		player:setStorageValue(Global.Storage.CombatProtectionStorage, 1)
 		onMovementRemoveProtection(playerId, player:getPosition(), 10)
 	end
 
 	-- Set Client XP Gain Rate --
-	if Game.getStorageValue(GlobalStorage.XpDisplayMode) > 0 then
+	if configManager.getBoolean(configKeys.XP_DISPLAY_MODE) then
 		local baseRate = player:getFinalBaseRateExperience()
 		player:setBaseXpGain(baseRate * 100)
 	end
 
-	local staminaMinutes = player:getStamina()
-	local staminaBonus = (staminaMinutes > 2340) and 150 or ((staminaMinutes < 840) and 50 or 100)
+	local staminaBonus = player:getFinalBonusStamina()
+	player:setStaminaXpBoost(staminaBonus * 100)
 
-	player:setStaminaXpBoost(staminaBonus)
+	player:getFinalLowLevelBonus()
 
 	if onExerciseTraining[player:getId()] then -- onLogin & onLogout
 		stopEvent(onExerciseTraining[player:getId()].event)

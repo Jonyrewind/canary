@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -56,6 +56,7 @@ void ItemParse::initParse(const std::string &tmpStrValue, pugi::xml_node attribu
 	ItemParse::parseMagicPoints(tmpStrValue, valueAttribute, itemType);
 	ItemParse::parseFieldAbsorbPercent(tmpStrValue, valueAttribute, itemType);
 	ItemParse::parseAbsorbPercent(tmpStrValue, valueAttribute, itemType);
+
 	ItemParse::parseSupressDrunk(tmpStrValue, valueAttribute, itemType);
 	ItemParse::parseField(tmpStrValue, attributeNode, valueAttribute, itemType);
 	ItemParse::parseReplaceable(tmpStrValue, valueAttribute, itemType);
@@ -65,6 +66,7 @@ void ItemParse::initParse(const std::string &tmpStrValue, pugi::xml_node attribu
 	ItemParse::parseWalk(tmpStrValue, valueAttribute, itemType);
 	ItemParse::parseAllowDistanceRead(tmpStrValue, valueAttribute, itemType);
 	ItemParse::parseImbuement(tmpStrValue, attributeNode, valueAttribute, itemType);
+	ItemParse::parseStackSize(tmpStrValue, valueAttribute, itemType);
 }
 
 void ItemParse::parseType(const std::string &tmpStrValue, pugi::xml_attribute valueAttribute, ItemType &itemType) {
@@ -235,6 +237,9 @@ void ItemParse::parseWeaponType(const std::string &tmpStrValue, pugi::xml_attrib
 		stringValue = asLowerCaseString(valueAttribute.as_string());
 		auto itemMap = WeaponTypesMap.find(stringValue);
 		if (itemMap != WeaponTypesMap.end()) {
+			if (tmpStrValue == "spellbook") {
+				itemType.spellbook = true;
+			}
 			itemType.weaponType = itemMap->second;
 		} else {
 			SPDLOG_WARN("[Items::parseItemNode] - Unknown weaponType {}", valueAttribute.as_string());
@@ -803,5 +808,17 @@ void ItemParse::parseImbuement(const std::string &tmpStrValue, pugi::xml_node at
 		} else {
 			SPDLOG_WARN("[ParseImbuement::initParseImbuement] - Unknown type: {}", valueAttribute.as_string());
 		}
+	}
+}
+
+void ItemParse::parseStackSize(const std::string &tmpStrValue, pugi::xml_attribute valueAttribute, ItemType &itemType) {
+	std::string stringValue = tmpStrValue;
+	if (stringValue == "stacksize") {
+		auto stackSize = pugi::cast<uint16_t>(valueAttribute.value());
+		if (stackSize > 255) {
+			stackSize = 255;
+			spdlog::warn("[{}] Invalid stack size value: {}. Stack size must be between 1 and 255.", __FUNCTION__, stackSize);
+		}
+		itemType.stackSize = static_cast<uint8_t>(stackSize);
 	}
 }

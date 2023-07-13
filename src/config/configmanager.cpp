@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -111,6 +111,9 @@ bool ConfigManager::load() {
 		string[MYSQL_DB] = getGlobalString(L, "mysqlDatabase", "canary");
 		string[MYSQL_SOCK] = getGlobalString(L, "mysqlSock", "");
 
+		string[AUTH_TYPE] = getGlobalString(L, "authType", "password");
+		boolean[RESET_SESSIONS_ON_STARTUP] = getGlobalBoolean(L, "resetSessionsOnStartup", false);
+
 		integer[SQL_PORT] = getGlobalNumber(L, "mysqlPort", 3306);
 		integer[GAME_PORT] = getGlobalNumber(L, "gameProtocolPort", 7172);
 		integer[LOGIN_PORT] = getGlobalNumber(L, "loginProtocolPort", 7171);
@@ -122,6 +125,8 @@ bool ConfigManager::load() {
 		integer[PREMIUM_DEPOT_LIMIT] = getGlobalNumber(L, "premiumDepotLimit", 8000);
 		integer[DEPOT_BOXES] = getGlobalNumber(L, "depotBoxes", 20);
 		integer[STASH_ITEMS] = getGlobalNumber(L, "stashItemCount", 5000);
+
+		boolean[OLD_PROTOCOL] = getGlobalBoolean(L, "allowOldProtocol", true);
 	}
 
 	boolean[ALLOW_CHANGEOUTFIT] = getGlobalBoolean(L, "allowChangeOutfit", true);
@@ -131,13 +136,15 @@ bool ConfigManager::load() {
 	boolean[EXPERIENCE_FROM_PLAYERS] = getGlobalBoolean(L, "experienceByKillingPlayers", false);
 	boolean[FREE_PREMIUM] = getGlobalBoolean(L, "freePremium", false);
 	boolean[REPLACE_KICK_ON_LOGIN] = getGlobalBoolean(L, "replaceKickOnLogin", true);
-	boolean[ALLOW_CLONES] = getGlobalBoolean(L, "allowClones", false);
 	boolean[MARKET_PREMIUM] = getGlobalBoolean(L, "premiumToCreateMarketOffer", true);
 	boolean[EMOTE_SPELLS] = getGlobalBoolean(L, "emoteSpells", false);
 	boolean[STAMINA_SYSTEM] = getGlobalBoolean(L, "staminaSystem", true);
 	boolean[WARN_UNSAFE_SCRIPTS] = getGlobalBoolean(L, "warnUnsafeScripts", true);
 	boolean[CONVERT_UNSAFE_SCRIPTS] = getGlobalBoolean(L, "convertUnsafeScripts", true);
 	boolean[CLASSIC_ATTACK_SPEED] = getGlobalBoolean(L, "classicAttackSpeed", false);
+	boolean[TOGGLE_ATTACK_SPEED_ONFIST] = getGlobalBoolean(L, "toggleAttackSpeedOnFist", false);
+	integer[MULTIPLIER_ATTACKONFIST] = getGlobalNumber(L, "multiplierSpeedOnFist", 5);
+	integer[MAX_SPEED_ATTACKONFIST] = getGlobalNumber(L, "maxSpeedOnFist", 500);
 	boolean[SCRIPTS_CONSOLE_LOGS] = getGlobalBoolean(L, "showScriptsLogInConsole", true);
 	boolean[STASH_MOVING] = getGlobalBoolean(L, "stashMoving", false);
 	boolean[ALLOW_BLOCK_SPAWN] = getGlobalBoolean(L, "allowBlockSpawn", true);
@@ -175,20 +182,21 @@ bool ConfigManager::load() {
 	boolean[TOGGLE_DOWNLOAD_MAP] = getGlobalBoolean(L, "toggleDownloadMap", false);
 	boolean[USE_ANY_DATAPACK_FOLDER] = getGlobalBoolean(L, "useAnyDatapackFolder", false);
 	boolean[INVENTORY_GLOW] = getGlobalBoolean(L, "inventoryGlowOnFiveBless", false);
+	boolean[XP_DISPLAY_MODE] = getGlobalBoolean(L, "experienceDisplayRates", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");
+	string[SERVER_MOTD] = getGlobalString(L, "serverMotd", "");
 	string[OWNER_NAME] = getGlobalString(L, "ownerName", "");
 	string[OWNER_EMAIL] = getGlobalString(L, "ownerEmail", "");
 	string[URL] = getGlobalString(L, "url", "");
 	string[LOCATION] = getGlobalString(L, "location", "");
-	string[MOTD] = getGlobalString(L, "motd", "");
 	string[WORLD_TYPE] = getGlobalString(L, "worldType", "pvp");
 	string[STORE_IMAGES_URL] = getGlobalString(L, "coinImagesURL", "");
 	string[DISCORD_WEBHOOK_URL] = getGlobalString(L, "discordWebhookURL", "");
 	string[SAVE_INTERVAL_TYPE] = getGlobalString(L, "saveIntervalType", "");
 	string[GLOBAL_SERVER_SAVE_TIME] = getGlobalString(L, "globalServerSaveTime", "06:00");
-	string[DATA_DIRECTORY] = getGlobalString(L, "dataPackDirectory", "data-otserbr-global");
+	string[DATA_DIRECTORY] = getGlobalString(L, "dataPackDirectory", "data-otservbr-global");
 	string[CORE_DIRECTORY] = getGlobalString(L, "coreDirectory", "data");
 	string[FORGE_FIENDISH_INTERVAL_TYPE] = getGlobalString(L, "forgeFiendishIntervalType", "hour");
 	string[FORGE_FIENDISH_INTERVAL_TIME] = getGlobalString(L, "forgeFiendishIntervalTime", "1");
@@ -202,6 +210,7 @@ bool ConfigManager::load() {
 	integer[RATE_LOOT] = getGlobalNumber(L, "rateLoot", 1);
 	integer[RATE_MAGIC] = getGlobalNumber(L, "rateMagic", 1);
 	integer[RATE_SPAWN] = getGlobalNumber(L, "rateSpawn", 1);
+	integer[RATE_KILLING_IN_THE_NAME_OF_POINTS] = getGlobalNumber(L, "rateKillingInTheNameOfPoints", 1);
 	integer[HOUSE_PRICE] = getGlobalNumber(L, "housePriceEachSQM", 1000);
 	integer[HOUSE_BUY_LEVEL] = getGlobalNumber(L, "houseBuyLevel", 0);
 	integer[ACTIONS_DELAY_INTERVAL] = getGlobalNumber(L, "timeBetweenActions", 200);
@@ -257,11 +266,13 @@ bool ConfigManager::load() {
 	integer[FORGE_BASE_SUCCESS_RATE] = getGlobalNumber(L, "forgeBaseSuccessRate", 50);
 	integer[FORGE_BONUS_SUCCESS_RATE] = getGlobalNumber(L, "forgeBonusSuccessRate", 15);
 	integer[FORGE_TIER_LOSS_REDUCTION] = getGlobalNumber(L, "forgeTierLossReduction", 50);
+	integer[FORGE_AMOUNT_MULTIPLIER] = getGlobalNumber(L, "forgeAmountMultiplier", 3);
 	integer[FORGE_MIN_SLIVERS] = getGlobalNumber(L, "forgeMinSlivers", 3);
 	integer[FORGE_MAX_SLIVERS] = getGlobalNumber(L, "forgeMaxSlivers", 7);
 	integer[FORGE_INFLUENCED_CREATURES_LIMIT] = getGlobalNumber(L, "forgeInfluencedLimit", 300);
 	integer[FORGE_FIENDISH_CREATURES_LIMIT] = getGlobalNumber(L, "forgeFiendishLimit", 3);
 
+	floating[BESTIARY_RATE_CHARM_SHOP_PRICE] = getGlobalFloat(L, "bestiaryRateCharmShopPrice", 1.0);
 	floating[RATE_HEALTH_REGEN] = getGlobalFloat(L, "rateHealthRegen", 1.0);
 	floating[RATE_HEALTH_REGEN_SPEED] = getGlobalFloat(L, "rateHealthRegenSpeed", 1.0);
 	floating[RATE_MANA_REGEN] = getGlobalFloat(L, "rateManaRegen", 1.0);
@@ -297,9 +308,48 @@ bool ConfigManager::load() {
 	integer[TASK_HUNTING_BONUS_REROLL_PRICE] = getGlobalNumber(L, "taskHuntingBonusRerollPrice", 1);
 	integer[TASK_HUNTING_FREE_REROLL_TIME] = getGlobalNumber(L, "taskHuntingFreeRerollTime", 72000);
 
+	integer[BESTIARY_KILL_MULTIPLIER] = getGlobalNumber(L, "bestiaryKillMultiplier", 1);
+	integer[BOSSTIARY_KILL_MULTIPLIER] = getGlobalNumber(L, "bosstiaryKillMultiplier", 1);
 	boolean[BOOSTED_BOSS_SLOT] = getGlobalBoolean(L, "boostedBossSlot", true);
 	integer[BOOSTED_BOSS_LOOT_BONUS] = getGlobalNumber(L, "boostedBossLootBonus", 250);
 	integer[BOOSTED_BOSS_KILL_BONUS] = getGlobalNumber(L, "boostedBossKillBonus", 3);
+
+	integer[FAMILIAR_TIME] = getGlobalNumber(L, "familiarTime", 30);
+
+	boolean[TOGGLE_GOLD_POUCH_ALLOW_ANYTHING] = getGlobalBoolean(L, "toggleGoldPouchAllowAnything", false);
+	boolean[TOGGLE_GOLD_POUCH_QUICKLOOT_ONLY] = getGlobalBoolean(L, "toggleGoldPouchQuickLootOnly", false);
+	boolean[TOGGLE_SERVER_IS_RETRO] = getGlobalBoolean(L, "toggleServerIsRetroPVP", false);
+	boolean[TOGGLE_TRAVELS_FREE] = getGlobalBoolean(L, "toggleTravelsFree", false);
+	boolean[DEVELOPMENT_MODE] = getGlobalBoolean(L, "developmentMode", true);
+
+	boolean[TOGGLE_HAZARDSYSTEM] = getGlobalBoolean(L, "toogleHazardSystem", true);
+	integer[HAZARD_CRITICAL_INTERVAL] = getGlobalNumber(L, "hazardCriticalInterval", 2000);
+	integer[HAZARD_CRITICAL_CHANCE] = getGlobalNumber(L, "hazardCriticalChance", 750);
+	integer[HAZARD_CRITICAL_MULTIPLIER] = getGlobalNumber(L, "hazardCriticalMultiplier", 25);
+	integer[HAZARD_DAMAGE_MULTIPLIER] = getGlobalNumber(L, "hazardDamageMultiplier", 200);
+	integer[HAZARD_DODGE_MULTIPLIER] = getGlobalNumber(L, "hazardDodgeMultiplier", 85);
+	integer[HAZARD_PODS_DROP_MULTIPLIER] = getGlobalNumber(L, "hazardPodsDropMultiplier", 87);
+	integer[HAZARD_PODS_TIME_TO_DAMAGE] = getGlobalNumber(L, "hazardPodsTimeToDamage", 2000);
+	integer[HAZARD_PODS_TIME_TO_SPAWN] = getGlobalNumber(L, "hazardPodsTimeToSpawn", 4000);
+	integer[HAZARD_EXP_BONUS_MULTIPLIER] = getGlobalNumber(L, "hazardExpBonusMultiplier", 2);
+	integer[HAZARD_LOOT_BONUS_MULTIPLIER] = getGlobalNumber(L, "hazardLootBonusMultiplier", 2);
+	integer[HAZARD_PODS_DAMAGE] = getGlobalNumber(L, "hazardPodsDamage", 5);
+	integer[HAZARD_SPAWN_PLUNDER_MULTIPLIER] = getGlobalNumber(L, "hazardSpawnPlunderMultiplier", 25);
+	integer[LOW_LEVEL_BONUS_EXP] = getGlobalNumber(L, "lowLevelBonusExp", 50);
+
+	boolean[LOYALTY_ENABLED] = getGlobalBoolean(L, "loyaltyEnabled", true);
+	integer[LOYALTY_POINTS_PER_CREATION_DAY] = getGlobalNumber(L, "loyaltyPointsPerCreationDay", 1);
+	integer[LOYALTY_POINTS_PER_PREMIUM_DAY_SPENT] = getGlobalNumber(L, "loyaltyPointsPerPremiumDaySpent", 0);
+	integer[LOYALTY_POINTS_PER_PREMIUM_DAY_PURCHASED] = getGlobalNumber(L, "loyaltyPointsPerPremiumDayPurchased", 0);
+	floating[LOYALTY_BONUS_PERCENTAGE_MULTIPLIER] = getGlobalFloat(L, "loyaltyBonusPercentageMultiplier", 1.0);
+
+	boolean[TOGGLE_WHEELSYSTEM] = getGlobalBoolean(L, "wheelSystemEnabled", true);
+	integer[WHEEL_POINTS_PER_LEVEL] = getGlobalNumber(L, "wheelPointsPerLevel", 1);
+
+	boolean[PARTY_SHARE_LOOT_BOOSTS] = getGlobalBoolean(L, "partyShareLootBoosts", true);
+	integer[TIBIADROME_CONCOCTION_COOLDOWN] = getGlobalNumber(L, "tibiadromeConcoctionCooldown", 24 * 60 * 60);
+	integer[TIBIADROME_CONCOCTION_DURATION] = getGlobalNumber(L, "tibiadromeConcoctionDuration", 1 * 60 * 60);
+	string[TIBIADROME_CONCOCTION_TICK_TYPE] = getGlobalString(L, "tibiadromeConcoctionTickType", "online");
 
 	loaded = true;
 	lua_close(L);
@@ -308,7 +358,7 @@ bool ConfigManager::load() {
 
 bool ConfigManager::reload() {
 	bool result = load();
-	if (transformToSHA1(getString(MOTD)) != g_game().getMotdHash()) {
+	if (transformToSHA1(getString(SERVER_MOTD)) != g_game().getMotdHash()) {
 		g_game().incrementMotdNum();
 	}
 	return result;
@@ -318,7 +368,7 @@ static std::string dummyStr;
 
 const std::string &ConfigManager::getString(stringConfig_t what) const {
 	if (what >= LAST_STRING_CONFIG) {
-		SPDLOG_WARN("[ConfigManager::getString] - Accessing invalid index: {}", what);
+		SPDLOG_WARN("[ConfigManager::getString] - Accessing invalid index: {}", fmt::underlying(what));
 		return dummyStr;
 	}
 	return string[what];
@@ -326,7 +376,7 @@ const std::string &ConfigManager::getString(stringConfig_t what) const {
 
 int32_t ConfigManager::getNumber(integerConfig_t what) const {
 	if (what >= LAST_INTEGER_CONFIG) {
-		SPDLOG_WARN("[ConfigManager::getNumber] - Accessing invalid index: {}", what);
+		SPDLOG_WARN("[ConfigManager::getNumber] - Accessing invalid index: {}", fmt::underlying(what));
 		return 0;
 	}
 	return integer[what];
@@ -334,7 +384,7 @@ int32_t ConfigManager::getNumber(integerConfig_t what) const {
 
 int16_t ConfigManager::getShortNumber(integerConfig_t what) const {
 	if (what >= LAST_INTEGER_CONFIG) {
-		SPDLOG_WARN("[ConfigManager::getShortNumber] - Accessing invalid index: {}", what);
+		SPDLOG_WARN("[ConfigManager::getShortNumber] - Accessing invalid index: {}", fmt::underlying(what));
 		return 0;
 	}
 	return integer[what];
@@ -342,7 +392,7 @@ int16_t ConfigManager::getShortNumber(integerConfig_t what) const {
 
 bool ConfigManager::getBoolean(booleanConfig_t what) const {
 	if (what >= LAST_BOOLEAN_CONFIG) {
-		SPDLOG_WARN("[ConfigManager::getBoolean] - Accessing invalid index: {}", what);
+		SPDLOG_WARN("[ConfigManager::getBoolean] - Accessing invalid index: {}", fmt::underlying(what));
 		return false;
 	}
 	return boolean[what];
@@ -350,7 +400,7 @@ bool ConfigManager::getBoolean(booleanConfig_t what) const {
 
 float ConfigManager::getFloat(floatingConfig_t what) const {
 	if (what >= LAST_FLOATING_CONFIG) {
-		SPDLOG_WARN("[ConfigManager::getFLoat] - Accessing invalid index: {}", what);
+		SPDLOG_WARN("[ConfigManager::getFLoat] - Accessing invalid index: {}", fmt::underlying(what));
 		return 0;
 	}
 	return floating[what];

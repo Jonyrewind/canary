@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -177,7 +177,7 @@ int CreatureFunctions::luaCreatureGetId(lua_State* L) {
 }
 
 int CreatureFunctions::luaCreatureGetName(lua_State* L) {
-	// creature:getTypeName()
+	// creature:getName()
 	const Creature* creature = getUserdata<const Creature>(L, 1);
 	if (creature) {
 		pushString(L, creature->getName());
@@ -188,7 +188,7 @@ int CreatureFunctions::luaCreatureGetName(lua_State* L) {
 }
 
 int CreatureFunctions::luaCreatureGetTypeName(lua_State* L) {
-	// creature:getName()
+	// creature:getTypeName()
 	const Creature* creature = getUserdata<const Creature>(L, 1);
 	if (creature) {
 		pushString(L, creature->getTypeName());
@@ -343,6 +343,21 @@ int CreatureFunctions::luaCreatureGetSpeed(lua_State* L) {
 	} else {
 		lua_pushnil(L);
 	}
+	return 1;
+}
+
+int CreatureFunctions::luaCreatureSetSpeed(lua_State* L) {
+	// creature:setSpeed(speed)
+	Creature* creature = getCreature(L, 1);
+	if (!creature) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	int32_t speed = getNumber<int32_t>(L, 2);
+	g_game().setCreatureSpeed(creature, speed);
+	pushBoolean(L, true);
 	return 1;
 }
 
@@ -748,24 +763,10 @@ int CreatureFunctions::luaCreatureTeleportTo(lua_State* L) {
 		return 1;
 	}
 
-	const Player* player = creature->getPlayer();
-	if (!player) {
-		return 1;
-	}
-
 	const Position oldPosition = creature->getPosition();
-	if (oldPosition == position) {
-		SPDLOG_WARN("[{}] - Cannot teleport creature: {}, fromPosition: {}, as same of toPosition: {}", __FUNCTION__, player->getName(), oldPosition.toString(), position.toString());
-		player->sendCancelMessage(getReturnMessage(RETURNVALUE_CONTACTADMINISTRATOR));
-		pushBoolean(L, false);
-		reportErrorFunc("The new position is the same as the old one.");
-		return 1;
-	}
-
 	if (auto ret = g_game().internalTeleport(creature, position, pushMovement);
 		ret != RETURNVALUE_NOERROR) {
-		player->sendCancelMessage(ret);
-		SPDLOG_ERROR("[{}] Failed to teleport player, error code: {}", __FUNCTION__, getReturnMessage(ret));
+		SPDLOG_ERROR("[{}] Failed to teleport creature {}, on position {}, error code: {}", __FUNCTION__, creature->getName(), oldPosition.toString(), getReturnMessage(ret));
 		pushBoolean(L, false);
 		return 1;
 	}

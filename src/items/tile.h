@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_ITEMS_TILE_H_
@@ -168,6 +168,17 @@ class Tile : public Cylinder {
 		}
 		void resetFlag(uint32_t flag) {
 			this->flags &= ~flag;
+		}
+
+		void setHazard(bool hazard) {
+			if (hazard) {
+				setFlag(TILESTATE_HAZARD);
+			} else {
+				resetFlag(TILESTATE_HAZARD);
+			}
+		}
+		bool isHazard() const {
+			return hasFlag(TILESTATE_HAZARD);
 		}
 
 		ZoneType_t getZone() const {

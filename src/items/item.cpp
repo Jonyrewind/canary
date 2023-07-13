@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -28,7 +28,7 @@
 
 Items Item::items;
 
-Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/) {
+Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/, Position* itemPosition /*= nullptr*/) {
 	Item* newItem = nullptr;
 
 	const ItemType &it = Item::items[type];
@@ -38,7 +38,7 @@ Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/) {
 
 	if (it.id != 0) {
 		if (it.isDepot()) {
-			newItem = new DepotLocker(type);
+			newItem = new DepotLocker(type, 4);
 		} else if (it.isRewardChest()) {
 			newItem = new RewardChest(type);
 		} else if (it.isContainer()) {
@@ -65,7 +65,10 @@ Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/) {
 		}
 
 		newItem->incrementReferenceCounter();
-	} else if (type != 0) {
+	} else if (type > 0 && itemPosition) {
+		auto position = *itemPosition;
+		SPDLOG_WARN("[Item::CreateItem] Item with id '{}', in position '{}' not exists in the appearances.dat and cannot be created.", type, position.toString());
+	} else {
 		SPDLOG_WARN("[Item::CreateItem] Item with id '{}' is not registered and cannot be created.", type);
 	}
 
@@ -117,8 +120,9 @@ bool Item::hasImbuementCategoryId(uint16_t categoryId) const {
 	for (uint8_t slotid = 0; slotid < getImbuementSlot(); slotid++) {
 		ImbuementInfo imbuementInfo;
 		if (getImbuementInfo(slotid, &imbuementInfo)) {
-			const CategoryImbuement* categoryImbuement = g_imbuements().getCategoryByID(imbuementInfo.imbuement->getCategory());
-			if (categoryImbuement->id == categoryId) {
+
+			if (const CategoryImbuement* categoryImbuement = g_imbuements().getCategoryByID(imbuementInfo.imbuement->getCategory());
+				categoryImbuement->id == categoryId) {
 				return true;
 			}
 		}
@@ -144,46 +148,41 @@ Container* Item::CreateItemAsContainer(const uint16_t type, uint16_t size) {
 	return newItem;
 }
 
-Item* Item::CreateItem(PropStream &propStream) {
-	uint16_t id;
-	if (!propStream.read<uint16_t>(id)) {
-		return nullptr;
-	}
-
-	switch (id) {
+Item* Item::CreateItem(uint16_t itemId, Position &itemPosition) {
+	switch (itemId) {
 		case ITEM_FIREFIELD_PVP_FULL:
-			id = ITEM_FIREFIELD_PERSISTENT_FULL;
+			itemId = ITEM_FIREFIELD_PERSISTENT_FULL;
 			break;
 
 		case ITEM_FIREFIELD_PVP_MEDIUM:
-			id = ITEM_FIREFIELD_PERSISTENT_MEDIUM;
+			itemId = ITEM_FIREFIELD_PERSISTENT_MEDIUM;
 			break;
 
 		case ITEM_FIREFIELD_PVP_SMALL:
-			id = ITEM_FIREFIELD_PERSISTENT_SMALL;
+			itemId = ITEM_FIREFIELD_PERSISTENT_SMALL;
 			break;
 
 		case ITEM_ENERGYFIELD_PVP:
-			id = ITEM_ENERGYFIELD_PERSISTENT;
+			itemId = ITEM_ENERGYFIELD_PERSISTENT;
 			break;
 
 		case ITEM_POISONFIELD_PVP:
-			id = ITEM_POISONFIELD_PERSISTENT;
+			itemId = ITEM_POISONFIELD_PERSISTENT;
 			break;
 
 		case ITEM_MAGICWALL:
-			id = ITEM_MAGICWALL_PERSISTENT;
+			itemId = ITEM_MAGICWALL_PERSISTENT;
 			break;
 
 		case ITEM_WILDGROWTH:
-			id = ITEM_WILDGROWTH_PERSISTENT;
+			itemId = ITEM_WILDGROWTH_PERSISTENT;
 			break;
 
 		default:
 			break;
 	}
 
-	return Item::CreateItem(id, 0);
+	return Item::CreateItem(itemId, 0, &itemPosition);
 }
 
 Item::Item(const uint16_t itemId, uint16_t itemCount /*= 0*/) :
@@ -211,8 +210,8 @@ Item::Item(const uint16_t itemId, uint16_t itemCount /*= 0*/) :
 
 Item::Item(const Item &i) :
 	Thing(), id(i.id), count(i.count), loadedFromMap(i.loadedFromMap) {
-	if (i.initAttributePtr()) {
-		initAttributePtr().reset(new ItemAttribute());
+	if (i.attributePtr) {
+		attributePtr.reset(new ItemAttribute(*i.attributePtr));
 	}
 }
 
@@ -223,8 +222,8 @@ Item* Item::clone() const {
 		return nullptr;
 	}
 
-	if (initAttributePtr()) {
-		item->initAttributePtr().reset(new ItemAttribute());
+	if (attributePtr) {
+		item->attributePtr.reset(new ItemAttribute(*attributePtr));
 	}
 
 	return item;
@@ -239,7 +238,11 @@ bool Item::equals(const Item* compareItem) const {
 		return false;
 	}
 
-	for (const auto &attribute : initAttributePtr()->getAttributeVector()) {
+	if (isStoreItem() != compareItem->isStoreItem()) {
+		return false;
+	}
+
+	for (const auto &attribute : getAttributeVector()) {
 		for (const auto &compareAttribute : compareItem->getAttributeVector()) {
 			if (attribute.getAttributeType() != compareAttribute.getAttributeType()) {
 				continue;
@@ -404,6 +407,15 @@ void Item::setSubType(uint16_t n) {
 
 Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream &propStream) {
 	switch (attr) {
+		case ATTR_STORE: {
+			int64_t timeStamp;
+			if (!propStream.read<int64_t>(timeStamp)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setAttribute(ItemAttribute_t::STORE, timeStamp);
+			break;
+		}
 		case ATTR_COUNT:
 		case ATTR_RUNE_CHARGES: {
 			uint8_t charges;
@@ -726,17 +738,12 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream &propStream) {
 				addCustomAttribute(key, customAttribute);
 				// Remove old custom attribute
 				removeAttribute(ItemAttribute_t::CUSTOM);
-			}
-			break;
-		}
 
-		case ATTR_IMBUEMENT_TYPE: {
-			std::string imbuementType;
-			if (!propStream.readString(imbuementType)) {
-				return ATTR_READ_ERROR;
+				// Migrate wrapable items to the new store attribute
+				if (getCustomAttribute("unWrapId") && getAttribute<int64_t>(ItemAttribute_t::STORE) == 0) {
+					setAttribute(ItemAttribute_t::STORE, getTimeNow());
+				}
 			}
-
-			setAttribute(ItemAttribute_t::IMBUEMENT_TYPE, imbuementType);
 			break;
 		}
 
@@ -748,6 +755,17 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream &propStream) {
 			}
 
 			setAttribute(ItemAttribute_t::TIER, tier);
+			break;
+		}
+
+		case ATTR_AMOUNT: {
+			uint16_t amount;
+			if (!propStream.read<uint16_t>(amount)) {
+				SPDLOG_ERROR("[{}] failed to read amount", __FUNCTION__);
+				return ATTR_READ_ERROR;
+			}
+
+			setAttribute(AMOUNT, amount);
 			break;
 		}
 
@@ -797,12 +815,16 @@ bool Item::unserializeAttr(PropStream &propStream) {
 	return true;
 }
 
-bool Item::unserializeItemNode(OTB::Loader &, const OTB::Node &, PropStream &propStream) {
+bool Item::unserializeItemNode(OTB::Loader &, const OTB::Node &, PropStream &propStream, Position &itemPosition) {
 	return unserializeAttr(propStream);
 }
 
 void Item::serializeAttr(PropWriteStream &propWriteStream) const {
 	const ItemType &it = items[id];
+	if (auto timeStamp = getAttribute<int64_t>(ItemAttribute_t::STORE)) {
+		propWriteStream.write<uint8_t>(ATTR_STORE);
+		propWriteStream.write<int64_t>(timeStamp);
+	}
 	if (it.stackable || it.isFluidContainer() || it.isSplash()) {
 		propWriteStream.write<uint8_t>(ATTR_COUNT);
 		propWriteStream.write<uint8_t>(getSubType());
@@ -848,7 +870,7 @@ void Item::serializeAttr(PropWriteStream &propWriteStream) const {
 		propWriteStream.write<int32_t>(getDuration());
 	}
 
-	if (auto decayState = getAttribute<ItemDecayState_t>(ItemAttribute_t::DECAYSTATE);
+	if (auto decayState = getDecaying();
 		decayState == DECAYING_TRUE || decayState == DECAYING_PENDING) {
 		propWriteStream.write<uint8_t>(ATTR_DECAYING_STATE);
 		propWriteStream.write<uint8_t>(decayState);
@@ -924,14 +946,14 @@ void Item::serializeAttr(PropWriteStream &propWriteStream) const {
 		propWriteStream.write<uint32_t>(getAttribute<uint32_t>(ItemAttribute_t::QUICKLOOTCONTAINER));
 	}
 
-	if (hasAttribute(ItemAttribute_t::IMBUEMENT_TYPE)) {
-		propWriteStream.write<uint8_t>(ATTR_IMBUEMENT_TYPE);
-		propWriteStream.writeString(getString(ItemAttribute_t::IMBUEMENT_TYPE));
-	}
-
 	if (hasAttribute(ItemAttribute_t::TIER)) {
 		propWriteStream.write<uint8_t>(ATTR_TIER);
 		propWriteStream.write<uint8_t>(getTier());
+	}
+
+	if (hasAttribute(AMOUNT)) {
+		propWriteStream.write<uint8_t>(ATTR_AMOUNT);
+		propWriteStream.write<uint16_t>(getAttribute<uint16_t>(AMOUNT));
 	}
 
 	// Serialize custom attributes, only serialize if the map not is empty
@@ -982,6 +1004,13 @@ bool Item::hasProperty(ItemProperty prop) const {
 
 bool Item::canBeMoved() const {
 	return isMoveable() && !hasAttribute(UNIQUEID) && (!hasAttribute(ACTIONID) || getAttribute<uint16_t>(ItemAttribute_t::ACTIONID) != IMMOVABLE_ACTION_ID);
+}
+
+void Item::checkDecayMapItemOnMove() {
+	if (getDuration() > 0 && getLoadedFromMap() && canBeMoved()) {
+		setLoadedFromMap(false);
+		startDecaying();
+	}
 }
 
 uint32_t Item::getWeight() const {
@@ -1131,7 +1160,14 @@ Item::getDescriptions(const ItemType &it, const Item* item /*= nullptr*/) {
 					ss << std::showpos;
 				}
 
-				ss << getSkillName(i) << ' ' << it.abilities->skills[i] << '%' << std::noshowpos;
+				ss << getSkillName(i) << ' ';
+				// Show float
+				if (i == SKILL_LIFE_LEECH_AMOUNT || i == SKILL_MANA_LEECH_AMOUNT) {
+					ss << it.abilities->skills[i] / 100;
+				} else {
+					ss << it.abilities->skills[i];
+				}
+				ss << '%' << std::noshowpos;
 				skillBoost = true;
 			}
 
@@ -1449,7 +1485,15 @@ Item::getDescriptions(const ItemType &it, const Item* item /*= nullptr*/) {
 					ss << std::showpos;
 				}
 
-				ss << getSkillName(i) << ' ' << it.abilities->skills[i] << '%' << std::noshowpos;
+				ss << getSkillName(i) << ' ';
+				// Show float
+				if (i == SKILL_LIFE_LEECH_AMOUNT || i == SKILL_MANA_LEECH_AMOUNT) {
+					ss << it.abilities->skills[i] / 100;
+				} else {
+					ss << it.abilities->skills[i];
+				}
+				ss << '%' << std::noshowpos;
+
 				skillBoost = true;
 			}
 			if (skillBoost) {
@@ -1639,6 +1683,68 @@ std::string Item::parseImbuementDescription(const Item* item) {
 	return s.str();
 }
 
+SoundEffect_t Item::getMovementSound(Cylinder* toCylinder) const {
+	if (!toCylinder) {
+		return SoundEffect_t::ITEM_MOVE_DEFAULT;
+	}
+
+	if (const Container* toContainer = toCylinder->getContainer();
+		toContainer && toContainer->getHoldingPlayer()) {
+		return SoundEffect_t::ITEM_MOVE_BACKPACK;
+	}
+
+	switch (items[id].type) {
+		case ITEM_TYPE_ARMOR: {
+			return SoundEffect_t::ITEM_MOVE_ARMORS;
+		}
+		case ITEM_TYPE_AMULET: {
+			return SoundEffect_t::ITEM_MOVE_NECKLACES;
+		}
+		case ITEM_TYPE_BOOTS: {
+			return SoundEffect_t::ITEM_MOVE_BOOTS;
+		}
+		case ITEM_TYPE_CONTAINER: {
+			return SoundEffect_t::ITEM_MOVE_BACKPACK;
+		}
+		case ITEM_TYPE_HELMET: {
+			return SoundEffect_t::ITEM_MOVE_HELMETS;
+		}
+		case ITEM_TYPE_LEGS: {
+			return SoundEffect_t::ITEM_MOVE_LEGS;
+		}
+		case ITEM_TYPE_RING: {
+			return SoundEffect_t::ITEM_MOVE_RINGS;
+		}
+		case ITEM_TYPE_DISTANCE: {
+			return SoundEffect_t::ITEM_MOVE_DISTANCE;
+		}
+		case ITEM_TYPE_QUIVER: {
+			return SoundEffect_t::ITEM_MOVE_QUIVERS;
+		}
+		case ITEM_TYPE_VALUABLE: {
+			return SoundEffect_t::ITEM_MOVE_STACKABLE;
+		}
+
+		case ITEM_TYPE_WAND:
+		case ITEM_TYPE_SHIELD:
+		case ITEM_TYPE_TOOLS:
+		case ITEM_TYPE_AMMO: {
+			return SoundEffect_t::ITEM_MOVE_WOOD;
+		}
+
+		case ITEM_TYPE_AXE:
+		case ITEM_TYPE_SWORD:
+		case ITEM_TYPE_CLUB: {
+			return SoundEffect_t::ITEM_MOVE_METALIC;
+		}
+
+		default:
+			break;
+	}
+
+	return SoundEffect_t::ITEM_MOVE_DEFAULT;
+}
+
 std::string Item::parseClassificationDescription(const Item* item) {
 	std::ostringstream string;
 	if (item && item->getClassification() >= 1) {
@@ -1655,6 +1761,62 @@ std::string Item::parseClassificationDescription(const Item* item) {
 		}
 	}
 	return string.str();
+}
+
+std::string Item::parseShowDurationSpeed(int32_t speed, bool &begin) {
+	std::ostringstream description;
+	if (begin) {
+		begin = false;
+		description << " (";
+	} else {
+		description << ", ";
+	}
+
+	description << fmt::format("speed {:+}", speed);
+	return description.str();
+}
+
+std::string Item::parseShowDuration(const Item* item) {
+	if (!item) {
+		return {};
+	}
+
+	std::ostringstream description;
+	uint32_t duration = item->getDuration() / 1000;
+	if (item && item->hasAttribute(ItemAttribute_t::DURATION) && duration > 0) {
+		description << " that will expire in ";
+		if (duration >= 86400) {
+			uint16_t days = duration / 86400;
+			uint16_t hours = (duration % 86400) / 3600;
+			description << days << " day" << (days != 1 ? "s" : "");
+
+			if (hours > 0) {
+				description << " and " << hours << " hour" << (hours != 1 ? "s" : "");
+			}
+		} else if (duration >= 3600) {
+			uint16_t hours = duration / 3600;
+			uint16_t minutes = (duration % 3600) / 60;
+			description << hours << " hour" << (hours != 1 ? "s" : "");
+
+			if (minutes > 0) {
+				description << " and " << minutes << " minute" << (minutes != 1 ? "s" : "");
+			}
+		} else if (duration >= 60) {
+			uint16_t minutes = duration / 60;
+			description << minutes << " minute" << (minutes != 1 ? "s" : "");
+			uint16_t seconds = duration % 60;
+
+			if (seconds > 0) {
+				description << " and " << seconds << " second" << (seconds != 1 ? "s" : "");
+			}
+		} else {
+			description << duration << " second" << (duration != 1 ? "s" : "");
+		}
+	} else {
+		description << " that is brand-new";
+	}
+
+	return description.str();
 }
 
 std::string Item::parseShowAttributesDescription(const Item* item, const uint16_t itemId) {
@@ -1700,7 +1862,12 @@ std::string Item::parseShowAttributesDescription(const Item* item, const uint16_
 				if (i != SKILL_CRITICAL_HIT_CHANCE) {
 					itemDescription << std::showpos;
 				}
-				itemDescription << itemType.abilities->skills[i];
+				// Show float
+				if (i == SKILL_LIFE_LEECH_AMOUNT || i == SKILL_MANA_LEECH_AMOUNT) {
+					itemDescription << itemType.abilities->skills[i] / 100;
+				} else {
+					itemDescription << itemType.abilities->skills[i];
+				}
 				if (i != SKILL_CRITICAL_HIT_CHANCE) {
 					itemDescription << std::noshowpos;
 				}
@@ -1809,14 +1976,7 @@ std::string Item::parseShowAttributesDescription(const Item* item, const uint16_
 			}
 
 			if (itemType.abilities->speed) {
-				if (begin) {
-					begin = false;
-					itemDescription << " (";
-				} else {
-					itemDescription << ", ";
-				}
-
-				itemDescription << fmt::format("speed {:+}", itemType.abilities->speed);
+				itemDescription << parseShowDurationSpeed(itemType.abilities->speed, begin);
 			}
 		}
 
@@ -1946,7 +2106,12 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 					if (i != SKILL_CRITICAL_HIT_CHANCE) {
 						s << std::showpos;
 					}
-					s << it.abilities->skills[i];
+					// Show float
+					if (i == SKILL_LIFE_LEECH_AMOUNT || i == SKILL_MANA_LEECH_AMOUNT) {
+						s << it.abilities->skills[i] / 100;
+					} else {
+						s << it.abilities->skills[i];
+					}
 					if (i != SKILL_CRITICAL_HIT_CHANCE) {
 						s << std::noshowpos;
 					}
@@ -2057,14 +2222,7 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 				}
 
 				if (it.abilities->speed) {
-					if (begin) {
-						begin = false;
-						s << " (";
-					} else {
-						s << ", ";
-					}
-
-					s << fmt::format("speed {:+}", it.abilities->speed);
+					s << parseShowDurationSpeed(it.abilities->speed, begin);
 				}
 			}
 
@@ -2139,7 +2297,12 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 					if (i != SKILL_CRITICAL_HIT_CHANCE) {
 						s << std::showpos;
 					}
-					s << it.abilities->skills[i];
+					// Show float
+					if (i == SKILL_LIFE_LEECH_AMOUNT || i == SKILL_MANA_LEECH_AMOUNT) {
+						s << it.abilities->skills[i] / 100;
+					} else {
+						s << it.abilities->skills[i];
+					}
 					if (i != SKILL_CRITICAL_HIT_CHANCE) {
 						s << std::noshowpos;
 					}
@@ -2250,14 +2413,7 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 				}
 
 				if (it.abilities->speed) {
-					if (begin) {
-						begin = false;
-						s << " (";
-					} else {
-						s << ", ";
-					}
-
-					s << fmt::format("speed {:+}", it.abilities->speed);
+					s << parseShowDurationSpeed(it.abilities->speed, begin);
 				}
 			}
 
@@ -2283,7 +2439,8 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 
 		if (it.abilities && it.slotPosition & SLOTP_RING) {
 			if (it.abilities->speed > 0) {
-				s << fmt::format(" (speed {:+})", it.abilities->speed);
+				bool begin = true;
+				s << parseShowDurationSpeed(it.abilities->speed, begin) << ")" << parseShowDuration(item);
 			} else if (hasBitSet(CONDITION_DRUNK, it.abilities->conditionSuppressions)) {
 				s << " (hard drinking)";
 			} else if (it.abilities->invisible) {
@@ -2370,40 +2527,7 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, const
 	}
 
 	if (it.showDuration) {
-		if (item && item->hasAttribute(ItemAttribute_t::DURATION)) {
-			uint32_t duration = item->getDuration() / 1000;
-			s << " that will expire in ";
-
-			if (duration >= 86400) {
-				uint16_t days = duration / 86400;
-				uint16_t hours = (duration % 86400) / 3600;
-				s << days << " day" << (days != 1 ? "s" : "");
-
-				if (hours > 0) {
-					s << " and " << hours << " hour" << (hours != 1 ? "s" : "");
-				}
-			} else if (duration >= 3600) {
-				uint16_t hours = duration / 3600;
-				uint16_t minutes = (duration % 3600) / 60;
-				s << hours << " hour" << (hours != 1 ? "s" : "");
-
-				if (minutes > 0) {
-					s << " and " << minutes << " minute" << (minutes != 1 ? "s" : "");
-				}
-			} else if (duration >= 60) {
-				uint16_t minutes = duration / 60;
-				s << minutes << " minute" << (minutes != 1 ? "s" : "");
-				uint16_t seconds = duration % 60;
-
-				if (seconds > 0) {
-					s << " and " << seconds << " second" << (seconds != 1 ? "s" : "");
-				}
-			} else {
-				s << duration << " second" << (duration != 1 ? "s" : "");
-			}
-		} else {
-			s << " that is brand-new";
-		}
+		s << parseShowDuration(item);
 	}
 
 	if (!it.allowDistRead || (it.id >= 7369 && it.id <= 7371)) {
@@ -2641,6 +2765,45 @@ void Item::stopDecaying() {
 	g_decay().stopDecay(this);
 }
 
+Item* Item::transform(uint16_t itemId, uint16_t itemCount /*= -1*/) {
+	Cylinder* cylinder = getParent();
+	if (cylinder == nullptr) {
+		SPDLOG_INFO("[{}] failed to transform item {}, cylinder is nullptr", __FUNCTION__, getID());
+		return nullptr;
+	}
+
+	Tile* fromTile = cylinder->getTile();
+	if (fromTile) {
+		auto it = g_game().browseFields.find(fromTile);
+		if (it != g_game().browseFields.end() && it->second == cylinder) {
+			cylinder = fromTile;
+		}
+	}
+
+	Item* newItem;
+	if (itemCount == -1) {
+		newItem = Item::CreateItem(itemId, 1);
+	} else {
+		newItem = Item::CreateItem(itemId, itemCount);
+	}
+
+	int32_t itemIndex = cylinder->getThingIndex(this);
+	auto duration = getDuration();
+	if (duration > 0) {
+		newItem->setDuration(duration);
+	}
+
+	cylinder->replaceThing(itemIndex, newItem);
+	cylinder->postAddNotification(newItem, cylinder, itemIndex);
+
+	setParent(nullptr);
+	cylinder->postRemoveNotification(this, cylinder, itemIndex);
+	stopDecaying();
+	g_game().ReleaseItem(this);
+	newItem->startDecaying();
+	return newItem;
+}
+
 bool Item::hasMarketAttributes() const {
 	if (!isInitializedAttributePtr()) {
 		return true;
@@ -2655,13 +2818,13 @@ bool Item::hasMarketAttributes() const {
 			return false;
 		}
 
-		if (attribute.getAttributeType() == ItemAttribute_t::IMBUEMENT_TYPE && !hasImbuements()) {
-			return false;
-		}
-
 		if (attribute.getAttributeType() == ItemAttribute_t::TIER && static_cast<uint8_t>(attribute.getInteger()) != getTier()) {
 			return false;
 		}
+	}
+
+	if (hasImbuements()) {
+		return false;
 	}
 
 	return true;

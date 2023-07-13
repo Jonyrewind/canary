@@ -1,7 +1,7 @@
 local mType = Game.createMonsterType("Maxxenius")
 local monster = {}
 
-monster.description = "a Maxxenius"
+monster.description = "Maxxenius"
 monster.experience = 55000
 monster.outfit = {
 	lookType = 1142,
@@ -89,7 +89,7 @@ monster.loot = {
 	{id = 281, chance = 28540}, -- giant shimmering pearl (green)
 	{name = "pomegranate", chance = 24140},
 	{name = "chaos mace", chance = 6900},
-	{id = 23528, chance = 17240}, -- collar of red plasma
+	{id = 23544, chance = 17240}, -- collar of red plasma
 	{id = 23543, chance = 13790}, -- collar of green plasma
 	{name = "green gem", chance = 31030},
 	{name = "yellow gem", chance = 31030},
@@ -127,7 +127,7 @@ monster.elements = {
 }
 
 monster.heals = {
-	{type = COMBAT_ENERGYDAMAGE, percent = 500}
+{type = COMBAT_ENERGYDAMAGE, percent = 500}
 }
 
 monster.immunities = {

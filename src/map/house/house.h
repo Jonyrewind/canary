@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_MAP_HOUSE_HOUSE_H_
@@ -228,7 +228,7 @@ class House {
 		bool isLoaded = false;
 
 		void handleContainer(ItemList &moveItemList, Item* item) const;
-		void handleWrapableItem(ItemList &moveItemList, Item* item) const;
+		void handleWrapableItem(ItemList &moveItemList, Item* item, Player* player, HouseTile* houseTile) const;
 };
 
 using HouseMap = std::map<uint32_t, House*>;

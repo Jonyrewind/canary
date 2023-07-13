@@ -11,11 +11,9 @@
     "parallel-hashmap",
     "magic-enum",
     "zlib",
-    {"name": "mio", "version>=": "2019-02-10"},
-    {
-      "name": "luajit",
-      "platform": "!arm"
-    },
+    "mio",
+    "luajit",
+    "abseil",
     {
       "name": "libmariadb",
       "features": [ "mariadbclient" ]
@@ -29,5 +27,5 @@
       "platform": "windows"
     }
   ],
-  "builtin-baseline":"0e67f312e831b4b897c7f492cf1e2858522c6e18"
+  "builtin-baseline": "0d1150cbd2f8b3eb9247c51c9f41efbb3be9454b"
 }

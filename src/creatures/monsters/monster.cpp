@@ -4,13 +4,14 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
 
 #include "creatures/monsters/monster.h"
 #include "creatures/combat/spells.h"
+#include "creatures/players/wheel/player_wheel.hpp"
 #include "game/game.h"
 #include "game/scheduling/tasks.h"
 #include "lua/creature/events.h"
@@ -38,6 +39,7 @@ Monster::Monster(MonsterType* mType) :
 	float multiplier = g_configManager().getFloat(RATE_MONSTER_HEALTH);
 	health = mType->info.health * multiplier;
 	healthMax = mType->info.healthMax * multiplier;
+	runAwayHealth = mType->info.runAwayHealth * multiplier;
 	baseSpeed = mType->getBaseSpeed();
 	internalLight = mType->info.light;
 	hiddenHealth = mType->info.hiddenHealth;
@@ -64,10 +66,6 @@ void Monster::addList() {
 
 void Monster::removeList() {
 	g_game().removeMonster(this);
-}
-
-bool Monster::canSee(const Position &pos) const {
-	return Creature::canSee(getPosition(), pos, 10, 10); // jlcvp FIX - range 10 Avoids killing monster without reaction
 }
 
 bool Monster::canWalkOnFieldType(CombatType_t combatType) const {
@@ -629,6 +627,12 @@ BlockType_t Monster::blockHit(Creature* attacker, CombatType_t combatType, int32
 			elementMod = it->second;
 		}
 
+		// Wheel of destiny
+		Player* player = attacker ? attacker->getPlayer() : nullptr;
+		if (player && player->wheel()->getInstant("Ballistic Mastery")) {
+			elementMod -= player->wheel()->checkElementSensitiveReduction(combatType);
+		}
+
 		if (elementMod != 0) {
 			damage = static_cast<int32_t>(std::round(damage * ((100 - elementMod) / 100.)));
 			if (damage <= 0) {
@@ -698,7 +702,7 @@ void Monster::updateIdleStatus() {
 	if (conditions.empty()) {
 		if (!isSummon() && targetList.empty()) {
 			idle = true;
-		} else if ((!master || master->getMonster()) && getFaction() != FACTION_DEFAULT && (totalPlayersOnScreen == 0 && (!master || master->getMonster()->totalPlayersOnScreen == 0))) {
+		} else if ((!isSummon() && totalPlayersOnScreen == 0 || isSummon() && master->getMonster() && master->getMonster()->totalPlayersOnScreen == 0) && getFaction() != FACTION_DEFAULT) {
 			idle = true;
 		}
 	}
@@ -800,6 +804,7 @@ void Monster::onThink(uint32_t interval) {
 			onThinkTarget(interval);
 			onThinkYell(interval);
 			onThinkDefense(interval);
+			onThinkSound(interval);
 		}
 	}
 }
@@ -829,7 +834,7 @@ void Monster::doAttacking(uint32_t interval) {
 			break;
 		}
 
-		if (spellBlock.isMelee && isFleeing()) {
+		if (spellBlock.spell == nullptr || spellBlock.isMelee && isFleeing()) {
 			continue;
 		}
 
@@ -855,7 +860,7 @@ void Monster::doAttacking(uint32_t interval) {
 					maxCombatValue *= static_cast<int32_t>(forgeAttackBonus);
 				}
 
-				if (!spellBlock.spell) {
+				if (spellBlock.spell == nullptr) {
 					continue;
 				}
 
@@ -982,7 +987,7 @@ void Monster::onThinkDefense(uint32_t interval) {
 			continue;
 		}
 
-		if (defenseTicks % spellBlock.speed >= interval) {
+		if (spellBlock.spell == nullptr || defenseTicks % spellBlock.speed >= interval) {
 			// already used this spell for this round
 			continue;
 		}
@@ -1031,6 +1036,7 @@ void Monster::onThinkDefense(uint32_t interval) {
 					summon->setMaster(this, true);
 					g_game().addMagicEffect(getPosition(), CONST_ME_MAGIC_BLUE);
 					g_game().addMagicEffect(summon->getPosition(), CONST_ME_TELEPORT);
+					g_game().sendSingleSoundEffect(summon->getPosition(), SoundEffect_t::MONSTER_SPELL_SUMMON, this);
 				} else {
 					delete summon;
 				}
@@ -1061,6 +1067,22 @@ void Monster::onThinkYell(uint32_t interval) {
 			} else {
 				g_game().internalCreatureSay(this, TALKTYPE_MONSTER_SAY, vb.text, false);
 			}
+		}
+	}
+}
+
+void Monster::onThinkSound(uint32_t interval) {
+	if (mType->info.soundSpeedTicks == 0) {
+		return;
+	}
+
+	soundTicks += interval;
+	if (soundTicks >= mType->info.soundSpeedTicks) {
+		soundTicks = 0;
+
+		if (!mType->info.soundVector.empty() && (mType->info.soundChance >= static_cast<uint32_t>(uniform_random(1, 100)))) {
+			int64_t index = uniform_random(0, static_cast<int64_t>(mType->info.soundVector.size() - 1));
+			g_game().sendSingleSoundEffect(this->getPosition(), mType->info.soundVector[index], this);
 		}
 	}
 }
@@ -1840,6 +1862,10 @@ void Monster::death(Creature*) {
 	clearTargetList();
 	clearFriendList();
 	onIdleStatus();
+
+	if (mType) {
+		g_game().sendSingleSoundEffect(this->getPosition(), mType->info.deathSound, this);
+	}
 }
 
 Item* Monster::getCorpse(Creature* lastHitCreature, Creature* mostDamageCreature) {
@@ -1995,6 +2021,11 @@ void Monster::drainHealth(Creature* attacker, int32_t damage) {
 }
 
 void Monster::changeHealth(int32_t healthChange, bool sendHealthChange /* = true*/) {
+	if (mType && !mType->info.soundVector.empty() && mType->info.soundChance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+		auto index = uniform_random(0, mType->info.soundVector.size() - 1);
+		g_game().sendSingleSoundEffect(this->getPosition(), mType->info.soundVector[index], this);
+	}
+
 	// In case a player with ignore flag set attacks the monster
 	setIdle(false);
 	Creature::changeHealth(healthChange, sendHealthChange);
@@ -2007,14 +2038,19 @@ bool Monster::challengeCreature(Creature* creature) {
 
 	bool result = selectTarget(creature);
 	if (result) {
-		targetChangeCooldown = 8000;
+		targetChangeCooldown = 6000;
 		challengeFocusDuration = targetChangeCooldown;
 		targetChangeTicks = 0;
+		// Wheel of destiny
+		Player* player = creature ? creature->getPlayer() : nullptr;
+		if (player && !player->isRemoved()) {
+			player->wheel()->healIfBattleHealingActive();
+		}
 	}
 	return result;
 }
 
-bool Monster::changeTargetDistance(int32_t distance) {
+bool Monster::changeTargetDistance(int32_t distance, uint32_t duration /* = 12000*/) {
 	if (isSummon()) {
 		return false;
 	}
@@ -2024,7 +2060,7 @@ bool Monster::changeTargetDistance(int32_t distance) {
 	}
 
 	bool shouldUpdate = mType->info.targetDistance > distance ? true : false;
-	challengeMeleeDuration = 12000;
+	challengeMeleeDuration = duration;
 	targetDistance = distance;
 
 	if (shouldUpdate) {

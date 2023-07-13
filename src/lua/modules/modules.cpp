@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -153,7 +153,7 @@ void Module::clearEvent() {
 }
 
 void Module::executeOnRecvbyte(Player* player, NetworkMessage &msg) {
-	// onAdvance(player, skill, oldLevel, newLevel)
+	// onRecvbyte(player, msg, recvbyte)
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("Call stack overflow. Too many lua script calls being nested {}", player->getName());
 		return;

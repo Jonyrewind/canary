@@ -4,14 +4,18 @@ function bestiaryOnKill.onKill(player, creature, lastHit)
 		return true
 	end
 
+	local bestiaryMultiplier = (configManager.getNumber(configKeys.BESTIARY_KILL_MULTIPLIER) or 1)
+	local bestiaryBetterment = Concoction.find(Concoction.Ids.BestiaryBetterment)
+	if not bestiaryBetterment then
+		Spdlog.warn("[BestiaryOnKill] - Could not find BestiaryBetterment concoction.")
+	end
 	for cid, damage in pairs(creature:getDamageMap()) do
 		local participant = Player(cid)
-		local monsterType = creature:getType()
 		if participant and participant:isPlayer() then
-			local bestAmount = 10 --(default=1) how much will increase after kill a monter in bestiary
-			for i = bestAmount, 1, -1 do 
-			participant:addBestiaryKill(monsterType:getTypeName():lower())
+			if bestiaryBetterment and bestiaryBetterment:active(participant) then
+				bestiaryMultiplier = bestiaryMultiplier * bestiaryBetterment.config.multiplier
 			end
+			participant:addBestiaryKill(creature:getName(), bestiaryMultiplier)
 		end
 	end
 

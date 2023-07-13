@@ -4,12 +4,13 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
 
 #include "core.hpp"
+#include "items/item.h"
 #include "utils/tools.h"
 
 void printXMLError(const std::string &where, const std::string &fileName, const pugi::xml_parse_result &result) {
@@ -189,7 +190,7 @@ std::string transformToSHA1(const std::string &input) {
 uint16_t getStashSize(StashItemList itemList) {
 	uint16_t size = 0;
 	for (auto item : itemList) {
-		size += ceil(item.second / 100.0);
+		size += ceil(item.second / (float_t)Item::items[item.first].stackSize);
 	}
 	return size;
 }
@@ -347,11 +348,21 @@ std::string convertIPToString(uint32_t ip) {
 }
 
 std::string formatDate(time_t time) {
-	return fmt::format("{:%d/%m/%Y %H:%M:%S}", fmt::localtime(time));
+	try {
+		return fmt::format("{:%d/%m/%Y %H:%M:%S}", fmt::localtime(time));
+	} catch (const std::out_of_range &exception) {
+		SPDLOG_ERROR("Failed to format date with error code {}", exception.what());
+	}
+	return {};
 }
 
 std::string formatDateShort(time_t time) {
-	return fmt::format("{:%Y-%m-%d %X}", fmt::localtime(time));
+	try {
+		return fmt::format("{:%Y-%m-%d %X}", fmt::localtime(time));
+	} catch (const std::out_of_range &exception) {
+		SPDLOG_ERROR("Failed to format date short with error code {}", exception.what());
+	}
+	return {};
 }
 
 std::time_t getTimeNow() {
@@ -941,15 +952,17 @@ bool booleanString(const std::string &str) {
 std::string getWeaponName(WeaponType_t weaponType) {
 	switch (weaponType) {
 		case WEAPON_SWORD:
-			return "stabbing weapon";
+			return "sword";
 		case WEAPON_CLUB:
-			return "blunt instrument";
+			return "club";
 		case WEAPON_AXE:
-			return "cutting weapon";
+			return "axe";
 		case WEAPON_DISTANCE:
-			return "firearm";
+			return "distance";
 		case WEAPON_WAND:
-			return "wand/rod";
+			return "wand";
+		case WEAPON_AMMO:
+			return "ammunition";
 		case WEAPON_MISSILE:
 			return "missile";
 		default:
@@ -993,7 +1006,9 @@ CombatType_t indexToCombatType(size_t v) {
 }
 
 ItemAttribute_t stringToItemAttribute(const std::string &str) {
-	if (str == "aid") {
+	if (str == "store") {
+		return ItemAttribute_t::STORE;
+	} else if (str == "aid") {
 		return ItemAttribute_t::ACTIONID;
 	} else if (str == "uid") {
 		return ItemAttribute_t::UNIQUEID;
@@ -1041,7 +1056,13 @@ ItemAttribute_t stringToItemAttribute(const std::string &str) {
 		return ItemAttribute_t::DOORID;
 	} else if (str == "timestamp") {
 		return ItemAttribute_t::DURATION_TIMESTAMP;
+	} else if (str == "amount") {
+		return ItemAttribute_t::AMOUNT;
+	} else if (str == "tier") {
+		return ItemAttribute_t::TIER;
 	}
+
+	SPDLOG_ERROR("[{}] attribute type {} is not registered", __FUNCTION__, str);
 	return ItemAttribute_t::NONE;
 }
 
@@ -1298,6 +1319,9 @@ const char* getReturnMessage(ReturnValue value) {
 		case RETURNVALUE_NOTPOSSIBLE:
 			return "Sorry, not possible.";
 
+		case RETURNVALUE_REWARDCONTAINERISEMPTY:
+			return "You already claimed your reward.";
+
 		case RETURNVALUE_CONTACTADMINISTRATOR:
 			return "An error has occurred, please contact your administrator.";
 
@@ -1357,7 +1381,9 @@ void capitalizeWords(std::string &source) {
  */
 void consoleHandlerExit() {
 	SPDLOG_ERROR("The program will close after pressing the enter key...");
-	getchar();
+	if (isatty(STDIN_FILENO)) {
+		getchar();
+	}
 	return;
 }
 

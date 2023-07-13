@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -97,6 +97,11 @@ int32_t Creature::getWalkDelay() const {
 	int64_t ct = OTSYS_TIME();
 	int64_t stepDuration = getStepDuration() * lastStepCost;
 	return stepDuration - (ct - lastStep);
+}
+
+int32_t Creature::getWalkSize() {
+	auto ret = std::distance(listWalkDir.begin(), listWalkDir.end());
+	return static_cast<int32_t>(ret);
 }
 
 void Creature::onThink(uint32_t interval) {
@@ -218,8 +223,8 @@ bool Creature::getNextStep(Direction &dir, uint32_t &) {
 	return true;
 }
 
-void Creature::startAutoWalk(const std::forward_list<Direction> &listDir) {
-	if (hasCondition(CONDITION_ROOTED)) {
+void Creature::startAutoWalk(const std::forward_list<Direction> &listDir, bool ignoreConditions /* = false*/) {
+	if (!ignoreConditions && (hasCondition(CONDITION_ROOTED) || hasCondition(CONDITION_FEARED))) {
 		return;
 	}
 
@@ -403,6 +408,8 @@ void Creature::onChangeZone(ZoneType_t zone) {
 	}
 }
 
+void Creature::onChangeHazard(bool isHazard) { }
+
 void Creature::onAttackedCreatureChangeZone(ZoneType_t zone) {
 	if (zone == ZONE_PROTECTION) {
 		onCreatureDisappear(attackedCreature, false);
@@ -419,18 +426,29 @@ void Creature::checkSummonMove(const Position &newPos, bool teleportSummon) cons
 
 			const Position &pos = creature->getPosition();
 			const Monster* monster = creature->getMonster();
-			bool protectionZoneCheck = this->getTile()->hasFlag(TILESTATE_PROTECTIONZONE);
+			bool protectionZoneCheck = tile ? tile->hasFlag(TILESTATE_PROTECTIONZONE) : false;
 			// Check if any of our summons is out of range (+/- 0 floors or 15 tiles away)
 			bool checkSummonDist = Position::getDistanceZ(newPos, pos) > 0 || (std::max<int32_t>(Position::getDistanceX(newPos, pos), Position::getDistanceY(newPos, pos)) > 15);
 			// Check if any of our summons is out of range (+/- 2 floors or 30 tiles away)
 			bool checkRemoveDist = Position::getDistanceZ(newPos, pos) > 2 || (std::max<int32_t>(Position::getDistanceX(newPos, pos), Position::getDistanceY(newPos, pos)) > 30);
 
-			if (monster->isFamiliar() && checkSummonDist || teleportSummon && !protectionZoneCheck && checkSummonDist) {
-				g_game().internalTeleport(creature, creature->getMaster()->getPosition(), true);
-				continue;
+			if (monster && monster->isFamiliar() && checkSummonDist || teleportSummon && !protectionZoneCheck && checkSummonDist) {
+				auto creatureMaster = creature->getMaster();
+				if (!creatureMaster) {
+					continue;
+				}
+
+				if (Tile* masterTile = creatureMaster->getTile()) {
+					if (masterTile->hasFlag(TILESTATE_TELEPORT)) {
+						SPDLOG_WARN("[{}] cannot teleport summon, position has teleport. {}", __FUNCTION__, creatureMaster->getPosition().toString());
+					} else {
+						g_game().internalTeleport(creature, creatureMaster->getPosition(), true);
+						continue;
+					}
+				}
 			}
 
-			if (monster->isSummon() && !monster->isFamiliar() && !teleportSummon && checkRemoveDist) {
+			if (monster && monster->isSummon() && !monster->isFamiliar() && !teleportSummon && checkRemoveDist) {
 				despawnMonsterList.push_back(creature);
 			}
 		}
@@ -474,6 +492,10 @@ void Creature::onCreatureMove(Creature* creature, const Tile* newTile, const Pos
 
 		if (newTile->getZone() != oldTile->getZone()) {
 			onChangeZone(getZone());
+		}
+
+		if (newTile->isHazard() != oldTile->isHazard()) {
+			onChangeHazard(newTile->isHazard());
 		}
 
 		// update map cache
@@ -765,7 +787,10 @@ bool Creature::hasBeenAttacked(uint32_t attackerId) {
 }
 
 Item* Creature::getCorpse(Creature*, Creature*) {
-	return Item::CreateItem(getLookCorpse());
+	if (getLookCorpse() != 0) {
+		return Item::CreateItem(getLookCorpse());
+	}
+	return nullptr;
 }
 
 void Creature::changeHealth(int32_t healthChange, bool sendHealthChange /* = true*/) {
@@ -817,6 +842,23 @@ void Creature::drainMana(Creature* attacker, int32_t manaLoss) {
 	}
 }
 
+// Wheel of destiny - mitigation system for creature
+void Creature::mitigateDamage(const CombatType_t &combatType, BlockType_t &blockType, int32_t &damage) const {
+	if (combatType != COMBAT_MANADRAIN && combatType != COMBAT_LIFEDRAIN) { // Add agony check if the server does have agony combat type
+		// Increase mitigate damage
+		auto originalDamage = damage;
+		damage -= (damage * getMitigation()) / 100.;
+		if (isDevMode()) {
+			spdlog::info("[mitigation] creature: {}, original damage: {}, mitigation damage: {}", getName(), originalDamage, damage);
+		}
+
+		if (damage <= 0) {
+			damage = 0;
+			blockType = BLOCK_ARMOR;
+		}
+	}
+}
+
 BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense /* = false */, bool checkArmor /* = false */, bool /* field  = false */) {
 	BlockType_t blockType = BLOCK_NONE;
 
@@ -865,13 +907,16 @@ BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int3
 		attacker->onAttackedCreatureBlockHit(blockType);
 	}
 
+	mitigateDamage(combatType, blockType, damage);
+
 	onAttacked();
 	return blockType;
 }
 
 bool Creature::setAttackedCreature(Creature* creature) {
 	if (creature) {
-		if (this->getMonster() && this->getMonster()->isFamiliar() && this->getTile() && this->getTile()->hasFlag(TILESTATE_PROTECTIONZONE)) {
+		auto monster = getMonster();
+		if (monster && monster->isFamiliar() && tile && tile->hasFlag(TILESTATE_PROTECTIONZONE)) {
 			return false;
 		}
 
@@ -953,13 +998,19 @@ void Creature::goToFollowCreature() {
 }
 
 bool Creature::canFollowMaster() const {
-	return !master->getTile()->hasFlag(TILESTATE_PROTECTIONZONE) && (canSeeInvisibility() || !master->isInvisible());
+	auto tile = master->getTile();
+	return tile && !tile->hasFlag(TILESTATE_PROTECTIONZONE) && (canSeeInvisibility() || !master->isInvisible());
 }
 
 bool Creature::setFollowCreature(Creature* creature) {
 	if (creature) {
 		if (followCreature == creature) {
 			return true;
+		}
+
+		if (hasCondition(CONDITION_FEARED)) {
+			followCreature = nullptr;
+			return false;
 		}
 
 		const Position &creaturePos = creature->getPosition();
@@ -1047,7 +1098,7 @@ void Creature::onEndCondition(ConditionType_t) {
 }
 
 void Creature::onTickCondition(ConditionType_t type, bool &bRemove) {
-	const MagicField* field = getTile()->getFieldItem();
+	const MagicField* field = tile ? tile->getFieldItem() : nullptr;
 	if (!field) {
 		return;
 	}
@@ -1297,6 +1348,16 @@ Condition* Creature::getCondition(ConditionType_t type, ConditionId_t conditionI
 		}
 	}
 	return nullptr;
+}
+
+std::vector<Condition*> Creature::getConditionsByType(ConditionType_t type) const {
+	std::vector<Condition*> conditionsVec;
+	for (Condition* condition : conditions) {
+		if (condition->getType() == type) {
+			conditionsVec.push_back(condition);
+		}
+	}
+	return conditionsVec;
 }
 
 void Creature::executeConditions(uint32_t interval) {
@@ -1581,7 +1642,7 @@ bool Creature::getPathTo(const Position &targetPos, std::forward_list<Direction>
 	return g_game().map.getPathMatching(*this, dirList, FrozenPathingConditionCall(targetPos), fpp);
 }
 
-bool Creature::getPathTo(const Position &targetPos, std::forward_list<Direction> &dirList, int32_t minTargetDist, int32_t maxTargetDist, bool fullPathSearch /*= true*/, bool clearSight /*= true*/, int32_t maxSearchDist /*= 0*/) const {
+bool Creature::getPathTo(const Position &targetPos, std::forward_list<Direction> &dirList, int32_t minTargetDist, int32_t maxTargetDist, bool fullPathSearch /*= true*/, bool clearSight /*= true*/, int32_t maxSearchDist /*= 7*/) const {
 	FindPathParams fpp;
 	fpp.fullPathSearch = fullPathSearch;
 	fpp.maxSearchDist = maxSearchDist;

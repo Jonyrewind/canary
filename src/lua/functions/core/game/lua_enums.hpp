@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_
@@ -64,6 +64,8 @@ class LuaEnums final : LuaScriptInterface {
 		static void initForgeEnums(lua_State* L);
 		static void initWebhookEnums(lua_State* L);
 		static void initBosstiaryEnums(lua_State* L);
+		static void initSoundEnums(lua_State* L);
+		static void initWheelEnums(lua_State* L);
 };
 
 #endif // SRC_LUA_FUNCTIONS_CORE_GAME_LUA_ENUMS_HPP_

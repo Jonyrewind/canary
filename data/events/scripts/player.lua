@@ -335,34 +335,6 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 		end
 	end
 
-	-- Store Inbox
-	local containerIdFrom = fromPosition.y - 64
-	local containerFrom = self:getContainerById(containerIdFrom)
-	if (containerFrom) then
-		if (containerFrom:getId() == ITEM_STORE_INBOX
-		and toPosition.y >= 1 and toPosition.y <= 11 and toPosition.y ~= 3) then
-			self:sendCancelMessage(RETURNVALUE_CONTAINERNOTENOUGHROOM)
-			return false
-		end
-	end
-
-	local containerTo = self:getContainerById(toPosition.y-64)
-	if (containerTo) then
-		if (containerTo:getId() == ITEM_STORE_INBOX) or (containerTo:getParent():isContainer() and containerTo:getParent():getId() == ITEM_STORE_INBOX and containerTo:getId() ~= ITEM_GOLD_POUCH) then
-			self:sendCancelMessage(RETURNVALUE_CONTAINERNOTENOUGHROOM)
-			return false
-		end
-		-- Gold Pouch
-		if (containerTo:getId() == ITEM_GOLD_POUCH) then
-			if (not (item:getId() == ITEM_CRYSTAL_COIN or item:getId() == ITEM_PLATINUM_COIN
-			or item:getId() == ITEM_GOLD_COIN)) then
-				self:sendCancelMessage("You can move only money to this container.")
-				return false
-			end
-		end
-	end
-
-
 	-- Bath tube
 	local toTile = Tile(toCylinder:getPosition())
 	local topDownItem = toTile:getTopDownItem()
@@ -614,7 +586,7 @@ local function useStamina(player)
 	end
 
 	local playerId = player:getId()
-	if not playerId then
+	if not playerId or not nextUseStaminaTime[playerId] then
 		return false
 	end
 
@@ -675,6 +647,30 @@ local function useStaminaXpBoost(player)
 	player:setExpBoostStamina(staminaMinutes * 60)
 end
 
+local function useConcoctionTime(player)
+	if not player then
+		return false
+	end
+
+	local playerId = player:getId()
+	if not playerId or not nextUseConcoctionTime[playerId] then
+		return false
+	end
+
+	local currentTime = os.time()
+	local timePassed = currentTime - nextUseConcoctionTime[playerId]
+	if timePassed <= 0 then
+		return false
+	end
+
+	local deduction = 60
+	if timePassed < 60 then
+		deduction = timePassed
+	end
+	nextUseConcoctionTime[playerId] = currentTime + 60
+	Concoction.experienceTick(player, deduction)
+end
+
 function Player:onGainExperience(target, exp, rawExp)
 	if not target or target:isPlayer() then
 		return exp
@@ -697,17 +693,15 @@ function Player:onGainExperience(target, exp, rawExp)
 	self:setStoreXpBoost(storeXpBoostAmount)
 
 	-- Stamina Bonus
-	local staminaBoost = 1
+	local staminaBonusXp = 1
 	if configManager.getBoolean(configKeys.STAMINA_SYSTEM) then
 		useStamina(self)
-		local staminaMinutes = self:getStamina()
-			if staminaMinutes > 2340 and self:isPremium() then
-				staminaBoost = 1.5
-			elseif staminaMinutes <= 840 then
-				staminaBoost = 0.5 --TODO destroy loot of people with 840- stamina
-			end
-		self:setStaminaXpBoost(staminaBoost * 100)
+		staminaBonusXp = self:getFinalBonusStamina()
+		self:setStaminaXpBoost(staminaBonusXp * 100)
 	end
+
+	-- Concoction System
+	useConcoctionTime(self)
 
 	-- Boosted creature
 	if target:getName():lower() == (Game.getBoostedCreature()):lower() then
@@ -722,9 +716,10 @@ function Player:onGainExperience(target, exp, rawExp)
 		end
 	end
 
+	local lowLevelBonuxExp = self:getFinalLowLevelBonus()
 	local baseRate = self:getFinalBaseRateExperience()
 
-	return (exp * baseRate + (exp * (storeXpBoostAmount/100))) * staminaBoost
+	return (exp + (exp * (storeXpBoostAmount/100) + (exp * (lowLevelBonuxExp/100)))) * staminaBonusXp * baseRate
 end
 
 function Player:onLoseExperience(exp)
@@ -741,12 +736,20 @@ function Player:onGainSkillTries(skill, tries)
 	end
 
 	-- Event scheduler skill rate
-	local STAGES_DEFAULT = skillsStages or nil
-	local SKILL_DEFAULT = self:getSkillLevel(skill)
-	local RATE_DEFAULT = configManager.getNumber(configKeys.RATE_SKILL)
+	if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
+		STAGES_DEFAULT = skillsStages
+	else
+		STAGES_DEFAULT = nil
+	end
+	SKILL_DEFAULT = self:getSkillLevel(skill)
+	RATE_DEFAULT = configManager.getNumber(configKeys.RATE_SKILL)
 
 	if(skill == SKILL_MAGLEVEL) then -- Magic Level
-		STAGES_DEFAULT = magicLevelStages or nil
+		if configManager.getBoolean(configKeys.RATE_USE_STAGES) then
+			STAGES_DEFAULT = magicLevelStages
+		else
+			STAGES_DEFAULT = nil
+		end
 		SKILL_DEFAULT = self:getBaseMagicLevel()
 		RATE_DEFAULT = configManager.getNumber(configKeys.RATE_MAGIC)
 	end
@@ -828,6 +831,15 @@ function Player:onChangeZone(zone)
 	return false
 end
 
+function Player:onChangeHazard(isHazard)
+	if not isHazard then
+		self:setHazardSystemPoints(0)
+		player:getParty():updateHazard()
+		return true
+	end
+
+	return self:updateHazard()
+end
 
 function Player:onInventoryUpdate(item, slot, equip)
 end

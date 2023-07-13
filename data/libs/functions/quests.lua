@@ -1,3 +1,5 @@
+dofile(DATA_DIRECTORY .. "/lib/core/quests.lua")
+
 if not LastQuestlogUpdate then
 	LastQuestlogUpdate = {}
 end
@@ -314,7 +316,9 @@ function Player.sendQuestLine(self, questId)
 		if missions then
 			for missionId = 1, #missions do
 				if self:missionIsStarted(questId, missionId) then
-					msg:addU16(self:getMissionId(questId, missionId))
+					if self:getClient().version >= 1200 then
+						msg:addU16(self:getMissionId(questId, missionId))
+					end
 					msg:addString(self:getMissionName(questId, missionId))
 					msg:addString(self:getMissionDescription(questId, missionId))
 				end

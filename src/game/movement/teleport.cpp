@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -67,6 +67,9 @@ void Teleport::addThing(Thing* thing) {
 }
 
 void Teleport::addThing(int32_t, Thing* thing) {
+	if (!thing)
+		return;
+
 	Tile* destTile = g_game().map.getTile(destPos);
 	if (!destTile) {
 		return;

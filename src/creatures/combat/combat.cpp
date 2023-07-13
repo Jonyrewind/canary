@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -12,16 +12,46 @@
 #include "declarations.hpp"
 #include "creatures/combat/combat.h"
 #include "lua/creature/events.h"
+#include "creatures/players/wheel/player_wheel.hpp"
 #include "game/game.h"
 #include "io/iobestiary.h"
 #include "creatures/monsters/monster.h"
 #include "creatures/monsters/monsters.h"
 #include "items/weapons/weapons.h"
 
+int32_t Combat::getLevelFormula(const Player* player, const Spell* wheelSpell, const CombatDamage &damage) const {
+	if (!player) {
+		return 0;
+	}
+
+	uint32_t magicLevelSkill = player->getMagicLevel();
+	// Wheel of destiny - Runic Mastery
+	if (player->wheel()->getInstant("Runic Mastery") && wheelSpell && damage.instantSpellName.empty() && normal_random(0, 100) <= 25) {
+		const auto conjuringSpell = g_spells().getInstantSpellByName(damage.runeSpellName);
+		if (conjuringSpell && conjuringSpell != wheelSpell) {
+			uint32_t castResult = conjuringSpell->canCast(player) ? 20 : 10;
+			magicLevelSkill += magicLevelSkill * castResult / 100;
+		}
+	}
+
+	int32_t levelFormula = player->getLevel() * 2 + /*player->getSpecializedMagicLevel() +*/ magicLevelSkill * 3;
+	return levelFormula;
+}
+
 CombatDamage Combat::getCombatDamage(Creature* creature, Creature* target) const {
 	CombatDamage damage;
 	damage.origin = params.origin;
 	damage.primary.type = params.combatType;
+
+	damage.instantSpellName = instantSpellName;
+	damage.runeSpellName = runeSpellName;
+	// Wheel of destiny
+	const Spell* wheelSpell = nullptr;
+	Player* attackerPlayer = creature ? creature->getPlayer() : nullptr;
+	if (attackerPlayer) {
+		wheelSpell = attackerPlayer->wheel()->getCombatDataSpell(damage);
+	}
+	// End
 	if (formulaType == COMBAT_FORMULA_DAMAGE) {
 		damage.primary.value = normal_random(
 			static_cast<int32_t>(mina),
@@ -35,7 +65,7 @@ CombatDamage Combat::getCombatDamage(Creature* creature, Creature* target) const
 			if (params.valueCallback) {
 				params.valueCallback->getMinMaxValues(player, damage, params.useCharges);
 			} else if (formulaType == COMBAT_FORMULA_LEVELMAGIC) {
-				int32_t levelFormula = player->getLevel() * 2 + player->getMagicLevel() * 3;
+				int32_t levelFormula = getLevelFormula(player, wheelSpell, damage);
 				damage.primary.value = normal_random(
 					static_cast<int32_t>(levelFormula * mina + minb),
 					static_cast<int32_t>(levelFormula * maxa + maxb)
@@ -276,6 +306,8 @@ ReturnValue Combat::canDoCombat(Creature* attacker, Creature* target) {
 				return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER;
 			}
 
+			const Tile* targetPlayerTile = targetPlayer->getTile();
+
 			if (const Player* attackerPlayer = attacker->getPlayer()) {
 				if (attackerPlayer->hasFlag(PlayerFlags_t::CannotAttackPlayer)) {
 					return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER;
@@ -286,10 +318,10 @@ ReturnValue Combat::canDoCombat(Creature* attacker, Creature* target) {
 				}
 
 				// nopvp-zone
-				if (const Tile* targetPlayerTile = targetPlayer->getTile();
-					targetPlayerTile->hasFlag(TILESTATE_NOPVPZONE)) {
+				auto attackerTile = attackerPlayer->getTile();
+				if (targetPlayerTile && targetPlayerTile->hasFlag(TILESTATE_NOPVPZONE)) {
 					return RETURNVALUE_ACTIONNOTPERMITTEDINANOPVPZONE;
-				} else if (attackerPlayer->getTile()->hasFlag(TILESTATE_NOPVPZONE) && !targetPlayerTile->hasFlag(TILESTATE_NOPVPZONE | TILESTATE_PROTECTIONZONE)) {
+				} else if (attackerTile && attackerTile->hasFlag(TILESTATE_NOPVPZONE) && targetPlayerTile && !targetPlayerTile->hasFlag(TILESTATE_NOPVPZONE | TILESTATE_PROTECTIONZONE)) {
 					return RETURNVALUE_ACTIONNOTPERMITTEDINANOPVPZONE;
 				}
 
@@ -304,7 +336,7 @@ ReturnValue Combat::canDoCombat(Creature* attacker, Creature* target) {
 						return RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER;
 					}
 
-					if (targetPlayer->getTile()->hasFlag(TILESTATE_NOPVPZONE)) {
+					if (targetPlayerTile && targetPlayerTile->hasFlag(TILESTATE_NOPVPZONE)) {
 						return RETURNVALUE_ACTIONNOTPERMITTEDINANOPVPZONE;
 					}
 
@@ -425,6 +457,16 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			params.useCharges = (value != 0);
 			return true;
 		}
+
+		case COMBAT_PARAM_IMPACTSOUND: {
+			params.soundImpactEffect = static_cast<SoundEffect_t>(value);
+			return true;
+		}
+
+		case COMBAT_PARAM_CASTSOUND: {
+			params.soundCastEffect = static_cast<SoundEffect_t>(value);
+			return true;
+		}
 	}
 	return false;
 }
@@ -498,7 +540,7 @@ void Combat::CombatHealthFunc(Creature* caster, Creature* target, const CombatPa
 
 	if (caster && attackerPlayer) {
 		Item* item = attackerPlayer->getWeapon();
-		damage = applyImbuementElementalDamage(item, damage);
+		damage = applyImbuementElementalDamage(attackerPlayer, item, damage);
 		g_events().eventPlayerOnCombat(attackerPlayer, target, item, damage);
 
 		if (targetPlayer && targetPlayer->getSkull() != SKULL_BLACK) {
@@ -539,9 +581,13 @@ void Combat::CombatHealthFunc(Creature* caster, Creature* target, const CombatPa
 	}
 }
 
-CombatDamage Combat::applyImbuementElementalDamage(Item* item, CombatDamage damage) {
+CombatDamage Combat::applyImbuementElementalDamage(Player* attackerPlayer, Item* item, CombatDamage damage) {
 	if (!item) {
 		return damage;
+	}
+
+	if (item->getWeaponType() == WEAPON_AMMO && attackerPlayer && attackerPlayer->getInventoryItem(CONST_SLOT_LEFT) != nullptr) {
+		item = attackerPlayer->getInventoryItem(CONST_SLOT_LEFT);
 	}
 
 	for (uint8_t slotid = 0; slotid < item->getImbuementSlot(); slotid++) {
@@ -562,7 +608,11 @@ CombatDamage Combat::applyImbuementElementalDamage(Item* item, CombatDamage dama
 		damage.primary.value = damage.primary.value * (1 - damagePercent);
 		damage.secondary.value = damage.primary.value * (damagePercent);
 
-		/* If damage imbuement is set, we can return without checking other slots */
+		if (imbuementInfo.imbuement->soundEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(item->getPosition(), imbuementInfo.imbuement->soundEffect, item->getHoldingPlayer());
+		}
+
+		// If damage imbuement is set, we can return without checking other slots
 		break;
 	}
 
@@ -583,6 +633,34 @@ void Combat::CombatManaFunc(Creature* caster, Creature* target, const CombatPara
 	}
 }
 
+bool Combat::checkFearConditionAffected(Player* player) {
+	if (player->isImmuneFear()) {
+		return false;
+	}
+
+	if (player->hasCondition(CONDITION_FEARED)) {
+		return false;
+	}
+
+	Party* party = player->getParty();
+	if (party) {
+		auto affectedCount = (party->getMemberCount() + 5) / 5;
+		SPDLOG_DEBUG("[{}] Player is member of a party, {} members can be feared", __FUNCTION__, affectedCount);
+
+		for (const auto member : party->getMembers()) {
+			if (member->hasCondition(CONDITION_FEARED)) {
+				affectedCount -= 1;
+			}
+		}
+
+		if (affectedCount <= 0) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
 void Combat::CombatConditionFunc(Creature* caster, Creature* target, const CombatParams &params, CombatDamage* data) {
 	if (params.origin == ORIGIN_MELEE && data && data->primary.value == 0 && data->secondary.value == 0) {
 		return;
@@ -593,8 +671,8 @@ void Combat::CombatConditionFunc(Creature* caster, Creature* target, const Comba
 		if (target) {
 			player = target->getPlayer();
 		}
-		// Cleanse charm rune (target as player)
 		if (player) {
+			// Cleanse charm rune (target as player)
 			if (player->isImmuneCleanse(condition->getType())) {
 				player->sendCancelMessage("You are still immune against this spell.");
 				return;
@@ -615,12 +693,17 @@ void Combat::CombatConditionFunc(Creature* caster, Creature* target, const Comba
 					}
 				}
 			}
+
+			if (condition->getType() == CONDITION_FEARED && !checkFearConditionAffected(player)) {
+				return;
+			}
 		}
 
 		if (caster == target || target && !target->isImmune(condition->getType())) {
 			Condition* conditionCopy = condition->clone();
 			if (caster) {
 				conditionCopy->setParam(CONDITION_PARAM_OWNER, caster->getID());
+				conditionCopy->setPositionParam(CONDITION_PARAM_CASTER_POSITION, caster->getPosition());
 			}
 
 			// TODO: infight condition until all aggressive conditions has ended
@@ -725,11 +808,23 @@ void Combat::combatTileEffects(const SpectatorHashSet &spectators, Creature* cas
 	if (params.impactEffect != CONST_ME_NONE) {
 		Game::addMagicEffect(spectators, tile->getPosition(), params.impactEffect);
 	}
+
+	if (params.soundImpactEffect != SoundEffect_t::SILENCE) {
+		g_game().sendDoubleSoundEffect(tile->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+	} else if (params.soundCastEffect != SoundEffect_t::SILENCE) {
+		g_game().sendSingleSoundEffect(tile->getPosition(), params.soundCastEffect, caster);
+	}
 }
 
 void Combat::postCombatEffects(Creature* caster, const Position &pos, const CombatParams &params) {
 	if (caster && params.distanceEffect != CONST_ANI_NONE) {
 		addDistanceEffect(caster, caster->getPosition(), pos, params.distanceEffect);
+	}
+
+	if (params.soundImpactEffect != SoundEffect_t::SILENCE) {
+		g_game().sendDoubleSoundEffect(pos, params.soundCastEffect, params.soundImpactEffect, caster);
+	} else if (params.soundCastEffect != SoundEffect_t::SILENCE) {
+		g_game().sendSingleSoundEffect(pos, params.soundCastEffect, caster);
 	}
 }
 
@@ -850,7 +945,7 @@ void Combat::CombatFunc(Creature* caster, const Position &pos, const AreaCombat*
 			}
 		}
 	}
-	//
+
 	CombatDamage tmpDamage;
 	if (data) {
 		tmpDamage.origin = data->origin;
@@ -860,7 +955,24 @@ void Combat::CombatFunc(Creature* caster, const Position &pos, const AreaCombat*
 		tmpDamage.secondary.value = data->secondary.value;
 		tmpDamage.critical = data->critical;
 		tmpDamage.fatal = data->fatal;
+		tmpDamage.criticalDamage = data->criticalDamage;
+		tmpDamage.criticalChance = data->criticalChance;
+		tmpDamage.damageMultiplier = data->damageMultiplier;
+		tmpDamage.damageReductionMultiplier = data->damageReductionMultiplier;
+		tmpDamage.healingMultiplier = data->healingMultiplier;
+		tmpDamage.manaLeech = data->manaLeech;
+		tmpDamage.lifeLeech = data->lifeLeech;
+		tmpDamage.healingLink = data->healingLink;
+		tmpDamage.instantSpellName = data->instantSpellName;
+		tmpDamage.runeSpellName = data->runeSpellName;
+		tmpDamage.lifeLeechChance = data->lifeLeechChance;
+		tmpDamage.manaLeechChance = data->manaLeechChance;
 	}
+
+	// Wheel of destiny get beam affected total
+	Player* casterPlayer = caster ? caster->getPlayer() : nullptr;
+	uint8_t beamAffectedTotal = casterPlayer ? casterPlayer->wheel()->getBeamAffectedTotal(tmpDamage) : 0;
+	uint8_t beamAffectedCurrent = 0;
 
 	tmpDamage.affected = affected;
 	for (Tile* tile : tileList) {
@@ -882,6 +994,10 @@ void Combat::CombatFunc(Creature* caster, const Position &pos, const AreaCombat*
 				}
 
 				if (!params.aggressive || (caster != creature && Combat::canDoCombat(caster, creature) == RETURNVALUE_NOERROR)) {
+					// Wheel of destiny update beam mastery damage
+					if (casterPlayer) {
+						casterPlayer->wheel()->updateBeamMasteryDamage(tmpDamage, beamAffectedTotal, beamAffectedCurrent);
+					}
 					func(caster, creature, params, &tmpDamage);
 					if (params.targetCallback) {
 						params.targetCallback->onTargetCombat(caster, creature);
@@ -894,6 +1010,11 @@ void Combat::CombatFunc(Creature* caster, const Position &pos, const AreaCombat*
 			}
 		}
 		combatTileEffects(spectators, caster, tile, params);
+	}
+
+	// Wheel of destiny update beam mastery damage
+	if (casterPlayer) {
+		casterPlayer->wheel()->updateBeamMasteryDamage(tmpDamage, beamAffectedTotal, beamAffectedCurrent);
 	}
 
 	postCombatEffects(caster, pos, params);
@@ -915,7 +1036,7 @@ void Combat::doCombatHealth(Creature* caster, Creature* target, CombatDamage &da
 
 	if (caster && caster->getPlayer()) {
 		// Critical damage
-		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE);
+		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE) + (uint16_t)damage.criticalChance;
 		// Charm low blow rune)
 		if (target && target->getMonster() && damage.primary.type != COMBAT_HEALING) {
 			uint16_t playerCharmRaceid = caster->getPlayer()->parseRacebyCharm(CHARM_LOW, false, 0);
@@ -925,14 +1046,15 @@ void Combat::doCombatHealth(Creature* caster, Creature* target, CombatDamage &da
 					Charm* charm = g_iobestiary().getBestiaryCharm(CHARM_LOW);
 					if (charm) {
 						chance += charm->percent;
+						g_game().sendDoubleSoundEffect(target->getPosition(), charm->soundCastEffect, charm->soundImpactEffect, caster);
 					}
 				}
 			}
 		}
 		if (chance != 0 && uniform_random(1, 100) <= chance) {
 			damage.critical = true;
-			damage.primary.value += (damage.primary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
-			damage.secondary.value += (damage.secondary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
+			damage.primary.value += (damage.primary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
+			damage.secondary.value += (damage.secondary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
 		}
 
 		// Fatal hit (onslaught)
@@ -947,6 +1069,7 @@ void Combat::doCombatHealth(Creature* caster, Creature* target, CombatDamage &da
 			}
 		}
 	}
+
 	if (canCombat) {
 		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
 			addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
@@ -956,17 +1079,23 @@ void Combat::doCombatHealth(Creature* caster, Creature* target, CombatDamage &da
 		if (params.targetCallback) {
 			params.targetCallback->onTargetCombat(caster, target);
 		}
+
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
 	}
 }
 
 void Combat::doCombatHealth(Creature* caster, const Position &position, const AreaCombat* area, CombatDamage &damage, const CombatParams &params) {
 	if (caster && caster->getPlayer()) {
 		// Critical damage
-		if (uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE);
-			damage.primary.type != COMBAT_HEALING && chance != 0 && uniform_random(1, 100) <= chance) {
+		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE) + (uint16_t)damage.criticalChance;
+		if (damage.primary.type != COMBAT_HEALING && chance != 0 && uniform_random(1, 100) <= chance) {
 			damage.critical = true;
-			damage.primary.value += (damage.primary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
-			damage.secondary.value += (damage.secondary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
+			damage.primary.value += (damage.primary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
+			damage.secondary.value += (damage.secondary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
 		}
 
 		// Fatal hit (onslaught)
@@ -994,11 +1123,11 @@ void Combat::doCombatMana(Creature* caster, Creature* target, CombatDamage &dama
 
 	if (caster && caster->getPlayer()) {
 		// Critical damage
-		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE);
+		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE) + (uint16_t)damage.criticalChance;
 		if (chance != 0 && uniform_random(1, 100) <= chance) {
 			damage.critical = true;
-			damage.primary.value += (damage.primary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
-			damage.secondary.value += (damage.secondary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
+			damage.primary.value += (damage.primary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
+			damage.secondary.value += (damage.secondary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
 		}
 	}
 
@@ -1011,17 +1140,23 @@ void Combat::doCombatMana(Creature* caster, Creature* target, CombatDamage &dama
 		if (params.targetCallback) {
 			params.targetCallback->onTargetCombat(caster, target);
 		}
+
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
 	}
 }
 
 void Combat::doCombatMana(Creature* caster, const Position &position, const AreaCombat* area, CombatDamage &damage, const CombatParams &params) {
 	if (caster && caster->getPlayer()) {
 		// Critical damage
-		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE);
+		uint16_t chance = caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_CHANCE) + (uint16_t)damage.criticalChance;
 		if (chance != 0 && uniform_random(1, 100) <= chance) {
 			damage.critical = true;
-			damage.primary.value += (damage.primary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
-			damage.secondary.value += (damage.secondary.value * caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE)) / 100;
+			damage.primary.value += (damage.primary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
+			damage.secondary.value += (damage.secondary.value * (caster->getPlayer()->getSkillLevel(SKILL_CRITICAL_HIT_DAMAGE) + damage.criticalDamage)) / 100;
 		}
 	}
 	CombatFunc(caster, position, area, params, CombatManaFunc, &damage);
@@ -1045,6 +1180,12 @@ void Combat::doCombatCondition(Creature* caster, Creature* target, const CombatP
 		CombatConditionFunc(caster, target, params, nullptr);
 		if (params.targetCallback) {
 			params.targetCallback->onTargetCombat(caster, target);
+		}
+
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
 		}
 	}
 }
@@ -1070,6 +1211,12 @@ void Combat::doCombatDispel(Creature* caster, Creature* target, const CombatPara
 		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
 			addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
 		}
+
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
 	}
 }
 
@@ -1094,17 +1241,50 @@ void Combat::doCombatDefault(Creature* caster, Creature* target, const CombatPar
 		if (caster && params.distanceEffect != CONST_ANI_NONE) {
 			addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
 		}
+
+		if (params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
 	}
 }
 
+void Combat::setInstantSpellName(const std::string &value) {
+	instantSpellName = value;
+}
+
+void Combat::setRuneSpellName(const std::string &value) {
+	runeSpellName = value;
+}
+
 //**********************************************************//
+uint32_t ValueCallback::getMagicLevelSkill(const Player* player, const CombatDamage &damage) const {
+	if (!player) {
+		return 0;
+	}
+
+	uint32_t magicLevelSkill = player->getMagicLevel();
+	// Wheel of destiny
+	if (player && player->wheel()->getInstant("Runic Mastery") && damage.instantSpellName.empty()) {
+		const Spell* spell = g_spells().getRuneSpellByName(damage.runeSpellName);
+		// Rune conjuring spell have the same name as the rune item spell.
+		const InstantSpell* conjuringSpell = g_spells().getInstantSpellByName(damage.runeSpellName);
+		if (spell && conjuringSpell && conjuringSpell != spell && normal_random(0, 100) <= 25) {
+			uint32_t castResult = conjuringSpell->canCast(player) ? 20 : 10;
+			magicLevelSkill += magicLevelSkill * castResult / 100;
+		}
+	}
+
+	return magicLevelSkill;
+}
 
 void ValueCallback::getMinMaxValues(Player* player, CombatDamage &damage, bool useCharges) const {
 	// onGetPlayerMinMaxValues(...)
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[ValueCallback::getMinMaxValues - Player {} formula {}] "
 					 "Call stack overflow. Too many lua script calls being nested.",
-					 player->getName(), type);
+					 player->getName(), fmt::underlying(type));
 		return;
 	}
 
@@ -1130,7 +1310,7 @@ void ValueCallback::getMinMaxValues(Player* player, CombatDamage &damage, bool u
 		case COMBAT_FORMULA_LEVELMAGIC: {
 			// onGetPlayerMinMaxValues(player, level, maglevel)
 			lua_pushnumber(L, player->getLevel());
-			lua_pushnumber(L, player->getMagicLevel());
+			lua_pushnumber(L, getMagicLevelSkill(player, damage));
 			parameters += 2;
 			break;
 		}
@@ -1225,7 +1405,7 @@ void TileCallback::onTileCombat(Creature* creature, Tile* tile) const {
 	if (!scriptInterface->reserveScriptEnv()) {
 		SPDLOG_ERROR("[TileCallback::onTileCombat - Creature {} type {} on tile x: {} y: {} z: {}] "
 					 "Call stack overflow. Too many lua script calls being nested.",
-					 creature->getName(), type, (tile->getPosition()).getX(), (tile->getPosition()).getY(), (tile->getPosition()).getZ());
+					 creature->getName(), fmt::underlying(type), (tile->getPosition()).getX(), (tile->getPosition()).getY(), (tile->getPosition()).getZ());
 		return;
 	}
 
@@ -1593,8 +1773,8 @@ void MagicField::onStepInField(Creature &creature) {
 		auto ownerId = getAttribute<uint32_t>(ItemAttribute_t::OWNER);
 		if (ownerId) {
 			bool harmfulField = true;
-
-			if (g_game().getWorldType() == WORLD_TYPE_NO_PVP || getTile()->hasFlag(TILESTATE_NOPVPZONE)) {
+			auto itemTile = getTile();
+			if (g_game().getWorldType() == WORLD_TYPE_NO_PVP || itemTile && itemTile->hasFlag(TILESTATE_NOPVPZONE)) {
 				Creature* owner = g_game().getCreatureByID(ownerId);
 				if (owner) {
 					if (owner->getPlayer() || (owner->isSummon() && owner->getMaster()->getPlayer())) {

@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_CREATURES_PLAYERS_IMBUEMENTS_IMBUEMENTS_H_
@@ -20,13 +20,13 @@ class Item;
 class Imbuement;
 
 struct BaseImbuement {
-		BaseImbuement(uint16_t initId, std::string initName, uint32_t initProtectionPrice, uint32_t initPrice, uint32_t initRemoveCost, uint32_t initDuration, uint8_t initPercent) :
-			id(initId), name(std::move(initName)), protectionPrice(initProtectionPrice), price(initPrice), removeCost(initRemoveCost), duration(initDuration), percent(initPercent) { }
+		BaseImbuement(uint16_t initId, std::string initName, uint32_t initPrice, uint32_t initProtectionPrice, uint32_t initRemoveCost, uint32_t initDuration, uint8_t initPercent) :
+			id(initId), name(std::move(initName)), price(initPrice), protectionPrice(initProtectionPrice), removeCost(initRemoveCost), duration(initDuration), percent(initPercent) { }
 
 		uint16_t id;
 		std::string name;
-		uint32_t protectionPrice;
 		uint32_t price;
+		uint32_t protectionPrice;
 		uint32_t removeCost;
 		uint32_t duration;
 		uint8_t percent;
@@ -130,6 +130,7 @@ class Imbuement {
 		uint32_t capacity = 0;
 		int16_t absorbPercent[COMBAT_COUNT] = {};
 		int16_t elementDamage = 0;
+		SoundEffect_t soundEffect = SoundEffect_t::SILENCE;
 
 		CombatType_t combatType = COMBAT_NONE;
 

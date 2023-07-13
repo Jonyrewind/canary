@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #ifndef SRC_CREATURES_CREATURE_H_
@@ -157,6 +157,8 @@ class Creature : virtual public Thing {
 			return false;
 		}
 
+		int32_t getWalkSize();
+
 		int32_t getWalkDelay(Direction dir) const;
 		int32_t getWalkDelay() const;
 		int64_t getTimeSinceLastMove() const;
@@ -212,6 +214,10 @@ class Creature : virtual public Thing {
 			return varBuffs[buff];
 		}
 
+		int32_t getBuff(int32_t buff) const {
+			return varBuffs[buff];
+		}
+
 		void setBuff(buffs_t buff, int32_t modifier) {
 			varBuffs[buff] += modifier;
 		}
@@ -231,11 +237,15 @@ class Creature : virtual public Thing {
 		}
 		bool isInvisible() const;
 		ZoneType_t getZone() const {
-			return getTile()->getZone();
+			if (getTile()) {
+				return tile->getZone();
+			}
+
+			return ZONE_NORMAL;
 		}
 
 		// walk functions
-		void startAutoWalk(const std::forward_list<Direction> &listDir);
+		void startAutoWalk(const std::forward_list<Direction> &listDir, bool ignoreConditions = false);
 		void addEventWalk(bool firstStep = false);
 		void stopEventWalk();
 		virtual void goToFollowCreature();
@@ -260,6 +270,20 @@ class Creature : virtual public Thing {
 			return attackedCreature;
 		}
 		virtual bool setAttackedCreature(Creature* creature);
+
+		/**
+		 * @brief Mitigates damage inflicted on a creature.
+		 *
+		 * Used to mitigate the damage inflicted on a creature during combat.
+		 *
+		 * @note If the server is running in dev mode, this function will also log details about the mitigation process.
+		 *
+		 * @param creature Reference to the creature that is receiving the damage.
+		 * @param combatType Type of combat that is inflicting the damage. Note that mana drain and life drain are not mitigated.
+		 * @param blockType Reference to the block type, which may be modified to BLOCK_ARMOR if the damage is reduced to 0.
+		 * @param damage Reference to the amount of damage inflicted, which will be reduced by the creature's mitigation factor.
+		 */
+		void mitigateDamage(const CombatType_t &combatType, BlockType_t &blockType, int32_t &damage) const;
 		virtual BlockType_t blockHit(Creature* attacker, CombatType_t combatType, int32_t &damage, bool checkDefense = false, bool checkArmor = false, bool field = false);
 
 		bool setMaster(Creature* newMaster, bool reloadCreature = false);
@@ -292,6 +316,9 @@ class Creature : virtual public Thing {
 		virtual int32_t getArmor() const {
 			return 0;
 		}
+		virtual float getMitigation() const {
+			return 0;
+		}
 		virtual int32_t getDefense() const {
 			return 0;
 		}
@@ -314,6 +341,7 @@ class Creature : virtual public Thing {
 		void removeCombatCondition(ConditionType_t type);
 		Condition* getCondition(ConditionType_t type) const;
 		Condition* getCondition(ConditionType_t type, ConditionId_t conditionId, uint32_t subId = 0) const;
+		std::vector<Condition*> getConditionsByType(ConditionType_t type) const;
 		void executeConditions(uint32_t interval);
 		bool hasCondition(ConditionType_t type, uint32_t subId = 0) const;
 		virtual bool isImmune(ConditionType_t type) const;
@@ -369,6 +397,7 @@ class Creature : virtual public Thing {
 		virtual void onChangeZone(ZoneType_t zone);
 		virtual void onAttackedCreatureChangeZone(ZoneType_t zone);
 		virtual void onIdleStatus();
+		virtual void onChangeHazard(bool isHazard);
 
 		virtual LightInfo getCreatureLight() const;
 		virtual void setNormalCreatureLight();
@@ -474,7 +503,7 @@ class Creature : virtual public Thing {
 		double getDamageRatio(Creature* attacker) const;
 
 		bool getPathTo(const Position &targetPos, std::forward_list<Direction> &dirList, const FindPathParams &fpp) const;
-		bool getPathTo(const Position &targetPos, std::forward_list<Direction> &dirList, int32_t minTargetDist, int32_t maxTargetDist, bool fullPathSearch = true, bool clearSight = true, int32_t maxSearchDist = 0) const;
+		bool getPathTo(const Position &targetPos, std::forward_list<Direction> &dirList, int32_t minTargetDist, int32_t maxTargetDist, bool fullPathSearch = true, bool clearSight = true, int32_t maxSearchDist = 7) const;
 
 		void incrementReferenceCounter() {
 			++referenceCounter;
@@ -491,6 +520,12 @@ class Creature : virtual public Thing {
 		using CountMap = std::map<uint32_t, CountBlock_t>;
 		CountMap getDamageMap() const {
 			return damageMap;
+		}
+		void setWheelOfDestinyDrainBodyDebuff(uint8_t value) {
+			wheelOfDestinyDrainBodyDebuff = value;
+		}
+		uint8_t getWheelOfDestinyDrainBodyDebuff() const {
+			return wheelOfDestinyDrainBodyDebuff;
 		}
 
 	protected:
@@ -572,6 +607,8 @@ class Creature : virtual public Thing {
 		bool floorChange = false;
 		bool canUseDefense = true;
 		bool moveLocked = false;
+
+		uint8_t wheelOfDestinyDrainBodyDebuff = 0;
 
 		// creature script events
 		bool hasEventRegistered(CreatureEventType_t event) const {

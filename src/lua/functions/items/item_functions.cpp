@@ -4,7 +4,7 @@
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
- * Website: https://docs.opentibiabr.org/
+ * Website: https://docs.opentibiabr.com/
  */
 
 #include "pch.hpp"
@@ -666,7 +666,7 @@ int ItemFunctions::luaItemTransform(lua_State* L) {
 
 	const ItemType &it = Item::items[itemId];
 	if (it.stackable) {
-		subType = std::min<int32_t>(subType, 100);
+		subType = std::min<int32_t>(subType, it.stackSize);
 	}
 
 	ScriptEnvironment* env = getScriptEnv();
