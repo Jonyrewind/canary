@@ -25,7 +25,7 @@ function entrance.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	if player:getLevel() >= 100 --[[hasTouchedOneThrone(player) and]]--
+	if hasTouchedOneThrone(player) and player:getLevel() >= 100
 	and player:getStorageValue(Storage.TheInquisition.Questline) >= 20 then
 		local destination = Position(33168, 31683, 15)
 		player:teleportTo(destination)

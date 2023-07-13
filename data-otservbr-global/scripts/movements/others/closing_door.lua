@@ -22,7 +22,7 @@ function closingDoor.onStepIn(creature, item, position, fromPosition)
 
     for index, value in ipairs(QuestDoorTable) do
 		 if value.openDoor == item.itemid then
-			if player:getStorageValue(item.actionid) ~= -1 or item.actionid == 54380 then
+			if player:getStorageValue(item.actionid) ~= -1 then
 				return true
 			else
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The door seems to be sealed against unwanted intruders.")

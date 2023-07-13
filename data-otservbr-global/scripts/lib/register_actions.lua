@@ -101,7 +101,7 @@ local cutItems = {
 	[2293] = 3145,
 	[2294] = 3145,
 	[2295] = 3145,
-	[2296] = 3146,
+	[2296] = 3145,
 	[2314] = 3136,
 	[2315] = 3136,
 	[2316] = 3136,
@@ -245,11 +245,12 @@ local function addFerumbrasAscendantReward(player, target, toPosition)
 	end
 
 	if target.itemid == 10551 and target.actionid == 53803 then
-		if player:getStorageValue(Storage.FerumbrasAscension.Ring) >= 1 then
+		if player:getStorageValue(Storage.FerumbrasAscendant.Ring) >= 1 then
 			return false
 		end
+
 		player:addItem(22170, 1)
-		player:setStorageValue(Storage.FerumbrasAscension.Ring, 1)
+		player:setStorageValue(Storage.FerumbrasAscendant.Ring, 1)
 	end
 end
 
@@ -356,7 +357,6 @@ end
 
 function onUseShovel(player, item, fromPosition, target, toPosition, isHotkey)
 	addFerumbrasAscendantReward(player, target, toPosition)
-
 	--Dawnport quest (Morris amulet task)
 	local sandPosition = Position(32099, 31933, 7)
 	if (toPosition == sandPosition) then
@@ -959,9 +959,6 @@ function onUseScythe(player, item, fromPosition, target, toPosition, isHotkey)
 	-- The secret library
 	elseif toPosition == Position(32177, 31925, 7) then
 		player:teleportTo({x = 32515, y = 32535, z = 12})
-		player:say('CHAMEK ATHRA THULL ZATHROTH!', TALKTYPE_MONSTER_SAY)
-		player:getPosition():sendMagicEffect(CONST_ME_MORTAREA)
-		toPosition:sendMagicEffect(CONST_ME_MORTAREA)
 	else
 		return false
 	end

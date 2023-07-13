@@ -690,11 +690,6 @@ QuestDoorAction = {
 		itemId = 20450,
 		itemPos = {{x = 32761, y = 32630, z = 7}}
 	},
-	-- The dream courts haunted temple door
-	[Storage.Quest.U12_00.TheDreamCourts.HauntedTempleDoor] = {
-		itemId = 1698,
-		itemPos = {{x = 32671, y = 32652, z = 7}}
-	},
 	-- Kilmaresh doors
 	-- [Storage.Kilmaresh.First.Title] = {
 		-- itemId = false,
@@ -782,7 +777,7 @@ QuestDoorAction = {
 		itemId = false,
 		itemPos = {{x = 33083, y = 31216, z = 8}}
 	},
-	[Storage.GraveDanger.Questline] = {
+	[Storage.Quest.U12_20.GraveDanger.QuestLine] = {
 		itemId = false,
 		itemPos = {
 			{x = 33264, y = 31993, z = 7},

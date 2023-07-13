@@ -135,7 +135,7 @@ local config = {
 			{from = 6668, to = 8335, itemId = 22516},
 			{from = 8336, to = 10001, itemId = 27653}
 		},
-		effect = CONST_ME_ENERGYAREA
+		effect = CONST_ME_CRAPS
 	}
 }
 

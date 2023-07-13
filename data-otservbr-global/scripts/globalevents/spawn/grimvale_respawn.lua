@@ -41,7 +41,7 @@ function grimvaleRespawn.onStartup()
 	else
 		table.insert(monsters, 'bandit')
 		table.insert(monsters, 'badger')
-		table.insert(monsters, 'butterfly')
+		table.insert(monsters, 'blue butterfly')
 		table.insert(monsters, 'yellow butterfly')
 		for x = config.position.fromPosition.x, config.position.toPosition.x do
 			for y = config.position.fromPosition.y, config.position.toPosition.y do

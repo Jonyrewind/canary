@@ -17,7 +17,7 @@ monster.health = 1
 monster.maxHealth = 1
 monster.race = "venom"
 monster.corpse = 6036
-monster.speed = 0
+monster.speed = 40
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -66,7 +66,7 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{name ="combat", interval = 2000, chance = 100, type = COMBAT_LIFEDRAIN, minDamage = 0, maxDamage = -500, radius = 7, shootEffect = CONST_ANI_ENERGY, target = false}
+	{name ="combat", interval = 2000, chance = 100, type = COMBAT_ENERGYDAMAGE, minDamage = 0, maxDamage = -500, range = 7, shootEffect = CONST_ANI_ENERGY, target = false}
 }
 
 monster.defenses = {

@@ -57,23 +57,11 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
--- On buy npc shop message
-npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
-	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
-end
--- On sell npc shop message
-npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
-end
--- On check npc shop message (look item)
-npcType.onCheckItem = function(npc, player, clientId, subType)
-end
-
 -- Basic
 
 keywordHandler:addKeyword({'job'}, StdModule.say, {npcHandler = npcHandler, text = "Currently I have been working selling items for imbuement."})
 
-npcHandler:setMessage(MESSAGE_GREET, "Welcome to my Imbuement's shop! {trade} to see all my products, or {offer} to buy 'Powerful Strike', 'Powerful Void' and 'Powerful Vampirism'.")
+npcHandler:setMessage(MESSAGE_GREET, "Welcome to Imbuement's shop!")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye and come again.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye and come again.")
 
@@ -150,101 +138,16 @@ npcConfig.shop = {
 	{ itemName = "wyrm scale", clientId = 9665, buy = 400 },
 	{ itemName = "wyvern talisman", clientId = 9644, buy = 265 }
 }
-
-local products = {
-	['strike'] = {
-		text = "The powerful bundle for the strike imbuement consists of 20 protective charms, 25 sabreteeth and 5 vexclaw talons. Would you like to buy it for 35000 gold?",
-		itens = {
-			[1] = {clientId = 11444, amount = 20}, 
-			[2] = {clientId = 10311, amount = 25}, 
-			[3] = {clientId = 22728, amount = 5} 
-		},
-		value = 35000
-	},
-	['vampirism'] = {
-		text = "The powerful bundle for the vampirism imbuement consists of 25 vampire teeth, 15 bloody pincers and 5 pieces of dead brain. Would you like to buy it for 25000 gold?",
-		itens = {
-			[1] = {clientId = 9685, amount = 25},
-			[2] = {clientId = 9633, amount = 15},
-			[3] = {clientId = 9663, amount = 5}
-		},
-		value = 25000
-	},
-	['void'] = {
-		text = "The powerful bundle for the void imbuement consists of 25 rope belts, 25 silencer claws and 5 grimeleech wings. Would you like to buy it for 30000 gold?",
-		itens = {
-			[1] = {clientId = 11492, amount = 25},
-			[2] = {clientId = 20200, amount = 25},
-			[3] = {clientId = 22730, amount = 5}
-		},
-		value = 30000,
-	}
-}
-
-local answerType = {}
-local answerLevel = {}
-
-local function greetCallback(npc, creature)
-	local playerId = creature:getId()
-	npcHandler:setTopic(playerId, 0)
-	return true
+-- On buy npc shop message
+npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
+	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
 end
-
-local function creatureSayCallback(npc, creature, type, message)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	if not npcHandler:checkInteraction(npc, creature) then
-		return false
-	end
-	
-	if MsgContains(message, "offer") then
-		npcHandler:say({"I have creature products for the imbuements {strike}, {vampirism} and {void}. Make your choice, please!"}, npc, creature)
-		npcHandler:setTopic(playerId, 1)
-	elseif npcHandler:getTopic(playerId) == 1 then
-		local imbueType = products[message:lower()]
-		if imbueType then
-			answerType[playerId] = message
-			local neededCap = 0
-			for i = 1, #products[answerType[playerId]].itens do
-				neededCap = neededCap + ItemType(products[answerType[playerId]].itens[i].clientId):getWeight() * products[answerType[playerId]].itens[i].amount
-			end
-			npcHandler:say({imbueType.text.."...", 
-							"Make sure that you have ".. #products[answerType[playerId]].itens .." free slots and that you can carry ".. string.format("%.2f",neededCap/100) .." oz in addition to that."}, npc, creature)
-			npcHandler:setTopic(playerId, 2)
-		end
-		elseif npcHandler:getTopic(playerId) == 2 then
-		if MsgContains(message, "yes") then
-			local neededCap = 0
-			for i = 1, #products[answerType[playerId]].itens do
-				neededCap = neededCap + ItemType(products[answerType[playerId]].itens[i].clientId):getWeight() * products[answerType[playerId]].itens[i].amount
-			end
-			if player:getFreeCapacity() > neededCap then
-				local cost = products[answerType[playerId]].value
-				if not player:removeMoneyBank(cost) then
-					npcHandler:say("I'm sorry but it seems you don't have enough gold yet. Bring me "..cost.." gold and we'll make a trade.", npc, creature)
-				else
-					for i = 1, #products[answerType[playerId]].itens do
-					player:addItem(products[answerType[playerId]].itens[i].clientId, products[answerType[playerId]].itens[i].amount)
-					end
-					npcHandler:say("There it is.", npc, creature)
-					npcHandler:setTopic(playerId, 0)
-				end
-			else
-				npcHandler:say("You don\'t have enough capacity. You must have "..neededCap.." oz.", npc, creature)
-			end
-		elseif MsgContains(message, "no") then
-			npcHandler:say("Your decision. Come back if you have changed your mind.", npc, creature)
-		end
-		npcHandler:setTopic(playerId, 0)
-	end
-	return true
+-- On sell npc shop message
+npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
+	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
-
-npcHandler:setCallback(CALLBACK_SET_INTERACTION, onAddFocus)
-npcHandler:setCallback(CALLBACK_REMOVE_INTERACTION, onReleaseFocus)
-
-npcHandler:setCallback(CALLBACK_GREET, greetCallback)
-npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+-- On check npc shop message (look item)
+npcType.onCheckItem = function(npc, player, clientId, subType)
+end
 
 npcType:register(npcConfig)

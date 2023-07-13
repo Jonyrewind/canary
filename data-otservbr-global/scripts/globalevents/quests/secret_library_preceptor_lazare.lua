@@ -3,8 +3,7 @@ local config = {
     bossPosition = Position(33373, 31348, 3),
     centerPosition = Position(33373, 31348, 3),
     rangeX = 50,
-    rangeY = 50,
-	spawn = configManager.getNumber(configKeys.RATE_SPAWN)
+    rangeY = 50
 }
 
 local function checkBoss(centerPosition, rangeX, rangeY, bossName)
@@ -31,5 +30,5 @@ function preceptorLazare.onThink(interval, lastExecution)
     return true
 end
 
-preceptorLazare:interval(900000 / config.spawn)
+preceptorLazare:interval(900000)
 preceptorLazare:register()

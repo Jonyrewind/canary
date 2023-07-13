@@ -23,7 +23,7 @@ monster.Bestiary = {
 	CharmsPoints = 50,
 	Stars = 4,
 	Occurrence = 0,
-	Locations = "Asura Palace's secret basement."
+	Locations = "Asura Palace."
 	}
 
 monster.health = 8500
