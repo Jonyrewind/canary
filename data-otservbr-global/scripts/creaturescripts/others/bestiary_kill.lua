@@ -11,11 +11,12 @@ function bestiaryOnKill.onKill(player, creature, lastHit)
 	end
 	for cid, damage in pairs(creature:getDamageMap()) do
 		local participant = Player(cid)
+		local monsterType = creature:getType()
 		if participant and participant:isPlayer() then
 			if bestiaryBetterment and bestiaryBetterment:active(participant) then
 				bestiaryMultiplier = bestiaryMultiplier * bestiaryBetterment.config.multiplier
 			end
-			participant:addBestiaryKill(creature:getName(), bestiaryMultiplier)
+			participant:addBestiaryKill(monsterType:getTypeName():lower(), bestiaryMultiplier)
 		end
 	end
 

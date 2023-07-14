@@ -1,10 +1,11 @@
-local mType = Game.createMonsterType("Butterfly")
+local mType = Game.createMonsterType("Purple Butterfly")
 local monster = {}
 
+monster.name = "Butterfly"
 monster.description = "a butterfly"
 monster.experience = 0
 monster.outfit = {
-	lookType = 227,
+	lookType = 213,
 	lookHead = 0,
 	lookBody = 0,
 	lookLegs = 0,
@@ -13,7 +14,7 @@ monster.outfit = {
 	lookMount = 0
 }
 
-monster.raceId = 227
+monster.raceId = 213
 monster.Bestiary = {
 	class = "Vermin",
 	race = BESTY_RACE_VERMIN,
@@ -31,13 +32,13 @@ monster.Bestiary = {
 monster.health = 2
 monster.maxHealth = 2
 monster.race = "venom"
-monster.corpse = 4378
+monster.corpse = 4992
 monster.speed = 160
 monster.manaCost = 0
 
 monster.changeTarget = {
-	interval = 4000,
-	chance = 8
+	interval = 5000,
+	chance = 20
 }
 
 monster.strategiesTarget = {
@@ -52,11 +53,11 @@ monster.flags = {
 	convinceable = false,
 	pushable = true,
 	rewardBoss = false,
-	illusionable = false,
+	illusionable = true,
 	canPushItems = true,
 	canPushCreatures = false,
 	staticAttackChance = 90,
-	targetDistance = 8,
+	targetDistance = 6,
 	runHealth = 2,
 	healthHidden = false,
 	isBlockable = false,

@@ -1064,8 +1064,8 @@ void Combat::doCombatHealth(Creature* caster, Creature* target, CombatDamage &da
 			double_t randomChance = uniform_random(0, 10000) / 100;
 			if (damage.primary.type != COMBAT_HEALING && fatalChance > 0 && randomChance < fatalChance) {
 				damage.fatal = true;
-				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.6));
-				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.6));
+				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.8));
+				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.8));
 			}
 		}
 	}
@@ -1105,8 +1105,8 @@ void Combat::doCombatHealth(Creature* caster, const Position &position, const Ar
 			double_t randomChance = uniform_random(0, 10000) / 100;
 			if (damage.primary.type != COMBAT_HEALING && fatalChance > 0 && randomChance < fatalChance) {
 				damage.fatal = true;
-				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.6));
-				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.6));
+				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.8));
+				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.8));
 			}
 		}
 	}

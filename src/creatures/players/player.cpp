@@ -6243,7 +6243,7 @@ void Player::triggerMomentum() {
 			auto checkSpellId = condItem->getSubId();
 			auto spellId = checkSpellId > maxu16 ? 0u : static_cast<uint16_t>(checkSpellId);
 			int32_t ticks = condItem->getTicks();
-			int32_t newTicks = (ticks <= 2000) ? 0 : ticks - 2000;
+			int32_t newTicks = (ticks <= 2000) ? 0 : ticks - 5000;
 			triggered = true;
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
 				condItem->setTicks(newTicks);
