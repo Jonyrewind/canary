@@ -13,11 +13,11 @@ monster.outfit = {
 	lookMount = 0
 }
 
-monster.health = 1
-monster.maxHealth = 1
+monster.health = 120
+monster.maxHealth = 120
 monster.race = "venom"
 monster.corpse = 6036
-monster.speed = 40
+monster.speed = 0
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -34,7 +34,7 @@ monster.strategiesTarget = {
 
 monster.flags = {
 	summonable = false,
-	attackable = true,
+	attackable = false,
 	hostile = true,
 	convinceable = false,
 	pushable = false,
@@ -44,7 +44,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 100,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,

@@ -2788,7 +2788,7 @@ local weapons = {
 		itemid = 12673,
 		type = WEAPON_SWORD
 	},
-	{
+--[[	{
 		-- wand of dimensions
 		itemid = 12603,
 		type = WEAPON_WAND,
@@ -2800,7 +2800,7 @@ local weapons = {
 			{"Sorcerer", true},
 			{"Master Sorcerer"}
 		}
-	},
+	},]]--
 	{
 		-- blade of corruption
 		itemid = 11693,

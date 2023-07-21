@@ -10065,10 +10065,12 @@ local items = {
 		itemid = 12603,
 		type = "equip",
 		slot = "hand",
-		level = 37,
+		level = 500,
 		vocation = {
 			{"Sorcerer", true},
-			{"Master Sorcerer"}
+			{"Druid", true},
+			{"Master Sorcerer"},
+			{"Elder Druid"}
 		}
 	},
 	{
@@ -10076,7 +10078,7 @@ local items = {
 		itemid = 12603,
 		type = "deequip",
 		slot = "hand",
-		level = 37
+		level = 500
 	},
 	{
 		-- mage's cap

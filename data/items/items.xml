@@ -22754,11 +22754,20 @@
 		<attribute key="weight" value="5000"/>
 	</item>
 	<item id="12603" article="a" name="wand of dimensions">
-		<attribute key="description" value="This wand controls the rift between time and space"/>
-		<attribute key="weaponType" value="wand"/>
-		<attribute key="shootType" value="energy"/>
-		<attribute key="range" value="3"/>
-		<attribute key="weight" value="2800"/>
+			<attribute key="description" value="This wand controls the rift between holy and death"/>
+			<attribute key="weaponType" value="wand"/>
+			<attribute key="shootType" value="suddendeath"/>
+			<attribute key="range" value="6"/>
+			<attribute key="weight" value="2800"/>
+			<attribute key="magicpoints" value="5"/>
+			<attribute key="criticalhitdamage" value="20"/>
+			<attribute key="criticalhitchance" value="15"/>
+			<attribute key="imbuementslot" value="3">
+				<attribute key="life leech" value="3"/>
+				<attribute key="mana leech" value="3"/>
+				<attribute key="critical hit" value="3"/>
+				<attribute key="skillboost magic level" value="3"/>
+			</attribute>
 	</item>
 	<item fromid="12604" toid="12616" name="rubbish"/>
 	<item id="12617" article="a" name="torn teddy">
@@ -48909,8 +48918,8 @@
 		<attribute key="shootType" value="suddendeath"/>
 		<attribute key="absorbpercentdeath" value="12"/>
 		<attribute key="magicpoints" value="5"/>
-		<attribute key="criticalhitdamage" value="10"/>
-		<attribute key="criticalhitchance" value="10"/>
+		<attribute key="criticalhitdamage" value="20"/>
+		<attribute key="criticalhitchance" value="15"/>
 		<attribute key="range" value="6"/>
 		<attribute key="weight" value="1900"/>
 		<attribute key="imbuementslot" value="2">
