@@ -2,13 +2,13 @@ local mType = Game.createMonsterType("Shredderthrower")
 local monster = {}
 
 monster.description = "a shredderthrower"
-monster.experience = 0
+monster.experience = 18
 monster.outfit = {
 	lookTypeEx = 2190
 }
 
-monster.health = 1
-monster.maxHealth = 1
+monster.health = 100
+monster.maxHealth = 100
 monster.race = "undead"
 monster.corpse = 0
 monster.speed = 0
