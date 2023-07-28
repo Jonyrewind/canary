@@ -4,6 +4,7 @@ end
 
 function Container.createLootItem(self, item, charm, modifier)
 	if self:getEmptySlots() == 0 then
+		Spdlog.warn(string.format("[Container:createLootItem] - Could not add loot item to ontainer id: %d because no more empty slots were available", self:getId()))
 		return false
 	end
 
@@ -13,6 +14,7 @@ function Container.createLootItem(self, item, charm, modifier)
 	local chanceTo = item.chance
 
 	if not lootBlockType then
+		Spdlog.warn(string.format("[Container:createLootItem] - Could not add loot item to ontainer id: %d because item type was not found", self:getId(), item.itemId))
 		return false
 	end
 
@@ -30,6 +32,9 @@ function Container.createLootItem(self, item, charm, modifier)
 		end
 	end
 
+	if itemCount == 0 then
+		return false
+	end
 	while (itemCount > 0) do
 		local n = math.min(itemCount, 100)
 		itemCount = itemCount - n

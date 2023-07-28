@@ -186,7 +186,7 @@ class Game {
 
 		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item, int32_t index = INDEX_WHEREEVER, uint32_t flags = 0, bool test = false);
 		ReturnValue internalAddItem(Cylinder* toCylinder, Item* item, int32_t index, uint32_t flags, bool test, uint32_t &remainderCount);
-		ReturnValue internalRemoveItem(Item* item, int32_t count = -1, bool test = false, uint32_t flags = 0);
+		ReturnValue internalRemoveItem(Item* item, int32_t count = -1, bool test = false, uint32_t flags = 0, bool force = false);
 
 		ReturnValue internalPlayerAddItem(Player* player, Item* item, bool dropOnMap = true, Slots_t slot = CONST_SLOT_WHEREEVER);
 
@@ -590,7 +590,7 @@ class Game {
 
 		bool addInfluencedMonster(Monster* monster);
 		void sendUpdateCreature(const Creature* creature);
-		Item* wrapItem(Item* item);
+		Item* wrapItem(Item* item, House* house);
 
 		/**
 		 * @brief Adds a player to the unique login map.
@@ -773,7 +773,7 @@ class Game {
 			const std::string &damageString, std::string &spectatorMessage
 		) const;
 
-		void unwrapItem(Item* item, uint16_t unWrapId);
+		void unwrapItem(Item* item, uint16_t unWrapId, House* house, Player* player);
 
 		// Variable members (m_)
 		std::unique_ptr<IOWheel> m_IOWheel;

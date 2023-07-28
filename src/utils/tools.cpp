@@ -374,6 +374,15 @@ std::time_t getTimeMsNow() {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
 }
 
+BedItemPart_t getBedPart(const std::string_view string) {
+	if (string == "pillow" || string == "1") {
+		return BED_PILLOW_PART;
+	} else if (string == "blanket" || string == "2") {
+		return BED_BLANKET_PART;
+	}
+	return BED_NONE_PART;
+}
+
 Direction getDirection(const std::string &string) {
 	Direction direction = DIRECTION_NORTH;
 
@@ -1426,6 +1435,17 @@ void consoleHandlerExit() {
 		getchar();
 	}
 	return;
+}
+
+std::string validateNameHouse(const std::string &list) {
+	std::string result;
+	for (char c : list) {
+		if (isalpha(c) || c == ' ' || c == '\'' || c == '!' || c == '\n'
+			|| c == '?' || c == '#' || c == '@' || c == '*') {
+			result += c;
+		}
+	}
+	return result;
 }
 
 NameEval_t validateName(const std::string &name) {

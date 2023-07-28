@@ -4,7 +4,6 @@ function bestiaryOnKill.onKill(player, creature, lastHit)
 		return true
 	end
 
-	local bestiaryMultiplier = (configManager.getNumber(configKeys.BESTIARY_KILL_MULTIPLIER) or 1)
 	local bestiaryBetterment = Concoction.find(Concoction.Ids.BestiaryBetterment)
 	if not bestiaryBetterment then
 		Spdlog.warn("[BestiaryOnKill] - Could not find BestiaryBetterment concoction.")
@@ -13,6 +12,7 @@ function bestiaryOnKill.onKill(player, creature, lastHit)
 		local participant = Player(cid)
 		local monsterType = creature:getType()
 		if participant and participant:isPlayer() then
+			local bestiaryMultiplier = (configManager.getNumber(configKeys.BESTIARY_KILL_MULTIPLIER) or 1)
 			if bestiaryBetterment and bestiaryBetterment:active(participant) then
 				bestiaryMultiplier = bestiaryMultiplier * bestiaryBetterment.config.multiplier
 			end
