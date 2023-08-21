@@ -3,7 +3,7 @@ local config = {
 	storage = Storage.VipSystem.OnlineTokensGain,
 	checkDuplicateIps = false,
 
-	tokenItemId = 14112, -- bar of gold
+	tokenItemId = 22118, -- bar of gold
 
 	interval = 60 * 1000,
 
