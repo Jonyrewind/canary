@@ -9,15 +9,15 @@
 
 #include "pch.hpp"
 
-#include "creatures/combat/spells.h"
-#include "creatures/creature.h"
-#include "creatures/interactions/chat.h"
-#include "creatures/players/player.h"
+#include "creatures/combat/spells.hpp"
+#include "creatures/creature.hpp"
+#include "creatures/interactions/chat.hpp"
+#include "creatures/players/player.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
-#include "game/game.h"
-#include "io/iologindata.h"
-#include "io/ioprey.h"
-#include "items/item.h"
+#include "game/game.hpp"
+#include "io/iologindata.hpp"
+#include "io/ioprey.hpp"
+#include "items/item.hpp"
 #include "lua/functions/creatures/player/player_functions.hpp"
 
 int PlayerFunctions::luaPlayerSendInventory(lua_State* L) {
@@ -125,7 +125,7 @@ int PlayerFunctions::luaPlayerCreate(lua_State* L) {
 			return 2;
 		}
 	} else if (isUserdata(L, 2)) {
-		if (getUserdataType(L, 2) != LuaData_Player) {
+		if (getUserdataType(L, 2) != LuaData_t::Player) {
 			lua_pushnil(L);
 			return 1;
 		}
@@ -1955,7 +1955,7 @@ int PlayerFunctions::luaPlayerShowTextDialog(lua_State* L) {
 	} else if (isString(L, 2)) {
 		item = Item::CreateItem(Item::items.getItemIdByName(getString(L, 2)));
 	} else if (isUserdata(L, 2)) {
-		if (getUserdataType(L, 2) != LuaData_Item) {
+		if (getUserdataType(L, 2) != LuaData_t::Item) {
 			pushBoolean(L, false);
 			return 1;
 		}
@@ -2361,7 +2361,7 @@ int PlayerFunctions::luaPlayerAddPremiumDays(lua_State* L) {
 		int32_t addDays = std::min<int32_t>(0xFFFE - player->premiumDays, days);
 		if (addDays > 0) {
 			player->setPremiumDays(player->premiumDays + addDays);
-			IOLoginData::addPremiumDays(player->getAccount(), addDays);
+			IOLoginData::addPremiumDays(player, addDays);
 		}
 	}
 	pushBoolean(L, true);
@@ -2381,7 +2381,7 @@ int PlayerFunctions::luaPlayerRemovePremiumDays(lua_State* L) {
 		int32_t removeDays = std::min<int32_t>(player->premiumDays, days);
 		if (removeDays > 0) {
 			player->setPremiumDays(player->premiumDays - removeDays);
-			IOLoginData::removePremiumDays(player->getAccount(), removeDays);
+			IOLoginData::removePremiumDays(player, removeDays);
 		}
 	}
 	pushBoolean(L, true);
@@ -3908,6 +3908,19 @@ int PlayerFunctions::luaPlayerGetVipDays(lua_State* L) {
 		return 1;
 	}
 
-	lua_pushnumber(L, player->getVipDays());
+	lua_pushnumber(L, player->getPremiumDays());
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerGetVipTime(lua_State* L) {
+	// player:getVipTime()
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	lua_pushinteger(L, player->getPremiumLastDay());
 	return 1;
 }

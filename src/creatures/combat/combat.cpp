@@ -10,14 +10,14 @@
 #include "pch.hpp"
 
 #include "declarations.hpp"
-#include "creatures/combat/combat.h"
-#include "lua/creature/events.h"
+#include "creatures/combat/combat.hpp"
+#include "lua/creature/events.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
-#include "game/game.h"
-#include "io/iobestiary.h"
-#include "creatures/monsters/monster.h"
-#include "creatures/monsters/monsters.h"
-#include "items/weapons/weapons.h"
+#include "game/game.hpp"
+#include "io/iobestiary.hpp"
+#include "creatures/monsters/monster.hpp"
+#include "creatures/monsters/monsters.hpp"
+#include "items/weapons/weapons.hpp"
 
 int32_t Combat::getLevelFormula(const Player* player, const std::shared_ptr<Spell> &wheelSpell, const CombatDamage &damage) const {
 	if (!player) {
@@ -909,8 +909,8 @@ void Combat::doChainEffect(const Position &origin, const Position &dest, uint8_t
 
 bool Combat::doCombatChain(Creature* caster, Creature* target, bool aggressive) const {
 	auto targets = std::vector<Creature*>();
-	auto targetSet = phmap::btree_set<uint32_t>();
-	auto visitedChain = phmap::btree_set<uint32_t>();
+	auto targetSet = std::set<uint32_t>();
+	auto visitedChain = std::set<uint32_t>();
 	if (target != nullptr) {
 		targets.push_back(target);
 		targetSet.insert(target->getID());
@@ -1372,7 +1372,7 @@ void Combat::setRuneSpellName(const std::string &value) {
 	runeSpellName = value;
 }
 
-void Combat::pickChainTargets(Creature* caster, std::vector<Creature*> &targets, phmap::btree_set<uint32_t> &targetSet, phmap::btree_set<uint32_t> &visited, const CombatParams &params, uint8_t chainDistance, uint8_t maxTargets, bool backtracking, bool aggressive) {
+void Combat::pickChainTargets(Creature* caster, std::vector<Creature*> &targets, std::set<uint32_t> &targetSet, std::set<uint32_t> &visited, const CombatParams &params, uint8_t chainDistance, uint8_t maxTargets, bool backtracking, bool aggressive) {
 	if (maxTargets == 0 || targets.size() > maxTargets) {
 		return;
 	}

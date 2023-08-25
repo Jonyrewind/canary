@@ -9,12 +9,12 @@
 
 #include "pch.hpp"
 
-#include "creatures/creature.h"
+#include "creatures/creature.hpp"
 #include "declarations.hpp"
 #include "game/scheduling/dispatcher.hpp"
-#include "game/game.h"
-#include "creatures/monsters/monster.h"
-#include "game/scheduling/scheduler.h"
+#include "game/game.hpp"
+#include "creatures/monsters/monster.hpp"
+#include "game/scheduling/scheduler.hpp"
 #include "game/zones/zone.hpp"
 
 double Creature::speedA = 857.36;
@@ -634,7 +634,7 @@ void Creature::onDeath() {
 	const int64_t timeNow = OTSYS_TIME();
 	const uint32_t inFightTicks = g_configManager().getNumber(PZ_LOCKED);
 	int32_t mostDamage = 0;
-	phmap::btree_map<Creature*, uint64_t> experienceMap;
+	std::map<Creature*, uint64_t> experienceMap;
 	for (const auto &it : damageMap) {
 		if (Creature* attacker = g_game().getCreatureByID(it.first)) {
 			CountBlock_t cb = it.second;
@@ -827,8 +827,7 @@ void Creature::drainMana(Creature* attacker, int32_t manaLoss) {
 
 // Wheel of destiny - mitigation system for creature
 void Creature::mitigateDamage(const CombatType_t &combatType, BlockType_t &blockType, int32_t &damage) const {
-	if (combatType != COMBAT_MANADRAIN && combatType != COMBAT_LIFEDRAIN) { // Add agony check if the server does have agony combat type
-		// Increase mitigate damage
+	if (combatType != COMBAT_MANADRAIN && combatType != COMBAT_LIFEDRAIN && combatType != COMBAT_AGONYDAMAGE) { // Increase mitigate damage
 		auto originalDamage = damage;
 		damage -= (damage * getMitigation()) / 100.;
 		g_logger().debug("[mitigation] creature: {}, original damage: {}, mitigation damage: {}", getName(), originalDamage, damage);
@@ -1777,4 +1776,24 @@ void Creature::setIncreasePercent(CombatType_t combat, int32_t value) {
 
 const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> Creature::getZones() {
 	return Zone::getZones(getPosition());
+}
+
+void Creature::setIcon(CreatureIcon icon) {
+	creatureIcon = icon;
+	if (!tile) {
+		return;
+	}
+
+	SpectatorHashSet spectators;
+	g_game().map.getSpectators(spectators, tile->getPosition(), true);
+	for (Creature* spectator : spectators) {
+		if (!spectator) {
+			continue;
+		}
+
+		Player* player = spectator->getPlayer();
+		if (player) {
+			player->sendCreatureIcon(this);
+		}
+	}
 }

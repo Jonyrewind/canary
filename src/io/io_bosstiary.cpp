@@ -11,10 +11,10 @@
 
 #include "io/io_bosstiary.hpp"
 
-#include "creatures/monsters/monsters.h"
-#include "creatures/players/player.h"
-#include "game/game.h"
-#include "utils/tools.h"
+#include "creatures/monsters/monsters.hpp"
+#include "creatures/players/player.hpp"
+#include "game/game.hpp"
+#include "utils/tools.hpp"
 
 void IOBosstiary::loadBoostedBoss() {
 	Database &database = Database::getInstance();
@@ -49,7 +49,7 @@ void IOBosstiary::loadBoostedBoss() {
 	}
 
 	// Filter only archfoe bosses
-	phmap::btree_map<uint16_t, std::string> bossInfo;
+	std::map<uint16_t, std::string> bossInfo;
 	for (auto [infoBossRaceId, infoBossName] : bossMap) {
 		const auto &mType = getMonsterTypeByBossRaceId(infoBossRaceId);
 		if (!mType || mType->info.bosstiaryRace != BosstiaryRarity_t::RARITY_ARCHFOE) {
@@ -116,7 +116,7 @@ void IOBosstiary::addBosstiaryMonster(uint16_t raceId, const std::string &name) 
 	bosstiaryMap.insert(boss);
 }
 
-const phmap::btree_map<uint16_t, std::string> &IOBosstiary::getBosstiaryMap() const {
+const std::map<uint16_t, std::string> &IOBosstiary::getBosstiaryMap() const {
 	return bosstiaryMap;
 }
 
@@ -206,8 +206,9 @@ uint16_t IOBosstiary::calculateLootBonus(uint32_t bossPoints) const {
 
 uint32_t IOBosstiary::calculateBossPoints(uint16_t lootBonus) const {
 	// Calculate Boss Points based on Bonus
-	if (lootBonus <= 25)
+	if (lootBonus <= 25) {
 		return 0;
+	}
 
 	if (lootBonus <= 50) {
 		return 10 * lootBonus - 250;
@@ -223,7 +224,7 @@ phmap::parallel_flat_hash_set<uint16_t> IOBosstiary::getBosstiaryFinished(const 
 		return unlockedMonsters;
 	}
 
-	for (phmap::btree_map<uint16_t, std::string> bossesMap = getBosstiaryMap();
+	for (std::map<uint16_t, std::string> bossesMap = getBosstiaryMap();
 		 const auto &[bossId, bossName] : bossesMap) {
 		uint32_t bossKills = player->getBestiaryKillCount(bossId);
 		if (bossKills == 0) {
@@ -280,8 +281,9 @@ uint8_t IOBosstiary::getBossCurrentLevel(const Player* player, uint16_t bossId) 
 }
 
 uint32_t IOBosstiary::calculteRemoveBoss(uint8_t removeTimes) const {
-	if (removeTimes < 2)
+	if (removeTimes < 2) {
 		return 0;
+	}
 	return 300000 * removeTimes - 500000;
 }
 
@@ -291,7 +293,7 @@ std::vector<uint16_t> IOBosstiary::getBosstiaryCooldownRaceId(const Player* play
 		return bossesCooldownRaceId;
 	}
 
-	for (phmap::btree_map<uint16_t, std::string> bossesMap = getBosstiaryMap();
+	for (std::map<uint16_t, std::string> bossesMap = getBosstiaryMap();
 		 const auto &[bossId, bossName] : bossesMap) {
 		uint32_t bossKills = player->getBestiaryKillCount(bossId);
 

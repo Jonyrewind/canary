@@ -10,12 +10,12 @@
 #include "pch.hpp"
 
 #include "zone.hpp"
-#include "game/game.h"
-#include "creatures/monsters/monster.h"
-#include "creatures/npcs/npc.h"
-#include "creatures/players/player.h"
+#include "game/game.hpp"
+#include "creatures/monsters/monster.hpp"
+#include "creatures/npcs/npc.hpp"
+#include "creatures/players/player.hpp"
 
-phmap::btree_map<std::string, std::shared_ptr<Zone>> Zone::zones = {};
+std::map<std::string, std::shared_ptr<Zone>> Zone::zones = {};
 std::mutex Zone::zonesMutex = {};
 const static std::shared_ptr<Zone> nullZone = nullptr;
 
@@ -52,7 +52,7 @@ const std::shared_ptr<Zone> &Zone::getZone(const std::string &name) {
 	return zones[name];
 }
 
-const phmap::btree_set<Position> &Zone::getPositions() const {
+const std::set<Position> &Zone::getPositions() const {
 	return positions;
 }
 
@@ -114,9 +114,11 @@ phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> Zone::getZones(const Positi
 
 const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &Zone::getZones() {
 	static phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> zonesSet;
+	zonesSet.clear();
 	for (const auto &[_, zone] : zones) {
-		if (zone)
+		if (zone) {
 			zonesSet.insert(zone);
+		}
 	}
 	return zonesSet;
 }

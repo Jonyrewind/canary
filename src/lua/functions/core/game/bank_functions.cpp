@@ -1,7 +1,7 @@
 #include "pch.hpp"
 #include "lua/functions/core/game/bank_functions.hpp"
 #include "game/bank/bank.hpp"
-#include "game/game.h"
+#include "game/game.hpp"
 
 int BankFunctions::luaBankCredit(lua_State* L) {
 	// Bank.credit(playerOrGuild, amount)
@@ -144,7 +144,7 @@ int BankFunctions::luaBankDeposit(lua_State* L) {
 }
 
 std::shared_ptr<Bank> BankFunctions::getBank(lua_State* L, int32_t arg, bool isGuild /*= false*/) {
-	if (getUserdataType(L, arg) == LuaData_Guild) {
+	if (getUserdataType(L, arg) == LuaData_t::Guild) {
 		return std::make_shared<Bank>(getGuild(L, arg));
 	}
 	if (isGuild) {

@@ -10,21 +10,21 @@
 #include "pch.hpp"
 
 #include "core.hpp"
-#include "creatures/monsters/monster.h"
+#include "creatures/monsters/monster.hpp"
 #include "game/functions/game_reload.hpp"
-#include "game/game.h"
-#include "items/item.h"
-#include "io/iobestiary.h"
+#include "game/game.hpp"
+#include "items/item.hpp"
+#include "io/iobestiary.hpp"
 #include "io/io_bosstiary.hpp"
-#include "io/iologindata.h"
+#include "io/iologindata.hpp"
 #include "lua/functions/core/game/game_functions.hpp"
 #include "lua/functions/events/event_callback_functions.hpp"
 #include "game/scheduling/dispatcher.hpp"
-#include "lua/creature/talkaction.h"
+#include "lua/creature/talkaction.hpp"
 #include "lua/functions/creatures/npc/npc_type_functions.hpp"
 #include "lua/scripts/lua_environment.hpp"
-#include "lua/scripts/scripts.h"
-#include "lua/creature/events.h"
+#include "lua/scripts/scripts.hpp"
+#include "lua/creature/events.hpp"
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
 
@@ -96,7 +96,7 @@ int GameFunctions::luaGameGetBestiaryList(lua_State* L) {
 	bool name = getBoolean(L, 2, false);
 
 	if (lua_gettop(L) <= 2) {
-		phmap::btree_map<uint16_t, std::string> mtype_list = g_game().getBestiaryList();
+		std::map<uint16_t, std::string> mtype_list = g_game().getBestiaryList();
 		for (auto ita : mtype_list) {
 			if (name) {
 				pushString(L, ita.second);
@@ -107,7 +107,7 @@ int GameFunctions::luaGameGetBestiaryList(lua_State* L) {
 		}
 	} else {
 		if (isNumber(L, 2)) {
-			phmap::btree_map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName("CANARY", false, getNumber<BestiaryType_t>(L, 2));
+			std::map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName("CANARY", false, getNumber<BestiaryType_t>(L, 2));
 			for (auto itb : tmplist) {
 				if (name) {
 					pushString(L, itb.second);
@@ -117,7 +117,7 @@ int GameFunctions::luaGameGetBestiaryList(lua_State* L) {
 				lua_rawseti(L, -2, ++index);
 			}
 		} else {
-			phmap::btree_map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName(getString(L, 2));
+			std::map<uint16_t, std::string> tmplist = g_iobestiary().findRaceByName(getString(L, 2));
 			for (auto itc : tmplist) {
 				if (name) {
 					pushString(L, itc.second);
@@ -155,8 +155,7 @@ int GameFunctions::luaGameloadMapChunk(lua_State* L) {
 	// Game.loadMapChunk(path, position, remove)
 	const std::string &path = getString(L, 1);
 	const Position &position = getPosition(L, 2);
-	bool unload = getBoolean(L, 3);
-	g_dispatcher().addTask([path, position, unload]() { g_game().loadMap(path, position, unload); });
+	g_dispatcher().addTask([path, position]() { g_game().loadMap(path, position); });
 	return 0;
 }
 

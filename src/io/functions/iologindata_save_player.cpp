@@ -10,7 +10,7 @@
 #include "pch.hpp"
 
 #include "io/functions/iologindata_save_player.hpp"
-#include "game/game.h"
+#include "game/game.hpp"
 
 bool IOLoginDataSave::saveItems(const Player* player, const ItemBlockList &itemList, DBInsert &query_insert, PropWriteStream &propWriteStream) {
 	if (!player) {
@@ -35,8 +35,9 @@ bool IOLoginDataSave::saveItems(const Player* player, const ItemBlockList &itemL
 
 		// Update container attributes if necessary
 		if (Container* container = item->getContainer()) {
-			if (!container)
+			if (!container) {
 				continue; // Check for null container
+			}
 
 			if (container->getAttribute<int64_t>(ItemAttribute_t::OPENCONTAINER) > 0) {
 				container->setAttribute(ItemAttribute_t::OPENCONTAINER, 0);
@@ -85,13 +86,15 @@ bool IOLoginDataSave::saveItems(const Player* player, const ItemBlockList &itemL
 		int32_t parentId = cb.second;
 		queue.pop_front();
 
-		if (!container)
+		if (!container) {
 			continue; // Check for null container
+		}
 
 		// Loop through items in container
 		for (Item* item : container->getItemList()) {
-			if (!item)
+			if (!item) {
 				continue; // Check for null item
+			}
 
 			++runningId;
 

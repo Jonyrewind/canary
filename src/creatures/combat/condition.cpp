@@ -9,9 +9,10 @@
 
 #include "pch.hpp"
 
-#include "creatures/combat/condition.h"
-#include "game/game.h"
+#include "creatures/combat/condition.hpp"
+#include "game/game.hpp"
 #include "game/scheduling/dispatcher.hpp"
+#include "io/fileloader.hpp"
 
 /**
  *  Condition
@@ -1333,10 +1334,11 @@ bool ConditionManaShield::setParam(ConditionParam_t param, int32_t value) {
 
 uint32_t ConditionManaShield::getIcons() const {
 	uint32_t icons = Condition::getIcons();
-	if (manaShield != 0)
+	if (manaShield != 0) {
 		icons |= ICON_NEWMANASHIELD;
-	else
+	} else {
 		icons |= ICON_MANASHIELD;
+	}
 	return icons;
 }
 
