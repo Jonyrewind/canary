@@ -441,7 +441,7 @@ bool Game::loadItemsPrice() {
 void Game::loadMainMap(const std::string &filename) {
 	Monster::despawnRange = g_configManager().getNumber(DEFAULT_DESPAWNRANGE);
 	Monster::despawnRadius = g_configManager().getNumber(DEFAULT_DESPAWNRADIUS);
-	map.loadMap(g_configManager().getString(DATA_DIRECTORY) + "/world/" + filename + ".otbm", true, true, false, false);
+	map.loadMap(g_configManager().getString(DATA_DIRECTORY) + "/world/" + filename + ".otbm", true, true, true, true);
 }
 
 void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
@@ -836,10 +836,8 @@ bool Game::internalPlaceCreature(Creature* creature, const Position &pos, bool e
 	if (creature->getParent() != nullptr) {
 		return false;
 	}
-
-	auto fromZones = creature->getZones();
 	auto toZones = Zone::getZones(pos);
-	if (auto ret = onCreatureZoneChange(creature, fromZones, toZones); ret != RETURNVALUE_NOERROR) {
+	if (auto ret = beforeCreatureZoneChange(creature, {}, toZones); ret != RETURNVALUE_NOERROR) {
 		return false;
 	}
 
@@ -855,7 +853,7 @@ bool Game::internalPlaceCreature(Creature* creature, const Position &pos, bool e
 		addCreatureCheck(creature);
 		creature->onPlacedCreature();
 	}
-
+	afterCreatureZoneChange(creature, {}, toZones);
 	return true;
 }
 
@@ -923,9 +921,7 @@ bool Game::removeCreature(Creature* creature, bool isLogout /* = true*/) {
 	}
 
 	creature->getParent()->postRemoveNotification(creature, nullptr, 0);
-	for (const auto zone : creature->getZones()) {
-		zone->creatureRemoved(creature);
-	}
+	afterCreatureZoneChange(creature, creature->getZones(), {});
 
 	creature->removeList();
 	creature->setRemoved();
@@ -952,6 +948,7 @@ void Game::executeDeath(uint32_t creatureId) {
 	Creature* creature = getCreatureByID(creatureId);
 	if (creature && !creature->isRemoved()) {
 		creature->onDeath();
+		afterCreatureZoneChange(creature, creature->getZones(), {});
 	}
 }
 
@@ -1276,12 +1273,6 @@ ReturnValue Game::internalMoveCreature(Creature &creature, Tile &toTile, uint32_
 		if (field && !field->isBlocking() && field->getDamage() != 0) {
 			return RETURNVALUE_NOTPOSSIBLE;
 		}
-	}
-
-	auto fromZones = creature.getZones();
-	auto toZones = toTile.getZones();
-	if (auto ret = onCreatureZoneChange(&creature, fromZones, toZones); ret != RETURNVALUE_NOERROR) {
-		return ret;
 	}
 
 	map.moveCreature(creature, toTile);
@@ -1652,7 +1643,7 @@ ReturnValue Game::checkMoveItemToCylinder(Player* player, Cylinder* fromCylinder
 	return RETURNVALUE_NOERROR;
 }
 
-ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder, int32_t index, Item* item, uint32_t count, Item** internalMoveItem, uint32_t flags /*= 0*/, Creature* actor /*=nullptr*/, Item* tradeItem /* = nullptr*/) {
+ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder, int32_t index, Item* item, uint32_t count, Item** movedItem, uint32_t flags /*= 0*/, Creature* actor /*=nullptr*/, Item* tradeItem /* = nullptr*/, bool checkTile /* = true*/) {
 	if (fromCylinder == nullptr) {
 		g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
 		return RETURNVALUE_NOTPOSSIBLE;
@@ -1662,11 +1653,12 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
 
-	Tile* fromTile = fromCylinder->getTile();
-	if (fromTile) {
-		auto it = browseFields.find(fromTile);
-		if (it != browseFields.end() && it->second == fromCylinder) {
-			fromCylinder = fromTile;
+	if (checkTile) {
+		if (Tile* fromTile = fromCylinder->getTile()) {
+			auto it = browseFields.find(fromTile);
+			if (it != browseFields.end() && it->second == fromCylinder) {
+				fromCylinder = fromTile;
+			}
 		}
 	}
 
@@ -1826,11 +1818,11 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 		updateItem->startDecaying();
 	}
 
-	if (internalMoveItem) {
+	if (movedItem) {
 		if (moveItem) {
-			*internalMoveItem = moveItem;
+			*movedItem = moveItem;
 		} else {
-			*internalMoveItem = item;
+			*movedItem = item;
 		}
 	}
 
@@ -2393,12 +2385,6 @@ ReturnValue Game::internalTeleport(Thing* thing, const Position &newPos, bool pu
 	}
 
 	if (Creature* creature = thing->getCreature()) {
-		auto fromZones = creature->getZones();
-		auto toZones = toTile->getZones();
-		if (auto ret = onCreatureZoneChange(creature, fromZones, toZones); ret != RETURNVALUE_NOERROR) {
-			return ret;
-		}
-
 		ReturnValue ret = toTile->queryAdd(0, *creature, 1, FLAG_NOLIMIT);
 		if (ret != RETURNVALUE_NOERROR) {
 			return ret;
@@ -2616,7 +2602,7 @@ ReturnValue Game::processMoveOrAddItemToLootContainer(Item* item, Container* loo
 	Item* moveItem = nullptr;
 	ReturnValue ret;
 	if (item->getParent()) {
-		ret = internalMoveItem(item->getParent(), lootContainer, INDEX_WHEREEVER, item, item->getItemCount(), &moveItem, 0, player);
+		ret = internalMoveItem(item->getParent(), lootContainer, INDEX_WHEREEVER, item, item->getItemCount(), &moveItem, 0, player, nullptr, false);
 	} else {
 		ret = internalAddItem(lootContainer, item, INDEX_WHEREEVER);
 	}
@@ -9834,49 +9820,57 @@ phmap::parallel_flat_hash_set<T> setDifference(const phmap::parallel_flat_hash_s
 	return setResult;
 }
 
-ReturnValue Game::onCreatureZoneChange(Creature* creature, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &fromZones, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &toZones) {
+ReturnValue Game::beforeCreatureZoneChange(Creature* creature, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &fromZones, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &toZones, bool force /* = false*/) const {
 	if (!creature) {
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
 
 	// fromZones - toZones = zones that creature left
-	auto zonesLeft = setDifference(fromZones, toZones);
+	auto zonesLeaving = setDifference(fromZones, toZones);
 	// toZones - fromZones = zones that creature entered
-	auto zonesEntered = setDifference(toZones, fromZones);
-	// intersection of fromZones and toZones = zones that creature is still in
-	auto zonesStillIn = setDifference(fromZones, zonesLeft);
+	auto zonesEntering = setDifference(toZones, fromZones);
 
-	for (const auto &zone : zonesStillIn) {
-		// creatureAdded is idempotent, so we can just call it. This is useful for
-		// when a creature is added to a zone since the from is going to be the same
-		// as the to.
-		if (zone) {
-			zone->creatureAdded(creature);
-		}
-	}
-
-	if (zonesLeft.empty() && zonesEntered.empty()) {
+	if (zonesLeaving.empty() && zonesEntering.empty()) {
 		return RETURNVALUE_NOERROR;
 	}
 
-	for (const auto &zone : zonesLeft) {
-		bool allowed = g_callbacks().checkCallback(EventCallback_t::zoneOnCreatureLeave, &EventCallback::zoneOnCreatureLeave, zone, creature);
-		if (!allowed) {
+	for (const auto &zone : zonesLeaving) {
+		bool allowed = g_callbacks().checkCallback(EventCallback_t::zoneBeforeCreatureLeave, &EventCallback::zoneBeforeCreatureLeave, zone, creature);
+		if (!force && !allowed) {
 			return RETURNVALUE_NOTPOSSIBLE;
 		}
-	}
-	for (const auto &zone : zonesLeft) {
-		zone->creatureRemoved(creature);
 	}
 
-	for (const auto &zone : zonesEntered) {
-		bool allowed = g_callbacks().checkCallback(EventCallback_t::zoneOnCreatureEnter, &EventCallback::zoneOnCreatureEnter, zone, creature);
-		if (!allowed) {
+	for (const auto &zone : zonesEntering) {
+		bool allowed = g_callbacks().checkCallback(EventCallback_t::zoneBeforeCreatureEnter, &EventCallback::zoneBeforeCreatureEnter, zone, creature);
+		if (!force && !allowed) {
 			return RETURNVALUE_NOTPOSSIBLE;
 		}
 	}
-	for (const auto &zone : zonesEntered) {
+	return RETURNVALUE_NOERROR;
+}
+
+void Game::afterCreatureZoneChange(Creature* creature, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &fromZones, const phmap::parallel_flat_hash_set<std::shared_ptr<Zone>> &toZones) const {
+	if (!creature) {
+		return;
+	}
+
+	// fromZones - toZones = zones that creature left
+	auto zonesLeaving = setDifference(fromZones, toZones);
+	// toZones - fromZones = zones that creature entered
+	auto zonesEntering = setDifference(toZones, fromZones);
+
+	for (const auto &zone : zonesLeaving) {
+		zone->creatureRemoved(creature);
+	}
+	for (const auto &zone : zonesEntering) {
 		zone->creatureAdded(creature);
 	}
-	return RETURNVALUE_NOERROR;
+
+	for (const auto &zone : zonesLeaving) {
+		g_callbacks().executeCallback(EventCallback_t::zoneAfterCreatureLeave, &EventCallback::zoneAfterCreatureLeave, zone, creature);
+	}
+	for (const auto &zone : zonesEntering) {
+		g_callbacks().executeCallback(EventCallback_t::zoneAfterCreatureEnter, &EventCallback::zoneAfterCreatureEnter, zone, creature);
+	}
 }
