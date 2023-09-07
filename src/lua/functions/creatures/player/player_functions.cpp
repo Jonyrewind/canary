@@ -1387,6 +1387,30 @@ int PlayerFunctions::luaPlayerSetSex(lua_State* L) {
 	return 1;
 }
 
+int PlayerFunctions::luaPlayerGetPronoun(lua_State* L) {
+	// player:getPronoun()
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		lua_pushnumber(L, player->getPronoun());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerSetPronoun(lua_State* L) {
+	// player:setPronoun(newPronoun)
+	Player* player = getUserdata<Player>(L, 1);
+	if (player) {
+		PlayerPronoun_t newPronoun = getNumber<PlayerPronoun_t>(L, 2);
+		player->setPronoun(newPronoun);
+		pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int PlayerFunctions::luaPlayerGetTown(lua_State* L) {
 	// player:getTown()
 	Player* player = getUserdata<Player>(L, 1);
@@ -1636,7 +1660,7 @@ int PlayerFunctions::luaPlayerSetBankBalance(lua_State* L) {
 
 int PlayerFunctions::luaPlayerGetStorageValue(lua_State* L) {
 	// player:getStorageValue(key)
-	Player* player = getUserdata<Player>(L, 1);
+	const auto &player = getUserdata<Player>(L, 1);
 	if (!player) {
 		lua_pushnil(L);
 		return 1;
@@ -2378,9 +2402,7 @@ int PlayerFunctions::luaPlayerAddPremiumDays(lua_State* L) {
 		return 1;
 	}
 
-	if (player->getAccount()->addPremiumDays(addDays) != account::ERROR_NO) {
-		return 1;
-	}
+	player->getAccount()->addPremiumDays(addDays);
 
 	if (player->getAccount()->save() != account::ERROR_NO) {
 		return 1;
@@ -2409,9 +2431,7 @@ int PlayerFunctions::luaPlayerRemovePremiumDays(lua_State* L) {
 		return 1;
 	}
 
-	if (player->getAccount()->addPremiumDays(-removeDays) != account::ERROR_NO) {
-		return 1;
-	}
+	player->getAccount()->addPremiumDays(-removeDays);
 
 	if (player->getAccount()->save() != account::ERROR_NO) {
 		return 1;

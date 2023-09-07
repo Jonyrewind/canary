@@ -25,7 +25,7 @@ function spell.onCastSpell(creature, var)
 	return combat:execute(creature, var)
 end
 
-spell:name("icecle heal")
+spell:name("icicle heal")
 spell:words("###436")
 spell:isAggressive(true)
 spell:blockWalls(true)

@@ -759,17 +759,14 @@
 	<npc centerx="32319" centery="32208" centerz="6" radius="1">
 		<npc name="Guide Luke" x="0" y="0" z="6" spawntime="60" />
 	</npc>
-	<npc centerx="32310" centery="32209" centerz="6" radius="1">
-		<npc name="Captain Bluebear" x="0" y="0" z="6" spawntime="60" />
+	<npc centerx="32310" centery="32210" centerz="6" radius="1">
+		<npc name="Captain Bluebear" x="0" y="-1" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32363" centery="32210" centerz="6" radius="1">
 		<npc name="Todd" x="0" y="0" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32425" centery="32223" centerz="6" radius="1">
 		<npc name="Tim, The Guard" x="0" y="0" z="6" spawntime="60" />
-	</npc>
-	<npc centerx="32371" centery="32240" centerz="6" radius="1">
-		<npc name="Imbuement Assistant" x="0" y="1" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32343" centery="32245" centerz="6" radius="1">
 		<npc name="Galuna" x="0" y="0" z="6" spawntime="60" />
@@ -1746,10 +1743,6 @@
 	<npc centerx="32398" centery="32222" centerz="7" radius="1">
 		<npc name="Xodet" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="33504" centery="32222" centerz="7" radius="1">
-		<npc name="Valindara" x="0" y="0" z="7" spawntime="60" />
-		<npc name="Talila" x="1" y="1" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="32066" centery="32225" centerz="7" radius="1">
 		<npc name="Lily" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2494,11 +2487,9 @@
 	<npc centerx="32804" centery="31758" centerz="10" radius="1">
 		<npc name="Gnominus" x="0" y="0" z="10" spawntime="60" />
 	</npc>
-	<npc centerx="32767" centery="31771" centerz="10" radius="1">
-		<npc name="Doctor Gnomedix" x="1" y="0" z="10" spawntime="60" />
-	</npc>
-	<npc centerx="32769" centery="31771" centerz="10" radius="1">
-		<npc name="Gnomenursey" x="0" y="0" z="10" spawntime="60" />
+	<npc centerx="32768" centery="31771" centerz="10" radius="1">
+		<npc name="Doctor Gnomedix" x="0" y="0" z="10" spawntime="60" />
+		<npc name="Gnomenursey" x="1" y="0" z="10" spawntime="60" />
 	</npc>
 	<npc centerx="32787" centery="31776" centerz="10" radius="1">
 		<npc name="Gnomejam" x="0" y="0" z="10" spawntime="60" />

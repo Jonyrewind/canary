@@ -1,7 +1,7 @@
 local config = {
-	monsterName = 'Custodian',
-	bossPosition = Position(33376, 32825, 8),
-	centerPosition = Position(33376, 32825, 8),
+	monsterName = 'Gaffir',
+	bossPosition = Position(33394, 32674, 4),
+	centerPosition = Position(33394, 32674, 4),
 	rangeX = 50,
 	rangeY = 50
 }
@@ -19,7 +19,7 @@ local function checkBoss(centerPosition, rangeX, rangeY, bossName)
 	return false
 end
 
-local miniBoss = GlobalEvent("custodian")
+local miniBoss = GlobalEvent("gaffir")
 function miniBoss.onThink(interval, lastExecution)
 	if checkBoss(config.centerPosition, config.rangeX, config.rangeY, config.monsterName) then
 		return true
@@ -30,5 +30,5 @@ function miniBoss.onThink(interval, lastExecution)
 	return true
 end
 
-miniBoss:interval(900000)
+miniBoss:interval(15 * 60 * 1000)
 miniBoss:register()
