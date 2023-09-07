@@ -1,7 +1,8 @@
 local config = {
 	{ name="Hunts", position = Position(1063, 964, 7) },
+	{ name="Temple", position = Position(32369, 32241, 7) },
+	{ name="NPC Room", position = Position(994, 1030, 6) },
 	{ name="Trainer", position = Position(1116, 1094, 7) },
-	{ name="Temple", position = Position(32369, 32241, 7) }
 }
 
 local teleportCube = Action()
