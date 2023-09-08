@@ -107,7 +107,7 @@ public:
 		return this;
 	}
 
-	static std::shared_ptr<Task> createPlayerTask(uint32_t delay, std::function<void(void)> f);
+	static std::shared_ptr<Task> createPlayerTask(uint32_t delay, std::function<void(void)> f, std::string context);
 
 	void setID() override;
 
@@ -473,6 +473,10 @@ public:
 
 	int32_t getStorageValueByName(const std::string &storageName) const;
 	void addStorageValueByName(const std::string &storageName, const int32_t value, const bool isLogin = false);
+
+	std::shared_ptr<KVStore> kv() const {
+		return g_kv().scoped("player")->scoped(getID());
+	}
 
 	void genReservedStorageRange();
 
