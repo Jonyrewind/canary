@@ -73,112 +73,82 @@ end
 
 keywordHandler:addKeyword({ 'job' }, StdModule.say, { npcHandler = npcHandler, text = "Currently I have been working selling items for imbuement." })
 
-npcHandler:setMessage(MESSAGE_GREET, "Welcome to my Imbuement's shop! {trade} to see all my products, or {offer} to buy 'Powerful Strike', 'Powerful Void' and 'Powerful Vampirism'.")
+npcHandler:setMessage(MESSAGE_GREET, "Welcome to my Imbuement's shop! {trade} to see all my products, or {bundles} to buy Imbuement Bundles.")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye and come again.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye and come again.")
 
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "battle stone", clientId = 11447, buy = 290 },
-	{ itemName = "blazing bone", clientId = 16131, buy = 610 },
-	{ itemName = "bloody pincers", clientId = 9633, buy = 100 },
-	{ itemName = "brimstone fangs", clientId = 11702, buy = 380 },
-	{ itemName = "brimstone shell", clientId = 11703, buy = 210 },
-	{ itemName = "broken shamanic staff", clientId = 11452, buy = 35 },
-	{ itemName = "compass", clientId = 10302, buy = 45 },
-	{ itemName = "crawler head plating", clientId = 14079, buy = 210 },
-	{ itemName = "crystallized anger", clientId = 23507, buy = 400 },
-	{ itemName = "cultish mask", clientId = 9638, buy = 280 },
-	{ itemName = "cultish robe", clientId = 9639, buy = 150 },
-	{ itemName = "cyclops toe", clientId = 9657, buy = 55 },
-	{ itemName = "damselfly wing", clientId = 17458, buy = 20 },
-	{ itemName = "deepling warts", clientId = 14012, buy = 180 },
-	{ itemName = "demon horn", clientId = 5954, buy = 1000 },
-	{ itemName = "demonic skeletal hand", clientId = 9647, buy = 80 },
-	{ itemName = "draken sulphur", clientId = 11658, buy = 550 },
-	{ itemName = "elven hoof", clientId = 18994, buy = 115 },
-	{ itemName = "elven scouting glass", clientId = 11464, buy = 50 },
-	{ itemName = "elvish talisman", clientId = 9635, buy = 45 },
-	{ itemName = "energy vein", clientId = 23508, buy = 270 },
-	{ itemName = "fairy wings", clientId = 25694, buy = 200 },
-	{ itemName = "fiery heart", clientId = 9636, buy = 375 },
-	{ itemName = "flask of embalming fluid", clientId = 11466, buy = 30 },
-	{ itemName = "frazzle skin", clientId = 20199, buy = 400 },
-	{ itemName = "frosty heart", clientId = 9661, buy = 280 },
-	{ itemName = "gloom wolf fur", clientId = 22007, buy = 70 },
-	{ itemName = "goosebump leather", clientId = 20205, buy = 650 },
-	{ itemName = "green dragon leather", clientId = 5877, buy = 100 },
-	{ itemName = "green dragon scale", clientId = 5920, buy = 100 },
-	{ itemName = "hellspawn tail", clientId = 10304, buy = 475 },
-	{ itemName = "lion's mane", clientId = 9691, buy = 60 },
-	{ itemName = "little bowl of myrrh", clientId = 25702, buy = 500 },
-	{ itemName = "metal spike", clientId = 10298, buy = 320 },
-	{ itemName = "mooh'tah shell", clientId = 21202, buy = 110 },
-	{ itemName = "moohtant horn", clientId = 21200, buy = 140 },
-	{ itemName = "mystical hourglass", clientId = 9660, buy = 700 },
-	{ itemName = "ogre nose ring", clientId = 22189, buy = 210 },
-	{ itemName = "orc tooth", clientId = 10196, buy = 150 },
-	{ itemName = "peacock feather fan", clientId = 21975, buy = 350 },
-	{ itemName = "petrified scream", clientId = 10420, buy = 250 },
-	{ itemName = "piece of dead brain", clientId = 9663, buy = 420 },
-	{ itemName = "piece of scarab shell", clientId = 9641, buy = 45 },
-	{ itemName = "piece of swampling wood", clientId = 17823, buy = 30 },
-	{ itemName = "pile of grave earth", clientId = 11484, buy = 25 },
-	{ itemName = "poisonous slime", clientId = 9640, buy = 50 },
-	{ itemName = "polar bear paw", clientId = 9650, buy = 30 },
-	{ itemName = "protective charm", clientId = 11444, buy = 60 },
-	{ itemName = "quill", clientId = 28567, buy = 1100 },
-	{ itemName = "rope belt", clientId = 11492, buy = 66 },
-	{ itemName = "rorc feather", clientId = 18993, buy = 70 },
-	{ itemName = "sabretooth", clientId = 10311, buy = 400 },
-	{ itemName = "seacrest hair", clientId = 21801, buy = 260 },
-	{ itemName = "silencer claws", clientId = 20200, buy = 390 },
-	{ itemName = "slime heart", clientId = 21194, buy = 160 },
-	{ itemName = "snake skin", clientId = 9694, buy = 400 },
-	{ itemName = "some grimeleech wings", clientId = 22730, buy = 1200 },
-	{ itemName = "strand of medusa hair", clientId = 10309, buy = 600 },
-	{ itemName = "swamp grass", clientId = 9686, buy = 20 },
-	{ itemName = "thick fur", clientId = 10307, buy = 150 },
-	{ itemName = "vampire teeth", clientId = 9685, buy = 275 },
-	{ itemName = "vexclaw talon", clientId = 22728, buy = 1100 },
-	{ itemName = "war crystal", clientId = 9654, buy = 460 },
-	{ itemName = "warmaster's wristguards", clientId = 10405, buy = 200 },
-	{ itemName = "waspoid wing", clientId = 14081, buy = 190 },
-	{ itemName = "wereboar hooves", clientId = 22053, buy = 175 },
-	{ itemName = "winter wolf fur", clientId = 10295, buy = 20 },
-	{ itemName = "wyrm scale", clientId = 9665, buy = 400 },
-	{ itemName = "wyvern talisman", clientId = 9644, buy = 265 }
-}
-
-local products = {
-	['strike'] = {
-		text = "The powerful bundle for the strike imbuement consists of 20 protective charms, 25 sabreteeth and 5 vexclaw talons. Would you like to buy it for 35000 gold?",
-		itens = {
-			[1] = {clientId = 11444, amount = 20}, 
-			[2] = {clientId = 10311, amount = 25}, 
-			[3] = {clientId = 22728, amount = 5} 
-		},
-		value = 35000
-	},
-	['vampirism'] = {
-		text = "The powerful bundle for the vampirism imbuement consists of 25 vampire teeth, 15 bloody pincers and 5 pieces of dead brain. Would you like to buy it for 25000 gold?",
-		itens = {
-			[1] = {clientId = 9685, amount = 25},
-			[2] = {clientId = 9633, amount = 15},
-			[3] = {clientId = 9663, amount = 5}
-		},
-		value = 25000
-	},
-	['void'] = {
-		text = "The powerful bundle for the void imbuement consists of 25 rope belts, 25 silencer claws and 5 grimeleech wings. Would you like to buy it for 30000 gold?",
-		itens = {
-			[1] = {clientId = 11492, amount = 25},
-			[2] = {clientId = 20200, amount = 25},
-			[3] = {clientId = 22730, amount = 5}
-		},
-		value = 30000,
-	}
+	{ itemName = "battle stone", clientId = 11447, buy = 15000 },
+	{ itemName = "blazing bone", clientId = 16131, buy = 15000 },
+	{ itemName = "bloody pincers", clientId = 9633, buy = 20000 },
+	{ itemName = "brimstone fangs", clientId = 11702, buy = 15000 },
+	{ itemName = "brimstone shell", clientId = 11703, buy = 15000 },
+	{ itemName = "broken shamanic staff", clientId = 11452, buy = 15000 },
+	{ itemName = "compass", clientId = 10302, buy = 15000 },
+	{ itemName = "crawler head plating", clientId = 14079, buy = 15000 },
+	{ itemName = "crystallized anger", clientId = 23507, buy = 15000 },
+	{ itemName = "cultish mask", clientId = 9638, buy = 15000 },
+	{ itemName = "cultish robe", clientId = 9639, buy = 15000 },
+	{ itemName = "cyclops toe", clientId = 9657, buy = 15000 },
+	{ itemName = "damselfly wing", clientId = 17458, buy = 15000 },
+	{ itemName = "deepling warts", clientId = 14012, buy = 15000 },
+	{ itemName = "demon horn", clientId = 5954, buy = 15000 },
+	{ itemName = "demonic skeletal hand", clientId = 9647, buy = 15000 },
+	{ itemName = "draken sulphur", clientId = 11658, buy = 15000 },
+	{ itemName = "elven hoof", clientId = 18994, buy = 15000 },
+	{ itemName = "elven scouting glass", clientId = 11464, buy = 15000 },
+	{ itemName = "elvish talisman", clientId = 9635, buy = 15000 },
+	{ itemName = "energy vein", clientId = 23508, buy = 15000 },
+	{ itemName = "fairy wings", clientId = 25694, buy = 15000 },
+	{ itemName = "fiery heart", clientId = 9636, buy = 15000 },
+	{ itemName = "flask of embalming fluid", clientId = 11466, buy = 15000 },
+	{ itemName = "frazzle skin", clientId = 20199, buy = 15000 },
+	{ itemName = "frosty heart", clientId = 9661, buy = 15000 },
+	{ itemName = "gloom wolf fur", clientId = 22007, buy = 15000 },
+	{ itemName = "goosebump leather", clientId = 20205, buy = 15000 },
+	{ itemName = "green dragon leather", clientId = 5877, buy = 15000 },
+	{ itemName = "green dragon scale", clientId = 5920, buy = 15000 },
+	{ itemName = "hellspawn tail", clientId = 10304, buy = 15000 },
+	{ itemName = "lion's mane", clientId = 9691, buy = 15000 },
+	{ itemName = "little bowl of myrrh", clientId = 25702, buy = 15000 },
+	{ itemName = "metal spike", clientId = 10298, buy = 15000 },
+	{ itemName = "mooh'tah shell", clientId = 21202, buy = 15000 },
+	{ itemName = "moohtant horn", clientId = 21200, buy = 15000 },
+	{ itemName = "mystical hourglass", clientId = 9660, buy = 15000 },
+	{ itemName = "ogre nose ring", clientId = 22189, buy = 15000 },
+	{ itemName = "orc tooth", clientId = 10196, buy = 15000 },
+	{ itemName = "peacock feather fan", clientId = 21975, buy = 15000 },
+	{ itemName = "petrified scream", clientId = 10420, buy = 15000 },
+	{ itemName = "piece of dead brain", clientId = 9663, buy = 15000 },
+	{ itemName = "piece of scarab shell", clientId = 9641, buy = 15000 },
+	{ itemName = "piece of swampling wood", clientId = 17823, buy = 15000 },
+	{ itemName = "pile of grave earth", clientId = 11484, buy = 15000 },
+	{ itemName = "poisonous slime", clientId = 9640, buy = 15000 },
+	{ itemName = "polar bear paw", clientId = 9650, buy = 15000 },
+	{ itemName = "protective charm", clientId = 11444, buy = 20000 },
+	{ itemName = "quill", clientId = 28567, buy = 15000 },
+	{ itemName = "rope belt", clientId = 11492, buy = 15000 },
+	{ itemName = "rorc feather", clientId = 18993, buy = 15000 },
+	{ itemName = "sabretooth", clientId = 10311, buy = 20000 },
+	{ itemName = "seacrest hair", clientId = 21801, buy = 15000 },
+	{ itemName = "silencer claws", clientId = 20200, buy = 20000 },
+	{ itemName = "slime heart", clientId = 21194, buy = 15000 },
+	{ itemName = "snake skin", clientId = 9694, buy = 15000 },
+	{ itemName = "some grimeleech wings", clientId = 22730, buy = 20000 },
+	{ itemName = "strand of medusa hair", clientId = 10309, buy = 15000 },
+	{ itemName = "swamp grass", clientId = 9686, buy = 15000 },
+	{ itemName = "thick fur", clientId = 10307, buy = 15000 },
+	{ itemName = "vampire teeth", clientId = 9685, buy = 20000 },
+	{ itemName = "vexclaw talon", clientId = 22728, buy = 20000 },
+	{ itemName = "war crystal", clientId = 9654, buy = 15000 },
+	{ itemName = "waspoid wing", clientId = 14081, buy = 15000 },
+	{ itemName = "wereboar hooves", clientId = 22053, buy = 15000 },
+	{ itemName = "winter wolf fur", clientId = 10295, buy = 15000 },
+	{ itemName = "wyrm scale", clientId = 9665, buy = 15000 },
+	{ itemName = "wyvern talisman", clientId = 9644, buy = 15000 },
+	{ itemName = "warmaster's wristguards", clientId = 10405, buy = 15000 }
 }
 
 local answerType = {}
@@ -190,56 +160,178 @@ local function greetCallback(npc, creature)
 	return true
 end
 
-local function creatureSayCallback(npc, creature, type, message)
-	local player = Player(creature)
-	local playerId = player:getId()
+keywordHandler:addKeyword({'bundles'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy Skill increasements {Bash}, {Blockade}, {Chop}, {Epiphany}, {Precision}, {Slash}. Additional Attributes {Featherweight}, {Strike}, {Swiftness}, {Vampirism}, {Vibrancy}, {Void}. Elemental Damage {Electrify}, {Frost}, {Reap}, {Scorch}, {Venom}. Elemental Protection {Cloud Fabric}, {Demon Presence}, {Dragon Hide}, {Lich Shroud}, {Quara Scale}, {Snake Skin}?'})
 
-	if not npcHandler:checkInteraction(npc, creature) then
-		return false
-	end
+-- Skill Pack
+
+local stoneKeyword = keywordHandler:addKeyword({'bash'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill club imbuement for 750000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 750000 end,
+		function(player) if player:removeMoneyBank(750000) then player:addItem(9657, 20) player:addItem(22189, 15) player:addItem(10405, 10)  end end
+			)
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+
+local stoneKeyword = keywordHandler:addKeyword({'blockade'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill shield imbuement for 1050000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1050000 end,
+		function(player) if player:removeMoneyBank(1050000) then player:addItem(18994, 20) player:addItem(11703, 25) player:addItem(20199, 25)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+		
+local stoneKeyword = keywordHandler:addKeyword({'chop'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill axe imbuement for 975000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 975000 end,
+		function(player) if player:removeMoneyBank(975000) then player:addItem(10196, 20) player:addItem(11447, 25) player:addItem(21200, 20)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
 	
-	if MsgContains(message, "offer") then
-		npcHandler:say({"I have creature products for the imbuements {strike}, {vampirism} and {void}. Make your choice, please!"}, npc, creature)
-		npcHandler:setTopic(playerId, 1)
-	elseif npcHandler:getTopic(playerId) == 1 then
-		local imbueType = products[message:lower()]
-		if imbueType then
-			answerType[playerId] = message
-			local neededCap = 0
-			for i = 1, #products[answerType[playerId]].itens do
-				neededCap = neededCap + ItemType(products[answerType[playerId]].itens[i].clientId):getWeight() * products[answerType[playerId]].itens[i].amount
-			end
-			npcHandler:say({imbueType.text.."...", 
-							"Make sure that you have ".. #products[answerType[playerId]].itens .." free slots and that you can carry ".. string.format("%.2f",neededCap/100) .." oz in addition to that."}, npc, creature)
-			npcHandler:setTopic(playerId, 2)
-		end
-		elseif npcHandler:getTopic(playerId) == 2 then
-		if MsgContains(message, "yes") then
-			local neededCap = 0
-			for i = 1, #products[answerType[playerId]].itens do
-				neededCap = neededCap + ItemType(products[answerType[playerId]].itens[i].clientId):getWeight() * products[answerType[playerId]].itens[i].amount
-			end
-			if player:getFreeCapacity() > neededCap then
-				local cost = products[answerType[playerId]].value
-				if not player:removeMoneyBank(cost) then
-					npcHandler:say("I'm sorry but it seems you don't have enough gold yet. Bring me "..cost.." gold and we'll make a trade.", npc, creature)
-				else
-					for i = 1, #products[answerType[playerId]].itens do
-					player:addItem(products[answerType[playerId]].itens[i].clientId, products[answerType[playerId]].itens[i].amount)
-					end
-					npcHandler:say("There it is.", npc, creature)
-					npcHandler:setTopic(playerId, 0)
-				end
-			else
-				npcHandler:say("You don\'t have enough capacity. You must have "..neededCap.." oz.", npc, creature)
-			end
-		elseif MsgContains(message, "no") then
-			npcHandler:say("Your decision. Come back if you have changed your mind.", npc, creature)
-		end
-		npcHandler:setTopic(playerId, 0)
-	end
-	return true
-end
+local stoneKeyword = keywordHandler:addKeyword({'epiphany'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for magic level imbuement for 825000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 825000 end,
+		function(player) if player:removeMoneyBank(825000) then player:addItem(9635, 25) player:addItem(11452, 15) player:addItem(10309, 15)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'precision'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill distance imbuement for 825000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 825000 end,
+		function(player) if player:removeMoneyBank(825000) then player:addItem(11464, 25) player:addItem(18994, 20) player:addItem(10298, 10)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'slash'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill sword imbuement for 825000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 825000 end,
+		function(player) if player:removeMoneyBank(825000) then player:addItem(9691, 25) player:addItem(9640, 20) player:addItem(9654, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+-- Additional Attributes
+
+local stoneKeyword = keywordHandler:addKeyword({'featherweight'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for capacity increase imbuement for 525000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 525000 end,
+		function(player) if player:removeMoneyBank(525000) then player:addItem(25694, 20) player:addItem(25702, 10) player:addItem(20205, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'strike'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for critical imbuement for 1000000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1000000 end,
+		function(player) if player:removeMoneyBank(1000000) then player:addItem(11444, 25) player:addItem(10311, 25) player:addItem(22728, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'swiftness'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for speed imbuement for 1000000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1000000 end,
+		function(player) if player:removeMoneyBank(1000000) then player:addItem(17458, 15) player:addItem(10302, 25) player:addItem(14081, 20)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'vampirism'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for lifetime leech imbuement for 1000000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1000000 end,
+		function(player) if player:removeMoneyBank(1000000) then player:addItem(9685, 25) player:addItem(9633, 15) player:addItem(9663, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'vibrancy'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for paralysis removal imbuement for 600000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 600000 end,
+		function(player) if player:removeMoneyBank(600000) then player:addItem(22053, 20) player:addItem(23507, 15) player:addItem(28567, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'void'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for mana leech imbuement for 1000000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1000000 end,
+		function(player) if player:removeMoneyBank(1000000) then player:addItem(11492, 25) player:addItem(20200, 25) player:addItem(22730, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+-- Elemental Damage
+
+local stoneKeyword = keywordHandler:addKeyword({'electrify'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for energy damage imbuement for 465000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 465000 end,
+		function(player) if player:removeMoneyBank(465000) then player:addItem(18993, 25) player:addItem(21975, 5) player:addItem(23508, 1)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'frost'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for ice damage imbuement for 600000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 600000 end,
+		function(player) if player:removeMoneyBank(600000) then player:addItem(9661, 25) player:addItem(21801, 10) player:addItem(9650, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'reap'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for death damage imbuement for 465000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 465000 end,
+		function(player) if player:removeMoneyBank(465000) then player:addItem(11484, 25) player:addItem(9647, 20) player:addItem(10420, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'scorch'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for fire damage imbuement for 525000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 525000 end,
+		function(player) if player:removeMoneyBank(525000) then player:addItem(9636, 25) player:addItem(5920, 5) player:addItem(5954, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'venom'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for energy damage imbuement for 705000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 705000 end,
+		function(player) if player:removeMoneyBank(705000) then player:addItem(9686, 25) player:addItem(11703, 25) player:addItem(21194, 2)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+
+-- Elemental Protection
+
+local stoneKeyword = keywordHandler:addKeyword({'cloud fabric'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for energy protection imbuement for 6750000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 6750000 end,
+		function(player) if player:removeMoneyBank(6750000) then player:addItem(9644, 25) player:addItem(14079, 15) player:addItem(9665, 10)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'demon presence'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for holy protection imbuement for 1050000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 1050000 end,
+		function(player) if player:removeMoneyBank(1050000) then player:addItem(9639, 25) player:addItem(9638, 25) player:addItem(10304, 20)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'dragon hide'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for fire protection imbuement for 525000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 525000 end,
+		function(player) if player:removeMoneyBank(525000) then player:addItem(5877, 20) player:addItem(16131, 10) player:addItem(11658, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'lich shroud'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for death protection imbuement for 750000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 750000 end,
+		function(player) if player:removeMoneyBank(750000) then player:addItem(11466, 25) player:addItem(22007, 20) player:addItem(9660, 5)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'quara scale'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for ice protection imbuement for 6750000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 6750000 end,
+		function(player) if player:removeMoneyBank(6750000) then player:addItem(10295, 25) player:addItem(10307, 15) player:addItem(14012, 10)  end end
+	)
+		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+	
+local stoneKeyword = keywordHandler:addKeyword({'snake skin'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for earth protection imbuement for 825000 gold?'})
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'There it is.', reset = true},
+		function(player) return player:getMoney() + player:getBankBalance() >= 825000 end,
+		function(player) if player:removeMoneyBank(825000) then player:addItem(17823, 25) player:addItem(9694, 20) player:addItem(11702, 10)  end end
+	)
+	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
+
+local stoneKeyword = keywordHandler:addKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, text = 'Your decision. Come back if you have changed your mind.'})
 
 npcHandler:setCallback(CALLBACK_SET_INTERACTION, onAddFocus)
 npcHandler:setCallback(CALLBACK_REMOVE_INTERACTION, onReleaseFocus)

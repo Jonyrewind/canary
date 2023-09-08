@@ -2956,4 +2956,7 @@
 	<npc centerx="33587" centery="32966" centerz="15" radius="1">
 		<npc name="Gnomish Operative (Raiders)" x="0" y="0" z="15" spawntime="60" />
 	</npc>
+	<npc centerx="32369" centery="32242" centerz="6" radius="1">
+		<npc name="Imbuement Assistant" x="0" y="0" z="6" spawntime="60" />
+	</npc>
 </npcs>
