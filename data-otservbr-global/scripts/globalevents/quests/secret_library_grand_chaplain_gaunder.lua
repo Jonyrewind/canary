@@ -30,5 +30,5 @@ function chaplaingaunder.onThink(interval, lastExecution)
 	return true
 end
 
-chaplaingaunder:interval(15 * 60 * 1000)
+chaplaingaunder:interval(1 * 60 * 1000)
 chaplaingaunder:register()

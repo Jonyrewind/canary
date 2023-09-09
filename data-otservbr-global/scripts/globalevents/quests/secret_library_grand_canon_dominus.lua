@@ -30,5 +30,5 @@ function canonDominus.onThink(interval, lastExecution)
 	return true
 end
 
-canonDominus:interval(15 * 60 * 1000)
+canonDominus:interval(1 * 60 * 1000)
 canonDominus:register()
