@@ -21599,7 +21599,9 @@
 		<attribute key="primarytype" value="metals"/>
 		<attribute key="weight" value="250"/>
 	</item>
-	<item id="9116" article="a" name="ladder"/>
+	<item id="9116" article="a" name="ladder">
+		<attribute key="type" value="ladder"/>
+	</item>
 	<item id="9117" article="a" name="unknown item"/>
 	<item id="9118" name="RESERVED SPRITE"/>
 	<item id="9119" article="a" name="crucible">
@@ -48724,13 +48726,13 @@
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="10"/>
 		<attribute key="decayTo" value="28664"/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="28664" article="a" name="dead true dawnfire asura">
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="300"/>
 		<attribute key="decayTo" value="28665"/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="28665" article="a" name="dead true dawnfire asura">
 		<attribute key="duration" value="300"/>
@@ -48745,13 +48747,13 @@
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="10"/>
 		<attribute key="decayTo" value="28668"/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="28668" article="a" name="dead true frost flower asura">
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="300"/>
 		<attribute key="decayTo" value="28669"/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="28669" article="a" name="dead true frost flower asura">
 		<attribute key="duration" value="300"/>
