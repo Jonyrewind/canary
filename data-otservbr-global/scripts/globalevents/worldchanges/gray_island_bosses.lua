@@ -27,16 +27,16 @@ local storage = GlobalStorage.DeeplingBossesTP
 local gray = GlobalEvent("gray island bosses")
 function gray.onStartup()
 	local randBoss = config[math.random(#config)]
-	if getGlobalStorageValue(storage) > 0 then
-		if getGlobalStorageValue(storage) == 1 then
+	if Game.getStorageValue(storage) > 0 then
+		if Game.getStorageValue(storage) == 1 then
 			local item = Game.createItem(config.teleportId, 1, config[1].Position)
 			item:setActionId(7900)
 			logger.info("[WorldChanges] Gray Island Boss: still Tanjis")
-		elseif getGlobalStorageValue(storage) == 2 then
+		elseif Game.getStorageValue(storage) == 2 then
 			local item = Game.createItem(config.teleportId, 1, config[2].Position)
 			item:setActionId(7902)
 			logger.info("[WorldChanges] Gray Island Boss: still Jaul")
-		elseif getGlobalStorageValue(storage) == 3 then
+		elseif Game.getStorageValue(storage) == 3 then
 			local item = Game.createItem(config.teleportId, 1, config[3].Position)
 			item:setActionId(7904)
 			logger.info("[WorldChanges] Gray Island Boss: still Obujos")
@@ -48,8 +48,8 @@ function gray.onStartup()
 			return false
 		end	
 		item:setActionId(randBoss.actionID)
-		setGlobalStorageValue(storage, randBoss.storage)
-		logger.info(string.format("[WorldChanges] Gray Island Boss: %s and storage is "..getGlobalStorageValue(storage).."", randBoss.bossName))
+		Game.setStorageValue(storage, randBoss.storage)
+		logger.info(string.format("[WorldChanges] Gray Island Boss: %s and storage is "..Game.getStorageValue(storage).."", randBoss.bossName))
 	end
 	return true
 end
