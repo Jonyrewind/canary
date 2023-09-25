@@ -189,6 +189,9 @@
 	<npc centerx="33027" centery="32417" centerz="4" radius="1">
 		<npc name="Samir" x="0" y="0" z="4" spawntime="60" />
 	</npc>
+	<npc centerx="32392" centery="32473" centerz="4" radius="1">
+		<npc name="Augustin" x="0" y="0" z="4" spawntime="60" />
+	</npc>
 	<npc centerx="33109" centery="32525" centerz="4" radius="1">
 		<npc name="Haroun" x="0" y="0" z="4" spawntime="60" />
 	</npc>
@@ -926,6 +929,12 @@
 	</npc>
 	<npc centerx="32298" centery="32895" centerz="6" radius="1">
 		<npc name="Captain Max" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="1023" centery="1017" centerz="7" radius="1">
+		<npc name="Harog" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="987" centery="1027" centerz="7" radius="1">
+		<npc name="Fiona" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="10320" centery="10089" centerz="7" radius="1">
 		<npc name="Sane Mage" x="0" y="0" z="7" spawntime="60" />
@@ -1980,9 +1989,6 @@
 	<npc centerx="32565" centery="32651" centerz="7" radius="1">
 		<npc name="Vescu" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32614" centery="32651" centerz="7" radius="1">
-		<npc name="Yawno" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="33028" centery="32706" centerz="7" radius="1">
 		<npc name="An Ancient Priest" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2958,11 +2964,5 @@
 	</npc>
 	<npc centerx="33587" centery="32966" centerz="15" radius="1">
 		<npc name="Gnomish Operative (Raiders)" x="0" y="0" z="15" spawntime="60" />
-	</npc>
-	<npc centerx="987" centery="1027" centerz="7" radius="1">
-		<npc name="Fiona" x="0" y="0" z="7" spawntime="60" />
-	</npc>
-	<npc centerx="1023" centery="1017" centerz="7" radius="1">
-		<npc name="Harog" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 </npcs>

@@ -12,6 +12,12 @@ local function ServerSave()
 	UpdateDailyRewardGlobalStorage(DailyReward.storages.lastServerSave, os.time())
 	-- Reset gamestore exp boost count.
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 51052")
+	-- Reset gray island bosses.
+	db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20075')
+	db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20076')
+	db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20077')
+	db.query('UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65018')	
+	Spdlog.info("storages reset")
 end
 
 local function ServerSaveWarning(time)

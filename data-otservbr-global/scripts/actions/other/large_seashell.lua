@@ -2,7 +2,7 @@
 local config = {
     cooldownTime = 72000, --time in seconds that player will be Exhausted
     cooldownStorage = 43000, --storage to hold the cooldown of Exhaustion
-    pearlRewards = {7632, 7633}, --table with itemIds of the possible rewards
+    pearlRewards = {281, 282}, --table with itemIds of the possible rewards
     closedShellItemId = 197, --closed shell itemId
     openShellItemId = 198, --open shell itemId
 }

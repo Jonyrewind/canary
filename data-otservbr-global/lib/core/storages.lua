@@ -261,6 +261,9 @@ Storage = {
 		Tanjis = 50076,
 		Obujos = 50077,
 		DeeplingStatus = 50078,
+		JaulTP = 20075,
+		TanjisTP = 20076,
+		ObujosTP = 20077,
 	},
 	DangerousDepths = {
 		-- Reserved storage from 50080 - 50199
@@ -1708,6 +1711,7 @@ Storage = {
 		CobraBastion = {
 			Questline = 52311,
 			ScarlettTimer = 52312,
+			CobraBastionChestsTimer = 52313,
 		},
 	},
 	RottinWoodAndMaried = {
@@ -2809,6 +2813,7 @@ Storage = {
 				QuestLine = 47401,
 				AccessEastSide = 47402,
 				AccessSouthernSide = 47403,
+				BounacChestsTimer = 47404,
 			},
 			SoulWar = {
 				GoshnarMaliceTimer = 47210,
@@ -3151,6 +3156,7 @@ GlobalStorage = {
 	NightmareIsle = 65015,
 	IceCrack = 65016,
 	UglyMonster = 65017,
+	DeeplingBossesTP = 65018,
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 

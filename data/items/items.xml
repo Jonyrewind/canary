@@ -49533,6 +49533,12 @@
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
 	</item>
+	<item id="28827" name="brass-shod chest">
+		<attribute key="primarytype" value="utilities"/>
+	</item>
+	<item id="28828" name="brass-shod chest">
+		<attribute key="primarytype" value="utilities"/>
+	</item>
 	<item id="28829" article="a" name="rotten demonbone">
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
