@@ -41,7 +41,20 @@ local config = {
 	{ name="Magma Bubble", position = Position(33669, 32931, 15) },
 	{ name="Kroazur", position = Position(33619, 32305, 9) },
 	{ name="Drume", position = Position(32458, 32507, 6) },
-	{ name="Urmahlullu", position = Position(33920, 31623, 8) }
+	{ name="Urmahlullu", position = Position(33920, 31623, 8) },
+	{ name="Bragrumol", position = Position(33772, 31595, 8) },
+	{ name="Xogixath - Not Save!", position = Position(33788, 31476, 7) },
+	{ name="Mozradek", position = Position(33955, 31465, 7) },
+	{ name="Vengoth Castle Bosses", position = Position(32952, 31482, 6) },
+	{ name="Omruc", position = Position(33206, 32979, 14) },
+	{ name="Thalas", position = Position(33365, 32805, 14) },
+	{ name="Dipthrah-", position = Position(33072, 32605, 15) },
+	{ name="Mahrdis", position = Position(33182, 32755, 15) },
+	{ name="Vashresamun", position = Position(33180, 32663, 15) },
+	{ name="Morguthis", position = Position(33264, 32671, 13) },
+	{ name="Rahemos", position = Position(33118, 32810, 15) },
+	{ name="Ashmunrah", position = Position(33191, 32906, 11) },
+	{ name="Glooth Fairy", position = Position{x = 33653, y = 31939, z = 9} },
 }
 
 local teleportBoss = Action()
