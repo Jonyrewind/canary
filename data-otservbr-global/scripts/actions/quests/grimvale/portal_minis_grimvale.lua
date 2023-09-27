@@ -2,7 +2,7 @@ local config = {
 	[1] = {
 		teleportPosition = { x = 33167, y = 31977, z = 8 },
 		bossName = "Bloodback",
-		timeToFightAgain = 10, -- In hour
+		timeToFightAgain = 1, -- In hour
 		timeToDefeat = 10, -- In minutes
 		destination = Position(33180, 32012, 8),
 		bossPosition = Position(33184, 32016, 8),
@@ -16,7 +16,7 @@ local config = {
 	[2] = {
 		teleportPosition = { x = 33055, y = 31910, z = 9 },
 		bossName = "Darkfang",
-		timeToFightAgain = 10, -- In hour
+		timeToFightAgain = 1, -- In hour
 		timeToDefeat = 10, -- In minutes
 		destination = Position(33055, 31889, 9),
 		bossPosition = Position(33062, 31890, 9),
@@ -30,7 +30,7 @@ local config = {
 	[3] = {
 		teleportPosition = { x = 33128, y = 31971, z = 9 },
 		bossName = "Sharpclaw",
-		timeToFightAgain = 10, -- In hour
+		timeToFightAgain = 1, -- In hour
 		timeToDefeat = 10, -- In minutes
 		destination = Position(33120, 31997, 9),
 		bossPosition = Position(33120, 32002, 9),
@@ -44,7 +44,7 @@ local config = {
 	[4] = {
 		teleportPosition = { x = 33402, y = 32097, z = 9 },
 		bossName = "Shadowpelt",
-		timeToFightAgain = 10, -- In hour
+		timeToFightAgain = 1, -- In hour
 		timeToDefeat = 10, -- In minutes
 		destination = Position(33395, 32112, 9),
 		bossPosition = Position(33384, 32114, 9),
@@ -58,7 +58,7 @@ local config = {
 	[5] = {
 		teleportPosition = { x = 33442, y = 32051, z = 9 },
 		bossName = "Black Vixen",
-		timeToFightAgain = 10, -- In hour
+		timeToFightAgain = 1, -- In hour
 		timeToDefeat = 10, -- In minutes
 		destination = Position(33447, 32040, 9),
 		bossPosition = Position(33450, 32034, 9),

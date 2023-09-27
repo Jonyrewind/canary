@@ -1,6 +1,6 @@
 local config = {
 	bossName = "The Last Lore Keeper",
-	timeToFightAgain = 14 * 24, -- In hour
+	timeToFightAgain = 1 * 24, -- In hour
 	timeToDefeat = 17, -- In minutes
 	playerPositions = {
 		{ pos = Position(32018, 32844, 14), teleport = Position(31984, 32851, 14), effect = CONST_ME_TELEPORT },
