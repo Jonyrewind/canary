@@ -54,7 +54,15 @@ local config = {
 	{ name="Morguthis", position = Position(33264, 32671, 13) },
 	{ name="Rahemos", position = Position(33118, 32810, 15) },
 	{ name="Ashmunrah", position = Position(33191, 32906, 11) },
-	{ name="Glooth Fairy", position = Position{x = 33653, y = 31939, z = 9} },
+	{ name="Glooth Fairy", position = Position(33653, 31939, 9) },
+	{ name="Brokul", position = Position(33523, 31462, 15) },
+	{ name="Ravenous Hunger", position = Position(33138, 31949, 15) },
+	{ name="The Souldespoiler", position = Position(33129, 31898, 15) },
+	{ name="The Unarmored Voidborn", position = Position(33163, 31865, 15) },
+	{ name="The Sandking", position = Position(33495, 32241, 10) },
+	{ name="The False God", position = Position(33165, 31895, 15) },
+	{ name="Essence of Malice", position = Position(33094, 31952, 15) },
+	{ name="The Source of Corruption", position = Position(33079, 31888, 15) },
 }
 
 local teleportBoss = Action()
