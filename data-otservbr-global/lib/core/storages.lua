@@ -2706,6 +2706,8 @@ Storage = {
 					LowerBastion = 46285,
 					UndergroundBastion = 46286,
 				},
+				BrokulTimer = 46013,
+				BrokulKilled = 46014,
 				GhuloshTimer = 46015,
 				GhuloshKilled = 46016,
 				GorzindelTimer = 46017,

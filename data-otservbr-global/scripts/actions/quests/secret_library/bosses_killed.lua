@@ -1,4 +1,5 @@
 local bosses = {
+	["brokul"] = { storage = Storage.Quest.U11_80.TheSecretLibrary.BrokulKilled },
 	["ghulosh"] = { storage = Storage.Quest.U11_80.TheSecretLibrary.GhuloshKilled },
 	["gorzindel"] = { storage = Storage.Quest.U11_80.TheSecretLibrary.GorzindelKilled },
 	["lokathmor"] = { storage = Storage.Quest.U11_80.TheSecretLibrary.LokathmorKilled },
