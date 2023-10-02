@@ -16,6 +16,7 @@ monster.outfit = {
 monster.bosstiary = {
 	bossRaceId = 1608,
 	bossRace = RARITY_ARCHFOE,
+	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.GhuloshTimer,
 }
 
 monster.health = 300000

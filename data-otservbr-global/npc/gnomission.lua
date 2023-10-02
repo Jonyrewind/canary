@@ -223,9 +223,9 @@ npcConfig.shop = {
 	{ itemName = "stuffed dragon", clientId = 5791, sell = 6000 },
 	{ itemName = "the avenger", clientId = 6527, sell = 42000 },
 	{ itemName = "the ironworker", clientId = 8025, sell = 50000 },
-	{ itemName = "trophy of jaul", clientId = 14006, sell = 4000 },
-	{ itemName = "trophy of obujos", clientId = 14002, sell = 3000 },
-	{ itemName = "trophy of tanjis", clientId = 14004, sell = 2000 },
+	{ itemName = "trophy of jaul", clientId = 14224, sell = 4000 },
+	{ itemName = "trophy of obujos", clientId = 14222, sell = 3000 },
+	{ itemName = "trophy of tanjis", clientId = 14223, sell = 2000 },
 	{ itemName = "unholy book", clientId = 6103, sell = 30000 },
 	{ itemName = "windborn colossus armor", clientId = 8055, sell = 50000 },
 }

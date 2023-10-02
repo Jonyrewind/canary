@@ -42,7 +42,7 @@ function bossesReward.onUse(player, item, fromPosition, target, toPosition, isHo
 			return true
 		end
 
-		if player:getStorageValue(reward.storage) ~= 1 then
+		if player:getStorageValue(Storage.DeeplingBosses.DeeplingReward) ~= 0 and player:getStorageValue(reward.storage) ~= 1 then
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, reward.bossName .. " defends his belongings and will not let you open his chest.")
 			return true
 		end
@@ -57,8 +57,8 @@ function bossesReward.onUse(player, item, fromPosition, target, toPosition, isHo
 				player:addItem(items.itemId, items.count or 1)
 			end
 		end
-
 		player:setStorageValue(reward.storage, 0)
+		player:setStorageValue(Storage.DeeplingBosses.DeeplingReward, 1)
 	end
 	return true
 end

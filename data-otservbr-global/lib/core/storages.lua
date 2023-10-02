@@ -261,6 +261,7 @@ Storage = {
 		Tanjis = 50076,
 		Obujos = 50077,
 		DeeplingStatus = 50078,
+		DeeplingReward = 50079,
 		JaulTP = 20075,
 		TanjisTP = 20076,
 		ObujosTP = 20077,
