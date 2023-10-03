@@ -1055,6 +1055,9 @@ function onUseScythe(player, item, fromPosition, target, toPosition, isHotkey)
 		-- The secret library
 	elseif toPosition == Position(32177, 31925, 7) then
 		player:teleportTo({ x = 32515, y = 32535, z = 12 })
+		player:say('CHAMEK ATHRA THULL ZATHROTH!', TALKTYPE_MONSTER_SAY)
+		player:getPosition():sendMagicEffect(CONST_ME_MORTAREA)
+		toPosition:sendMagicEffect(CONST_ME_MORTAREA)
 	else
 		return false
 	end

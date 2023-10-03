@@ -1574,44 +1574,39 @@ function GameStore.processStackablePurchase(player, offerId, offerCount, offerNa
 	local isKeg = isKegItem(offerId)
 
 	if isKeg then
-		if player:getFreeCapacity() < ItemType(offerId):getWeight(1) + ItemType(PARCEL_ID):getWeight() then
+		if player:getFreeCapacity() < ItemType(offerId):getWeight(1) then
 			return error({ code = 0, message = "Please make sure you have free capacity to hold this item." })
 		end
-	elseif player:getFreeCapacity() < ItemType(offerId):getWeight(offerCount) + ItemType(PARCEL_ID):getWeight() then
+	elseif player:getFreeCapacity() < ItemType(offerId):getWeight(offerCount) then
 		return error({ code = 0, message = "Please make sure you have free capacity to hold this item." })
 	end
 
 	local inbox = player:getSlotItem(CONST_SLOT_STORE_INBOX)
 	if inbox then
 		if (isKeg and offerCount > 500) or offerCount > 100 then
-			local parcel = inbox:addItem(PARCEL_ID, 1)
-			parcel:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
-			if parcel then
-				parcel:setAttribute(ITEM_ATTRIBUTE_NAME, "" .. offerCount .. "x " .. offerName .. " package.")
-				local pendingCount = offerCount
-				local limit = isKeg and 500 or 100
-				while pendingCount > 0 do
-					local pack
-					if pendingCount > limit then
-						pack = limit
-					else
-						pack = pendingCount
-					end
-					if isKeg then
-						local kegItem = parcel:addItem(offerId, 1)
-						kegItem:setAttribute(ITEM_ATTRIBUTE_CHARGES, pack)
-
-						if moveable ~= true and kegItem then
-							kegItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
-						end
-					else
-						local parcelItem = parcel:addItem(offerId, pack)
-						if moveable ~= true and parcelItem then
-							parcelItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
-						end
-					end
-					pendingCount = pendingCount - pack
+			local pendingCount = offerCount
+			local limit = isKeg and 500 or 100
+			while pendingCount > 0 do
+				local pack
+				if pendingCount > limit then
+					pack = limit
+				else
+					pack = pendingCount
 				end
+				if isKeg then
+					local kegItem = inbox:addItem(offerId, 1)
+					kegItem:setAttribute(ITEM_ATTRIBUTE_CHARGES, pack)
+
+					if moveable ~= true and kegItem then
+						kegItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					end
+				else
+					local parcelItem = inbox:addItem(offerId, pack)
+					if moveable ~= true and parcelItem then
+						parcelItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					end
+				end
+				pendingCount = pendingCount - pack
 			end
 		else
 			local item = inbox:addItem(offerId, isKeg and 1 or offerCount)

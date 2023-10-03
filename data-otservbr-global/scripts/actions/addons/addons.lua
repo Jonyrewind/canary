@@ -8,15 +8,18 @@ local config = {
 	[16256] = { female = 513, male = 512, addon = 1, effect = CONST_ME_GIANTICE, achievement = "Crystal Clear" },
 	[16257] = { female = 513, male = 512, addon = 2, effect = CONST_ME_GIANTICE, achievement = "Crystal Clear" },
 	-- makeshift warrior
-	[27655] = { female = 1043, male = 1042 },
-	[27657] = { female = 1043, male = 1042, addon = 1, achievement = "Cobbled and Patched" },
-	[27656] = { female = 1043, male = 1042, addon = 2, achievement = "Cobbled and Patched" },
+	[27655] = { female = 1043, male = 1042, textwhite = "By using the plan you knock together a makeshift armour out of wooden planks, rusty nails and leather rags." },
+	[27657] = { female = 1043, male = 1042, addon = 1, achievement = "Cobbled and Patched", textwhite = "You use the wooden planks to knock up a makeshift shield and weapon." },
+	[27656] = { female = 1043, male = 1042, addon = 2, achievement = "Cobbled and Patched", textwhite = "You use the tinged pot as a makeshift helmet." },
 	-- hand of the inquisition
 	[31738] = { female = 1244, male = 1243, addon = 1, effect = CONST_ME_HOLYAREA, achievement = "Inquisition's Arm" },
 	[31737] = { female = 1244, male = 1243, addon = 2, effect = CONST_ME_HOLYAREA, achievement = "Inquisition's Arm" },
+	-- revenant
+	[34075] = { female = 1323, male = 1322, addon = 1, effect = CONST_ME_HOLYAREA, achievement = "Unleash the Beast", textorange = "Now the beast is unleashed!" },
+	[34076] = { female = 1323, male = 1322, addon = 2, effect = CONST_ME_HOLYAREA, achievement = "Unleash the Beast", textorange = "Wild power flows though your body!" },
 	-- poltergeist
-	[32630] = { female = 1271, male = 1270, addon = 1, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare" },
-	[32631] = { female = 1271, male = 1270, addon = 2, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare" },
+	[32630] = { female = 1271, male = 1270, addon = 1, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare", textorange = "The spooky hood is yours!" },
+	[32631] = { female = 1271, male = 1270, addon = 2, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare", textorange = "You can use the ghost claw now!" },
 }
 
 local addons = Action()
@@ -38,6 +41,11 @@ function addons.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		player:addOutfitAddon(useItem.female, useItem.addon)
 		player:addOutfitAddon(useItem.male, useItem.addon)
 		player:getPosition():sendMagicEffect(useItem.effect or CONST_ME_GIFT_WRAPS)
+		if useItem.textorange then
+			player:say(useItem.textorange, TALKTYPE_MONSTER_SAY)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, useItem.textwhite)
+		end
 		if player:hasOutfit(looktype, 3) then
 			if useItem.achievement then
 				player:addAchievement(useItem.achievement)
@@ -53,6 +61,11 @@ function addons.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		player:addOutfit(useItem.female)
 		player:addOutfit(useItem.male)
 		player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
+		if useItem.textorange then
+			player:say(useItem.textorange, TALKTYPE_MONSTER_SAY)
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, useItem.textwhite)
+		end
 		item:remove()
 	end
 	return true

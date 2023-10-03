@@ -65,5 +65,5 @@ function oramondGloothLever.onUse(player, item, fromPosition, target, toPosition
 	return true
 end
 
-oramondGloothLever:uid(1020)
+oramondGloothLever:uid(1111)
 oramondGloothLever:register()

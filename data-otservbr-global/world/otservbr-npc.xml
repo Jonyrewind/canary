@@ -1512,6 +1512,9 @@
 	<npc centerx="33267" centery="31848" centerz="7" radius="1">
 		<npc name="Ursula" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33702" centery="31854" centerz="7" radius="1">
+		<npc name="flora_bullwark" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32619" centery="31864" centerz="7" radius="1">
 		<npc name="Grumpy Stone" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1941,6 +1944,9 @@
 	<npc centerx="33238" centery="32482" centerz="7" radius="1">
 		<npc name="Miraia" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32398" centery="32509" centerz="7" radius="1">
+		<npc name="An Idol" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32329" centery="32528" centerz="7" radius="1">
 		<npc name="Marina" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2232,6 +2238,9 @@
 	<npc centerx="33571" centery="31908" centerz="8" radius="1">
 		<npc name="Elliott" x="0" y="0" z="8" spawntime="60" />
 	</npc>
+	<npc centerx="33560" centery="31912" centerz="8" radius="1">
+		<npc name="flora_lisa" x="0" y="0" z="8" spawntime="60" />
+	</npc>
 	<npc centerx="32618" centery="31938" centerz="8" radius="1">
 		<npc name="Duria" x="0" y="0" z="8" spawntime="60" />
 	</npc>
@@ -2395,7 +2404,7 @@
 		<npc name="Tezila" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33654" centery="31937" centerz="9" radius="1">
-		<npc name="Flora" x="0" y="0" z="9" spawntime="60" />
+		<npc name="flora_glooth_fairy" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33570" centery="31985" centerz="9" radius="1">
 		<npc name="Jacob" x="0" y="0" z="9" spawntime="60" />
