@@ -1,9 +1,9 @@
 local config = {
-	enabled = false,
+	enabled = true,
 	storage = Storage.VipSystem.OnlineCoinsGain,
 	checkDuplicateIps = false,
 
-	interval = 60 * 1000,
+	interval = 30 * 1000,
 
 	-- per hour | system will calculate how many coins will be given and when
 	-- put 0 in coinsPerHour.free to disable free from receiving coins
