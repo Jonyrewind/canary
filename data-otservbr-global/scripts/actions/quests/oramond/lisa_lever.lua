@@ -47,7 +47,7 @@ function oramondLisaLever.onUse(player, item, fromPosition, target, toPosition, 
 			return true
 		end
 
-		local specs, spec = Game.getSpectators({ x = 33565, y = 31884, z = 8 }, false, false, 30, 30, 30, 30)
+		local specs, spec = Game.getSpectators({ x = 33565, y = 31884, z = 8 }, false, false, 15, 15, 15, 15)
 		for i = 1, #specs do
 			spec = specs[i]
 			if spec:isPlayer() then
@@ -56,7 +56,7 @@ function oramondLisaLever.onUse(player, item, fromPosition, target, toPosition, 
 			end
 			spec:remove()
 		end
-		setGlobalStorageValue(18083, os.time() + 15 * 60)
+		setGlobalStorageValue(15562, os.time() + 15 * 60)
 		player:say("Everyone in this place will be teleported into Glooth Fairy's hideout in one minute. No way back!!!", TALKTYPE_MONSTER_SAY)
 		addEvent(PrepareEnter, 60 * 1000)
 	end

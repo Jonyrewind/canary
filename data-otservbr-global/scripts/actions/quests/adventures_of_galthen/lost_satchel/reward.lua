@@ -17,7 +17,7 @@ function rewardLostSatchel.onUse(creature, item, fromPosition, target, toPositio
 --		player:setStorageValue(Storage.Quest.U12_70.AdventuresOfGalthen.LostSatchel.Reward, os.time() + 360 * 60 * 60)
 		return true
 	else
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have to wait more time!")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The dead tree is empty.")
 		return false
 	end
 end

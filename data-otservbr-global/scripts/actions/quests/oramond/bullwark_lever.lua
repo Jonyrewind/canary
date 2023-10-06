@@ -56,7 +56,7 @@ function oramondBullwarkLever.onUse(player, item, fromPosition, target, toPositi
 			end
 			spec:remove()
 		end
-		setGlobalStorageValue(18082, os.time() + 15 * 60)
+		setGlobalStorageValue(15561, os.time() + 15 * 60)
 		player:say("Everyone in this place will be teleported into Glooth Fairy's hideout in one minute. No way back!!!", TALKTYPE_MONSTER_SAY)
 		addEvent(PrepareEnter, 60 * 1000)
 	end
