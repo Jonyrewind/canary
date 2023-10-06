@@ -34,7 +34,7 @@ local function teleportAllPlayersFromAreat(fromArea1, fromArea2, toPos)
 end
 
 local function PrepareEnter()
-	removeBosst({x = 33691, y = 31816, z = 7}, { x = 33713, y = 31840, z = 7 }, "bullwark")
+	removeBosst({ x = 33691, y = 31816, z = 7 }, { x = 33713, y = 31840, z = 7 }, "bullwark")
 	teleportAllPlayersFromAreat({ x = 33697, y = 31840, z = 7 }, { x = 33710, y = 31851, z = 7 }, { x = 33699, y = 31835, z = 7 })
 	Game.createMonster("Bullwark", { x = 33697, y = 31820, z = 7 })
 end

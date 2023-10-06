@@ -7,7 +7,7 @@ local boats = {
 	{ pos = { x = 33382, y = 31294, z = 7 }, destination = Position(33374, 31310, 7) },
 	{ pos = { x = 33328, y = 31355, z = 7 }, destination = Position(33346, 31348, 7), access = Storage.TheSecretLibrary.ShortcutToBastion },
 	{ pos = { x = 33328, y = 31351, z = 7 }, destination = Position(33346, 31348, 7), access = Storage.TheSecretLibrary.ShortcutToBastion },
-	{ pos = { x = 33328, y = 31352, z = 7 }, destination = Position(33346, 31348, 7), access = Storage.TheSecretLibrary.ShortcutToBastion }
+	{ pos = { x = 33328, y = 31352, z = 7 }, destination = Position(33346, 31348, 7), access = Storage.TheSecretLibrary.ShortcutToBastion },
 }
 
 local boat = Action()

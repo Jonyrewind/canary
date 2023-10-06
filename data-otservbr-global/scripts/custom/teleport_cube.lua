@@ -1,18 +1,18 @@
 local config = {
-	{ name="Hunts", position = Position(1063, 964, 7) },
-	{ name="Temple", position = Position(32369, 32241, 7) },
-	{ name="NPC Room", position = Position(994, 1030, 6) },
-	{ name="Trainer", position = Position(1116, 1094, 7) },
+	{ name = "Hunts", position = Position(1063, 964, 7) },
+	{ name = "Temple", position = Position(32369, 32241, 7) },
+	{ name = "NPC Room", position = Position(994, 1030, 6) },
+	{ name = "Trainer", position = Position(1116, 1094, 7) },
 }
 
 local teleportCube = Action()
 function teleportCube.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local window = ModalWindow {
+	local window = ModalWindow({
 		title = "Teleport Modal",
-		message = "Locations"
-	}
+		message = "Locations",
+	})
 	for i, info in pairs(config) do
-		window:addChoice(string.format("%s", info.name), function (player, button, choice)
+		window:addChoice(string.format("%s", info.name), function(player, button, choice)
 			if button.name ~= "Select" then
 				return true
 			end

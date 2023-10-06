@@ -1,5 +1,5 @@
 local config = {
-	{ position = {x = 32398, y = 32510, z = 7}, storage = Storage.Quest.U12_70.AdventuresOfGalthen.LostSatchel.Notes },
+	{ position = { x = 32398, y = 32510, z = 7 }, storage = Storage.Quest.U12_70.AdventuresOfGalthen.LostSatchel.Notes },
 }
 
 local notes = Action()

@@ -22,11 +22,11 @@ function createHirelingType(HirelingName)
 		lookBody = 34,
 		lookLegs = 3,
 		lookFeet = 116,
-		lookAddons = 0
+		lookAddons = 0,
 	}
 
 	npcConfig.flags = {
-		floorchange = false
+		floorchange = false,
 	}
 
 	npcConfig.shop = {
@@ -789,8 +789,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "hazardous robe", clientId = 34147, sell = 3000 },
 		{ itemName = "head", clientId = 33937, sell = 3500 },
 		{ itemName = "headchopper", clientId = 7380, sell = 6000 },
-		{ itemName = "headpecker beak", clientId = 39387, sell = 2800},
-		{ itemName = "headpecker feather", clientId = 39388, sell = 1300},
+		{ itemName = "headpecker beak", clientId = 39387, sell = 2800 },
+		{ itemName = "headpecker feather", clientId = 39388, sell = 1300 },
 		{ itemName = "heat core", clientId = 21167, sell = 10000 },
 		{ itemName = "heaven blossom", clientId = 3657, sell = 50 },
 		{ itemName = "heaven blossom", clientId = 5921, sell = 50 },
@@ -825,7 +825,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "hunter's quiver", clientId = 11469, sell = 80 },
 		{ itemName = "hydra egg", clientId = 4839, sell = 500 },
 		{ itemName = "hydra head", clientId = 10282, sell = 600 },
-		{ itemName = "hydrophytes", clientId = 39410, sell = 220},
+		{ itemName = "hydrophytes", clientId = 39410, sell = 220 },
 		{ itemName = "ice flower", clientId = 30058, sell = 370 },
 		{ itemName = "ice rapier", clientId = 3284, sell = 1000 },
 		{ itemName = "incantation notes", clientId = 18929, sell = 90 },
@@ -845,9 +845,9 @@ function createHirelingType(HirelingName)
 		{ itemName = "jagged sickle", clientId = 32595, sell = 150000 },
 		{ itemName = "jaws", clientId = 34014, sell = 3900 },
 		{ itemName = "jewelled belt", clientId = 11470, sell = 180 },
-		{ itemName = "jungle moa claw", clientId = 39404, sell = 160},
-		{ itemName = "jungle moa egg", clientId = 39405, sell = 250},
-		{ itemName = "jungle moa feather", clientId = 39403, sell = 140},
+		{ itemName = "jungle moa claw", clientId = 39404, sell = 160 },
+		{ itemName = "jungle moa egg", clientId = 39405, sell = 250 },
+		{ itemName = "jungle moa feather", clientId = 39403, sell = 140 },
 		{ itemName = "katana", clientId = 3300, sell = 35 },
 		{ itemName = "katex' blood", clientId = 34100, sell = 210 },
 		{ itemName = "key to the drowned library", clientId = 14009, sell = 330 },
@@ -917,8 +917,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "magma coat", clientId = 826, sell = 11000 },
 		{ itemName = "magma legs", clientId = 821, sell = 11000 },
 		{ itemName = "magma monocle", clientId = 827, sell = 2500 },
-		{ itemName = "makara fin", clientId = 39401, sell = 350},
-		{ itemName = "makara tongue", clientId = 39402, sell = 320},
+		{ itemName = "makara fin", clientId = 39401, sell = 350 },
+		{ itemName = "makara tongue", clientId = 39402, sell = 320 },
 		{ itemName = "malice's horn", clientId = 33920, sell = 620000 },
 		{ itemName = "malice's spine", clientId = 33921, sell = 850000 },
 		{ itemName = "malofur's lunchbox", clientId = 30088, sell = 240000 },
@@ -930,7 +930,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "mantassin tail", clientId = 11489, sell = 280 },
 		{ itemName = "manticore ear", clientId = 31440, sell = 310 },
 		{ itemName = "manticore tail", clientId = 31439, sell = 220 },
-		{ itemName = "mantosaurus jaw", clientId = 39386, sell = 2800},
+		{ itemName = "mantosaurus jaw", clientId = 39386, sell = 2800 },
 		{ itemName = "marlin trophy", clientId = 902, sell = 5000 },
 		{ itemName = "marsh stalker beak", clientId = 17461, sell = 65 },
 		{ itemName = "marsh stalker feather", clientId = 17462, sell = 50 },
@@ -944,7 +944,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "megalomania's essence", clientId = 33928, sell = 1900000 },
 		{ itemName = "megalomania's skull", clientId = 33925, sell = 1500000 },
 		{ itemName = "mercenary sword", clientId = 7386, sell = 12000 },
-		{ itemName = "mercurial wing", clientId = 39395, sell = 2500},
+		{ itemName = "mercurial wing", clientId = 39395, sell = 2500 },
 		{ itemName = "metal bat", clientId = 21171, sell = 9000 },
 		{ itemName = "metal jaw", clientId = 21193, sell = 260 },
 		{ itemName = "metal spats", clientId = 21169, sell = 2000 },
@@ -1005,7 +1005,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "ogre ear stud", clientId = 22188, sell = 180 },
 		{ itemName = "ogre nose ring", clientId = 22189, sell = 210 },
 		{ itemName = "old parchment", clientId = 4831, sell = 500 },
-		{ itemName = "one of timira's many heads", clientId = 39399, sell = 215000},
+		{ itemName = "one of timira's many heads", clientId = 39399, sell = 215000 },
 		{ itemName = "onyx chip", clientId = 22193, sell = 500 },
 		{ itemName = "onyx flail", clientId = 7421, sell = 22000 },
 		{ itemName = "onyx pendant", clientId = 22195, sell = 3500 },
@@ -1037,8 +1037,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "panpipes", clientId = 2953, sell = 150 },
 		{ itemName = "panther head", clientId = 12039, sell = 750 },
 		{ itemName = "panther paw", clientId = 12040, sell = 300 },
-		{ itemName = "parder fur", clientId = 39418, sell = 150},
-		{ itemName = "parder tooth", clientId = 39417, sell = 150},
+		{ itemName = "parder fur", clientId = 39418, sell = 150 },
+		{ itemName = "parder tooth", clientId = 39417, sell = 150 },
 		{ itemName = "patch of fine cloth", clientId = 28821, sell = 1350 },
 		{ itemName = "patched boots", clientId = 3550, sell = 2000 },
 		{ itemName = "peacock feather fan", clientId = 21975, sell = 350 },
@@ -1062,7 +1062,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "piece of royal steel", clientId = 5887, sell = 10000 },
 		{ itemName = "piece of scarab shell", clientId = 9641, sell = 45 },
 		{ itemName = "piece of swampling wood", clientId = 17823, sell = 30 },
-		{ itemName = "piece of timira's sensors", clientId = 39400, sell = 150000},
+		{ itemName = "piece of timira's sensors", clientId = 39400, sell = 150000 },
 		{ itemName = "piece of warrior armor", clientId = 11482, sell = 50 },
 		{ itemName = "pieces of magic chalk", clientId = 18930, sell = 210 },
 		{ itemName = "pig foot", clientId = 9693, sell = 10 },
@@ -1091,8 +1091,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "porcelain mask", clientId = 25088, sell = 2000 },
 		{ itemName = "powder herb", clientId = 3739, sell = 10 },
 		{ itemName = "power ring", clientId = 3050, sell = 50 },
-		{ itemName = "prehemoth claw", clientId = 39383, sell = 2300},
-		{ itemName = "prehemoth horns", clientId = 39382, sell = 3000},
+		{ itemName = "prehemoth claw", clientId = 39383, sell = 2300 },
+		{ itemName = "prehemoth horns", clientId = 39382, sell = 3000 },
 		{ itemName = "prismatic quartz", clientId = 24962, sell = 450 },
 		{ itemName = "pristine worm head", clientId = 27618, sell = 15000 },
 		{ itemName = "protection amulet", clientId = 3084, sell = 100, count = 250 },
@@ -1139,11 +1139,11 @@ function createHirelingType(HirelingName)
 		{ itemName = "ring of healing", clientId = 3098, sell = 100 },
 		{ itemName = "ring of red plasma", clientId = 23533, sell = 8000 },
 		{ itemName = "ring of the sky", clientId = 3006, sell = 30000 },
-		{ itemName = "ripptor claw", clientId = 39389, sell = 2000},
-		{ itemName = "ripptor scales", clientId = 39391, sell = 1200},
+		{ itemName = "ripptor claw", clientId = 39389, sell = 2000 },
+		{ itemName = "ripptor scales", clientId = 39391, sell = 1200 },
 		{ itemName = "ritual tooth", clientId = 40528, sell = 135 },
 		{ itemName = "rod", clientId = 33929, sell = 2200 },
-		{ itemName = "rogue naga scales", clientId = 39416, sell = 570},
+		{ itemName = "rogue naga scales", clientId = 39416, sell = 570 },
 		{ itemName = "roots", clientId = 33938, sell = 1200 },
 		{ itemName = "rope belt", clientId = 11492, sell = 66 },
 		{ itemName = "rope", clientId = 3003, sell = 15 },
@@ -1160,7 +1160,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "runed sword", clientId = 7417, sell = 45000 },
 		{ itemName = "ruthless axe", clientId = 6553, sell = 45000 },
 		{ itemName = "sabre", clientId = 3273, sell = 12 },
-		{ itemName = "sabretooth fur", clientId = 39378, sell = 2500},
+		{ itemName = "sabretooth fur", clientId = 39378, sell = 2500 },
 		{ itemName = "sabretooth", clientId = 10311, sell = 400 },
 		{ itemName = "sacred tree amulet", clientId = 9302, sell = 3000 },
 		{ itemName = "safety pin", clientId = 11493, sell = 120 },
@@ -1250,8 +1250,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "small sapphire", clientId = 3029, sell = 250 },
 		{ itemName = "small topaz", clientId = 9057, sell = 200 },
 		{ itemName = "small treasure chest", clientId = 35571, sell = 500 },
-		{ itemName = "small tropical fish", clientId = 39408, sell = 380},
-		{ itemName = "smoldering eye", clientId = 39543, sell = 470000},
+		{ itemName = "small tropical fish", clientId = 39408, sell = 380 },
+		{ itemName = "smoldering eye", clientId = 39543, sell = 470000 },
 		{ itemName = "snake skin", clientId = 9694, sell = 400 },
 		{ itemName = "snakebite rod", clientId = 3066, sell = 100 },
 		{ itemName = "sniper gloves", clientId = 5875, sell = 2000 },
@@ -1291,7 +1291,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "spooky blue eye", clientId = 9642, sell = 95 },
 		{ itemName = "springsprout rod", clientId = 8084, sell = 3600 },
 		{ itemName = "srezz' eye", clientId = 34103, sell = 300 },
-		{ itemName = "stalking seeds", clientId = 39384, sell = 1800},
+		{ itemName = "stalking seeds", clientId = 39384, sell = 1800 },
 		{ itemName = "stampor horn", clientId = 12312, sell = 280 },
 		{ itemName = "stampor talons", clientId = 12313, sell = 150 },
 		{ itemName = "star amulet", clientId = 3014, sell = 500 },
@@ -1321,8 +1321,8 @@ function createHirelingType(HirelingName)
 		{ itemName = "studded legs", clientId = 3362, sell = 15 },
 		{ itemName = "studded shield", clientId = 3426, sell = 16 },
 		{ itemName = "stuffed dragon", clientId = 5791, sell = 6000 },
-		{ itemName = "sulphider shell", clientId = 39375, sell = 2200},
-		{ itemName = "sulphur powder", clientId = 39376, sell = 1900},
+		{ itemName = "sulphider shell", clientId = 39375, sell = 2200 },
+		{ itemName = "sulphur powder", clientId = 39376, sell = 1900 },
 		{ itemName = "sulphurous stone", clientId = 10315, sell = 100 },
 		{ itemName = "summer dress", clientId = 8046, sell = 1500 },
 		{ itemName = "swamp grass", clientId = 9686, sell = 20 },
@@ -1389,9 +1389,9 @@ function createHirelingType(HirelingName)
 		{ itemName = "twiceslicer", clientId = 11657, sell = 28000 },
 		{ itemName = "twin hooks", clientId = 10392, sell = 500 },
 		{ itemName = "two handed sword", clientId = 3265, sell = 450 },
-		{ itemName = "two-headed turtle heads", clientId = 39409, sell = 460},
+		{ itemName = "two-headed turtle heads", clientId = 39409, sell = 460 },
 		{ itemName = "undead heart", clientId = 10450, sell = 200 },
-		{ itemName = "undertaker fangs", clientId = 39380, sell = 2700},
+		{ itemName = "undertaker fangs", clientId = 39380, sell = 2700 },
 		{ itemName = "underworld rod", clientId = 8082, sell = 4400 },
 		{ itemName = "unholy bone", clientId = 10316, sell = 480 },
 		{ itemName = "unholy book", clientId = 6103, sell = 30000 },
@@ -1432,7 +1432,7 @@ function createHirelingType(HirelingName)
 		{ itemName = "wand of voodoo", clientId = 8094, sell = 4400 },
 		{ itemName = "wand of vortex", clientId = 3074, sell = 100 },
 		{ itemName = "war axe", clientId = 3342, sell = 12000 },
-		{ itemName = "war crystal", clientId = 9654,  sell = 460 },
+		{ itemName = "war crystal", clientId = 9654, sell = 460 },
 		{ itemName = "war hammer", clientId = 3279, sell = 1200 },
 		{ itemName = "war horn", clientId = 2958, sell = 8000 },
 		{ itemName = "warmaster's wristguards", clientId = 10405, sell = 200 },
@@ -1519,8 +1519,7 @@ function createHirelingType(HirelingName)
 		player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 	end
 	-- On check npc shop message (look item)
-	npcType.onCheckItem = function(npc, player, clientId, subType)
-	end
+	npcType.onCheckItem = function(npc, player, clientId, subType) end
 
 	local keywordHandler = KeywordHandler:new()
 	local npcHandler = NpcHandler:new(keywordHandler)
@@ -1564,17 +1563,17 @@ function createHirelingType(HirelingName)
 		SERVICES = 1100,
 		BANK = 1200,
 		FOOD = 1300,
-		GOODS = 1400
+		GOODS = 1400,
 	}
 
 	local TOPIC_FOOD = {
-		SKILL_CHOOSE = 1301
+		SKILL_CHOOSE = 1301,
 	}
 
 	local GREETINGS = {
 		BANK = "Alright! What can I do for you and your bank business, |PLAYERNAME|?",
 		FOOD = "Hmm, yes! A variety of fine food awaits! However, a small expense of 15000 gold is expected to make these delicious masterpieces happen. Shall I?",
-		STASH = "Of course, here is your stash! Well-maintained and neatly sorted for your convenience!"
+		STASH = "Of course, here is your stash! Well-maintained and neatly sorted for your convenience!",
 	}
 
 	local function getHirelingSkills()
@@ -1635,12 +1634,7 @@ function createHirelingType(HirelingName)
 		end
 
 		if profession then
-			message =
-					string.format(
-						"I'm not a %s and would not know how to help you with that, sorry. I can start a %s apprenticeship if you buy it for me in the store!",
-						profession,
-						profession
-					)
+			message = string.format("I'm not a %s and would not know how to help you with that, sorry. I can start a %s apprenticeship if you buy it for me in the store!", profession, profession)
 		end
 
 		npcHandler:say(message, npc, creature)
@@ -1662,14 +1656,11 @@ function createHirelingType(HirelingName)
 		elseif food_id == 29410 then
 			message = "Magnifique! A tiger meat that has been marinated for several hours in magic spices."
 		elseif food_id == 29411 then
-			message =
-			"Aaah, the beauty of the simple dishes! A delicate salad made of selected ingredients, capable of bring joy to the hearts of bravest warriors and their weapons."
+			message = "Aaah, the beauty of the simple dishes! A delicate salad made of selected ingredients, capable of bring joy to the hearts of bravest warriors and their weapons."
 		elseif food_id == 29412 then
-			message =
-			"Oh yes, very spicy chilly combined with delicious minced carniphila meat and a side dish of fine salad!"
+			message = "Oh yes, very spicy chilly combined with delicious minced carniphila meat and a side dish of fine salad!"
 		elseif food_id == 29413 then
-			message =
-			"Aaah, the northern cuisine! A catch of fresh salmon right from the coast Svargrond is the base of this extraordinary fish dish."
+			message = "Aaah, the northern cuisine! A catch of fresh salmon right from the coast Svargrond is the base of this extraordinary fish dish."
 		elseif food_id == 29414 then
 			message = "A traditional and classy meal. A beefy casserole which smells far better than it sounds!"
 		elseif food_id == 29415 then
@@ -1708,11 +1699,7 @@ function createHirelingType(HirelingName)
 		if random == 6 then
 			-- ask for preferred skill
 			npcHandler:setTopic(playerId, TOPIC_FOOD.SKILL_CHOOSE)
-			npcHandler:say(
-				"Yay! I have the ingredients to make a skill boost dish. Would you rather like to boost your {magic}, {melee}, {shielding} or {distance} skill?",
-				npc,
-				creature
-			)
+			npcHandler:say("Yay! I have the ingredients to make a skill boost dish. Would you rather like to boost your {magic}, {melee}, {shielding} or {distance} skill?", npc, creature)
 		else -- deliver the random generated index
 			deliverFood(npc, creature, HIRELING_FOODS[random])
 		end
@@ -1737,11 +1724,7 @@ function createHirelingType(HirelingName)
 			elseif MsgContains(message, "distance") then
 				deliverFood(npc, creature, HIRELING_FOODS_BOOST.DISTANCE)
 			else
-				npcHandler:say(
-					"Sorry, but you must choose a valid skill class. Would you like to boost your {magic}, {melee}, {shielding} or {distance} skill?",
-					npc,
-					creature
-				)
+				npcHandler:say("Sorry, but you must choose a valid skill class. Would you like to boost your {magic}, {melee}, {shielding} or {distance} skill?", npc, creature)
 			end
 		end
 	end
@@ -1761,17 +1744,13 @@ function createHirelingType(HirelingName)
 
 		-- roleplay
 		if MsgContains(message, "sword of fury") then
-			npcHandler:say(
-				"In my youth I dreamt to wield it! Now I wield the broom of... brooming. I guess that's the next best thing!",
-				npc,
-				creature
-			)
+			npcHandler:say("In my youth I dreamt to wield it! Now I wield the broom of... brooming. I guess that's the next best thing!", npc, creature)
 		elseif MsgContains(message, "rookgaard") then
 			npcHandler:say("What an uncivilised place without any culture.", npc, creature)
 		elseif MsgContains(message, "excalibug") then
 			-- end roleplay
 			npcHandler:say("I'll keep an eye open for it when cleaning up the things you brought home!", npc, creature)
-		elseif (MsgContains(message, "service")) then
+		elseif MsgContains(message, "service") then
 			npcHandler:setTopic(playerId, TOPIC.SERVICES)
 			local servicesMsg = getHirelingServiceString(creature)
 			npcHandler:say(servicesMsg, npc, creature)

@@ -15,7 +15,7 @@ npcConfig.outfit = {
 }
 
 npcConfig.flags = {
-	floorchange = false
+	floorchange = false,
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -46,9 +46,7 @@ npcType.onCloseChannel = function(npc, creature)
 end
 
 local config = {
-	{ position = { x = 32398, y = 32510, z = 7 }, 
-	destination = { x = 32366, y = 32531, z = 8 }, 
-	storage = Storage.Quest.U12_70.AdventuresOfGalthen.LostSatchel.Notes },
+	{ position = { x = 32398, y = 32510, z = 7 }, destination = { x = 32366, y = 32531, z = 8 }, storage = Storage.Quest.U12_70.AdventuresOfGalthen.LostSatchel.Notes },
 }
 
 local function farewellCallback(creature)
@@ -65,17 +63,17 @@ end
 
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)
-	
+
 	if not npcHandler:checkInteraction(npc, creature) then
 		for value in pairs(config) do
-			if MsgContains(message, "vbox") and player:getStorageValue(config[value].storage) == 1 and player:getPosition() == Position(config[value].position) then 
+			if MsgContains(message, "vbox") and player:getStorageValue(config[value].storage) == 1 and player:getPosition() == Position(config[value].position) then
 				npcHandler:setInteraction(npc, player)
 				npcHandler:setMessage(MESSAGE_GREET, "J-T B^C J^BXT°")
 				player:teleportTo(Position(config[value].destination))
-					addEvent(function()
+				addEvent(function()
 					player:teleportTo(Position(32396, 32520, 7))
 					player:getPosition():sendMagicEffect(CONST_ME_WATERSPLASH)
-					end, 15000)
+				end, 15000)
 			end
 		end
 	end

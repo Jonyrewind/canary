@@ -66,5 +66,6 @@ function monsters.onThink(interval, lastExecution)
 end
 
 monsters:interval(30 * 1000)
-monsters:register()]]--
+monsters:register()]]
+--
 TwistedWaters:register()

@@ -3,24 +3,24 @@ local config = {
 	-- Tanjis
 	[1] = {
 		Position = Position(33648, 31261, 11),
-		bossName = 'Tanjis',
+		bossName = "Tanjis",
 		actionID = 7900,
-		storage = 1
-	},	
+		storage = 1,
+	},
 	-- Jaul
 	[2] = {
 		Position = Position(33558, 31282, 11),
-		bossName = 'Jaul',
+		bossName = "Jaul",
 		actionID = 7902,
-		storage = 2
-	},	
+		storage = 2,
+	},
 	-- Obujos
 	[3] = {
 		Position = Position(33438, 31248, 11),
-		bossName = 'Obujos',
+		bossName = "Obujos",
 		actionID = 7904,
-		storage = 3
-	},		
+		storage = 3,
+	},
 }
 
 local storage = getGlobalStorage(GlobalStorage.DeeplingBossesTP)
@@ -46,10 +46,10 @@ function gray.onStartup()
 		if not item:isTeleport() then
 			item:remove()
 			return false
-		end	
+		end
 		item:setActionId(randBoss.actionID)
 		setGlobalStorage(GlobalStorage.DeeplingBossesTP, randBoss.storage)
-		logger.info(string.format("[WorldChanges] Gray Island Boss: %s and storage is "..storage.."", randBoss.bossName))
+		logger.info(string.format("[WorldChanges] Gray Island Boss: %s and storage is " .. storage .. "", randBoss.bossName))
 	end
 	return true
 end

@@ -22,10 +22,10 @@ function closeServer.onSay(player, words, param)
 		-- Reset gamestore exp boost count.
 		db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 51052")
 		-- Reset gray island bosses.
-		db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20075')
-		db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20076')
-		db.query('UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20077')
-		db.query('UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 50079')
+		db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20075")
+		db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20076")
+		db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20077")
+		db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 50079")
 		Spdlog.info("storages reset")
 	elseif param == "maintainance" then
 		Game.setGameState(GAME_STATE_MAINTAIN)

@@ -1,9 +1,9 @@
 local area = createCombatArea({
-    {0, 1, 1, 1, 0},
-    {1, 1, 1, 1, 1},
-    {1, 1, 3, 1, 1},
-   {1, 1, 1, 1, 1},
-   {0, 1, 1, 1, 0},
+	{ 0, 1, 1, 1, 0 },
+	{ 1, 1, 1, 1, 1 },
+	{ 1, 1, 3, 1, 1 },
+	{ 1, 1, 1, 1, 1 },
+	{ 0, 1, 1, 1, 0 },
 })
 
 local wandOfDimensions = Weapon(WEAPON_WAND)
@@ -24,21 +24,21 @@ combat3:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICEATTACK)
 combat3:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ICE)
 
 function onGetFormulaValues()
-   local min = 80
-   local max = 100
-   return -min, -max
+	local min = 80
+	local max = 100
+	return -min, -max
 end
 
 function onGetFormulaValues2()
-   local min = 80
-   local max = 100
-   return -min, -max
+	local min = 80
+	local max = 100
+	return -min, -max
 end
 
 function onGetFormulaValues3()
-   local min = 80
-   local max = 100
-   return -min, -max
+	local min = 80
+	local max = 100
+	return -min, -max
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
@@ -46,9 +46,9 @@ combat2:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues2")
 combat2:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues3")
 
 wandOfDimensions.onUseWeapon = function(player, variant)
-    combat:execute(player, variant)
-    combat2:execute(player, variant)
-    combat3:execute(player, variant)
+	combat:execute(player, variant)
+	combat2:execute(player, variant)
+	combat3:execute(player, variant)
 	return true
 end
 
