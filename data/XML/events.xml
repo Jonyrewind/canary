@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
-	<event name="Otservbr example 1" startdate="11/03/2020" enddate="12/30/2023" script="example.lua" >
-		<ingame exprate="100" lootrate="100" spawnrate="250" skillrate="200" />
-		<description description="Otserver br example 1 description double exp and a half, double loot !chance!, regular spawn and double skill" />
-		<colors colordark="#235c00" colorlight="#2d7400" />
+	<event name="XP/Skill Event" startdate="08/12/2023" enddate="12/30/2024" script="example.lua" >
+		<ingame exprate="300" lootrate="100" spawnrate="100" skillrate="300" />
+		<description description="XP/Skill Event! Killing monsters yields more experience and skill points." />
+		<colors colordark="#24657b" colorlight="#24657b" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>
-	<event name="Otservbr example 2" startdate="2/2/2022" enddate="12/31/2023" script="" >
-		<ingame exprate="500" lootrate="500" spawnrate="500" skillrate="500" />
-		<description description="Otserver br example 2 description 50% less exp, triple loot !chance!, 50% faster spawn and regular skill" />
-		<colors colordark="#735D10" colorlight="#8B6D05" />
+	<event name="Loot Event" startdate="08/12/2023" enddate="12/30/2024" script="" >
+		<ingame exprate="100" lootrate="500" spawnrate="100" skillrate="100" />
+		<description description="Loot Event! Monsters carry more loot than usual." />
+		<colors colordark="#1d5263" colorlight="#1d5263" />
+		<details displaypriority="6" isseasonal="0" specialevent="0" />
+	</event>
+	<event name="Rapid Respawn" startdate="08/12/2023" enddate="12/30/2024" script="" >
+		<ingame exprate="100" lootrate="100" spawnrate="300" skillrate="100" />
+		<description description="Spawn Rate Event! Monsters respawn at a faster rate" />
+		<colors colordark="#24657b" colorlight="#24657b" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>
 </events>

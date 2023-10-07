@@ -10,6 +10,7 @@ function createNpc.onSay(player, words, param)
 	end
 
 	local position = player:getPosition()
+	position.x = position.x - 1
 	local npc = Game.createNpc(param, position)
 	if npc then
 		npc:setMasterPos(position)

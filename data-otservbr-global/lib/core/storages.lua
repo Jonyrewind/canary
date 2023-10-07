@@ -157,6 +157,8 @@ Storage = {
 		-- Reserved storage from 50010 - 50014
 		Questline = 50010,
 		Visitor = 50011,
+		Books = 50012,
+		BooksNpc = 50013,
 	},
 	Kilmaresh = {
 		-- Reserved storage from 50015 - 50049

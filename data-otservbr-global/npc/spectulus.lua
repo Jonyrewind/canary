@@ -691,7 +691,84 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:setTopic(playerId, 0)
 		end
 	end
+
+	if MsgContains(message, "book") and player:getStorageValue(Storage.LiquidBlackQuest.Books) == 3 then
+		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) <= 0 then
+			npcHandler:say({
+				"You found what? Well, you'll have to hand it over to me to help you with this, will you?",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 34)
+		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 1 then
+			npcHandler:say({
+				"You found another volume of the Book of Death? Well, I need to see this one. Will you give it to me?",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 35)
+		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 2 then
+			npcHandler:say({
+				"You found another volume of the Book of Death? Well, I need to see this one. Will you give it to me?",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 36)
+		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 3 then
+			npcHandler:say({
+				"You allready gave me all the Books i need!",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 0)
+		end
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 34 then
+		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) <= 0 and player:removeItem(14173, 1) then
+			npcHandler:say({
+				"The first volume of the Book of Death. That must have been written in Lagatos's final days. A very dark tone underlies these writings. ...",
+				"Mh. Hm. He talks about a change, a transformation. Something has happened to the creatures of the deep that turned them towards \z
+				war. ...",
+				"We need all three books if we want to unravel this mystery.",
+			}, npc, creature)
+			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 1)
+			npcHandler:setTopic(playerId, 0)
+		else
+			npcHandler:say({
+				"You don't have The first volume of the Book of Death.",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 0)
+		end
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 35 then
+		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 1 and player:removeItem(14174, 1) then
+			npcHandler:say({
+				"The second volume of the Book of Death. It seems the Deeplings were indeed changed by an outside force of some kind. They turned against each other, started to suppress certain castes. ...",
+				"There is only one other book needed to unravel this mystery.",
+			}, npc, creature)
+			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 2)
+			npcHandler:setTopic(playerId, 0)
+		else
+			npcHandler:say({
+				"You don't have The second volume of the Book of Death.",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 0)
+			return false
+		end
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 36 then
+		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 2 and player:removeItem(14175, 1) then
+			npcHandler:say({
+				"The third volume of the Book of Death. Mmh, mh. So the 'blackness' found them. They rule the 'black void' - I assume the deeper parts of the sea - and they will 'conquer the surface'. ...",
+				"'And they will walk the path of pain', also, 'they will be followed by a trail of blood' and finally, 'their work is cruel, their reward death'. It gets quite dark from there on, though. ...",
+				"Now that I have read all three books it is clear that an outside force, something unknown, was manipulating the Deeplings. ...",
+				"They were never the peaceful type but they would never deny the heir of their culture to take part in a full-scale war. ...",
+				"The oppression of the lesser Deeplings, destruction of knowledge, abandoning their libraries and cult sites - someone WANTED them to do all this. ...",
+				"Why? I don't know. What to do? I don't know either. I can, however, still help you as good as I can from here. ...",
+				"During my failed expedition, I also found some kind of armor. It was broken but I managed to complete it using some rare materials from my stock. ...",
+				"This thing is quite heavy but should work just perfectly underwater. I hope this will help you on your quest to find out what really is going on in these depths.",
+			}, npc, creature)
+			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 3)
+			player:addOutfit(463)
+			player:addOutfit(464)
+			npcHandler:setTopic(playerId, 0)
+		else
+			npcHandler:say({
+				"You don't have The third volume of the Book of Death.",
+			}, npc, creature)
+			npcHandler:setTopic(playerId, 0)
+		end
 	return true
+	end
 end
 
 keywordHandler:addKeyword({ "jack" }, StdModule.say, {
