@@ -74,17 +74,23 @@ local function creatureSayCallback(npc, creature, type, message)
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 2)
 		elseif npcHandler:getTopic(playerId) == 2 then
-			npcHandler:say({
-				"Good, I hope this will help you keeping the spirits away.",
-			}, npc, creature)
-			player:addItem(14020, 1)
-			npcHandler:setTopic(playerId, 0)
+			if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.SoulNet) > os.time() then
+				npcHandler:say({ "Give me more time!", }, npc, creature)
+				npcHandler:setTopic(playerId, 0)
+			else
+				npcHandler:say({
+					"Good, I hope this will help you keeping the spirits away.",	
+				}, npc, creature)
+				player:addItem(14020, 1)
+				player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.SoulNet, os.time() + 12 * 60 * 60)
+				npcHandler:setTopic(playerId, 0)
+			end
 		end
 	end
 	return true
 end
 
-npcHandler:setMessage(MESSAGE_GREET, "Hello there! Are you really here to help us, friend? Need the latest news on what's going on on this island?")
+npcHandler:setMessage(MESSAGE_GREET,"Hello there! Are you really here to {help} us, friend? Need the latest news on what's going on on this island?")
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 

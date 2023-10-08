@@ -46,6 +46,14 @@ npcType.onThink = function(npc, interval)
 	npcHandler:onThink(npc, interval)
 end
 
+local function greetCallback(npc, creature)
+	local playerId = creature:getId()
+	local player = Player(creature)
+
+	npcHandler:say("8O'''' |(( JT(|W-T -( J-T =|- (CW- BO:", npc, creature)
+	player:addAchievement("Navigational Error")
+end
+
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)
 	local playerId = player:getId()
@@ -61,15 +69,13 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:setTopic(playerId, 2)
 		end
 	elseif MsgContains(message, "helmet") then
-		if npcHandler:getTopic(playerId) == 7 then
-			npcHandler:say({
-				"NAAAAARGH. If you promise to leave me alone and NOT TO TELL MY SECRET to anyone - you can have one. ...",
-				"NO! Not the one I'm wearing. I am BOUND to this device. This suit has granted me a longer life. However, once you have spent a certain time with this - there is no turning back if you know what I mean. ...",
-				"The armor will merge with your very body. Holding you captive, holding your life in its hands like a ransom. ...",
-				"Using Deepling craft and various components from down here, I created several spare helmets - just in case this one gets damaged. If you return that small golden anchor to me, you can have one. Will you?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 8)
-		end
+		npcHandler:say({
+			"NAAAAARGH. If you promise to leave me alone and NOT TO TELL MY SECRET to anyone - you can have one. ...",
+			"NO! Not the one I'm wearing. I am BOUND to this device. This suit has granted me a longer life. However, once you have spent a certain time with this - there is no turning back if you know what I mean. ...",
+			"The armor will merge with your very body. Holding you captive, holding your life in its hands like a ransom. ...",
+			"Using Deepling craft and various components from down here, I created several spare helmets - just in case this one gets damaged. If you return that small golden anchor to me, you can have one. Will you?",
+		}, npc, creature)
+		npcHandler:setTopic(playerId, 8)
 	elseif MsgContains(message, "no") then
 		if npcHandler:getTopic(playerId) == 3 then
 			npcHandler:say({
@@ -117,17 +123,28 @@ local function creatureSayCallback(npc, creature, type, message)
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 7)
 		elseif npcHandler:getTopic(playerId) == 8 then
-			npcHandler:say("Then take this one. And remember: DO NOT TELL ANYONE ABOUT ME OR ANYTHING YOU HAVE HEARD HERE TODAY.", npc, creature)
-			player:addOutfitAddon(464, 2)
-			player:addOutfitAddon(463, 2)
-			setPlayerStorageValue(creature, Storage.Navigator, 4)
-			npcHandler:setTopic(playerId, 0)
+			if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463) then
+				if  player:removeItem(14019, 1) then
+					npcHandler:say("Then take this one. And remember: DO NOT TELL ANYONE ABOUT ME OR ANYTHING YOU HAVE HEARD HERE TODAY.", npc, creature)
+						if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463, 1) then
+							player:addAchievement("Spolium Profundis")
+						end
+					player:addOutfitAddon(464, 2)
+					player:addOutfitAddon(463, 2)
+					setPlayerStorageValue(creature, Storage.Navigator, 4)
+					npcHandler:setTopic(playerId, 0)
+				else
+					npcHandler:say("Come back when you possess a small golden anchor!", npc, creature)
+				end
+			else
+				npcHandler:say("Come back when you possess the Deepling Outfit", npc, creature)
+			end
 		end
 	end
 	return true
 end
 
-npcHandler:setMessage(MESSAGE_GREET, "8O'''' |(( JT(|W-T -( J-T =|- (CW- BO:")
+npcHandler:setCallback(CALLBACK_GREET, greetCallback)
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
