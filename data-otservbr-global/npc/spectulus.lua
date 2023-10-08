@@ -767,7 +767,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 0)
 		end
-	return true
+		return true
 	end
 end
 
