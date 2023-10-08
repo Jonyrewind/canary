@@ -1,5 +1,5 @@
 local config = {
-	enabled = false,
+	enabled = true,
 	storage = Storage.VipSystem.OnlineTokensGain,
 	checkDuplicateIps = false,
 

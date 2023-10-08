@@ -155,10 +155,6 @@ Storage = {
 	},
 	LiquidBlackQuest = {
 		-- Reserved storage from 50010 - 50014
-		Questline = 50010,
-		Visitor = 50011,
-		Books = 50012,
-		BooksNpc = 50013,
 	},
 	Kilmaresh = {
 		-- Reserved storage from 50015 - 50049
@@ -2483,7 +2479,14 @@ Storage = {
 			HiveBornWorldChange = {},
 			InsectoidOutfits = {},
 			KingsdayMiniWorldChange = {},
-			LiquidBlack = {},
+			LiquidBlack = {
+				Questline = 43690,
+				Visitor = 43691,
+				Books = 43692,
+				BooksNpc = 43693,
+				SoulNet = 43694,
+				RockSteadyCount = 43695,
+			},
 			LumberjackMiniWorldChange = {},
 			NomadsMiniWorldChange = {},
 			NoodlesIsGoneMiniWorldChange = {},
@@ -3168,6 +3171,7 @@ GlobalStorage = {
 	IceCrack = 65016,
 	UglyMonster = 65017,
 	DeeplingBossesTP = 65018,
+	DeeplingSpawn = 65019,
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 

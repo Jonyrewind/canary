@@ -1,3 +1,35 @@
+local cracklerTransform = CreatureEvent("CracklerTransform")
+function cracklerTransform.onThink(creature)
+	if creature:getName():lower() ~= "crackler" then
+		return true
+	end
+	
+	if cracklerTransform == true then
+		local monster = Game.createMonster("depolarized crackler", creature:getPosition(), false, true)
+		monster:addHealth(-monster:getHealth() + creature:getHealth(), COMBAT_PHYSICALDAMAGE)
+		creature:remove()
+	end
+	return true
+end
+
+cracklerTransform:register()
+
+local depolarizedTransform = CreatureEvent("DepolarizedTransform")
+function depolarizedTransform.onThink(creature)
+	if not creature or not creature:isMonster() then
+		return false
+	end
+
+	if cracklerTransform == false then
+		local monster = Game.createMonster("Crackler", creature:getPosition(), false, true)
+		monster:addHealth(-monster:getHealth() + creature:getHealth(), COMBAT_PHYSICALDAMAGE)
+		creature:remove()
+	end
+	return true
+end
+
+depolarizedTransform:register()
+
 local positions1 = {
 	{ x = 32197, y = 31322, z = 14 },
 	{ x = 32202, y = 31328, z = 14 },
@@ -26,6 +58,7 @@ local positions4 = {
 	{ x = 32219, y = 31328, z = 14 },
 }
 
+
 local vortexCrackler = MoveEvent()
 
 function vortexCrackler.onStepIn(creature, item, position, fromPosition)
@@ -36,47 +69,59 @@ function vortexCrackler.onStepIn(creature, item, position, fromPosition)
 
 	if item.itemid == 23471 then
 		if vortexPositions == 1 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions1 do
-				playerTile = Tile(positions1[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
+				local storePlayers = {}
+				for i = 1, #positions1 do
+					local tile = Tile(Position(positions1[i]))
+					if tile then
+						local playerTile = tile:getTopCreature()
+						if playerTile and playerTile:isPlayer() then
+							storePlayers[#storePlayers + 1] = playerTile
+						end
+					end
 				end
-			end
-			if #storePlayers == #positions1 then
+			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 2 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions2 do
-				playerTile = Tile(positions2[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
+				local storePlayers = {}
+				for i = 1, #positions2 do
+					local tile = Tile(Position(positions2[i]))
+					if tile then
+						local playerTile = tile:getTopCreature()
+						if playerTile and playerTile:isPlayer() then
+							storePlayers[#storePlayers + 1] = playerTile
+						end
+					end
 				end
-			end
-			if #storePlayers == #positions2 then
+			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 3 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions3 do
-				playerTile = Tile(positions3[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
+				local storePlayers = {}
+				for i = 1, #positions3 do
+					local tile = Tile(Position(positions3[i]))
+					if tile then
+						local playerTile = tile:getTopCreature()
+						if playerTile and playerTile:isPlayer() then
+							storePlayers[#storePlayers + 1] = playerTile
+						end
+					end
 				end
-			end
-			if #storePlayers == #positions3 then
+			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 0 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions4 do
-				playerTile = Tile(positions4[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
+				local storePlayers = {}
+				for i = 1, #positions4 do
+					local tile = Tile(Position(positions4[i]))
+					if tile then
+						local playerTile = tile:getTopCreature()
+						if playerTile and playerTile:isPlayer() then
+							storePlayers[#storePlayers + 1] = playerTile
+						end
+					end
 				end
-			end
-			if #storePlayers == #positions4 then
+			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		end

@@ -1,16 +1,16 @@
 local books = {
 	[14173] = { -- first large book
-		storage = Storage.LiquidBlackQuest.Books,
+		storage = Storage.Quest.U9_4.LiquidBlack.Books,
 		value = {need = 0, fail = 0, succes = 0, done = 3},
 		message = {fail = "Fail", succes = "The book seems to be part of a trilogy written by Lagatos. His words are precise and extremely dark."}
 	},
 	[14174] = { -- second large book
-		storage = Storage.LiquidBlackQuest.Books,
+		storage = Storage.Quest.U9_4.LiquidBlack.Books,
 		value = {need = 0, fail = 0, succes = 0, done = 3},
 		message = {fail = "Fail", succes = "The book seems to be part of a trilogy written by Lagatos. His words are precise and extremely dark."}
 	},
 	[14175] = { -- third large book
-		storage = Storage.LiquidBlackQuest.Books,
+		storage = Storage.Quest.U9_4.LiquidBlack.Books,
 		value = {need = 0, fail = 0, succes = 0, done = 3},
 		message = {fail = "Fail", succes = "The book seems to be part of a trilogy written by Lagatos. His words are precise and extremely dark."}
 	},

@@ -157,10 +157,10 @@ function heartDestructionCracklers.onUse(player, item, fromPosition, itemEx, toP
 					end
 				end
 
-				if #storePlayers < 4 then
+--[[				if #storePlayers < 4 then
 					player:sendTextMessage(19, "You need at least 4 players to this mission.")
 					return true
-				end
+				end]]--
 
 				if doCheckArea() == false then
 					clearArea()

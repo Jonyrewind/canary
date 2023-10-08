@@ -29,22 +29,25 @@ local positions = {
 local othersFireBug = Action()
 function othersFireBug.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if target.actionid == 54387 and target.itemid == 22875 then
-		if player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) >= 8 or player:getStorageValue(Storage.FerumbrasAscension.BoneFlute) < 1 then
-			return false
+	local spectators = Game.getSpectators(Position(33490, 32790, 11), false, true, 5, 5, 5, 5)
+		for _, spectator in pairs(spectators) do
+			local playerSpectator = spectator
+			if player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) >= 8 or player:getStorageValue(Storage.FerumbrasAscension.BoneFlute) < 1 then
+				return false
+			end
+			if playerSpectator:getStorageValue(Storage.FerumbrasAscension.BasinCounter) < 0 then
+				playerSpectator:setStorageValue(Storage.FerumbrasAscension.BasinCounter, 0)
+			end
+			if playerSpectator:getStorageValue(Storage.FerumbrasAscension.BasinCounter) == 7 then
+				player:say('You ascended the last basin.', TALKTYPE_MONSTER_SAY)
+				item:remove()
+			end
+			target:transform(22876)
+			playerSpectator:setStorageValue(Storage.FerumbrasAscension.BasinCounter, playerSpectator:getStorageValue(Storage.FerumbrasAscension.BasinCounter) + 1)
+			toPosition:sendMagicEffect(CONST_ME_FIREAREA)
+			addEvent(revert, 2 * 60 * 1000, toPosition, 22876, 22875)
+			return true
 		end
-		if player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) < 0 then
-			player:setStorageValue(Storage.FerumbrasAscension.BasinCounter, 0)
-		end
-		if player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) == 7 then
-			player:say("You ascended the last basin.", TALKTYPE_MONSTER_SAY)
-			item:remove()
-			player:setStorageValue(Storage.FerumbrasAscension.MonsterDoor, 1)
-		end
-		target:transform(22876)
-		player:setStorageValue(Storage.FerumbrasAscension.BasinCounter, player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) + 1)
-		toPosition:sendMagicEffect(CONST_ME_FIREAREA)
-		addEvent(revert, 2 * 60 * 1000, toPosition, 22876, 22875)
-		return true
 	elseif target.uid == 2243 then
 		local tile = Tile(Position(32849, 32233, 9))
 		local item = tile:getItemById(3134)

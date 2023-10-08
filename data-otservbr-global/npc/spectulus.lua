@@ -606,7 +606,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:setTopic(playerId, 0)
 	end
 
-	if MsgContains(message, "machine") and player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
+	if MsgContains(message, "machine") and player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
 		npcHandler:say({
 			"Ah, the machine you found at that island. Well, I built this thing to venture far beneath \z
 				the very soil we walk on. I suspected something there. Something deep down below. Something evil. \z
@@ -620,8 +620,8 @@ local function creatureSayCallback(npc, creature, type, message)
 				A world deep under the sea - can you believe this?",
 		}, npc, creature)
 		npcHandler:setTopic(playerId, 21)
-	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 21 and player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 21 and player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
 			npcHandler:say({
 				"You do? Well, the end of this story was that I had to leave the place. ...",
 				"I couldnt explore what lies below the stairs as there was an unpredictable stream. Diving \z
@@ -638,8 +638,8 @@ local function creatureSayCallback(npc, creature, type, message)
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 22)
 		end
-	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 22 and player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 22 and player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
 			npcHandler:say({
 				"Well, if you really want to delve into this - I could use some help. So you have \z
 					found my {machine} on that island? And you found the notes with the coordinates? \z
@@ -656,14 +656,14 @@ local function creatureSayCallback(npc, creature, type, message)
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 23)
 		end
-	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 23 and player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.Visitor) == 3 then
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 23 and player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor) == 3 then
 			npcHandler:say({
 				"Then off you go! Im sorry that I cannot offer you any further help but Im \z
 					sure you will find support along your way. And - be careful. The sea can \z
 					appear pitch black down there.",
 			}, npc, creature)
-			player:setStorageValue(Storage.LiquidBlackQuest.Visitor, 4)
+			player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.Visitor, 4)
 			npcHandler:setTopic(playerId, 24)
 		end
 	elseif MsgContains(message, "task") then
@@ -692,37 +692,37 @@ local function creatureSayCallback(npc, creature, type, message)
 		end
 	end
 
-	if MsgContains(message, "book") and player:getStorageValue(Storage.LiquidBlackQuest.Books) == 3 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) <= 0 then
+	if MsgContains(message, "book") and player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.Books) == 3 then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) <= 0 then
 			npcHandler:say({
 				"You found what? Well, you'll have to hand it over to me to help you with this, will you?",
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 34)
-		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 1 then
+		elseif player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) == 1 then
 			npcHandler:say({
 				"You found another volume of the Book of Death? Well, I need to see this one. Will you give it to me?",
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 35)
-		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 2 then
+		elseif player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) == 2 then
 			npcHandler:say({
 				"You found another volume of the Book of Death? Well, I need to see this one. Will you give it to me?",
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 36)
-		elseif player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 3 then
+		elseif player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) == 3 then
 			npcHandler:say({
 				"You allready gave me all the Books i need!",
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 0)
 		end
 	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 34 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) <= 0 and player:removeItem(14173, 1) then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) <= 0 and player:removeItem(14173, 1) then
 			npcHandler:say({
 				"The first volume of the Book of Death. That must have been written in Lagatos's final days. A very dark tone underlies these writings. ...",
 				"Mh. Hm. He talks about a change, a transformation. Something has happened to the creatures of the deep that turned them towards \z
 				war. ...",
 				"We need all three books if we want to unravel this mystery.",
 			}, npc, creature)
-			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 1)
+			player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc, 1)
 			npcHandler:setTopic(playerId, 0)
 		else
 			npcHandler:say({
@@ -731,12 +731,12 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:setTopic(playerId, 0)
 		end
 	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 35 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 1 and player:removeItem(14174, 1) then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) == 1 and player:removeItem(14174, 1) then
 			npcHandler:say({
 				"The second volume of the Book of Death. It seems the Deeplings were indeed changed by an outside force of some kind. They turned against each other, started to suppress certain castes. ...",
 				"There is only one other book needed to unravel this mystery.",
 			}, npc, creature)
-			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 2)
+			player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc, 2)
 			npcHandler:setTopic(playerId, 0)
 		else
 			npcHandler:say({
@@ -746,7 +746,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			return false
 		end
 	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 36 then
-		if player:getStorageValue(Storage.LiquidBlackQuest.BooksNpc) == 2 and player:removeItem(14175, 1) then
+		if player:getStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc) == 2 and player:removeItem(14175, 1) then
 			npcHandler:say({
 				"The third volume of the Book of Death. Mmh, mh. So the 'blackness' found them. They rule the 'black void' - I assume the deeper parts of the sea - and they will 'conquer the surface'. ...",
 				"'And they will walk the path of pain', also, 'they will be followed by a trail of blood' and finally, 'their work is cruel, their reward death'. It gets quite dark from there on, though. ...",
@@ -757,7 +757,7 @@ local function creatureSayCallback(npc, creature, type, message)
 				"During my failed expedition, I also found some kind of armor. It was broken but I managed to complete it using some rare materials from my stock. ...",
 				"This thing is quite heavy but should work just perfectly underwater. I hope this will help you on your quest to find out what really is going on in these depths.",
 			}, npc, creature)
-			player:setStorageValue(Storage.LiquidBlackQuest.BooksNpc, 3)
+			player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.BooksNpc, 3)
 			player:addOutfit(463)
 			player:addOutfit(464)
 			npcHandler:setTopic(playerId, 0)
