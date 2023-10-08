@@ -29,7 +29,7 @@ local positions = {
 local othersFireBug = Action()
 function othersFireBug.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if target.actionid == 54387 and target.itemid == 22875 then
-	local spectators = Game.getSpectators(Position(33490, 32790, 11), false, true, 5, 5, 5, 5)
+		local spectators = Game.getSpectators(Position(33490, 32790, 11), false, true, 5, 5, 5, 5)
 		for _, spectator in pairs(spectators) do
 			local playerSpectator = spectator
 			if player:getStorageValue(Storage.FerumbrasAscension.BasinCounter) >= 8 or player:getStorageValue(Storage.FerumbrasAscension.BoneFlute) < 1 then
@@ -39,7 +39,7 @@ function othersFireBug.onUse(player, item, fromPosition, target, toPosition, isH
 				playerSpectator:setStorageValue(Storage.FerumbrasAscension.BasinCounter, 0)
 			end
 			if playerSpectator:getStorageValue(Storage.FerumbrasAscension.BasinCounter) == 7 then
-				player:say('You ascended the last basin.', TALKTYPE_MONSTER_SAY)
+				player:say("You ascended the last basin.", TALKTYPE_MONSTER_SAY)
 				item:remove()
 			end
 			target:transform(22876)

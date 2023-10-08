@@ -53,11 +53,11 @@ function FishNet.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You spread the net over the spawn and the darkness surrounding the hatch seems to dissolve.")
 				playerSpectator:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The curse on the spawn has been lifted. All remaining evil spirits have fled from this place.")
 				addEvent(revert, 2 * 60 * 1000, toPosition, 13667, 14167)
-					if math.random(0, 100) >= 65 then
-						playerSpectator:addItem(14019)
-						playerSpectator:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Suddenly a small anchor seems to materialize inside the net. It looks like a keepsake from a long dead sailor.")
-					end
-			return true
+				if math.random(0, 100) >= 65 then
+					playerSpectator:addItem(14019)
+					playerSpectator:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Suddenly a small anchor seems to materialize inside the net. It looks like a keepsake from a long dead sailor.")
+				end
+				return true
 			end
 			target:transform(13667)
 			setGlobalStorage(GlobalStorage.DeeplingSpawn, getGlobalStorage(GlobalStorage.DeeplingSpawn) + 1)

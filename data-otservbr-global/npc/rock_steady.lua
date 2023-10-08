@@ -83,9 +83,9 @@ local function creatureSayCallback(npc, creature, type, message)
 					"No I'm just teasing you. I'm really happy about my collection now. ...",
 					"Well, I found some kind of weapon a long time ago. I believe it may be especially helpful underwater as it is from the deep folk. In any case it is of more use for you than it would be for me.",
 				}, npc, creature)
-					if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463, 2) then
-						player:addAchievement("Spolium Profundis")
-					end
+				if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463, 2) then
+					player:addAchievement("Spolium Profundis")
+				end
 				player:addOutfitAddon(464, 1)
 				player:addOutfitAddon(463, 1)
 				player:setStorageValue(Storage.Quest.U9_4.LiquidBlack.RockSteadyCount, 5)
@@ -97,7 +97,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Come back when you possess the Deepling Outfit", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		end	
+		end
 	elseif MsgContains(message, "yes") then
 		if npcHandler:getTopic(playerId) == 1 and player:removeItem(14021, 1) then
 			npcHandler:say("Great! Let me see. Amazing! I will take this, thank you!", npc, creature)

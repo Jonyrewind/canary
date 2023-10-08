@@ -3,7 +3,7 @@ function cracklerTransform.onThink(creature)
 	if creature:getName():lower() ~= "crackler" then
 		return true
 	end
-	
+
 	if cracklerTransform == true then
 		local monster = Game.createMonster("depolarized crackler", creature:getPosition(), false, true)
 		monster:addHealth(-monster:getHealth() + creature:getHealth(), COMBAT_PHYSICALDAMAGE)
@@ -58,7 +58,6 @@ local positions4 = {
 	{ x = 32219, y = 31328, z = 14 },
 }
 
-
 local vortexCrackler = MoveEvent()
 
 function vortexCrackler.onStepIn(creature, item, position, fromPosition)
@@ -69,58 +68,58 @@ function vortexCrackler.onStepIn(creature, item, position, fromPosition)
 
 	if item.itemid == 23471 then
 		if vortexPositions == 1 then
-				local storePlayers = {}
-				for i = 1, #positions1 do
-					local tile = Tile(Position(positions1[i]))
-					if tile then
-						local playerTile = tile:getTopCreature()
-						if playerTile and playerTile:isPlayer() then
-							storePlayers[#storePlayers + 1] = playerTile
-						end
+			local storePlayers = {}
+			for i = 1, #positions1 do
+				local tile = Tile(Position(positions1[i]))
+				if tile then
+					local playerTile = tile:getTopCreature()
+					if playerTile and playerTile:isPlayer() then
+						storePlayers[#storePlayers + 1] = playerTile
 					end
 				end
+			end
 			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 2 then
-				local storePlayers = {}
-				for i = 1, #positions2 do
-					local tile = Tile(Position(positions2[i]))
-					if tile then
-						local playerTile = tile:getTopCreature()
-						if playerTile and playerTile:isPlayer() then
-							storePlayers[#storePlayers + 1] = playerTile
-						end
+			local storePlayers = {}
+			for i = 1, #positions2 do
+				local tile = Tile(Position(positions2[i]))
+				if tile then
+					local playerTile = tile:getTopCreature()
+					if playerTile and playerTile:isPlayer() then
+						storePlayers[#storePlayers + 1] = playerTile
 					end
 				end
+			end
 			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 3 then
-				local storePlayers = {}
-				for i = 1, #positions3 do
-					local tile = Tile(Position(positions3[i]))
-					if tile then
-						local playerTile = tile:getTopCreature()
-						if playerTile and playerTile:isPlayer() then
-							storePlayers[#storePlayers + 1] = playerTile
-						end
+			local storePlayers = {}
+			for i = 1, #positions3 do
+				local tile = Tile(Position(positions3[i]))
+				if tile then
+					local playerTile = tile:getTopCreature()
+					if playerTile and playerTile:isPlayer() then
+						storePlayers[#storePlayers + 1] = playerTile
 					end
 				end
+			end
 			if #storePlayers > 0 then
 				cracklerTransform = true
 			end
 		elseif vortexPositions == 0 then
-				local storePlayers = {}
-				for i = 1, #positions4 do
-					local tile = Tile(Position(positions4[i]))
-					if tile then
-						local playerTile = tile:getTopCreature()
-						if playerTile and playerTile:isPlayer() then
-							storePlayers[#storePlayers + 1] = playerTile
-						end
+			local storePlayers = {}
+			for i = 1, #positions4 do
+				local tile = Tile(Position(positions4[i]))
+				if tile then
+					local playerTile = tile:getTopCreature()
+					if playerTile and playerTile:isPlayer() then
+						storePlayers[#storePlayers + 1] = playerTile
 					end
 				end
+			end
 			if #storePlayers > 0 then
 				cracklerTransform = true
 			end

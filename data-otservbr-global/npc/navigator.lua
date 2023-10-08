@@ -124,11 +124,11 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:setTopic(playerId, 7)
 		elseif npcHandler:getTopic(playerId) == 8 then
 			if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463) then
-				if  player:removeItem(14019, 1) then
+				if player:removeItem(14019, 1) then
 					npcHandler:say("Then take this one. And remember: DO NOT TELL ANYONE ABOUT ME OR ANYTHING YOU HAVE HEARD HERE TODAY.", npc, creature)
-						if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463, 1) then
-							player:addAchievement("Spolium Profundis")
-						end
+					if player:hasOutfit(player:getSex() == PLAYERSEX_FEMALE and 464 or 463, 1) then
+						player:addAchievement("Spolium Profundis")
+					end
 					player:addOutfitAddon(464, 2)
 					player:addOutfitAddon(463, 2)
 					setPlayerStorageValue(creature, Storage.Navigator, 4)
