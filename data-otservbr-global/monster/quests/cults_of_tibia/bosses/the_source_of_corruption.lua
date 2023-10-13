@@ -87,7 +87,7 @@ monster.loot = {
 	{ name = "yellow gem", chance = 32000 },
 	{ name = "small topaz", chance = 24000, maxCount = 20 },
 	{ name = "small amethyst", chance = 20000, maxCount = 20 },
-	{ id = 3039 , chance = 20000 }, -- red gem
+	{ id = 3039, chance = 20000 }, -- red gem
 	{ id = 282, chance = 20000 }, -- giant shimmering pearl (brown)
 	{ name = "sapphire hammer", chance = 20000 },
 	{ name = "blue gem", chance = 20000 },
