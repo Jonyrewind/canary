@@ -7,8 +7,8 @@ monster.outfit = {
 	lookTypeEx = 7805,
 }
 
-monster.health = 20000
-monster.maxHealth = 20000
+monster.health = 50000
+monster.maxHealth = 50000
 monster.race = "undead"
 monster.corpse = 0
 monster.speed = 0
@@ -59,13 +59,16 @@ monster.voices = {
 monster.loot = {}
 
 monster.attacks = {
-	{ name = "combat", interval = 2000, chance = 40, type = COMBAT_ENERGYDAMAGE, minDamage = -100, maxDamage = -220, radius = 3, effect = CONST_ME_PURPLEENERGY, target = false },
+	{ name = "combat", interval = 2000, chance = 40, type = COMBAT_ENERGYDAMAGE, minDamage = -0, maxDamage = -75, radius = 3, effect = CONST_ME_PURPLEENERGY, target = false },
+	{ name = "combat", interval = 2000, chance = 40, type = COMBAT_DROWNDAMAGE, minDamage = -400, maxDamage = -500, radius = 3, effect = CONST_ME_LOSEENERGY , target = false },
+	
 }
 
 monster.defenses = {
 	defense = 50,
 	armor = 35,
 	--	mitigation = ???,
+	{ name = "combat", interval = 1000, chance = 60, type = COMBAT_HEALING, minDamage = 400, maxDamage = 900, effect = CONST_ME_MAGIC_GREEN, target = false },
 }
 
 monster.elements = {

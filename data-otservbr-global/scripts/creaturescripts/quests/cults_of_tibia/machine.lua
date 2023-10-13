@@ -81,7 +81,19 @@ function machineHealth.onHealthChange(creature, attacker, primaryDamage, primary
 		end
 		local hasdano = false
 		local maxheal = creature:getMaxHealth()
-		if creature:getHealth() > (maxheal * 60) / 100 and creature:getHealth() < (maxheal * 65) / 100 then
+		if creature:getHealth() > (maxheal * 90) / 100 and creature:getHealth() < (maxheal * 95) / 100 then
+			boss:addHealth(-7000)
+			hasdano = true
+		end
+		if creature:getHealth() > (maxheal * 75) / 100 and creature:getHealth() < (maxheal * 80) / 100 then
+			boss:addHealth(-7000)
+			hasdano = true
+		end
+		if creature:getHealth() > (maxheal * 50) / 100 and creature:getHealth() < (maxheal * 55) / 100 then
+			boss:addHealth(-7000)
+			hasdano = true
+		end
+		if creature:getHealth() > (maxheal * 30) / 100 and creature:getHealth() < (maxheal * 35) / 100 then
 			boss:addHealth(-7000)
 			hasdano = true
 		end
@@ -98,6 +110,7 @@ function machineHealth.onHealthChange(creature, attacker, primaryDamage, primary
 		if hasdano then
 			Game.createMonster("Voidshard", boss:getPosition())
 			Game.createMonster("Voidshard", boss:getPosition())
+			creature:say("THE GLOOTH GENERATOR CHARGES UP FOR A LETHAL EXPLOSION!", TALKTYPE_MONSTER_SAY)
 		end
 	end
 	return primaryDamage, primaryType, secondaryDamage, secondaryType

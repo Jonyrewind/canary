@@ -7,7 +7,7 @@ function bossesCults.onKill(player, creature)
 		["the unarmored voidborn"] = { storage = Storage.CultsOfTibia.Orcs.Mission, value = 2 },
 		["the false god"] = { storage = Storage.CultsOfTibia.Minotaurs.Mission, value = 4 },
 		["the sandking"] = { storage = Storage.CultsOfTibia.Life.Mission, value = 8, global = "sandking", g_value = 5 },
-		["the corruptor of souls"] = { createNew = "The Source Of Corruption", pos = Position(33039, 31922, 15), removeMonster = "zarcorix of yalahar", area1 = Position(33073, 31885, 15), area2 = Position(33075, 31887, 15) },
+		["the corruptor of souls"] = { createNew = "The Source Of Corruption", pos = Position(33039, 31922, 15), removeMonster = "Zarcorix Of Yalahar", area1 = Position(33023, 31904, 15), area2 = Position(33052, 31932, 15) },
 		["the source of corruption"] = { storage = Storage.CultsOfTibia.FinalBoss.Mission, value = 2 },
 	}
 

@@ -397,21 +397,25 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by paladins and knights of level 50 or higher."/>
 		<attribute key="weight" value="290"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="237" article="a" name="strong mana potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="290"/>
 		<attribute key="description" value="This potion can only be consumed by players of level 50 or higher."/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="238" article="a" name="great mana potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="310"/>
 		<attribute key="description" value="This potion can only be consumed by sorcerers, druids and paladins of level 80 or higher."/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="239" article="a" name="great health potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="310"/>
 		<attribute key="description" value="This potion can only be consumed by knights of level 80 or higher."/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="240" toid="252" name="linen">
 		<attribute key="primarytype" value="walls"/>
@@ -422,6 +426,7 @@
 	<item id="266" article="a" name="health potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="270"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="267" name="linen">
 		<attribute key="primarytype" value="walls"/>
@@ -429,6 +434,7 @@
 	<item id="268" article="a" name="mana potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="270"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="269" article="a" name="dead dragon hatchling">
 		<attribute key="containerSize" value="30"/>
@@ -495,18 +501,22 @@
 	<item fromid="281" toid="282" article="a" name="giant shimmering pearl">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="283" article="an" name="empty potion flask">
 		<attribute key="description" value="Return it to a potion store for your deposit or refill it with a potion keg or cask"/>
 		<attribute key="weight" value="160"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="284" article="an" name="empty potion flask">
 		<attribute key="description" value="Return it to a potion store for your deposit or refill it with a potion keg or cask"/>
 		<attribute key="weight" value="180"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="285" article="an" name="empty potion flask">
 		<attribute key="description" value="Return it to a potion store for your deposit or refill it with a potion keg or cask"/>
 		<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="286" article="a" name="dead cat">
 		<attribute key="containerSize" value="5"/>
@@ -1281,18 +1291,22 @@
 	<item id="675" article="a" name="small enchanted sapphire">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="676" article="a" name="small enchanted ruby">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="677" article="a" name="small enchanted emerald">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="678" article="a" name="small enchanted amethyst">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="679" article="an" name="icy spike sword">
 		<attribute key="primarytype" value="sword weapons"/>
@@ -1840,6 +1854,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="14"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="762" article="a" name="shiver arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -1850,6 +1865,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="14"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="763" article="a" name="flaming arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -1860,6 +1876,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="14"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="764" article="a" name="straw mat">
 		<attribute key="primarytype" value="constructions"/>
@@ -1926,6 +1943,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="14"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="775" article="a" name="mystic flame">
 		<attribute key="primarytype" value="teleporters"/>
@@ -6018,34 +6036,42 @@
 	<item id="3026" article="a" name="white pearl">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3027" article="a" name="black pearl" plural="black pearls">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3028" article="a" name="small diamond">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3029" article="a" name="small sapphire">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3030" article="a" name="small ruby">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3031" article="a" name="gold coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3032" article="a" name="small emerald">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3033" article="a" name="small amethyst">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3034" article="a" name="talon" plural="talons">
 		<attribute key="primarytype" value="magical items"/>
@@ -6055,42 +6081,52 @@
 	<item id="3035" article="a" name="platinum coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3036" article="a" name="violet gem">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3037" article="a" name="yellow gem">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3038" article="a" name="green gem">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3039" article="a" name="red gem">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3040" article="a" name="gold nugget">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3041" article="a" name="blue gem">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3042" article="a" name="scarab coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3043" article="a" name="crystal coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3044" article="a" name="tusk">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="1000"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3045" article="a" name="strange talisman">
 		<attribute key="primarytype" value="amulets and necklaces"/>
@@ -6656,6 +6692,7 @@
 		<attribute key="primarytype" value="magical items"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3148" article="a" name="destroy field rune">
 		<attribute key="primarytype" value="support runes"/>
@@ -6663,6 +6700,7 @@
 		<attribute key="runespellname" value="adito grav"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3149" article="an" name="energy bomb rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6670,28 +6708,33 @@
 		<attribute key="runespellname" value="adevo mas vis"/>
 		<attribute key="charges" value="2"/>
 		<attribute key="weight" value="105"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3150" toid="3151" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3152" article="an" name="intense healing rune">
 		<attribute key="type" value="rune"/>
 		<attribute key="runespellname" value="adura gran"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3153" article="a" name="cure poison rune">
 		<attribute key="type" value="rune"/>
 		<attribute key="runespellname" value="adana pox"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3154" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3155" article="a" name="sudden death rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6699,6 +6742,7 @@
 		<attribute key="runespellname" value="adori gran mort"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3156" article="a" name="wild growth rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6706,11 +6750,13 @@
 		<attribute key="runespellname" value="adevo grav vita"/>
 		<attribute key="charges" value="2"/>
 		<attribute key="weight" value="105"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3157" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3158" article="an" name="icicle rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6718,17 +6764,20 @@
 		<attribute key="runespellname" value="adori frigo"/>
 		<attribute key="charges" value="5"/>
 		<attribute key="weight" value="42"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3159" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3160" article="an" name="ultimate healing rune">
 		<attribute key="type" value="rune"/>
 		<attribute key="runespellname" value="adura vita"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3161" article="an" name="avalanche rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6736,11 +6785,13 @@
 		<attribute key="runespellname" value="adori mas frigo"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3162" toid="3163" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3164" article="an" name="energy field rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6748,6 +6799,7 @@
 		<attribute key="runespellname" value="adevo grav vis"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3165" article="a" name="paralyse rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6755,6 +6807,7 @@
 		<attribute key="runespellname" value="adana ani"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3166" article="an" name="energy wall rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6762,11 +6815,13 @@
 		<attribute key="runespellname" value="adevo mas grav vis"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3167" toid="3171" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3172" article="a" name="poison field rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6774,6 +6829,7 @@
 		<attribute key="runespellname" value="adevo grav pox"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3173" article="a" name="poison bomb rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6781,6 +6837,7 @@
 		<attribute key="runespellname" value="adevo mas pox"/>
 		<attribute key="charges" value="2"/>
 		<attribute key="weight" value="105"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3174" article="a" name="light magic missile rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6788,6 +6845,7 @@
 		<attribute key="runespellname" value="adori min vis"/>
 		<attribute key="charges" value="10"/>
 		<attribute key="weight" value="21"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3175" article="a" name="stone shower rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6795,6 +6853,7 @@
 		<attribute key="runespellname" value="adori mas tera"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3176" article="a" name="poison wall rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6802,6 +6861,7 @@
 		<attribute key="runespellname" value="adevo mas grav pox"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3177" article="a" name="convince creature rune">
 		<attribute key="primarytype" value="support runes"/>
@@ -6809,6 +6869,7 @@
 		<attribute key="runespellname" value="adeta sio"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3178" article="a" name="chameleon rune">
 		<attribute key="primarytype" value="support runes"/>
@@ -6816,6 +6877,7 @@
 		<attribute key="runespellname" value="adevo ina"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3179" article="a" name="stalagmite rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6823,6 +6885,7 @@
 		<attribute key="runespellname" value="adori tera"/>
 		<attribute key="charges" value="10"/>
 		<attribute key="weight" value="21"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3180" article="a" name="magic wall rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6830,11 +6893,13 @@
 		<attribute key="runespellname" value="adevo grav tera"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3181" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3182" article="a" name="holy missile rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6842,11 +6907,13 @@
 		<attribute key="runespellname" value="adori san"/>
 		<attribute key="charges" value="5"/>
 		<attribute key="weight" value="42"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3183" toid="3187" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3188" article="a" name="fire field rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6854,6 +6921,7 @@
 		<attribute key="runespellname" value="adevo grav flam"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3189" article="a" name="fireball rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6861,6 +6929,7 @@
 		<attribute key="runespellname" value="adori flam"/>
 		<attribute key="charges" value="5"/>
 		<attribute key="weight" value="42"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3190" article="a" name="fire wall rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6868,6 +6937,7 @@
 		<attribute key="runespellname" value="adevo mas grav flam"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3191" article="a" name="great fireball rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6875,6 +6945,7 @@
 		<attribute key="runespellname" value="adori mas flam"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3192" article="a" name="fire bomb rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6882,11 +6953,13 @@
 		<attribute key="runespellname" value="adevo mas flam"/>
 		<attribute key="charges" value="2"/>
 		<attribute key="weight" value="105"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3193" toid="3194" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3195" article="a" name="soulfire rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6894,11 +6967,13 @@
 		<attribute key="runespellname" value="adevo res flam"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3196" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3197" article="a" name="disintegrate rune">
 		<attribute key="primarytype" value="support runes"/>
@@ -6906,6 +6981,7 @@
 		<attribute key="runespellname" value="adito tera"/>
 		<attribute key="charges" value="3"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3198" article="a" name="heavy magic missile rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6913,11 +6989,13 @@
 		<attribute key="runespellname" value="adori vis"/>
 		<attribute key="charges" value="10"/>
 		<attribute key="weight" value="21"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3199" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3200" article="an" name="explosion rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6925,11 +7003,13 @@
 		<attribute key="runespellname" value="adevo mas hur"/>
 		<attribute key="charges" value="6"/>
 		<attribute key="weight" value="35"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3201" article="a" name="spell rune">
 		<attribute key="primarytype" value="utilities"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3202" article="a" name="thunderstorm rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -6937,6 +7017,7 @@
 		<attribute key="runespellname" value="adori mas vis"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="52"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3203" article="an" name="animate dead rune">
 		<attribute key="primarytype" value="support runes"/>
@@ -6944,6 +7025,7 @@
 		<attribute key="runespellname" value="adana mort"/>
 		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3204" article="a" name="dead human"/>
 	<item id="3205" article="a" name="family brooch">
@@ -9018,6 +9100,7 @@
 		<attribute key="maxhitchance" value="87"/>
 		<attribute key="attack" value="30"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3447" article="an" name="arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -9027,6 +9110,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="25"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3448" article="a" name="poison arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -9036,6 +9120,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="23"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3449" article="a" name="burst arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -9045,6 +9130,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="attack" value="27"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3450" article="a" name="power bolt">
 		<attribute key="primarytype" value="ammunition"/>
@@ -9054,6 +9140,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="40"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3451" article="a" name="pitchfork">
 		<attribute key="primarytype" value="tools"/>
@@ -14022,21 +14109,27 @@
 	</item>
 	<item id="5909" article="a" name="white piece of cloth" plural="white pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5910" article="a" name="green piece of cloth" plural="green pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5911" article="a" name="red piece of cloth" plural="red pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5912" article="a" name="blue piece of cloth" plural="blue pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5913" article="a" name="brown piece of cloth" plural="brown pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5914" article="a" name="yellow piece of cloth" plural="yellow pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="5915" toid="5916" article="a" name="large throne">
 		<attribute key="primarytype" value="constructions"/>
@@ -15945,6 +16038,7 @@
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="description" value="Someone might be interested in trading this"/>
 		<attribute key="weight" value="100"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="6500" article="a" name="gingerbreadman">
 		<attribute key="primarytype" value="food"/>
@@ -16070,6 +16164,7 @@
 		<attribute key="maxhitchance" value="91"/>
 		<attribute key="attack" value="72"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="6529" article="a" name="pair of soft boots">
 		<attribute key="stopduration" value="1"/>
@@ -16177,6 +16272,7 @@
 	<item id="6558" article="a" name="flask of demonic blood">
 		<attribute key="description" value="Shake it to create a potion"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="6560" article="a" name="dead human">
 		<attribute key="fluidsource" value="blood"/>
@@ -17247,6 +17343,7 @@
 		<attribute key="maxhitchance" value="87"/>
 		<attribute key="attack" value="33"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7364" article="a" name="sniper arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -17256,6 +17353,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="attack" value="28"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7365" article="an" name="onyx arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -17265,6 +17363,7 @@
 		<attribute key="maxhitchance" value="94"/>
 		<attribute key="attack" value="38"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7366" article="a" name="viper star">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -17275,6 +17374,7 @@
 		<attribute key="range" value="4"/>
 		<attribute key="attack" value="28"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7367" article="an" name="enchanted spear">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -17284,6 +17384,7 @@
 		<attribute key="range" value="4"/>
 		<attribute key="attack" value="38"/>
 		<attribute key="weight" value="2000"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7368" article="an" name="assassin star">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -17293,6 +17394,7 @@
 		<attribute key="range" value="4"/>
 		<attribute key="attack" value="65"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7369" article="a" name="golden goblet">
 		<attribute key="primarytype" value="decoration"/>
@@ -18043,11 +18145,13 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your fighting skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7440" article="a" name="mastermind potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your magic skill"/>
 		<attribute key="weight" value="290"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7441" article="an" name="ice cube">
 		<attribute key="primarytype" value="decoration"/>
@@ -18062,6 +18166,7 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your distance skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7444" article="an" name="ice cube">
 		<attribute key="primarytype" value="decoration"/>
@@ -18423,15 +18528,18 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by paladins of level 80 or higher"/>
 		<attribute key="weight" value="310"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7643" article="an" name="ultimate health potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by knights of level 130 or higher"/>
 		<attribute key="weight" value="310"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="7644" article="an" name="antidote potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="265"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="7645" toid="7695" article="a" name="stone wall">
 		<attribute key="primarytype" value="walls"/>
@@ -18760,6 +18868,7 @@
 	<item id="7876" article="a" name="small health potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="weight" value="265"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="7877" toid="7878" name="balloons">
 		<attribute key="primarytype" value="decoration"/>
@@ -21309,10 +21418,12 @@
 	<item id="9057" article="a" name="small topaz" plural="small topazes">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9058" article="a" name="gold ingot" plural="gold ingots">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="1800"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9059" article="a" name="small lamp">
 		<attribute key="primarytype" value="light sources"/>
@@ -29370,6 +29481,7 @@
 		<attribute key="maxhitchance" value="94"/>
 		<attribute key="attack" value="33"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="14252" article="a" name="vortex bolt">
 		<attribute key="primarytype" value="ammunition"/>
@@ -29379,6 +29491,7 @@
 		<attribute key="maxhitchance" value="89"/>
 		<attribute key="attack" value="36"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="14253" article="a" name="swarmer drum">
 		<attribute key="primarytype" value="quest items"/>
@@ -30207,6 +30320,7 @@
 		<attribute key="maxhitchance" value="95"/>
 		<attribute key="attack" value="65"/>
 		<attribute key="weight" value="75"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="15794" article="a" name="fresh mushroom beer">
 		<attribute key="primarytype" value="liquids"/>
@@ -30848,46 +30962,57 @@
 	<item id="16119" article="a" name="blue crystal shard" plural="blue crystal shards">
 		<attribute key="primarytype" value="valuables"/>
 	<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16120" article="a" name="violet crystal shard">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16121" article="a" name="green crystal shard">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16122" article="a" name="green crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16123" article="a" name="brown crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="16124" article="a" name="blue crystal splinter" plural="blue crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
 	<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16125" article="a" name="cyan crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="15"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16126" article="a" name="red crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="15"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16127" article="a" name="green crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="15"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16128" article="a" name="minor crystalline token">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16129" article="a" name="major crystalline token">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="350"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16130" article="a" name="magma clump">
 		<attribute key="primarytype" value="creature products"/>
@@ -30938,6 +31063,7 @@
 		<attribute key="maxhitchance" value="90"/>
 		<attribute key="attack" value="66"/>
 		<attribute key="weight" value="85"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16142" article="a" name="drill bolt">
 		<attribute key="primarytype" value="ammunition"/>
@@ -30947,6 +31073,7 @@
 		<attribute key="maxhitchance" value="90"/>
 		<attribute key="attack" value="56"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16143" article="an" name="envenomed arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -30957,6 +31084,7 @@
 		<attribute key="maxhitchance" value="93"/>
 		<attribute key="attack" value="27"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="16144" article="a" name="dead dragonling">
 		<attribute key="duration" value="300"/>
@@ -31527,10 +31655,12 @@
 	<item id="17112" article="a" name="sorc and druid attack rune">
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="21"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="17113" article="a" name="healing rune for druids">
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="17114" name="RESERVED SPRITE"/>
 	<item fromid="17115" toid="17140" article="a" name="stone wall">
@@ -31989,6 +32119,7 @@
 		<attribute key="primarytype" value="healing runes"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="17512" article="a" name="lightest magic missile rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -31996,6 +32127,7 @@
 		<attribute key="runespellname" value="adori dis min vis"/>
 		<attribute key="charges" value="10"/>
 		<attribute key="weight" value="21"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="17513" article="a" name="can of oil">
 		<attribute key="description" value="Makes your tools go swimmingly"/>
@@ -38343,6 +38475,7 @@
 		<attribute key="runespellname" value="adori infir mas tera"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="21352" article="a" name="lightest missile rune">
 		<attribute key="primarytype" value="attack runes"/>
@@ -38350,6 +38483,7 @@
 		<attribute key="runespellname" value="adori infir vis"/>
 		<attribute key="charges" value="4"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="21353" toid="21364" name="RESERVED SPRITE"/>
 	<item id="21365" name="stairs"/>
@@ -38666,6 +38800,7 @@
 		<attribute key="maxhitchance" value="40"/>
 		<attribute key="attack" value="20"/>
 		<attribute key="weight" value="60"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="21471" article="a" name="dead sacred snake">
 		<attribute key="fluidsource" value="blood"/>
@@ -39720,6 +39855,7 @@
 		<attribute key="primarytype" value="ammunition"/>
 		<attribute key="attack" value="20"/>
 		<attribute key="weight" value="60"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22051" name="werebadger claws" plural="werebadger claws">
 		<attribute key="primarytype" value="creature products"/>
@@ -40008,11 +40144,13 @@
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="description" value="Tibia Coins are needed to shop exclusive products in the Store, including fabulous mounts, classy outfits, a Name Change or even Premium Time"/>
 		<attribute key="weight" value="0"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22119" article="a" name="burst arrow">
 		<attribute key="primarytype" value="ammunition"/>
 		<attribute key="attack" value="27"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="22120" toid="22121" article="a" name="little adventurer doll">
 		<attribute key="primarytype" value="dolls and bears"/>
@@ -40888,22 +41026,27 @@
 	<item id="22720" article="an" name="iron token" plural="iron tokens">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22721" article="a" name="gold token" plural="gold tokens">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="1"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22722" article="a" name="copper token" plural="copper tokens">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22723" article="a" name="platinum token" plural="platinum tokens">
 		<attribute key="primarytype" value="valuables"/>
 	<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22724" article="a" name="titanium token" plural="titanium tokens">
 		<attribute key="primarytype" value="valuables"/>
 	<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22725" article="a" name="rift lamp">
 		<attribute key="primarytype" value="light sources"/>
@@ -41566,16 +41709,19 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by sorcerers and druids of level 130 or higher"/>
 		<attribute key="weight" value="310"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23374" article="an" name="ultimate spirit potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by paladins of level 130 or higher"/>
 		<attribute key="weight" value="310"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23375" article="a" name="supreme health potion">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by knights of level 200 or higher"/>
 		<attribute key="weight" value="350"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="23376" toid="23387" name="unknown item"/>
 	<item id="23388" article="a" name="dead sparkion">
@@ -44476,6 +44622,7 @@
 		<attribute key="decayTo" value="0"/>
 		<attribute key="attack" value="37"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="25758" article="a" name="spectral bolt">
 		<attribute key="primarytype" value="ammunition"/>
@@ -44488,6 +44635,7 @@
 		<attribute key="duration" value="3600"/>
 		<attribute key="attack" value="78"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="25759" article="a" name="royal star">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -44497,6 +44645,7 @@
 		<attribute key="range" value="5"/>
 		<attribute key="attack" value="64"/>
 		<attribute key="weight" value="220"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="25760" article="a" name="wand of darkness">
 		<attribute key="description" value="Temporary magic powers enchant this staff."/>
@@ -50671,14 +50820,17 @@
 	<item id="30059" article="a" name="giant ruby">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="30060" article="a" name="giant emerald">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="30061" article="a" name="giant sapphire">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="30062" article="a" name="dead lumbering carnivor">
 		<attribute key="duration" value="60"/>
@@ -56176,11 +56328,13 @@
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="170"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="32623" article="a" name="giant topaz">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="170"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="32624" article="a" name="amber with a bug">
 		<attribute key="weight" value="100"/>
@@ -56508,11 +56662,13 @@
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="32770" article="a" name="diamond">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="32771" article="a" name="moonstone">
 		<attribute key="primarytype" value="valuables"/>
@@ -60174,6 +60330,7 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="This potion can only be consumed by druids and sorcerers of level 14 or higher"/>
 		<attribute key="weight" value="320"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="35571" article="a" name="small treasure chest" plural="small treasure chests">
 		<attribute key="primarytype" value="creature products"/>
@@ -60739,6 +60896,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="attack" value="37"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="35902" article="a" name="spectral bolt">
 		<attribute key="primarytype" value="ammunition"/>
@@ -60748,6 +60906,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="attack" value="78"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="35909" name="chaos critical dice">
 		<attribute key="primarytype" value="fansite items"/>
@@ -61911,101 +62070,121 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily resets cooldowns for all spells"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36724" article="a" name="strike enhancement">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases critical hit chance"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36725" name="stamina extension">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion fills up stamina by one hour"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36726" article="a" name="charm upgrade">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases offensive charm trigger chances except Cripple"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36727" article="a" name="wealth duplex">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily doubles the loot from every regular monster you kill"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36728" article="a" name="bestiary betterment">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily makes kills count twice for the Bestiary"/>
 		<attribute key="weight" value="210"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36729" article="a" name="fire resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases fire protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36730" article="a" name="ice resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases ice protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36731" article="a" name="earth resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases earth protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36732" article="a" name="energy resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases energy protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36733" article="a" name="holy resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases holy protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36734" article="a" name="death resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases death protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36735" article="a" name="physical resilience">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily increases physical protection"/>
 		<attribute key="weight" value="250"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36736" article="a" name="fire amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies fire damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36737" article="a" name="ice amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies ice damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36738" article="a" name="earth amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies earth damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36739" article="a" name="energy amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies energy damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36740" article="a" name="holy amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies holy damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36741" article="a" name="death amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies death damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36742" article="a" name="physical amplification">
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="description" value="Drinking this potion temporarily amplifies physical damage against monsters"/>
 		<attribute key="weight" value="229"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="36748" article="a" name="brachiodemon trophy">
 		<attribute key="primarytype" value="trophies"/>

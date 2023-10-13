@@ -503,6 +503,17 @@ function cultsOfTibiaLevers.onUse(player, item, fromPosition, itemEx, toPosition
 				return true
 			end
 
+			for _x = frompos.x, topos.x, 1 do
+				for _y = frompos.y, topos.y, 1 do
+					for _z = frompos.z, topos.z, 1 do
+						local tile = Tile(Position(_x, _y, _z))
+						if tile and tile:getTopCreature() and tile:getTopCreature():isMonster() then
+							tile:getTopCreature():remove()
+						end
+					end
+				end
+			end
+
 			local pt1 = Position(33073, 31885, 15)
 			local pt2 = Position(33075, 31887, 15)
 			for _x = pt1.x, pt2.x, 1 do
