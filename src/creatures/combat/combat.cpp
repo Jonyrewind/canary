@@ -2062,8 +2062,8 @@ void Combat::applyExtensions(std::shared_ptr<Creature> caster, std::shared_ptr<C
 			double_t randomChance = uniform_random(0, 10000) / 100;
 			if (fatalChance > 0 && randomChance < fatalChance) {
 				damage.fatal = true;
-				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.6));
-				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.6));
+				damage.primary.value += static_cast<int32_t>(std::round(damage.primary.value * 0.9));
+				damage.secondary.value += static_cast<int32_t>(std::round(damage.secondary.value * 0.9));
 			}
 		}
 	} else if (monster) {
