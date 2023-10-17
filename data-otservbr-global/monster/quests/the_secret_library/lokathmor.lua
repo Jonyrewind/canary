@@ -95,7 +95,7 @@ monster.loot = {
 	{ name = "silver token", chance = 30000, maxCount = 4 },
 	{ name = "blue robe", chance = 30000 },
 	{ name = "dreaded cleaver", chance = 30000 },
-	{ id = 8900, chance = 30000 }, -- heavily rusted shield
+	{ id = 8902, chance = 30000 }, -- slightly rusted shield
 	{ name = "wand of inferno", chance = 30000 },
 	{ id = 28341, chance = 1000 }, -- tessellated wall
 	{ name = "sturdy book", chance = 1000 },
