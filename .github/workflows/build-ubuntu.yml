@@ -11,7 +11,7 @@ on:
     paths:
       - 'src/**'
     branches:
-      - main
+      - live
 
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 2
@@ -26,11 +26,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
+        os: [ ubuntu-22.04]
         buildtype: [linux-release, linux-debug]
         include:
-          - os: ubuntu-20.04
-            triplet: x64-linux
           - os: ubuntu-22.04
             triplet: x64-linux
 
