@@ -4,6 +4,8 @@ function aftershockTransform.onThink(creature)
 		return true
 	end
 
+	local hp = creature:getHealth() / creature:getMaxHealth() * 100
+
 	local sparkOfDestructionPositions = {
 		{ x = 32203, y = 31246, z = 14 },
 		{ x = 32205, y = 31251, z = 14 },
@@ -20,7 +22,6 @@ function aftershockTransform.onThink(creature)
 	}
 
 	for index, value in pairs(monsterTable) do
-		local hp = (creature:getHealth() / creature:getMaxHealth()) * 100
 		if realityQuakeStage == 0 then
 			local aftershockHealth = creature:getHealth()
 			if hp <= index and aftershockStage == value.fromStage then

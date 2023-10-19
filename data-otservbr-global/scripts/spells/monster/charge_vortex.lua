@@ -37,7 +37,7 @@ local function createVortex()
 						ground:transform(23049)
 					end
 				end
-			end, 10 * 1000, tile:getPosition()) -- 10*1000 = 10 SECONDS
+			end, 15 * 1000, tile:getPosition()) -- 10*1000 = 10 SECONDS
 			mathCount = mathCount + 1
 			table.remove(positions, r1)
 		end
