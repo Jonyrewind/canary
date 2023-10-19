@@ -4,7 +4,7 @@ function foreshockTransform.onThink(creature)
 		return true
 	end
 
-local hp = (creature:getHealth() / creature:getMaxHealth()) * 100
+	local hp = (creature:getHealth() / creature:getMaxHealth()) * 100
 
 	local sparkOfDestructionPositions = {
 		{ x = 32203, y = 31246, z = 14 },
