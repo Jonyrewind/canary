@@ -153,6 +153,10 @@ function randomItems.onUse(player, item, fromPosition, target, toPosition, isHot
 		if chance >= randomItem.from and chance <= randomItem.to then
 			if randomItem.itemId then
 				local itemId, count = randomItem.itemId, randomItem.count or 1
+				local charges = ItemType(itemId):getCharges()
+				if charges > 0 then
+					count = charges
+				end
 				player:addItem(itemId, count)
 				if item.itemid == 12413 then
 					local itemType = ItemType(itemId)
