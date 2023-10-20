@@ -72,8 +72,8 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "gold coin", chance = 50000, maxCount = 190 },
-	{ name = "platinum coin", chance = 20000, maxCount = 26 },
+	{ name = "gold coin", chance = 96920, maxCount = 190 },
+	{ name = "platinum coin", chance = 20000, maxCount = 30 },
 	{ name = "orb", chance = 16666 },
 	{ name = "life crystal", chance = 16666 },
 	{ name = "mind stone", chance = 20000 },
@@ -85,15 +85,15 @@ monster.loot = {
 	{ name = "strange helmet", chance = 8333 },
 	{ name = "crown helmet", chance = 6250 },
 	{ name = "royal helmet", chance = 20000 },
-	{ name = "brown mushroom", chance = 50000, maxCount = 30 },
+	{ name = "brown mushroom", chance = 96920, maxCount = 30 },
 	{ name = "mysterious voodoo skull", chance = 12500 },
 	{ name = "skull helmet", chance = 20000 },
-	{ name = "iron ore", chance = 33333 },
+	{ name = "iron ore", chance = 44320, maxCount = 10 },
 	{ name = "spirit container", chance = 4761 },
 	{ name = "flask of warrior's sweat", chance = 5555 },
 	{ name = "enchanted chicken wing", chance = 7692 },
 	{ name = "huge chunk of crude iron", chance = 14285 },
-	{ name = "hardened bone", chance = 25000, maxCount = 20 },
+	{ name = "hardened bone", chance = 28130, maxCount = 20 },
 	{ name = "demon horn", chance = 8333, maxCount = 2 },
 	{ id = 6103, chance = 2063 }, -- unholy book
 	{ name = "demonic essence", chance = 100000 },

@@ -32,7 +32,7 @@ function oramondTeleports.onStepIn(creature, item, position, fromPosition)
 		player:teleportTo(teleport.position)
 		item:getPosition():sendMagicEffect(CONST_ME_GREEN_RINGS)
 		player:say(teleport.message, TALKTYPE_MONSTER_SAY)
-		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:getPosition():sendMagicEffect(CONST_ME_GREEN_RINGS)
 	end
 	return true
 end
