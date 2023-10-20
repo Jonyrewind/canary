@@ -2889,7 +2889,7 @@ Storage = {
 				TimiraTimer = 47858,
 			},
 		},
-		U13_10 = { -- update 13.10 - Reserved Storages 47901 - 47951
+		U13_10 = { -- update 13.10 - Reserved Storages 47901 - 47950
 			CradleOfMonsters = {
 				QuestLine = 47901,
 				Access = {
@@ -2897,6 +2897,16 @@ Storage = {
 					LowerIngol = 47903,
 					Monster = 47904,
 					MutatedAbomination = 47905,
+				},
+			},
+		},
+		U13_20 = { -- update 13.20 - Reserved Storages 47951 - 48000
+			RottenBlood = {
+				QuestLine = 47951,
+				Access = {
+					Door = 47952,
+					SacrificialPlate = 47953,
+					Hunts = 47954,
 				},
 			},
 		},
