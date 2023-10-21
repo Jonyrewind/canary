@@ -212,6 +212,7 @@
     <ClInclude Include="..\src\server\server.hpp" />
     <ClInclude Include="..\src\server\server_definitions.hpp" />
     <ClInclude Include="..\src\server\signals.hpp" />
+    <ClInclude Include="..\src\utils\arraylist.hpp" />
     <ClInclude Include="..\src\utils\benchmark.hpp" />
     <ClInclude Include="..\src\utils\const.hpp" />
     <ClInclude Include="..\src\utils\definitions.hpp" />
@@ -472,7 +473,7 @@
     <TargetName>$(ProjectName)-sln</TargetName>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
-    <VcpkgEnableManifest>false</VcpkgEnableManifest>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
     <VcpkgAutoLink>false</VcpkgAutoLink>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
