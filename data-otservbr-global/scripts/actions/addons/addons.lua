@@ -20,6 +20,9 @@ local config = {
 	-- poltergeist
 	[32630] = { female = 1271, male = 1270, addon = 1, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare", textorange = "The spooky hood is yours!" },
 	[32631] = { female = 1271, male = 1270, addon = 2, effect = CONST_ME_BLUE_GHOST, achievement = "Mainstreet Nightmare", textorange = "You can use the ghost claw now!" },
+	-- rascoohan
+	[35595] = { female = 1372, male = 1371, addon = 1, achievement = "Honorary Rascoohan", textorange = "You feel a bit more raccoonish." },
+	[35695] = { female = 1372, male = 1371, addon = 2, achievement = "Honorary Rascoohan", textorange = "Hmmm, trash cans!!" },
 }
 
 local addons = Action()
