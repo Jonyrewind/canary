@@ -28,7 +28,8 @@ end
 votingOramond:type("stepin")
 votingOramond:aid(42628)
 votingOramond:register()
-]]--
+]]
+--
 
 local config = {
 	{ name = "Golem", position = Position(31062, 32612, 9) },
