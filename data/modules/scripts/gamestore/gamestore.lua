@@ -6503,7 +6503,6 @@ GameStore.Categories = {
 				description = "<i>It's one of the best backpacks available in terms of slots per oz ratio.</i>\n\n{info} Weight: 15.00\n{info}Vol: 22",
 				type = GameStore.OfferTypes.OFFER_TYPE_PREYBONUS,
 			},
-
 		},
 	},
 	-- Tournament

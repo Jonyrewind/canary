@@ -58,11 +58,10 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-
 local function greetCallback(npc, creature)
 	local playerId = creature:getId()
 	local player = Player(creature)
-	
+
 	npcHandler:setMessage(MESSAGE_GREET, "Greetings! This isn't the {time} to chitchat though.")
 	return true
 end
@@ -77,18 +76,10 @@ local function creatureSayCallback(npc, creature, type, message)
 	local player, storage = Player(creature), Storage.Quest.U13_20.RottenBlood.Access.Door
 	if MsgContains(message, "mission") and npcHandler:getTopic(playerId) == 0 then
 		if player:getStorageValue(storage) <= 0 then
-			npcHandler:say(
-				"Are you willing, to bring the fury of the inquisition to that foul place and eradicate all evil you find? Speak, {yes} or {no}?",
-				npc,
-				creature
-			)
+			npcHandler:say("Are you willing, to bring the fury of the inquisition to that foul place and eradicate all evil you find? Speak, {yes} or {no}?", npc, creature)
 			npcHandler:setTopic(playerId, 1)
 		else
-			npcHandler:say(
-				"Suspicious, but that's your decision of course.",
-				npc,
-				creature
-			)
+			npcHandler:say("Suspicious, but that's your decision of course.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
 		end
 	elseif MsgContains(message, "yes") then
@@ -100,26 +91,26 @@ local function creatureSayCallback(npc, creature, type, message)
 			player:setStorageValue(storage, 1)
 			npcHandler:setTopic(playerId, 0)
 		end
-	elseif MsgContains(message, "no")  then
+	elseif MsgContains(message, "no") then
 		if npcHandler:getTopic(playerId) == 1 then
 			npcHandler:say("Suspicious, but that's your decision of course.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
 		end
 	elseif MsgContains(message, "expedition") then
-	npcHandler:say({
-		"Some nosy adventurers dug up more than they could chew, while exploring the drefian ruins. They discovered the entrance of some sort of temple of evil. ...",
-		"Now, places of evil is what this whole wretched place of {Drefia} consists of, yet this temple was foul, even for drefian standards. The adventurers returned .. twisted and tainted. ...",
-		"We couldn't save them but had to .. cleanse them in a permanent way. However by studying them we could create appropriate wards that should keep the corruption of the temple at bay .. for a time at least.",
+		npcHandler:say({
+			"Some nosy adventurers dug up more than they could chew, while exploring the drefian ruins. They discovered the entrance of some sort of temple of evil. ...",
+			"Now, places of evil is what this whole wretched place of {Drefia} consists of, yet this temple was foul, even for drefian standards. The adventurers returned .. twisted and tainted. ...",
+			"We couldn't save them but had to .. cleanse them in a permanent way. However by studying them we could create appropriate wards that should keep the corruption of the temple at bay .. for a time at least.",
 		}, npc, creature, 500)
 	elseif MsgContains(message, "heresy") then
-	npcHandler:say({
-		"You shouldn't concern yourself with such topics. Their filth might stick and taint. ...",
-		"Live a pious life and heed the teachings of the {gods} of good! Stay away from heretics and report them to the {inquisition}. We will handle them one by one and cleanse the world of their rot!",
+		npcHandler:say({
+			"You shouldn't concern yourself with such topics. Their filth might stick and taint. ...",
+			"Live a pious life and heed the teachings of the {gods} of good! Stay away from heretics and report them to the {inquisition}. We will handle them one by one and cleanse the world of their rot!",
 		}, npc, creature, 500)
 	elseif MsgContains(message, "job") then
-	npcHandler:say({
-		"For long years I served the {inquisition} as high judge and advisor. I compiled books about the sacred laws and rooting out of heretics. ...",
-		"But our ranks are stretched thin in these times and I took it upon me to return to rather mundane field duties like this. ...\z
+		npcHandler:say({
+			"For long years I served the {inquisition} as high judge and advisor. I compiled books about the sacred laws and rooting out of heretics. ...",
+			"But our ranks are stretched thin in these times and I took it upon me to return to rather mundane field duties like this. ...\z
 	It might not be the most glorious task at hand but it has to be done and I'm up to it.",
 		}, npc, creature, 500)
 	end

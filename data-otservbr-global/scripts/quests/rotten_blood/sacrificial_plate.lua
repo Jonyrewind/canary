@@ -27,7 +27,7 @@ function sacrificialPlate.onUse(player, item, fromPosition, target, toPosition, 
 					player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your sacrefice has been accepted by the sanguine master of this realm. Go forth and bedew your root with the waters of life.")
 					return true
 				end
-			end			
+			end
 		end
 	end
 	return true
