@@ -823,6 +823,7 @@ public:
 	void onWalkComplete() override;
 
 	void stopWalk();
+	void openShopWindow(Npc* npc, const std::list<ShopInfo>& shop);
 	bool openShopWindow(std::shared_ptr<Npc> npc);
 	bool closeShopWindow(bool sendCloseShopWindow = true);
 	bool updateSaleShopList(std::shared_ptr<Item> item);

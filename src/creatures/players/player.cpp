@@ -1780,6 +1780,13 @@ void Player::onRemoveCreature(std::shared_ptr<Creature> creature, bool isLogout)
 	}
 }
 
+void Player::openShopWindow(Npc* npc, const std::list<ShopInfo>& shop)
+{
+	shopItemList = shop;
+	sendShop(npc);
+	sendSaleItemList();
+}
+
 bool Player::openShopWindow(std::shared_ptr<Npc> npc) {
 	if (!npc) {
 		g_logger().error("[Player::openShopWindow] - Npc is wrong or nullptr");

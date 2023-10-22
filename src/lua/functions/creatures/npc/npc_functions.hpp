@@ -73,6 +73,7 @@ private:
 	static int luaNpcIsInTalkRange(lua_State* L);
 	static int luaNpcIsPlayerInteractingOnTopic(lua_State* L);
 	static int luaNpcOpenShopWindow(lua_State* L);
+	static int luaOpenShopWindow(lua_State* L);
 	static int luaNpcCloseShopWindow(lua_State* L);
 	static int luaNpcGetShopItem(lua_State* L);
 	static int luaNpcIsMerchant(lua_State* L);

@@ -338,6 +338,72 @@ int NpcFunctions::luaNpcIsInTalkRange(lua_State* L) {
 	return 1;
 }
 
+int NpcScriptInterface::luaNpcOpenShopWindow(lua_State* L)
+{
+	// npc:openShopWindow(cid, items, buyCallback, sellCallback)
+	if (!isTable(L, 3)) {
+		reportErrorFunc(L, "item list is not a table.");
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	Player* player = getPlayer(L, 2);
+	if (!player) {
+		reportErrorFunc(L, getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	Npc* npc = getUserdata<Npc>(L, 1);
+	if (!npc) {
+		reportErrorFunc(L, getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+
+	int32_t sellCallback = -1;
+	if (LuaScriptInterface::isFunction(L, 5)) {
+		sellCallback = luaL_ref(L, LUA_REGISTRYINDEX);
+	}
+
+	int32_t buyCallback = -1;
+	if (LuaScriptInterface::isFunction(L, 4)) {
+		buyCallback = luaL_ref(L, LUA_REGISTRYINDEX);
+	}
+
+	std::list<ShopInfo> items;
+
+	lua_pushnil(L);
+	while (lua_next(L, 3) != 0) {
+		const auto tableIndex = lua_gettop(L);
+		ShopInfo item;
+
+		item.itemId = getField<uint32_t>(L, tableIndex, "id");
+		item.subType = getField<int32_t>(L, tableIndex, "subType");
+		if (item.subType == 0) {
+			item.subType = getField<int32_t>(L, tableIndex, "subtype");
+			lua_pop(L, 1);
+		}
+
+		item.buyPrice = getField<int64_t>(L, tableIndex, "buy");
+		item.sellPrice = getField<int64_t>(L, tableIndex, "sell");
+		item.realName = getFieldString(L, tableIndex, "name");
+
+		items.push_back(item);
+		lua_pop(L, 6);
+	}
+	lua_pop(L, 1);
+
+	player->closeShopWindow(false);
+	npc->addShopPlayer(player);
+
+	player->setShopOwner(npc, buyCallback, sellCallback);
+	player->openShopWindow(npc, items);
+
+	pushBoolean(L, true);
+	return 1;
+}
+
 int NpcFunctions::luaNpcOpenShopWindow(lua_State* L) {
 	// npc:openShopWindow(player)
 	std::shared_ptr<Npc> npc = getUserdataShared<Npc>(L, 1);
