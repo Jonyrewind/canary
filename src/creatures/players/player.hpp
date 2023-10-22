@@ -2622,6 +2622,8 @@ private:
 
 	GuildWarVector guildWarVector;
 
+	std::list<ShopInfo> shopItemList;
+
 	std::forward_list<std::shared_ptr<Party>> invitePartyList;
 	std::forward_list<uint32_t> modalWindows;
 	std::forward_list<std::string> learnedInstantSpellList;
