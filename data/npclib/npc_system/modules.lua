@@ -20,7 +20,7 @@ if Modules == nil then
 	SHOPMODULE_MODE = SHOPMODULE_MODE_TRADE
 
 	Modules = {
-		parseableModules = {}
+		parseableModules = {},
 	}
 
 	StdModule = {}
@@ -603,7 +603,7 @@ if Modules == nil then
 		noNode = nil,
 		noText = "",
 		maxCount = ITEM_STACK_SIZE,
-		amount = 0
+		amount = 0,
 	}
 
 	-- Add it to the parseable module list.
@@ -659,17 +659,19 @@ if Modules == nil then
 		end
 
 		if not itemWindow[1] then
-			local parseInfo = {[TAG_PLAYERNAME] = Player(cid):getName()}
+			local parseInfo = { [TAG_PLAYERNAME] = Player(cid):getName() }
 			local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_NOSHOP), parseInfo)
 			module.npcHandler:say(msg, cid)
 			return true
 		end
 
-		local parseInfo = {[TAG_PLAYERNAME] = Player(cid):getName()}
+		local parseInfo = { [TAG_PLAYERNAME] = Player(cid):getName() }
 		local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_SENDTRADE), parseInfo)
-		openShopWindow(cid, itemWindow,
-			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) module.npcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks) end,
-			function(cid, itemid, subType, amount, ignoreCap, inBackpacks) module.npcHandler:onSell(cid, itemid, subType, amount, ignoreCap, inBackpacks) end)
+		openShopWindow(cid, itemWindow, function(cid, itemid, subType, amount, ignoreCap, inBackpacks)
+			module.npcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks)
+		end, function(cid, itemid, subType, amount, ignoreCap, inBackpacks)
+			module.npcHandler:onSell(cid, itemid, subType, amount, ignoreCap, inBackpacks)
+		end)
 		module.npcHandler:say(msg, cid)
 		return true
 	end

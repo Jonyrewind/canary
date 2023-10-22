@@ -38,7 +38,6 @@ addMount:separator(" ")
 addMount:groupType("god")
 addMount:register()
 
-
 local removeMount = TalkAction("/removemount")
 
 function removeMount.onSay(player, words, param)

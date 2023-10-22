@@ -15,13 +15,12 @@ function getBossCooldown.onSay(player, words, param)
 		target = Player(name)
 	end
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, " "..name.."'s Boss Cooldown for ".. bossNameOrId .." = "..target:getBossCooldown(bossNameOrId).." ")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, " " .. name .. "'s Boss Cooldown for " .. bossNameOrId .. " = " .. target:getBossCooldown(bossNameOrId) .. " ")
 end
 
 getBossCooldown:separator(" ")
 getBossCooldown:groupType("god")
 getBossCooldown:register()
-
 
 function Player.setBossCooldownTalkaction(self, param)
 	if not HasValidTalkActionParams(self, param, "/setboss <bossName>, <value>, <player name>") then
@@ -34,24 +33,23 @@ function Player.setBossCooldownTalkaction(self, param)
 	if split[2] then
 		value = tonumber(split[2])
 	end
-	
+
 	if split[2] then
 		local targetPlayer = Player(string.trim(split[3]))
 		if not targetPlayer then
 			self:sendCancelMessage("Player not found.")
 			return true
 		else
-			local message = "".. split[3] .."'s Boss Cooldown for" .. bossName .. " was set to "..value.."."
+			local message = "" .. split[3] .. "'s Boss Cooldown for" .. bossName .. " was set to " .. value .. "."
 			self:sendTextMessage(MESSAGE_EVENT_ADVANCE, message)
 			targetPlayer:setBossCooldown(bossName, value)
---			targetPlayer:setBossCooldown(bossName, 0)
+			--			targetPlayer:setBossCooldown(bossName, 0)
 			targetPlayer:save()
 			return true
 		end
 	end
 	return true
 end
-
 
 local setBossCooldown = TalkAction("/setboss")
 

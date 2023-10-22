@@ -20,18 +20,16 @@ function foreshockTransform.onThink(creature)
 	}
 
 	for index, value in pairs(monsterTable) do
-
-			local foreshockHealth = creature:getHealth()
-			if hp <= index and aftershockStage == value.fromStage then
-				creature:remove()
-				for i = 1, #sparkOfDestructionPositions do
-					Game.createMonster("spark of destruction", sparkOfDestructionPositions[i], false, true)
-				end
-				local monster = Game.createMonster("aftershock", { x = 32208, y = 31248, z = 14 }, false, true)
-				monster:addHealth(-monster:getHealth() + foreshockHealth, COMBAT_PHYSICALDAMAGE)
-				foreshockStage = value.toStage
+		local foreshockHealth = creature:getHealth()
+		if hp <= index and aftershockStage == value.fromStage then
+			creature:remove()
+			for i = 1, #sparkOfDestructionPositions do
+				Game.createMonster("spark of destruction", sparkOfDestructionPositions[i], false, true)
 			end
-
+			local monster = Game.createMonster("aftershock", { x = 32208, y = 31248, z = 14 }, false, true)
+			monster:addHealth(-monster:getHealth() + foreshockHealth, COMBAT_PHYSICALDAMAGE)
+			foreshockStage = value.toStage
+		end
 	end
 	return true
 end
