@@ -53,7 +53,7 @@ local config = {
 		{ { 97501, 99000 }, CROWN_LEGS },
 		{ { 99001, 100000 }, GOLDEN_LEGS },
 	},
---[[	[8900] = { -- heavily rusted shield
+	--[[	[8900] = { -- heavily rusted shield
 		{ { 1, 35165 } },
 		{ { 35166, 57500 }, BRASS_HELMET },
 		{ { 57501, 70000 }, IRON_HELMET },
@@ -70,7 +70,8 @@ local config = {
 		{ { 81001, 94000 }, CROWN_HELMET },
 		{ { 94001, 98500 }, CRUSADER_HELMET },
 		{ { 98501, 100000 }, ROYAL_HELMET },
-	},]]--
+	},]]
+	--
 	[8902] = { -- slightly rusted shield
 		{ { 1, 35165 } },
 		{ { 35166, 57500 }, PLATE_SHIELD },
@@ -79,7 +80,7 @@ local config = {
 		{ { 81001, 94000 }, CROWN_SHIELD },
 		{ { 94001, 98500 }, VAMPIRE_SHIELD },
 	},
---[[	[8906] = { -- heavily rusted helmet
+	--[[	[8906] = { -- heavily rusted helmet
 		{ { 1, 35165 } },
 		{ { 35166, 57500 }, BRASS_HELMET },
 		{ { 57501, 70000 }, IRON_HELMET },
@@ -87,7 +88,8 @@ local config = {
 		{ { 81001, 94000 }, CROWN_HELMET },
 		{ { 94001, 98500 }, CRUSADER_HELMET },
 		{ { 98501, 100000 }, ROYAL_HELMET },
-	},]]--
+	},]]
+	--
 	[8907] = { -- rusted helmet
 		{ { 1, 35165 } },
 		{ { 35166, 57500 }, BRASS_HELMET },
