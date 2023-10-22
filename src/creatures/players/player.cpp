@@ -1780,8 +1780,7 @@ void Player::onRemoveCreature(std::shared_ptr<Creature> creature, bool isLogout)
 	}
 }
 
-void Player::openShopWindow(Npc* npc, const std::list<ShopInfo>& shop)
-{
+void Player::openShopWindow(Npc* npc, const std::list<ShopInfo> &shop) {
 	shopItemList = shop;
 	sendShop(npc);
 	sendSaleItemList();

@@ -338,8 +338,7 @@ int NpcFunctions::luaNpcIsInTalkRange(lua_State* L) {
 	return 1;
 }
 
-int NpcScriptInterface::luaNpcOpenShopWindow(lua_State* L)
-{
+int NpcScriptInterface::luaNpcOpenShopWindow(lua_State* L) {
 	// npc:openShopWindow(cid, items, buyCallback, sellCallback)
 	if (!isTable(L, 3)) {
 		reportErrorFunc(L, "item list is not a table.");
