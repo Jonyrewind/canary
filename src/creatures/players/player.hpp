@@ -823,7 +823,6 @@ public:
 	void onWalkComplete() override;
 
 	void stopWalk();
-	void openShopWindow(Npc* npc, const std::list<ShopInfo> &shop);
 	bool openShopWindow(std::shared_ptr<Npc> npc);
 	bool closeShopWindow(bool sendCloseShopWindow = true);
 	bool updateSaleShopList(std::shared_ptr<Item> item);
@@ -2621,8 +2620,6 @@ private:
 	std::vector<std::unique_ptr<TaskHuntingSlot>> taskHunting;
 
 	GuildWarVector guildWarVector;
-
-	std::list<ShopInfo> shopItemList;
 
 	std::forward_list<std::shared_ptr<Party>> invitePartyList;
 	std::forward_list<uint32_t> modalWindows;
