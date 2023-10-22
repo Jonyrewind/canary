@@ -11,18 +11,6 @@ if Modules == nil then
 	SHOP_YESWORD = { "yes" }
 	SHOP_NOWORD = { "no" }
 
-	-- Constants used for shop mode. Notice: addBuyableItemContainer is working on all modes
-	SHOPMODULE_MODE_TALK = 1 -- Old system used before client version 8.2: sell/buy item name
-	SHOPMODULE_MODE_TRADE = 2 -- Trade window system introduced in client version 8.2
-	SHOPMODULE_MODE_BOTH = 3 -- Both working at one time
-
-	-- Used shop mode
-	SHOPMODULE_MODE = SHOPMODULE_MODE_TRADE
-
-	Modules = {
-		parseableModules = {},
-	}
-
 	StdModule = {}
 
 	--[[
@@ -597,26 +585,6 @@ if Modules == nil then
 		return true
 	end
 
-	ShopModule = {
-		npcHandler = nil,
-		yesNode = nil,
-		noNode = nil,
-		noText = "",
-		maxCount = ITEM_STACK_SIZE,
-		amount = 0,
-	}
-
-	-- Add it to the parseable module list.
-	Modules.parseableModules["module_shop"] = ShopModule
-
-	-- Creates a new instance of ShopModule
-	function ShopModule:new()
-		local obj = {}
-		setmetatable(obj, self)
-		self.__index = self
-		return obj
-	end
-
 	function TravelModule.listDestinations(npc, player, message, keywords, parameters, node)
 		local module = parameters.module
 		if not module.npcHandler:checkInteraction(npc, player) then
@@ -639,40 +607,6 @@ if Modules == nil then
 
 		module.npcHandler:say(msg, npc, player)
 		module.npcHandler:resetNpc(player)
-		return true
-	end
-
-	-- Callback for requesting a trade window with the NPC.
-	function ShopModule.requestTrade(cid, message, keywords, parameters, node)
-		local module = parameters.module
-		if not module.npcHandler:isFocused(cid) then
-			return false
-		end
-
-		if not module.npcHandler:onTradeRequest(cid) then
-			return false
-		end
-
-		local itemWindow = {}
-		for i = 1, #module.npcHandler.shopItems do
-			itemWindow[#itemWindow + 1] = module.npcHandler.shopItems[i]
-		end
-
-		if not itemWindow[1] then
-			local parseInfo = { [TAG_PLAYERNAME] = Player(cid):getName() }
-			local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_NOSHOP), parseInfo)
-			module.npcHandler:say(msg, cid)
-			return true
-		end
-
-		local parseInfo = { [TAG_PLAYERNAME] = Player(cid):getName() }
-		local msg = module.npcHandler:parseMessage(module.npcHandler:getMessage(MESSAGE_SENDTRADE), parseInfo)
-		openShopWindow(cid, itemWindow, function(cid, itemid, subType, amount, ignoreCap, inBackpacks)
-			module.npcHandler:onBuy(cid, itemid, subType, amount, ignoreCap, inBackpacks)
-		end, function(cid, itemid, subType, amount, ignoreCap, inBackpacks)
-			module.npcHandler:onSell(cid, itemid, subType, amount, ignoreCap, inBackpacks)
-		end)
-		module.npcHandler:say(msg, cid)
 		return true
 	end
 end
