@@ -577,7 +577,7 @@ achievements = {
 
 	--12.60
 	[480] = { name = "Honorary Rascoohan", grade = 1, points = 2, description = "When in Rascacoon, do as the Rascoohans do!" },
-	[481] = { name = "Release the Kraken", grade = 1, points = 3, description = "Riding around on this squishy companion gives you the feeling of flying through the air... uhm... swimming through the seven seas!" },
+	[115] = { name = "Release the Kraken", grade = 1, points = 3, description = "Riding around on this squishy companion gives you the feeling of flying through the air... uhm... swimming through the seven seas!" },
 }
 
 ACHIEVEMENT_FIRST = 1

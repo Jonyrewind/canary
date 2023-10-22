@@ -397,3 +397,4 @@ vcpkg_installed
 cmake-build-debug*
 canary-debug
 canary.sh
+data-otservbr-global/npc/test.lua

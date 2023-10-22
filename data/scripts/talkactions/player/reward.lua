@@ -53,7 +53,7 @@ function exerciseRewardModal.onSay(player, words, param)
 		return true
 	end
 	if player:getStorageValue(config.storage) > 0 then
-		player:sendTextMessage(MESSAGE_LOOK, "You already received your exercise weapon reward!")
+		player:sendTextMessage(MESSAGE_LOOK, "You already received todays exercise weapon reward!")
 		return true
 	end
 	sendExerciseRewardModal(player)

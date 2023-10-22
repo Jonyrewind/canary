@@ -24,10 +24,10 @@ function addOutfit.onSay(player, words, param)
 	if target then
 		local lookType = tonumber(split[2])
 		target:addOutfit(lookType)
-		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has removed a outfit from you.")
+		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has added a outfit to you.")
 		player:sendTextMessage(MESSAGE_ADMINISTRADOR, "You have sucessfull added looktype " .. lookType .. " to the player " .. target:getName() .. ".")
 		if printConsole then
-			logger.info("[addOutfit.onSay] - Player: {} has removed looktype: {} from the player: {}", player:getName(), lookType, target:getName())
+			logger.info("[addOutfit.onSay] - Player: {} has added looktype: {} to the player: {}", player:getName(), lookType, target:getName())
 		end
 		return true
 	else
@@ -41,9 +41,9 @@ addOutfit:separator(" ")
 addOutfit:groupType("god")
 addOutfit:register()
 
-local addOutfit = TalkAction("/removeoutfit")
+local removeOutfit = TalkAction("/removeoutfit")
 
-function addOutfit.onSay(player, words, param)
+function removeOutfit.onSay(player, words, param)
 	-- create log
 	logCommand(player, words, param)
 
@@ -59,10 +59,10 @@ function addOutfit.onSay(player, words, param)
 	if target then
 		local lookType = tonumber(split[2])
 		target:removeOutfit(lookType)
-		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has been added a new outfit for you.")
+		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has removed a  outfit from you.")
 		player:sendTextMessage(MESSAGE_ADMINISTRADOR, "You have sucessfull removed looktype " .. lookType .. " from the player " .. target:getName() .. ".")
 		if printConsole then
-			logger.info("[addOutfit.onSay] - Player: {} has been added looktype: {} to the player: {}", player:getName(), lookType, target:getName())
+			logger.info("[removeOutfit.onSay] - Player: {} has been removed looktype: {} from the player: {}", player:getName(), lookType, target:getName())
 		end
 		return true
 	else
@@ -72,6 +72,6 @@ function addOutfit.onSay(player, words, param)
 	return true
 end
 
-addOutfit:separator(" ")
-addOutfit:groupType("god")
-addOutfit:register()
+removeOutfit:separator(" ")
+removeOutfit:groupType("god")
+removeOutfit:register()

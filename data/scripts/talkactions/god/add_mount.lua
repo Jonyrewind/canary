@@ -1,12 +1,13 @@
 --[[
 	/addmount playername, mount
+	/removemount playername, mount
 ]]
 
 local printConsole = true
 
-local addOutfit = TalkAction("/addmount")
+local addMount = TalkAction("/addmount")
 
-function addOutfit.onSay(player, words, param)
+function addMount.onSay(player, words, param)
 	-- create log
 	logCommand(player, words, param)
 
@@ -22,10 +23,10 @@ function addOutfit.onSay(player, words, param)
 	if target then
 		local mount = tonumber(split[2])
 		target:addMount(mount)
-		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has been added a new mount for you.")
+		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has added a new mount for you.")
 		player:sendTextMessage(MESSAGE_ADMINISTRADOR, "You have sucessfull added mount " .. mount .. " to the player " .. target:getName() .. ".")
 		if printConsole then
-			logger.info("[addOutfit.onSay] - Player: {} has been added mount: {} to the player: {}", player:getName(), lookType, target:getName())
+			logger.info("[addMount.onSay] - Player: {} has added mount: {} to the player: {}", player:getName(), mount, target:getName())
 		end
 		return true
 	end
@@ -33,6 +34,40 @@ function addOutfit.onSay(player, words, param)
 	return true
 end
 
-addOutfit:separator(" ")
-addOutfit:groupType("god")
-addOutfit:register()
+addMount:separator(" ")
+addMount:groupType("god")
+addMount:register()
+
+
+local removeMount = TalkAction("/removemount")
+
+function removeMount.onSay(player, words, param)
+	-- create log
+	logCommand(player, words, param)
+
+	if param == "" then
+		player:sendCancelMessage("Command param required.")
+		return true
+	end
+
+	local split = param:split(",")
+	local name = split[1]
+
+	local target = Player(name)
+	if target then
+		local mount = tonumber(split[2])
+		target:removeMount(mount)
+		target:sendTextMessage(MESSAGE_ADMINISTRADOR, "" .. player:getName() .. " has removed a mount from you.")
+		player:sendTextMessage(MESSAGE_ADMINISTRADOR, "You have sucessfull removed mount " .. mount .. " from the player " .. target:getName() .. ".")
+		if printConsole then
+			logger.info("[removeMount.onSay] - Player: {} has removed mount: {} from the player: {}", player:getName(), mount, target:getName())
+		end
+		return true
+	end
+	player:sendCancelMessage("Player not found.")
+	return true
+end
+
+removeMount:separator(" ")
+removeMount:groupType("god")
+removeMount:register()
