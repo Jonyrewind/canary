@@ -25,7 +25,7 @@ function createMonster.onSay(player, words, param)
 		local playerPos = player:getPosition()
 		for i = 1, count do
 			if not Game.createMonster(monsterName, playerPos, true) then
-				player:sendCancelMessage(i == 1 and ("There is not enough room.") or string.format("Could not spawn %u monsters.", count-i+1))
+				player:sendCancelMessage(i == 1 and "There is not enough room." or string.format("Could not spawn %u monsters.", count - i + 1))
 				playerPos:sendMagicEffect(CONST_ME_POFF)
 				break
 			end
