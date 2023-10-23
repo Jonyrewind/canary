@@ -7,10 +7,10 @@ function check.onSay(player, words, param)
 		message = text,
 	})
 
-	menu:addChoice("TwistedWatersActive: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.TwistedWatersActive) .. " ")
-	menu:addChoice("ShimmerFishbonesCaught: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.ShimmerFishbonesCaught) .. " ")
-	menu:addChoice("CorpseCount: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.CorpseCount) .. " ")
-	menu:addChoice("Status: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.Status) .. " ")
+	menu:addChoice("TwistedWatersActive: " .. getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.TwistedWatersActive) .. " ")
+	menu:addChoice("ShimmerFishbonesCaught: " .. getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.ShimmerFishbonesCaught) .. " ")
+	menu:addChoice("CorpseCount: " .. getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.CorpseCount) .. " ")
+	menu:addChoice("Status: " .. getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.Status) .. " ")
 
 	menu:addButton("Close")
 
@@ -20,7 +20,6 @@ end
 
 check:groupType("normal")
 check:register()
-
 
 function Player.getStorageValueTalkaction(self, param)
 	-- Sanity check for parameters

@@ -17,6 +17,5 @@ function corpse.onAddItem(moveitem, tileitem, position)
 	return true
 end
 
-
 corpse:aid(2200)
 corpse:register()

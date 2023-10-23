@@ -109,9 +109,9 @@ function getplayerkv.onSay(player, words, param)
 
 	local value = playerKV:get(split[1])
 	if value then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv ".. split[1] .." for ".. split[2] .." is " .. PrettyString(value))
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv " .. split[1] .. " for " .. split[2] .. " is " .. PrettyString(value))
 	else
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Key ".. split[1] .." not found.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Key " .. split[1] .. " not found.")
 	end
 end
 
@@ -127,7 +127,7 @@ function setplayerkv.onSay(player, words, param)
 	local playerKV = player:kv()
 
 	playerKV:set(split[1], split[2])
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv ".. split[1] .." for ".. split[3] .." set to  ".. split[2] .."")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv " .. split[1] .. " for " .. split[3] .. " set to  " .. split[2] .. "")
 end
 
 setplayerkv:separator(" ")

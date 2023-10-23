@@ -278,7 +278,7 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 			if player:getStorageValueByName("talkaction.potions.flask") ~= 1 then
 				player:addItem(potion.flask, 1)
 			end
-		end	
+		end
 		player:addCondition(exhaust)
 		player:setStorageValue(38412, player:getStorageValue(38412) + 1)
 	end

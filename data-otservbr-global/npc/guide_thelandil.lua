@@ -66,8 +66,8 @@ local configMarks = {
 local status = {
 	[0] = { text = "The great lake near Port Hope is clean." },
 	[1] = { text = "Corpses are piling up in the great lake near Port Hope and the water is about to become dirty" },
-	[2] ={ text = "The great lake near Port Hope is dirty. Shimmer swimmers can be seen under the surface." },
-	[3] ={ text = "The great lake near Port Hope is dirty. No shimmer swimmers have been seen under the surface for quite some time now."  },
+	[2] = { text = "The great lake near Port Hope is dirty. Shimmer swimmers can be seen under the surface." },
+	[3] = { text = "The great lake near Port Hope is dirty. No shimmer swimmers have been seen under the surface for quite some time now." },
 }
 
 local function creatureSayCallback(npc, creature, type, message)
@@ -75,7 +75,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	local playerId = player:getId()
 	local playerKV = player:kv()
 	local kv = playerKV:get("guidethelandil")
-	
+
 	if not npcHandler:checkInteraction(npc, creature) then
 		return false
 	end

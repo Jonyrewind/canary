@@ -2441,7 +2441,7 @@ Storage = {
 			TheirMastersVoiceWorldChange = {},
 			ThornfireWorldChange = {},
 			TwistedWatersWorldChange = {
-				ShimmerCaught = 43545
+				ShimmerCaught = 43545,
 			},
 		},
 		U9_4 = { -- update 9.4 - Reserved Storages 43551 - 43750
