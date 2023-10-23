@@ -2440,7 +2440,9 @@ Storage = {
 			TheRookieGuard = {},
 			TheirMastersVoiceWorldChange = {},
 			ThornfireWorldChange = {},
-			TwistedWatersWorldChange = {},
+			TwistedWatersWorldChange = {
+				ShimmerCaught = 43545
+			},
 		},
 		U9_4 = { -- update 9.4 - Reserved Storages 43551 - 43750
 			BankRobberyMiniWorldChange = {},
@@ -3094,6 +3096,13 @@ GlobalStorage = {
 		ThalasSwitchesGlobalStorage = 60160,
 		DiprathSwitchesGlobalStorage = 60161,
 		AshmunrahSwitchesGlobalStorage = 60162,
+	},
+	TwistedWatersWorldChange = {
+		-- Reserved storage from 60170 - 60179
+		ShimmerFishbonesCaught = 60170,
+		CorpseCount = 60171,
+		TwistedWatersActive = 60172,
+		Status = 60173,
 	},
 	FuryGates = 65000,
 	Yakchal = 65001,

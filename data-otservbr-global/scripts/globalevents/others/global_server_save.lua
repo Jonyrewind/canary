@@ -19,6 +19,10 @@ local function ServerSave()
 	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 50079")
 	-- Exercise Reward
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 30061")
+	-- Reset Twisted Waters Corpse and fishing Counter
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60170")
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60171")
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60173")
 	Spdlog.info("storages reset")
 end
 

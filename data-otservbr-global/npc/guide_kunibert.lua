@@ -85,6 +85,13 @@ local function creatureSayCallback(npc, creature, type, message)
 	elseif MsgContains(message, "no") and npcHandler:getTopic(playerId) >= 1 then
 		npcHandler:say("Well, nothing wrong about exploring the town on your own. Let me know if you need something!", npc, creature)
 		npcHandler:setTopic(playerId, 0)
+	elseif MsgContains(message, "twisted waters") then
+		local num = getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.Status)
+		for value, index in pairs(status) do
+			if num == value then
+				npcHandler:say(index.text, npc, creature)
+			end
+		end
 	end
 	return true
 end
@@ -98,7 +105,7 @@ keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, t
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "This city is a modern marvel of progress. The city's wealth and industry is based on the famous glooth. The magistrate runs the city according to the wishes of its inhabitants." })
 keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm Kunibert, of course." })
 
-npcHandler:setMessage(MESSAGE_GREET, "Welcome to Rathleton, |PLAYERNAME|! Looking for a transport to the main isle of Oramond or would you like some information and a mapguide?")
+npcHandler:setMessage(MESSAGE_GREET, "Welcome to {Rathleton}, |PLAYERNAME|! Looking for a {transport} to the main isle of Oramond or would you like some {information} and a {map} guide?")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye and enjoy your stay in Rathleton, |PLAYERNAME|")
 

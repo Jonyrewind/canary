@@ -65,16 +65,25 @@ local configMarks = {
 	{ mark = "temple", position = Position(32594, 32745, 7), markId = MAPMARK_TEMPLE, description = "Temple" },
 }
 
+local status = {
+	[0] = { text = "The great lake near Port Hope is clean." },
+	[1] = { text = "Corpses are piling up in the great lake near Port Hope and the water is about to become dirty" },
+	[2] ={ text = "The great lake near Port Hope is dirty. Shimmer swimmers can be seen under the surface." },
+	[3] ={ text = "The great lake near Port Hope is dirty. No shimmer swimmers have been seen under the surface for quite some time now."  },
+}
+
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)
 	local playerId = player:getId()
-
+	local playerKV = player:kv()
+	local kv = playerKV:get("guidetiko")
+	
 	if not npcHandler:checkInteraction(npc, creature) then
 		return false
 	end
 
 	if table.contains({ "map", "marks" }, message) then
-		npcHandler:say("Would you like me to mark locations like - for example - the depot, bank and shops on your map?", npc, creature)
+		npcHandler:say("Would you like me to mark locations like - for example - the {depot}, {bank} and {shops} on your {map}?", npc, creature)
 		npcHandler:setTopic(playerId, 1)
 	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 1 then
 		npcHandler:say("Here you go.", npc, creature)
@@ -83,10 +92,21 @@ local function creatureSayCallback(npc, creature, type, message)
 			mark = configMarks[i]
 			player:addMapMark(mark.position, mark.markId, mark.description)
 		end
+		if kv ~= 1 then
+			player:addAchievementProgress("Territorial", 10)
+			playerKV:set("guidetiko", 1)
+		end
 		npcHandler:setTopic(playerId, 0)
 	elseif MsgContains(message, "no") and npcHandler:getTopic(playerId) >= 1 then
 		npcHandler:say("Well, nothing wrong about exploring the town on your own. Let me know if you need something!", npc, creature)
 		npcHandler:setTopic(playerId, 0)
+	elseif MsgContains(message, "twisted waters") then
+		local num = getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.Status)
+		for value, index in pairs(status) do
+			if num == value then
+				npcHandler:say(index.text, npc, creature)
+			end
+		end
 	end
 	return true
 end
@@ -100,7 +120,7 @@ keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, t
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "The inhabitants of Port Hope are bravely facing the constant threat from the jungle. The town is built on pile dwellings and most shops are close to each other." })
 keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm Tiko and your guide today. Have a good day!" })
 
-npcHandler:setMessage(MESSAGE_GREET, "Hello there, and welcome to Port Hope! Would you like some information and a map guide?")
+npcHandler:setMessage(MESSAGE_GREET, "Hello there, and welcome to Port Hope! Would you like some {information} and a {map} guide?")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye and enjoy your stay in Port Hope, |PLAYERNAME|")
 

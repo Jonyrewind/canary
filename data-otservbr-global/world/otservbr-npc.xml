@@ -2001,6 +2001,9 @@
 	<npc centerx="32565" centery="32651" centerz="7" radius="1">
 		<npc name="Vescu" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32614" centery="32651" centerz="7" radius="1">
+		<npc name="Yawno" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="33028" centery="32706" centerz="7" radius="1">
 		<npc name="An Ancient Priest" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2244,11 +2247,11 @@
 	<npc centerx="33571" centery="31908" centerz="8" radius="1">
 		<npc name="Elliott" x="0" y="0" z="8" spawntime="60" />
 	</npc>
-	<npc centerx="32619" centery="31917" centerz="8" radius="1">
-		<npc name="Iwar" x="0" y="0" z="8" spawntime="60" />
-	</npc>
 	<npc centerx="33560" centery="31912" centerz="8" radius="1">
 		<npc name="flora_lisa" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="32619" centery="31917" centerz="8" radius="1">
+		<npc name="Iwar" x="0" y="0" z="8" spawntime="60" />
 	</npc>
 	<npc centerx="32618" centery="31938" centerz="8" radius="1">
 		<npc name="Duria" x="0" y="0" z="8" spawntime="60" />

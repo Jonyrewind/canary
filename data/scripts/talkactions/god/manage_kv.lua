@@ -99,3 +99,37 @@ end
 talkaction:separator(" ")
 talkaction:groupType("god")
 talkaction:register()
+
+local getplayerkv = TalkAction("/getplayerkv")
+
+function getplayerkv.onSay(player, words, param)
+	local split = param:split(",")
+	local player = Player(string.trim(split[2]))
+	local playerKV = player:kv()
+
+	local value = playerKV:get(split[1])
+	if value then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv ".. split[1] .." for ".. split[2] .." is " .. PrettyString(value))
+	else
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Key ".. split[1] .." not found.")
+	end
+end
+
+getplayerkv:separator(" ")
+getplayerkv:groupType("god")
+getplayerkv:register()
+
+local setplayerkv = TalkAction("/setplayerkv")
+
+function setplayerkv.onSay(player, words, param)
+	local split = param:split(",")
+	local player = Player(string.trim(split[3]))
+	local playerKV = player:kv()
+
+	playerKV:set(split[1], split[2])
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv ".. split[1] .." for ".. split[3] .." set to  ".. split[2] .."")
+end
+
+setplayerkv:separator(" ")
+setplayerkv:groupType("god")
+setplayerkv:register()

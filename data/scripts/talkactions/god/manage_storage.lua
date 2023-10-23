@@ -1,3 +1,27 @@
+local check = TalkAction("/check")
+
+function check.onSay(player, words, param)
+	local text = "Storage Check"
+	local menu = ModalWindow({
+		title = "Storages",
+		message = text,
+	})
+
+	menu:addChoice("TwistedWatersActive: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.TwistedWatersActive) .. " ")
+	menu:addChoice("ShimmerFishbonesCaught: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.ShimmerFishbonesCaught) .. " ")
+	menu:addChoice("CorpseCount: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.CorpseCount) .. " ")
+	menu:addChoice("Status: " ..  getGlobalStorage(GlobalStorage.TwistedWatersWorldChange.Status) .. " ")
+
+	menu:addButton("Close")
+
+	menu:sendToPlayer(player)
+	return true
+end
+
+check:groupType("normal")
+check:register()
+
+
 function Player.getStorageValueTalkaction(self, param)
 	-- Sanity check for parameters
 	-- Example: /getstorage god, wheel.scroll.abridged

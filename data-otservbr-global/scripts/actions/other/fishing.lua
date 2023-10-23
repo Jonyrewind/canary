@@ -1,11 +1,5 @@
-local waterIds = { 622, 4597, 4598, 4599, 4600, 12561, 12563, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 629, 630, 631, 632, 633, 634, 7236, 9582, 13988, 13989, 12560, 21414 }
-local lootTrash = { 3119, 3123, 3264, 3409, 3578 }
-local lootCommon = { 3035, 3051, 3052, 3580, 236, 237 }
-local lootRare = { 3026, 3029, 3032, 7158, 7159 }
-local lootVeryRare = { 281, 282, 9303 }
-local lootVeryRare1 = { 281, 12557 }
-local lootRare1 = { 3026, 12557 }
-local lootCommon1 = { 3035, 237, 12557 }
+local waterIds = { 622, 629, 630, 631, 632, 633, 634, 4597, 4598, 4599, 4600, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 7236, 9582, 13988, 13989, 21414 }
+local dirtywaterIds = { 12558, 12559, 12560, 12561, 12562, 12563 }
 
 local elementals = {
 	chances = {
@@ -19,6 +13,8 @@ local elementals = {
 }
 
 local useWorms = true
+local storage = GlobalStorage.TwistedWatersWorldChange
+local ShimmerCaught = Storage.Quest.U9_1.TwistedWatersWorldChange.ShimmerCaught
 
 local function refreeIceHole(position)
 	local iceHole = Tile(position):getItemById(7237)
@@ -30,12 +26,63 @@ end
 local fishing = Action()
 
 function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if not table.contains(waterIds, target.itemid) then
+	if not table.contains(waterIds, target.itemid) and not table.contains(dirtywaterIds, target.itemid) then
 		return false
 	end
 
+	if getGlobalStorage(storage.ShimmerFishbonesCaught) > 1000 and table.contains(dirtywaterIds, target.itemid) then
+		player:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+		return false
+	end
+
+	if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_fishingTwistedWaters) - 10) * 0.597, 10), 50) and table.contains(dirtywaterIds, target.itemid)then
+		if useWorms and not player:removeItem("worm", 1) then
+			return true
+		end
+
+		if player:getItemCount(3492) > 0 then
+			player:addSkillTries(SKILL_fishingTwistedWaters, 1, true)
+		end
+
+		if getGlobalStorage(storage.ShimmerFishbonesCaught) >= 1000 then
+			setGlobalStorage(storage.TwistedWatersActive, 0)
+			setGlobalStorage(storage.Status, 3)
+			logger.info("Twisted Waters World Change Ended. Lake Equivocolao will revert after next Server Save")
+		end
+
+		if table.contains(dirtywaterIds, target.itemid) then
+			local rareChance = math.random(100)
+			local container = Container(item:getParent().uid)
+			if fromPosition.x == CONTAINER_POSITION and container:getEmptySlots() ~= 0 then
+				if rareChance == 1 then
+					if player:getStorageValue(ShimmerCaught) < os.time() then
+						container:addItem(12557, 1)
+						player:sendTextMessage(MESSAGE_FAILURE, "A Shimmer Swimmer! It is said that this rare creature only appears once each day in the murkiest of waters!")
+						player:addAchievementProgress("Biodegradable", 50)
+						player:setStorageValue(ShimmerCaught, os.time() + 20 * 60 * 60) -- 20 hours
+					end
+				else
+					container:addItem(3111, 1)
+				end
+			else
+				if rareChance == 1 then
+					if player:getStorageValue(ShimmerCaught) < os.time() then
+						container:addItem(12557, 1)
+						player:sendTextMessage(MESSAGE_FAILURE, "A Shimmer Swimmer! It is said that this rare creature only appears once each day in the murkiest of waters!")
+						player:addAchievementProgress("Biodegradable", 50)
+						player:setStorageValue(ShimmerCaught, os.time() + 20 * 60 * 60) -- 20 hours
+					end
+				else
+					player:addItem(3111, 1, true, CONST_SLOT_WHEREEVER)
+				end
+			setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
+			end
+		end
+		return true
+	end
+
 	local targetId = target.itemid
-	if targetId == 9582 then
+	if targetId == 9582 then -- water elemental
 		local owner = target:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER)
 		if owner ~= 0 and owner ~= player.uid then
 			player:sendTextMessage(MESSAGE_FAILURE, "You are not the owner.")
@@ -56,21 +103,6 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				return true
 			end
 		end
-	end
-
-	if targetId == 12560 then
-		toPosition:sendMagicEffect(CONST_ME_WATERSPLASH)
-		local rareChance = math.random(100)
-		if rareChance == 1 then
-			player:addItem(lootVeryRare1[math.random(#lootVeryRare1)], 1)
-		elseif rareChance <= 3 then
-			player:addItem(lootRare1[math.random(#lootRare1)], 1)
-		elseif rareChance <= 10 then
-			player:addItem(lootCommon1[math.random(#lootCommon1)], 1)
-		else
-			player:addItem(lootTrash[math.random(#lootTrash)], 1)
-		end
-		return true
 	end
 
 	if targetId ~= 7236 then

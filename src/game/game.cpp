@@ -470,7 +470,7 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 }
 
 void Game::loadMap(const std::string &path, const Position &pos) {
-	map.loadMap(path, false, false, false, false, false, pos);
+	map.loadMap(path, false, false, true, false, false, pos);
 }
 
 std::shared_ptr<Cylinder> Game::internalGetCylinder(std::shared_ptr<Player> player, const Position &pos) {
