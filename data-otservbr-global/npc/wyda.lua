@@ -58,13 +58,11 @@ local function greetCallback(npc, creature)
 	if MsgContains(message, "hello") then
 		npcHandler:setMessage(MESSAGE_GREET, "Good day, |PLAYERNAME|.")
 	end
-		
 
 	if bored == 1 then
 		npcHandler:setMessage(MESSAGE_GREET, "I'm bored! Bored bored bored! Nothing ever happens here!")
 	else
 		npcHandler:setMessage(MESSAGE_GREET, "What? Talking to me, |PLAYERNAME|?")
-		
 	end
 	return true
 end
@@ -85,7 +83,6 @@ local function farewellCallback(creature)
 		npcHandler:setMessage(MESSAGE_FAREWELL, "NO! Don't go! I need someone to entertain me!")
 	else
 		npcHandler:setMessage(MESSAGE_FAREWELL, "Good luck on your journeys.")
-		
 	end
 	return true
 end
@@ -95,7 +92,6 @@ local function disappearCallback(creature)
 		npcHandler:setMessage(MESSAGE_WALKAWAY, "NO! Don't go! I need someone to entertain me!")
 	else
 		npcHandler:setMessage(MESSAGE_WALKAWAY, "Good luck on your journeys.")
-		
 	end
 	return true
 end
@@ -130,7 +126,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("A quest? Well, if you're so keen on doing me a favour... Why don't you try to find a blood herb?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "bloodherb") or MsgContains(message, "blood herb") then
 		if bored == 1 then
@@ -196,7 +191,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I am a witch. Didn't you notice?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "gods") then
 		if bored == 1 then
@@ -205,7 +199,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I believe that nature itself is God.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "plant") or MsgContains(message, "plants") then
 		if bored == 1 then
@@ -214,7 +207,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("There are many kinds of swamp plants, some can be used for potions, some not.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "mushrooms") then
 		if bored == 1 then
@@ -223,7 +215,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Mushrooms taste good and are useful for potions.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "herbs") then
 		if bored == 1 then
@@ -232,7 +223,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("The swamp is home to a wide variety of herbs, but the most famous is the blood herb.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "magic") or MsgContains(message, "spell") then
 		if bored == 1 then
@@ -241,7 +231,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("The magic of the witches is one of our secrets!", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "magic") or MsgContains(message, "spell") then
 		if bored == 1 then
@@ -250,7 +239,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I keep my keys where they belong - in my pocket.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "king") then
 		if bored == 1 then
@@ -259,7 +247,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("There are too many royals on this continent if you ask me...", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "tibianus") then
 		if bored == 1 then
@@ -268,7 +255,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Haha, that's a stupid name. Who's that?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "queen eloise") then
 		if bored == 1 then
@@ -277,7 +263,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Eloise is Queen of Carlin. I don't care about royals much, as long as they don't try to tax me.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "name") then
 		if bored == 1 then
@@ -286,7 +271,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("My name is Wyda, and what's yours?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "time") then
 		if bored == 1 then
@@ -295,7 +279,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I think it is the fourth year after Queen Eloise's crowning, but I cannot tell you date or time.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "swamp") then
 		if bored == 1 then
@@ -304,7 +287,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Be careful of the swamp water, it's poisonous!", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "druid") then
 		if bored == 1 then
@@ -313,7 +295,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Druids are mostly fine people. I'm always happy when I meet one.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "sorcerer") then
 		if bored == 1 then
@@ -322,7 +303,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Sorcerers have forgotten about the root of all beings: nature.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "knight") then
 		if bored == 1 then
@@ -331,7 +311,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Knights succumb to the blindness of rage and the desire for violence and blood.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "paladin") then
 		if bored == 1 then
@@ -340,7 +319,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Paladins can use bows, but not brains.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "black knight") then
 		if bored == 1 then
@@ -349,7 +327,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("A black knight? Black is the color of witches, why whould any knight carry black?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "giant spider") then
 		if bored == 1 then
@@ -358,7 +335,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Yes, there is such a thing in the east, on a small island. It's very powerful.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "hunter") then
 		if bored == 1 then
@@ -367,7 +343,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("To the east, there is a little settlement of hunters. They are cruel humans who attack everything they see.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "witches") or MsgContains(message, "sister") then
 		if bored == 1 then
@@ -376,7 +351,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Some sisters of mine are having a meeting nearby. Don't disturb them, or they will get angry and attack you.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "wand") then
 		if bored == 1 then
@@ -385,7 +359,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I use a wooden spellwand. Why are you asking?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "crystal ball") then
 		if bored == 1 then
@@ -394,7 +367,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("It's a magical item that only witches can use.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "coffin") then
 		if bored == 1 then
@@ -403,7 +375,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("That's none of your business.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "fly broom") then
 		if bored == 1 then
@@ -412,7 +383,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Haha, no... where did you get that idea? I use it to sweep my platform.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "orange") then
 		if bored == 1 then
@@ -421,7 +391,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I love exotic fruits. I have oranges imported from the south sometimes, but that's very expensive.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "carlin") then
 		if bored == 1 then
@@ -430,7 +399,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Carlin is a beautiful town, but far from here. Do you live there?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "kazordoon") then
 		if bored == 1 then
@@ -439,7 +407,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Isn't that the name of the little bearded fellows' town?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "thais") then
 		if bored == 1 then
@@ -448,7 +415,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I've heard stories about that city. It's nowhere near here, that's all I can tell you about it.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "plains of havoc") then
 		if bored == 1 then
@@ -457,7 +423,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Many tales exist about some so-called Plains of Havoc. It seems to be a dangerous place.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "dwarven bridge") then
 		if bored == 1 then
@@ -466,7 +431,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("There's a bridge to the west, but it's guarded by dwarfs.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "ferumbras") then
 		if bored == 1 then
@@ -475,7 +439,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Haha, that's a stupid name. Who's that?", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "become witch") and player:getSex() == PLAYERSEX_MALE then
 		npcHandler:say("You're a MAN!", npc, creature)
@@ -487,7 +450,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Evilness doesn't scare me.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "tibia") then
 		if bored == 1 then
@@ -496,7 +458,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("Tibia is the name of our continent.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "health") then
 		if bored == 1 then
@@ -505,7 +466,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I do not have any potions for healing available right now.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	elseif MsgContains(message, "voodoo") then
 		if bored == 1 then
@@ -514,7 +474,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		else
 			npcHandler:say("I don't practice such nonsense, that's just a rumour.", npc, creature)
 			npcHandler:setTopic(playerId, 0)
-		
 		end
 	end
 	return true
@@ -592,7 +551,6 @@ keywordHandler:addKeyword({ "sell" }, StdModule.say, {
 	npcHandler = npcHandler,
 	text = "There's nothing I need right now, thanks.",
 })
-
 
 npcHandler:setCallback(CALLBACK_GREET, greetCallback)
 npcHandler:setCallback(CALLBACK_FAREWELL, farewellCallback)

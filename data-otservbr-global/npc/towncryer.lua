@@ -31,14 +31,14 @@ npcConfig.voices = {
 	{ text = "Hear me! Hear me! The inquisition is looking for daring people to fight evil! Apply at the inquisition headquarters next to the Thaian jail!" },
 }
 
-	if getGlobalStorage(65015) == 1 then
-		communicate = "In Ankrahmun's desert, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
-	elseif getGlobalStorage(65015) == 2 then
-		communicate = "Near Darashia's coast, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
-	elseif getGlobalStorage(65015) == 3 then
-		communicate = "Near Drefia's mountains, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
-	end
-	
+if getGlobalStorage(65015) == 1 then
+	communicate = "In Ankrahmun's desert, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+elseif getGlobalStorage(65015) == 2 then
+	communicate = "Near Darashia's coast, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+elseif getGlobalStorage(65015) == 3 then
+	communicate = "Near Drefia's mountains, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+end
+
 local worldChanges = {
 	{
 		storage = GlobalStorage.FuryGates,
