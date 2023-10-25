@@ -127,7 +127,7 @@ function furygates.onStartup(interval)
 
 	Game.loadMap(DATA_DIRECTORY .. "/world/world_changes/fury_gates/" .. gates[gateId].mapName .. ".otbm")
 
-	setGlobalStorageValue(GlobalStorage.FuryGates, gateId)
+	setGlobalStorage(GlobalStorage.FuryGates, gateId)
 
 	logger.info("Fury Gate will be active in {} today", gates[gateId].city)
 	local message = (string.format("Fury Gate will be active in %s today", gates[gateId].city)) -- Declaring the message to send to webhook.

@@ -69146,8 +69146,7 @@
 			<attribute key="increase speed" value="10"/>
 		</attribute>
 	</item>
-	<item id="43891" article="a" name="sacrificial plate">
-	</item>
+	<item id="43891" article="a" name="sacrificial plate"/>
 	<item id="43895" article="a" name="bag you covet">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>

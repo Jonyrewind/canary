@@ -7,6 +7,12 @@ ItemAction = {
 		itemId = 2819,
 		itemPos = { { x = 33063, y = 31624, z = 15 } },
 	},
+	-- Rotten Blood Quest Sacrificial Plate
+	-- data-otservbr-global/scripts/quests/rotten_blood/sacrificial_plate.lua
+	[10200] = {
+		itemId = 43891,
+		itemPos = { { x = 32956, y = 32398, z = 9 } },
+	},
 	[40001] = { -- The cursed crystal skeletons
 		itemId = 27490,
 		itemPos = {

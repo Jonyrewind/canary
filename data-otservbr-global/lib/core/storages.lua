@@ -3123,6 +3123,7 @@ GlobalStorage = {
 	UglyMonster = 65017,
 	DeeplingBossesTP = 65018,
 	DeeplingSpawn = 65019,
+	BoredMiniWorldChange = 65020,
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 

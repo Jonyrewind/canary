@@ -1,5 +1,13 @@
 local worldBoard = Action()
 
+	if getGlobalStorage(65015) == 1 then
+		text = "Avoid the Ankhramun tar pits!"
+	elseif getGlobalStorage(65015) == 2 then
+		text = "Avoid the river near Drefia!"
+	elseif getGlobalStorage(65015) == 3 then
+		text = "Avoid the northernmost coast!"
+	end
+
 local communicates = {
 	-- Fury Gates
 	[1] = {
@@ -14,13 +22,14 @@ local communicates = {
 	-- Nightmare Isle
 	[3] = {
 		globalStorage = 65015,
-		communicate = "A sandstorm travels through Darama, leading to isles full of deadly creatures inside a nightmare. Avoid the river near Drefia/northernmost coast/Ankhramun tar pits!",
+		communicate = "A sandstorm travels through Darama, leading to isles full of deadly creatures inside a nightmare. " ..text,
+
 	},
 }
 
 function worldBoard.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	for index, value in pairs(communicates) do
-		if getGlobalStorageValue(value.globalStorage) > 0 then
+		if getGlobalStorage(value.globalStorage) > 0  then
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, value.communicate)
 		end
 	end

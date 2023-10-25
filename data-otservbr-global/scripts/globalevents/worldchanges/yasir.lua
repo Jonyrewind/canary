@@ -101,12 +101,12 @@ function yasir.onStartup()
 			Game.loadMap(DATA_DIRECTORY .. "/world/world_changes/oriental_trader/" .. mapName .. ".otbm")
 			addEvent(spawnYasir, 60000, randTown.yasirPosition)
 			addEvent(yasirwebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
-			setGlobalStorageValue(GlobalStorage.Yasir, 1)
+			setGlobalStorage(GlobalStorage.Yasir, 1)
 		else
 			logger.info("Yasir: not this time")
 			local message = "Yasir: not spawned today" -- Declaring the message to send to webhook.
 			addEvent(yasirwebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
-			setGlobalStorageValue(GlobalStorage.Yasir, 0)
+			setGlobalStorage(GlobalStorage.Yasir, 0)
 		end
 	end
 end

@@ -3,16 +3,19 @@ local config = {
 	[1] = {
 		mapName = "ankrahmun-north",
 		displayName = "north of Ankrahmun",
+		key = 1,
 	},
 	-- darashia - west
 	[2] = {
 		mapName = "darashia-west",
 		displayName = "west of Darashia",
+		key = 2,
 	},
 	-- darashia - north
 	[3] = {
 		mapName = "darashia-north",
 		displayName = "north of Darashia",
+		key = 3,
 	},
 }
 
@@ -28,8 +31,7 @@ function NightmareIsle.onStartup(interval)
 	local message = string.format("Nightmare Isle will be active %s today", select.displayName) -- Declaring the message to send to webhook.
 	addEvent(Nightmarewebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
 
-	setGlobalStorageValue(GlobalStorage.NightmareIsle, 1)
-
+	setGlobalStorage(GlobalStorage.NightmareIsle, select.key)
 	return true
 end
 

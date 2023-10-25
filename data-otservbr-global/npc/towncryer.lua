@@ -31,6 +31,14 @@ npcConfig.voices = {
 	{ text = "Hear me! Hear me! The inquisition is looking for daring people to fight evil! Apply at the inquisition headquarters next to the Thaian jail!" },
 }
 
+	if getGlobalStorage(65015) == 1 then
+		communicate = "In Ankrahmun's desert, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+	elseif getGlobalStorage(65015) == 2 then
+		communicate = "Near Darashia's coast, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+	elseif getGlobalStorage(65015) == 3 then
+		communicate = "Near Drefia's mountains, a storm has revealed the entry to a nightmare that can't be sealed. Horrible creatures there spell instant death to all young adventurers who dare take a breath!"
+	end
+	
 local worldChanges = {
 	{
 		storage = GlobalStorage.FuryGates,
@@ -42,12 +50,12 @@ local worldChanges = {
 	},
 	{
 		storage = GlobalStorage.NightmareIsle,
-		text = "Hear me! Hear me! A river is flooding, south of the outlaw base. Explore a new isle, an unknown place. Don't be afraid, but ready your blade.",
+		text = communicate,
 	},
 }
 
 for i = 1, #worldChanges do
-	if getGlobalStorageValue(worldChanges[i].storage) > 0 then
+	if getGlobalStorage(worldChanges[i].storage) > 0 then
 		table.insert(npcConfig.voices, { text = worldChanges[i].text })
 	end
 end
