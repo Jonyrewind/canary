@@ -169,6 +169,14 @@ ChestUnique = {
 		timerStorage = Storage.TheSecretLibrary.FalconBastionChestsTimer.Key0909,
 		time = 24, -- hour
 	},
+	-- Key 5000 - Wyda's House
+	[5013] = {
+		isKey = true,
+		itemId = 1983,
+		itemPos = { x = 32726, y = 31980, z = 7 },
+		reward = { { 2969, 1 } },
+		storage = Storage.Quest.Key.ID5000,
+	},
 	-- To add a reward inside a bag, you need to add the variable "container = bagId" before "reward"
 	-- Just duplicate the table and configure correctly, the scripts already register the entire table automatically
 	-- Path: data\scripts\actions\system\quest_reward_common.lua

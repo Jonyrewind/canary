@@ -141,4 +141,8 @@ KeyDoorAction = {
 		itemId = false,
 		itemPos = { { x = 32506, y = 32175, z = 14 } },
 	},
+	[Storage.Quest.Key.ID5000] = {
+		itemId = false,
+		itemPos = { { x = 32726, y = 31976, z = 6 } },
+	},
 }

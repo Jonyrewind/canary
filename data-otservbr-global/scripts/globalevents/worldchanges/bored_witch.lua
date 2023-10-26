@@ -1,63 +1,41 @@
-local storage = getGlobalStorage(GlobalStorage.BoredMiniWorldChange)
+local getstorage = getGlobalStorage(GlobalStorage.BoredMiniWorldChange)
+local storage = GlobalStorage.BoredMiniWorldChange
 
-local spawn = {
-	position = { fromPosition = Position(32722, 31970, 7), toPosition = Position(32753, 31989, 7) },
+local from = { x = 32720, y = 31969, z = 7 }
+local to = { x = 32751, y =  31989, z = 7 }
+
+local positions = {
+	{monster = "giant spider wyda" ,pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true},
+	{monster = "giant spider wyda" ,pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true},
 }
 
-local monsters = {}
-
-function Game.createRandom(position)
-	local tile = Tile(position)
-	if not tile or Tile(position):getItemById(595) or Tile(position):getItemById(593) then
-		return false
-	end
-
-	local ground = tile:getGround()
-	if not ground or ground:hasProperty(CONST_PROP_BLOCKSOLID) or tile:getTopCreature() then
-		return false
-	end
-	local monsterName = monsters[math.random(#monsters)]
-	local monster = Game.createMonster(monsterName, position)
-	if monster then
-		monster:setSpawnPosition()
-		monster:remove()
-	end
-	return true
-end
+local spawn = Spawn()
 
 local BoredMiniWorldChangeEnabled = true
-local BoredMiniWorldChangeChance = 100
+local BoredMiniWorldChangeChance = 0
 
 local BoredMiniWorldChange = GlobalEvent("BoredMiniWorldChange")
 
 function BoredMiniWorldChange.onStartup()
-	if BoredMiniWorldChangeEnabled and storage <= 0 then
-		if math.random(100) <= BoredMiniWorldChangeChance then
-			logger.info("[WorldChanges] Bored Mini World Change active")
-			setGlobalStorage(storage, 2) -- incase of an server crash
-			setGlobalStorageValue(storage, 1)
-			table.insert(monsters, "giant spider wyda")
-			table.insert(monsters, "giant spider wyda")
-			for x = spawn.position.fromPosition.x, spawn.position.toPosition.x do
-				for y = spawn.position.fromPosition.y, spawn.position.toPosition.y do
-					if Game.createRandom(Position(x, y, 7)) then
-						return
-					end
-				end
-			end
-		end
-	elseif storage == 2 then
+	if math.random(100) <= BoredMiniWorldChangeChance then
+		setGlobalStorage(storage, 0) -- incase of an server crash
+		return false
+	end
+	if BoredMiniWorldChangeEnabled and getstorage <= 0 then
+		logger.info("[WorldChanges] Bored Mini World Change active")
+		setGlobalStorage(storage, 2) -- incase of an server crash
+		setGlobalStorageValue(storage, 1)
+		addEvent(function()
+			spawn:setPositions(positions)
+			spawn:executeSpawn()
+		end, 30 * 1000)
+	else
 		logger.info("[WorldChanges] Bored Mini World Change active")
 		setGlobalStorageValue(storage, 1)
-		table.insert(monsters, "giant spider wyda")
-		table.insert(monsters, "giant spider wyda")
-		for x = spawn.position.fromPosition.x, spawn.position.toPosition.x do
-			for y = spawn.position.fromPosition.y, spawn.position.toPosition.y do
-				if Game.createRandom(Position(x, y, 7)) then
-					return
-				end
-			end
-		end
+		addEvent(function()
+			spawn:setPositions(positions)
+			spawn:executeSpawn()
+		end, 30 * 1000)
 	end
 	return true
 end

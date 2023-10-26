@@ -4,6 +4,7 @@ local config = {
 	centerPosition = Position(33384, 31282, 6),
 	rangeX = 50,
 	rangeY = 50,
+	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE
 }
 
 local function checkBoss(centerPosition, rangeX, rangeY, bossName)
@@ -30,5 +31,5 @@ function canonDominus.onThink(interval, lastExecution)
 	return true
 end
 
-canonDominus:interval(1 * 60 * 1000)
+canonDominus:interval(1 * 60 * 1000 / config.timer)
 canonDominus:register()
