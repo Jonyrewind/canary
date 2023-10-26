@@ -2,11 +2,11 @@ local getstorage = getGlobalStorage(GlobalStorage.BoredMiniWorldChange)
 local storage = GlobalStorage.BoredMiniWorldChange
 
 local from = { x = 32720, y = 31969, z = 7 }
-local to = { x = 32751, y =  31989, z = 7 }
+local to = { x = 32751, y = 31989, z = 7 }
 
 local positions = {
-	{monster = "giant spider wyda" ,pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true},
-	{monster = "giant spider wyda" ,pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true},
+	{ monster = "giant spider wyda", pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true },
+	{ monster = "giant spider wyda", pos = Position(math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)), spawntime = 10, status = true },
 }
 
 local spawn = Spawn()

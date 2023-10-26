@@ -4,7 +4,7 @@ local config = {
 	centerPosition = Position(33384, 31282, 6),
 	rangeX = 50,
 	rangeY = 50,
-	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE
+	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE,
 }
 
 local function checkBoss(centerPosition, rangeX, rangeY, bossName)
