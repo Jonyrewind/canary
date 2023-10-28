@@ -362,7 +362,7 @@ int MonsterFunctions::luaMonsterSetSpawnPosition(lua_State* L) {
 
 	g_game().map.spawnsMonster.getspawnMonsterList().emplace_front(pos, 5);
 	SpawnMonster &spawnMonster = g_game().map.spawnsMonster.getspawnMonsterList().front();
-	spawnMonster.addMonster(monster->mType->typeName, pos, DIRECTION_NORTH, getNumber<uint32_t>(L, 2 * 1000, 60000));
+	spawnMonster.addMonster(monster->mType->typeName, pos, DIRECTION_NORTH, getNumber<uint32_t>(L, 2, 60000));
 	spawnMonster.startSpawnMonsterCheck();
 
 	pushBoolean(L, true);
