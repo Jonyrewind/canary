@@ -1153,3 +1153,26 @@ function toboolean(value)
 		return false
 	end
 end
+
+--local config = {
+-- 	fromPosition = { x = , y = , z =  },
+--	toPosition = { x = , y = , z =  },
+--	monsters = {
+--		{ name = "" },
+--		{ name = "" },
+--	},
+--	respawntime = 60,
+--}
+
+function respawnmonster(config)
+	for _, monster in pairs(config.monsters) do
+		::retry::
+		local monster = Game.createMonster(monster.name, Position.getFreePosition(config.fromPosition, config.toPosition))
+		if monster then
+			monster:setSpawnPosition(config.respawntime)
+			monster:remove()
+		else
+			goto retry
+		end
+	end
+end

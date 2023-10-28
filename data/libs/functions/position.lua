@@ -152,7 +152,7 @@ function Position.getFreePosition(from, to)
 		local x, y, z = math.random(from.x, to.x), math.random(from.y, to.y), math.random(from.z, to.z)
 		result = Position(x, y, z)
 		tries = tries + 1
-		if tries >= 20 then
+		if tries >= 50 then
 			return result
 		end
 
