@@ -356,7 +356,7 @@ int MonsterFunctions::luaMonsterSetSpawnPosition(lua_State* L) {
 		lua_pushnil(L);
 		return 1;
 	}
-	
+
 	uint32_t eventschedule = g_eventsScheduler().getSpawnMonsterSchedule();
 
 	const Position &pos = monster->getPosition();
