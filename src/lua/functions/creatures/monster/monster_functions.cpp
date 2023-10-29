@@ -15,6 +15,7 @@
 #include "creatures/monsters/monsters.hpp"
 #include "lua/functions/creatures/monster/monster_functions.hpp"
 #include "map/spectators.hpp"
+#include "game/scheduling/events_scheduler.hpp"
 
 int MonsterFunctions::luaMonsterCreate(lua_State* L) {
 	// Monster(id or userdata)
