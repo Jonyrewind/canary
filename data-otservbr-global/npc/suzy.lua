@@ -1,6 +1,7 @@
 local internalNpcName = "Suzy"
 local npcType = Game.createNpcType(internalNpcName)
 local npcConfig = {}
+local storage = GlobalStorage.BankRobberyMiniWorldChange
 
 npcConfig.name = internalNpcName
 npcConfig.description = internalNpcName
@@ -21,12 +22,6 @@ npcConfig.outfit = {
 
 npcConfig.flags = {
 	floorchange = false,
-}
-
-npcConfig.voices = {
-	interval = 15000,
-	chance = 50,
-	{ text = "Don't forget to deposit your money here in the Global Bank before you head out for adventure.", yell = false },
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -56,6 +51,22 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
+local function greetCallback(npc, creature)
+	local playerId = creature:getId()
+	local player = Player(creature)
+
+	if getGlobalStorage(storage.Town) == 3 then
+		if player:getItemCount(13429) > 0 then
+			npcHandler:setMessage(MESSAGE_GREET, "I'm sorry, but we have been robb- hey, what's that bag? Have you hunted down the bank robbers?")
+		else
+			npcHandler:setMessage(MESSAGE_GREET, "HELP! We have been robbed! I can't give you any gold until the robber has been brought to justice or we have received a compensation from the king. I think the robbers ran towards the Ancient Temple.")
+		end
+	else
+		npcHandler:setMessage(MESSAGE_GREET, "Yes? What may I do for you, |PLAYERNAME|? Bank business, perhaps?")
+	end
+	return true
+end
+
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)
 	local playerId = player:getId()
@@ -64,19 +75,39 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
-	-- Parse bank
-	npc:parseBank(message, npc, creature, npcHandler)
-	-- Parse guild bank
-	npc:parseGuildBank(message, npc, creature, playerId, npcHandler)
-	-- Normal messages
-	npc:parseBankMessages(message, npc, creature, npcHandler)
+	if MsgContains(message, "yes") then
+		if not player:removeItem(13429, 1) then
+			npcHandler:say("You have no stolen goods.", npc, creature)
+			npcHandler:setTopic(playerId, 0)
+			return true
+		end
+
+		npcHandler:say("Hey, awesome. Good job. Here's some gold for all your work. Thanks to you we can open the bank again.", npc, creature)
+		setGlobalStorage(storage.Town, 0)
+		setGlobalStorage(storage.Returnedgoods, 1)
+		player:addAchievement("Honest Finder")
+		player:addAchievementProgress("Goldhunter", 5)
+		npcHandler:setTopic(playerId, 0)
+	elseif MsgContains(message, "no") then
+		npcHandler:say("Oh. Sorry then. We still can't open the bank.", npc, creature)
+		npcHandler:removeInteraction(npc, creature)
+		npcHandler:resetNpc(creature)
+	end
+
+	if getGlobalStorage(storage.Town) ~= 3 then
+		-- Parse bank
+		npc:parseBank(message, npc, creature, npcHandler)
+		-- Parse guild bank
+		npc:parseGuildBank(message, npc, creature, playerId, npcHandler)
+		-- Normal messages
+		npc:parseBankMessages(message, npc, creature, npcHandler)
+	end
 	return true
 end
 
-npcHandler:setMessage(MESSAGE_GREET, "Yes? What may I do for you, |PLAYERNAME|? Bank business, perhaps?")
+npcHandler:setCallback(CALLBACK_GREET, greetCallback)
 npcHandler:setMessage(MESSAGE_FAREWELL, "Have a nice day.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Have a nice day.")
-npcHandler:setCallback(CALLBACK_GREET, NpcBankGreetCallback)
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 

@@ -49,6 +49,14 @@ local worldChanges = {
 		text = "Hear ye! Hear ye! What a lucky and beautiful day! Visit Carlin, Ankrahmun, or Liberty Bay. Yasir, the oriental trader might be there. Gather your creature products, for this chance is rare.",
 	},
 	{
+		storage = GlobalStorage.BoredMiniWorldChange,
+		text = "Hear ye! Hear ye! The witch Wyda seems to be bored. Pay her a visit but sharpen your sword. She might come up with a terrible surprise, are you brave enough to believe your eyes?",
+	},
+	{
+		storage = GlobalStorage.BankRobberyMiniWorldChange.Town,
+		text = "Hear ye! Hear ye! Stand and deliver! That's what they shout, robbing banks in main's coastal towns and then hide out. Catch the thieves and make us proud, bring back the gold to please the crowd!",
+	},
+	{
 		storage = GlobalStorage.NightmareIsle,
 		text = communicate,
 	},

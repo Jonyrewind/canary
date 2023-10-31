@@ -1,39 +1,38 @@
-local mType = Game.createMonsterType("Jesse the Wicked")
+local mType = Game.createMonsterType("Elvira Hammerthrust")
 local monster = {}
 
-monster.description = "Jesse the Wicked"
-monster.experience = 180
+monster.description = "Elvira Hammerthrust"
+monster.experience = 165
 monster.outfit = {
-	lookType = 134,
-	lookHead = 95,
-	lookBody = 95,
-	lookLegs = 95,
-	lookFeet = 113,
-	lookAddons = 3,
+	lookType = 70,
+	lookHead = 0,
+	lookBody = 0,
+	lookLegs = 0,
+	lookFeet = 0,
+	lookAddons = 0,
 	lookMount = 0,
 }
 
 monster.bosstiary = {
-	bossRaceId = 763,
+	bossRaceId = 766,
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 280
-monster.maxHealth = 280
+monster.health = 245
+monster.maxHealth = 245
 monster.race = "blood"
-monster.corpse = 18153
-monster.speed = 110
+monster.corpse = 6013
+monster.speed = 103
 monster.manaCost = 0
 
 monster.changeTarget = {
 	interval = 4000,
-	chance = 5,
+	chance = 10,
 }
 
 monster.strategiesTarget = {
 	nearest = 70,
-	health = 10,
-	damage = 10,
+	damage = 20,
 	random = 10,
 }
 
@@ -44,17 +43,17 @@ monster.flags = {
 	convinceable = false,
 	pushable = false,
 	rewardBoss = false,
-	illusionable = false,
+	illusionable = true,
 	canPushItems = true,
-	canPushCreatures = false,
+	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
-	canWalkOnEnergy = true,
-	canWalkOnFire = true,
-	canWalkOnPoison = true,
+	canWalkOnEnergy = false,
+	canWalkOnFire = false,
+	canWalkOnPoison = false,
 }
 
 monster.light = {
@@ -65,43 +64,43 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "That banker never saw it coming!", yell = false },
-	{ text = "You will not take this gold from me!", yell = false },
-	{ text = "KEEP YOUR HANDS OFF THAT BAG!", yell = true },
-	{ text = "Kill him, men!", yell = false },
-	{ text = "Take from the rich, keep it for yourself. That's my motto.", yell = false },
+	{ text = "Didn't think a dwarf girl could be so pretty and strong at the same time, did you?", yell = false },
+	{ text = "Hail no one except for me!", yell = false },
+	{ text = "You won't get this bag, I worked hard for this!", yell = false },
+	{ text = "Keep your hands off!", yell = false },
+	{ text = "How did you find us?!", yell = false },
 }
 
 monster.loot = {
-	{ name = "platinum coin", chance = 100000, maxCount = 99 },
 	{ name = "bag with stolen gold", chance = 100000 },
+	{ name = "platinum coin", chance = 75000, maxCount = 100 },
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -100 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -140 },
 }
 
 monster.defenses = {
-	defense = 25,
-	armor = 25,
-	--	mitigation = ???,
+	defense = 30,
+	armor = 15,
+	mitigation = 1.02,
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = 0 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 20 },
 	{ type = COMBAT_ENERGYDAMAGE, percent = 0 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 0 },
-	{ type = COMBAT_FIREDAMAGE, percent = 0 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 20 },
+	{ type = COMBAT_FIREDAMAGE, percent = -5 },
 	{ type = COMBAT_LIFEDRAIN, percent = 0 },
 	{ type = COMBAT_MANADRAIN, percent = 0 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
 	{ type = COMBAT_ICEDAMAGE, percent = 0 },
 	{ type = COMBAT_HOLYDAMAGE, percent = 0 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 0 },
+	{ type = COMBAT_DEATHDAMAGE, percent = -5 },
 }
 
 monster.immunities = {
-	{ type = "paralyze", condition = true },
+	{ type = "paralyze", condition = false },
 	{ type = "outfit", condition = false },
 	{ type = "invisible", condition = true },
 	{ type = "bleed", condition = false },

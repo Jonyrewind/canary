@@ -23,6 +23,12 @@ local function ServerSave()
 	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60170")
 	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60171")
 	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 60173")
+	-- Reset BoredMiniWorldChange
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65020")
+	-- Reset BankRobberyMiniWorldChange
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65021")
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65022")
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65023")
 	Spdlog.info("storages reset")
 end
 

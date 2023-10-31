@@ -50,7 +50,7 @@ local function greetCallback(npc, creature)
 	local playerId = creature:getId()
 	local player = Player(creature)
 
-	npcHandler:say("8O'''' |(( JT(|W-T -( J-T =|- (CW- BO:", npc, creature)
+	npcHandler:setMessage(MESSAGE_GREET, "8O'''' |(( JT(|W-T -( J-T =|- (CW- BO:")
 	player:addAchievement("Navigational Error")
 end
 

@@ -129,8 +129,8 @@ function furygates.onStartup(interval)
 
 	setGlobalStorage(GlobalStorage.FuryGates, gateId)
 
-	logger.info("Fury Gate will be active in {} today", gates[gateId].city)
-	local message = (string.format("Fury Gate will be active in %s today", gates[gateId].city)) -- Declaring the message to send to webhook.
+	logger.info("[WorldChanges] Fury Gate will be active in {} today", gates[gateId].city)
+	local message = (string.format("[WorldChanges] Fury Gate will be active in %s today", gates[gateId].city)) -- Declaring the message to send to webhook.
 	addEvent(Furywebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
 
 	return true

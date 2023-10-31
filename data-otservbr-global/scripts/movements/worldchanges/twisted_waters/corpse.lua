@@ -9,7 +9,7 @@ function corpse.onAddItem(moveitem, tileitem, position)
 	end
 
 	setGlobalStorage(storage.CorpseCount, getGlobalStorage(storage.CorpseCount) + 1)
-	if getGlobalStorage(storage.CorpseCount) >= 1000 then
+	if getGlobalStorage(storage.CorpseCount) >= 5 then
 		setGlobalStorage(storage.TwistedWatersActive, 1)
 		setGlobalStorage(storage.Status, 1)
 		logger.info("Twisted Waters World Change Started. Lake Equivocolao will become murky after next Server Save")

@@ -24,6 +24,16 @@ local communicates = {
 		globalStorage = 65015,
 		communicate = "A sandstorm travels through Darama, leading to isles full of deadly creatures inside a nightmare. " .. text,
 	},
+	-- Bored Mini World Change
+	[4] = {
+		globalStorage = 65020,
+		communicate = "Sharpen your sword! The witch Wyda seems to be bored so pay her a visit!",
+	},
+	-- Bank Robbery Mini World Change
+	[5] = {
+		globalStorage = 65023,
+		communicate = "Several banks in major coastal towns are being robbed! The thieves are still on the loose!",
+	},
 }
 
 function worldBoard.onUse(player, item, fromPosition, target, toPosition, isHotkey)

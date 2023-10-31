@@ -3127,6 +3127,11 @@ GlobalStorage = {
 	DeeplingBossesTP = 65018,
 	DeeplingSpawn = 65019,
 	BoredMiniWorldChange = 65020,
+	BankRobberyMiniWorldChange = {
+		Activated = 65021,
+		Returnedgoods = 65022,
+		Town = 65023,
+	},
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 

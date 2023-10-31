@@ -28190,7 +28190,9 @@
 	<item id="13400" article="a" name="hivecomb floor"/>
 	<item fromid="13413" toid="13424" article="a" name="rockboy"/>
 	<item id="13429" article="a" name="bag with stolen gold">
-		<attribute key="description" value="It contains so much cash that you wouldn't have any idea how to use it. Return it to a nearby bank"/>
+		<attribute key="description" value="It contains so much cash that you wouldn't have any idea how to use it. Return it to a nearby bank"/>	
+		<attribute key="duration" value="86400"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item fromid="13430" toid="13438" name="wet temple floor">

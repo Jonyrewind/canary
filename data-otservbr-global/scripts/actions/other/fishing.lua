@@ -35,7 +35,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
-	if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_fishingTwistedWaters) - 10) * 0.597, 10), 50) and table.contains(dirtywaterIds, target.itemid) then
+	if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_fishingTwistedWaters) - 10) * 0.597, 10), 50) and table.contains(dirtywaterIds, target.itemid)then
 		if useWorms and not player:removeItem("worm", 1) then
 			return true
 		end
@@ -60,9 +60,11 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 						player:sendTextMessage(MESSAGE_FAILURE, "A Shimmer Swimmer! It is said that this rare creature only appears once each day in the murkiest of waters!")
 						player:addAchievementProgress("Biodegradable", 50)
 						player:setStorageValue(ShimmerCaught, os.time() + 20 * 60 * 60) -- 20 hours
+						setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
 					end
 				else
 					container:addItem(3111, 1)
+					setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
 				end
 			else
 				if rareChance == 1 then
@@ -71,11 +73,12 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 						player:sendTextMessage(MESSAGE_FAILURE, "A Shimmer Swimmer! It is said that this rare creature only appears once each day in the murkiest of waters!")
 						player:addAchievementProgress("Biodegradable", 50)
 						player:setStorageValue(ShimmerCaught, os.time() + 20 * 60 * 60) -- 20 hours
+						setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
 					end
 				else
 					player:addItem(3111, 1, true, CONST_SLOT_WHEREEVER)
+					setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
 				end
-				setGlobalStorage(storage.ShimmerFishbonesCaught, getGlobalStorage(storage.ShimmerFishbonesCaught) + 1)
 			end
 		end
 		return true
