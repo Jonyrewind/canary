@@ -162,7 +162,7 @@ function Encounter:spawnMonsters(config)
 	if amount and amount > 0 then
 		positions = {}
 		for _ = 1, amount do
-		logger.info("amount: "..amount)
+			logger.info("amount: " .. amount)
 			if config.position then
 				table.insert(positions, config.position)
 			else
@@ -179,7 +179,7 @@ function Encounter:spawnMonsters(config)
 		self:addEvent(function(name, position, event, spawn, timeLimit)
 			local monster = Game.createMonster(name, position)
 			if not monster then
-			logger.info("no monster")
+				logger.info("no monster")
 				return false
 			end
 			if spawn then

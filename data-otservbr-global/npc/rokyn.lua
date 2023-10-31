@@ -60,7 +60,6 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-
 local function greetCallback(npc, creature)
 	local player = Player(creature)
 	local playerId = player:getId()

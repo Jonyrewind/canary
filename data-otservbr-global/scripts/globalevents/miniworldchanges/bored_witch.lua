@@ -20,7 +20,6 @@ function BoredMiniWorldChange.onStartup()
 	if math.random(100) <= BoredMiniWorldChangeChance and getstorage ~= 1 then
 		return false
 	end
-	
 
 	logger.info("[MiniWorldChange] Bored Mini World Change active")
 	setGlobalStorage(storage, 1) -- in case of an server crash
