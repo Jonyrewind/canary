@@ -52,6 +52,7 @@ monster.flags = {
 	illusionable = false,
 	canPushItems = true,
 	canPushCreatures = true,
+	critChance = 10,
 	staticAttackChance = 90,
 	targetDistance = 3,
 	runHealth = 0,

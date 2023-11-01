@@ -12,22 +12,23 @@ local config = {
 }
 
 local BoredMiniWorldChangeEnabled = true
-local BoredMiniWorldChangeChance = 15
+local BoredMiniWorldChangeChance = 10
 
 local BoredMiniWorldChange = GlobalEvent("BoredMiniWorldChange")
 
 function BoredMiniWorldChange.onStartup()
-	if math.random(100) <= BoredMiniWorldChangeChance and getstorage ~= 1 then
-		return false
-	end
+	if BoredMiniWorldChangeEnabled then
+		if math.random(100) <= BoredMiniWorldChangeChance and getstorage ~= 1 then
+			return false
+		end
 
-	logger.info("[MiniWorldChange] Bored Mini World Change active")
-	setGlobalStorage(storage, 1) -- in case of an server crash
-	setGlobalStorageValue(storage, 1)
-	addEvent(function()
-		respawnmonster(config)
-	end, 30 * 1000)
-	return true
+		logger.info("[MiniWorldChange] Bored Mini World Change active")
+		setGlobalStorage(storage, 1) -- in case of an server crash
+		setGlobalStorageValue(storage, 1)
+		addEvent(function()
+			respawnmonster(config)
+		end, 30 * 1000)
+	end
 end
 
 BoredMiniWorldChange:register()

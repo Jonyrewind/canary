@@ -68,6 +68,10 @@ monster.events = {
 	"ThePrimalMenaceDeath",
 }
 
+monster.bosstiary = {
+	bossRaceId = 2247,
+}
+
 monster.health = 400000
 monster.maxHealth = 400000
 monster.race = "blood"

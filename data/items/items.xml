@@ -40142,7 +40142,7 @@
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="22117" name="RESERVED SPRITE"/>
-	<item id="22118" name="Tibia coins">
+	<item id="22118" name="Tibia coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="description" value="Tibia Coins are needed to shop exclusive products in the Store, including fabulous mounts, classy outfits, a Name Change or even Premium Time"/>
 		<attribute key="weight" value="0"/>
