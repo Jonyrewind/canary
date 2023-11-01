@@ -80,6 +80,8 @@ registerMonsterType.bosstiary = function(mtype, mask)
 				bossClass = "Archfoe"
 			elseif mask.bosstiary.bossRace == RARITY_NEMESIS then
 				bossClass = "Nemesis"
+			elseif mask.bosstiary.bossRace == BOSS_INVALID then
+				bossClass = "Invalid"
 			end
 		end
 		if bossClass == nil then

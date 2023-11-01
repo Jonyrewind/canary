@@ -143,26 +143,26 @@ local function creatureSayCallback(npc, creature, type, message)
 		elseif npcHandler:getTopic(playerId) == 6 then
 			npcHandler:say({
 				"Great! You see, I really would love to sew a nice shirt for him. I just need a few things for that, so please listen closely: ...",
-				"He loves green and red, so I will need about 25 pieces of red cloth - like the material heroes make their capes of - and 25 pieces of the green cloth Djinns like. ...",
-				"Secondly, I need about 5 rolls of spider silk yarn. I think mermaids can yarn silk of large spiders to create a smooth thread. ...",
+				"He loves green and red, so I will need about 50 pieces of red cloth - like the material heroes make their capes of - and 50 pieces of the green cloth Djinns like. ...",
+				"Secondly, I need about 10 rolls of spider silk yarn. I think mermaids can yarn silk of large spiders to create a smooth thread. ...",
 				"The only remaining thing needed would be a bottle of warrior's sweat to spray it over the shirt... he just loves this smell. ...",
 				"Have you understood everything I told you and are willing to handle this task?",
 			}, npc, creature)
 			npcHandler:setTopic(playerId, 7)
 		elseif npcHandler:getTopic(playerId) == 7 then
-			npcHandler:say("Thank you, my friend! Come back to me once you have collected 25 pieces of red cloth and 25 pieces of green cloth.", npc, creature)
+			npcHandler:say("Thank you, my friend! Come back to me once you have collected 50 pieces of red cloth and 50 pieces of green cloth.", npc, creature)
 			player:setStorageValue(Storage.OutfitQuest.BarbarianAddon, 7)
 			npcHandler:setTopic(playerId, 0)
 		elseif npcHandler:getTopic(playerId) == 8 then
-			if player:getItemCount(5910) >= 25 and player:getItemCount(5911) >= 25 then
+			if player:getItemCount(5910) >= 50 and player:getItemCount(5911) >= 50 then
 				npcHandler:say("Terrific! I will start to trim it while you gather 5 rolls of spider silk. I'm sure that Ajax will love it.", npc, creature)
-				player:removeItem(5910, 25)
-				player:removeItem(5911, 25)
+				player:removeItem(5910, 50)
+				player:removeItem(5911, 50)
 				player:setStorageValue(Storage.OutfitQuest.BarbarianAddon, 8)
 				npcHandler:setTopic(playerId, 0)
 			end
 		elseif npcHandler:getTopic(playerId) == 9 then
-			if player:removeItem(5886, 5) then
+			if player:removeItem(5886, 10) then
 				npcHandler:say("I'm impressed! You really managed to get spider silk yarn for me! I will immediately start to work on this shirt. Please don't forget to bring me warrior's sweat!", npc, creature)
 				player:setStorageValue(Storage.OutfitQuest.BarbarianAddon, 9)
 				npcHandler:setTopic(playerId, 0)

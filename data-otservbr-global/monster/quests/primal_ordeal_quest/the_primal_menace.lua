@@ -70,6 +70,7 @@ monster.events = {
 
 monster.bosstiary = {
 	bossRaceId = 2247,
+	bossRace = BOSS_INVALID,
 }
 
 monster.health = 400000
