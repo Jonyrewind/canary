@@ -1,18 +1,19 @@
 local items = {
-	[0] = { id = 3035, count = 3, chance = 100 },
-	[1] = { id = 2881, count = 1, chance = 80 },
-	[2] = { id = 12550, count = 1, chance = 25 },
+	[3614] = { id = 12550, count = 1, chance = 25, fail = "a fir cone you picked from the tree", succes = "finest fir cone you cold find on this tree."}, --fir tree
+	[19111] = { id = 12550, count = 1, chance = 25, fail = "the fir cone", succes = "fir cone." }, --fir cone
 }
 
 local cupOfMoltenGold = Action()
 
-function cupOfMoltenGold.onUse(cid, item, fromPosition, itemEx, toPosition)
-	if itemEx.itemid == 3614 or itemEx.itemid == 19111 then
-		doRemoveItem(item.uid, 1)
-		for i = 0, #items do
-			if items[i].chance > math.random(1, 100) then
-				doPlayerAddItem(cid, items[i].id, items[i].count)
-				doSendMagicEffect(toPosition, CONST_ME_EXPLOSIONAREA)
+function cupOfMoltenGold.onUse(player, item, fromPosition, target, toPosition)
+	for index, value in pairs(items) do
+		if target.itemid == index then
+			doRemoveItem(item.uid, 1)
+			if value.chance > math.random(1, 100) then
+				player:addItem(value.id, value.count or 1)
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Carefully you drizzle some of the gold on top of the %s", value.succes))
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Drizzling all over %s, the molten gold only covers about half of it - not enough.", value.fail))
 			end
 		end
 	end

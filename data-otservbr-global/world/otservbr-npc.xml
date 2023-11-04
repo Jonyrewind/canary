@@ -1521,6 +1521,9 @@
 	<npc centerx="32619" centery="31864" centerz="7" radius="1">
 		<npc name="Grumpy Stone" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33548" centery="31864" centerz="7" radius="1">
+		<npc name="Mr Brandon" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32602" centery="31875" centerz="7" radius="1">
 		<npc name="Dukosch" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2841,6 +2844,9 @@
 	</npc>
 	<npc centerx="33024" centery="31554" centerz="14" radius="1">
 		<npc name="Thorgrin" x="0" y="0" z="14" spawntime="60" />
+	</npc>
+	<npc centerx="33536" centery="31632" centerz="14" radius="1">
+		<npc name="Guardian Of The Deep Seas" x="0" y="0" z="14" spawntime="60" />
 	</npc>
 	<npc centerx="32260" centery="31866" centerz="14" radius="1">
 		<npc name="The Queen Of The Banshees" x="0" y="0" z="14" spawntime="60" />
