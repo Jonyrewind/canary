@@ -89,7 +89,7 @@ local config = {
 		[10426] = {
 			{ value = 10000, newItem = 10429, desc = "This little figurine of Tibiasula was masterfully sculpted by |PLAYERNAME|." },
 			{ value = 26764, newItem = 10428, desc = "This little figurine made by |PLAYERNAME| has some room for improvement." },
-			{ value = 60000, newItem = 10427, desc = "This shoddy work was made by |PLAYERNAME|." }
+			{ value = 60000, newItem = 10427, desc = "This shoddy work was made by |PLAYERNAME|." },
 		},
 
 		-- Ice Cube
@@ -175,7 +175,6 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 			return true
 		end
 
-
 		player:setStorageValue(Storage.Quest.U8_2.TheMutatedPumpkin.Skinned, os.time() + 4 * 60 * 60)
 		player:say("Happy Halloween!", TALKTYPE_MONSTER_SAY)
 		player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
@@ -184,7 +183,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 		player:addItem(skin[reward].newItem, skin[reward].amount or 1)
 		effect = CONST_ME_HITAREA
 		return true
-	end	
+	end
 
 	if not skin then
 		player:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
@@ -240,7 +239,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 			target:transform(skin.newItem, 1)
 			effect = CONST_ME_HITAREA
 		else
-			if isInArray({5906, 5905}, skin.newItem) then
+			if isInArray({ 5906, 5905 }, skin.newItem) then
 				player:addAchievementProgress("Ashes to Dust", 500)
 			else
 				player:addAchievementProgress("Skin-Deep", 500)

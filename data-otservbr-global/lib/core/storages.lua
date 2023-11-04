@@ -2124,7 +2124,7 @@ Storage = {
 			},
 			VampireHunter = {},
 			TheMutatedPumpkin = {
-				Skinned = 41890
+				Skinned = 41890,
 			},
 		},
 		U8_4 = { -- update 8.4 - Reserved Storages 41901 - 42145

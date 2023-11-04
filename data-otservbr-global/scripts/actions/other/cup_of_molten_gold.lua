@@ -1,5 +1,5 @@
 local items = {
-	[3614] = { id = 12550, count = 1, chance = 25, fail = "a fir cone you picked from the tree", succes = "finest fir cone you cold find on this tree."}, --fir tree
+	[3614] = { id = 12550, count = 1, chance = 25, fail = "a fir cone you picked from the tree", succes = "finest fir cone you cold find on this tree." }, --fir tree
 	[19111] = { id = 12550, count = 1, chance = 25, fail = "the fir cone", succes = "fir cone." }, --fir cone
 }
 
