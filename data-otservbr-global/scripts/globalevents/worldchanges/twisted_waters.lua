@@ -35,7 +35,7 @@ function TwistedWaters.onStartup()
 		addEvent(function()
 			respawnmonster(config)
 			logger.info("Twisted Waters Event Started")
-		end, 30 * 1000)
+		end, 60 * 1000)
 	end
 	return true
 end
