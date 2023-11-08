@@ -1,70 +1,6 @@
-local getBossCooldown = TalkAction("/getboss")
+local get = TalkAction("/getkv")
 
-function getBossCooldown.onSay(player, words, param)
-	-- create log
-	logCommand(player, words, param)
-
-	local target
-	local split = param:split(",")
-	local name = split[1]
-	local bossNameOrId = split[2]
-	if param == "" then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /getboss <player name>, <bossName>")
-		return true
-	else
-		target = Player(name)
-	end
-
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, " " .. name .. "'s Boss Cooldown for " .. bossNameOrId .. " = " .. target:getBossCooldown(bossNameOrId) .. " ")
-end
-
-getBossCooldown:separator(" ")
-getBossCooldown:groupType("god")
-getBossCooldown:register()
-
-function Player.setBossCooldownTalkaction(self, param)
-	if not HasValidTalkActionParams(self, param, "/setboss <bossName>, <value>, <player name>") then
-		return true
-	end
-
-	local split = param:split(",")
-	local value = 0
-	local bossName = split[1]
-	if split[2] then
-		value = tonumber(split[2])
-	end
-
-	if split[2] then
-		local targetPlayer = Player(string.trim(split[3]))
-		if not targetPlayer then
-			self:sendCancelMessage("Player not found.")
-			return true
-		else
-			local message = "" .. split[3] .. "'s Boss Cooldown for" .. bossName .. " was set to " .. value .. "."
-			self:sendTextMessage(MESSAGE_EVENT_ADVANCE, message)
-			targetPlayer:setBossCooldown(bossName, value)
-			--			targetPlayer:setBossCooldown(bossName, 0)
-			targetPlayer:save()
-			return true
-		end
-	end
-	return true
-end
-
-local setBossCooldown = TalkAction("/setboss")
-
-function setBossCooldown.onSay(player, words, param)
-	-- create log
-	logCommand(player, words, param)
-	return player:setBossCooldownTalkaction(param)
-end
-setBossCooldown:separator(" ")
-setBossCooldown:groupType("god")
-setBossCooldown:register()
-
-local storageGet = TalkAction("/getkv")
-
-function storageGet.onSay(player, words, param)
+function get.onSay(player, words, param)
 	local value = kv.get(param)
 	if value then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv[" .. param .. "]: " .. PrettyString(value))
@@ -73,11 +9,11 @@ function storageGet.onSay(player, words, param)
 	end
 end
 
-storageGet:separator(" ")
-storageGet:groupType("god")
-storageGet:register()
+get:separator(" ")
+get:groupType("god")
+get:register()
 
-local talkaction = TalkAction("/setkv")
+local set = TalkAction("/setkv")
 
 local function splitFirst(str, delimiter)
 	local start, finish = string.find(str, delimiter)
@@ -89,47 +25,34 @@ local function splitFirst(str, delimiter)
 	return firstPart, secondPart
 end
 
-function talkaction.onSay(player, words, param)
+function set.onSay(player, words, param)
 	local key, value = splitFirst(param, " ")
 	value = load("return " .. value)()
 	kv.set(key, value)
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv[" .. key .. "] = " .. PrettyString(value))
 end
 
-talkaction:separator(" ")
-talkaction:groupType("god")
-talkaction:register()
+set:separator(" ")
+set:groupType("god")
+set:register()
 
-local getplayerkv = TalkAction("/getplayerkv")
+local bossCooldown = TalkAction("/clearcooldown")
 
-function getplayerkv.onSay(player, words, param)
-	local split = param:split(",")
-	local player = Player(string.trim(split[2]))
-	local playerKV = player:kv()
-
-	local value = playerKV:get(split[1])
-	if value then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv " .. split[1] .. " for " .. split[2] .. " is " .. PrettyString(value))
-	else
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Key " .. split[1] .. " not found.")
+function bossCooldown.onSay(player, words, param)
+	local boss, playerName = splitFirst(param, ",")
+	if not playerName then
+		playerName = player:getName()
 	end
+	local targetPlayer = Player(playerName)
+	if not targetPlayer then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Player " .. playerName .. " not found.")
+		return
+	end
+	targetPlayer:setBossCooldown(boss, 0)
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Boss cooldown for " .. playerName .. " cleared.")
+	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Boss cooldown for " .. boss .. " cleared.")
 end
 
-getplayerkv:separator(" ")
-getplayerkv:groupType("god")
-getplayerkv:register()
-
-local setplayerkv = TalkAction("/setplayerkv")
-
-function setplayerkv.onSay(player, words, param)
-	local split = param:split(",")
-	local player = Player(string.trim(split[3]))
-	local playerKV = player:kv()
-
-	playerKV:set(split[1], split[2])
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "kv " .. split[1] .. " for " .. split[3] .. " set to  " .. split[2] .. "")
-end
-
-setplayerkv:separator(" ")
-setplayerkv:groupType("god")
-setplayerkv:register()
+bossCooldown:separator(" ")
+bossCooldown:groupType("god")
+bossCooldown:register()
