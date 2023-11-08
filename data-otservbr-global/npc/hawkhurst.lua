@@ -61,7 +61,7 @@ local function addTravelKeyword(keyword, text, cost, destination, action, condit
 	if condition then
 		keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Ye' not ready yet." }, condition)
 	end
-	
+
 	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = text, cost = cost, discount = "postman" })
 	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, text = "All Hand Hoy!", cost = cost, discount = "postman", destination = destination }, nil, action)
 	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
