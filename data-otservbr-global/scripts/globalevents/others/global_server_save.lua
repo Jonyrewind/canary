@@ -16,7 +16,7 @@ local function ServerSave()
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20075")
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20076")
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 20077")
-	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 50079")
+	db.query("UPDATE `global_storage` SET `value` = 0 WHERE `global_storage`.`key` = 65018")
 	-- Exercise Reward
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 30061")
 	-- Reset Twisted Waters Corpse and fishing Counter
