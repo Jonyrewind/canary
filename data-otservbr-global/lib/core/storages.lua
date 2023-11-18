@@ -155,6 +155,8 @@ Storage = {
 	},
 	LiquidBlackQuest = {
 		-- Reserved storage from 50010 - 50014
+		Questline = 50010,
+		Visitor = 50011,
 	},
 	Kilmaresh = {
 		-- Reserved storage from 50015 - 50049
@@ -255,10 +257,6 @@ Storage = {
 		Tanjis = 50076,
 		Obujos = 50077,
 		DeeplingStatus = 50078,
-		DeeplingReward = 50079,
-		JaulTP = 20075,
-		TanjisTP = 20076,
-		ObujosTP = 20077,
 	},
 	DangerousDepths = {
 		-- Reserved storage from 50080 - 50199
@@ -1684,7 +1682,6 @@ Storage = {
 		Questline = 52310,
 		CobraBastion = {
 			Questline = 52311,
-			CobraBastionChestsTimer = 52313,
 		},
 	},
 	RottinWoodAndMaried = {
@@ -1708,8 +1705,6 @@ Storage = {
 		-- Reserved storage 52396-52410 (TheOrderOfTheLion)
 		Drume = {
 			Commander = 52396, -- Global
-			TotalLionCommanders = 52397, -- Global
-			TotalUsurperCommanders = 52398, -- Global
 		},
 	},
 	-- News quest development
@@ -1741,7 +1736,6 @@ Storage = {
 			ID3980 = 3980,
 			ID4055 = 4055,
 			ID4502 = 4502,
-			ID5000 = 5000,
 			ID5010 = 5010,
 			ID6010 = 6010,
 		},
@@ -2123,9 +2117,6 @@ Storage = {
 				JumpTimer = 41841,
 			},
 			VampireHunter = {},
-			TheMutatedPumpkin = {
-				Skinned = 41890,
-			},
 		},
 		U8_4 = { -- update 8.4 - Reserved Storages 41901 - 42145
 			BloodBrothers = {
@@ -2445,9 +2436,7 @@ Storage = {
 			TheRookieGuard = {},
 			TheirMastersVoiceWorldChange = {},
 			ThornfireWorldChange = {},
-			TwistedWatersWorldChange = {
-				ShimmerCaught = 43545,
-			},
+			TwistedWatersWorldChange = {},
 		},
 		U9_4 = { -- update 9.4 - Reserved Storages 43551 - 43750
 			BankRobberyMiniWorldChange = {},
@@ -2458,14 +2447,7 @@ Storage = {
 			HiveBornWorldChange = {},
 			InsectoidOutfits = {},
 			KingsdayMiniWorldChange = {},
-			LiquidBlack = {
-				Questline = 43690,
-				Visitor = 43691,
-				Books = 43692,
-				BooksNpc = 43693,
-				SoulNet = 43694,
-				RockSteadyCount = 43695,
-			},
+			LiquidBlack = {},
 			LumberjackMiniWorldChange = {},
 			NomadsMiniWorldChange = {},
 			NoodlesIsGoneMiniWorldChange = {},
@@ -2682,8 +2664,6 @@ Storage = {
 					LowerBastion = 46285,
 					UndergroundBastion = 46286,
 				},
-				BrokulTimer = 46013,
-				BrokulKilled = 46014,
 				GhuloshTimer = 46015,
 				GhuloshKilled = 46016,
 				GorzindelTimer = 46017,
@@ -2758,7 +2738,6 @@ Storage = {
 		U12_30 = { -- update 12.30 - Reserved Storages 47001 - 47200
 			FalconerOutfits = {},
 			FeasterOfSouls = {
-				IrgixKilled = 47006,
 				UnazKilled = 47008,
 				VokKilled = 47010,
 				FearFeasterKilled = 47012,
@@ -2772,14 +2751,11 @@ Storage = {
 			},
 		},
 		U12_40 = { -- update 12.40 - Reserved Storages 47201 - 47500
-			RevenantOutfits = {
-				Received = 47209,
-			},
+			RevenantOutfits = {},
 			TheOrderOfTheLion = {
 				QuestLine = 47401,
 				AccessEastSide = 47402,
 				AccessSouthernSide = 47403,
-				BounacChestsTimer = 47404,
 			},
 			SoulWar = {
 				GoshnarMaliceKilled = 47211,
@@ -2805,10 +2781,6 @@ Storage = {
 		U12_70 = { -- update 12.70 - Reserved Storages 47601 - 47800
 			AdventuresOfGalthen = {
 				AccessDoor = 47601,
-				LostSatchel = {
-					Notes = 47603,
-					Reward = 47604,
-				},
 			},
 			CitizenOfIssaviOutfits = {},
 			RoyalBounaceanAdvisorOutfits = {},
@@ -2829,7 +2801,7 @@ Storage = {
 				},
 			},
 		},
-		U13_10 = { -- update 13.10 - Reserved Storages 47901 - 47950
+		U13_10 = { -- update 13.10 - Reserved Storages 47901 - 47951
 			CradleOfMonsters = {
 				QuestLine = 47901,
 				Access = {
@@ -2837,16 +2809,6 @@ Storage = {
 					LowerIngol = 47903,
 					Monster = 47904,
 					MutatedAbomination = 47905,
-				},
-			},
-		},
-		U13_20 = { -- update 13.20 - Reserved Storages 47951 - 48000
-			RottenBlood = {
-				QuestLine = 47951,
-				Access = {
-					Door = 47952,
-					SacrificialPlate = 47953,
-					Hunts = 47954,
 				},
 			},
 		},
@@ -3103,12 +3065,12 @@ GlobalStorage = {
 		DiprathSwitchesGlobalStorage = 60161,
 		AshmunrahSwitchesGlobalStorage = 60162,
 	},
-	TwistedWatersWorldChange = {
-		-- Reserved storage from 60170 - 60179
-		ShimmerFishbonesCaught = 60170,
-		CorpseCount = 60171,
-		TwistedWatersActive = 60172,
-		Status = 60173,
+	TheOrderOfTheLion = {
+		-- Reserved storage from 60170 - 60171
+		Drume = {
+			TotalLionCommanders = 60170, -- Global
+			TotalUsurperCommanders = 60171, -- Global
+		},
 	},
 	FuryGates = 65000,
 	Yakchal = 65001,
@@ -3127,14 +3089,6 @@ GlobalStorage = {
 	NightmareIsle = 65015,
 	IceCrack = 65016,
 	UglyMonster = 65017,
-	DeeplingBossesTP = 65018,
-	DeeplingSpawn = 65019,
-	BoredMiniWorldChange = 65020,
-	BankRobberyMiniWorldChange = {
-		Activated = 65021,
-		Returnedgoods = 65022,
-		Town = 65023,
-	},
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 
