@@ -29,7 +29,7 @@ function muckRemover.onUse(player, item, fromPosition, target, toPosition, isHot
 
 			target:getPosition():sendMagicEffect(CONST_ME_GREEN_RINGS)
 			target:remove(1)
-
+			player:addAchievementProgress("Goo Goo Dancer", 100)
 			item:remove(1)
 			break
 		end

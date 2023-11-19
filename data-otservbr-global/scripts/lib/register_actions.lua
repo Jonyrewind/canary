@@ -471,6 +471,7 @@ function onUseShovel(player, item, fromPosition, target, toPosition, isHotkey)
 			return true
 		end
 		player:teleportTo(toPosition, false)
+		player:addAchievementProgress("The Undertaker", 500)
 	elseif target.itemid == 1822 and target:getPosition() == Position(33222, 31100, 7) then
 		player:teleportTo(Position(33223, 31100, 8))
 	elseif table.contains({ 231, 231 }, target.itemid) then
@@ -625,6 +626,7 @@ function onUsePick(player, item, fromPosition, target, toPosition, isHotkey)
 		end
 		target:getPosition():sendMagicEffect(CONST_ME_BLOCKHIT)
 		target:remove(1)
+		player:addAchievementProgress("Petrologist", 100)
 	elseif target.itemid == 7200 then
 		target:transform(7236)
 		target:decay()
