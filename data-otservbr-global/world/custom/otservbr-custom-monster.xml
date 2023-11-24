@@ -55,6 +55,26 @@
 		<monster name="Lion Archer" x="1" y="0" z="6" spawntime="60" />
 		<monster name="Lion Knight" x="0" y="1" z="6" spawntime="60" />
 	</monster>
+	<monster centerx="1064" centery="974" centerz="6" radius="1">
+		<monster name="Undertaker" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Hulking Prehemoth" x="1" y="0" z="6" spawntime="60" />
+		<monster name="Noxious Ripptor" x="0" y="1" z="6" spawntime="60" />
+	</monster>
+	<monster centerx="1067" centery="974" centerz="6" radius="1">
+		<monster name="Makara" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Naga Warrior" x="1" y="0" z="6" spawntime="60" />
+		<monster name="Naga Archer" x="0" y="1" z="6" spawntime="60" />
+	</monster>
+	<monster centerx="1070" centery="974" centerz="6" radius="1">
+		<monster name="Two-Headed Turtle" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Foam Stalker" x="1" y="0" z="6" spawntime="60" />
+	</monster>
+	<monster centerx="1073" centery="974" centerz="6" radius="1">
+		<monster name="Harpy" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Rhindeer" x="1" y="0" z="6" spawntime="60" />
+		<monster name="Crape Man" x="0" y="1" z="6" spawntime="60" />
+		<monster name="Boar Man" x="1" y="1" z="6" spawntime="60" />
+	</monster>
 	<monster centerx="1051" centery="958" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="1" z="7" spawntime="60" />
 		<monster name="Cyclops Smith" x="1" y="1" z="7" spawntime="60" />

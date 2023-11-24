@@ -30,6 +30,10 @@ function book.onUse(creature, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
+	if player:getStorageValue(data.storage) < 0 then
+		player:setStorageValue(data.storage, 0)
+	end
+
 	if player:getStorageValue(data.storage) <= data.value.done then
 		if player:getStorageValue(data.storage + book) ~= 1 then
 			player:setStorageValue(data.storage + book, 1)

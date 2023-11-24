@@ -238,6 +238,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 			end
 			target:transform(skin.newItem, 1)
 			effect = CONST_ME_HITAREA
+			return true
 		else
 			if isInArray({ 5906, 5905 }, skin.newItem) then
 				player:addAchievementProgress("Ashes to Dust", 500)

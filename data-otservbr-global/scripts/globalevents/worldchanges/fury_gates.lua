@@ -147,7 +147,7 @@ function teleport.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	local gateId = Game.getStorageValue(GlobalStorage.FuryGates)
+	local gateId = getGlobalStorage(GlobalStorage.FuryGates)
 
 	if not gates[gateId] then
 		return true

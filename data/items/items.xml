@@ -5892,6 +5892,7 @@
 		<attribute key="shootType" value="snowball"/>
 		<attribute key="range" value="6"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="2993" article="a" name="teddy bear">
 		<attribute key="primarytype" value="dolls and bears"/>
@@ -5963,6 +5964,7 @@
 	<item id="3010" article="an" name="emerald bangle">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="179"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3011" article="a" name="crown">
 		<attribute key="primarytype" value="helmets"/>
@@ -5992,6 +5994,7 @@
 	<item id="3017" article="a" name="silver brooch" plural="silver brooches">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="115"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3018" article="a" name="scarab amulet">
 		<attribute key="primarytype" value="amulets and necklaces"/>
@@ -6077,6 +6080,7 @@
 		<attribute key="primarytype" value="magical items"/>
 		<attribute key="description" value="There are many rumours about these magic gems"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3035" article="a" name="platinum coin">
 		<attribute key="primarytype" value="valuables"/>
@@ -6248,10 +6252,12 @@
 	<item id="3060" article="an" name="orb">
 		<attribute key="primarytype" value="magical items"/>
 		<attribute key="weight" value="800"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3061" article="a" name="life crystal">
 		<attribute key="primarytype" value="magical items"/>
 		<attribute key="weight" value="263"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3062" article="a" name="mind stone">
 		<attribute key="primarytype" value="magical items"/>
@@ -7260,6 +7266,7 @@
 	<item id="3249" article="a" name="frozen starlight">
 		<attribute key="primarytype" value="light sources"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3250" article="the" name="carrot of doom" plural="carrots of doom">
 		<attribute key="description" value="You can sense the evil power of the carrot"/>
@@ -9343,6 +9350,7 @@
 	<item id="3509" article="an" name="inkwell">
 		<attribute key="primarytype" value="tools"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="3510" toid="3513" article="a" name="coal basin"/>
 	<item id="3514" article="an" name="empty coal basin">
@@ -9967,14 +9975,17 @@
 		<attribute key="primarytype" value="food"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3731" article="a" name="fire mushroom" plural="fire mushrooms">
 		<attribute key="primarytype" value="food"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3732" article="a" name="green mushroom" plural="green mushrooms">
 		<attribute key="primarytype" value="food"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="3733" article="a" name="stone"/>
 	<item id="3734" article="a" name="blood herb">
@@ -12599,6 +12610,7 @@
 	<item id="5021" article="an" name="orichalcum pearl">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="5022" toid="5023" article="a" name="magic forcefield">
 		<attribute key="primarytype" value="teleporters"/>
@@ -14298,6 +14310,7 @@
 		<attribute key="primarytype" value="metals"/>
 		<attribute key="description" value="This strange object seems to be made of half spirit, half metal. It is unknown to most smiths"/>
 		<attribute key="weight" value="20"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5945" article="a" name="coral comb">
 		<attribute key="primarytype" value="quest items"/>
@@ -14346,6 +14359,7 @@
 	<item id="5954" article="a" name="demon horn">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="1000"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5956" article="a" name="lottery ticket">
 		<attribute key="primarytype" value="documents and papers"/>
@@ -20744,6 +20758,7 @@
 	<item id="8775" article="a" name="gear wheel">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="5"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="8776" article="a" name="large crystal">
 		<attribute key="weight" value="235"/>
@@ -21502,6 +21517,7 @@
 	<item id="9067" article="a" name="crystal of power">
 		<attribute key="description" value="It is said to make you more resistant to weaknesses and to supply you with energy"/>
 		<attribute key="weight" value="850"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9068" article="a" name="yalahari figurine">
 		<attribute key="primarytype" value="decoration"/>
@@ -23175,6 +23191,7 @@
 	<item id="9655" article="a" name="gear crystal">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="95"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9656" article="a" name="broken gladiator shield">
 		<attribute key="primarytype" value="creature products"/>
@@ -23199,6 +23216,7 @@
 	<item id="9661" article="a" name="frosty heart">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="186"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9662" article="a" name="mutated bat ear">
 		<attribute key="primarytype" value="creature products"/>
@@ -23206,6 +23224,7 @@
 	</item>
 	<item id="9663" article="a" name="piece of dead brain" plural="pieces of dead brain">
 		<attribute key="weight" value="132"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9664" article="a" name="piece of hellfire armor" plural="pieces of hellfire armor">
 		<attribute key="weight" value="250"/>
@@ -27525,10 +27544,12 @@
 	<item id="12600" name="coal">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12601" article="a" name="slime mould">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="300"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12602" article="a" name="small whistle">
 		<attribute key="primarytype" value="musical instruments"/>
@@ -38352,6 +38373,7 @@
 	<item id="21194" article="a" name="slime heart">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="180"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="21195" article="a" name="poisoned fang">
 		<attribute key="primarytype" value="creature products"/>
@@ -39019,7 +39041,7 @@
 	<item id="21744" article="a" name="strange machine">
 		<attribute key="primarytype" value="machines (objects)"/>
 		<attribute key="duration" value="300"/>
-		<attribute key="decayTo" value="24112"/>
+		<attribute key="decayTo" value="21743"/>
 	</item>
 	<item id="21745" article="a" name="Brandon's wedding ring">
 		<attribute key="description" value="It is worn and scratched, with a faint engraving 'To Roswitha, Forever'"/>
@@ -40520,6 +40542,7 @@
 	<item id="22193" article="an" name="onyx chip" plural="onyx chips">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="120"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="22194" article="an" name="opal" plural="opals">
 		<attribute key="primarytype" value="valuables"/>
@@ -42335,6 +42358,7 @@
 	<item id="23510" article="an" name="odd organ" plural="odd organs">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="450"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23511" name="curious matter" plural="curious matter">
 		<attribute key="primarytype" value="creature products"/>
@@ -42363,11 +42387,13 @@
 		<attribute key="primarytype" value="creature products"/>
 	<attribute key="showCount" value="0"/>
 	<attribute key="weight" value="600"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23517" name="solid rage" plural="solid rage">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="300"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23518" article="a" name="spark sphere" plural="spark sphere">
 		<attribute key="primarytype" value="creature products"/>
@@ -42394,10 +42420,12 @@
 	<item id="23523" article="an" name="energy ball" plural="energy balls">
 		<attribute key="primarytype" value="creature products"/>
 	<attribute key="weight" value="350"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23524" article="a" name="small energy ball" plural="small energy balls">
 		<attribute key="primarytype" value="creature products"/>
 	<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="23525" article="an" name="energetic backpack">
 		<attribute key="primarytype" value="containers"/>
@@ -43214,10 +43242,12 @@
 	<item id="24391" article="a" name="coral brooch">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="80"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="24392" article="a" name="gemmed figurine">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="650"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="24393" article="a" name="pillow backpack">
 		<attribute key="primarytype" value="containers"/>
@@ -48310,7 +48340,7 @@
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="240"/>
 	</item>
-	<item fromid="28496" toid="28498" article="a" name="wooden wall">
+	<item fromid="28496" toid="28498" article="a" name="wooden railing">
 		<attribute key="primarytype" value="walls"/>
 	</item>
 	<item id="28499" name="RESERVED SPRITE"/>
@@ -48518,22 +48548,27 @@
 	<item id="28566" article="a" name="silken bookmark">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="100"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="28567" article="a" name="quill">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="28568" article="an" name="inkwell">
 		<attribute key="primarytype" value="tools"/>
 		<attribute key="weight" value="200"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="28569" article="a" name="book page">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="100"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="28570" article="a" name="glowing rune">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="28571" article="a" name="book backpack">
 		<attribute key="primarytype" value="containers"/>
@@ -51970,6 +52005,7 @@
 	<item id="30337" article="a" name="twig arms">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="220"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="30338" name="unknown item"/>
 	<item id="30339" article="a" name="bone pile">
@@ -57589,6 +57625,7 @@
 	<item id="33778" article="a" name="raw watermelon tourmaline" plural="raw watermelon tourmalines">
 		<attribute key="primarytype" value="valuables"/>
 	<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="33779" article="a" name="watermelon tourmaline" plural="watermelon tourmalines">
 		<attribute key="weight" value="110"/>
@@ -65452,6 +65489,7 @@
 	<item id="39038" article="a" name="royal almandine">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="175"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39039" article="a" name="cerulean abyss">
 		<attribute key="primarytype" value="valuables"/>
@@ -66573,38 +66611,47 @@
 	<item id="39375" article="a" name="sulphider shell">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="150"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39376" article="a" name="sulphur powder">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="100"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39377" article="a" name="gore horn">
 		<attribute key="primarytype" value="ungulates"/>
 		<attribute key="weight" value="260"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39378" article="a" name="sabretooth fur">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="135"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39379" article="an" name="emerald tortoise shell">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="600"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39380" name="undertaker fangs">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="75"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39381" article="a" name="nighthunter wing">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="140"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39382" name="prehemoth horns">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="1100"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39383" article="a" name="prehemoth claw">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="850"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39384" name="stalking seeds">
 		<attribute key="primarytype" value="creature products"/>
@@ -66617,18 +66664,22 @@
 	<item id="39386" article="a" name="mantosaurus jaw">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="420"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39387" article="a" name="headpecker beak">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="390"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39388" article="a" name="headpecker feather">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="70"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39389" article="a" name="ripptor claw">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="280"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39390" article="an" name="ornamented chest">
 		<attribute key="primarytype" value="quest objects"/>
@@ -66636,22 +66687,27 @@
 	<item id="39391" name="ripptor scales">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="30"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39392" article="a" name="gorerilla mane">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="240"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39393" article="a" name="gorerilla tail">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="280"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39394" article="a" name="cry-stal">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="970"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39395" article="a" name="mercurial wing">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="10"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="39396" article="an" name="ornamented chest">
 		<attribute key="primarytype" value="quest objects"/>

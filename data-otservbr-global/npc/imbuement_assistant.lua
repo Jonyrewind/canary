@@ -350,8 +350,9 @@ local function creatureSayCallback(npc, creature, type, message)
 			return
 		end
 
+		local packageData = imbuementPackagesData[message]
 		playerImbuementData[playerId] = nil
-		npcHandler:say(string.format("You have Bought %s for %i gold.", packageData.itemList, packageData.moneyRequired), npc, player)
+		npcHandler:say(string.format("You have Bought %s for %i gold.", packageData.text, packageData.moneyRequired), npc, player)
 		npcHandler:setTopic(playerId, 1)
 		npcHandler:say(imbuementPackages, npc, creature)
 	elseif MsgContains(message, "no") then

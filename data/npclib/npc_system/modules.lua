@@ -232,6 +232,7 @@ if Modules == nil then
 			player:setStorageValue(Global.Storage.NpcExhaust, 3 + os.time())
 			player:teleportTo(destination)
 			playerPosition:sendMagicEffect(CONST_ME_TELEPORT)
+			player:addAchievementProgress("Ship's Kobold", 1250)
 
 			-- What a foolish Quest - Mission 3
 			if Storage.WhatAFoolish.PieBoxTimer ~= nil then

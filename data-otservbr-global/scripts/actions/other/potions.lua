@@ -51,6 +51,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_RED,
 		description = "Only knights may drink this potion.",
 		text = "You feel stronger.",
+		achievement = "Berserker",
 	},
 	[7440] = {
 		vocations = {
@@ -61,6 +62,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_BLUE,
 		description = "Only sorcerers and druids may drink this potion.",
 		text = "You feel smarter.",
+		achievement = "Sharpshooter",
 	},
 	[7443] = {
 		vocations = {
@@ -70,6 +72,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_GREEN,
 		description = "Only paladins may drink this potion.",
 		text = "You feel more accurate.",
+		achievement = "Berserker",
 	},
 	[35563] = {
 		vocations = {
@@ -297,6 +300,7 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 		player:addCondition(potion.condition)
 		player:say(potion.text, MESSAGE_POTION)
 		player:getPosition():sendMagicEffect(potion.effect)
+		player:addAchievementProgress(potion.achievement, 100)
 	end
 
 	if potion.transform then
@@ -304,6 +308,7 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 			item:remove(1)
 			player:addItem(potion.transform.id[math.random(#potion.transform.id)], 1)
 			item:getPosition():sendMagicEffect(potion.effect)
+			player:addAchievementProgress("Demonic Barkeeper", 250)
 			return true
 		end
 	end
