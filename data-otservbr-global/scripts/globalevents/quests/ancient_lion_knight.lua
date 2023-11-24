@@ -7,7 +7,6 @@ local config = {
 	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE,
 }
 
-
 local lionKnight = GlobalEvent("ancient lion knight")
 function lionKnight.onThink(interval, lastExecution)
 	checkBoss(config.centerPosition, config.rangeX, config.rangeY, config.monsterName, config.bossPosition)
