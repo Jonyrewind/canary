@@ -7,27 +7,9 @@ local config = {
 	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE,
 }
 
-local function checkBoss(centerPosition, rangeX, rangeY, bossName)
-	local spectators, spec = Game.getSpectators(centerPosition, false, false, rangeX, rangeX, rangeY, rangeY)
-	for i = 1, #spectators do
-		spec = spectators[i]
-		if spec:isMonster() then
-			if spec:getName() == bossName then
-				return true
-			end
-		end
-	end
-	return false
-end
-
 local canonDominus = GlobalEvent("canon dominus")
 function canonDominus.onThink(interval, lastExecution)
-	if checkBoss(config.centerPosition, config.rangeX, config.rangeY, config.monsterName) then
-		return true
-	end
-
-	local boss = Game.createMonster(config.monsterName, config.bossPosition, true, true)
-	boss:setReward(true)
+	checkBoss(config.centerPosition, config.rangeX, config.rangeY, config.monsterName, config.bossPosition)
 	return true
 end
 
