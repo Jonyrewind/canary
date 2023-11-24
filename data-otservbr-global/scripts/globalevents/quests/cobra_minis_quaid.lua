@@ -4,6 +4,7 @@ local config = {
 	centerPosition = Position(33392, 32660, 3),
 	rangeX = 50,
 	rangeY = 50,
+	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE,
 }
 
 local miniBoss = GlobalEvent("guard captain quaid")
@@ -12,5 +13,5 @@ function miniBoss.onThink(interval, lastExecution)
 	return true
 end
 
-miniBoss:interval(1 * 60 * 1000)
+miniBoss:interval(15 * 60 * 1000 / config.timer)
 miniBoss:register()
