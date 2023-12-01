@@ -53,7 +53,7 @@ monster.flags = {
 }
 
 monster.events = {
-	"FerumbrasSoulSplinter",
+	"FerumbrasSoulSplinterDeath",
 }
 
 monster.light = {

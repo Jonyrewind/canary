@@ -1,11 +1,12 @@
 local config = {
 	items = {
-		{ id = 35284, charges = 3600 },
-		{ id = 35279, charges = 3600 },
-		{ id = 35281, charges = 3600 },
-		{ id = 35283, charges = 3600 },
-		{ id = 35282, charges = 3600 },
-		{ id = 35280, charges = 3600 },
+		{ id = 35284, charges = 64400 },
+		{ id = 35279, charges = 64400 },
+		{ id = 35281, charges = 64400 },
+		{ id = 35283, charges = 64400 },
+		{ id = 35282, charges = 64400 },
+		{ id = 35280, charges = 64400 },
+		{ id = 44066, charges = 64400 },
 	},
 	storage = tonumber(Storage.PlayerWeaponReward), -- storage key, player can only win once
 }
@@ -29,6 +30,7 @@ local function sendExerciseRewardModal(player)
 					if item then
 						item:setActionId(IMMOVABLE_ACTION_ID)
 						item:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+						item:setAttribute(ITEM_ATTRIBUTE_DESCRIPTION, string.format("You won this exercise weapon as a reward to be a %s player. Use it in a dummy!\nHave a nice game..", configManager.getString(configKeys.SERVER_NAME)))
 					else
 						player:sendTextMessage(MESSAGE_LOOK, "You need to have capacity and empty slots to receive.")
 						return
@@ -54,7 +56,7 @@ function exerciseRewardModal.onSay(player, words, param)
 		return true
 	end
 	if player:getStorageValue(config.storage) > 0 then
-		player:sendTextMessage(MESSAGE_LOOK, "You already received todays exercise weapon reward!")
+		player:sendTextMessage(MESSAGE_LOOK, "You already received your exercise weapon reward!")
 		return true
 	end
 	sendExerciseRewardModal(player)
