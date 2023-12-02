@@ -21,18 +21,8 @@ end
 local playerLogin = CreatureEvent("PlayerLogin")
 
 function playerLogin.onLogin(player)
-	local items = {
-		{ 3003, 1 },
-		{ 3457, 1 },
-	}
 	if player:getLastLoginSaved() == 0 then
 		player:sendOutfitWindow()
-		local backpack = player:addItem(2854)
-		if backpack then
-			for i = 1, #items do
-				backpack:addItem(items[i][1], items[i][2])
-			end
-		end
 
 		db.query("UPDATE `players` SET `istutorial` = 0 where `id`=" .. player:getGuid())
 		-- Open channels

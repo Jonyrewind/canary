@@ -446,7 +446,7 @@ function parseBuyStoreOffer(playerId, msg)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_CHARMS then
 			GameStore.processCharmsPurchase(player)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_BLESSINGS then
-			GameStore.processSignleBlessingPurchase(player, offer.blessid, offer.count)
+			GameStore.processSingleBlessingPurchase(player, offer.blessid, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ALLBLESSINGS then
 			GameStore.processAllBlessingsPurchase(player, offer.count)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREMIUM then
@@ -1530,7 +1530,7 @@ function GameStore.processChargesPurchase(player, itemtype, name, charges, movea
 	end
 end
 
-function GameStore.processSignleBlessingPurchase(player, blessId, count)
+function GameStore.processSingleBlessingPurchase(player, blessId, count)
 	player:addBlessing(blessId, count)
 end
 
