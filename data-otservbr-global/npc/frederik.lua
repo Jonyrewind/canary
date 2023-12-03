@@ -23,7 +23,6 @@ npcConfig.flags = {
 	floorchange = false,
 }
 
-
 npcConfig.shop = {
 	{ itemName = "avalanche rune", clientId = 3161, buy = 57 },
 	{ itemName = "blank rune", clientId = 3147, buy = 10 },
