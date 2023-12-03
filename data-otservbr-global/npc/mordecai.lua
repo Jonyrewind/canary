@@ -88,7 +88,8 @@ npcConfig.shop = {
 	{ itemName = "wand of voodoo", clientId = 8094, buy = 22000 },
 	{ itemName = "wand of vortex", clientId = 3074, buy = 500 },
 	{ itemName = "wild growth rune", clientId = 3156, buy = 160 },
-}npcConfig.shop = {
+}
+npcConfig.shop = {
 	{ itemName = "animate dead rune", clientId = 3203, buy = 375 },
 	{ itemName = "avalanche rune", clientId = 3161, buy = 57 },
 	{ itemName = "chameleon rune", clientId = 3178, buy = 210 },
