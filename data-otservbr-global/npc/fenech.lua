@@ -160,7 +160,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	if not npcHandler:checkInteraction(npc, creature) then
 		return false
 	end
-
+	
 	local formattedCategoryNames = {}
 	for categoryName, _ in pairs(itemsTable) do
 		table.insert(formattedCategoryNames, "{" .. categoryName .. "}")

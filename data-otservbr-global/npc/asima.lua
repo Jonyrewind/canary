@@ -23,6 +23,7 @@ npcConfig.flags = {
 	floorchange = false,
 }
 
+
 npcConfig.shop = {
 	{ itemName = "avalanche rune", clientId = 3161, buy = 57 },
 	{ itemName = "blank rune", clientId = 3147, buy = 10 },
@@ -167,7 +168,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	if not npcHandler:checkInteraction(npc, creature) then
 		return false
 	end
-
+	
 	local formattedCategoryNames = {}
 	for categoryName, _ in pairs(itemsTable) do
 		table.insert(formattedCategoryNames, "{" .. categoryName .. "}")
