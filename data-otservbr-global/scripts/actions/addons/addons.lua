@@ -23,7 +23,7 @@ local config = {
 	-- rascoohan
 	[35595] = { female = 1372, male = 1371, addon = 1, achievement = "Honorary Rascoohan", textorange = "You feel a bit more raccoonish." },
 	[35695] = { female = 1372, male = 1371, addon = 2, achievement = "Honorary Rascoohan", textorange = "Hmmm, trash cans!!" },
-		-- fire-fighter
+	-- fire-fighter
 	[39544] = { female = 1569, male = 1568, addon = 1, achievement = "Friendly Fire", textorange = "You feel like fighting a fire!" },
 	[39545] = { female = 1569, male = 1568, addon = 2, achievement = "Friendly Fire", textorange = "The flame engulfs you!" },
 }
