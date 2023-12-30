@@ -20,7 +20,6 @@ monster.events = {
 monster.bosstiary = {
 	bossRaceId = 1591,
 	bossRace = RARITY_ARCHFOE,
-	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.GorzindelTimer,
 }
 
 monster.health = 300000
@@ -99,8 +98,7 @@ monster.loot = {
 	{ name = "magic sulphur", chance = 1000, maxCount = 2 },
 	{ name = "muck rod", chance = 1000 },
 	{ id = 3039, chance = 1000 }, -- red gem
-	{ id = 8908, chance = 1000 }, -- slightly rusted helmet
-	{ id = 8902, chance = 30000 }, -- slightly rusted shield
+	{ name = "slightly rusted shield", chance = 11760 },
 	{ name = "silver Token", chance = 1000, maxCount = 6 },
 	{ name = "sinister book", chance = 1000 },
 	{ name = "spellbook of warding", chance = 1000 },

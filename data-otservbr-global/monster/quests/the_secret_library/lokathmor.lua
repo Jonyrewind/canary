@@ -20,7 +20,6 @@ monster.events = {
 monster.bosstiary = {
 	bossRaceId = 1574,
 	bossRace = RARITY_ARCHFOE,
-	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.LokathmorTimer,
 }
 
 monster.health = 300000
@@ -99,7 +98,7 @@ monster.loot = {
 	{ name = "silver token", chance = 30000, maxCount = 4 },
 	{ name = "blue robe", chance = 30000 },
 	{ name = "dreaded cleaver", chance = 30000 },
-	{ id = 8902, chance = 30000 }, -- slightly rusted shield
+	{ name = "slightly rusted shield", chance = 26670 },
 	{ name = "wand of inferno", chance = 30000 },
 	{ id = 28341, chance = 1000 }, -- tessellated wall
 	{ name = "sturdy book", chance = 1000 },

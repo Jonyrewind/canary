@@ -20,7 +20,6 @@ monster.events = {
 monster.bosstiary = {
 	bossRaceId = 1608,
 	bossRace = RARITY_ARCHFOE,
-	storageCooldown = Storage.Quest.U11_80.TheSecretLibrary.GhuloshTimer,
 }
 
 monster.health = 300000
@@ -97,8 +96,8 @@ monster.loot = {
 	{ name = "dreaded cleaver", chance = 1000 },
 	{ name = "mercenary sword", chance = 1000 },
 	{ id = 28341, chance = 1000 }, -- tessellated wall
-	{ id = 8908, chance = 1000 }, -- slightly rusted helmet
-	{ id = 8902, chance = 30000 }, -- slightly rusted shield
+	{ name = "slightly rusted shield", chance = 5880 },
+	{ name = "slightly rusted helmet", chance = 35290 },
 	{ name = "epaulette", chance = 500 },
 	{ name = "giant emerald", chance = 500 },
 	{ name = "unliving demonbone", chance = 500 },
