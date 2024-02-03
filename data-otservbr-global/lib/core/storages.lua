@@ -3115,6 +3115,17 @@ GlobalStorage = {
 		Returnedgoods = 60182,
 		Town = 60183,
 	},
+	HeartOfDestruction = {
+		-- Reserved storage from 60186 - 60195
+		ChargedAnomaly = 60186,
+		RuptureResonanceStage = 60187,
+		RuptureResonanceActive = 60188,
+		EradicatorWeak = 60189,
+		EradicatorReleaseT = 60190,
+		OutburstStage = 60191,
+		OutburstHealth = 60192,
+		OutburstChargingKilled = 60193,
+	},
 	FuryGates = 65000,
 	Yakchal = 65001,
 	PitsOfInfernoLevers = 65002,
