@@ -23,12 +23,6 @@ npcConfig.flags = {
 	floorchange = false,
 }
 
-npcConfig.voices = {
-	interval = 15000,
-	chance = 50,
-	{ text = "There's a storm brewing." },
-}
-
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
@@ -57,16 +51,13 @@ npcType.onCloseChannel = function(npc, creature)
 end
 
 -- Travel
-local function addTravelKeyword(keyword, text, cost, destination, action, condition)
-	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = text, cost = cost, discount = "postman" })
-	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, text = "All Hand Hoy!", cost = cost, discount = "postman", destination = destination }, nil, action)
-	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
-end
+local travelKeyword = keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Ye' want a passage back to cormaya? {Yes} or {no}." })
+travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = 400, destination = Position(33356, 31983, 7) })
+travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
 
-addTravelKeyword("passage", "Ye' want a passage to cormaya, right? {Yes} or {no}?", 0, Position(33355, 31985, 7))
-
-npcHandler:setMessage(MESSAGE_GREET, "Ahoy, matey! Looking for a {passage}, eh.")
-
+npcHandler:setMessage(MESSAGE_GREET, "Ahoy, matey! Lookin' for a {passage}, eh.")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye.")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 -- npcType registering the npcConfig table

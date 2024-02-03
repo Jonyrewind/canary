@@ -51,7 +51,6 @@ local potions = {
 		effect = CONST_ME_MAGIC_RED,
 		description = "Only knights may drink this potion.",
 		text = "You feel stronger.",
-		achievement = "Berserker",
 	},
 	[7440] = {
 		vocations = {
@@ -62,7 +61,6 @@ local potions = {
 		effect = CONST_ME_MAGIC_BLUE,
 		description = "Only sorcerers and druids may drink this potion.",
 		text = "You feel smarter.",
-		achievement = "Sharpshooter",
 	},
 	[7443] = {
 		vocations = {
@@ -72,7 +70,6 @@ local potions = {
 		effect = CONST_ME_MAGIC_GREEN,
 		description = "Only paladins may drink this potion.",
 		text = "You feel more accurate.",
-		achievement = "Berserker",
 	},
 	[35563] = {
 		vocations = {
@@ -271,14 +268,12 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 
 		player:addAchievementProgress("Potion Addict", 100000)
 		target:say("Aaaah...", MESSAGE_POTION)
-		local container = Container(item:getParent().uid)
-		local inbox = player:getSlotItem(CONST_SLOT_STORE_INBOX)
-		if fromPosition.x == CONTAINER_POSITION and container ~= inbox and container:getEmptySlots() ~= 0 then
-			if player:getStorageValueByName("talkaction.potions.flask") ~= 1 then
+		local deactivatedFlasks = player:kv():get("talkaction.potions.flask") or false
+		if not deactivatedFlasks then
+			if fromPosition.x == CONTAINER_POSITION then
+				local container = Container(item:getParent().uid)
 				container:addItem(potion.flask, 1)
-			end
-		else
-			if player:getStorageValueByName("talkaction.potions.flask") ~= 1 then
+			else
 				player:addItem(potion.flask, 1)
 			end
 		end
@@ -300,7 +295,6 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 		player:addCondition(potion.condition)
 		player:say(potion.text, MESSAGE_POTION)
 		player:getPosition():sendMagicEffect(potion.effect)
-		player:addAchievementProgress(potion.achievement, 100)
 	end
 
 	if potion.transform then
@@ -308,7 +302,6 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 			item:remove(1)
 			player:addItem(potion.transform.id[math.random(#potion.transform.id)], 1)
 			item:getPosition():sendMagicEffect(potion.effect)
-			player:addAchievementProgress("Demonic Barkeeper", 250)
 			return true
 		end
 	end
