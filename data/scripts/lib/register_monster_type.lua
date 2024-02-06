@@ -549,6 +549,9 @@ registerMonsterType.defenses = function(mtype, mask)
 		if mask.defenses.armor then
 			mtype:armor(mask.defenses.armor)
 		end
+		if mask.defenses.mitigation then
+			mtype:mitigation(mask.defenses.mitigation)
+		end
 		for _, defense in pairs(mask.defenses) do
 			if type(defense) == "table" then
 				mtype:addDefense(readSpell(defense, mtype))
