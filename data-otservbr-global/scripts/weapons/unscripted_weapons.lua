@@ -3,10 +3,10 @@ local weapons = {
 		-- grand sanguine rod
 		itemId = 43886,
 		type = WEAPON_WAND,
-		wandType = "earth",
+		wandType = "ice",
 		level = 600,
 		mana = 20,
-		damage = { 100, 124 },
+		damage = { 250, 300 },
 		unproperly = true,
 		vocation = {
 			{ "Druid", true },

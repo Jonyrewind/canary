@@ -71,6 +71,7 @@ local config = {
 	{ name = "Gloth Fairy", position = Position(33653, 31937, 9) },
 	{ name = "Bullwark", position = Position(33700, 31855, 7) },
 	{ name = "Heart of Destruction", position = Position(32213, 31376, 14) },
+	{ name = "Oberon", position = Position(33326, 31331, 9) },
 }
 
 local teleportBoss = Action()

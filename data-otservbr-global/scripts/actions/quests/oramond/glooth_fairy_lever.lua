@@ -56,9 +56,9 @@ function oramondGloothLever.onUse(player, item, fromPosition, target, toPosition
 			end
 			spec:remove()
 		end
-		setGlobalStorageValue(15560, os.time() + 15 * 60)
+		setGlobalStorageValue(15560, os.time() + 5 * 60)
 		player:say("Everyone in this place will be teleported into Glooth Fairy's hideout in one minute. No way back!!!", TALKTYPE_MONSTER_SAY)
-		addEvent(PrepareEnter, 60 * 1000)
+		addEvent(PrepareEnter, 15 * 1000)
 	end
 
 	item:transform(item.itemid == 8913 and 8914 or 8913)

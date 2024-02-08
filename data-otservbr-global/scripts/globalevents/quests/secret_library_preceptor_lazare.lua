@@ -1,7 +1,7 @@
 local config = {
 	monsterName = "Preceptor Lazare",
-	bossPosition = Position(33373, 31348, 3),
-	centerPosition = Position(33373, 31348, 3),
+	bossPosition = Position(33374, 31338, 3),
+	centerPosition = Position(33374, 31338, 3),
 	rangeX = 50,
 	rangeY = 50,
 	timer = configManager.getNumber(configKeys.RATE_SPAWN) * SCHEDULE_SPAWN_RATE,

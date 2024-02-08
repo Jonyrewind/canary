@@ -26,7 +26,7 @@ local function createVortex()
 						ground:transform(23049)
 					end
 				end
-			end, 10 * 1000, tile:getPosition()) -- 10 seconds
+			end, 20 * 1000, tile:getPosition()) -- 10 seconds
 		end
 	end
 end

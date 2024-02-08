@@ -1572,7 +1572,7 @@
 	<npc centerx="33189" centery="31982" centerz="7" radius="1">
 		<npc name="Scrutinon" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="33356" centery="31984" centerz="7" radius="1">
+	<npc centerx="33356" centery="31982" centerz="7" radius="1">
 		<npc name="Hawkhurst" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="33479" centery="31986" centerz="7" radius="1">
@@ -1839,9 +1839,6 @@
 	<npc centerx="32291" centery="32292" centerz="7" radius="1">
 		<npc name="Eclesius" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32190" centery="32293" centerz="7" radius="1">
-		<npc name="Cledwyn" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="33456" centery="32296" centerz="7" radius="1">
 		<npc name="Dancing Fairy" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1849,7 +1846,10 @@
 		<npc name="Rotem Valos" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32192" centery="32299" centerz="7" radius="1">
-		<npc name="Zethra" x="0" y="0" z="7" spawntime="60" />
+		<npc name="The Lootmonger" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32204" centery="32306" centerz="7" radius="1">
+		<npc name="Cledwyn" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32690" centery="32310" centerz="7" radius="1">
 		<npc name="Lorbas" x="0" y="0" z="7" spawntime="60" />
@@ -2310,6 +2310,9 @@
 	<npc centerx="32657" centery="32189" centerz="8" radius="1">
 		<npc name="Snake Eye" x="0" y="0" z="8" spawntime="60" />
 	</npc>
+	<npc centerx="32345" centery="32206" centerz="8" radius="1">
+		<npc name="The Lootmonger" x="0" y="0" z="8" spawntime="60" />
+	</npc>
 	<npc centerx="32336" centery="32208" centerz="8" radius="1">
 		<npc name="Gamel" x="0" y="0" z="8" spawntime="60" />
 	</npc>
@@ -2321,6 +2324,9 @@
 	</npc>
 	<npc centerx="32255" centery="32216" centerz="8" radius="1">
 		<npc name="Victor" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="32347" centery="32226" centerz="8" radius="1">
+		<npc name="The Lootmonger" x="0" y="0" z="8" spawntime="60" />
 	</npc>
 	<npc centerx="32699" centery="32247" centerz="8" radius="1">
 		<npc name="Stricken Soul" x="0" y="0" z="8" spawntime="60" />
@@ -2370,6 +2376,18 @@
 	<npc centerx="33419" centery="31125" centerz="9" radius="1">
 		<npc name="A Strange Chalice" x="0" y="0" z="9" spawntime="60" />
 	</npc>
+	<npc centerx="33361" centery="31316" centerz="9" radius="1">
+		<npc name="Oberon'S Bile" x="0" y="0" z="9" spawntime="60" />
+	</npc>
+	<npc centerx="33367" centery="31316" centerz="9" radius="1">
+		<npc name="Oberon'S Hate" x="0" y="0" z="9" spawntime="60" />
+	</npc>
+	<npc centerx="33361" centery="31320" centerz="9" radius="1">
+		<npc name="Oberon'S Spite" x="0" y="0" z="9" spawntime="60" />
+	</npc>
+	<npc centerx="33367" centery="31320" centerz="9" radius="1">
+		<npc name="Oberon'S Ire" x="0" y="0" z="9" spawntime="60" />
+	</npc>
 	<npc centerx="33444" centery="31321" centerz="9" radius="1">
 		<npc name="Rock With A Soft Spot" x="0" y="0" z="9" spawntime="60" />
 	</npc>
@@ -2417,18 +2435,6 @@
 	</npc>
 	<npc centerx="33007" centery="31891" centerz="9" radius="1">
 		<npc name="Gnomission" x="0" y="0" z="9" spawntime="60" />
-	</npc>
-	<npc centerx="33361" centery="31316" centerz="9" radius="1">
-		<npc name="Oberon's Bile" x="0" y="0" z="9" spawntime="60" />
-	</npc>
-	<npc centerx="33367" centery="31316" centerz="9" radius="1">
-		<npc name="Oberon's Hate" x="0" y="0" z="9" spawntime="60" />
-	</npc>
-	<npc centerx="33361" centery="31320" centerz="9" radius="1">
-		<npc name="Oberon's Spite" x="0" y="0" z="9" spawntime="60" />
-	</npc>
-	<npc centerx="33367" centery="31320" centerz="9" radius="1">
-		<npc name="Oberon's Ire" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="32664" centery="31894" centerz="9" radius="1">
 		<npc name="Uzgod" x="0" y="0" z="9" spawntime="60" />
@@ -3027,11 +3033,5 @@
 	</npc>
 	<npc centerx="33587" centery="32966" centerz="15" radius="1">
 		<npc name="Gnomish Operative (Raiders)" x="0" y="0" z="15" spawntime="60" />
-	</npc>
-	<npc centerx="33356" centery="31982" centerz="7" radius="1">
-		<npc name="Hawkhurst" x="0" y="0" z="15" spawntime="60" />
-	</npc>
-	<npc centerx="33710" centery="32602" centerz="6" radius="1">
-		<npc name="Hawkhurst Ingol" x="0" y="0" z="15" spawntime="60" />
 	</npc>
 </npcs>

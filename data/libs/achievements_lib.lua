@@ -583,7 +583,7 @@ achievements = {
 	[482] = { name = "Friendly Fire", grade = 1, points = 2, description = "You mastered the fire and tamed a supervulcano!" },
 
 	--
-	[483] = { name = "Dream Warrior", grade = 2, points = 6, description = "You became an acquaintance of the courts of dreams and acquired the right to display your new status and title of 'dream warrior'." },
+	[115] = { name = "Dream Warrior", grade = 2, points = 6, description = "You became an acquaintance of the courts of dreams and acquired the right to display your new status and title of 'dream warrior'." },
 }
 
 ACHIEVEMENT_FIRST = 1

@@ -51,6 +51,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_RED,
 		description = "Only knights may drink this potion.",
 		text = "You feel stronger.",
+		achievement = "Berserker",
 	},
 	[7440] = {
 		vocations = {
@@ -61,6 +62,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_BLUE,
 		description = "Only sorcerers and druids may drink this potion.",
 		text = "You feel smarter.",
+		achievement = "Mastermind",
 	},
 	[7443] = {
 		vocations = {
@@ -70,6 +72,7 @@ local potions = {
 		effect = CONST_ME_MAGIC_GREEN,
 		description = "Only paladins may drink this potion.",
 		text = "You feel more accurate.",
+		achievement = "Sharpshooter",
 	},
 	[35563] = {
 		vocations = {
@@ -296,6 +299,7 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 		player:addCondition(potion.condition)
 		player:say(potion.text, MESSAGE_POTION)
 		player:getPosition():sendMagicEffect(potion.effect)
+		player:addAchievementProgress(potion.achievement, 100)
 	end
 
 	if potion.transform then
