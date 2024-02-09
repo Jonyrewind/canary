@@ -14194,21 +14194,27 @@
 	</item>
 	<item id="5909" article="a" name="white piece of cloth" plural="white pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5910" article="a" name="green piece of cloth" plural="green pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5911" article="a" name="red piece of cloth" plural="red pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5912" article="a" name="blue piece of cloth" plural="blue pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5913" article="a" name="brown piece of cloth" plural="brown pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="5914" article="a" name="yellow piece of cloth" plural="yellow pieces of cloth">
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item fromid="5915" toid="5916" article="a" name="large throne">
 		<attribute key="primarytype" value="constructions"/>
@@ -21385,6 +21391,7 @@
 	<item id="9016" article="a" name="flask of rust remover">
 		<attribute key="description" value="It can be used to clean and polish old and rusty armors"/>
 		<attribute key="weight" value="90"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="9017" article="a" name="coconut shoes">
 		<attribute key="primarytype" value="boots"/>
@@ -21552,10 +21559,12 @@
 	</item>
 	<item id="9057" article="a" name="small topaz" plural="small topazes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="9058" article="a" name="gold ingot" plural="gold ingots">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1800"/>
 	</item>
 	<item id="9059" article="a" name="small lamp">
@@ -27691,26 +27700,32 @@
 	<item id="12551" article="an" name="ominous piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12552" article="a" name="dubious piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12553" article="a" name="voluminous piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12554" article="an" name="obvious piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12555" article="a" name="ludicrous piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12556" article="a" name="luminous piece of cloth">
 		<attribute key="description" value="It seems to be a part of an outfit. Find all six parts to complete the outfit"/>
 		<attribute key="weight" value="500"/>
+		<attribute key="stacksize" value="250"/>
 	</item>
 	<item id="12557" article="a" name="shimmer swimmer">
 		<attribute key="primarytype" value="tools"/>
