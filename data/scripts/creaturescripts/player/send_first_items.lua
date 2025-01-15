@@ -1,4 +1,4 @@
-local config = {
+--[[local config = {
 	[VOCATION.ID.NONE] = {
 		container = {
 			{ 3003, 1 }, -- rope
@@ -111,3 +111,4 @@ function sendFirstItems.onLogin(player)
 end
 
 sendFirstItems:register()
+]]--
