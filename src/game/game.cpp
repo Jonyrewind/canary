@@ -3541,19 +3541,6 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 	}
 }
 
-if (ret != RETURNVALUE_NOERROR) {
-	player->sendCancelMessage(ret);
-	return;
-}
-if (slot == CONST_SLOT_NECKLACE) {
-	player->setNextNecklaceAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-} else if (slot == CONST_SLOT_RING) {
-	player->setNextRingAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-} else {
-	player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-}
-}
-
 void Game::playerMove(uint32_t playerId, Direction direction) {
 	const auto &player = getPlayerByID(playerId);
 	if (!player) {
