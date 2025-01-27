@@ -3383,18 +3383,7 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
-	const ItemType &it = Item::items[itemId];
-	Slots_t slot = getSlotType(it);
-
-	if (slot == CONST_SLOT_NECKLACE) {
-		if (!player->canEquipNecklace()) {
-			return;
-		}
-	} else if (slot == CONST_SLOT_RING) {
-		if (!player->canEquipRing()) {
-			return;
-		}
-	} else if (!player->canDoAction()) {
+	if (!player->canDoAction()) {
 		uint32_t delay = player->getNextActionTime() - OTSYS_TIME();
 		if (delay > 0) {
 			const auto &task = createPlayerTask(
@@ -3410,6 +3399,9 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 	}
 
 	if (player->hasCondition(CONDITION_FEARED)) {
+		/*
+		 *	When player is feared the player can´t equip any items.
+		 */
 		player->sendTextMessage(MESSAGE_FAILURE, "You are feared.");
 		return;
 	}
@@ -3429,27 +3421,30 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
+	const ItemType &it = Item::items[itemId];
+	Slots_t slot = getSlotType(it);
+	Container* originalContainer = nullptr;
+	
 	const auto &slotItem = player->getInventoryItem(slot);
 	const auto &equipItem = searchForItem(backpack, it.id, hasTier, tier);
 	ReturnValue ret = RETURNVALUE_NOERROR;
 
-	Container* originalContainer = nullptr;
-	int originalSlotIndex = -1;
-
-	// Capture the original container and slot index of equipItem
+	// Capture the original container of equipItem
 	if (equipItem) {
-		if (Container* parentContainer = equipItem->getParent()->getContainer()) {
-			originalContainer = parentContainer;
-			originalSlotIndex = equipItem->getParent()->getSlotIndex(equipItem);
-		}
+	    if (auto parentCylinder = equipItem->getParent()) {
+	        // If the parent is a container, get it
+	        originalContainer = parentCylinder->getContainer().get();
+	    }
 	}
 
 	if (slotItem && slotItem->getID() == it.id && (!it.stackable || slotItem->getItemCount() == slotItem->getStackSize() || !equipItem)) {
 		ret = internalMoveItem(slotItem->getParent(), player, CONST_SLOT_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
 		g_logger().debug("Item {} was unequipped", slotItem->getName());
 	} else if (equipItem) {
+		// Shield slot item
 		const auto &rightItem = player->getInventoryItem(CONST_SLOT_RIGHT);
 
+		// Check Ammo item
 		if (it.weaponType == WEAPON_AMMO) {
 			if (rightItem && rightItem->isQuiver()) {
 				ret = internalMoveItem(equipItem->getParent(), rightItem->getContainer(), 0, equipItem, equipItem->getItemCount(), nullptr);
@@ -3458,6 +3453,7 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 			const auto &leftItem = player->getInventoryItem(CONST_SLOT_LEFT);
 
 			const int32_t &slotPosition = equipItem->getSlotPosition();
+			// Checks if a two-handed item is being equipped in the left slot when the right slot is already occupied and move to backpack
 			if (
 				(slotPosition & SLOTP_LEFT)
 				&& (slotPosition & SLOTP_TWO_HAND)
@@ -3469,7 +3465,9 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 				ret = internalCollectManagedItems(player, rightItem, getObjectCategory(rightItem), false);
 			}
 
+			// Check if trying to equip a quiver while another quiver is already equipped in the right slot
 			if (slot == CONST_SLOT_RIGHT && rightItem && rightItem->isQuiver() && it.isQuiver()) {
+				// Replace the existing quiver with the new one
 				ret = internalMoveItem(rightItem->getParent(), player, INDEX_WHEREEVER, rightItem, rightItem->getItemCount(), nullptr);
 				if (ret == RETURNVALUE_NOERROR) {
 					g_logger().debug("Quiver {} was unequipped to equip new quiver", rightItem->getName());
@@ -3477,26 +3475,31 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 					player->sendCancelMessage(ret);
 					return;
 				}
-			} else if (slot == CONST_SLOT_RIGHT && leftItem && leftItem->getSlotPosition() & SLOTP_TWO_HAND) {
-				ret = internalMoveItem(leftItem->getParent(), player, INDEX_WHEREEVER, leftItem, leftItem->getItemCount(), nullptr);
-				if (ret == RETURNVALUE_NOERROR) {
-					g_logger().debug("Two-handed weapon {} was unequipped to equip shield", leftItem->getName());
-				} else {
-					player->sendCancelMessage(ret);
-					return;
+			} else {
+				// Check if trying to equip a shield while a two-handed weapon is equipped in the left slot
+				if (slot == CONST_SLOT_RIGHT && leftItem && leftItem->getSlotPosition() & SLOTP_TWO_HAND) {
+					// Unequip the two-handed weapon from the left slot
+					ret = internalMoveItem(leftItem->getParent(), player, INDEX_WHEREEVER, leftItem, leftItem->getItemCount(), nullptr);
+					if (ret == RETURNVALUE_NOERROR) {
+						g_logger().debug("Two-handed weapon {} was unequipped to equip shield", leftItem->getName());
+					} else {
+						player->sendCancelMessage(ret);
+						return;
+					}
 				}
 			}
 
+			// Move slotItem back to its original container
 			if (slotItem) {
-				if (originalContainer) {
-					// Move the slotItem back to the original container and slot
-					ret = internalMoveItem(slotItem->getParent(), originalContainer, originalSlotIndex, slotItem, slotItem->getItemCount(), nullptr);
-					g_logger().debug("Item {} was moved back to its original container", slotItem->getName());
-				} else {
-					// Default to moving back to the player inventory
-					ret = internalMoveItem(slotItem->getParent(), player, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-					g_logger().debug("Item {} was moved back to player inventory", slotItem->getName());
-				}
+			    if (originalContainer) {
+			        // Move the item back to the original container
+			        ret = internalMoveItem(slotItem->getParent(), originalContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+			        g_logger().debug("Item {} was moved back to its original container", slotItem->getName());
+			    } else {
+			        // Default: move back to the player's inventory
+			        ret = internalMoveItem(slotItem->getParent(), player, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+			        g_logger().debug("Item {} was moved back to player inventory", slotItem->getName());
+			    }
 			}
 
 			ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
@@ -3508,15 +3511,9 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 
 	if (ret != RETURNVALUE_NOERROR) {
 		player->sendCancelMessage(ret);
-		return;
 	}
-	if (slot == CONST_SLOT_NECKLACE) {
-		player->setNextNecklaceAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-	} else if (slot == CONST_SLOT_RING) {
-		player->setNextRingAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-	} else {
-		player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
-	}
+
+	player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
 }
 
 void Game::playerMove(uint32_t playerId, Direction direction) {
