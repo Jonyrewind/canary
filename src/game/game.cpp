@@ -3383,7 +3383,18 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
-	if (!player->canDoAction()) {
+	const ItemType &it = Item::items[itemId];
+	Slots_t slot = getSlotType(it);
+
+	if (slot == CONST_SLOT_NECKLACE) {
+		if (!player->canEquipNecklace()) {
+			return;
+		}
+	} else if (slot == CONST_SLOT_RING) {
+		if (!player->canEquipRing()) {
+			return;
+		}
+	} else if (!player->canDoAction()) {
 		uint32_t delay = player->getNextActionTime() - OTSYS_TIME();
 		if (delay > 0) {
 			const auto &task = createPlayerTask(
@@ -3421,21 +3432,9 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
-	const ItemType &it = Item::items[itemId];
-	Slots_t slot = getSlotType(it);
-	Container* originalContainer = nullptr;
-
 	const auto &slotItem = player->getInventoryItem(slot);
 	const auto &equipItem = searchForItem(backpack, it.id, hasTier, tier);
 	ReturnValue ret = RETURNVALUE_NOERROR;
-
-	// Capture the original container of equipItem
-	if (equipItem) {
-		if (auto parentCylinder = equipItem->getParent()) {
-			// If the parent is a container, get it
-			originalContainer = parentCylinder->getContainer().get();
-		}
-	}
 
 	if (slotItem && slotItem->getID() == it.id && (!it.stackable || slotItem->getItemCount() == slotItem->getStackSize() || !equipItem)) {
 		ret = internalMoveItem(slotItem->getParent(), player, CONST_SLOT_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
@@ -3489,31 +3488,60 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 				}
 			}
 
-			// Move slotItem back to its original container
-			if (slotItem) {
-				if (originalContainer) {
-					// Move the item back to the original container
-					ret = internalMoveItem(slotItem->getParent(), originalContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-					g_logger().debug("Item {} was moved back to its original container", slotItem->getName());
-				} else {
-					// Default: move back to the player's inventory
-					ret = internalMoveItem(slotItem->getParent(), player, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-					g_logger().debug("Item {} was moved back to player inventory", slotItem->getName());
-				}
-			}
+		if (slotItem) {
+		    // Track the original location of the equipped item
+		    const auto equipItemParent = equipItem->getParent();
+		    const auto equipItemIndex = equipItem->getIndex(); // Assuming `getIndex` gets the item's position in the container
+		
+		    // Attempt to move the unequipped item to the original container and index
+		    ret = internalMoveItem(slotItem->getParent(), equipItemParent, equipItemIndex, slotItem, slotItem->getItemCount(), nullptr);
+		
+		    if (ret != RETURNVALUE_NOERROR) {
+		        // If the original container is full, fallback to another location
+		        g_logger().warn("Failed to move item {} to its original location, falling back", slotItem->getName());
+		
+		        // Fallback: Try to move the item to the player's backpack
+		        const auto &fallbackContainer = player->getBackpack(); // Assuming `getBackpack` retrieves the main backpack
+		        if (fallbackContainer) {
+		            ret = internalMoveItem(slotItem->getParent(), fallbackContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+		
+		            if (ret != RETURNVALUE_NOERROR) {
+		                player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+		                g_logger().error("No space to move item {} during equip swap", slotItem->getName());
+		                return; // Exit early if fallback fails
+		            }
+		        } else {
+		            player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+		            g_logger().error("No backpack available to store unequipped item {}", slotItem->getName());
+		            return; // Exit early if no fallback location exists
+		        }
+		    }
+		
+		    g_logger().debug("Item {} was moved to its original location or fallback", slotItem->getName());
+		}
+		
+		// Equip the new item
+		ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
+		if (ret == RETURNVALUE_NOERROR) {
+		    g_logger().debug("Item {} was equipped", equipItem->getName());
+		} else {
+		    player->sendCancelMessage(ret);
+		}
 
-			ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
-			if (ret == RETURNVALUE_NOERROR) {
-				g_logger().debug("Item {} was equipped", equipItem->getName());
-			}
 		}
 	}
 
 	if (ret != RETURNVALUE_NOERROR) {
 		player->sendCancelMessage(ret);
+		return;
 	}
-
-	player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	if (slot == CONST_SLOT_NECKLACE) {
+		player->setNextNecklaceAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	} else if (slot == CONST_SLOT_RING) {
+		player->setNextRingAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	} else {
+		player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	}
 }
 
 void Game::playerMove(uint32_t playerId, Direction direction) {
