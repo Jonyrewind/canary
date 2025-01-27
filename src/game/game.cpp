@@ -3488,46 +3488,45 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 				}
 			}
 
-		if (slotItem) {
-		    // Track the original location of the equipped item
-		    const auto equipItemParent = equipItem->getParent();
-		    const auto equipItemIndex = equipItem->getIndex(); // Assuming `getIndex` gets the item's position in the container
-		
-		    // Attempt to move the unequipped item to the original container and index
-		    ret = internalMoveItem(slotItem->getParent(), equipItemParent, equipItemIndex, slotItem, slotItem->getItemCount(), nullptr);
-		
-		    if (ret != RETURNVALUE_NOERROR) {
-		        // If the original container is full, fallback to another location
-		        g_logger().warn("Failed to move item {} to its original location, falling back", slotItem->getName());
-		
-		        // Fallback: Try to move the item to the player's backpack
-		        const auto &fallbackContainer = player->getBackpack(); // Assuming `getBackpack` retrieves the main backpack
-		        if (fallbackContainer) {
-		            ret = internalMoveItem(slotItem->getParent(), fallbackContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-		
-		            if (ret != RETURNVALUE_NOERROR) {
-		                player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-		                g_logger().error("No space to move item {} during equip swap", slotItem->getName());
-		                return; // Exit early if fallback fails
-		            }
-		        } else {
-		            player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-		            g_logger().error("No backpack available to store unequipped item {}", slotItem->getName());
-		            return; // Exit early if no fallback location exists
-		        }
-		    }
-		
-		    g_logger().debug("Item {} was moved to its original location or fallback", slotItem->getName());
-		}
-		
-		// Equip the new item
-		ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
-		if (ret == RETURNVALUE_NOERROR) {
-		    g_logger().debug("Item {} was equipped", equipItem->getName());
-		} else {
-		    player->sendCancelMessage(ret);
-		}
+			if (slotItem) {
+				// Track the original location of the equipped item
+				const auto equipItemParent = equipItem->getParent();
+				const auto equipItemIndex = equipItem->getIndex(); // Assuming `getIndex` gets the item's position in the container
 
+				// Attempt to move the unequipped item to the original container and index
+				ret = internalMoveItem(slotItem->getParent(), equipItemParent, equipItemIndex, slotItem, slotItem->getItemCount(), nullptr);
+
+				if (ret != RETURNVALUE_NOERROR) {
+					// If the original container is full, fallback to another location
+					g_logger().warn("Failed to move item {} to its original location, falling back", slotItem->getName());
+
+					// Fallback: Try to move the item to the player's backpack
+					const auto &fallbackContainer = player->getBackpack(); // Assuming `getBackpack` retrieves the main backpack
+					if (fallbackContainer) {
+						ret = internalMoveItem(slotItem->getParent(), fallbackContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+
+						if (ret != RETURNVALUE_NOERROR) {
+							player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+							g_logger().error("No space to move item {} during equip swap", slotItem->getName());
+							return; // Exit early if fallback fails
+						}
+					} else {
+						player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+						g_logger().error("No backpack available to store unequipped item {}", slotItem->getName());
+						return; // Exit early if no fallback location exists
+					}
+				}
+
+				g_logger().debug("Item {} was moved to its original location or fallback", slotItem->getName());
+			}
+
+			// Equip the new item
+			ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
+			if (ret == RETURNVALUE_NOERROR) {
+				g_logger().debug("Item {} was equipped", equipItem->getName());
+			} else {
+				player->sendCancelMessage(ret);
+			}
 		}
 	}
 
