@@ -171,9 +171,6 @@
 	<npc centerx="33640" centery="31898" centerz="4" radius="1">
 		<npc name="Fayla" x="0" y="0" z="4" spawntime="60" />
 	</npc>
-	<npc centerx="32055" centery="31900" centerz="4" radius="1">
-		<npc name="Plunderpurse" x="0" y="0" z="4" spawntime="60" />
-	</npc>
 	<npc centerx="33608" centery="31974" centerz="4" radius="1">
 		<npc name="Zeronex" x="0" y="0" z="4" spawntime="60" />
 	</npc>
@@ -282,8 +279,8 @@
 	<npc centerx="32056" centery="31881" centerz="5" radius="1">
 		<npc name="Richard" x="0" y="0" z="5" spawntime="60" />
 	</npc>
-	<npc centerx="32072" centery="31881" centerz="5" radius="1">
-		<npc name="Coltrayne" x="0" y="0" z="5" spawntime="60" />
+	<npc centerx="32071" centery="31882" centerz="5" radius="1">
+		<npc name="Plunderpurse" x="0" y="0" z="5" spawntime="60" />
 	</npc>
 	<npc centerx="33634" centery="31883" centerz="5" radius="1">
 		<npc name="Silas" x="0" y="0" z="5" spawntime="60" />

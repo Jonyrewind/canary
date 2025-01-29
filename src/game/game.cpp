@@ -3383,7 +3383,18 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
-	if (!player->canDoAction()) {
+	const ItemType &it = Item::items[itemId];
+	Slots_t slot = getSlotType(it);
+
+	if (slot == CONST_SLOT_NECKLACE) {
+		if (!player->canEquipNecklace()) {
+			return;
+		}
+	} else if (slot == CONST_SLOT_RING) {
+		if (!player->canEquipRing()) {
+			return;
+		}
+	} else if (!player->canDoAction()) {
 		uint32_t delay = player->getNextActionTime() - OTSYS_TIME();
 		if (delay > 0) {
 			const auto &task = createPlayerTask(
@@ -3400,7 +3411,7 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 
 	if (player->hasCondition(CONDITION_FEARED)) {
 		/*
-		 *	When player is feared the player can´t equip any items.
+		 * When player is feared the player can't equip any items.
 		 */
 		player->sendTextMessage(MESSAGE_FAILURE, "You are feared.");
 		return;
@@ -3420,9 +3431,6 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
-
-	const ItemType &it = Item::items[itemId];
-	Slots_t slot = getSlotType(it);
 
 	const auto &slotItem = player->getInventoryItem(slot);
 	const auto &equipItem = searchForItem(backpack, it.id, hasTier, tier);
@@ -3481,22 +3489,56 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 			}
 
 			if (slotItem) {
-				ret = internalMoveItem(slotItem->getParent(), player, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-				g_logger().debug("Item {} was moved back to player", slotItem->getName());
+				// Track the original location of the equipped item
+				const auto equipItemParent = equipItem->getParent();
+				// Attempt to move the unequipped item to the original container and index
+				ret = internalMoveItem(slotItem->getParent(), equipItemParent, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+
+				if (ret != RETURNVALUE_NOERROR) {
+					// If the original container is full, fallback to another location
+					g_logger().warn("Failed to move item {} to its original location, falling back", slotItem->getName());
+
+					// Fallback: Try to move the item to the player's backpack
+					const auto &fallbackContainer = player->getInventoryItem(CONST_SLOT_BACKPACK)->getContainer(); // Assuming this is the player's backpack
+					if (fallbackContainer) {
+						ret = internalMoveItem(slotItem->getParent(), fallbackContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
+
+						if (ret != RETURNVALUE_NOERROR) {
+							player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+							g_logger().error("No space to move item {} during equip swap", slotItem->getName());
+							return; // Exit early if fallback fails
+						}
+					} else {
+						player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+						g_logger().error("No backpack available to store unequipped item {}", slotItem->getName());
+						return; // Exit early if no fallback location exists
+					}
+				}
+
+				g_logger().debug("Item {} was moved to its original location or fallback", slotItem->getName());
 			}
 
+			// Equip the new item
 			ret = internalMoveItem(equipItem->getParent(), player, slot, equipItem, equipItem->getItemCount(), nullptr);
 			if (ret == RETURNVALUE_NOERROR) {
 				g_logger().debug("Item {} was equipped", equipItem->getName());
+			} else {
+				player->sendCancelMessage(ret);
 			}
 		}
 	}
 
 	if (ret != RETURNVALUE_NOERROR) {
 		player->sendCancelMessage(ret);
+		return;
 	}
-
-	player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	if (slot == CONST_SLOT_NECKLACE) {
+		player->setNextNecklaceAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	} else if (slot == CONST_SLOT_RING) {
+		player->setNextRingAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	} else {
+		player->setNextAction(OTSYS_TIME() + g_configManager().getNumber(ACTIONS_DELAY_INTERVAL));
+	}
 }
 
 void Game::playerMove(uint32_t playerId, Direction direction) {
@@ -7635,8 +7677,12 @@ void Game::buildMessageAsTarget(
 	const std::string &damageString
 ) const {
 	ss.str({});
-	auto attackMsg = damage.critical ? "critical " : "";
-	auto article = damage.critical ? "a" : "an";
+	const auto &monster = attacker ? attacker->getMonster() : nullptr;
+	bool handleSoulPit = monster ? monster->getSoulPit() && monster->getForgeStack() == 40 : false;
+
+	std::string attackMsg = damage.critical && !handleSoulPit ? "critical " : "";
+	std::string article = damage.critical && !handleSoulPit ? "a" : "an";
+
 	ss << "You lose " << damageString;
 	if (!attacker) {
 		ss << '.';
@@ -7647,6 +7693,9 @@ void Game::buildMessageAsTarget(
 	}
 	if (damage.extension) {
 		ss << " " << damage.exString;
+	}
+	if (handleSoulPit && damage.critical) {
+		ss << " (Soulpit Crit)";
 	}
 	message.type = MESSAGE_DAMAGE_RECEIVED;
 	message.text = ss.str();
@@ -9069,8 +9118,7 @@ void Game::playerCreateMarketOffer(uint32_t playerId, uint8_t type, uint16_t ite
 	uint64_t fee = std::clamp(totalFee, uint64_t(20), maxFee); // Limit between 20 and maxFee
 
 	if (type == MARKETACTION_SELL) {
-		uint64_t totalPriceWithFee = totalPrice + fee;
-		if (totalPriceWithFee > (player->getMoney() + player->getBankBalance())) {
+		if (fee > (player->getMoney() + player->getBankBalance())) {
 			offerStatus << "Fee is greater than player money";
 			return;
 		}
