@@ -1,5 +1,56 @@
 <?xml version="1.0"?>
 <monsters>
+	<monster centerx="1039" centery="792" centerz="13" radius="1">
+		<monster name="Crazed Summer Rearguard" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Crazed Summer Vanguard" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1043" centery="792" centerz="13" radius="1">
+		<monster name="Crazed Winter Rearguard" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Crazed Winter Vanguard" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1047" centery="792" centerz="13" radius="1">
+		<monster name="Crypt Warden" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Sphinx" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1051" centery="792" centerz="13" radius="1">
+		<monster name="Adult Goanna" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Young Goanna" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1059" centery="792" centerz="13" radius="1">
+		<monster name="Choking Fear" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Retching Horror" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1063" centery="792" centerz="13" radius="1">
+		<monster name="Sight Of Surrender" x="0" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1067" centery="792" centerz="13" radius="1">
+		<monster name="Terrorsleep" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Feversleep" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1071" centery="792" centerz="13" radius="1">
+		<monster name="Crape Man" x="-1" y="1" z="13" spawntime="60" />
+		<monster name="Harpy" x="0" y="1" z="13" spawntime="60" />
+		<monster name="Rhindeer" x="1" y="1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1054" centery="793" centerz="13" radius="1">
+		<monster name="Frazzlemaw" x="0" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1056" centery="793" centerz="13" radius="1">
+		<monster name="Guzzlemaw" x="0" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1039" centery="806" centerz="13" radius="1">
+		<monster name="Liodile" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Carnivostrich" x="1" y="-1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1043" centery="806" centerz="13" radius="1">
+		<monster name="Makara" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Naga Archer" x="0" y="-1" z="13" spawntime="60" />
+		<monster name="Naga Warrior" x="1" y="-1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1047" centery="806" centerz="13" radius="1">
+		<monster name="Two-Headed Turtle" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Foam Stalker" x="1" y="-1" z="13" spawntime="60" />
+	</monster>
 	<monster centerx="1039" centery="793" centerz="14" radius="1">
 		<monster name="Demon" x="0" y="0" z="14" spawntime="60" />
 	</monster>
