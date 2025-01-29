@@ -77874,9 +77874,12 @@ Granted by TibiaGoals.com"/>
 		<attribute key="loottype" value="tools"/>
 		<attribute key="weight" value="30"/>
 	</item>
+<<<<<<< Updated upstream
 	<item id="47367" article="a" name="large obelisk">
 		<attribute key="primarytype" value="pillars"/>
 	</item>
+=======
+>>>>>>> Stashed changes
 	<item id="47368" article="an" name="amber slayer">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
@@ -77908,9 +77911,12 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
+<<<<<<< Updated upstream
 	<item id="47379" article="a" name="large obelisk">
 		<attribute key="primarytype" value="pillars"/>
 	</item>
+=======
+>>>>>>> Stashed changes
 	<item id="47381" article="an" name="orc warlord soul core">
 		<attribute key="primarytype" value="soul cores"/>
 		<attribute key="description" value="Offers a soul to the Soulpit. Combine with an exalted core to turn it into a lesser soul core."/>
