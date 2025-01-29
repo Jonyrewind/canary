@@ -3432,24 +3432,9 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 		return;
 	}
 
-<<<<<<< Updated upstream
-=======
-	const ItemType &it = Item::items[itemId];
-	Slots_t slot = getSlotType(it);
-	Container* originalContainer = nullptr;
-	
->>>>>>> Stashed changes
 	const auto &slotItem = player->getInventoryItem(slot);
 	const auto &equipItem = searchForItem(backpack, it.id, hasTier, tier);
 	ReturnValue ret = RETURNVALUE_NOERROR;
-
-	// Capture the original container of equipItem
-	if (equipItem) {
-	    if (auto parentCylinder = equipItem->getParent()) {
-	        // If the parent is a container, get it
-	        originalContainer = parentCylinder->getContainer().get();
-	    }
-	}
 
 	if (slotItem && slotItem->getID() == it.id && (!it.stackable || slotItem->getItemCount() == slotItem->getStackSize() || !equipItem)) {
 		ret = internalMoveItem(slotItem->getParent(), player, CONST_SLOT_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
@@ -3503,9 +3488,7 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 				}
 			}
 
-			// Move slotItem back to its original container
 			if (slotItem) {
-<<<<<<< Updated upstream
 				// Track the original location of the equipped item
 				const auto equipItemParent = equipItem->getParent();
 				// Attempt to move the unequipped item to the original container and index
@@ -3533,17 +3516,6 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
 				}
 
 				g_logger().debug("Item {} was moved to its original location or fallback", slotItem->getName());
-=======
-			    if (originalContainer) {
-			        // Move the item back to the original container
-			        ret = internalMoveItem(slotItem->getParent(), originalContainer, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-			        g_logger().debug("Item {} was moved back to its original container", slotItem->getName());
-			    } else {
-			        // Default: move back to the player's inventory
-			        ret = internalMoveItem(slotItem->getParent(), player, INDEX_WHEREEVER, slotItem, slotItem->getItemCount(), nullptr);
-			        g_logger().debug("Item {} was moved back to player inventory", slotItem->getName());
-			    }
->>>>>>> Stashed changes
 			}
 
 			// Equip the new item

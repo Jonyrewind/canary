@@ -13,11 +13,7 @@
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>
 	<event name="Rapid Respawn" startdate="01/01/2025" enddate="03/01/2025" script="" >
-<<<<<<< Updated upstream
 		<ingame exprate="100" lootrate="100" spawnrate="110" skillrate="100" />
-=======
-		<ingame exprate="100" lootrate="100" spawnrate="150" skillrate="100" />
->>>>>>> Stashed changes
 		<description description="Spawn Rate Event! Monsters respawn at a faster rate" />
 		<colors colordark="#24657b" colorlight="#24657b" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
