@@ -8,18 +8,18 @@ function regenerateStamina.onLogin(player)
 	local lastLogout = player:getLastLogout()
 	local offlineTime = lastLogout ~= 0 and math.min(os.time() - lastLogout, 86400 * 21) or 0
 
-	offlineTime = offlineTime - 600
+	offlineTime = offlineTime - 300
 
-	if offlineTime < 180 then
+	if offlineTime < 120 then
 		return true
 	end
 
 	local staminaMinutes = player:getStamina()
 	local maxNormalStaminaRegen = 2340 - math.min(2340, staminaMinutes)
-	local regainStaminaMinutes = offlineTime / 180
+	local regainStaminaMinutes = offlineTime / 120
 
 	if regainStaminaMinutes > maxNormalStaminaRegen then
-		local happyHourStaminaRegen = (offlineTime - (maxNormalStaminaRegen * 180)) / 360
+		local happyHourStaminaRegen = (offlineTime - (maxNormalStaminaRegen * 180)) / 180
 		staminaMinutes = math.min(2520, math.max(2340, staminaMinutes) + happyHourStaminaRegen)
 	else
 		staminaMinutes = staminaMinutes + regainStaminaMinutes

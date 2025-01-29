@@ -20,6 +20,10 @@ monster.corpse = 0
 monster.speed = 75
 monster.manaCost = 0
 
+monster.events = {
+	"blood_death",
+}
+
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8,

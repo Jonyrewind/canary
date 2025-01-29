@@ -462,7 +462,7 @@ TeleportUnique = {
 		destination = { x = 33618, y = 32523, z = 15 },
 		effect = CONST_ME_TELEPORT,
 	},
-	-- Grave Dange Quest
+	-- Grave Danger Quest
 	[39009] = {
 		itemId = 22761,
 		itemPos = { x = 33451, y = 31562, z = 13 },
@@ -581,6 +581,12 @@ TeleportUnique = {
 		itemId = 22761,
 		itemPos = { x = 33435, y = 31562, z = 13 },
 		destination = { x = 33430, y = 31564, z = 13 },
+		effect = CONST_ME_TELEPORT,
+	},
+	[39029] = {
+		itemId = 22761,
+		itemPos = { x = 33463, y = 31550, z = 13 },
+		destination = { x = 33462, y = 31555, z = 13 },
 		effect = CONST_ME_TELEPORT,
 	},
 }

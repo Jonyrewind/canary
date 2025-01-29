@@ -175,7 +175,10 @@ local questTable = {
 	{ storageName = "TheIceIslands.Mission12", storage = Storage.Quest.U8_0.TheIceIslands.Mission12, storageValue = 6 },
 	{ storageName = "TheIceIslands.PickAmount", storage = Storage.Quest.U8_0.TheIceIslands.PickAmount, storageValue = 3 },
 	{ storageName = "TheIceIslands.yakchalDoor", storage = Storage.Quest.U8_0.TheIceIslands.yakchalDoor, storageValue = 1 },
-	{ storageName = "TheInquisitionQuest.Questline", storage = Storage.Quest.U8_2.TheInquisitionQuest.Questline, storageValue = 25 },
+	{ storageName = "TheIceIslands.FormorgarMinesDoor", storage = Storage.Quest.U8_0.TheIceIslands.FormorgarMinesDoor, storageValue = 1 },
+	{ storageName = "TheIceIslands.FormorgarMinesHoistSkeleton", storage = Storage.Quest.U8_0.TheIceIslands.FormorgarMinesHoistSkeleton, storageValue = 1 },
+	{ storageName = "TheIceIslands.FormorgarMinesHoistChest", storage = Storage.Quest.U8_0.TheIceIslands.FormorgarMinesHoistChest, storageValue = 1 },
+	{ storageName = "TheInquisitionQuest.Questline", storage = Storage.Quest.U8_2.TheInquisitionQuest.Questline, storageValue = 21 },
 	{ storageName = "TheInquisitionQuest.Mission01", storage = Storage.Quest.U8_2.TheInquisitionQuest.Mission01, storageValue = 7 },
 	{ storageName = "TheInquisitionQuest.Mission02", storage = Storage.Quest.U8_2.TheInquisitionQuest.Mission02, storageValue = 3 },
 	{ storageName = "TheInquisitionQuest.Mission03", storage = Storage.Quest.U8_2.TheInquisitionQuest.Mission03, storageValue = 6 },
@@ -210,6 +213,7 @@ local questTable = {
 	{ storageName = "TheNewFrontier.Mission05.Wyrdin", storage = Storage.Quest.U8_54.TheNewFrontier.Mission05.Wyrdin, storageValue = 1 },
 	{ storageName = "TheNewFrontier.Mission05.Telas", storage = Storage.Quest.U8_54.TheNewFrontier.Mission05.Telas, storageValue = 1 },
 	{ storageName = "TheNewFrontier.Mission05.Humgolf", storage = Storage.Quest.U8_54.TheNewFrontier.Mission05.Humgolf, storageValue = 1 },
+	{ storageName = "TheNewFrontier.ZaoPalaceDoors", storage = Storage.Quest.U8_54.TheNewFrontier.ZaoPalaceDoors, storageValue = 1 },
 	{ storageName = "TheShatteredIsles.DefaultStart", storage = Storage.Quest.U7_8.TheShatteredIsles.DefaultStart, storageValue = 3 },
 	{ storageName = "TheShatteredIsles.TheGovernorDaughter", storage = Storage.Quest.U7_8.TheShatteredIsles.TheGovernorDaughter, storageValue = 3 },
 	{ storageName = "TheShatteredIsles.TheErrand", storage = Storage.Quest.U7_8.TheShatteredIsles.TheErrand, storageValue = 2 },
@@ -354,6 +358,7 @@ local questTable = {
 	{ storageName = "TheWhiteRavenMonastery.Passage", storage = Storage.Quest.U7_24.TheWhiteRavenMonastery.Passage, storageValue = 1 },
 	{ storageName = "TheWhiteRavenMonastery.Diary", storage = Storage.Quest.U7_24.TheWhiteRavenMonastery.Diary, storageValue = 2 },
 	{ storageName = "TheWhiteRavenMonastery.Door", storage = Storage.Quest.U7_24.TheWhiteRavenMonastery.Door, storageValue = 1 },
+	{ storageName = "TheSecretLibrary.Door", storage = Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses, storageValue = 5 },
 }
 
 -- from Position: (33201, 31762, 1)

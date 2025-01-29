@@ -8,9 +8,9 @@ if not ForgeMonster then
 		},
 		chanceToAppear = {
 			fiendish = 80,
-			influenced = 20,
+			influenced = 40,
 		},
-		maxFiendish = 3,
+		maxFiendish = 8,
 		eventName = "ForgeMonster",
 	}
 end

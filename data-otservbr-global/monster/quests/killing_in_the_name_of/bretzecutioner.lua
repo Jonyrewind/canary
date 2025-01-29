@@ -88,6 +88,7 @@ monster.loot = {
 	{ id = 3421, chance = 16000 }, -- dark shield
 	{ id = 6299, chance = 100000 }, -- death ring
 	{ id = 5741, chance = 4000 }, -- skull helmet
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

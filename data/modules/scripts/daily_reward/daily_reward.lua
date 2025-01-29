@@ -107,46 +107,54 @@ DailyReward = {
 		[1] = {
 			type = DAILY_REWARD_TYPE_ITEM,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
+			items = { 22516, 22721, 36725, 36728, 36726, 36723, 28484, 28485, 28486 },
 			freeAccount = 5,
 			premiumAccount = 10,
+			movable = true,
 		},
 		[2] = {
 			type = DAILY_REWARD_TYPE_ITEM,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
+			items = { 22516, 22721, 36725, 36728, 36726, 36723, 28484, 28485, 28486 },
 			freeAccount = 5,
 			premiumAccount = 10,
+			movable = true,
 		},
 		[3] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			items = { 22516, 22721, 36725, 36728, 36726, 36723, 28484, 28485, 28486 },
+			freeAccount = 5,
+			premiumAccount = 10,
+			movable = true,
 		},
 		[4] = {
 			type = DAILY_REWARD_TYPE_ITEM,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
-			freeAccount = 10,
-			premiumAccount = 20,
+			items = { 22516, 22721, 36725, 36728, 36726, 36723, 28484, 28485, 28486 },
+			freeAccount = 5,
+			premiumAccount = 10,
+			movable = true,
 		},
 		[5] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			freeAccount = 2,
+			premiumAccount = 5,
 		},
 		[6] = {
 			type = DAILY_REWARD_TYPE_ITEM,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
 			items = { 28540, 28541, 28542, 28543, 28544, 28545, 44064 },
-			freeAccount = 1,
-			premiumAccount = 2,
-			itemCharges = 50,
+			freeAccount = 2,
+			premiumAccount = 4,
+			itemCharges = 500,
 		},
 		[7] = {
 			type = DAILY_REWARD_TYPE_XP_BOOST,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 10,
-			premiumAccount = 30,
+			freeAccount = 30,
+			premiumAccount = 60,
 		},
 		-- Storage reward template
 		--[[[5] = {
@@ -464,12 +472,16 @@ function Player.selectDailyReward(self, msg)
 			if dailyTable.itemCharges then
 				local inboxItem = inbox:addItem(v.itemId, dailyTable.itemCharges) -- adding charges for each item
 				if inboxItem then
-					inboxItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					if not dailyTable.movable then
+						inboxItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					end
 				end
 			else
 				local inboxItem = inbox:addItem(v.itemId, v.count) -- adding single item w/o charges
 				if inboxItem then
-					inboxItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					if not dailyTable.movable then
+						inboxItem:setAttribute(ITEM_ATTRIBUTE_STORE, systemTime())
+					end
 				end
 			end
 			description = description .. "" .. rewardCount .. "x " .. ItemType(v.itemId):getName() .. (k ~= columnsPicked and ", " or ".")

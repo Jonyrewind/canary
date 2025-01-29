@@ -1,6 +1,6 @@
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 5.5)
-	local max = (level / 5) + (maglevel * 9)
+	local min = (level / 3) + (maglevel * 5.5)
+	local max = (level / 3) + (maglevel * 9)
 	return -min, -max
 end
 
@@ -46,8 +46,8 @@ spell:mana(140)
 spell:isPremium(false)
 spell:needDirection(true)
 spell:blockWalls(true)
-spell:cooldown(10 * 1000)
-spell:groupCooldown(2 * 1000, 6 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000, 1 * 1000)
 spell:needLearn(true)
 spell:vocation("sorcerer;true", "master sorcerer;true")
 spell:register()

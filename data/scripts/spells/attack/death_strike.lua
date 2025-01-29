@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MORTAREA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_DEATH)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 1.403) + 8
-	local max = (level / 5) + (maglevel * 2.203) + 13
+	local min = (level / 3) + (maglevel * 1.403) + 8
+	local max = (level / 3) + (maglevel * 2.203) + 13
 	return -min, -max
 end
 
@@ -29,8 +29,8 @@ spell:isPremium(true)
 spell:range(3)
 spell:needCasterTargetOrDirection(true)
 spell:blockWalls(true)
-spell:cooldown(2 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("sorcerer;true", "master sorcerer;true")
 spell:register()

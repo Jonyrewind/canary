@@ -73,6 +73,7 @@ monster.loot = {
 	{ id = 3304, chance = 14800 }, -- crowbar
 	{ id = 3033, chance = 7650, maxCount = 2 }, -- small amethyst
 	{ id = 3275, chance = 7650 }, -- double axe
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

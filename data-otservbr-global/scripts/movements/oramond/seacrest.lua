@@ -8,10 +8,10 @@ function oramondSeacrest.onStepIn(creature, item, position, fromPosition)
 
 	local headItem = player:getSlotItem(CONST_SLOT_HEAD)
 	if headItem and table.contains({ 5460, 11585, 13995 }, headItem.itemid) then
-		player:teleportTo(Position(33552, 31775, 13))
+		player:teleportTo(Position(33542, 31632, 14))
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You enter the seacrest ground.")
 	else
-		player:teleportTo(Position(33544, 31861, 7))
+		player:teleportTo(Position(33545, 31860, 7))
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You must wear an underwater exploration helmet in order to dive.")
 	end
 	return true

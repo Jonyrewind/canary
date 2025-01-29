@@ -61,15 +61,14 @@ local function greetCallback(npc, creature, message)
 		return false
 	end
 
-	--[[	if player:getStorageValue(Storage.Quest.U7_4.DjinnWar.EfreetFaction.Start) == 1 then
+	if player:getStorageValue(Storage.Quest.U7_4.DjinnWar.EfreetFaction.Start) == 1 then
 		npcHandler:say({
 			"Hahahaha! ...",
 			"|PLAYERNAME|, that almost sounded like the word of greeting. Humans - cute they are!",
 		}, npc, creature)
 		endConversationWithDelay(npcHandler, npc, creature)
 		return false
-	end]]
-	--
+	end
 
 	npcHandler:say("<Sighs> Another {customer}! I've only just sat down! What is it, |PLAYERNAME|?", npc, creature)
 	npcHandler:setInteraction(npc, creature)

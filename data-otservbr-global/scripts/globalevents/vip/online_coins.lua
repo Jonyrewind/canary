@@ -13,7 +13,7 @@ local config = {
 	},
 
 	-- system will distribute when the player accumulate x coins
-	awardOn = 5,
+	awardOn = 50,
 }
 
 local onlineCoinsEvent = GlobalEvent("GainCoinInterval")

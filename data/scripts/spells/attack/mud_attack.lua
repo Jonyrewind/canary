@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_CARNIPHILA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLEARTH)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 0.4) + 3
-	local max = (level / 5) + (maglevel * 0.7) + 5
+	local min = (level / 3) + (maglevel * 0.4) + 3
+	local max = (level / 3) + (maglevel * 0.7) + 5
 	return -min, -max
 end
 
@@ -30,8 +30,8 @@ spell:isPremium(false)
 spell:range(3)
 spell:needCasterTargetOrDirection(true)
 spell:blockWalls(true)
-spell:cooldown(2 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("druid;true", "elder druid;true")
 spell:register()

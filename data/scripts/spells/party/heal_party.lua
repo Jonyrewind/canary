@@ -7,7 +7,7 @@ local condition = Condition(CONDITION_REGENERATION)
 condition:setParameter(CONDITION_PARAM_SUBID, 1)
 condition:setParameter(CONDITION_PARAM_BUFF_SPELL, 1)
 condition:setParameter(CONDITION_PARAM_TICKS, 2 * 60 * 1000)
-condition:setParameter(CONDITION_PARAM_HEALTHGAIN, 20)
+condition:setParameter(CONDITION_PARAM_HEALTHGAIN, 120)
 condition:setParameter(CONDITION_PARAM_HEALTHTICKS, 2000)
 
 local baseMana = 120

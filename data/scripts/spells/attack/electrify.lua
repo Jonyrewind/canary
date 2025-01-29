@@ -5,7 +5,7 @@ combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ENERGY)
 
 local condition = Condition(CONDITION_ENERGY)
 condition:setParameter(CONDITION_PARAM_DELAYED, 1)
-condition:addDamage(25, 3000, -45)
+condition:addDamage(25, 3000, -90)
 combat:addCondition(condition)
 
 local spell = Spell("instant")

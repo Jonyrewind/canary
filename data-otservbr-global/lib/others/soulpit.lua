@@ -124,7 +124,6 @@ SoulPit = {
 				for _, spell in pairs(SoulPit.bossAbilities.opressorSoulPit.spells) do
 					monster:addAttackSpell(readSpell(spell, monster:getType()))
 				end
-
 				return true
 			end,
 		},
@@ -139,14 +138,12 @@ SoulPit = {
 	bossPosition = Position(32376, 31144, 8),
 	exit = Position(32373, 31158, 8),
 	zone = Zone("soulpit"),
-
 	getMonsterVariationNameBySoulCore = function(searchName)
 		for mTypeName, soulCoreName in pairs(SoulPit.SoulCoresConfiguration.monsterVariationsSoulCore) do
 			if soulCoreName == searchName then
 				return mTypeName
 			end
 		end
-
 		return nil
 	end,
 	getSoulCoreMonster = function(name)
@@ -155,7 +152,6 @@ SoulPit = {
 	onFuseSoulCores = function(player, item, target)
 		local itemName = item:getName()
 		local targetItemName = target:getName()
-
 		if SoulPit.getSoulCoreMonster(itemName) and SoulPit.getSoulCoreMonster(targetItemName) then
 			local randomSoulCore = SoulPit.soulCores[math.random(#SoulPit.soulCores)]
 			player:addItem(randomSoulCore:getId(), 1)
@@ -165,10 +161,8 @@ SoulPit = {
 			target:remove(1)
 			return true
 		end
-
 		return false
 	end,
 }
-
 SoulPit.zone:addArea(Position(32362, 31132, 8), Position(32390, 31153, 8))
 SoulPit.zone:setRemoveDestination(SoulPit.exit)

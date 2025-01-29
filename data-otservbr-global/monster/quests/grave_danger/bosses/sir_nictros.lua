@@ -21,8 +21,8 @@ monster.speed = 125
 monster.manaCost = 0
 
 monster.events = {
-	"sir_nictros_health",
-	"brothers_summon",
+--[[	"sir_nictros_health",
+	"brothers_summon",]]--
 }
 
 monster.changeTarget = {
@@ -57,10 +57,6 @@ monster.flags = {
 	canWalkOnEnergy = true,
 	canWalkOnFire = true,
 	canWalkOnPoison = true,
-}
-
-monster.events = {
-	-- "Sir_Baeloc_Sir_NictrosCharge"
 }
 
 monster.light = {

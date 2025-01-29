@@ -7,7 +7,7 @@ combat:setArea(createCombatArea(AREA_WAVE6, AREADIAGONAL_WAVE6))
 
 function onGetFormulaValues(player, skill, attack, factor)
 	local skillTotal = skill * attack
-	local levelTotal = player:getLevel() / 5
+	local levelTotal = player:getLevel() / 3
 	return -(((skillTotal * 0.04) + 31) + levelTotal) * 1.1, -(((skillTotal * 0.08) + 45) + levelTotal) * 1.1 -- TODO : Use New Real Formula instead of an %
 end
 
@@ -29,8 +29,8 @@ spell:mana(200)
 spell:isPremium(true)
 spell:needDirection(true)
 spell:needWeapon(true)
-spell:cooldown(6 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("knight;true", "elite knight;true")
 spell:register()

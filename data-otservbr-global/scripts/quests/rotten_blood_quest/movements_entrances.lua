@@ -18,25 +18,25 @@ local entrances = {
 	{ position = Position(33069, 32405, 15), destination = Position(34106, 32052, 13) }, -- Bakragore leave room
 }
 
-local teleportEvent = MoveEvent()
+local teleportEvent = Action()
 
-function teleportEvent.onStepIn(creature, item, position, fromPosition)
+function teleportEvent.onUse(creature, item, fromPosition, target, toPosition, isHotkey)
 	local player = creature:getPlayer()
 	if not player then
 		return false
 	end
-
+	
 	local access = player:kv():scoped("rotten-blood-quest"):get("access") or 0
 	if access < 5 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You should pay respect to the Bloodshade guarding this realm before entering.")
-		player:teleportTo(fromPosition, true)
 		return false
 	end
 
 	for _, entrance in pairs(entrances) do
-		if entrance.position == position then
+		if entrance.position == item:getPosition() then
 			player:teleportTo(entrance.destination)
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You begin to feel the dark power of the rot.")
 			break
 		end
 	end
@@ -44,7 +44,7 @@ function teleportEvent.onStepIn(creature, item, position, fromPosition)
 	return true
 end
 
-teleportEvent:type("stepin")
+
 for _, entrance in pairs(entrances) do
 	teleportEvent:position(entrance.position)
 end
@@ -56,9 +56,9 @@ local entrance = {
 	destination = Position(33071, 32403, 15), -- Bakragore lever room
 }
 
-local bakragoreEntrance = MoveEvent()
+local bakragoreEntrance = Action()
 
-function bakragoreEntrance.onStepIn(creature, item, position, fromPosition)
+function bakragoreEntrance.onUse(creature, item, fromPosition, target, toPosition, isHotkey)
 	local player = creature:getPlayer()
 	if not player then
 		return false
@@ -66,7 +66,6 @@ function bakragoreEntrance.onStepIn(creature, item, position, fromPosition)
 
 	if player:getLevel() < 250 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You need at least level 250 to enter.")
-		player:teleportTo(fromPosition, true)
 		return false
 	end
 
@@ -80,18 +79,16 @@ function bakragoreEntrance.onStepIn(creature, item, position, fromPosition)
 
 	if text ~= "" then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You still need to defeat: " .. text)
-		player:teleportTo(fromPosition, true)
 		return false
 	end
 
 	local taints = player:kv():scoped("rotten-blood-quest"):get("taints") or 0
 	if taints < 4 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("You have %i taints.", taints))
-		player:teleportTo(fromPosition, true)
 		return false
 	end
 
-	if entrance.position == position then
+	if entrance.position == item:getPosition() then
 		player:teleportTo(entrance.destination)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	end
@@ -99,6 +96,5 @@ function bakragoreEntrance.onStepIn(creature, item, position, fromPosition)
 	return true
 end
 
-bakragoreEntrance:type("stepin")
 bakragoreEntrance:position(entrance.position)
 bakragoreEntrance:register()

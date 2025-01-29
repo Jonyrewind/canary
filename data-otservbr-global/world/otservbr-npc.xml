@@ -429,8 +429,8 @@
 	<npc centerx="32341" centery="31109" centerz="6" radius="1">
 		<npc name="Captain Breezelda" x="0" y="0" z="6" spawntime="60" />
 	</npc>
-	<npc centerx="32353" centery="31124" centerz="6" radius="1">
-		<npc name="Captain Haba" x="0" y="0" z="6" spawntime="60" />
+	<npc centerx="32352" centery="31124" centerz="6" radius="1">
+		<npc name="Captain Haba" x="1" y="0" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32789" centery="31236" centerz="6" radius="1">
 		<npc name="Gree Dee" x="0" y="0" z="6" spawntime="60" />
@@ -767,6 +767,9 @@
 	</npc>
 	<npc centerx="32425" centery="32223" centerz="6" radius="1">
 		<npc name="Tim, The Guard" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="32372" centery="32240" centerz="6" radius="1">
+		<npc name="Imbuement Assistant" x="0" y="1" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32343" centery="32245" centerz="6" radius="1">
 		<npc name="Galuna" x="0" y="0" z="6" spawntime="60" />
@@ -2868,6 +2871,9 @@
 	</npc>
 	<npc centerx="33024" centery="31554" centerz="14" radius="1">
 		<npc name="Thorgrin" x="0" y="0" z="14" spawntime="60" />
+	</npc>
+	<npc centerx="33552" centery="31628" centerz="14" radius="5">
+		<npc name="Guardian Of The Deep Seas" x="1" y="0" z="14" spawntime="60" />
 	</npc>
 	<npc centerx="32260" centery="31866" centerz="14" radius="1">
 		<npc name="The Queen Of The Banshees" x="0" y="0" z="14" spawntime="60" />

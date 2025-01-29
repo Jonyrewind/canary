@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICEAREA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ICE)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 1.81) + 10
-	local max = (level / 5) + (maglevel * 3) + 18
+	local min = (level / 5) + (maglevel * 2.81) + 10
+	local max = (level / 5) + (maglevel * 4) + 18
 	return -min, -max
 end
 
@@ -28,6 +28,6 @@ rune:charges(5)
 rune:level(28)
 rune:magicLevel(4)
 rune:cooldown(2 * 1000)
-rune:groupCooldown(2 * 1000)
+rune:groupCooldown(1 * 1000)
 rune:needTarget(true) -- True = Solid / False = Creature
 rune:register()

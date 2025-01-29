@@ -87,6 +87,7 @@ monster.loot = {
 	{ id = 10389, chance = 10000 }, -- sai
 	{ id = 10388, chance = 8700 }, -- drakinata
 	{ id = 12801, chance = 2170 }, -- golden can of oil
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

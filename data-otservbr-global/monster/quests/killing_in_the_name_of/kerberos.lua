@@ -78,6 +78,7 @@ monster.loot = {
 	{ id = 238, chance = 96880, maxCount = 3 }, -- great mana potion
 	{ id = 7453, chance = 3130 }, -- executioner
 	{ id = 3360, chance = 31250 }, -- golden armor
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

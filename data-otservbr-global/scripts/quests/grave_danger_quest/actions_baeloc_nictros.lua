@@ -5,8 +5,8 @@ local config = {
 	boss = {
 		name = "Sir Nictros",
 		createFunction = function()
-			local nictros = Game.createMonster("Sir Nictros", nictrosPosition, true, true)
-			local baeloc = Game.createMonster("Sir Baeloc", baelocPosition, true, true)
+			local nictros = Game.createMonster("Sir Nictros", nictrosPosition, true, true):registerEvent("SirNictrosThink")
+			local baeloc = Game.createMonster("Sir Baeloc", baelocPosition, true, true):registerEvent("SirBaelocThink")
 			return nictros and baeloc
 		end,
 	},

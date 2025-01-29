@@ -2114,6 +2114,8 @@ Storage = {
 		U10_90 = { -- update 10.90 - Reserved Storages 45201 - 45350
 			FerumbrasAscension = {
 				RiftRunner = 45201, -- Scroll
+				TheShattererTimer = 45202,
+				TheLordOfTheLiceTimer = 45203,
 				Tarbaz = 45202,
 				Razzagorn = 45203,
 				Ragiaz = 45204,
@@ -2263,6 +2265,13 @@ Storage = {
 				DiamondServant = 45508,
 				AstralPowerCounter = 45509,
 				AstralGlyph = 45510,
+				LadyTenebrisTimer = 45511,
+				LloydTimer = 45512,
+				ThornKnightTimer = 45513,
+				DragonkingTimer = 45514,
+				HorrorTimer = 45515,
+				TimeGuardianTimer = 45516,
+				LastLoreTimer = 45517,
 			},
 		},
 		U11_40 = { -- update 11.40 - Reserved Storages 45651 - 45850

@@ -75,6 +75,7 @@ monster.loot = {
 	{ id = 237, chance = 50000 }, -- strong mana potion
 	{ id = 9604, chance = 14000 }, -- moon backpack
 	{ id = 8059, chance = 1500 }, -- frozen plate
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

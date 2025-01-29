@@ -180,6 +180,7 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
 	{ itemName = "bait", clientId = 939, buy = 50 },
+	{ itemName = "helmet of the deep", clientId = 11585, buy = 5000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

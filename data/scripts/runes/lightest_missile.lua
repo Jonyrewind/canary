@@ -28,7 +28,7 @@ rune:charges(10)
 rune:level(1)
 rune:magicLevel(0)
 rune:cooldown(2 * 1000)
-rune:groupCooldown(2 * 1000)
+rune:groupCooldown(1 * 1000)
 rune:needTarget(true)
 rune:isBlocking(true) -- True = Solid / False = Creature
 rune:vocation("sorcerer;true", "master sorcerer;true", "druid;true", "elder druid;true", "paladin;true", "royal paladin;true")

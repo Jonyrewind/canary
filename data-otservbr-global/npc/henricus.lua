@@ -234,6 +234,7 @@ local function creatureSayCallback(npc, creature, type, message)
 				}, npc, creature)
 				player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.Questline, 23)
 				player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.Mission07, 3) -- The Inquisition Questlog- "Mission 7: The Shadow Nexus"
+				player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.RewardDoor, 1)
 				player:addAchievement("High Inquisitor")
 			else
 				npcHandler:say("Come back when you have destroyed the shadow nexus.", npc, creature)
@@ -292,7 +293,6 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:say("Here is the final addon for your demon hunter outfit. Congratulations!", npc, creature)
 			player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.Questline, 24)
 			player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.Mission07, 4) -- The Inquisition Questlog- "Mission 7: The Shadow Nexus"
-			player:setStorageValue(Storage.Quest.U8_2.TheInquisitionQuest.RewardDoor, 1)
 			player:addOutfitAddon(288, 2)
 			player:addOutfitAddon(289, 2)
 			player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)

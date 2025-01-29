@@ -4,8 +4,8 @@ combatGrenade:setArea(createCombatArea(AREA_CIRCLE2X2))
 combatGrenade:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HOLYDAMAGE)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 4)
-	local max = (level / 5) + (maglevel * 6)
+	local min = (level / 3) + (maglevel * 4)
+	local max = (level / 3) + (maglevel * 6)
 
 	local grade = player:upgradeSpellsWOD("Divine Grenade")
 
@@ -75,7 +75,7 @@ function spell.onCastSpell(creature, var)
 		return false
 	end
 
-	local cooldownByGrade = { 26, 20, 14 }
+	local cooldownByGrade = { 10, 7, 4 }
 	local cooldown = cooldownByGrade[grade]
 
 	var.instantName = "Divine Grenade Cast"
@@ -102,7 +102,7 @@ spell:range(7)
 spell:needTarget(true)
 spell:blockWalls(true)
 spell:cooldown(1000) -- Cooldown is calculated on the casting
-spell:groupCooldown(2 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(true)
 spell:vocation("paladin;true", "royal paladin;true")
 spell:register()

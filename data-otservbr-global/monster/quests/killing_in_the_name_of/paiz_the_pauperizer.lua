@@ -90,6 +90,7 @@ monster.loot = {
 	{ id = 11651, chance = 8700 }, -- elite draken mail
 	{ id = 3032, chance = 8700, maxCount = 8 }, -- small emerald
 	{ id = 12307, chance = 4350 }, -- harness
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

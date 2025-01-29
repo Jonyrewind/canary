@@ -5,8 +5,8 @@ combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 function onGetFormulaValues(player, level, magicLevel)
-	local min = (level * 0.2 + magicLevel * 70) + 438
-	local max = (level * 0.2 + magicLevel * 92) + 544
+	local min = (level * 0.4 + magicLevel * 70) + 438
+	local max = (level * 0.4 + magicLevel * 92) + 544
 	return min, max
 end
 
@@ -24,7 +24,7 @@ spell:group("healing")
 spell:vocation("knight;true", "elite knight;true")
 spell:castSound(SOUND_EFFECT_TYPE_SPELL_INTENSE_WOUND_CLEANSING)
 spell:id(158)
-spell:cooldown(600000) -- 600 sec
+spell:cooldown(10000) -- 600 sec
 spell:groupCooldown(1000)
 spell:level(80)
 spell:mana(200)

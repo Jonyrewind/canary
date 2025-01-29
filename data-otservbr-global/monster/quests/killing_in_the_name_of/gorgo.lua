@@ -74,6 +74,7 @@ monster.loot = {
 	{ id = 811, chance = 46470 }, -- terra mantle
 	{ id = 812, chance = 33300 }, -- terra legs
 	{ id = 7413, chance = 33300 }, -- titan axe
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

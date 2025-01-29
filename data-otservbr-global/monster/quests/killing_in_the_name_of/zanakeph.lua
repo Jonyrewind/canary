@@ -88,6 +88,7 @@ monster.loot = {
 	{ id = 5741, chance = 5000 }, -- skull helmet
 	{ id = 8057, chance = 3390 }, -- divine plate
 	{ id = 3392, chance = 1690 }, -- royal helmet
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

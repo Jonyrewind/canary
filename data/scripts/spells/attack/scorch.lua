@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITBYFIRE)
 combat:setArea(createCombatArea(AREA_WAVE4, AREADIAGONAL_WAVE4))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 0.3) + 2
-	local max = (level / 5) + (maglevel * 0.6) + 4
+	local min = (level / 3) + (maglevel * 0.3) + 2
+	local max = (level / 3) + (maglevel * 0.6) + 4
 	return -min, -max
 end
 
@@ -27,8 +27,8 @@ spell:mana(8)
 spell:isAggressive(true)
 spell:isPremium(false)
 spell:needDirection(true)
-spell:cooldown(4 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("sorcerer;true", "master sorcerer;true")
 spell:register()

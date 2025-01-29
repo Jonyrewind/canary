@@ -39,7 +39,7 @@ rune:charges(1)
 rune:level(27)
 rune:magicLevel(4)
 rune:cooldown(2 * 1000)
-rune:groupCooldown(2 * 1000)
+rune:groupCooldown(1 * 1000)
 rune:isAggressive(false)
 rune:isSelfTarget(true)
 rune:isBlocking(true) -- True = Solid / False = Creature

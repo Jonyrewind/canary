@@ -73,6 +73,7 @@ monster.loot = {
 	{ id = 9606, chance = 37000 }, -- egg of the many
 	{ id = 3392, chance = 20000 }, -- royal helmet
 	{ id = 3370, chance = 10000 }, -- knight armor
+	{ id = 22118, chance = 83000, maxCount = 100 }, -- coins
 }
 
 monster.attacks = {

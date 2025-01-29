@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICEATTACK)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLICE)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 2.8) + 16
-	local max = (level / 5) + (maglevel * 4.4) + 28
+	local min = (level / 3) + (maglevel * 2.8) + 16
+	local max = (level / 3) + (maglevel * 4.4) + 28
 	return -min, -max
 end
 
@@ -29,8 +29,8 @@ spell:isPremium(true)
 spell:range(3)
 spell:needCasterTargetOrDirection(true)
 spell:blockWalls(true)
-spell:cooldown(8 * 1000)
-spell:groupCooldown(2 * 1000, 8 * 1000)
+spell:cooldown(4 * 1000)
+spell:groupCooldown(1 * 1000, 1 * 1000)
 spell:needLearn(false)
 spell:vocation("druid;true", "elder druid;true")
 spell:register()

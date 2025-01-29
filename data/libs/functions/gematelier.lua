@@ -9,7 +9,8 @@ local config = {
 		chance = {
 			influenced = 9000,
 			fiendish = 3000,
-			archfoe = 0,
+			archfoe = 2000,
+			bane = 2000,
 		},
 		maxCount = 2,
 	},
@@ -21,9 +22,10 @@ local config = {
 			"mystic gem",
 		},
 		chance = {
-			influenced = 0,
+			influenced = 2000,
 			fiendish = 3000,
 			archfoe = 9000,
+			bane = 2000,
 		},
 		maxCount = 2,
 	},
@@ -35,9 +37,10 @@ local config = {
 			"greater mystic gem",
 		},
 		chance = {
-			influenced = 0,
+			influenced = 1000,
 			fiendish = 9000,
 			archfoe = 3000,
+			bane = 2000,
 		},
 		maxCount = 1,
 	},
@@ -56,6 +59,8 @@ function Monster:generateGemAtelierLoot()
 		category = "fiendish"
 	elseif (mType:bossRace() or ""):lower() == "archfoe" then
 		category = "archfoe"
+	elseif (mType:bossRace() or ""):lower() == "bane" then
+		category = "bane"
 	end
 	if category == "none" then
 		return {}

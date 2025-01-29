@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HOLYDAMAGE)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLHOLY)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 1.79) + 11
-	local max = (level / 5) + (maglevel * 3) + 18
+	local min = (level / 3) + (maglevel * 1.79) + 11
+	local max = (level / 3) + (maglevel * 3) + 18
 	return -min, -max
 end
 
@@ -29,8 +29,8 @@ spell:isPremium(true)
 spell:range(4)
 spell:needCasterTargetOrDirection(true)
 spell:blockWalls(true)
-spell:cooldown(2 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(1.5 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("paladin;true", "royal paladin;true")
 spell:register()

@@ -6,7 +6,7 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 combat:setFormula(COMBAT_FORMULA_DAMAGE, -5, 0, -9, 0)
 
 function onGetFormulaValues(player, level, magicLevel)
-	return 5, 9
+	return 6, 10
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

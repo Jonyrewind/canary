@@ -14,7 +14,7 @@ local config = {
 		vip = 50,
 	},
 
-	awardOn = 5,
+	awardOn = 50,
 }
 
 local onlineTokensEvent = GlobalEvent("GainTokenInterval")
