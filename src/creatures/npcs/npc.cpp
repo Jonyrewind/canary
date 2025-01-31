@@ -288,25 +288,58 @@ void Npc::onPlayerDisappear(const std::shared_ptr<Player> &player) {
 }
 
 void Npc::onCreatureSay(const std::shared_ptr<Creature> &creature, SpeakClasses type, const std::string &text) {
-	Creature::onCreatureSay(creature, type, text);
+    Creature::onCreatureSay(creature, type, text);
 
-	if (!creature->getPlayer()) {
-		return;
-	}
+    if (!creature->getPlayer()) {
+        return;
+    }
 
-	// onCreatureSay(self, creature, type, message)
-	auto callback = CreatureCallback(npcType->info.scriptInterface, getNpc());
-	if (callback.startScriptInterface(npcType->info.creatureSayEvent)) {
-		callback.pushSpecificCreature(static_self_cast<Npc>());
-		callback.pushCreature(creature);
-		callback.pushNumber(type);
-		callback.pushString(text);
-	}
+    auto player = creature->getPlayer();
 
-	if (callback.persistLuaState()) {
-		return;
-	}
+    // 🛠 Split message into individual words
+    std::istringstream iss(text);
+    std::vector<std::string> words{std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>{}};
+
+    bool processed = false;
+    bool greeted = isInteractingWithPlayer(player->getID()); // Check if the player is interacting
+
+    for (const auto &word : words) {
+        if (!greeted && FocusModule::isGreetWord(word)) {
+            greet(player, word);
+            greeted = true;
+            processed = true;
+            continue; // Ensure greeting happens first
+        }
+    }
+
+    if (greeted) {
+        for (const auto &word : words) {
+            // 🛠 Call the Lua script for each word
+            auto callback = CreatureCallback(npcType->info.scriptInterface, getNpc());
+            if (callback.startScriptInterface(npcType->info.creatureSayEvent)) {
+                callback.pushSpecificCreature(static_self_cast<Npc>());
+                callback.pushCreature(creature);
+                callback.pushNumber(type);
+                callback.pushString(word); // Pass each word separately
+                callback.callFunction();
+                processed = true;
+            }
+        }
+    }
+
+    if (!processed) {
+        // 🛠 If no valid keyword was found, use default behavior
+        auto callback = CreatureCallback(npcType->info.scriptInterface, getNpc());
+        if (callback.startScriptInterface(npcType->info.creatureSayEvent)) {
+            callback.pushSpecificCreature(static_self_cast<Npc>());
+            callback.pushCreature(creature);
+            callback.pushNumber(type);
+            callback.pushString(text);
+            callback.callFunction();
+        }
+    }
 }
+
 
 void Npc::onThinkSound(uint32_t interval) {
 	if (npcType->info.soundSpeedTicks == 0) {
