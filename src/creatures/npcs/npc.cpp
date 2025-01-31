@@ -288,61 +288,60 @@ void Npc::onPlayerDisappear(const std::shared_ptr<Player> &player) {
 }
 
 void Npc::onCreatureSay(const std::shared_ptr<Creature> &creature, SpeakClasses type, const std::string &text) {
-    Creature::onCreatureSay(creature, type, text);
+	Creature::onCreatureSay(creature, type, text);
 
-    if (!creature->getPlayer()) {
-        return;
-    }
+	if (!creature->getPlayer()) {
+		return;
+	}
 
-    auto player = creature->getPlayer();
+	auto player = creature->getPlayer();
 
-    // 🛠 Split message into individual words
-    std::istringstream iss(text);
-    std::vector<std::string> words{std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>{}};
+	// 🛠 Split message into individual words
+	std::istringstream iss(text);
+	std::vector<std::string> words { std::istream_iterator<std::string> { iss }, std::istream_iterator<std::string> {} };
 
-    bool processed = false;
-    bool greeted = isInteractingWithPlayer(player->getID()); // Check if the player has greeted the NPC
+	bool processed = false;
+	bool greeted = isInteractingWithPlayer(player->getID()); // Check if the player has greeted the NPC
 
-    for (const auto &word : words) {
-        // 🛠 Use an existing function for greetings
-        if (!greeted && isGreetingWord(word)) { 
-            handleGreeting(player, word); // Use existing function
-            greeted = true;
-            processed = true;
-            continue; // Ensure greeting happens first
-        }
-    }
+	for (const auto &word : words) {
+		// 🛠 Use an existing function for greetings
+		if (!greeted && isGreetingWord(word)) {
+			handleGreeting(player, word); // Use existing function
+			greeted = true;
+			processed = true;
+			continue; // Ensure greeting happens first
+		}
+	}
 
-    if (greeted) {
-        for (const auto &word : words) {
-            // 🛠 Call the Lua script correctly
-            if (npcType->info.scriptInterface) {
-                auto scriptInterface = npcType->info.scriptInterface;
-                scriptInterface->pushFunction(npcType->info.creatureSayEvent);
-                scriptInterface->pushUserdata(static_self_cast<Npc>());
-                scriptInterface->pushUserdata(creature);
-                scriptInterface->pushNumber(type);
-                scriptInterface->pushString(word); // Pass each word separately
-                scriptInterface->callFunction(4);
-                processed = true;
-            }
-        }
-    }
+	if (greeted) {
+		for (const auto &word : words) {
+			// 🛠 Call the Lua script correctly
+			if (npcType->info.scriptInterface) {
+				auto scriptInterface = npcType->info.scriptInterface;
+				scriptInterface->pushFunction(npcType->info.creatureSayEvent);
+				scriptInterface->pushUserdata(static_self_cast<Npc>());
+				scriptInterface->pushUserdata(creature);
+				scriptInterface->pushNumber(type);
+				scriptInterface->pushString(word); // Pass each word separately
+				scriptInterface->callFunction(4);
+				processed = true;
+			}
+		}
+	}
 
-    if (!processed) {
-        // 🛠 If no valid keyword was found, use default behavior
-        if (npcType->info.scriptInterface) {
-            auto scriptInterface = npcType->info.scriptInterface;
-            scriptInterface->pushFunction(npcType->info.creatureSayEvent);
-            scriptInterface->pushUserdata(static_self_cast<Npc>());
-            scriptInterface->pushUserdata(creature);
-            scriptInterface->pushNumber(type);
-            scriptInterface->pushString(text);
-            scriptInterface->callFunction(4);
-        }
-    }
+	if (!processed) {
+		// 🛠 If no valid keyword was found, use default behavior
+		if (npcType->info.scriptInterface) {
+			auto scriptInterface = npcType->info.scriptInterface;
+			scriptInterface->pushFunction(npcType->info.creatureSayEvent);
+			scriptInterface->pushUserdata(static_self_cast<Npc>());
+			scriptInterface->pushUserdata(creature);
+			scriptInterface->pushNumber(type);
+			scriptInterface->pushString(text);
+			scriptInterface->callFunction(4);
+		}
+	}
 }
-
 
 void Npc::onThinkSound(uint32_t interval) {
 	if (npcType->info.soundSpeedTicks == 0) {
