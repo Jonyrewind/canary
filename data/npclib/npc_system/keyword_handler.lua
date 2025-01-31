@@ -230,4 +230,31 @@ if KeywordHandler == nil then
 		end
 		return self.lastNode[playerId]
 	end
+
+	function KeywordHandler:processMultiWordMessage(npc, player, message, npcHandler)
+		local words = {}  -- Split message into words
+		for word in message:lower():gmatch("%S+") do
+			table.insert(words, word)
+		end
+
+		local playerId = player:getId()
+		local interaction = npcHandler:checkInteraction(npc, player)
+		local wordSequence = table.concat(words, " ")
+
+		for _, word in ipairs(words) do
+			if FocusModule.isGreetWord(word) then
+				if not interaction then
+					npcHandler:greet(npc, player, message)  -- Call greet function
+					return true  -- Return true to indicate greeting
+				end
+			else
+				local ret = self:processMessage(npc, player, word)  -- Process each word separately
+				if ret then
+					return true  -- Return true if a keyword is processed
+				end
+			end
+		end
+
+		return false  -- Return false if no keywords are processed
+	end
 end

@@ -619,4 +619,22 @@ if Modules == nil then
 		module.npcHandler:resetNpc(player)
 		return true
 	end
+-- Helper function to check if a word is in a table
+function FocusModule.isGreetWord(word)
+    for _, v in ipairs(FOCUS_GREETWORDS) do
+        if v == word then
+            return true
+        end
+    end
+    return false
+end
+
+function FocusModule.isTradeWord(word)
+    for _, v in ipairs(FOCUS_TRADE_MESSAGE) do
+        if v == word then
+            return true
+        end
+    end
+    return false
+end
 end

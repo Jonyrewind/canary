@@ -437,6 +437,7 @@ if NpcHandler == nil then
 	function NpcHandler:onSay(npc, player, msgtype, msg)
 		local playerId = player:getId()
 		local callback = self:getCallback(CALLBACK_ON_SAY)
+
 		if callback == nil or callback(npc, player, msgtype, msg) then
 			if self:processModuleCallback(CALLBACK_ON_SAY, npc, player, msgtype, msg) then
 				if not self:isInRange(npc, player) then
@@ -445,7 +446,8 @@ if NpcHandler == nil then
 
 				if self.keywordHandler ~= nil then
 					if self:checkInteraction(npc, player) and msgtype == TALKTYPE_PRIVATE_PN or not self:checkInteraction(npc, player) then
-						local ret = self.keywordHandler:processMessage(npc, player, msg)
+						local ret = self.keywordHandler:processMultiWordMessage(npc, player, msg, self)
+						
 						if not ret then
 							callback = self:getCallback(CALLBACK_MESSAGE_DEFAULT)
 							if callback ~= nil and callback(npc, player, msgtype, msg) then

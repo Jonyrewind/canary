@@ -38,6 +38,20 @@
 	<monster centerx="1056" centery="793" centerz="13" radius="1">
 		<monster name="Guzzlemaw" x="0" y="0" z="13" spawntime="60" />
 	</monster>
+	<monster centerx="1051" centery="805" centerz="13" radius="1">
+		<monster name="Sparkion" x="-1" y="0" z="13" spawntime="60" />
+		<monster name="Dread Intruder" x="1" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1055" centery="805" centerz="13" radius="1">
+		<monster name="Barkless Devotee" x="-1" y="0" z="13" spawntime="60" />
+		<monster name="Barkless Fanatic" x="1" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1070" centery="805" centerz="13" radius="1">
+		<monster name="Vampire Bride" x="0" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1072" centery="805" centerz="13" radius="1">
+		<monster name="Vampire Viscount" x="0" y="0" z="13" spawntime="60" />
+	</monster>
 	<monster centerx="1039" centery="806" centerz="13" radius="1">
 		<monster name="Liodile" x="-1" y="-1" z="13" spawntime="60" />
 		<monster name="Carnivostrich" x="1" y="-1" z="13" spawntime="60" />
@@ -50,6 +64,22 @@
 	<monster centerx="1047" centery="806" centerz="13" radius="1">
 		<monster name="Two-Headed Turtle" x="-1" y="-1" z="13" spawntime="60" />
 		<monster name="Foam Stalker" x="1" y="-1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1059" centery="806" centerz="13" radius="1">
+		<monster name="Swarmer" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Waspoid" x="0" y="-1" z="13" spawntime="60" />
+		<monster name="Spitter" x="1" y="-1" z="13" spawntime="60" />
+		<monster name="Kollos" x="-1" y="0" z="13" spawntime="60" />
+		<monster name="Spidris" x="1" y="0" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1063" centery="806" centerz="13" radius="1">
+		<monster name="Deepling Spellsinger" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Deepling Elite" x="0" y="-1" z="13" spawntime="60" />
+		<monster name="Deepling Guard" x="1" y="-1" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="1067" centery="806" centerz="13" radius="1">
+		<monster name="Vile Grandmaster" x="-1" y="-1" z="13" spawntime="60" />
+		<monster name="Renegade Knight" x="1" y="-1" z="13" spawntime="60" />
 	</monster>
 	<monster centerx="1039" centery="793" centerz="14" radius="1">
 		<monster name="Demon" x="0" y="0" z="14" spawntime="60" />
