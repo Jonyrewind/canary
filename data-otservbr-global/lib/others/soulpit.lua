@@ -124,6 +124,7 @@ SoulPit = {
 				for _, spell in pairs(SoulPit.bossAbilities.opressorSoulPit.spells) do
 					monster:addAttackSpell(readSpell(spell, monster:getType()))
 				end
+
 				return true
 			end,
 		},
@@ -138,31 +139,41 @@ SoulPit = {
 	bossPosition = Position(32376, 31144, 8),
 	exit = Position(32373, 31158, 8),
 	zone = Zone("soulpit"),
+
 	getMonsterVariationNameBySoulCore = function(searchName)
 		for mTypeName, soulCoreName in pairs(SoulPit.SoulCoresConfiguration.monsterVariationsSoulCore) do
 			if soulCoreName == searchName then
 				return mTypeName
 			end
 		end
+
 		return nil
 	end,
 	getSoulCoreMonster = function(name)
 		return name:match("^(.-) soul core")
 	end,
 	onFuseSoulCores = function(player, item, target)
-		local itemName = item:getName()
-		local targetItemName = target:getName()
-		if SoulPit.getSoulCoreMonster(itemName) and SoulPit.getSoulCoreMonster(targetItemName) then
-			local randomSoulCore = SoulPit.soulCores[math.random(#SoulPit.soulCores)]
-			player:addItem(randomSoulCore:getId(), 1)
-			player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("You have received a %s soul core.", randomSoulCore:getName()))
-			item:remove(1)
-			target:remove(1)
-			return true
+		local itemCount = item:getCount(item:getId())
+		if item:getId() == target:getId() and itemCount <= 1 then
+			return false
 		end
-		return false
+
+		local itemSoulCore = SoulPit.getSoulCoreMonster(item:getName())
+		local targetSoulCore = SoulPit.getSoulCoreMonster(target:getName())
+		if not itemSoulCore or not targetSoulCore then
+			return false
+		end
+
+		local randomSoulCore = SoulPit.soulCores[math.random(#SoulPit.soulCores)]
+		player:addItem(randomSoulCore:getId(), 1)
+		player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("You have received a %s soul core.", randomSoulCore:getName()))
+
+		item:remove(1)
+		target:remove(1)
+		return true
 	end,
 }
+
 SoulPit.zone:addArea(Position(32362, 31132, 8), Position(32390, 31153, 8))
 SoulPit.zone:setRemoveDestination(SoulPit.exit)
