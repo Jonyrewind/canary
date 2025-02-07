@@ -229,6 +229,7 @@
 	<item id="168" name="RESERVED SPRITE"/>
 	<item id="169" article="a" name="scarab cheese">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It smells horrible and should not be in the sun for too long."/>
 		<attribute key="weight" value="400"/>
 		<attribute key="decayTo" value="3120"/>
@@ -499,6 +500,7 @@
 	</item>
 	<item fromid="281" toid="282" article="a" name="giant shimmering pearl">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="283" article="an" name="empty potion flask">
@@ -1404,18 +1406,22 @@
 	</item>
 	<item id="675" article="a" name="small enchanted sapphire">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="676" article="a" name="small enchanted ruby">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="677" article="a" name="small enchanted emerald">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="678" article="a" name="small enchanted amethyst">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="679" article="an" name="icy spike sword">
@@ -2901,6 +2907,7 @@
 	<item id="835" article="a" name="dead human"/>
 	<item id="836" article="a" name="walnut" plural="walnuts">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item fromid="837" toid="840" name="tar">
@@ -2910,6 +2917,7 @@
 	</item>
 	<item id="841" article="a" name="peanut" plural="peanuts">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item fromid="842" toid="849" article="a" name="mysterious machine">
@@ -3075,6 +3083,7 @@
 	</item>
 	<item id="901" article="a" name="marlin" plural="marlins">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This rare fish is almost too precious to simply be eaten. Maybe you can find a collector"/>
 		<attribute key="weight" value="1800"/>
 	</item>
@@ -6663,6 +6672,7 @@
 	</item>
 	<item id="3010" article="an" name="emerald bangle">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="179"/>
 	</item>
 	<item id="3011" article="a" name="crown">
@@ -6710,6 +6720,7 @@
 	</item>
 	<item id="3017" article="a" name="silver brooch" plural="silver brooches">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="115"/>
 	</item>
 	<item id="3018" article="a" name="scarab amulet">
@@ -6754,6 +6765,7 @@
 	</item>
 	<item id="3023" article="a" name="holy scarab">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="869"/>
 	</item>
 	<item id="3024" article="a" name="holy falcon">
@@ -6769,34 +6781,42 @@
 	</item>
 	<item id="3026" article="a" name="white pearl">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3027" article="a" name="black pearl" plural="black pearls">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3028" article="a" name="small diamond">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3029" article="a" name="small sapphire">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3030" article="a" name="small ruby">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3031" article="a" name="gold coin">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3032" article="a" name="small emerald">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3033" article="a" name="small amethyst">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3034" article="a" name="talon" plural="talons">
@@ -6806,38 +6826,47 @@
 	</item>
 	<item id="3035" article="a" name="platinum coin">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3036" article="a" name="violet gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3037" article="a" name="yellow gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3038" article="a" name="green gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3039" article="a" name="red gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3040" article="a" name="gold nugget">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="3041" article="a" name="blue gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3042" article="a" name="scarab coin">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3043" article="a" name="crystal coin">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3044" article="a" name="tusk">
@@ -7075,6 +7104,7 @@
 	</item>
 	<item id="3068" article="a" name="crystal wand">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="2800"/>
 	</item>
 	<item id="3069" article="a" name="necrotic rod">
@@ -11322,117 +11352,144 @@
 	</item>
 	<item id="3577" name="meat" plural="meat">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="1300"/>
 	</item>
 	<item id="3578" article="a" name="fish" plural="fish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="520"/>
 	</item>
 	<item id="3579" name="salmon" plural="salmons">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="320"/>
 	</item>
 	<item id="3580" article="a" name="northern pike" plural="northern pikes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="830"/>
 	</item>
 	<item id="3581" name="shrimp">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="50"/>
 	</item>
 	<item id="3582" name="ham">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="2000"/>
 	</item>
 	<item id="3583" name="dragon ham" plural="dragon ham">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It still contains a small part of the power of a dragon"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="3000"/>
 	</item>
 	<item id="3584" article="a" name="pear" plural="pears">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="140"/>
 	</item>
 	<item id="3585" article="a" name="red apple" plural="red apples">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="3586" article="an" name="orange" plural="oranges">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="110"/>
 	</item>
 	<item id="3587" article="a" name="banana" plural="bananas">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="180"/>
 	</item>
 	<item id="3588" article="a" name="blueberry" plural="blueberries">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3589" article="a" name="coconut" plural="coconuts">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="480"/>
 	</item>
 	<item id="3590" article="a" name="cherry" plural="cherries">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3591" article="a" name="strawberry" plural="strawberries">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3592" name="grapes" plural="grapes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="250"/>
 	</item>
 	<item id="3593" article="a" name="melon" plural="melons">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="950"/>
 	</item>
 	<item id="3594" article="a" name="pumpkin">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1350"/>
 	</item>
 	<item id="3595" article="a" name="carrot" plural="carrots">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="160"/>
 	</item>
 	<item id="3596" article="a" name="tomato" plural="tomatoes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="3597" article="a" name="corncob" plural="corncobs">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="350"/>
 	</item>
 	<item id="3598" article="a" name="cookie">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3599" article="a" name="candy cane" plural="candy canes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="50"/>
 	</item>
 	<item id="3600" name="bread" plural="breads">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="3601" article="a" name="roll" plural="rolls">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="3602" article="a" name="brown bread" plural="brown breads">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="400"/>
 	</item>
 	<item id="3603" name="flour">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="3604" article="a" name="lump of dough" plural="lumps of dough">
@@ -11443,10 +11500,12 @@
 	</item>
 	<item id="3606" article="an" name="egg" plural="eggs">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3607" name="cheese" plural="cheese">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="400"/>
 	</item>
@@ -11664,39 +11723,48 @@
 	<item fromid="3703" toid="3722" article="a" name="thorn bush"/>
 	<item id="3723" article="a" name="white mushroom" plural="white mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="40"/>
 	</item>
 	<item id="3724" article="a" name="red mushroom" plural="red mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="50"/>
 	</item>
 	<item id="3725" article="a" name="brown mushroom" plural="brown mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="3726" article="an" name="orange mushroom" plural="orange mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3727" article="a" name="wood mushroom" plural="wood mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="3728" article="a" name="dark mushroom" plural="dark mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item fromid="3729" toid="3730" name="some mushrooms" plural="some mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3731" article="a" name="fire mushroom" plural="fire mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3732" article="a" name="green mushroom" plural="green mushrooms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="3733" article="a" name="stone"/>
@@ -14328,6 +14396,7 @@
 	</item>
 	<item id="5021" article="an" name="orichalcum pearl">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item fromid="5022" toid="5023" article="a" name="magic forcefield">
@@ -14477,6 +14546,7 @@
 	</item>
 	<item id="5096" article="a" name="mango" plural="mangoes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="180"/>
 	</item>
 	<item id="5097" article="a" name="closed door" editorsuffix="(it is locked)">
@@ -15344,6 +15414,7 @@
 	<item id="5677" article="a" name="tortoise's nest"/>
 	<item id="5678" article="a" name="tortoise egg" plural="tortoise eggs">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="5679" article="a" name="shell">
@@ -17210,10 +17281,12 @@
 	</item>
 	<item id="6277" article="a" name="cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="6278" article="a" name="cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is nicely decorated with fruits and icing"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -17671,6 +17744,7 @@
 	</item>
 	<item id="6393" article="a" name="cream cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item fromid="6394" toid="6411" name="bones">
@@ -17838,6 +17912,7 @@
 	</item>
 	<item id="6500" article="a" name="gingerbreadman">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="6501" article="a" name="christmas wreath">
@@ -17934,6 +18009,7 @@
 	</item>
 	<item id="6526" article="a" name="christmas token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Collect enough of these to trade them for valuable prizes"/>
 		<attribute key="weight" value="5"/>
 	</item>
@@ -18126,6 +18202,7 @@
 	</item>
 	<item id="6569" article="a" name="candy" plural="candies">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="5"/>
 	</item>
 	<item fromid="6570" toid="6571" article="a" name="surprise bag">
@@ -18491,6 +18568,7 @@
 	</item>
 	<item fromid="6984" toid="6985" article="a" name="fish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="520"/>
 	</item>
 	<item id="6986" article="a" name="pillar">
@@ -18689,10 +18767,12 @@
 	<item fromid="7145" toid="7157" name="ice"/>
 	<item id="7158" article="a" name="rainbow trout" plural="rainbow trouts">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1200"/>
 	</item>
 	<item id="7159" article="a" name="green perch" plural="green perches">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="800"/>
 	</item>
 	<item fromid="7160" toid="7161" article="a" name="frozen chest">
@@ -21153,6 +21233,7 @@
 	</item>
 	<item id="7885" article="a" name="fish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="520"/>
 	</item>
 	<item id="7886" name="wooden floor">
@@ -21336,34 +21417,42 @@
 	</item>
 	<item id="8010" article="a" name="potato" plural="potatoes">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="8011" article="a" name="plum" plural="plums">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="130"/>
 	</item>
 	<item id="8012" article="a" name="raspberry" plural="raspberries">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="8013" article="a" name="lemon" plural="lemons">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="8014" article="a" name="cucumber" plural="cucumbers">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="8015" article="an" name="onion" plural="onions">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="140"/>
 	</item>
 	<item id="8016" article="a" name="jalapeno pepper" plural="jalapeno peppers">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="8017" article="a" name="beetroot" plural="beetroots">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="130"/>
 	</item>
 	<item id="8018" article="a" name="lump of chocolate dough">
@@ -21371,6 +21460,7 @@
 	</item>
 	<item id="8019" article="a" name="chocolate cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="8020" article="a" name="baking tray">
@@ -22719,6 +22809,7 @@
 	</item>
 	<item id="8177" article="a" name="yummy gummy worm" plural="yummy gummy worms">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="8178" article="a" name="toy spider">
@@ -22762,6 +22853,7 @@
 	</item>
 	<item id="8192" article="a" name="vampire lord token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It proves that you have killed a vampire lord"/>
 		<attribute key="weight" value="5"/>
 	</item>
@@ -23092,6 +23184,7 @@
 	</item>
 	<item id="8531" article="a" name="blood goblet">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="490"/>
 	</item>
 	<item id="8532" article="a" name="blood skull">
@@ -23407,6 +23500,7 @@
 	</item>
 	<item id="8828" article="a" name="weapon matrix crystal">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It contains patterns to create weapons"/>
 		<attribute key="weight" value="250"/>
 	</item>
@@ -23567,36 +23661,43 @@
 	</item>
 	<item id="8894" article="a" name="heavily rusted armor">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the armor you will be able to see what it is"/>
 		<attribute key="weight" value="12000"/>
 	</item>
 	<item id="8895" article="a" name="rusted armor">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the armor you will be able to see what it is"/>
 		<attribute key="weight" value="12000"/>
 	</item>
 	<item id="8896" article="a" name="slightly rusted armor">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the armor you will be able to see what it is"/>
 		<attribute key="weight" value="12000"/>
 	</item>
 	<item id="8897" article="a" name="heavily rusted legs">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the legs you will be able to see what it is"/>
 		<attribute key="weight" value="7000"/>
 	</item>
 	<item id="8898" article="a" name="rusted legs">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the legs you will be able to see what it is"/>
 		<attribute key="weight" value="7000"/>
 	</item>
 	<item id="8899" article="a" name="slightly rusted legs">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the legs you will be able to see what it is"/>
 		<attribute key="weight" value="7000"/>
 	</item>
 	<item id="8900" article="a" name="heavily rusted shield">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the shield you will be able to see what it is"/>
 		<attribute key="weaponType" value="shield"/>
 		<attribute key="defense" value="1"/>
@@ -23604,6 +23705,7 @@
 	</item>
 	<item id="8901" article="a" name="rusted shield">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the shield you will be able to see what it is"/>
 		<attribute key="weaponType" value="shield"/>
 		<attribute key="defense" value="1"/>
@@ -23611,6 +23713,7 @@
 	</item>
 	<item id="8902" article="a" name="slightly rusted shield">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the shield you will be able to see what it is"/>
 		<attribute key="weaponType" value="shield"/>
 		<attribute key="defense" value="1"/>
@@ -23623,18 +23726,21 @@
 	</item>
 	<item id="8906" article="a" name="heavily rusted helmet">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the helmet you will be able to see what it is"/>
 		<attribute key="armor" value="1"/>
 		<attribute key="weight" value="5200"/>
 	</item>
 	<item id="8907" article="a" name="rusted helmet">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the helmet you will be able to see what it is"/>
 		<attribute key="armor" value="1"/>
 		<attribute key="weight" value="5200"/>
 	</item>
 	<item id="8908" article="a" name="slightly rusted helmet">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="If you can remove the rust layer and dirt from the helmet you will be able to see what it is"/>
 		<attribute key="armor" value="1"/>
 		<attribute key="weight" value="5200"/>
@@ -24083,10 +24189,12 @@
 	</item>
 	<item id="9057" article="a" name="small topaz" plural="small topazes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="9058" article="a" name="gold ingot" plural="gold ingots">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1800"/>
 	</item>
 	<item id="9059" article="a" name="small lamp">
@@ -24194,21 +24302,25 @@
 	</item>
 	<item id="9079" article="a" name="rotworm stew">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It's hot, beefy and delicious. The perfect food for knights"/>
 		<attribute key="weight" value="1200"/>
 	</item>
 	<item id="9080" article="a" name="hydra tongue salad">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Though the hydra tongue is commonly considered a pest plant it tastes surprisingly aromatic"/>
 		<attribute key="weight" value="550"/>
 	</item>
 	<item id="9081" article="a" name="roasted dragon wings">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="You know why it's called 'dragon' when you feel the fire in your throat"/>
 		<attribute key="weight" value="850"/>
 	</item>
 	<item id="9082" article="a" name="tropical fried terrorbird">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It's the ideal snack for a beach barbeque"/>
 		<attribute key="weight" value="780"/>
 	</item>
@@ -24219,26 +24331,31 @@
 	</item>
 	<item id="9084" article="a" name="veggie casserole">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This one would be quite healthy if it wasn't for all the melted cheese on top"/>
 		<attribute key="weight" value="1100"/>
 	</item>
 	<item id="9085" article="a" name="filled jalapeno peppers">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="The creamy cheese makes a great combination with the spicy peppers"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="9086" article="a" name="blessed steak">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It's nicely decorated with plums and pumpkin"/>
 		<attribute key="weight" value="950"/>
 	</item>
 	<item id="9087" article="a" name="carrot cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This spicy-sweet cake will probably put you into a sugar rush"/>
 		<attribute key="weight" value="680"/>
 	</item>
 	<item id="9088" article="a" name="northern fishburger">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It's only suited for those who like maritime food"/>
 		<attribute key="weight" value="459"/>
 	</item>
@@ -25651,6 +25768,7 @@
 	</item>
 	<item id="9586" article="a" name="wedding outfit box">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="9587" article="a" name="tree"/>
@@ -25827,6 +25945,7 @@
 	<item id="9625" article="a" name="statue of Fafnar"/>
 	<item fromid="9626" toid="9627" article="a" name="silver Fafnar trophy">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="You read: |PLAYERNAME| helped to keep the fire basins burning and is one of the lightbearers of |YEAR|"/>
 		<attribute key="weight" value="900"/>
 	</item>
@@ -26576,6 +26695,7 @@
 	</item>
 	<item id="10219" article="a" name="crocodile steak">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="440"/>
 	</item>
 	<item id="10221" article="a" name="dead killer caiman">
@@ -26614,6 +26734,7 @@
 	</item>
 	<item fromid="10245" toid="10246" article="a" name="fish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="520"/>
 	</item>
 	<item id="10247" article="a" name="weapons crate">
@@ -26886,6 +27007,7 @@
 	</item>
 	<item id="10329" article="a" name="rice ball" plural="rice balls">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="10330" article="a" name="dead gnarlhound">
@@ -27526,6 +27648,7 @@
 	</item>
 	<item id="10453" name="terramite eggs" plural="terramite eggs">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="20"/>
 	</item>
@@ -28216,19 +28339,23 @@
 	</item>
 	<item id="11459" article="a" name="pineapple" plural="pineapples">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="750"/>
 	</item>
 	<item id="11460" article="an" name="aubergine" plural="aubergines">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="11461" name="broccoli" plural="broccoli">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="300"/>
 	</item>
 	<item id="11462" article="a" name="cauliflower" plural="cauliflowers">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="680"/>
 	</item>
 	<item id="11463" article="a" name="geomancer's staff" plural="geomancer staffs">
@@ -28517,6 +28644,7 @@
 	</item>
 	<item id="11584" article="a" name="coconut shrimp bake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It looks as if it was sealed with milky goodness"/>
 		<attribute key="weight" value="2000"/>
 	</item>
@@ -28538,6 +28666,7 @@
 	</item>
 	<item id="11587" article="a" name="demonic candy ball">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="You're never sure what demonic candy balls will do, but they sure taste sweet and exciting"/>
 		<attribute key="weight" value="950"/>
 	</item>
@@ -28924,15 +29053,18 @@
 	</item>
 	<item id="11681" name="ectoplasmic sushi" plural="ectoplasmic sushi">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="400"/>
 	</item>
 	<item id="11682" article="a" name="dragonfruit" plural="dragonfruits">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="350"/>
 	</item>
 	<item id="11683" name="peas" plural="peas">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="80"/>
 	</item>
@@ -28942,6 +29074,7 @@
 	</item>
 	<item id="11685" article="a" name="cheese cookie">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="11686" article="a" name="royal draken mail">
@@ -29489,6 +29622,7 @@
 	<item fromid="12144" toid="12146" name="stone"/>
 	<item fromid="12147" toid="12155" article="a" name="cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item fromid="12156" toid="12157" article="a" name="tomb wall">
@@ -30824,6 +30958,7 @@
 	</item>
 	<item id="12736" article="a" name="babel swimmer">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="12737" article="a" name="broken ring of ending">
@@ -31868,6 +32003,7 @@
 	</item>
 	<item id="13992" article="a" name="sandfish" plural="sandfish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="660"/>
 	</item>
 	<item id="13993" article="an" name="ornate chestplate">
@@ -32304,11 +32440,13 @@
 	</item>
 	<item id="14084" name="larvae" plural="larvae">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="350"/>
 	</item>
 	<item id="14085" article="a" name="deepling filet" plural="deepling filets">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="640"/>
 	</item>
 	<item id="14086" article="a" name="calopteryx cape">
@@ -32491,6 +32629,7 @@
 	</item>
 	<item id="14172" article="a" name="gooey mass" plural="gooey masses">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Perhaps it contains something useful"/>
 		<attribute key="weight" value="5500"/>
 	</item>
@@ -32729,6 +32868,7 @@
 	</item>
 	<item id="14681" article="an" name="anniversary cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It was created by Tibia's finest bakers for the celebration of 15 years of Tibia"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -33166,6 +33306,7 @@
 	<item id="15275" name="RESERVED SPRITE"/>
 	<item id="15276" article="a" name="miniature house">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This trophy was awarded to honour the greatest architects in Tibia"/>
 		<attribute key="writeable" value="1"/>
 		<attribute key="maxtextlen" value="99"/>
@@ -33362,6 +33503,7 @@
 	</item>
 	<item id="15634" article="a" name="carrot">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="160"/>
 	</item>
 	<item id="15635" name="carrots">
@@ -33369,6 +33511,7 @@
 	</item>
 	<item fromid="15636" toid="15638" article="a" name="carrot">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="160"/>
 	</item>
 	<item fromid="15639" toid="15640" article="a" name="giant carrot">
@@ -33404,6 +33547,7 @@
 	</item>
 	<item id="15698" article="a" name="gnomish supply package">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item id="15699" name="some mushroom fertilizer">
@@ -34036,11 +34180,13 @@
 	</item>
 	<item id="16102" article="a" name="mucus plug">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Perhaps it contains something useful"/>
 		<attribute key="weight" value="8500"/>
 	</item>
 	<item id="16103" article="a" name="mushroom pie" plural="mushroom pies">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="900"/>
 	</item>
 	<item id="16104" article="a" name="gill gugel">
@@ -34270,46 +34416,57 @@
 	</item>
 	<item id="16119" article="a" name="blue crystal shard" plural="blue crystal shards">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="16120" article="a" name="violet crystal shard">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="16121" article="a" name="green crystal shard">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="16122" article="a" name="green crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="16123" article="a" name="brown crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="16124" article="a" name="blue crystal splinter" plural="blue crystal splinter">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="16125" article="a" name="cyan crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="15"/>
 	</item>
 	<item id="16126" article="a" name="red crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="15"/>
 	</item>
 	<item id="16127" article="a" name="green crystal fragment">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="15"/>
 	</item>
 	<item id="16128" article="a" name="minor crystalline token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="250"/>
 	</item>
 	<item id="16129" article="a" name="major crystalline token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="350"/>
 	</item>
 	<item id="16130" article="a" name="magma clump">
@@ -34557,10 +34714,12 @@
 	</item>
 	<item id="16165" article="a" name="pet pig">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="600"/>
 	</item>
 	<item id="16166" article="a" name="pet pig">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="duration" value="3"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="weight" value="600"/>
@@ -35467,6 +35626,7 @@
 	</item>
 	<item id="17457" name="insectoid eggs" plural="insectoid eggs">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="20"/>
 	</item>
@@ -35938,11 +36098,13 @@
 	</item>
 	<item id="17820" article="a" name="soft cheese" plural="soft cheese">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="17821" name="rat cheese" plural="rat cheese">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="300"/>
 	</item>
@@ -38876,10 +39038,12 @@
 	<item id="19081" article="a" name="skull"/>
 	<item id="19082" article="a" name="golden raid token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="110"/>
 	</item>
 	<item id="19083" article="a" name="silver raid token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="19084" article="a" name="small dragon tear">
@@ -40842,6 +41006,7 @@
 	</item>
 	<item id="20264" article="an" name="unrealized dream">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="3300"/>
 	</item>
 	<item id="20265" article="a" name="unknowm item"/>
@@ -40933,20 +41098,24 @@
 	</item>
 	<item id="20310" article="a" name="christmas cookie tray">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="20311" article="a" name="snow globe">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="transformequipto" value="20312"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item id="20312" article="a" name="snow globe">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="transformdeequipto" value="20311"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item fromid="20313" toid="20314" article="a" name="santa music box">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="750"/>
 	</item>
 	<item id="20315" article="a" name="snow flake tapestry">
@@ -41656,6 +41825,7 @@
 	</item>
 	<item id="21143" article="a" name="glooth sandwich" plural="glooth sandwiches">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="800"/>
 	</item>
 	<item id="21144" article="a" name="bowl of glooth soup" plural="bowls of glooth soup">
@@ -41666,6 +41836,7 @@
 	</item>
 	<item id="21146" article="a" name="glooth steak" plural="glooth steaks">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1200"/>
 	</item>
 	<item id="21147" article="a" name="particle accelerator">
@@ -42060,6 +42231,7 @@
 	</item>
 	<item id="21203" article="a" name="glooth bag">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="3000"/>
 	</item>
 	<item id="21204" article="a" name="cowbell">
@@ -43838,6 +44010,7 @@ Awarded by TibiaMagazine.com.ve"/>
 	</item>
 	<item id="22083" article="a" name="moonlight crystals">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="400"/>
 	</item>
 	<item id="22084" article="a" name="wolf backpack">
@@ -43992,6 +44165,7 @@ Awarded by TibiaMagazine.com.ve"/>
 	<item id="22117" name="RESERVED SPRITE"/>
 	<item id="22118" name="Tibia coins">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Tibia Coins are needed to shop exclusive products in the Store, including fabulous mounts, classy outfits, a Name Change or even Premium Time"/>
 		<attribute key="weight" value="0"/>
 	</item>
@@ -44292,6 +44466,7 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22185" article="a" name="prickly pear" plural="prickly pears">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="125"/>
 	</item>
 	<item id="22186" article="a" name="raw meat" plural="raw meats">
@@ -44301,6 +44476,7 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22187" name="roasted meat" plural="roasted meat">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="2500"/>
 	</item>
@@ -44342,10 +44518,12 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22193" article="an" name="onyx chip" plural="onyx chips">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="22194" article="an" name="opal" plural="opals">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="22195" article="an" name="onyx pendant">
@@ -44505,6 +44683,7 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22516" article="a" name="silver token">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1"/>
 	</item>
 	<item id="22517" name="stairs">
@@ -45040,22 +45219,27 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22720" article="an" name="iron token" plural="iron tokens">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="22721" article="a" name="gold token" plural="gold tokens">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1"/>
 	</item>
 	<item id="22722" article="a" name="copper token" plural="copper tokens">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="22723" article="a" name="platinum token" plural="platinum tokens">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="22724" article="a" name="titanium token" plural="titanium tokens">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="22725" article="a" name="rift lamp">
@@ -45322,6 +45506,7 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22763" article="a" name="shaggy ogre bag">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="800"/>
 	</item>
 	<item id="22764" article="a" name="Ferumbras' staff">
@@ -45398,11 +45583,13 @@ Awarded by TibiaMisterios.com.br"/>
 	</item>
 	<item id="22769" article="a" name="Ferumbras' mana keg">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of dark oak and crested with a large golden F"/>
 		<attribute key="weight" value="1400"/>
 	</item>
 	<item id="22770" article="a" name="Ferumbras' mana keg">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of dark oak and crested with a large golden F"/>
 		<attribute key="weight" value="1400"/>
 	</item>
@@ -45569,6 +45756,7 @@ Awarded by TibiaMisterios.com.br"/>
 	<item id="22864" name="dead dwarf"/>
 	<item id="22865" article="a" name="mysterious scroll">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Strange symbols hard to decrypt. You wonder if one of the symbols looks like a foreign and mysterious creature"/>
 		<attribute key="weight" value="850"/>
 	</item>
@@ -46325,10 +46513,12 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="23487" article="an" name="arena badge">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="23488" article="a" name="surprise cube">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="There might be something valuable inside"/>
 		<attribute key="weight" value="8500"/>
 	</item>
@@ -46436,6 +46626,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="23517" name="solid rage" plural="solid rage">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="300"/>
 	</item>
@@ -46615,6 +46806,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="23535" article="an" name="energy bar" plural="energy bars">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="750"/>
 	</item>
 	<item id="23536" article="a" name="folded void carpet">
@@ -46674,6 +46866,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="23545" article="an" name="energy drink" plural="energy drinks">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="900"/>
 	</item>
 	<item id="23546" name="arena leaderboard"/>
@@ -47308,11 +47501,13 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24382" name="bug meat" plural="bug meat">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="1100"/>
 	</item>
 	<item id="24383" article="a" name="cave turnip" plural="cave turnips">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="250"/>
 	</item>
 	<item id="24384" article="an" name="ancient belt buckle" plural="ancient belt buckles">
@@ -47341,15 +47536,18 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24390" article="an" name="ancient coin" plural="ancient coins">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="The face design portrays the sun god Suon"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="24391" article="a" name="coral brooch">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="24392" article="a" name="gemmed figurine">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="24393" article="a" name="pillow backpack">
@@ -47381,6 +47579,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24396" article="a" name="birthday cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It was created by Tibia's finest bakers for the celebration of 20 years of Tibia"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -47595,6 +47794,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24492" name="roasted meat">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="24493" name="candied fruit">
@@ -47802,10 +48002,12 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24961" article="a" name="tiger eye" plural="tiger eyes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="24962" article="a" name="prismatic quartz">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="24963" article="a" name="wasted time">
@@ -47823,6 +48025,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="24966" article="a" name="forbidden fruit">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="24967" article="a" name="dragon crown">
@@ -48019,6 +48222,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="25077" article="an" name="egg">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="25078" name="remains of an orclops doomhauler">
@@ -48063,6 +48267,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="25087" article="an" name="egg">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="25088" name="porcelain mask">
@@ -48647,6 +48852,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="25692" name="fresh fruit" plural="fresh fruits">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="150"/>
 	</item>
@@ -48848,6 +49054,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="25737" article="a" name="rainbow quartz" plural="rainbow quartzes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item fromid="25738" toid="25739" name="tar sacrificial"/>
@@ -51873,6 +52080,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="27488" article="a" name="gold nugget">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="27489" article="a" name="silver nugget"/>
@@ -52530,6 +52738,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="27654" article="a" name="surprise jar">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item id="27655" article="a" name="plan for a makeshift armour">
@@ -53119,14 +53328,17 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="28484" article="a" name="blueberry cupcake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item id="28485" article="a" name="strawberry cupcake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item id="28486" article="a" name="lemon cupcake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item id="28487" name="RESERVED SPRITE"/>
@@ -55284,14 +55496,17 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="29345" article="a" name="blue glass plate">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="29346" article="a" name="green glass plate">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="29347" article="a" name="violet glass plate">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="29348" article="a" name="poison gland">
@@ -55319,46 +55534,55 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="29408" article="a" name="roasted wyvern wings">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Wyverns are tough and renitent, unless roasted gently"/>
 		<attribute key="weight" value="740"/>
 	</item>
 	<item id="29409" article="a" name="carrot pie">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This pie is fruity and spicy at the same time, which makes it absolutely delicious. Try to control yourself"/>
 		<attribute key="weight" value="620"/>
 	</item>
 	<item id="29410" article="a" name="tropical marinated tiger">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This delicious tiger meat is marinated in a tasty exotic sauce"/>
 		<attribute key="weight" value="900"/>
 	</item>
 	<item id="29411" article="a" name="delicatessen salad">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="A true gourmet salad with some very tasty but also not very healthy ingredients"/>
 		<attribute key="weight" value="600"/>
 	</item>
 	<item id="29412" article="a" name="chilli con carniphila">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Spicy chilli combined with delicious minced carniphila meat, salad is already included"/>
 		<attribute key="weight" value="819"/>
 	</item>
 	<item id="29413" article="a" name="svargrond salmon filet">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Fresh from the coast of Svargrond, this salmon lives up to traditional northern cuisine"/>
 		<attribute key="weight" value="780"/>
 	</item>
 	<item id="29414" article="a" name="carrion casserole">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="This traditional casserole made of leftovers is beefy and actually smells quite good"/>
 		<attribute key="weight" value="1200"/>
 	</item>
 	<item id="29415" article="a" name="consecrated beef">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Tasty beef with an aromatic sauce and parsley potatoes"/>
 		<attribute key="weight" value="1100"/>
 	</item>
 	<item id="29416" article="a" name="overcooked noodles">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Not exactly 'al dente' yet some just seem to love it"/>
 		<attribute key="weight" value="1000"/>
 	</item>
@@ -55771,6 +55995,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="29995" article="a" name="sun fruit">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="210"/>
 	</item>
 	<item fromid="29996" toid="29997" article="a" name="painting">
@@ -55948,18 +56173,22 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30053" article="a" name="dragon figurine">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="30054" article="a" name="unicorn figurine">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="30055" article="a" name="crunor idol">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="30056" article="an" name="ornate locket">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="30057" article="a" name="closed door">
@@ -55972,14 +56201,17 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30059" article="a" name="giant ruby">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="30060" article="a" name="giant emerald">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="30061" article="a" name="giant sapphire">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="30062" article="a" name="dead lumbering carnivor">
@@ -56464,6 +56696,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30180" article="a" name="hexagonal ruby">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="125"/>
 	</item>
 	<item id="30181" article="a" name="shield of endless search">
@@ -56551,6 +56784,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30198" article="a" name="meringue cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="30199" name="RESERVED SPRITE"/>
@@ -56564,6 +56798,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30202" article="a" name="winterberry liquor">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="30203" article="a" name="blue ectoplasm">
@@ -56988,6 +57223,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="30319" article="a" name="golden horseshoe">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item id="30320" article="a" name="lucky pig">
@@ -58964,14 +59200,17 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="31573" article="a" name="sun medal">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="850"/>
 	</item>
 	<item id="31574" article="a" name="sunray emblem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="850"/>
 	</item>
 	<item id="31575" article="a" name="golden bijou">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="850"/>
 	</item>
 	<item id="31576" article="the" name="Regalia of Suon">
@@ -59867,6 +60106,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="31960" name="reserved sprite"/>
 	<item id="31961" article="a" name="red gingerbread heart">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -59874,6 +60114,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item fromid="31963" toid="32008" name="event item"/>
 	<item id="32009" article="a" name="veal">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -59914,16 +60155,19 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item fromid="32039" toid="32042" name="unknown"/>
 	<item id="32043" article="a" name="bass">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="1250"/>
 	</item>
 	<item id="32044" article="a" name="small bass">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 	<item id="32045" article="a" name="tiny bass">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -59936,26 +60180,31 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="32065" name="reserved sprite"/>
 	<item id="32066" article="a" name="green gingerbread heart">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="32067" article="a" name="blue gingerbread heart">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="32068" article="a" name="leberkassemmel">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="400"/>
 	</item>
 	<item id="32069" article="a" name="candy floss">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="240"/>
 	</item>
 	<item id="32070" article="a" name="Stockfish">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -59971,6 +60220,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="32073" article="a" name="unicorn weisswurst">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -60375,6 +60625,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="32198" article="a" name="filled milk churn">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="A churn filled with delicious fresh milk"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="3500"/>
@@ -61557,6 +61808,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="32589" article="a" name="angel figurine">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of ivory"/>
 		<attribute key="weight" value="650"/>
 	</item>
@@ -61738,11 +61990,13 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="32622" article="a" name="giant amethyst">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="32623" article="a" name="giant topaz">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="170"/>
 	</item>
@@ -62087,16 +62341,19 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="32768" article="a" name="sandtimer"/>
 	<item id="32769" article="a" name="white gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="32770" article="a" name="diamond">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="32771" article="a" name="moonstone">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="showCount" value="1"/>
 		<attribute key="weight" value="10"/>
 	</item>
@@ -62925,6 +63182,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="33778" article="a" name="raw watermelon tourmaline" plural="raw watermelon tourmalines">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="33779" article="a" name="watermelon tourmaline" plural="watermelon tourmalines">
@@ -62935,6 +63193,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="33781" article="a" name="lion figurine" plural="lion figurines">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of gold"/>
 		<attribute key="weight" value="650"/>
 	</item>
@@ -63365,6 +63624,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="33930" article="an" name="salt">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="33931" article="a" name="cask">
@@ -63646,11 +63906,13 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="34024" article="a" name="gruesome fan" plural="gruesome fans">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of spider legs and human skin"/>
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="34025" article="a" name="diabolic skull" plural="diabolic skulls">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It is made of gold and rubies"/>
 		<attribute key="weight" value="210"/>
 	</item>
@@ -63872,14 +64134,17 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="34072" article="a" name="spectral horseshoe" plural="spectral horseshoes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="34073" article="a" name="spectral saddle" plural="spectral saddles">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="270"/>
 	</item>
 	<item id="34074" article="a" name="spectral horse tack" plural="spectral horse tacks">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="34075" name="the skull of a beast">
@@ -64336,6 +64601,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="34107" article="a" name="slab with a scorpion"/>
 	<item id="34109" article="a" name="bag you desire">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It contains the most powerful artifacts from the depths of Zarganash's darkest realms"/>
 		<attribute key="weight" value="1500"/>
 	</item>
@@ -66069,18 +66335,22 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 	</item>
 	<item id="35578" article="a" name="tiara" plural="tiaras">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="35579" article="a" name="golden dustbin" plural="golden dustbins">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="720"/>
 	</item>
 	<item id="35580" article="a" name="golden skull" plural="golden skulls">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="430"/>
 	</item>
 	<item id="35581" article="a" name="golden cheese wedge" plural="golden cheese wedges">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item id="35582" name="blue shark trophy">
@@ -66124,6 +66394,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 	</item>
 	<item id="35595" article="a" name="soap" plural="soaps">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="180"/>
 	</item>
 	<item id="35596" name="mouldy powder">
@@ -66202,6 +66473,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 	</item>
 	<item id="35695" article="a" name="scrubbing brush" plural="scrubbing brushes">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="350"/>
 	</item>
 	<item id="35848" article="a" name="blue quiver">
@@ -67879,6 +68151,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 	<item fromid="36703" toid="36705" article="a" name="gnomish sanitizer"/>
 	<item id="36706" article="a" name="red gem">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="36707" article="an" name="eye-shaped frame">
@@ -68322,20 +68595,24 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 	<item fromid="36824" toid="36826" article="a" name="glass tile"/>
 	<item id="36827" article="a" name="drome cube">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="There is something valuable inside"/>
 		<attribute key="weight" value="4500"/>
 	</item>
 	<item id="36833" article="an" name="arena badge replica">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="A shiny reminder of the old days"/>
 		<attribute key="wrapableto" value="23398"/>
 	</item>
 	<item id="36835" article="an" name="eldritch crystal">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item id="36836" article="an" name="eldritch casket">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1300"/>
 	</item>
 	<item id="36837" article="a" name="plushie of lavaworm">
@@ -68886,10 +69163,12 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="37002" article="a" name="tagralt-inlaid scabbard">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="37003" article="a" name="eye-embroidered veil">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="37004" article="a" name="leaf chair">
@@ -70275,6 +70554,7 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="37531" article="a" name="candy floss">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="40"/>
 	</item>
 	<item id="37532" article="an" name="ice cream cone">
@@ -70283,6 +70563,7 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="37533" article="a" name="birthday layer cake">
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="It was created by Tibia's finest bakers for the celebration of 25 years of Tibia"/>
 		<attribute key="weight" value="500"/>
 	</item>
@@ -71218,22 +71499,27 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="39036" article="a" name="rainbow opal">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item id="39037" article="a" name="cobalt ridge">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item id="39038" article="a" name="royal almandine">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item id="39039" article="a" name="cerulean abyss">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item id="39040" article="a" name="fiery tear">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="175"/>
 	</item>
 	<item fromid="39041" toid="39091" article="a" name="bridge"/>
@@ -73115,10 +73401,12 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="39544" article="a" name="firefighting axe">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1600"/>
 	</item>
 	<item id="39545" article="a" name="portable flame">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="15"/>
 	</item>
 	<item id="39546" article="a" name="primal bag">
@@ -76286,6 +76574,7 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="43895" article="a" name="bag you covet">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="43902" article="a" name="crack">
@@ -76859,57 +77148,70 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="44743" article="a" name="Nimmersatt's seal">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44744" article="a" name="molten dragon essence">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44745" article="a" name="mega dragon heart">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44746" article="a" name="dragolisk eye">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44747" article="a" name="dragolisk poison gland">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44748" article="a" name="wardragon claw">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44749" article="a" name="wardragon tooth">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="44750" name="exalted seal">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="44751" name="gold-scaled sentinel">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="44752" name="crystallized blood">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="44753" name="herald's insignia ">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="44754" name="herald's wings">
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="44758" name="dragon hoard">
@@ -77131,31 +77433,37 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="45652" article="a" name="preserved pink seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45653" article="a" name="preserved red seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45654" article="a" name="preserved light blue seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45655" article="a" name="preserved violet seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45656" article="a" name="preserved purple seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>	
 	<item id="45657" article="a" name="preserved yellow seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
@@ -80166,52 +80474,72 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="48116" article="a" name="gummy rotworm" plural="gummy rotworms">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="48249" article="an" name="milk chocolate coin">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1"/>
 	</item>
 	<item id="48250" article="a" name="dark chocolate coin">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="valuables"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="1"/>
 	</item>
 	<item id="48251" article="a" name="wafer paper flower" plural="wafer paper flowers">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="5"/>
 	</item>
 	<item id="48252" article="a" name="brigadeiro" plural="brigadeiros">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="48253" article="a" name="beijinho" plural="beijinhos">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="48254" article="a" name="churro heart" plural="churro hearts">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="15"/>
 	</item>
 	<item id="48255" article="a" name="lime tart" plural="lime tarts">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48256" article="a" name="pastry dragon" plural="pastry dragons">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48273" article="a" name="taiyaki ice cream" plural="taiyaki ice creams">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="48413" article="an" name="amber sickle">
@@ -80259,27 +80587,36 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="48505" article="a" name="preserved dark seed">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products" />
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="48508" article="a" name="amber souvenir" plural="amber souvenirs">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48509" article="a" name="resinous fish fin" plural="resinous fish fins">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48510" article="a" name="demon root" plural="demon roots">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48511" article="a" name="resin parasite" plural="resin parasites">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48514" article="a" name="strange inedible fruit">
@@ -80291,11 +80628,14 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="48516" article="a" name="root tentacle" plural="root tentacles">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="48517" article="a" name="fish eye">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="100"/>
 	</item>
@@ -80343,7 +80683,9 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="48544" article="a" name="wad of fairy floss" plural="wad of fairy flosses">
 		<attribute key="loottype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="25"/>
 	</item>
 	<item id="48929" article="an" name="black sheep soul core">
