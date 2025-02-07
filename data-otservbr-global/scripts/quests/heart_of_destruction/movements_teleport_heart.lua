@@ -118,5 +118,11 @@ teleportHeart:type("stepin")
 for index, value in pairs(vortex) do
 	teleportHeart:aid(index)
 end
+for index, value in pairs(accessVortex) do
+	teleportHeart:aid(index)
+end
+for index, value in pairs(finalBosses) do
+	teleportHeart:aid(index)
+end
 
 teleportHeart:register()
