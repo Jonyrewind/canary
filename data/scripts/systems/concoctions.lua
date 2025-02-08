@@ -5,7 +5,7 @@ local configs = {
 	--- tickTypeOverride = ConcoctionTickType.Experience,
 
 	[Concoction.Ids.StaminaExtension] = {
-		amount = 60, -- minutes
+		amount = 300, -- minutes
 		callback = function(player, config)
 			player:setStamina(player:getStamina() + config.amount)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have been granted " .. config.amount .. " minutes of stamina.")
@@ -20,7 +20,7 @@ local configs = {
 	[Concoction.Ids.StrikeEnhancement] = { condition = { CONDITION_PARAM_SKILL_CRITICAL_HIT_CHANCE, 500 } },
 	[Concoction.Ids.CharmUpgrade] = { condition = { CONDITION_PARAM_CHARM_CHANCE_MODIFIER, 5 } },
 	[Concoction.Ids.WealthDuplex] = { rate = 100 },
-	[Concoction.Ids.BestiaryBetterment] = { multiplier = 2.0 },
+	[Concoction.Ids.BestiaryBetterment] = { multiplier = 3.0 },
 	[Concoction.Ids.FireResilience] = { condition = { CONDITION_PARAM_ABSORB_FIREPERCENT, 8 } },
 	[Concoction.Ids.IceResilience] = { condition = { CONDITION_PARAM_ABSORB_ICEPERCENT, 8 } },
 	[Concoction.Ids.EarthResilience] = { condition = { CONDITION_PARAM_ABSORB_EARTHPERCENT, 8 } },
