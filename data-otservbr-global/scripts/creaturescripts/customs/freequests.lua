@@ -359,6 +359,7 @@ local questTable = {
 	{ storageName = "TheWhiteRavenMonastery.Diary", storage = Storage.Quest.U7_24.TheWhiteRavenMonastery.Diary, storageValue = 2 },
 	{ storageName = "TheWhiteRavenMonastery.Door", storage = Storage.Quest.U7_24.TheWhiteRavenMonastery.Door, storageValue = 1 },
 	{ storageName = "TheSecretLibrary.Door", storage = Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses, storageValue = 5 },
+	{ storageName = "TheAncientTombs.DiprathSwitchesGlobalStorage", storage = Storage.Quest.U7_4.TheAncientTombs.DiprathSwitchesGlobalStorage, storageValue = 7 },
 }
 
 -- from Position: (33201, 31762, 1)

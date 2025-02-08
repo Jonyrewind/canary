@@ -21,6 +21,9 @@
 	<npc centerx="987" centery="1024" centerz="5" radius="1">
 		<npc name="Imbuement Assistant" x="1" y="0" z="5" spawntime="60" direction="1" />
 	</npc>
+	<npc centerx="996" centery="1024" centerz="5" radius="1">
+		<npc name="Burner" x="0" y="0" z="5" spawntime="60" />
+	</npc>
 	<npc centerx="1014" centery="1024" centerz="5" radius="2">
 		<npc name="Tamoril" x="-1" y="0" z="5" spawntime="90" direction="2" />
 	</npc>

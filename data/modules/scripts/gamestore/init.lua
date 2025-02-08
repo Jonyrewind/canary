@@ -686,7 +686,7 @@ function Player.canBuyOffer(self, offer)
 				disabledReason = "You reached the maximum amount for this blessing."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_ALLBLESSINGS then
-			for i = 1, 8 do
+			for i = 2, 8 do
 				if self:getBlessingCount(i) >= 5 then
 					disabled = 1
 					disabledReason = "You already have all Blessings."
@@ -1590,14 +1590,13 @@ function GameStore.processSingleBlessingPurchase(player, blessId, count)
 end
 
 function GameStore.processAllBlessingsPurchase(player, count)
-	player:addBlessing(1, count)
-	player:addBlessing(2, count)
-	player:addBlessing(3, count)
-	player:addBlessing(4, count)
-	player:addBlessing(5, count)
-	player:addBlessing(6, count)
-	player:addBlessing(7, count)
-	player:addBlessing(8, count)
+    for i = 1, 8 do
+        local currentBlessingCount = player:getBlessingCount(i) -- Get current count
+        if currentBlessingCount < 5 then
+            local blessingsToAdd = math.min(count, 5 - currentBlessingCount) -- Ensure we don't exceed 5
+            player:addBlessing(i, blessingsToAdd)
+        end
+    end
 end
 
 function GameStore.processInstantRewardAccess(player, offerCount)
@@ -1776,8 +1775,8 @@ function GameStore.processExpBoostPurchase(player)
 	local currentXpBoostTime = player:getXpBoostTime()
 	local expBoostCount = player:getStorageValue(GameStore.Storages.expBoostCount)
 
-	player:setXpBoostPercent(50)
-	player:setXpBoostTime(currentXpBoostTime + 3600)
+	player:setXpBoostPercent(70)
+	player:setXpBoostTime(currentXpBoostTime + 7200)
 
 	if expBoostCount == -1 or expBoostCount == 6 then
 		expBoostCount = 1

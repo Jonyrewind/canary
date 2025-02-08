@@ -1509,6 +1509,9 @@
 	<npc centerx="33267" centery="31848" centerz="7" radius="1">
 		<npc name="Ursula" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33701" centery="31854" centerz="7" radius="1">
+		<npc name="flora_bullwark" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32619" centery="31864" centerz="7" radius="1">
 		<npc name="Grumpy Stone" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2247,6 +2250,9 @@
 	<npc centerx="33571" centery="31908" centerz="8" radius="1">
 		<npc name="Elliott" x="0" y="0" z="8" spawntime="60" />
 	</npc>
+	<npc centerx="33559" centery="31913" centerz="8" radius="1">
+		<npc name="flora_lisa" x="0" y="0" z="8" spawntime="60" />
+	</npc>
 	<npc centerx="32619" centery="31917" centerz="8" radius="1">
 		<npc name="Iwar" x="0" y="0" z="8" spawntime="60" />
 	</npc>
@@ -2427,8 +2433,8 @@
 	<npc centerx="32656" centery="31923" centerz="9" radius="1">
 		<npc name="Tezila" x="0" y="0" z="9" spawntime="60" />
 	</npc>
-	<npc centerx="33654" centery="31937" centerz="9" radius="1">
-		<npc name="Flora" x="0" y="0" z="9" spawntime="60" />
+	<npc centerx="33653" centery="31939" centerz="9" radius="1">
+		<npc name="flora_glooth_fairy" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33570" centery="31985" centerz="9" radius="1">
 		<npc name="Jacob" x="0" y="0" z="9" spawntime="60" />

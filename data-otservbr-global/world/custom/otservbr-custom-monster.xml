@@ -81,98 +81,82 @@
 		<monster name="Vile Grandmaster" x="-1" y="-1" z="13" spawntime="60" />
 		<monster name="Renegade Knight" x="1" y="-1" z="13" spawntime="60" />
 	</monster>
-	<monster centerx="1039" centery="793" centerz="14" radius="1">
-		<monster name="Demon" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1039" centery="792" centerz="14" radius="1">
+		<monster name="Demon" x="0" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1043" centery="793" centerz="14" radius="1">
-		<monster name="Grim Reaper" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1043" centery="792" centerz="14" radius="1">
+		<monster name="Grim Reaper" x="0" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1047" centery="793" centerz="14" radius="1">
-		<monster name="Cobra Assassin" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Cobra Scout" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Cobra Vizier" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1047" centery="792" centerz="14" radius="1">
+		<monster name="Cobra Assassin" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Cobra Scout" x="0" y="1" z="14" spawntime="60" />
+		<monster name="Cobra Vizier" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1050" centery="793" centerz="14" radius="1">
-		<monster name="Roaring Lion" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1051" centery="792" centerz="14" radius="1">
+		<monster name="Roaring Lion" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Ancient Scarab" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1052" centery="793" centerz="14" radius="1">
-		<monster name="Ancient Scarab" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1055" centery="792" centerz="14" radius="1">
+		<monster name="Skeleton Elite Warrior" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Undead Elite Gladiator" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1054" centery="793" centerz="14" radius="1">
-		<monster name="Skeleton Elite Warrior" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1059" centery="792" centerz="14" radius="1">
+		<monster name="Burster Spectre" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Gazer Spectre" x="0" y="1" z="14" spawntime="60" />
+		<monster name="Ripper Spectre" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1056" centery="793" centerz="14" radius="1">
-		<monster name="Undead Elite Gladiator" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1063" centery="792" centerz="14" radius="1">
+		<monster name="Werelion" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Werelioness" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1058" centery="793" centerz="14" radius="1">
-		<monster name="Burster Spectre" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Gazer Spectre" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1067" centery="792" centerz="14" radius="1">
+		<monster name="Menacing Carnivor" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Spiky Carnivor" x="0" y="1" z="14" spawntime="60" />
+		<monster name="Lumbering Carnivor" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1060" centery="793" centerz="14" radius="1">
-		<monster name="Ripper Spectre" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1071" centery="792" centerz="14" radius="1">
+		<monster name="Deathling Scout" x="-1" y="1" z="14" spawntime="60" />
+		<monster name="Deathling Spellsinger" x="1" y="1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1062" centery="793" centerz="14" radius="1">
-		<monster name="Werelion" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1039" centery="806" centerz="14" radius="1">
+		<monster name="Dawnfire Asura" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Hellspawn" x="0" y="-1" z="14" spawntime="60" />
+		<monster name="Midnight Asura" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1064" centery="793" centerz="14" radius="1">
-		<monster name="Werelioness" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1043" centery="806" centerz="14" radius="1">
+		<monster name="Cursed Prospector" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Mean Lost Soul" x="0" y="-1" z="14" spawntime="60" />
+		<monster name="Flimsy Lost Soul" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1067" centery="793" centerz="14" radius="1">
-		<monster name="Menacing Carnivor" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Spiky Carnivor" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Lumbering Carnivor" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1047" centery="806" centerz="14" radius="1">
+		<monster name="Vicious Squire" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Hero" x="0" y="-1" z="14" spawntime="60" />
+		<monster name="Blood Priest" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1070" centery="793" centerz="14" radius="1">
-		<monster name="Deathling Scout" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1051" centery="806" centerz="14" radius="1">
+		<monster name="Sea Serpent" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Young Sea Serpent" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1072" centery="793" centerz="14" radius="1">
-		<monster name="Deathling Spellsinger" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1055" centery="806" centerz="14" radius="1">
+		<monster name="Exotic Bat" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Exotic Cave Spider" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1038" centery="805" centerz="14" radius="1">
-		<monster name="Dawnfire Asura" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Hellspawn" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1059" centery="806" centerz="14" radius="1">
+		<monster name="Priestess Of The Wild Sun" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Burning Gladiator" x="0" y="-1" z="14" spawntime="60" />
+		<monster name="Black Sphinx Acolyte" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1040" centery="805" centerz="14" radius="1">
-		<monster name="Midnight Asura" x="0" y="0" z="14" spawntime="60" />
+	<monster centerx="1063" centery="806" centerz="14" radius="1">
+		<monster name="Bashmu" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Juvenile Bashmu" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1043" centery="805" centerz="14" radius="1">
-		<monster name="Cursed Prospector" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Mean Lost Soul" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Flimsy Lost Soul" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1067" centery="806" centerz="14" radius="1">
+		<monster name="Girtablilu Warrior" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Venerable Girtablilu" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
-	<monster centerx="1046" centery="805" centerz="14" radius="1">
-		<monster name="Vicious Squire" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Hero" x="1" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1048" centery="805" centerz="14" radius="1">
-		<monster name="Blood Priest" x="0" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1050" centery="805" centerz="14" radius="1">
-		<monster name="Sea Serpent" x="0" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1052" centery="805" centerz="14" radius="1">
-		<monster name="Young Sea Serpent" x="0" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1055" centery="805" centerz="14" radius="1">
-		<monster name="Exotic Bat" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Exotic Cave Spider" x="1" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1059" centery="805" centerz="14" radius="1">
-		<monster name="Priestess Of The Wild Sun" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Burning Gladiator" x="0" y="0" z="14" spawntime="60" />
-		<monster name="Black Sphinx Acolyte" x="1" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1063" centery="805" centerz="14" radius="1">
-		<monster name="Bashmu" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Juvenile Bashmu" x="1" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1067" centery="805" centerz="14" radius="1">
-		<monster name="Girtablilu Warrior" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Venerable Girtablilu" x="1" y="0" z="14" spawntime="60" />
-	</monster>
-	<monster centerx="1071" centery="805" centerz="14" radius="1">
-		<monster name="Giant Spider" x="-1" y="0" z="14" spawntime="60" />
-		<monster name="Stampor" x="1" y="0" z="14" spawntime="60" />
+	<monster centerx="1071" centery="806" centerz="14" radius="1">
+		<monster name="Giant Spider" x="-1" y="-1" z="14" spawntime="60" />
+		<monster name="Stampor" x="1" y="-1" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="1039" centery="793" centerz="15" radius="1">
 		<monster name="Rotworm" x="0" y="0" z="15" spawntime="60" />
