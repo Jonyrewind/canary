@@ -8,15 +8,19 @@ on:
   push:
     paths:
       - "data*/**"
+
 jobs:
   lua-formatter:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grants write access to push changes
     steps:
       - name: Set up Git
         if: ${{ github.ref != 'refs/heads/main' }}
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
+
       - name: Actions checkout
         if: ${{ github.ref != 'refs/heads/main' }}
         uses: actions/checkout@v3
