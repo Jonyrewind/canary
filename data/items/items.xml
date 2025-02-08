@@ -40254,6 +40254,7 @@
 		<attribute key="decayTo" value="0"/>
 	</item>
 	<item id="20062" article="a" name="cluster of solace">
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="280"/>
 	</item>
 	<item id="20063" article="a" name="dream matter">
