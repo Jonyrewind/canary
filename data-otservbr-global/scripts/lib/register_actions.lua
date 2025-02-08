@@ -966,7 +966,7 @@ function onUseSpoon(player, item, fromPosition, target, toPosition, isHotkey)
 				player:say("You retrieve a fine sulphur from a lava hole.", TALKTYPE_MONSTER_SAY)
 				return true
 			else
-				return false -- 🛑 Added to prevent falling through
+				return false
 			end
 		-- What a Foolish Quest - Mission 8 (sulphur)
 		elseif player:getStorageValue(Storage.Quest.U8_1.WhatAFoolishQuest.Questline) == 21 then
@@ -976,14 +976,14 @@ function onUseSpoon(player, item, fromPosition, target, toPosition, isHotkey)
 				toPosition:sendMagicEffect(CONST_ME_YELLOW_RINGS)
 				return true
 			else
-				return false -- 🛑 Added to prevent falling through
+				return false
 			end
 		else
-			return false -- 🛑 If quest conditions don't match, return false
+			return false
 		end
 	end
 
-	return false -- 🛑 If no valid target is found, return false
+	return false
 end
 
 
