@@ -11,7 +11,7 @@ local function ServerSave()
 	end
 
 	-- Update daily reward next server save timestamp
-	UpdateDailyRewardGlobalStorage(DailyReward.storages.lastServerSave, os.time())	
+	UpdateDailyRewardGlobalStorage(DailyReward.storages.lastServerSave, os.time())
 	-- Exercise Reward
 	db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 30061")
 end

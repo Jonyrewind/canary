@@ -26,16 +26,16 @@ function taskCreatureStartup.onStartup()
 	for _, tasks in pairs(taskConfiguration) do
 		if tasks.races and type(tasks.races) == "table" and next(tasks.races) ~= nil then
 			for _, raceList in ipairs(tasks.races) do
-			local mType = MonsterType(raceList)
-			if not mType then
-				logger.error("[TaskCreatureStartup] boss with name {} is not a valid MonsterType", raceList)
-			else
-				mType:registerEvent("TaskCreature")
+				local mType = MonsterType(raceList)
+				if not mType then
+					logger.error("[TaskCreatureStartup] boss with name {} is not a valid MonsterType", raceList)
+				else
+					mType:registerEvent("TaskCreature")
+				end
 			end
-		end
 		else
 			logger.error("[TaskCreatureStartup] No valid races found for task")
 		end
-	end	
+	end
 end
 taskCreatureStartup:register()

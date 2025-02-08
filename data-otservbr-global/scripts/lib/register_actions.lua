@@ -986,7 +986,6 @@ function onUseSpoon(player, item, fromPosition, target, toPosition, isHotkey)
 	return false
 end
 
-
 function onUseSpikedSquelcher(player, item, fromPosition, target, toPosition, isHotkey)
 	if target.itemid == 19068 and toPosition == Position(33276, 31797, 6) then -- mysterious ornate chest at Telas' house
 		item:remove(1)
