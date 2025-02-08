@@ -232,29 +232,53 @@ if KeywordHandler == nil then
 	end
 
 	function KeywordHandler:processMultiWordMessage(npc, player, message, npcHandler)
-		local words = {}  -- Split message into words
+		local words = {}  
 		for word in message:lower():gmatch("%S+") do
 			table.insert(words, word)
 		end
 
 		local playerId = player:getId()
 		local interaction = npcHandler:checkInteraction(npc, player)
-		local wordSequence = table.concat(words, " ")
 
+		-- Normalize message: Remove punctuation and extra spaces
+		local cleanMessage = message:lower():gsub("%p", "")  -- Removes punctuation
+		cleanMessage = cleanMessage:gsub("%s+", " ")  -- Replaces multiple spaces with one
+
+		-- 🔥 1️⃣ Special case for "hi trade" (ensure greeting first)
+		if cleanMessage == "hi trade" then
+			if not interaction then
+				npcHandler:greet(npc, player, "hi")  -- Start interaction
+			else
+				self:processMessage(npc, player, "trade")  -- Process trade only if interaction is active
+			end
+			return true
+		end
+
+		-- 🔥 2️⃣ Handle greetings normally
 		for _, word in ipairs(words) do
 			if FocusModule.isGreetWord(word) then
 				if not interaction then
-					npcHandler:greet(npc, player, message)  -- Call greet function
-					return true  -- Return true to indicate greeting
-				end
-			else
-				local ret = self:processMessage(npc, player, word)  -- Process each word separately
-				if ret then
-					return true  -- Return true if a keyword is processed
+					npcHandler:greet(npc, player, message)  
+					return true  
 				end
 			end
 		end
 
-		return false  -- Return false if no keywords are processed
+		-- 🔥 3️⃣ Try processing the full phrase first
+		local wordSequence = table.concat(words, " ")  
+		local ret = self:processMessage(npc, player, wordSequence)
+		if ret then
+			return true
+		end
+
+		-- 🔥 4️⃣ If full phrase isn't found, process individual words
+		for _, word in ipairs(words) do
+			ret = self:processMessage(npc, player, word)
+			if ret then
+				return true  
+			end
+		end
+
+		return false  
 	end
 end

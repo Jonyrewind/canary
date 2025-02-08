@@ -141,8 +141,8 @@ monster.immunities = {
 	{ type = "bleed", condition = false },
 }
 
-mType.onThink = function(monster, interval)
+--[[mType.onThink = function(monster, interval)
 	monster:tryTeleportToPlayer("Burn in hell!")
-end
+end]]--
 
 mType:register(monster)

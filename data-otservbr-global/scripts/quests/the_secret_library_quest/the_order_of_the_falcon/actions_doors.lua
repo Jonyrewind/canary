@@ -1,7 +1,7 @@
 local doors = {
 	[1] = { doorPosition = Position(33376, 31335, 3), value = 1 },
 	[2] = { doorPosition = Position(33371, 31349, 4), value = 2 },
-	[3] = { doorPosition = Position(33376, 31349, 4), value = 2 },
+	[3] = { doorPosition = Position(33376, 31349, 4), value = 2, closedDoor = 6252 },
 	[4] = { doorPosition = Position(33375, 31346, 5), value = 2 },
 	[5] = { doorPosition = Position(33363, 31346, 7), value = 4 },
 	[6] = { doorPosition = Position(33366, 31343, 7), value = 4 },
@@ -41,8 +41,11 @@ function actions_falcon_doors.onUse(player, item, fromPosition, target, toPositi
 			local value = p.value
 			if (item:getPosition() == door) and not (Tile(item:getPosition()):getTopCreature()) then
 				if player:getStorageValue(Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses) >= value then
-					player:teleportTo(toPosition, true)
-					item:transform(item.itemid + 1)
+					if p.closedDoor == item.itemid then
+						item:transform(item.itemid + 1)
+					else
+						item:transform(item.itemid - 1)
+					end
 				else
 					player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The door seems to be sealed against unwanted intruders.")
 				end
