@@ -12,7 +12,7 @@ on:
     paths:
       - "src/**"
     branches:
-      - main
+      - mychanges
 
 env:
   CMAKE_BUILD_PARALLEL_LEVEL: 2
