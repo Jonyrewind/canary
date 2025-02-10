@@ -57,18 +57,18 @@ end
 
 -- ✅ Bank Robbery Event Status using KV (Specific to Thais)
 local function isBankRobberyActiveInThais()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 0 and data.city == "Thais"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 0 and data.city == "Thais"
 end
 
 local function isBankRobberyCompletedInThais()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 1 and data.city == "Thais"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 1 and data.city == "Thais"
 end
 
 -- ✅ Checks if the player has a stolen bag of gold
 local function hasStolenGoldBag(player)
-    return player:getItemCount(13429) > 0 -- Correct stolen bag ID
+	return player:getItemCount(13429) > 0 -- Correct stolen bag ID
 end
 
 -- ✅ Modify NPC Voices Only If Thais Is Affected
