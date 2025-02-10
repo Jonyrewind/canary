@@ -94,7 +94,7 @@ function deathEvent.onDeath(creature)
 	end
 
 	local monster = creature:getMonster()
-	if not creature or not monster or not monster:hazard() or not hazard:isInZone(monster:getPosition()) then
+	if not creature or not monster or not hazard:isInZone(monster:getPosition()) then
 		return true
 	end
 	-- don't spawn pods or plunder if the monster is a reward boss
@@ -103,7 +103,7 @@ function deathEvent.onDeath(creature)
 	end
 
 	local player, points = hazard:getHazardPlayerAndPoints(monster:getDamageMap())
-	if points < 1 then
+	if points < 0 then
 		return true
 	end
 
