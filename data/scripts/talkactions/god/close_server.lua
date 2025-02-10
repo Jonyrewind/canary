@@ -5,6 +5,8 @@ function closeServer.onSay(player, words, param)
 	logCommand(player, words, param)
 
 	if param == "shutdown" then
+		KV.set("isDailyServerSave", true)
+		db.query("UPDATE `player_storage` SET `value` = 0 WHERE `player_storage`.`key` = 30061")
 		Game.setGameState(GAME_STATE_SHUTDOWN)
 		Webhook.sendMessage(":red_circle: Server was shutdown by: **" .. player:getName() .. "**", announcementChannels["serverAnnouncements"])
 	elseif param == "save" then
