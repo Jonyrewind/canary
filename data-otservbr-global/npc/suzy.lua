@@ -81,13 +81,13 @@ local function greetCallback(npc, creature)
 	local player = Player(creature)
 	local playerId = player:getId()
 
-	if isBankRobberyActiveInThais() then
+	if isBankRobberyActiveInAbdendriel() then
 		if hasStolenGoldBag(player) then
 			npcHandler:setMessage(MESSAGE_GREET, "I'm sorry, but we have been robb- hey, what's that bag? Have you hunted down the bank robbers?")
 		else
 			npcHandler:setMessage(MESSAGE_GREET, "HELP! We have been robbed! I can't give you any gold until the robber has been brought to justice or we have received a compensation from the king. I think the robbers ran towards the Ancient Temple.")
 		end
-	elseif isBankRobberyCompletedInThais() then
+	elseif isBankRobberyCompletedInAbdendriel() then
 		npcHandler:setMessage(MESSAGE_GREET, "The filthy bank robber has been brought to justice and almost all gold has been returned. We are back in business!")
 	else
 		npcHandler:setMessage(MESSAGE_GREET, "Yes? What may I do for you, |PLAYERNAME|? Bank business, perhaps?", player)

@@ -16,6 +16,7 @@ function stoneTeleport.onStepIn(creature, item, position, fromPosition)
 
 	player:teleportTo(Position(32920, 32296, 13))
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+	item:transform(1842)
 
 	local thing
 	for i = 1, #config do
