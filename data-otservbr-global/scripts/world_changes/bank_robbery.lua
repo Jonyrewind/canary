@@ -40,7 +40,7 @@ function startupEvent.onStartup()
     if data.active == 1 and data.completed == 0 then
         for _, city in pairs(robberyCities) do
             if city.name == data.city then
-                Game.createMonster(city.boss, city.position)
+                addEvent(Game.createMonster(selectedCity.boss, selectedCity.position), 5000)
                 logger.info("[World Change] Resuming Bank Robbery in {}! Thief: {}", city.name, city.boss)
                 return true
             end
@@ -54,7 +54,7 @@ function startupEvent.onStartup()
         saveBankRobberyData(newData)
 
         -- Spawn the boss (thief)
-        Game.createMonster(selectedCity.boss, selectedCity.position)
+		addEvent(Game.createMonster(selectedCity.boss, selectedCity.position), 5000)
 
         -- Log the event
         logger.info("[World Change] Bank Robbery has started in {}! Thief: {}", selectedCity.name, selectedCity.boss)

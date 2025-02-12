@@ -20458,11 +20458,13 @@
 	</item>
 	<item id="7439" article="a" name="berserk potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your fighting skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="7440" article="a" name="mastermind potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your magic skill"/>
 		<attribute key="weight" value="290"/>
 	</item>
@@ -20477,6 +20479,7 @@
 	</item>
 	<item id="7443" article="a" name="bullseye potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your distance skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
 	</item>
@@ -62641,6 +62644,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="containersize" value="20"/>
 	</item>
 	<item id="32711" article="a" name="luminescent crystal pickaxe">
+		<attribute key="description" value="use this on very rare items to get forge materials."/>
 		<attribute key="primarytype" value="tools"/>
 		<attribute key="weight" value="135"/>
 	</item>
