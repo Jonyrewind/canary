@@ -50,16 +50,16 @@ bossCooldown:register()
 local clearKV = TalkAction("/clearkv")
 
 function clearKV.onSay(player, words, param)
-    if not param or param == "" then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /clearkv <key>")
-        return false
-    end
+	if not param or param == "" then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /clearkv <key>")
+		return false
+	end
 
-    -- ✅ Properly remove the key from KV storage
-    kv.remove(param)
+	-- ✅ Properly remove the key from KV storage
+	kv.remove(param)
 
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "KV [" .. param .. "] has been cleared.")
-    return true
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "KV [" .. param .. "] has been cleared.")
+	return true
 end
 
 clearKV:separator(" ")
