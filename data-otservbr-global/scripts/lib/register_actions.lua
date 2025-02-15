@@ -415,10 +415,10 @@ function onUseShovel(player, item, fromPosition, target, toPosition, isHotkey)
 		if target.actionid == 100 and rand <= 20 then
 			target:transform(615)
 			target:decay()
-		elseif rand == 1 then
+		elseif rand > 95 then
 			Game.createItem(3042, 1, toPosition)
 			player:addAchievementProgress("Gold Digger", 100)
-		elseif rand > 95 then
+		elseif rand > 80 then
 			Game.createMonster("Scarab", toPosition)
 		end
 		toPosition:sendMagicEffect(CONST_ME_POFF)
@@ -985,6 +985,7 @@ function onUseSpoon(player, item, fromPosition, target, toPosition, isHotkey)
 
 	return false
 end
+
 
 function onUseSpikedSquelcher(player, item, fromPosition, target, toPosition, isHotkey)
 	if target.itemid == 19068 and toPosition == Position(33276, 31797, 6) then -- mysterious ornate chest at Telas' house

@@ -1,6 +1,6 @@
 local combat = {}
 
-for i = 40, 70 do
+for i = 30, 50 do
 	combat[i] = Combat()
 	combat[i]:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYHIT)
 	combat[i]:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ENERGY)
@@ -17,7 +17,7 @@ end
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, var)
-	return combat[math.random(40, 70)]:execute(creature, var)
+	return combat[math.random(30, 50)]:execute(creature, var)
 end
 
 spell:name("silencer skill reducer")

@@ -69,11 +69,11 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 	if potion.health or potion.mana or potion.combat then
 		local level = player:getLevel() / 3
 		if potion.health then
-			doTargetCombatHealth(player, target, COMBAT_HEALING, potion.health[1] + level, potion.health[2] + level, CONST_ME_MAGIC_BLUE)
+			doTargetCombatHealth(player, target, COMBAT_HEALING, potion.health[1] + level  , potion.health[2] + level  , CONST_ME_MAGIC_BLUE)
 		end
 
 		if potion.mana then
-			doTargetCombatMana(0, target, potion.mana[1] + level, potion.mana[2] + level, CONST_ME_MAGIC_BLUE)
+			doTargetCombatMana(0, target, potion.mana[1] + level   , potion.mana[2] + level  , CONST_ME_MAGIC_BLUE)
 		end
 
 		if potion.combat then
@@ -88,14 +88,13 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 		target:say("Aaaah...", MESSAGE_POTION)
 
 		local deactivatedFlasks = player:kv():get("talkaction.potions.flask") or false
-		--[[		if not deactivatedFlasks then
+--[[		if not deactivatedFlasks then
 			if fromPosition.x == CONTAINER_POSITION then
 				player:addItem(potion.flask, 1)
 			else
 				Game.createItem(potion.flask, 1, fromPosition)
 			end
-		end]]
-		--
+		end]]--
 	end
 
 	player:getPosition():sendSingleSoundEffect(SOUND_EFFECT_TYPE_ITEM_USE_POTION, player:isInGhostMode() and nil or player)

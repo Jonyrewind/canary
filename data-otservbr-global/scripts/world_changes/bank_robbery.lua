@@ -40,10 +40,11 @@ function startupEvent.onStartup()
     if data.active == 1 and data.completed == 0 then
         for _, city in pairs(robberyCities) do
             if city.name == data.city then
-				local spawnboss = Game.createMonster(selectedCity.boss),
-                addEvent(spawnboss, 10000, selectedCity.position)
-                logger.info("[World Change] Resuming Bank Robbery in {}! Thief: {}", city.name, city.boss)
-                return true
+				addEvent(function()
+					Game.createMonster(city.boss, city.position)
+					logger.info("[World Change] Resuming Bank Robbery in {}! Thief: {}", city.name, city.boss)
+				end, 5000)
+				return true
             end
         end
     end
@@ -54,14 +55,12 @@ function startupEvent.onStartup()
         local newData = {city = selectedCity.name, active = 1, completed = 0}
         saveBankRobberyData(newData)
 
-        -- Spawn the boss (thief)
-		local spawnboss = Game.createMonster(selectedCity.boss),
-		addEvent(spawnboss, 10000, selectedCity.position)
-
-        -- Log the event
-        logger.info("[World Change] Bank Robbery has started in {}! Thief: {}", selectedCity.name, selectedCity.boss)
-    end
-    return true
+		addEvent(function()
+			Game.createMonster(selectedCity.boss, selectedCity.position)
+			logger.info("[World Change] Bank Robbery has started in {}! Thief: {}", selectedCity.name, selectedCity.boss)
+		end, 5000) -- Delay of 5000ms (5 seconds)
+		end
+		return true
 end
 startupEvent:register()
 

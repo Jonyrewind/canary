@@ -2,7 +2,7 @@ local hazard = Hazard.new({
 	name = "hazard.gnomprona-gardens",
 	from = Position(33502, 32740, 13),
 	to = Position(33796, 32996, 15),
-	maxLevel = 12,
+	maxLevel = 20,
 
 	crit = true,
 	dodge = true,

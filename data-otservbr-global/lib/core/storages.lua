@@ -3064,6 +3064,8 @@ GlobalStorage = {
 	Yasir = 65014,
 	IceCrack = 65016,
 	UglyMonster = 65017,
+	BullwarkTimer = 65018,
+	LisaTimer = 65019,
 	KeysUpdate = 40000, -- Reserved storage from 40000 - 40000
 }
 

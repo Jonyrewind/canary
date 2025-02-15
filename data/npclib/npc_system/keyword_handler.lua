@@ -232,7 +232,7 @@ if KeywordHandler == nil then
 	end
 
 	function KeywordHandler:processMultiWordMessage(npc, player, message, npcHandler)
-		local words = {}
+		local words = {}  
 		for word in message:lower():gmatch("%S+") do
 			table.insert(words, word)
 		end
@@ -241,15 +241,15 @@ if KeywordHandler == nil then
 		local interaction = npcHandler:checkInteraction(npc, player)
 
 		-- Normalize message: Remove punctuation and extra spaces
-		local cleanMessage = message:lower():gsub("%p", "") -- Removes punctuation
-		cleanMessage = cleanMessage:gsub("%s+", " ") -- Replaces multiple spaces with one
+		local cleanMessage = message:lower():gsub("%p", "")  -- Removes punctuation
+		cleanMessage = cleanMessage:gsub("%s+", " ")  -- Replaces multiple spaces with one
 
 		-- 🔥 1️⃣ Special case for "hi trade" (ensure greeting first)
 		if cleanMessage == "hi trade" then
 			if not interaction then
-				npcHandler:greet(npc, player, "hi") -- Start interaction
+				npcHandler:greet(npc, player, "hi")  -- Start interaction
 			else
-				self:processMessage(npc, player, "trade") -- Process trade only if interaction is active
+				self:processMessage(npc, player, "trade")  -- Process trade only if interaction is active
 			end
 			return true
 		end
@@ -258,14 +258,14 @@ if KeywordHandler == nil then
 		for _, word in ipairs(words) do
 			if FocusModule.isGreetWord(word) then
 				if not interaction then
-					npcHandler:greet(npc, player, message)
-					return true
+					npcHandler:greet(npc, player, message)  
+					return true  
 				end
 			end
 		end
 
 		-- 🔥 3️⃣ Try processing the full phrase first
-		local wordSequence = table.concat(words, " ")
+		local wordSequence = table.concat(words, " ")  
 		local ret = self:processMessage(npc, player, wordSequence)
 		if ret then
 			return true
@@ -275,10 +275,10 @@ if KeywordHandler == nil then
 		for _, word in ipairs(words) do
 			ret = self:processMessage(npc, player, word)
 			if ret then
-				return true
+				return true  
 			end
 		end
 
-		return false
+		return false  
 	end
 end

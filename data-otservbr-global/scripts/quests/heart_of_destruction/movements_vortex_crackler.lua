@@ -26,7 +26,17 @@ local positions4 = {
 	{ x = 32219, y = 31328, z = 14 },
 }
 
+local vortexGroups = {
+	[1] = positions1,
+	[2] = positions2,
+	[3] = positions3,
+	[0] = positions4
+}
+
 local vortexCrackler = MoveEvent()
+
+-- Global transformation flag (keeps state)
+cracklerTransform = false 
 
 function vortexCrackler.onStepIn(creature, item, position, fromPosition)
 	local player = creature:getPlayer()
@@ -34,51 +44,29 @@ function vortexCrackler.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
+	if not vortexPositions then
+		vortexPositions = 0
+	end
+
+	if not vortexGroups[vortexPositions] then
+		return true
+	end
+
 	if item.itemid == 23471 then
-		if vortexPositions == 1 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions1 do
-				playerTile = Tile(positions1[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
+		local storePlayers = {}
+		-- Loop through the vortex positions
+		for _, pos in pairs(vortexGroups[vortexPositions]) do
+			local tile = Tile(Position(pos))
+			if tile then
+				local creatureOnTile = tile:getTopCreature()
+				if creatureOnTile and creatureOnTile:isPlayer() then
+					table.insert(storePlayers, creatureOnTile)
 				end
 			end
-			if #storePlayers == #positions1 then
-				cracklerTransform = true
-			end
-		elseif vortexPositions == 2 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions2 do
-				playerTile = Tile(positions2[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
-				end
-			end
-			if #storePlayers == #positions2 then
-				cracklerTransform = true
-			end
-		elseif vortexPositions == 3 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions3 do
-				playerTile = Tile(positions3[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
-				end
-			end
-			if #storePlayers == #positions3 then
-				cracklerTransform = true
-			end
-		elseif vortexPositions == 0 then
-			local storePlayers, playerTile = {}
-			for i = 1, #positions4 do
-				playerTile = Tile(positions4[i]):getTopCreature()
-				if playerTile:isPlayer() then
-					storePlayers[#storePlayers + 1] = playerTile
-				end
-			end
-			if #storePlayers == #positions4 then
-				cracklerTransform = true
-			end
+		end
+		-- Activate transformation if at least 1 player is on the vortex
+		if #storePlayers >= 1 then
+			cracklerTransform = true
 		end
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your presence begins to polarize the area!")
 		player:getPosition():sendMagicEffect(48)
@@ -90,7 +78,7 @@ vortexCrackler:type("stepin")
 vortexCrackler:id(23471)
 vortexCrackler:register()
 
-vortexCrackler = MoveEvent()
+local vortexCrackler = MoveEvent()
 
 function vortexCrackler.onStepOut(creature, item, position, fromPosition)
 	cracklerTransform = false

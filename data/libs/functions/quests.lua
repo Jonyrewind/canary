@@ -409,18 +409,18 @@ for questId = 1, #Quests do
 end
 
 function Player.updateTrackedMissionByMissionId(self, missionId)
-	local questName, questId, missionIndex = self:getQuestDataByMissionId(missionId)
+    local questName, questId, missionIndex = self:getQuestDataByMissionId(missionId)
+    
+    if questName and questId and missionIndex then
+        local missionData = {
+            missionId = missionId,
+            questName = questName,
+            missionName = self:getMissionName(questId, missionIndex),
+            missionDesc = self:getMissionDescription(questId, missionIndex),
+        }
 
-	if questName and questId and missionIndex then
-		local missionData = {
-			missionId = missionId,
-			questName = questName,
-			missionName = self:getMissionName(questId, missionIndex),
-			missionDesc = self:getMissionDescription(questId, missionIndex),
-		}
-
-		if self:hasTrackingQuest(missionData.missionId) then
-			self:sendUpdateTrackedQuest(missionData)
-		end
-	end
+        if self:hasTrackingQuest(missionData.missionId) then
+            self:sendUpdateTrackedQuest(missionData)
+        end
+    end
 end

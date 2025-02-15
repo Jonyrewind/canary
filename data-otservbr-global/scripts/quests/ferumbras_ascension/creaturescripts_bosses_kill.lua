@@ -69,8 +69,8 @@ local crystals = {
 local function transformCrystal(player)
 	for c = 1, #crystals do
 		local crystal = crystals[c]
-		player:setStorageValue(crystal.globalStorage, 0)
-		player:setStorageValue(Storage.Quest.U10_90.FerumbrasAscension.Crystals.AllCrystals, 0)
+		Game.setStorageValue(crystal.globalStorage, 0)
+		Game.setStorageValue(Storage.Quest.U10_90.FerumbrasAscension.Crystals.AllCrystals, 0)
 		local item = Tile(crystal.crystalPosition):getItemById(14961)
 		if item then
 			item:transform(14955)

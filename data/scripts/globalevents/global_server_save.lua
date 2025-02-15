@@ -1,6 +1,6 @@
 local function ServerSave()
-	-- ✅ Set a KV flag to mark a daily server save
-	KV.set("isDailyServerSave", true)
+    -- ✅ Set a KV flag to mark a daily server save
+    KV.set("isDailyServerSave", true)
 	if configManager.getBoolean(configKeys.GLOBAL_SERVER_SAVE_CLEAN_MAP) then
 		cleanMap()
 	end

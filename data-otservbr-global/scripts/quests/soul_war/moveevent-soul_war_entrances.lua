@@ -23,14 +23,13 @@ function soul_war_entrances.onStepIn(creature, item, position, fromPosition)
 	end
 
 	-- Check if player has access to teleport from Flickering Soul npc: "hi/task/yes"
-	--[[	local soulWarQuest = player:soulWarQuestKV()
+--[[	local soulWarQuest = player:soulWarQuestKV()
 	if not soulWarQuest:get("teleport-access") then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your soul does not yet resonate with the frequency required to enter here.")
 		player:teleportTo(fromPosition, true)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		return
-	end ]]
-	--
+	end ]]--
 
 	for position, destination in pairs(positionsTable) do
 		if position == player:getPosition() then

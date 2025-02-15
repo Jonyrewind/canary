@@ -20458,11 +20458,13 @@
 	</item>
 	<item id="7439" article="a" name="berserk potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your fighting skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
 	</item>
 	<item id="7440" article="a" name="mastermind potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your magic skill"/>
 		<attribute key="weight" value="290"/>
 	</item>
@@ -20477,6 +20479,7 @@
 	</item>
 	<item id="7443" article="a" name="bullseye potion">
 		<attribute key="primarytype" value="liquids"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Drinking this potion temporarily increases your distance skill while decreasing your defense"/>
 		<attribute key="weight" value="200"/>
 	</item>
@@ -24081,6 +24084,7 @@
 	</item>
 	<item id="9016" article="a" name="flask of rust remover">
 		<attribute key="description" value="It can be used to clean and polish old and rusty armors"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="90"/>
 	</item>
 	<item id="9017" article="a" name="coconut shoes">
@@ -62641,6 +62645,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="containersize" value="20"/>
 	</item>
 	<item id="32711" article="a" name="luminescent crystal pickaxe">
+		<attribute key="description" value="use this on very rare items to get forge materials."/>
 		<attribute key="primarytype" value="tools"/>
 		<attribute key="weight" value="135"/>
 	</item>
@@ -76187,6 +76192,12 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="43766"/>
 		<attribute key="duration" value="10"/>
 		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43781" article="a" name="darklight obsidian axe">
+		<attribute key="description" value="A rare variant of obsidian that originates from highly compressed darklight matter."/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="240"/>
+		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43813" article="a" name="dead bloated man-maggot">
 		<attribute key="decayTo" value="0"/>

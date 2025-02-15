@@ -582,12 +582,64 @@ function Player:onGainExperience(target, exp, rawExp)
 		end
 	end
 
-	-- Final Adjustments: Low Level Bonus and Base Rate
+	-- Define XP Boost Data
+	local xpBoostData = {
+		taints = {
+			xpboost = {5, 10, 15, 20, 25},
+			monsters = {
+				["Aspect of Power"] = true, ["Dreadful Harvester"] = true, ["Goshnar's Cruelty"] = true,
+				["Goshnar's Greed"] = true, ["Goshnar's Hatred"] = true, ["Goshnar's Malice"] = true,
+				["Goshnar's Megalomania Blue"] = true, ["Goshnar's Megalomania Green"] = true,
+				["Goshnar's Megalomania Purple"] = true, ["Goshnar's Spite"] = true,
+				["Malicious Soul"] = true, ["Mean Maw"] = true, ["Mirror Image"] = true,
+				["Soul Cage"] = true, ["Spiteful Spitter"] = true, ["Bony Sea Devil"] = true,
+				["Brachiodemon"] = true, ["Branchy Crawler"] = true, ["Capricious Phantom"] = true,
+				["Distorted Phantom"] = true, ["Druid's Apparition"] = true, ["Hateful Soul"] = true,
+				["Infernal Demon"] = true, ["Infernal Phantom"] = true, ["Knight's Apparition"] = true,
+				["Many Faces"] = true, ["Mould Phantom"] = true, ["Paladin's Apparition"] = true,
+				["Rotten Golem"] = true, ["Sorcerer's Apparition"] = true, ["Turbulent Elemental"] = true,
+				["Cloak of Terror"] = true, ["Courage Leech"] = true, ["Vibrant Phantom"] = true
+			}
+		},
+		hazards = {
+			xpboost = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 19, 20, 21, 22, 23, 25},
+			monsters = {
+				["Sulphider"] = true, ["Sulphur Spouter"] = true, ["Nighthunter"] = true,
+				["Stalking Stalk"] = true, ["Undertaker"] = true, ["Headpecker"] = true,
+				["Mantosaurus"] = true, ["Mercurial Menace"] = true, ["Noxious Ripptor"] = true,
+				["Shrieking Cry-Stal"] = true, ["Emerald Tortoise"] = true, ["Gore Horn"] = true,
+				["Gorerilla"] = true, ["Hulking Prehemoth"] = true, ["Sabretooth"] = true
+			}
+		}
+	}
+
+	-- Retrieve Monster & Player Data
+	local monsterName = target:getName()
+	local taintLevel = self:getTaintLevel()
+	local hazard = Hazard.getByName("hazard.gnomprona-gardens")
+	local hazardLevel = hazard:getPlayerCurrentLevel(self) or 0  -- Default to 0 if nil
+
+	-- Determine if the killed monster is in the Taints or Hazards list
+	local isTaintMonster = xpBoostData.taints.monsters[monsterName] or false
+	local isHazardMonster = xpBoostData.hazards.monsters[monsterName] or false
+
+	-- Calculate XP Boosts
+	local taints_xpboost = (isTaintMonster and taintLevel > 0) and (xpBoostData.taints.xpboost[math.min(taintLevel, #xpBoostData.taints.xpboost)] or 0) or 0
+	local hazards_xpboost = (isHazardMonster and hazardLevel > 0) and (xpBoostData.hazards.xpboost[math.min(hazardLevel, #xpBoostData.hazards.xpboost)] or 0) or 0
+
+	-- Base XP Calculation
 	local lowLevelBonusExp = self:getFinalLowLevelBonus()
 	local baseRateExp = self:getFinalBaseRateExperience()
+	exp = exp or 1  -- Default to 1 if nil to prevent crashes
+	local finalExp = (exp * (1 + xpBoostPercent / 100 + lowLevelBonusExp / 100)) * staminaBonusXp * baseRateExp
+
+	-- Apply XP Boosts only if the monster belongs to the respective category
+	finalExp = finalExp * (1 + taints_xpboost / 100) * (1 + hazards_xpboost / 100)
+
+	return finalExp
 
 	-- Return final experience value
-	return (exp * (1 + xpBoostPercent / 100 + lowLevelBonusExp / 100)) * staminaBonusXp * baseRateExp
+--	return (exp * (1 + xpBoostPercent / 100 + lowLevelBonusExp / 100)) * staminaBonusXp * baseRateExp
 end
 
 function Player:onLoseExperience(exp)

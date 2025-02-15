@@ -1590,13 +1590,13 @@ function GameStore.processSingleBlessingPurchase(player, blessId, count)
 end
 
 function GameStore.processAllBlessingsPurchase(player, count)
-	for i = 1, 8 do
-		local currentBlessingCount = player:getBlessingCount(i) -- Get current count
-		if currentBlessingCount < 5 then
-			local blessingsToAdd = math.min(count, 5 - currentBlessingCount) -- Ensure we don't exceed 5
-			player:addBlessing(i, blessingsToAdd)
-		end
-	end
+    for i = 1, 8 do
+        local currentBlessingCount = player:getBlessingCount(i) -- Get current count
+        if currentBlessingCount < 5 then
+            local blessingsToAdd = math.min(count, 5 - currentBlessingCount) -- Ensure we don't exceed 5
+            player:addBlessing(i, blessingsToAdd)
+        end
+    end
 end
 
 function GameStore.processInstantRewardAccess(player, offerCount)

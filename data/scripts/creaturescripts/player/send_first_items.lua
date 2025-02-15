@@ -110,5 +110,4 @@ function sendFirstItems.onLogin(player)
 	return true
 end
 
-sendFirstItems:register()]]
---
+sendFirstItems:register()]]--

@@ -157,8 +157,8 @@ function heartDestructionCracklers.onUse(player, item, fromPosition, itemEx, toP
 					end
 				end
 
-				if #storePlayers < 4 then
-					player:sendTextMessage(19, "You need at least 4 players to this mission.")
+				if #storePlayers < 1 then
+					player:sendTextMessage(19, "You need at least 4 players to do this mission.")
 					return true
 				end
 

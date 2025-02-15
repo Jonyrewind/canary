@@ -1,7 +1,7 @@
 local config = {
-	[1] = { uid = 3045, position = Position(32784, 32222, 14), itemId = 7844, storageOutfit = 2 },
-	[2] = { uid = 3046, position = Position(32785, 32230, 14), itemId = 7846, storageOutfit = 3 },
-	[3] = { uid = 3047, position = Position(32781, 32226, 14), itemId = 7845, storageOutfit = 4 },
+	[1] = { uid = 3045, position = Position(32784, 32222, 14), itemId = 768, storageOutfit = 2 },
+	[2] = { uid = 3046, position = Position(32785, 32230, 14), itemId = 770, storageOutfit = 3 },
+	[3] = { uid = 3047, position = Position(32781, 32226, 14), itemId = 769, storageOutfit = 4 },
 }
 
 local function revertLever(position)
