@@ -30,13 +30,13 @@ local vortexGroups = {
 	[1] = positions1,
 	[2] = positions2,
 	[3] = positions3,
-	[0] = positions4
+	[0] = positions4,
 }
 
 local vortexCrackler = MoveEvent()
 
 -- Global transformation flag (keeps state)
-cracklerTransform = false 
+cracklerTransform = false
 
 function vortexCrackler.onStepIn(creature, item, position, fromPosition)
 	local player = creature:getPlayer()

@@ -36,8 +36,7 @@ local function isBossRoomOccupied()
 		local topCreature = tile:getTopCreature()
 		if topCreature and topCreature:isPlayer() then
 			-- Ensure we are not checking the lever room
-			if not (tile:getPosition().x >= leverRoomFromPos.x and tile:getPosition().x <= leverRoomToPos.x and
-			        tile:getPosition().y >= leverRoomFromPos.y and tile:getPosition().y <= leverRoomToPos.y) then
+			if not (tile:getPosition().x >= leverRoomFromPos.x and tile:getPosition().x <= leverRoomToPos.x and tile:getPosition().y >= leverRoomFromPos.y and tile:getPosition().y <= leverRoomToPos.y) then
 				foundPlayer = true
 			end
 		end

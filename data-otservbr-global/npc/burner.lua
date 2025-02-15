@@ -73,7 +73,6 @@ keywordHandler:addAliasKeyword({ "wares" })
 keywordHandler:addAliasKeyword({ "offer" })
 keywordHandler:addAliasKeyword({ "buy" })
 
-
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Bye, bye.")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Bye, bye |PLAYERNAME|.")
 npcHandler:setMessage(MESSAGE_SENDTRADE, "Take a look in the trade window to your left.")

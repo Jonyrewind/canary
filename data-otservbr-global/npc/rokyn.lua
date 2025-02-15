@@ -57,19 +57,19 @@ end
 
 -- ✅ **Bank Robbery Event Status Check for Ab'Dendriel**
 local function isBankRobberyActiveInVenore()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 0 and data.city == "Venore"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 0 and data.city == "Venore"
 end
 
 local function isBankRobberyCompletedInAbdendriel()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 1 and data.city == "Venore"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 1 and data.city == "Venore"
 end
 
 -- ✅ **Checks if the player has a stolen bag of gold**
 local function hasStolenGoldBag(creature)
-    local player = Player(creature)
-    return player:getItemCount(13429) > 0 -- Stolen gold bag item ID
+	local player = Player(creature)
+	return player:getItemCount(13429) > 0 -- Stolen gold bag item ID
 end
 
 -- ✅ **Modify NPC Voices Only If Ab'Dendriel Is Affected**
@@ -87,9 +87,9 @@ local function greetCallback(npc, creature)
 			npcHandler:setMessage(MESSAGE_GREET, "Those Shadowthorn elves have - wait a minute. Is that the missing gold?")
 		else
 			npcHandler:setMessage(MESSAGE_GREET, {
-			"Those Shadowthorn elves have gone too far this time! A whole crowd of them stormed the bank, and even though I fought them back the best I could, I was outnumbered by dozens. ...",
-			"I fear the gold is gone, kid. The merchants here will help us pay the debts, but not before tomorrow. Unless someone finds and kills those elves I can't do anything for you.",
-		})
+				"Those Shadowthorn elves have gone too far this time! A whole crowd of them stormed the bank, and even though I fought them back the best I could, I was outnumbered by dozens. ...",
+				"I fear the gold is gone, kid. The merchants here will help us pay the debts, but not before tomorrow. Unless someone finds and kills those elves I can't do anything for you.",
+			})
 		end
 	elseif isBankRobberyCompletedInAbdendriel() then
 		npcHandler:setMessage(MESSAGE_GREET, "Ha, those lousy elves got what they deserved. All the robbed money has been returned to the bank. What can I do for you?")

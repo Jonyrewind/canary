@@ -447,7 +447,7 @@ if NpcHandler == nil then
 				if self.keywordHandler ~= nil then
 					if self:checkInteraction(npc, player) and msgtype == TALKTYPE_PRIVATE_PN or not self:checkInteraction(npc, player) then
 						local ret = self.keywordHandler:processMultiWordMessage(npc, player, msg, self)
-						
+
 						if not ret then
 							callback = self:getCallback(CALLBACK_MESSAGE_DEFAULT)
 							if callback ~= nil and callback(npc, player, msgtype, msg) then

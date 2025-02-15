@@ -151,4 +151,5 @@ function sir_baeloc_health.onHealthChange(creature, attacker, primaryDamage, pri
 	return primaryDamage, primaryType, -secondaryDamage, secondaryType
 end
 
-sir_baeloc_health:register()]]--
+sir_baeloc_health:register()]]
+--
