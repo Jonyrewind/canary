@@ -58,18 +58,18 @@ end
 
 -- ✅ Check if Carlin is affected by the robbery
 local function isBankRobberyActiveInCarlin()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 0 and data.city == "Carlin"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 0 and data.city == "Carlin"
 end
 
 local function isBankRobberyCompletedInCarlin()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 1 and data.city == "Carlin"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 1 and data.city == "Carlin"
 end
 
 -- ✅ Checks if the player has a stolen bag of gold
 local function hasStolenGoldBag(player)
-    return player:getItemCount(13429) > 0 -- Correct stolen bag ID
+	return player:getItemCount(13429) > 0 -- Correct stolen bag ID
 end
 
 -- ✅ Modify NPC Voices If Carlin is Affected
@@ -87,9 +87,9 @@ local function greetCallback(npc, creature)
 			npcHandler:setMessage(MESSAGE_GREET, "*Sob*... *sniff*... Ohhhh!! All that shiny glittering gold! Have you caught the bank robbers?")
 		else
 			npcHandler:setMessage(MESSAGE_GREET, {
-			"*Sob*... I'm still in shock. A man just came up to the counter and he... he... forced me to fork over all of the gold. I'm really sorry, but I can't serve you right now. ...",
-			"The queen has been informed, but it won't be until tomorrow that she will compensate the losses. Maybe you can help find the robber? He ran off into the direction of the ghostlands.",
-		})
+				"*Sob*... I'm still in shock. A man just came up to the counter and he... he... forced me to fork over all of the gold. I'm really sorry, but I can't serve you right now. ...",
+				"The queen has been informed, but it won't be until tomorrow that she will compensate the losses. Maybe you can help find the robber? He ran off into the direction of the ghostlands.",
+			})
 		end
 	elseif isBankRobberyCompletedInCarlin() then
 		npcHandler:setMessage(MESSAGE_GREET, "I can't believe it - the bank robber has actually been caught and the gold been returned. I'm so relieved. How may I serve you?")

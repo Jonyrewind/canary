@@ -21,9 +21,10 @@ monster.speed = 125
 monster.manaCost = 0
 
 monster.events = {
---[[	"sir_baeloc_health",
+	--[[	"sir_baeloc_health",
 	"brothers_summon",
-	"grave_danger_death",]]--
+	"grave_danger_death",]]
+	--
 }
 
 monster.changeTarget = {

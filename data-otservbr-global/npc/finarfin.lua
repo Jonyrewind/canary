@@ -53,18 +53,18 @@ end
 
 -- ✅ Bank Robbery Event Status using KV (Specific to Ab'Dendriel)
 local function isBankRobberyActiveInAbdendriel()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 0 and data.city == "Ab'Dendriel"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 0 and data.city == "Ab'Dendriel"
 end
 
 local function isBankRobberyCompletedInAbdendriel()
-    local data = KV.get("bankRobberyData")
-    return data and data.active == 1 and data.completed == 1 and data.city == "Ab'Dendriel"
+	local data = KV.get("bankRobberyData")
+	return data and data.active == 1 and data.completed == 1 and data.city == "Ab'Dendriel"
 end
 
 -- ✅ Checks if the player has a stolen bag of gold
 local function hasStolenGoldBag(player)
-    return player:getItemCount(13429) > 0 -- Correct stolen bag ID
+	return player:getItemCount(13429) > 0 -- Correct stolen bag ID
 end
 
 -- ✅ Modify NPC Voices Only If Ab'Dendriel Is Affected
