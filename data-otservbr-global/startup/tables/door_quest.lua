@@ -891,6 +891,23 @@ QuestDoorAction = {
 			{ x = 32953, y = 31460, z = 9 },
 		},
 	},
+	-- Blood Brothers
+	[Storage.Quest.U8_4.BloodBrothers.VengothAccess] = {
+		itemId = false,
+		itemPos = {
+			{ x = 32956, y = 31481, z = 6 },
+			{ x = 32950, y = 31474, z = 6 },
+			{ x = 32956, y = 31468, z = 6 },
+			{ x = 32950, y = 31464, z = 6 },
+			{ x = 32953, y = 31450, z = 6 },
+			{ x = 32953, y = 31460, z = 7 },
+			{ x = 32958, y = 31465, z = 7 },
+			{ x = 32948, y = 31465, z = 7 },
+			{ x = 32953, y = 31469, z = 7 },
+			{ x = 32953, y = 31460, z = 9 },
+			{ x = 32953, y = 31451, z = 4 },
+		},
+	},
 }
 
 QuestDoorUnique = {

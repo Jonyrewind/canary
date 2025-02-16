@@ -50,6 +50,40 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
+-- Podzilla
+local function creatureSayCallback(npc, creature, type, message)
+    local player = Player(creature)
+    local playerId = player:getId()
+
+    -- Get shortcut status
+    local shortcut = player:kv():scoped("the-rise-of-podzilla-quest"):get("shortcut") or 0
+
+    if MsgContains(message, "gunther") then
+        if shortcut > 0 then
+            npcHandler:say("Ah, yes. I am aware you are to rendezvous with a ship at the high seas. Are you ready to embark? {Yes} or {No}, or do you want me to take a {shortcut}?", npc, creature)
+        else
+            npcHandler:say("Ah, yes. I am aware you are to rendezvous with a ship at the high seas. Are you ready to embark? {Yes} or {No}?", npc, creature)
+        end
+        npcHandler:setTopic(playerId, 1)
+    elseif MsgContains(message, "no") then
+        npcHandler:say("Let me know when you're ready to embark.", npc, creature)
+        npcHandler:setTopic(playerId, 0)
+        
+    elseif MsgContains(message, "yes") then
+        npcHandler:say("Set the sails!", npc, creature)
+        player:teleportTo(Position(33964, 31977, 9))  -- Default ship destination
+        player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+        npcHandler:setTopic(playerId, 0)
+
+    elseif MsgContains(message, "shortcut") and shortcut > 0 then
+        npcHandler:say("Set the sails!", npc, creature)
+        player:teleportTo(Position(33852, 32011, 6))  -- Shortcut destination
+        player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+        npcHandler:setTopic(playerId, 0)
+    end
+    return true
+end
+
 -- Travel
 local function addTravelKeyword(keyword, cost, destination, action)
 	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a seek a passage to " .. keyword:titleCase() .. " for |TRAVELCOST|?", cost = cost, discount = "postman" })
@@ -73,6 +107,9 @@ addTravelKeyword("ankrahmun", 160, Position(33092, 32883, 6))
 addTravelKeyword("cormaya", 20, Position(33288, 31956, 6))
 addTravelKeyword("oramond", 200, Position(33479, 31985, 7))
 
+
+
+
 -- Kick
 keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(33174, 31773, 6), Position(33175, 31771, 6), Position(33177, 31772, 6) } })
 
@@ -86,6 +123,7 @@ keywordHandler:addKeyword({ "yalahar" }, StdModule.say, { npcHandler = npcHandle
 npcHandler:setMessage(MESSAGE_GREET, "Welcome on board, |PLAYERNAME|. Where may I {sail} you today?")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye. Recommend us if you were satisfied with our service.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye then.")
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
