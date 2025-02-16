@@ -28,15 +28,15 @@ local helm = Action()
 
 function helm.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	for key, helmPos in pairs(setting.helmPosition) do
-		if fromPosition == helmPos then  -- Ensure correct position comparison
+		if fromPosition == helmPos then -- Ensure correct position comparison
 			local positions = setting.playersPositions[key] -- Get corresponding player positions
 			if positions then
 				for _, pos in ipairs(positions) do
 					local creature = Tile(pos.fromPos):getTopCreature()
 					if creature and creature:isPlayer() then
 						creature:teleportTo(pos.toPos)
-						
-						if key == "helm1" then  -- Special action for helm1
+
+						if key == "helm1" then -- Special action for helm1
 							creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "What's that huge shadow in the distance, an island?")
 							local randomLooktype = setting.looktypes[math.random(#setting.looktypes)]
 							local condition = Condition(CONDITION_OUTFIT)
@@ -56,7 +56,7 @@ end
 
 -- Register all helm positions
 for _, pos in pairs(setting.helmPosition) do
-    helm:position(pos)
+	helm:position(pos)
 end
 helm:register()
 
