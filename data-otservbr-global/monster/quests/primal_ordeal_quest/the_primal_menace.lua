@@ -15,7 +15,7 @@ local thePrimalMenaceConfig = {
 
 	-- Monster spawn time
 	MonsterConfig = {
-		IntervalBase = 30,
+		IntervalBase = 60,
 		IntervalReductionPer10PercentHp = 0.98,
 		IntervalReductionPerHazard = 0.985,
 
@@ -40,14 +40,14 @@ local thePrimalMenaceConfig = {
 	},
 
 	PodConfig = {
-		IntervalBase = 30,
+		IntervalBase = 60,
 		IntervalReductionPer10PercentHp = 0.98,
 		IntervalReductionPerHazard = 0.985,
 
-		CountBase = 2,
+		CountBase = 1,
 		CountVarianceRate = 0.5,
 		CountGrowthPerHazard = 1.1,
-		CountMax = 4,
+		CountMax = 2,
 	},
 }
 

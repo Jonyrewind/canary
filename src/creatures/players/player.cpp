@@ -3170,6 +3170,23 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 
 	if (sendText) {
 		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
+		// Call Lua function to get XP boost message from player.lua
+		std::string xpBoostMessage;
+		if (g_lua.scriptLoaded()) {
+			if (g_lua.getGlobal("Player:getXPBoostMessage")) {
+				g_lua.pushUserdata(this); // Push Player object
+				g_lua.pushString(monster->getName()); // Push monster name
+
+				if (g_lua.pcall(2, 1)) { // Call Lua function with 2 arguments, expecting 1 return value
+					xpBoostMessage = g_lua.popString();
+				}
+			}
+		}
+
+		// Append XP boost message from Lua
+		if (!xpBoostMessage.empty()) {
+			expString += xpBoostMessage;
+		}
 		if (isVip()) {
 			uint8_t expPercent = g_configManager().getNumber(VIP_BONUS_EXP);
 			if (expPercent > 0) {

@@ -12,6 +12,7 @@ local chargeItem = {
 	["alicorn ring"] = { noChargeID = 39182, ChargeID = 39180, cost = 5 },
 	["arcanomancer sigil"] = { noChargeID = 39185, ChargeID = 39183, cost = 5 },
 	["arboreal ring"] = { noChargeID = 39188, ChargeID = 39187, cost = 5 },
+	["soft boots"] = { noChargeID = 6530, ChargeID = 6529, cost = 1 },
 }
 local silverTokenID = 22516
 
@@ -22,14 +23,28 @@ function refill.onSay(player, words, param)
 	for itemName, itemData in pairs(chargeItem) do
 		local chargeableCount = player:getItemCount(itemData.noChargeID)
 		local silverTokensCount = player:getItemCount(silverTokenID)
+
 		if chargeableCount >= 1 and silverTokensCount >= itemData.cost then
 			totalCost = totalCost + itemData.cost
 			table.insert(refilledItems, itemName)
 			player:removeItem(silverTokenID, itemData.cost)
-			player:removeItem(itemData.noChargeID, 1)
-			player:addItem(itemData.ChargeID, 1)
+
+			-- Find the actual item in player's inventory
+			local item = player:getItemById(itemData.noChargeID, true) 
+			if item then
+				local parent = item:getParent()
+				player:removeItem(itemData.noChargeID, 1)
+
+				-- If the item was inside a container, place it back inside
+				if parent and parent:isContainer() and parent:getEmptySlots() > 0 then
+					parent:addItem(itemData.ChargeID, 1)
+				else
+					player:addItem(itemData.ChargeID, 1)
+				end
+			end
 		end
 	end
+
 	if #refilledItems == 0 then
 		player:sendTextMessage(MESSAGE_LOOK, "You do not have any items to refill or lack silver tokens.")
 	else
