@@ -3157,7 +3157,7 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 	const auto &monster = target && target->getMonster() ? target->getMonster() : nullptr;
 	const bool handleHazardExperience = monster && monster->getHazard() && getHazardSystemPoints() > 0;
 	if (handleHazardExperience) {
-		exp += (exp * (1.75 * getHazardSystemPoints() * g_configManager().getFloat(HAZARD_EXP_BONUS_MULTIPLIER))) / 100.;
+		exp += (exp * (1.75 * getHazardSystemPoints() * g_configManager().getFloat(HAZARD_EXP_BONUS_MULTIPLIER))) / 100.0;
 	}
 
 	const bool handleAnimusMastery = monster && animusMastery().has(monster->getMonsterType()->name);
@@ -3172,8 +3172,9 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 
 	if (sendText) {
 		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
+
 		// Get Lua script interface
-		LuaScriptInterface* scriptInterface = g_scripts().getScriptInterface();
+		LuaScriptInterface* scriptInterface = g_luaEnvironment().getScriptInterface(); // ✅ Fix here!
 		if (!scriptInterface) {
 			g_logger().error("[Player.cpp] LuaScriptInterface not found!");
 		} else {
@@ -3208,7 +3209,7 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 					lua_pop(L, 1);  // Clean stack
 				}
 
-				LuaScriptInterface::releaseScriptEnv();
+				LuaScriptInterface::unreserveScriptEnv(); // ✅ Fix here!
 			}
 		}
 
@@ -3243,6 +3244,7 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 			}
 		}
 	}
+}
 
 	const uint32_t prevLevel = level;
 	while (experience >= nextLevelExp) {
