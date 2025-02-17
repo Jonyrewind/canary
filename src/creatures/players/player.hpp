@@ -20,7 +20,6 @@
 #include "lua/scripts/lua_environment.hpp"
 #include "lua/scripts/luascript.hpp"
 
-
 class AnimusMastery;
 class House;
 class NetworkMessage;
@@ -701,7 +700,7 @@ public:
 	bool onKilledPlayer(const std::shared_ptr<Player> &target, bool lastHit) override;
 	bool onKilledMonster(const std::shared_ptr<Monster> &target) override;
 	void onGainExperience(uint64_t gainExp, const std::shared_ptr<Creature> &target) override;
-	std::string getXPBoostMessage(const std::string& monsterName);  // ✅ New function declaration
+	std::string getXPBoostMessage(const std::string &monsterName); // ✅ New function declaration
 	void onGainSharedExperience(uint64_t gainExp, const std::shared_ptr<Creature> &target);
 	void onAttackedCreatureBlockHit(const BlockType_t &blockType) override;
 	void onBlockHit() override;
