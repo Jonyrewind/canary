@@ -3182,14 +3182,14 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 				g_logger().error("[Player.cpp] Call stack overflow. Too many nested Lua calls.");
 			} else {
 				ScriptEnvironment* env = LuaScriptInterface::getScriptEnv();
-				env->setScriptId(-1, scriptInterface);  // No specific script ID
+				env->setScriptId(-1, scriptInterface); // No specific script ID
 
 				lua_State* L = scriptInterface->getLuaState();
 				if (L) {
 					// Get Lua function: Player:getXPBoostMessage
-					lua_getglobal(L, "Player");  // Get Player table
+					lua_getglobal(L, "Player"); // Get Player table
 					if (lua_istable(L, -1)) {
-						lua_getfield(L, -1, "getXPBoostMessage");  // Get function
+						lua_getfield(L, -1, "getXPBoostMessage"); // Get function
 
 						if (lua_isfunction(L, -1)) {
 							// Push arguments (Player object, monster name)
@@ -3202,11 +3202,11 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 								if (lua_isstring(L, -1)) {
 									xpBoostMessage = lua_tostring(L, -1);
 								}
-								lua_pop(L, 1);  // Remove return value from stack
+								lua_pop(L, 1); // Remove return value from stack
 							}
 						}
 					}
-					lua_pop(L, 1);  // Clean stack
+					lua_pop(L, 1); // Clean stack
 				}
 
 				LuaScriptInterface::unreserveScriptEnv(); // ✅ Fix here!
