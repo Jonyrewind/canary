@@ -3173,32 +3173,42 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 	if (sendText) {
 		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
 		// Get Lua script interface
-		LuaScriptInterface* luaInterface = g_scripts().getScriptInterface();
+		LuaScriptInterface* scriptInterface = g_scripts().getScriptInterface();
+		if (!scriptInterface) {
+			g_logger().error("[Player.cpp] LuaScriptInterface not found!");
+		} else {
+			if (!LuaScriptInterface::reserveScriptEnv()) {
+				g_logger().error("[Player.cpp] Call stack overflow. Too many nested Lua calls.");
+			} else {
+				ScriptEnvironment* env = LuaScriptInterface::getScriptEnv();
+				env->setScriptId(-1, scriptInterface);  // No specific script ID
 
-		if (luaInterface) { // Ensure Lua is initialized
-			lua_State* L = luaInterface->getLuaState();
+				lua_State* L = scriptInterface->getLuaState();
+				if (L) {
+					// Get Lua function: Player:getXPBoostMessage
+					lua_getglobal(L, "Player");  // Get Player table
+					if (lua_istable(L, -1)) {
+						lua_getfield(L, -1, "getXPBoostMessage");  // Get function
 
-			if (L) {
-				lua_getglobal(L, "Player"); // Get Player table
-				if (lua_istable(L, -1)) {
-					lua_getfield(L, -1, "getXPBoostMessage"); // Get function from Player table
+						if (lua_isfunction(L, -1)) {
+							// Push arguments (Player object, monster name)
+							LuaScriptInterface::pushUserdata(L, this);
+							LuaScriptInterface::setMetatable(L, -1, "Player");
+							lua_pushstring(L, monster->getName().c_str());
 
-					if (lua_isfunction(L, -1)) {
-						// Push arguments (self, monster name)
-						LuaScriptInterface::pushUserdata<Player>(L, this);
-						LuaScriptInterface::setMetatable(L, -1, "Player");
-						lua_pushstring(L, monster->getName().c_str());
-
-						// Call the function (2 arguments, 1 return value)
-						if (lua_pcall(L, 2, 1, 0) == LUA_OK) {
-							if (lua_isstring(L, -1)) {
-								xpBoostMessage = lua_tostring(L, -1);
+							// Call function (2 args, 1 return value)
+							if (scriptInterface->callFunction(2)) {
+								if (lua_isstring(L, -1)) {
+									xpBoostMessage = lua_tostring(L, -1);
+								}
+								lua_pop(L, 1);  // Remove return value from stack
 							}
-							lua_pop(L, 1); // Remove return value from stack
 						}
 					}
+					lua_pop(L, 1);  // Clean stack
 				}
-				lua_pop(L, 1); // Clean up Lua stack
+
+				LuaScriptInterface::releaseScriptEnv();
 			}
 		}
 
