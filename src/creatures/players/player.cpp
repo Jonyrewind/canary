@@ -8943,7 +8943,7 @@ void Player::triggerMomentum() {
 			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION);
 
 			// Debugging: Print retrieved value to ensure it's correctly set
-			std::cout << "Momentum Cooldown Reduction: " << reduction << std::endl;
+			logger.info("Momentum Cooldown Reduction: {}.", reduction);
 
 			const ConditionType_t type = condItem->getType();
 			constexpr auto maxu16 = std::numeric_limits<uint16_t>::max();
@@ -8952,17 +8952,16 @@ void Player::triggerMomentum() {
 			const int32_t ticks = condItem->getTicks();
 			const int32_t newTicks = (ticks <= reduction) ? 0 : ticks - reduction;
 			triggered = true;
-
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
 				condItem->setTicks(newTicks);
-				(type == CONDITION_SPELLGROUPCOOLDOWN) ? sendSpellGroupCooldown(static_cast<SpellGroup_t>(spellId), newTicks) : sendSpellCooldown(spellId, newTicks);
+				type == CONDITION_SPELLGROUPCOOLDOWN ? sendSpellGroupCooldown(static_cast<SpellGroup_t>(spellId), newTicks) : sendSpellCooldown(spellId, newTicks);
 			}
 			++it;
 		}
 
 		if (triggered) {
 			g_game().addMagicEffect(getPosition(), CONST_ME_HOURGLASS);
-			sendTextMessage(MESSAGE_ATTENTION, "Momentum was triggered.");
+			sendTextMessage(MESSAGE_ATTENTION, "Momentum was triggered. {}", reduction);
 		}
 	}
 }
