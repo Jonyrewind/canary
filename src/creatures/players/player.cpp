@@ -8936,13 +8936,13 @@ void Player::triggerMomentum() {
 		bool triggered = false;
 		auto it = conditions.begin();
 		while (it != conditions.end()) {
-			const auto condItem = *it;
+			const auto condItem = *it;		
+			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION);
 			const ConditionType_t type = condItem->getType();
 			constexpr auto maxu16 = std::numeric_limits<uint16_t>::max();
 			const auto checkSpellId = condItem->getSubId();
 			auto spellId = checkSpellId > maxu16 ? 0u : static_cast<uint16_t>(checkSpellId);
 			const int32_t ticks = condItem->getTicks();
-			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION),
 			const int32_t newTicks = (ticks <= reduction) ? 0 : ticks - reduction;
 			triggered = true;
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
