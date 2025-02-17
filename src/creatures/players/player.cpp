@@ -8943,7 +8943,7 @@ void Player::triggerMomentum() {
 			auto spellId = checkSpellId > maxu16 ? 0u : static_cast<uint16_t>(checkSpellId);
 			const int32_t ticks = condItem->getTicks();
 			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION),
-			const int32_t newTicks = (ticks <= reduction) ? 0 : ticks - reduction;
+						  const int32_t newTicks = (ticks <= reduction) ? 0 : ticks - reduction;
 			triggered = true;
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
 				condItem->setTicks(newTicks);
