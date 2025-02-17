@@ -43,8 +43,8 @@ local helm = Action()
 
 function helm.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	for key, leverPos in pairs(setting.leverPosition) do
-		if fromPosition == leverPos then  -- Ensure correct position comparison
-			if key == "lever5" then  -- Special action for helm1
+		if fromPosition == leverPos then -- Ensure correct position comparison
+			if key == "lever5" then -- Special action for helm1
 				if player:getPosition().y == 31993 then
 					player:teleportTo(Position(33848, 31995, 10))
 					player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
@@ -70,6 +70,6 @@ end
 
 -- Register all helm positions
 for _, pos in pairs(setting.leverPosition) do
-    helm:position(pos)
+	helm:position(pos)
 end
 helm:register()
