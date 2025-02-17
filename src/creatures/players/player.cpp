@@ -8943,7 +8943,7 @@ void Player::triggerMomentum() {
 			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION);
 
 			// Debugging: Print retrieved value to ensure it's correctly set
-			logger.info("Momentum Cooldown Reduction: {}.", reduction);
+			g_logger().info("Momentum Cooldown Reduction: {}.", reduction);
 
 			const ConditionType_t type = condItem->getType();
 			constexpr auto maxu16 = std::numeric_limits<uint16_t>::max();
