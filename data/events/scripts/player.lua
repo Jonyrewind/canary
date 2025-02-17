@@ -694,38 +694,37 @@ function Player:onGainExperience(target, exp, rawExp)
 
 	return finalExp
 	-- Return final experience value
---	return (exp * (1 + xpBoostPercent / 100 + lowLevelBonusExp / 100)) * staminaBonusXp * baseRateExp
+	--	return (exp * (1 + xpBoostPercent / 100 + lowLevelBonusExp / 100)) * staminaBonusXp * baseRateExp
 end
 
 function Player:getXPBoostMessage(monsterName)
-    local taintLevel = self:getTaintLevel()
-    local hazard = Hazard.getByName("hazard.gnomprona-gardens")
-    local hazardLevel = hazard:getPlayerCurrentLevel(self) or 0 -- Default to 0 if nil
-    local rottenTaintLevel = self:kv():scoped("rotten-blood-quest"):get("taints") or 0
+	local taintLevel = self:getTaintLevel()
+	local hazard = Hazard.getByName("hazard.gnomprona-gardens")
+	local hazardLevel = hazard:getPlayerCurrentLevel(self) or 0 -- Default to 0 if nil
+	local rottenTaintLevel = self:kv():scoped("rotten-blood-quest"):get("taints") or 0
 
-    local isTaintMonster = xpBoostData.taints.monsters[monsterName] or false
-    local isHazardMonster = xpBoostData.hazards.monsters[monsterName] or false
-    local isRottenTaintMonster = xpBoostData.rottentaints.monsters[monsterName] or false
+	local isTaintMonster = xpBoostData.taints.monsters[monsterName] or false
+	local isHazardMonster = xpBoostData.hazards.monsters[monsterName] or false
+	local isRottenTaintMonster = xpBoostData.rottentaints.monsters[monsterName] or false
 
-    local taints_xpboost = (isTaintMonster and taintLevel > 0) and (xpBoostData.taints.xpboost[math.min(taintLevel, #xpBoostData.taints.xpboost)] or 0) or 0
-    local hazards_xpboost = (isHazardMonster and hazardLevel > 0) and (xpBoostData.hazards.xpboost[math.min(hazardLevel, #xpBoostData.hazards.xpboost)] or 0) or 0
-    local rottenTaints_xpboost = (isRottenTaintMonster and rottenTaintLevel > 0) and (xpBoostData.rottentaints.xpboost[math.min(rottenTaintLevel, #xpBoostData.rottentaints.xpboost)] or 0) or 0
+	local taints_xpboost = (isTaintMonster and taintLevel > 0) and (xpBoostData.taints.xpboost[math.min(taintLevel, #xpBoostData.taints.xpboost)] or 0) or 0
+	local hazards_xpboost = (isHazardMonster and hazardLevel > 0) and (xpBoostData.hazards.xpboost[math.min(hazardLevel, #xpBoostData.hazards.xpboost)] or 0) or 0
+	local rottenTaints_xpboost = (isRottenTaintMonster and rottenTaintLevel > 0) and (xpBoostData.rottentaints.xpboost[math.min(rottenTaintLevel, #xpBoostData.rottentaints.xpboost)] or 0) or 0
 
-    -- Construct XP Boost Message
-    local expMessage = ""
-    if taints_xpboost > 0 then
-        expMessage = expMessage .. string.format(" Taints XP Boost: +%d%%.", taints_xpboost)
-    end
-    if hazards_xpboost > 0 then
-        expMessage = expMessage .. string.format(" Hazards XP Boost: +%d%%.", hazards_xpboost)
-    end
-    if rottenTaints_xpboost > 0 then
-        expMessage = expMessage .. string.format(" Rotten Taints XP Boost: +%d%%.", rottenTaints_xpboost)
-    end
+	-- Construct XP Boost Message
+	local expMessage = ""
+	if taints_xpboost > 0 then
+		expMessage = expMessage .. string.format(" Taints XP Boost: +%d%%.", taints_xpboost)
+	end
+	if hazards_xpboost > 0 then
+		expMessage = expMessage .. string.format(" Hazards XP Boost: +%d%%.", hazards_xpboost)
+	end
+	if rottenTaints_xpboost > 0 then
+		expMessage = expMessage .. string.format(" Rotten Taints XP Boost: +%d%%.", rottenTaints_xpboost)
+	end
 
-    return expMessage -- Return formatted XP boost message
+	return expMessage -- Return formatted XP boost message
 end
-
 
 function Player:onLoseExperience(exp)
 	return exp

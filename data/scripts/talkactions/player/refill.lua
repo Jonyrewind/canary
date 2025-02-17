@@ -30,7 +30,7 @@ function refill.onSay(player, words, param)
 			player:removeItem(silverTokenID, itemData.cost)
 
 			-- Find the actual item in player's inventory
-			local item = player:getItemById(itemData.noChargeID, true) 
+			local item = player:getItemById(itemData.noChargeID, true)
 			if item then
 				local parent = item:getParent()
 				player:removeItem(itemData.noChargeID, 1)
