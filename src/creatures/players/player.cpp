@@ -8932,12 +8932,19 @@ void Player::triggerMomentum() {
 
 	chance += m_wheelPlayer->getBonusData().momentum;
 	double_t randomChance = uniform_random(0, 10000) / 100.;
+
 	if (getZoneType() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && randomChance < chance) {
 		bool triggered = false;
 		auto it = conditions.begin();
 		while (it != conditions.end()) {
-			const auto condItem = *it;		
+			const auto condItem = *it;
+
+			// Fetching cooldown reduction from config
 			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION);
+
+			// Debugging: Print retrieved value to ensure it's correctly set
+			std::cout << "Momentum Cooldown Reduction: " << reduction << std::endl;
+
 			const ConditionType_t type = condItem->getType();
 			constexpr auto maxu16 = std::numeric_limits<uint16_t>::max();
 			const auto checkSpellId = condItem->getSubId();
@@ -8945,12 +8952,14 @@ void Player::triggerMomentum() {
 			const int32_t ticks = condItem->getTicks();
 			const int32_t newTicks = (ticks <= reduction) ? 0 : ticks - reduction;
 			triggered = true;
+
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
 				condItem->setTicks(newTicks);
-				type == CONDITION_SPELLGROUPCOOLDOWN ? sendSpellGroupCooldown(static_cast<SpellGroup_t>(spellId), newTicks) : sendSpellCooldown(spellId, newTicks);
+				(type == CONDITION_SPELLGROUPCOOLDOWN) ? sendSpellGroupCooldown(static_cast<SpellGroup_t>(spellId), newTicks) : sendSpellCooldown(spellId, newTicks);
 			}
 			++it;
 		}
+
 		if (triggered) {
 			g_game().addMagicEffect(getPosition(), CONST_ME_HOURGLASS);
 			sendTextMessage(MESSAGE_ATTENTION, "Momentum was triggered.");
