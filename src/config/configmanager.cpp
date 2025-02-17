@@ -170,6 +170,7 @@ bool ConfigManager::load() {
 	loadFloatConfig(L, MOMENTUM_CHANCE_FORMULA_A, "momentumChanceFormulaA", 0.05);
 	loadFloatConfig(L, MOMENTUM_CHANCE_FORMULA_B, "momentumChanceFormulaB", 1.9);
 	loadFloatConfig(L, MOMENTUM_CHANCE_FORMULA_C, "momentumChanceFormulaC", 0.05);
+	loadIntConfig(L, MOMENTUM_COOLDOWN_REDUCTION, "momentumCooldownReduction", 2000);
 	loadFloatConfig(L, ONSLAUGHT_CHANCE_FORMULA_A, "onslaughtChanceFormulaA", 0.05);
 	loadFloatConfig(L, ONSLAUGHT_CHANCE_FORMULA_B, "onslaughtChanceFormulaB", 0.4);
 	loadFloatConfig(L, ONSLAUGHT_CHANCE_FORMULA_C, "onslaughtChanceFormulaC", 0.05);
