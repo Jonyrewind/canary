@@ -64,6 +64,7 @@
 #include "lua/creature/events.hpp"
 #include "lua/creature/movement.hpp"
 #include "lua/scripts/lua_environment.hpp"
+#include "lua/scripts/luascript.hpp"
 #include "map/spectators.hpp"
 #include "creatures/players/vocations/vocation.hpp"
 
@@ -3171,14 +3172,33 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 
 	if (sendText) {
 		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
-		// Get Lua instance
-		LuaEnvironment &luaEnv = LuaEnvironment::getInstance();
+		// Get Lua script interface
+		LuaScriptInterface* luaInterface = g_scripts().getScriptInterface();
 
-		// Call Lua function to get XP boost message from player.lua
-		std::string xpBoostMessage;
-		if (luaEnv.getLuaState()) { // Ensure Lua is initialized
-			if (luaEnv.callFunction("Player:getXPBoostMessage", this, monster->getName())) {
-				xpBoostMessage = luaEnv.popString();
+		if (luaInterface) { // Ensure Lua is initialized
+			lua_State* L = luaInterface->getLuaState();
+
+			if (L) {
+				lua_getglobal(L, "Player"); // Get Player table
+				if (lua_istable(L, -1)) {
+					lua_getfield(L, -1, "getXPBoostMessage"); // Get function from Player table
+
+					if (lua_isfunction(L, -1)) {
+						// Push arguments (self, monster name)
+						LuaScriptInterface::pushUserdata<Player>(L, this);
+						LuaScriptInterface::setMetatable(L, -1, "Player");
+						lua_pushstring(L, monster->getName().c_str());
+
+						// Call the function (2 arguments, 1 return value)
+						if (lua_pcall(L, 2, 1, 0) == LUA_OK) {
+							if (lua_isstring(L, -1)) {
+								xpBoostMessage = lua_tostring(L, -1);
+							}
+							lua_pop(L, 1); // Remove return value from stack
+						}
+					}
+				}
+				lua_pop(L, 1); // Clean up Lua stack
 			}
 		}
 
