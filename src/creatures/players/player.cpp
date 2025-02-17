@@ -3172,7 +3172,7 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 	if (sendText) {
 		std::string expString = fmt::format("{} experience point{}.", exp, (exp != 1 ? "s" : ""));
 		// Get Lua instance
-		LuaEnvironment& luaEnv = LuaEnvironment::getInstance();
+		LuaEnvironment &luaEnv = LuaEnvironment::getInstance();
 
 		// Call Lua function to get XP boost message from player.lua
 		std::string xpBoostMessage;
