@@ -8942,9 +8942,6 @@ void Player::triggerMomentum() {
 			// Fetching cooldown reduction from config
 			const int32_t reduction = g_configManager().getNumber(MOMENTUM_COOLDOWN_REDUCTION);
 
-			// Debugging: Print retrieved value to ensure it's correctly set
-			g_logger().info("Momentum Cooldown Reduction: {}.", reduction);
-
 			const ConditionType_t type = condItem->getType();
 			constexpr auto maxu16 = std::numeric_limits<uint16_t>::max();
 			const auto checkSpellId = condItem->getSubId();
