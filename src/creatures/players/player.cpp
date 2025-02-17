@@ -3155,7 +3155,7 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 	const auto &monster = target && target->getMonster() ? target->getMonster() : nullptr;
 	const bool handleHazardExperience = monster && monster->getHazard() && getHazardSystemPoints() > 0;
 	if (handleHazardExperience) {
-		exp += (exp * (1.75 * getHazardSystemPoints() * g_configManager().getFloat(HAZARD_EXP_BONUS_MULTIPLIER))) / 100.0;
+		exp += (exp * (1.75 * getHazardSystemPoints() * g_configManager().getFloat(HAZARD_EXP_BONUS_MULTIPLIER))) / 100.;
 	}
 
 	const bool handleAnimusMastery = monster && animusMastery().has(monster->getMonsterType()->name);
@@ -3197,64 +3197,63 @@ void Player::addExperience(const std::shared_ptr<Creature> &target, uint64_t exp
 			}
 		}
 	}
-}
 
-const uint32_t prevLevel = level;
-while (experience >= nextLevelExp) {
-	++level;
-	// Player stats gain for vocations level <= 8
-	if (vocation->getId() != VOCATION_NONE && level <= 8) {
-		const auto &noneVocation = g_vocations().getVocation(VOCATION_NONE);
-		healthMax += noneVocation->getHPGain();
-		health += noneVocation->getHPGain();
-		manaMax += noneVocation->getManaGain();
-		mana += noneVocation->getManaGain();
-		capacity += noneVocation->getCapGain();
+	const uint32_t prevLevel = level;
+	while (experience >= nextLevelExp) {
+		++level;
+		// Player stats gain for vocations level <= 8
+		if (vocation->getId() != VOCATION_NONE && level <= 8) {
+			const auto &noneVocation = g_vocations().getVocation(VOCATION_NONE);
+			healthMax += noneVocation->getHPGain();
+			health += noneVocation->getHPGain();
+			manaMax += noneVocation->getManaGain();
+			mana += noneVocation->getManaGain();
+			capacity += noneVocation->getCapGain();
+		} else {
+			healthMax += vocation->getHPGain();
+			health += vocation->getHPGain();
+			manaMax += vocation->getManaGain();
+			mana += vocation->getManaGain();
+			capacity += vocation->getCapGain();
+		}
+
+		currLevelExp = nextLevelExp;
+		nextLevelExp = getExpForLevel(level + 1);
+		if (currLevelExp >= nextLevelExp) {
+			// player has reached max level
+			break;
+		}
+	}
+
+	if (prevLevel != level) {
+		health = healthMax;
+		mana = manaMax;
+
+		updateBaseSpeed();
+		setBaseSpeed(getBaseSpeed());
+		g_game().changeSpeed(static_self_cast<Player>(), 0);
+		g_game().addCreatureHealth(static_self_cast<Player>());
+		g_game().addPlayerMana(static_self_cast<Player>());
+
+		if (m_party) {
+			m_party->updateSharedExperience();
+		}
+
+		g_creatureEvents().playerAdvance(static_self_cast<Player>(), SKILL_LEVEL, prevLevel, level);
+
+		std::ostringstream ss;
+		ss << "You advanced from Level " << prevLevel << " to Level " << level << '.';
+		sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
+		sendTakeScreenshot(SCREENSHOT_TYPE_LEVELUP);
+	}
+
+	if (nextLevelExp > currLevelExp) {
+		levelPercent = Player::getPercentLevel(experience - currLevelExp, nextLevelExp - currLevelExp);
 	} else {
-		healthMax += vocation->getHPGain();
-		health += vocation->getHPGain();
-		manaMax += vocation->getManaGain();
-		mana += vocation->getManaGain();
-		capacity += vocation->getCapGain();
+		levelPercent = 0;
 	}
-
-	currLevelExp = nextLevelExp;
-	nextLevelExp = getExpForLevel(level + 1);
-	if (currLevelExp >= nextLevelExp) {
-		// player has reached max level
-		break;
-	}
-}
-
-if (prevLevel != level) {
-	health = healthMax;
-	mana = manaMax;
-
-	updateBaseSpeed();
-	setBaseSpeed(getBaseSpeed());
-	g_game().changeSpeed(static_self_cast<Player>(), 0);
-	g_game().addCreatureHealth(static_self_cast<Player>());
-	g_game().addPlayerMana(static_self_cast<Player>());
-
-	if (m_party) {
-		m_party->updateSharedExperience();
-	}
-
-	g_creatureEvents().playerAdvance(static_self_cast<Player>(), SKILL_LEVEL, prevLevel, level);
-
-	std::ostringstream ss;
-	ss << "You advanced from Level " << prevLevel << " to Level " << level << '.';
-	sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
-	sendTakeScreenshot(SCREENSHOT_TYPE_LEVELUP);
-}
-
-if (nextLevelExp > currLevelExp) {
-	levelPercent = Player::getPercentLevel(experience - currLevelExp, nextLevelExp - currLevelExp);
-} else {
-	levelPercent = 0;
-}
-sendStats();
-sendExperienceTracker(rawExp, exp);
+	sendStats();
+	sendExperienceTracker(rawExp, exp);
 }
 
 void Player::removeExperience(uint64_t exp, bool sendText /* = false*/) {
