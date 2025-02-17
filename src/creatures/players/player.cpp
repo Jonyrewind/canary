@@ -63,8 +63,6 @@
 #include "lua/creature/creatureevent.hpp"
 #include "lua/creature/events.hpp"
 #include "lua/creature/movement.hpp"
-#include "lua/scripts/lua_environment.hpp"
-#include "lua/scripts/luascript.hpp"
 #include "map/spectators.hpp"
 #include "creatures/players/vocations/vocation.hpp"
 
