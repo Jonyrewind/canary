@@ -8961,7 +8961,7 @@ void Player::triggerMomentum() {
 
 		if (triggered) {
 			g_game().addMagicEffect(getPosition(), CONST_ME_HOURGLASS);
-			sendTextMessage(MESSAGE_ATTENTION, "Momentum was triggered. {}", reduction);
+			sendTextMessage(MESSAGE_ATTENTION, "Momentum was triggered.");
 		}
 	}
 }
