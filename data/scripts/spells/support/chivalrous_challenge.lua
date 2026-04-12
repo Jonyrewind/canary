@@ -5,7 +5,7 @@ function canChain(creature, target)
 	if target:isMonster() then
 		if target:getType():isRewardBoss() then
 			return false
-		elseif target:getMaster() == nil and target:getType():getTargetDistance() > 1 then
+		elseif target:getMaster() == nil and target:getType():getTargetDistance() >= 1 then
 			return true
 		end
 	end
@@ -15,7 +15,7 @@ end
 combat:setCallback(CALLBACK_PARAM_CHAINPICKER, "canChain")
 
 function getChainValue(creature)
-	local targets = 5
+	local targets = 8
 	local player = creature:getPlayer()
 	if creature and player then
 		targets = targets + player:getWheelSpellAdditionalTarget("Chivalrous Challenge")

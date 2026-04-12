@@ -1,0 +1,36 @@
+return {
+	icons = { "Category_Backpacks.png" },
+	name = "Backpacks",
+	parent = "Items",
+	rookgaard = false,
+	state = GameStore.States.STATE_NONE,
+	offers = {
+		{
+			icons = { "Artefact_Box.png" },
+			name = "Artefact Box",
+			price = 400,
+			itemtype = 36810,
+			movable = true,
+			description = "<i>The knight Galthen built this box to hold Prime Artefacts.</i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		},
+		{
+			icons = { "Zaoan_Chess_Box.png" },
+			name = "Zaoan Chess Box",
+			price = 450,
+			itemtype = 18339,
+			movable = true,
+			description = "<i>This chess box is made of jade and obsidian. It will hold a full set of 32 Zaoan chess figures.</i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		},
+		{
+			icons = { "Blossom_Bag.png" },
+			name = "Blossom Bag",
+			price = 550,
+			itemtype = 25780,
+			movable = true,
+			description = "<i>Fancy Bag</i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		},
+	},
+}

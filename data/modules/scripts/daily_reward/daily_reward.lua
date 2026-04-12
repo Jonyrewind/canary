@@ -120,8 +120,8 @@ DailyReward = {
 		[3] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			freeAccount = 5,
+			premiumAccount = 10,
 		},
 		[4] = {
 			type = DAILY_REWARD_TYPE_ITEM,
@@ -132,8 +132,8 @@ DailyReward = {
 		[5] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			freeAccount = 5,
+			premiumAccount = 10,
 		},
 		[6] = {
 			type = DAILY_REWARD_TYPE_ITEM,
@@ -141,13 +141,13 @@ DailyReward = {
 			items = { 28540, 28541, 28542, 28543, 28544, 28545, 44064, 50292 },
 			freeAccount = 1,
 			premiumAccount = 2,
-			itemCharges = 50,
+			itemCharges = 500,
 		},
 		[7] = {
 			type = DAILY_REWARD_TYPE_XP_BOOST,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 10,
-			premiumAccount = 30,
+			freeAccount = 30,
+			premiumAccount = 60,
 		},
 		-- Storage reward template
 		--[[[5] = {
@@ -299,8 +299,11 @@ DailyReward.init = function(playerId)
 		return false
 	end
 
-	if player:getJokerTokens() < 3 and tonumber(os.date("%m")) ~= player:getStorageValue(DailyReward.storages.avoidDoubleJoker) then
-		player:setStorageValue(DailyReward.storages.avoidDoubleJoker, tonumber(os.date("%m")))
+	local currentWeek = tonumber(os.date("%V"))
+	local lastWeek = player:getStorageValue(DailyReward.storages.avoidDoubleJoker)
+
+	if player:getJokerTokens() < 6 and (lastWeek == -1 or lastWeek ~= currentWeek) then
+		player:setStorageValue(DailyReward.storages.avoidDoubleJoker, currentWeek)
 		player:setJokerTokens(player:getJokerTokens() + 1)
 	end
 
@@ -313,7 +316,7 @@ DailyReward.init = function(playerId)
 				player:setJokerTokens(player:getJokerTokens() - timeMath)
 				player:sendTextMessage(MESSAGE_LOGIN, "You lost " .. timeMath .. " joker tokens to prevent loosing your streak.")
 			else
-				player:setStreakLevel(0)
+				player:setStreakLevel(7)
 				if player:getLastLoginSaved() > 0 then -- message wont appear at first character login
 					player:setJokerTokens(-(player:getJokerTokens()))
 					player:sendTextMessage(MESSAGE_LOGIN, "You just lost your daily reward streak.")

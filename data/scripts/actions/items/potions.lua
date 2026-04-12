@@ -45,7 +45,7 @@ end
 local potions = {
 	[236] = { health = { 250, 350 }, vocations = { VOCATION.BASE_ID.PALADIN, VOCATION.BASE_ID.KNIGHT, VOCATION.BASE_ID.MONK }, level = 50, flask = 283, description = "Only knights, paladins and monks of level 50 or above may drink this fluid." },
 	[237] = { mana = { 115, 185 }, level = 50, flask = 283, description = "Only players of level 50 or above may drink this fluid." },
-	[238] = { mana = { 150, 250 }, vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID, VOCATION.BASE_ID.PALADIN, VOCATION.BASE_ID.MONK }, level = 80, flask = 284, description = "Only sorcerers, druids, paladins and monks of level 80 or above may drink this fluid." },
+	[238] = { mana = { 150, 250 }, vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID, VOCATION.BASE_ID.PALADIN, VOCATION.BASE_ID.MONK, VOCATION.BASE_ID.KNIGHT }, level = 80, flask = 284, description = "Only players of level 80 or above may drink this fluid." },
 	[239] = { health = { 425, 575 }, vocations = { VOCATION.BASE_ID.KNIGHT }, level = 80, flask = 284, description = "Only knights of level 80 or above may drink this fluid." },
 	[266] = { health = { 125, 175 }, flask = 285 },
 	[268] = { mana = { 75, 125 }, flask = 285 },
@@ -86,12 +86,13 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 	end
 
 	if potion.health or potion.mana or potion.combat then
+		local multiplier = player:getLevel() / 95
 		if potion.health then
-			doTargetCombatHealth(player, target, COMBAT_HEALING, potion.health[1], potion.health[2], CONST_ME_MAGIC_BLUE)
+			doTargetCombatHealth(player, target, COMBAT_HEALING, potion.health[1] * multiplier, potion.health[2] * multiplier, CONST_ME_MAGIC_BLUE)
 		end
 
 		if potion.mana then
-			doTargetCombatMana(0, target, potion.mana[1], potion.mana[2], CONST_ME_MAGIC_BLUE)
+			doTargetCombatMana(0, target, potion.mana[1] * multiplier, potion.mana[2] * multiplier, CONST_ME_MAGIC_BLUE)
 		end
 
 		if potion.combat then

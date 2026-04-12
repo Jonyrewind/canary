@@ -583,4 +583,10 @@ TeleportUnique = {
 		destination = { x = 33430, y = 31564, z = 13 },
 		effect = CONST_ME_TELEPORT,
 	},
+	[39029] = {
+		itemId = 25098,
+		itemPos = { x = 32870, y = 32723, z = 14 },
+		destination = { x = 32870, y = 32723, z = 15 },
+		effect = CONST_ME_TELEPORT,
+	},
 }

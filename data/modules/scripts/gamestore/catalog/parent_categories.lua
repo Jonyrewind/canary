@@ -23,6 +23,12 @@ return {
 		rookgaard = true,
 		subclasses = { "Extra Services", "Useful Things" },
 	},
+	items = {
+		icons = { "Category_Items.png" },
+		name = "Items",
+		rookgaard = true,
+		subclasses = { "Backpacks", "Tibiadrome Potions", "Tools" },
+	},
 	tournament = {
 		icons = { "Category_Tournament.png" },
 		name = "Tournament",

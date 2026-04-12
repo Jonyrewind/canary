@@ -1592,7 +1592,7 @@ for _, itemNameOrId in ipairs(garbage) do
 	end
 end
 
-local lootPouchEntry = { itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 }
+local lootPouchEntry = { itemName = "01 all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 }
 LootShopConfig = { lootPouchEntry }
 
 for category, items in pairs(LootShopConfigTable) do

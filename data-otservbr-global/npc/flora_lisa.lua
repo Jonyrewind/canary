@@ -1,5 +1,5 @@
 local internalNpcName = "Flora"
-local npcType = Game.createNpcType(internalNpcName)
+local npcType = Game.createNpcType("Flora Lisa")
 local npcConfig = {}
 
 npcConfig.name = internalNpcName

@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <zones>
 	<zone name="boss.brain-head" zoneid="1" />
+	<zone name="boss.lisaroom" zoneid="2" />
 </zones>

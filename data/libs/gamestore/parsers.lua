@@ -352,7 +352,7 @@ local function parseBuyStoreOffer(playerId, msg)
 
 		local message = string.format("You have purchased %s for %d coins.", offer.name, offerPrice)
 		sendUpdatedStoreBalances(playerId)
-		return addPlayerEvent(sendStorePurchaseSuccessful, 650, playerId, message)
+		return addPlayerEvent(sendStorePurchaseSuccessful, 350, playerId, message)
 	end
 
 	player:updateUIExhausted()
