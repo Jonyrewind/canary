@@ -19,7 +19,7 @@ on:
       - ".github/workflows/**"
   push:
     branches:
-      - main
+      - mychanges
     paths:
       - "src/**"
       - "tests/**"
