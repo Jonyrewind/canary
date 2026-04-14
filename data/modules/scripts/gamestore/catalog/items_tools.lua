@@ -50,5 +50,14 @@ return {
 			description = "<i>This nifty gadget can be used for many vital and less vital purposes. If it's not jammed, that is.</i>",
 			type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
 		},
+		{
+			icons = { "Amber_Crusher.png" },
+			name = "Amber Crusher",
+			price = 300,
+			itemtype = 46628,
+			movable = true,
+			description = "<i>Used to crush unrevealed gems into fragments to be used in the Fragment Workshop.</i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_ITEM,
+		},
 	},
 }

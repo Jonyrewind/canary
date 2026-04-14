@@ -9,7 +9,7 @@ local config = {
 towns = {
 		{ name = "Ab'Dendriel", teleport = Position(32732, 31634, 7) },
 		{ name = "Ankrahmun", teleport = Position(33194, 32853, 8) },
-		{ name = "Candia", teleport = Position(33338, 32125, 7) },
+		{ name = "Candia", teleport = Position(33338, 32127, 7) },
 		{ name = "Carlin", teleport = Position(32360, 31782, 7) },
 		{ name = "Darashia", teleport = Position(33213, 32454, 1) },
 		{ name = "Edron", teleport = Position(33217, 31814, 8) },

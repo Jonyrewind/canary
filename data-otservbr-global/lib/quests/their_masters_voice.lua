@@ -1,9 +1,9 @@
 local config = {
 	quest_duration = 60, -- how long until quest is reverted, in minutes
-	slime_exhaust = 5, --  exhaust until you can remove another slime, in seconds
+	slime_exhaust = 2, --  exhaust until you can remove another slime, in seconds
 	slimes_needed = 25, -- slimes needed to be removed to kill mad mage and complete quest
 	max_slimes = 100, -- max slimes needed to start waves
-	max_waves = 25, -- max waves, last one will be mad mage
+	max_waves = 12, -- max waves, last one will be mad mage
 }
 
 local mage_positions = {
@@ -43,9 +43,9 @@ local servant_positions = {
 local slime_ids = { 12059, 12060, 12061, 12062, 12063 }
 
 local servants = {
-	{ 10, "diamond servant" },
-	{ 40, "golden servant" },
-	{ 100, "iron servant" },
+	{ 5, "diamond servant" },
+	{ 20, "golden servant" },
+	{ 40, "iron servant" },
 }
 
 local slime_exhaust = slime_exhaust or {}

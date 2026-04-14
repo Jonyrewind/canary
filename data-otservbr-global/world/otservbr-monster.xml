@@ -61982,6 +61982,12 @@
 		<monster name="Troll" x="3" y="0" z="8" spawntime="90" />
 		<monster name="Troll" x="0" y="2" z="8" spawntime="90" />
 	</monster>
+	<monster centerx="33409" centery="32102" centerz="8" radius="1">
+		<monster name="candy floss elemental" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33415" centery="32102" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="32456" centery="32103" centerz="8" radius="2">
 		<monster name="Cyclops" x="0" y="1" z="8" spawntime="90" />
 	</monster>
@@ -62033,6 +62039,9 @@
 		<monster name="Rotworm" x="6" y="5" z="8" spawntime="90" />
 		<monster name="Rotworm" x="5" y="9" z="8" spawntime="90" />
 		<monster name="Rotworm" x="10" y="9" z="8" spawntime="90" />
+	</monster>
+	<monster centerx="33396" centery="32106" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33698" centery="32106" centerz="8" radius="5">
 		<monster name="Thanatursus" x="0" y="-3" z="8" spawntime="60" />
@@ -62095,12 +62104,14 @@
 	</monster>
 	<monster centerx="33407" centery="32112" centerz="8" radius="3">
 		<monster name="angry sugar fairy" x="-1" y="2" z="8" spawntime="60" />
+		<monster name="Goggle Cake" x="2" y="2" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33421" centery="32112" centerz="8" radius="3">
 		<monster name="candy floss elemental" x="-1" y="1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33428" centery="32112" centerz="8" radius="3">
 		<monster name="Goggle Cake" x="-1" y="1" z="8" spawntime="60" />
+		<monster name="Goggle Cake" x="3" y="1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33435" centery="32112" centerz="8" radius="3">
 		<monster name="candy floss elemental" x="2" y="2" z="8" spawntime="60" />
@@ -62180,7 +62191,11 @@
 		<monster name="Goggle Cake" x="3" y="-1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33407" centery="32119" centerz="8" radius="3">
+		<monster name="Goggle Cake" x="-2" y="-2" z="8" spawntime="60" />
 		<monster name="candy floss elemental" x="2" y="-1" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33438" centery="32119" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33442" centery="32119" centerz="8" radius="3">
 		<monster name="candy floss elemental" x="-3" y="-2" z="8" spawntime="60" />
@@ -62209,6 +62224,9 @@
 	</monster>
 	<monster centerx="33233" centery="32121" centerz="8" radius="1">
 		<monster name="Animated Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</monster>
+	<monster centerx="33419" centery="32121" centerz="8" radius="1">
+		<monster name="candy floss elemental" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33702" centery="32121" centerz="8" radius="3">
 		<monster name="Crazed Winter Rearguard" x="0" y="-3" z="8" spawntime="60" />
@@ -62245,11 +62263,16 @@
 	<monster centerx="33407" centery="32126" centerz="8" radius="3">
 		<monster name="candy floss elemental" x="-1" y="3" z="8" spawntime="60" />
 	</monster>
+	<monster centerx="33419" centery="32126" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
+	</monster>
 	<monster centerx="33428" centery="32126" centerz="8" radius="3">
 		<monster name="Goggle Cake" x="-2" y="-3" z="8" spawntime="60" />
+		<monster name="candy floss elemental" x="1" y="-3" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="33435" centery="32126" centerz="8" radius="3">
 		<monster name="Goggle Cake" x="3" y="-3" z="8" spawntime="60" />
+		<monster name="Goggle Cake" x="3" y="-1" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="32294" centery="32127" centerz="8" radius="4">
 		<monster name="Troll" x="1" y="-2" z="8" spawntime="90" />
@@ -62292,6 +62315,21 @@
 	<monster centerx="32355" centery="32132" centerz="8" radius="2">
 		<monster name="Troll" x="0" y="-2" z="8" spawntime="90" />
 		<monster name="Troll" x="1" y="2" z="8" spawntime="90" />
+	</monster>
+	<monster centerx="33419" centery="32132" centerz="8" radius="1">
+		<monster name="candy floss elemental" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33428" centery="32132" centerz="8" radius="1">
+		<monster name="candy floss elemental" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33431" centery="32132" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33435" centery="32132" centerz="8" radius="1">
+		<monster name="candy floss elemental" x="0" y="0" z="8" spawntime="60" />
+	</monster>
+	<monster centerx="33437" centery="32132" centerz="8" radius="1">
+		<monster name="Goggle Cake" x="0" y="0" z="8" spawntime="60" />
 	</monster>
 	<monster centerx="31979" centery="32133" centerz="8" radius="3">
 		<monster name="Skeleton" x="-1" y="-2" z="8" spawntime="90" />
@@ -87987,10 +88025,6 @@
 	<monster centerx="33036" centery="32133" centerz="9" radius="3">
 		<monster name="Rotworm" x="-2" y="2" z="9" spawntime="90" />
 	</monster>
-	<monster centerx="33456" centery="32133" centerz="9" radius="3">
-		<monster name="angry sugar fairy" x="0" y="1" z="9" spawntime="60" />
-		<monster name="Goggle Cake" x="-3" y="3" z="9" spawntime="60" />
-	</monster>
 	<monster centerx="32380" centery="32135" centerz="9" radius="2">
 		<monster name="Rotworm" x="1" y="0" z="9" spawntime="90" />
 	</monster>
@@ -87999,6 +88033,9 @@
 	</monster>
 	<monster centerx="32657" centery="32135" centerz="9" radius="2">
 		<monster name="Slime" x="0" y="1" z="9" spawntime="90" />
+	</monster>
+	<monster centerx="33455" centery="32135" centerz="9" radius="1">
+		<monster name="Sugar Mommy" x="0" y="0" z="9" spawntime="120" direction="2" />
 	</monster>
 	<monster centerx="32249" centery="32138" centerz="9" radius="2">
 		<monster name="Dragon" x="0" y="-1" z="9" spawntime="90" />
@@ -88042,9 +88079,6 @@
 	</monster>
 	<monster centerx="33386" centery="32140" centerz="9" radius="3">
 		<monster name="Candy Horror" x="2" y="3" z="9" spawntime="60" />
-	</monster>
-	<monster centerx="33456" centery="32140" centerz="9" radius="3">
-		<monster name="candy floss elemental" x="1" y="-3" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="33239" centery="32142" centerz="9" radius="1">
 		<monster name="Animated Guzzlemaw" x="0" y="0" z="9" spawntime="15" />
@@ -88090,9 +88124,6 @@
 	<monster centerx="33400" centery="32147" centerz="9" radius="3">
 		<monster name="Sugar Cube" x="0" y="3" z="9" spawntime="60" />
 	</monster>
-	<monster centerx="33456" centery="32147" centerz="9" radius="3">
-		<monster name="Goggle Cake" x="0" y="-2" z="9" spawntime="60" />
-	</monster>
 	<monster centerx="33223" centery="32150" centerz="9" radius="1">
 		<monster name="Animated Guzzlemaw" x="0" y="0" z="9" spawntime="15" />
 	</monster>
@@ -88101,6 +88132,17 @@
 	</monster>
 	<monster centerx="33304" centery="32151" centerz="9" radius="1">
 		<monster name="Animated Ogre Shaman" x="0" y="0" z="9" spawntime="30" />
+	</monster>
+	<monster centerx="33445" centery="32151" centerz="9" radius="3">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
+		<monster name="angry sugar fairy" x="3" y="0" z="9" spawntime="60" />
+		<monster name="candy floss elemental" x="0" y="2" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="33451" centery="32151" centerz="9" radius="3">
+		<monster name="candy floss elemental" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="33456" centery="32152" centerz="9" radius="3">
+		<monster name="Goggle Cake" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="32014" centery="32154" centerz="9" radius="3">
 		<monster name="Rat" x="-3" y="1" z="9" spawntime="90" />
@@ -88145,10 +88187,10 @@
 	</monster>
 	<monster centerx="33442" centery="32154" centerz="9" radius="3">
 		<monster name="Goggle Cake" x="-1" y="-1" z="9" spawntime="60" />
-		<monster name="candy floss elemental" x="3" y="-1" z="9" spawntime="60" />
 		<monster name="Goggle Cake" x="-2" y="2" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="33463" centery="32154" centerz="9" radius="3">
+		<monster name="Goggle Cake" x="-3" y="-2" z="9" spawntime="60" />
 		<monster name="Goggle Cake" x="-3" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="32325" centery="32155" centerz="9" radius="3">
@@ -88162,6 +88204,9 @@
 	</monster>
 	<monster centerx="33308" centery="32155" centerz="9" radius="1">
 		<monster name="Animated Ogre Savage" x="0" y="0" z="9" spawntime="30" />
+	</monster>
+	<monster centerx="33432" centery="32157" centerz="9" radius="1">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="32056" centery="32161" centerz="9" radius="3">
 		<monster name="Rat" x="-2" y="3" z="9" spawntime="90" />
@@ -88301,6 +88346,12 @@
 	<monster centerx="32369" centery="32170" centerz="9" radius="2">
 		<monster name="Rotworm" x="2" y="0" z="9" spawntime="90" />
 		<monster name="Rotworm" x="-2" y="2" z="9" spawntime="90" />
+	</monster>
+	<monster centerx="33447" centery="32170" centerz="9" radius="1">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="33458" centery="32170" centerz="9" radius="1">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="31977" centery="32171" centerz="9" radius="3">
 		<monster name="Furious Orc Berserker" x="0" y="0" z="9" spawntime="90" />
@@ -88524,6 +88575,12 @@
 	</monster>
 	<monster centerx="32756" centery="32188" centerz="9" radius="1">
 		<monster name="Orclops Doomhauler" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="33441" centery="32188" centerz="9" radius="1">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
+	</monster>
+	<monster centerx="33456" centery="32188" centerz="9" radius="1">
+		<monster name="angry sugar fairy" x="0" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="32007" centery="32189" centerz="9" radius="3">
 		<monster name="Rat" x="-2" y="-2" z="9" spawntime="90" />
@@ -88792,6 +88849,7 @@
 		<monster name="Goggle Cake" x="3" y="0" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="33449" centery="32210" centerz="9" radius="3">
+		<monster name="angry sugar fairy" x="-2" y="-3" z="9" spawntime="60" />
 		<monster name="candy floss elemental" x="1" y="-2" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="33533" centery="32210" centerz="9" radius="3">
@@ -88965,9 +89023,6 @@
 	</monster>
 	<monster centerx="32724" centery="32231" centerz="9" radius="1">
 		<monster name="Ripper Spectre" x="0" y="0" z="9" spawntime="60" />
-	</monster>
-	<monster centerx="33365" centery="32231" centerz="9" radius="3">
-		<monster name="Sugar Daddy" x="1" y="-1" z="9" spawntime="60" />
 	</monster>
 	<monster centerx="32729" centery="32233" centerz="9" radius="1">
 		<monster name="Arachnophobica" x="-1" y="0" z="9" spawntime="60" />

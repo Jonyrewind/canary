@@ -230,7 +230,12 @@ QuestDoorAction = {
 	-- Ferumbras ascension door
 	[Storage.Quest.U10_90.FerumbrasAscension.FirstDoor] = {
 		itemId = false,
-		itemPos = { { x = 33479, y = 32782, z = 11 } },
+		itemPos = {
+			{ x = 33479, y = 32782, z = 11 },
+			{ x = 33460, y = 32797, z = 11 },
+			{ x = 33476, y = 32791, z = 11 },
+			{ x = 33479, y = 32782, z = 11 },
+		},
 	},
 	[Storage.Quest.U10_90.FerumbrasAscension.MonsterDoor] = {
 		itemId = false,

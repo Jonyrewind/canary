@@ -282,6 +282,13 @@ TileAction = {
 			{ x = 33591, y = 32321, z = 10 },
 		},
 	},
+	[25030] = {
+		itemId = 10840,
+		itemPos = {
+			{ x = 33397, y = 32200, z = 9 },
+			{ x = 33372, y = 32241, z = 9 },
+		},
+	},
 	-- Others actions
 	-- Kilmaresh
 	-- First mission

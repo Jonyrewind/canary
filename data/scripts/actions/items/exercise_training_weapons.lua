@@ -111,8 +111,10 @@ local function exerciseTrainingEvent(playerId, tilePosition, weaponId, dummyId)
 	local isMagic = exerciseWeaponsTable[weaponId].skill == SKILL_MAGLEVEL
 	if isMagic then
 		player:addManaSpent(600 * rate)
+		player:addSkillTries(SKILL_SHIELD, 5 * rate)
 	else
 		player:addSkillTries(exerciseWeaponsTable[weaponId].skill, 7 * rate)
+		player:addSkillTries(SKILL_SHIELD, 7 * rate)
 	end
 
 	weapon:setAttribute(ITEM_ATTRIBUTE_CHARGES, (weaponCharges - 1))
