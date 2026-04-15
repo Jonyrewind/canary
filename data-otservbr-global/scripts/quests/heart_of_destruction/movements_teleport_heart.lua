@@ -1,8 +1,6 @@
 local teleportHeart = MoveEvent()
 
--- ==================== ALL TELEPORTS IN ONE TABLE ====================
 local vortexTeleports = {
-    -- Normal vortexes (simple teleport, no checks)
     [14321] = { pos = Position(32149, 31359, 14) }, -- Charger TP 1
     [14322] = { pos = Position(32092, 31330, 12) }, -- Charger Exit
     [14324] = { pos = Position(32104, 31329, 12) }, -- Anomaly Exit
@@ -17,7 +15,6 @@ local vortexTeleports = {
     [14352] = { pos = Position(32214, 31376, 14) }, -- World Devourer Exit (Main Room)
     [14354] = { pos = Position(32112, 31375, 14) }, -- World Devourer (Reward Room)
 
-    -- Access Vortex (mini-bosses with single storage)
     [14323] = { -- Anomaly
         position = Position(32246, 31252, 14),
         storage = 14320,
@@ -34,7 +31,6 @@ local vortexTeleports = {
         boss = "Realityquake"
     },
 
-    -- Final Bosses (need 3 storages)
     [14346] = { -- Eradicator
         position = Position(32336, 31293, 14),
         storage1 = 14326,
@@ -50,7 +46,6 @@ local vortexTeleports = {
         boss = "Outburst"
     },
 
-    -- Special cases
     [14351] = { special = "worldDevourerEnter" },
     [14353] = { special = "worldDevourerExit" }
 }
@@ -62,15 +57,9 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
     end
 
     local data = vortexTeleports[item.actionid]
-    if not data then
-        return true
-    end
 
-    -- 1. Normal vortex (simple teleport)
     if data.pos then
         player:teleportTo(data.pos)
-
-    -- 2. Access Vortex (mini bosses)
     elseif data.storage then
         if player:getStorageValue(data.storage) >= 1 then
             if player:canFightBoss(data.boss) then
@@ -83,8 +72,6 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
             player:teleportTo(fromPosition)
             player:sendTextMessage(19, "You don't have access to this portal.")
         end
-
-    -- 3. Final Bosses (Eradicator / Outburst)
     elseif data.storage1 then
         if player:getStorageValue(data.storage1) >= 1 and
            player:getStorageValue(data.storage2) >= 1 and
@@ -99,8 +86,6 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
             player:teleportTo(fromPosition)
             player:sendTextMessage(19, "You don't have access to this portal.")
         end
-
-    -- 4. World Devourer special cases
     elseif data.special == "worldDevourerEnter" then
         if player:getStorageValue(14330) >= 1 and player:getStorageValue(14332) >= 1 then
             if player:canFightBoss("World Devourer") then
@@ -113,7 +98,6 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
             player:teleportTo(fromPosition)
             player:sendTextMessage(19, "You don't have access to this portal.")
         end
-
     elseif data.special == "worldDevourerExit" then
         player:teleportTo(Position(32214, 31376, 14))
         player:setStorageValue(14334, -1)
@@ -121,13 +105,11 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
         player:setStorageValue(14336, -1)
         player:unregisterEvent("DevourerStorage")
     end
-
     return true
 end
 
 teleportHeart:type("stepin")
 
--- Register ALL actionids in one loop
 for aid in pairs(vortexTeleports) do
     teleportHeart:aid(aid)
 end

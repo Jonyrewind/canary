@@ -6,11 +6,17 @@
 	<npc centerx="996" centery="1024" centerz="5" radius="1">
 		<npc name="Archery" x="0" y="0" z="5" spawntime="60" direction="3" />
 	</npc>
+	<npc centerx="1014" centery="1024" centerz="5" radius="2">
+		<npc name="Tamoril" x="-1" y="0" z="5" spawntime="90" direction="2" />
+	</npc>
+	<npc centerx="999" centery="1026" centerz="5" radius="1">
+		<npc name="Harog" x="1" y="0" z="5" spawntime="60" />
+	</npc>
 	<npc centerx="984" centery="1030" centerz="5" radius="1">
 		<npc name="Fadil" x="0" y="0" z="5" spawntime="60" />
 	</npc>
-	<npc centerx="1004" centery="1031" centerz="5" radius="1">
-		<npc name="Alexander" x="0" y="0" z="5" spawntime="60" />
+	<npc centerx="1004" centery="1032" centerz="5" radius="1">
+		<npc name="Alexander" x="0" y="-1" z="5" spawntime="60" />
 	</npc>
 	<npc centerx="991" centery="1036" centerz="5" radius="1">
 		<npc name="Telas" x="1" y="0" z="5" spawntime="60" />

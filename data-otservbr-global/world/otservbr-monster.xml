@@ -143354,7 +143354,7 @@
 		<monster name="Ironblight" x="1" y="0" z="12" spawntime="90" />
 	</monster>
 	<monster centerx="33054" centery="31904" centerz="12" radius="1">
-		<monster name="Lost Berserker" x="1" y="0" z="12" spawntime="90" />
+		<monster name="Lost Berserker" x="0" y="0" z="12" spawntime="90" />
 	</monster>
 	<monster centerx="32217" centery="31905" centerz="12" radius="1">
 		<monster name="Scorpion" x="1" y="-1" z="12" spawntime="60" />

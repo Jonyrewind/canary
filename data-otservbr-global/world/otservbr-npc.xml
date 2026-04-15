@@ -1773,6 +1773,9 @@
 	<npc centerx="32389" centery="32229" centerz="7" radius="1">
 		<npc name="Donald Mcronald" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32360" centery="32231" centerz="7" radius="1">
+		<npc name="Addoner" x="-1" y="1" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32401" centery="32232" centerz="7" radius="1">
 		<npc name="Pig" x="0" y="0" z="7" spawntime="60" />
 	</npc>
