@@ -479,6 +479,11 @@ void ImbuementDecay::startImbuementDecay(const std::shared_ptr<Item> &item) {
 		return;
 	}
 
+	auto player = item->getHoldingPlayer();
+	std::string playerName = player ? player->getName() : "<NO_PLAYER_YET>";
+
+	g_logger().debug("[DIAG] Starting imbuement decay for item '{}' (ID: {}, Count: {}) → Player: '{}'", item->getName(), item->getID(), item->getItemCount(), playerName);
+
 	if (!item->hasImbuements()) {
 		return;
 	}
@@ -537,11 +542,17 @@ void ImbuementDecay::checkImbuementDecay() {
 	for (auto it = m_itemsToDecay.begin(); it != m_itemsToDecay.end();) {
 		auto item = it->second.item.lock();
 		if (!item) {
-			g_logger().error("[{}] item is nullptr", __FUNCTION__);
+			g_logger().debug("[DIAG] checkImbuementDecay → weak_ptr expired (ghost item) - cleaning up");
 			it = m_itemsToDecay.erase(it);
 			continue;
 		}
 
+		if (item->isRemoved()) {
+			g_logger().debug("[checkImbuementDecay] Item was removed - cleaning up");
+			it = m_itemsToDecay.erase(it);
+			continue;
+		}
+		
 		// Get the player holding the item (if any)
 		auto player = item->getHoldingPlayer();
 		if (!player) {
