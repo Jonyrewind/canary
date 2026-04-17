@@ -14,13 +14,6 @@
 
 class LuaScriptInterface;
 
-enum class NpcCurrencyType : uint8_t {
-    GOLD = 0,              // Classic gold coins (bank + inventory)
-    ITEM = 1,              // Any regular item
-    TRANSFERABLE_COINS = 2, // Transferable Coins
-    TIBIA_COINS = 3        // Tibia Coins
-};
-
 class Shop {
 public:
 	Shop() = default;
@@ -44,7 +37,6 @@ class NpcType final : public SharedObject {
 		uint8_t speechBubble = SPEECHBUBBLE_NORMAL;
 
 		uint16_t currencyId = ITEM_GOLD_COIN;
-		NpcCurrencyType currencyType = NpcCurrencyType::GOLD;
 
 		uint32_t yellChance = 0;
 		uint32_t yellSpeedTicks = 0;

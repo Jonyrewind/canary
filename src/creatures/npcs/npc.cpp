@@ -117,25 +117,12 @@ void Npc::setSpeechBubble(const uint8_t bubble) const {
 	npcType->info.speechBubble = bubble;
 }
 
-NpcCurrencyType Npc::getCurrencyType() const {
-    return npcType->info.currencyType;
-}
-
-void Npc::setCurrencyType(NpcCurrencyType type) {
-    npcType->info.currencyType = type;
-}
-
-uint16_t Npc::getCurrencyItemId() const {
-    return npcType->info.currencyId;
-}
-
 uint16_t Npc::getCurrency() const {
-    return getCurrencyItemId();
+	return npcType->info.currencyId;
 }
 
 void Npc::setCurrency(uint16_t currency) {
-    npcType->info.currencyId = currency;
-    npcType->info.currencyType = NpcCurrencyType::ITEM;
+	npcType->info.currencyId = currency;
 }
 
 const std::vector<ShopBlock> &Npc::getShopItemVector(uint32_t playerGUID) const {
@@ -409,40 +396,15 @@ void Npc::onPlayerBuyItem(const std::shared_ptr<Player> &player, uint16_t itemId
 		bagsCost = shoppingBagPrice * static_cast<uint32_t>(std::ceil(static_cast<double>(amount) / shoppingBagSlots));
 	}
 
-	switch (getCurrencyType()) {
-    case NpcCurrencyType::GOLD:
-        if ((player->getMoney() + player->getBankBalance()) < totalCost) {
-            g_logger().error("[Npc::onPlayerBuyItem (getMoney)] Player {} lacks gold for item {} with npc {}", player->getName(), itemId, getName());
-						g_logger().debug("[Information] Player {} tried to buy item {} on shop for npc {}, at position {}", player->getName(), itemId, getName(), player->getPosition().toString());
-						g_metrics().addCounter("balance_decrease", totalCost, { { "player", player->getName() }, { "context", "npc_purchase" } });
-            return;
-        }
-        break;
-
-    case NpcCurrencyType::ITEM:
-        if (player->getItemTypeCount(getCurrencyItemId()) < totalCost ||
-            (player->getMoney() + player->getBankBalance()) < bagsCost) {
-            g_logger().error("[Npc::onPlayerBuyItem (getItemTypeCount)] Player {} lacks custom item currency {} with npc {}", player->getName(), getCurrencyItemId(), getName());
-						g_logger().debug("[Information] Player {} tried to buy item {} on shop for npc {}, at position {}", player->getName(), getCurrencyItemId(), getName(), player->getPosition().toString());
-            return;
-        }
-        break;
-
-    case NpcCurrencyType::TRANSFERABLE_COINS:
-        if (player->getTransferableCoins() < totalCost) {
-            g_logger().error("[Npc::onPlayerBuyItem] Player {} lacks Transferable Coins for item {} with npc {}", player->getName(), itemId, getName());
-            player->sendCancelMessage("You do not have enough Transferable Coins.");
-            return;
-        }
-        // bags still paid in gold
-        if ((player->getMoney() + player->getBankBalance()) < bagsCost) {
-            player->sendCancelMessage("You do not have enough gold for the shopping bags.");
-            return;
-        }
-        break;
-
-    default:
-        break;
+	if (getCurrency() == ITEM_GOLD_COIN && (player->getMoney() + player->getBankBalance()) < totalCost) {
+		g_logger().error("[Npc::onPlayerBuyItem (getMoney)] - Player {} have a problem for buy item {} on shop for npc {}", player->getName(), itemId, getName());
+		g_logger().debug("[Information] Player {} tried to buy item {} on shop for npc {}, at position {}", player->getName(), itemId, getName(), player->getPosition().toString());
+		g_metrics().addCounter("balance_decrease", totalCost, { { "player", player->getName() }, { "context", "npc_purchase" } });
+		return;
+	} else if (getCurrency() != ITEM_GOLD_COIN && (player->getItemTypeCount(getCurrency()) < totalCost || ((player->getMoney() + player->getBankBalance()) < bagsCost))) {
+		g_logger().error("[Npc::onPlayerBuyItem (getItemTypeCount)] - Player {} have a problem for buy item {} on shop for npc {}", player->getName(), itemId, getName());
+		g_logger().debug("[Information] Player {} tried to buy item {} on shop for npc {}, at position {}", player->getName(), itemId, getName(), player->getPosition().toString());
+		return;
 	}
 
 	// npc:onBuyItem(player, itemId, subType, amount, ignore, inBackpacks, totalCost)
@@ -584,33 +546,20 @@ void Npc::onPlayerSellItem(const std::shared_ptr<Player> &player, uint16_t itemI
 	auto totalCost = static_cast<uint64_t>(sellPrice * totalRemoved);
 	g_logger().debug("[Npc::onPlayerSellItem] - Removing items from player {} amount {} of items with id {} on shop for npc {}", player->getName(), toRemove, itemId, getName());
 	if (totalRemoved > 0 && totalCost > 0) {
-			switch (getCurrencyType()) {
-					case NpcCurrencyType::GOLD:
-							totalPrice += totalCost;
-							if (g_configManager().getBoolean(AUTOBANK)) {
-									player->setBankBalance(player->getBankBalance() + totalCost);
-							} else {
-									g_game().addMoney(player, totalCost);
-							}
-							g_metrics().addCounter("balance_increase", totalCost, {{"player", player->getName()}, {"context", "npc_sale"}});
-							break;
-
-					case NpcCurrencyType::ITEM:
-							{
-									const auto &newItem = Item::CreateItem(getCurrencyItemId(), totalCost);
-									if (newItem) {
-											g_game().internalPlayerAddItem(player, newItem, true);
-									}
-							}
-							break;
-
-					case NpcCurrencyType::TRANSFERABLE_COINS:
-							player->addTransferableCoins(totalCost);
-							break;
-
-					default:
-							break;
+		if (getCurrency() == ITEM_GOLD_COIN) {
+			totalPrice += totalCost;
+			if (g_configManager().getBoolean(AUTOBANK)) {
+				player->setBankBalance(player->getBankBalance() + totalCost);
+			} else {
+				g_game().addMoney(player, totalCost);
 			}
+			g_metrics().addCounter("balance_increase", totalCost, { { "player", player->getName() }, { "context", "npc_sale" } });
+		} else {
+			const auto &newItem = Item::CreateItem(getCurrency(), totalCost);
+			if (newItem) {
+				g_game().internalPlayerAddItem(player, newItem, true);
+			}
+		}
 	}
 
 	// npc:onSellItem(player, itemId, subType, amount, ignore, itemName, totalCost)

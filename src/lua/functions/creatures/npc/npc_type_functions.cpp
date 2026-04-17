@@ -64,7 +64,6 @@ void NpcTypeFunctions::init(lua_State* L) {
 	Lua::registerMethod(L, "NpcType", "respawnTypeIsUnderground", NpcTypeFunctions::luaNpcTypeRespawnTypeIsUnderground);
 	Lua::registerMethod(L, "NpcType", "speechBubble", NpcTypeFunctions::luaNpcTypeSpeechBubble);
 	Lua::registerMethod(L, "NpcType", "currency", NpcTypeFunctions::luaNpcTypeCurrency);
-	Lua::registerMethod(L, "NpcType", "currencyType", NpcTypeFunctions::luaNpcTypeCurrencyType);
 
 	Lua::registerMethod(L, "NpcType", "addShopItem", NpcTypeFunctions::luaNpcTypeAddShopItem);
 
@@ -540,31 +539,6 @@ int NpcTypeFunctions::luaNpcTypeSpeechBubble(lua_State* L) {
 		Lua::pushBoolean(L, true);
 	}
 	return 1;
-}
-
-// npcType:currencyType(type)  → "gold", "item", "transferable"
-int NpcTypeFunctions::luaNpcTypeCurrencyType(lua_State* L) {
-    const auto &npcType = Lua::getUserdataShared<NpcType>(L, 1, "NpcType");
-    if (!npcType) {
-        Lua::reportErrorFunc(Lua::getErrorDesc(LUA_ERROR_NPC_TYPE_NOT_FOUND));
-        Lua::pushBoolean(L, false);
-        return 1;
-    }
-
-    if (lua_gettop(L) == 1) {
-        Lua::pushString(L, magic_enum::enum_name(npcType->info.currencyType).data());
-    } else {
-        std::string typeStr = Lua::getString(L, 2);
-        auto type = magic_enum::enum_cast<NpcCurrencyType>(typeStr);
-        if (type.has_value()) {
-            npcType->info.currencyType = type.value();
-            Lua::pushBoolean(L, true);
-        } else {
-            npcType->info.currencyType = NpcCurrencyType::GOLD;
-            Lua::pushBoolean(L, false);
-        }
-    }
-    return 1;
 }
 
 int NpcTypeFunctions::luaNpcTypeCurrency(lua_State* L) {
