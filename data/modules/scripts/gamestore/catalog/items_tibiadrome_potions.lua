@@ -8,7 +8,7 @@ return {
 {
         icons = { "Bestiary_Betterment.png" },
         name = "Bestiary Betterment",
-        price = 400,
+        price = 500,
         itemtype = 36728,
         movable = false,
         description = "<i>Makes kills count twice for the Bestiary for one hour.</i>",
@@ -17,7 +17,7 @@ return {
     {
         icons = { "Charm_Upgrade.png" },
         name = "Charm Upgrade",
-        price = 400,
+        price = 500,
         itemtype = 36726,
         movable = false,
         description = "<i>Increases offensive charm trigger chances by 5% (except Cripple) for one hour.</i>",
@@ -161,7 +161,7 @@ return {
     {
         icons = { "Stamina_Extension.png" },
         name = "Stamina Extension",
-        price = 400,
+        price = 800,
         itemtype = 36725,
         movable = false,
         description = "<i>Drinking this potion will refill one hour of Stamina, but not above the maximum.</i>",
@@ -170,7 +170,7 @@ return {
     {
         icons = { "Strike_Enhancement.png" },
         name = "Strike Enhancement",
-        price = 400,
+        price = 500,
         itemtype = 36724,
         movable = false,
         description = "<i>Drinking this potion will increase the Critical Hit chance by 5% for one hour.</i>",
@@ -179,7 +179,7 @@ return {
     {
         icons = { "Wealth_Duplex.png" },
         name = "Wealth Duplex",
-        price = 400,
+        price = 600,
         itemtype = 36727,
         movable = false,
         description = "<i>Drinking this potion will double the loot from every regular monster you kill for one hour.</i>",

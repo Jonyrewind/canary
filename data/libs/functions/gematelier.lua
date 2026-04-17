@@ -10,9 +10,9 @@ local config = {
 		chance = {
 			influenced = 9000,
 			fiendish = 3000,
-			archfoe = 0,
+			archfoe = 1000,
 		},
-		maxCount = 2,
+		maxCount = 4,
 	},
 	regular = {
 		names = {
@@ -23,11 +23,11 @@ local config = {
 			"spiritualist gem",
 		},
 		chance = {
-			influenced = 0,
+			influenced = 1000,
 			fiendish = 3000,
 			archfoe = 9000,
 		},
-		maxCount = 2,
+		maxCount = 3,
 	},
 	greater = {
 		names = {
@@ -38,11 +38,11 @@ local config = {
 			"greater spiritualist gem",
 		},
 		chance = {
-			influenced = 0,
+			influenced = 1000,
 			fiendish = 9000,
 			archfoe = 3000,
 		},
-		maxCount = 1,
+		maxCount = 2,
 	},
 }
 
@@ -53,11 +53,12 @@ function Monster:generateGemAtelierLoot()
 	end
 	local category = "none"
 	local forgeClassification = self:getMonsterForgeClassification()
+	local race = (mType:bossRace() or ""):lower()
 	if forgeClassification == FORGE_INFLUENCED_MONSTER then
 		category = "influenced"
 	elseif forgeClassification == FORGE_FIENDISH_MONSTER then
 		category = "fiendish"
-	elseif (mType:bossRace() or ""):lower() == "archfoe" then
+	elseif race == "archfoe" or race == "bane" or race == "nemesis" then
 		category = "archfoe"
 	end
 	if category == "none" then
@@ -71,7 +72,7 @@ function Monster:generateGemAtelierLoot()
 		local maxCount = gemConfig.maxCount
 		if chance > 0 then
 			for i = 1, maxCount do
-				local roll = math.random(1, 100000)
+				local roll = math.random(1, 50000)
 				if roll > chance then
 					goto continue
 				end

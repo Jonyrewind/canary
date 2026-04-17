@@ -178,7 +178,7 @@ local talkState = {}
             npcHandler:resetNpc(creature)
             return true
         end
-    elseif MsgContains(message, "addon") then
+    elseif MsgContains(message, "addon") or MsgContains(message, "addons") then
         npcHandler:say('I can give you {first} or {second} addons for {' .. table.concat(o, "}, {") .. '} outfits.', npc, creature)
         rtnt = nil
         talkState[talkUser] = 0

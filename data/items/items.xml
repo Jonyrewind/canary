@@ -24170,6 +24170,7 @@
 	</item>
 	<item id="9016" article="a" name="flask of rust remover">
 		<attribute key="description" value="It can be used to clean and polish old and rusty armors"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="90"/>
 	</item>
 	<item id="9017" article="a" name="coconut shoes">
@@ -34546,6 +34547,7 @@
 		<attribute key="primarytype" value="liquids"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="The gnomish slime remover works wonders on mucky objects"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="90"/>
 	</item>
 	<item id="16102" article="a" name="mucus plug">

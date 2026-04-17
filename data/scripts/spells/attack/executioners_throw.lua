@@ -5,7 +5,8 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 
 function onGetFormulaValues(player, skill, attack, factor)
 	local skillTotal = skill * attack
-	local levelTotal = player:getLevel() / 5
+--	local levelTotal = player:getLevel() / 5
+	local levelTotal = player:getLevel() * 0.42
 	return -(((skillTotal * 0.17) + 17) + levelTotal) * 1.28, -(((skillTotal * 0.20) + 40) + levelTotal) * 1.28
 end
 
@@ -19,11 +20,11 @@ function getChainValue(creature)
 
 	local bounces = 0
 	if grade >= 3 then
-		bounces = 4
+		bounces = 6
 	elseif grade >= 2 then
-		bounces = 3
+		bounces = 5
 	elseif grade >= 1 then
-		bounces = 2
+		bounces = 4
 	end
 
 	return bounces + 1, 3, false

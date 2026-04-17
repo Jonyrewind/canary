@@ -129,7 +129,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 	end
 
 	if item.itemid == 5908 then
-		if target:getId() == CONST_FIREWORK_ITEMID_DISASSEMBLE then
+		if target.itemid == CONST_FIREWORK_ITEMID_DISASSEMBLE then
 			stopEvent(target:getCustomAttribute("event"))
 			player:addItem(target:getCustomAttribute("id"), 1)
 			target:remove()
@@ -176,7 +176,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 		end
 	end
 
-	if target:getId() == 12816 then
+	if target.itemid == 12816 then
 		if player:getStorageValue(Storage.Quest.U8_2.TheMutatedPumpkin.Skinned) > os.time() then
 			player:sendCancelMessage("You already used your knife on the corpse.")
 			return true
@@ -272,10 +272,12 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 		end
 	end
 
-	if transform then
+if transform and topItem and topItem ~= false then
 		topItem:transform(skin.after or topItem:getType():getDecayId() or topItem.itemid + 1)
 	else
-		target:remove()
+		if not added then
+			target:remove()
+		end
 	end
 
 	if toPosition.x == CONTAINER_POSITION then
