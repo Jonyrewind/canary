@@ -62,6 +62,11 @@ public:
 	uint16_t getCurrency() const;
 	void setCurrency(uint16_t currency);
 
+	NpcCurrencyType getCurrencyType() const;
+	void setCurrencyType(NpcCurrencyType type);
+
+	uint16_t getCurrencyItemId() const;
+
 	const std::vector<ShopBlock> &getShopItemVector(uint32_t playerGUID) const;
 
 	bool isPushable() override;
