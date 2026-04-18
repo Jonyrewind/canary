@@ -3,22 +3,9 @@ name: Build - Ubuntu Release
 
 on:
   workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
-    paths:
-      - "src/**"
-      - "tests/**/*.cpp"
-  merge_group:
-  push:
-    paths:
-      - "src/**"
-      - "tests/**/*.cpp"
-    branches:
-      - main
-
 env:
-  CMAKE_BUILD_PARALLEL_LEVEL: 2
-  MAKEFLAGS: "-j 2"
+  CMAKE_BUILD_PARALLEL_LEVEL: 4
+  MAKEFLAGS: "-j 4"
 
 jobs:
   cancel-runs:
