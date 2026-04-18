@@ -1,4 +1,4 @@
-local waterIds = { 622, 4597, 4598, 4599, 4600, 12561, 12563, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 629, 630, 631, 632, 633, 634, 7236, 9582, 13988, 13989, 12560, 21414 }
+local waterIds = { 622, 4597, 4598, 4599, 4600, 12561, 12563, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 629, 630, 631, 632, 633, 634, 7236, 9582, 13988, 13989, 12560, 21414, 45032 }
 local lootTrash = { 3119, 3123, 3264, 3409, 3578 }
 local lootCommon = { 3035, 3051, 3052, 3580, 236, 237 }
 local lootRare = { 3026, 3029, 3032, 7158, 7159 }
@@ -49,7 +49,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		for i = 1, #elementals.chances do
 			local randomItem = elementals.chances[i]
 			if chance >= randomItem.from and chance <= randomItem.to then
-				player:addItem(randomItem.itemId, 1)
+				player:addItemContainer(randomItem.itemId, 1, fromPosition, item)
 			end
 			if chance > 1115 then
 				player:say("There was just rubbish in it.", TALKTYPE_MONSTER_SAY)
@@ -62,13 +62,13 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		toPosition:sendMagicEffect(CONST_ME_WATERSPLASH)
 		local rareChance = math.random(100)
 		if rareChance == 1 then
-			player:addItem(lootVeryRare1[math.random(#lootVeryRare1)], 1)
+			player:addItemContainer(lootVeryRare1[math.random(#lootVeryRare1)], 1, fromPosition, item)
 		elseif rareChance <= 3 then
-			player:addItem(lootRare1[math.random(#lootRare1)], 1)
+			player:addItemContainer(lootRare1[math.random(#lootRare1)], 1, fromPosition, item)
 		elseif rareChance <= 10 then
-			player:addItem(lootCommon1[math.random(#lootCommon1)], 1)
+			player:addItemContainer(lootCommon1[math.random(#lootCommon1)], 1, fromPosition, item)
 		else
-			player:addItem(lootTrash[math.random(#lootTrash)], 1)
+			player:addItemContainer(ootTrash[math.random(#lootTrash)], 1, fromPosition, item)
 		end
 		return true
 	end
@@ -81,16 +81,36 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return true
 	end
 
+	if targetId == 45032 then
+		toPosition:sendMagicEffect(CONST_ME_WHITE_SMOKE)
+		if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.25, 10), 50) then
+			local gummyIds = {8177, 48116}
+			local removed = false
+        for _, id in ipairs(gummyIds) do
+            if player:removeItem(id, 1) then
+                removed = true
+                break
+            end
+        end
+				if not removed then
+            return true
+        end
+			player:addItemContainer(48115, 1, fromPosition, item)
+		end
+		return true
+	end
+
 	if useWorms and targetId == 21414 and player:removeItem("worm", 1) then
 		if player:getStorageValue(Storage.Quest.U10_55.Dawnport.TheDormKey) == 2 then
 			if math.random(100) >= 97 then
-				player:addItem(21402, 1)
+				player:addItemContainer(21402, 1, fromPosition, item)
 				player:setStorageValue(Storage.Quest.U10_55.Dawnport.TheDormKey, 3)
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "With a giant splash, you heave an enormous fish out of the water.")
 				return true
 			end
 		elseif math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.597, 10), 50) then
-			player:addItem(3578, 1)
+			player:addItemContainer(3578, 1, fromPosition, item)
+			logger.info("1")
 		end
 	end
 
@@ -108,7 +128,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			target:decay()
 
 			if math.random(100) >= 97 then
-				player:addItem(13992, 1)
+				player:addItemContainer(13992, 1, fromPosition, item)
 				return true
 			end
 		elseif targetId == 7236 then
@@ -117,20 +137,20 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			addEvent(refreeIceHole, 1000 * 60 * 15, position)
 			local rareChance = math.random(100)
 			if rareChance == 1 then
-				player:addItem(7158, 1)
+				player:addItemContainer(7158, 1, fromPosition, item)
 				player:addAchievementProgress("Exquisite Taste", 250)
 				return true
 			elseif rareChance <= 4 then
-				player:addItem(3580, 1)
+				player:addItemContainer(3580, 1, fromPosition, item)
 				player:addAchievementProgress("Exquisite Taste", 250)
 				return true
 			elseif rareChance <= 10 then
-				player:addItem(7159, 1)
+				player:addItemContainer(7159, 1, fromPosition, item)
 				player:addAchievementProgress("Exquisite Taste", 250)
 				return true
 			end
 		end
-		player:addItem(3578, 1)
+		player:addItemContainer(3578, 1, fromPosition, item)
 		player:addAchievementProgress("Here, Fishy Fishy!", 250)
 	end
 	return true

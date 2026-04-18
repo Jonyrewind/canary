@@ -60,6 +60,7 @@ local ingredients = {
 	[12] = { { 10456, 5 }, { 2874, 2, 1 }, { 3595, 20 }, { 8010, 10 }, { 8016, 3 } },
 	[13] = { { 6569, 3 }, { 3599, 3 }, { 6574, 2 }, { 6500, 15 }, { 6558, 1 } },
 	[14] = { { 3606, 40 }, { 5096, 20 }, { 5902, 10 }, { 8758, 1 }, { 5942, 1 } },
+	[15] = { { 33930, 1 }, { 2874, 2, 15 }, { 11682, 1 }, { 31590, 1 }, { 48115, 1 } },
 }
 
 local function playerHasIngredients(creature)
@@ -240,9 +241,18 @@ local function creatureSayCallback(npc, creature, type, message)
 					"Oh yes, I understand your worries about the eggs, but just make sure they're fresh and all should be fine for our {Sweet Mangonaise Elixir}!",
 				}, npc, creature)
 				npcHandler:setTopic(playerId, 30)
+			elseif player:getStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish) == 15 then
+				npcHandler:say({
+					"What a drink! Did I promise too much? I guess not, judging by your satisfied look! Well, if you area really that eager - there's more. ...",
+					"Another part of a meal or even a course of several meals that should not be underestimated is the sauce. ...",
+					"How about a delicious sweet and sour {Zaoan Sauce} to accompany your meal, exciting, fresh and pleasing to the pallatel. ...",
+					"We need the following ingredients to get cracking: a pinch of salt, two vials of coconut milk, a dragon fruit, a young lich worm and a taiyaki. ...",
+					"What? You think that lich worm will not go well with the dragon fruit? Worry not, for this is a vital ingredient to the 'sour' part of this excellent sweet and sour sauce!",
+				}, npc, creature)
+				npcHandler:setTopic(playerId, 32)
 			end
 		elseif player:getStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart) == 2 then
-			npcHandler:say("You can now cook any dish you want from this list: {Rotworm Stew, Hydra Tongue Salad, Roasted Dragon Wings, Tropical Fried Terrorbird, Banana Chocolate Shake, Veggie Casserole, Filled Jalapeno Peppers, Blessed Steak, Northern Fishburger, Carrot Cake, Coconut Shrimp Bake, Blackjack, Demonic Candy Balls, Sweet Mangonaise Elixir}.", npc, creature)
+			npcHandler:say("You can now cook any dish you want from this list: {Rotworm Stew, Hydra Tongue Salad, Roasted Dragon Wings, Tropical Fried Terrorbird, Banana Chocolate Shake, Veggie Casserole, Filled Jalapeno Peppers, Blessed Steak, Northern Fishburger, Carrot Cake, Coconut Shrimp Bake, Blackjack, Demonic Candy Balls, Sweet Mangonaise Elixir, Zaoan Sauce}.", npc, creature)
 		end
 	elseif MsgContains(message, "apprentice") then
 		if npcHandler:getTopic(playerId) == 2 then
@@ -561,7 +571,6 @@ local function creatureSayCallback(npc, creature, type, message)
 						"And by the way... since those were all the recipes from this year and you cooked them so nicely, you may take the cookbook containing them from upstairs, if you like!",
 					}, npc, creature)
 					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate15, currentDate)
-					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart, 2)
 					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 15)
 					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestLog, 16)
 					player:addItem(11588, 1)
@@ -573,7 +582,31 @@ local function creatureSayCallback(npc, creature, type, message)
 			else
 				npcHandler:say("It seems you have already cooked this dish this year. Please come back next year in August.", npc, creature)
 				npcHandler:setTopic(playerId, 0)
-			end
+				end
+			elseif npcHandler:getTopic(playerId) == 33 then
+				if canCookToday(player, Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16) then
+					if playerHasIngredients(creature) then
+						npcHandler:say({
+							"And we are off to start with our sauce! First pour the coconut milk into my cauldron and, yes you may have already expected that, heat it over fire until it's boiling. <salts the young lich worms in the meantime> ...",
+							"Now we're cutting the dragon fruit and toss the sliced goodness into the mix <flubbflubb>. ...",
+							"Now we calmly slice and add the taiyaki to get that certain sweet impression. <drops the slices into the cauldron> There! ...",
+							"How did this ancient saying about this sweet yet sour sauce go, something along the lines of inner harmony and balance of body and soul - well, I can't remember the exact wording right now. ...",
+							"What I do know is that you will absolutely benefit from tasting the soup. Bon appétit!",
+						}, npc, creature)
+						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16, currentDate)
+						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart, 2)
+						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 16)
+						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestLog, 17)
+						player:addItem(50334, 1)
+						npcHandler:setTopic(playerId, 0)
+					else
+						npcHandler:say("Make sure that you have all the ingredients with you.", npc, creature)
+						npcHandler:setTopic(playerId, 0)
+					end
+				else
+					npcHandler:say("It seems you have already cooked this dish this year. Please come back next year in August.", npc, creature)
+					npcHandler:setTopic(playerId, 0)
+				end
 		end
 		--Dishes first time
 	elseif MsgContains(message, "rotworm stew") then
@@ -646,6 +679,12 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:say("Did you gather all necessary ingredients to mix Sweet Mangonaise Elixir with me?", npc, creature)
 			player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 14)
 			npcHandler:setTopic(playerId, 31)
+		end
+	elseif MsgContains(message, "zaoan sauce") then
+		if npcHandler:getTopic(playerId) == 32 or player:getStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart) >= 1 then
+			npcHandler:say("Did you gather all necessary ingredients to cook the Zaoan Sauce with me?", npc, creature)
+			player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 15)
+			npcHandler:setTopic(playerId, 33)
 		end
 	elseif MsgContains(message, "no") then
 		npcHandler:say("No?, come back when you are ready to cook.", npc, creature)

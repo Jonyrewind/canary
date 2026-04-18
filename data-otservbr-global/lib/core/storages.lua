@@ -1230,6 +1230,7 @@ Storage = {
 				LastInteractionDate13 = 42162,
 				LastInteractionDate14 = 42163,
 				LastInteractionDate15 = 42164,
+				LastInteractionDate16 = 42231,
 			},
 			KillingInTheNameOf = {
 				LugriNecromancers = 42165,

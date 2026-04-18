@@ -11,12 +11,12 @@ npcConfig.walkInterval = 2000
 npcConfig.walkRadius = 2
 
 npcConfig.outfit = {
-    lookType = 289,      -- Classic chef outfit
+    lookType = 289,
     lookHead = 114,
     lookBody = 114,
     lookLegs = 0,
     lookFeet = 114,
-    lookAddons = 1,      -- Chef hat
+    lookAddons = 1,
 }
 
 npcConfig.flags = {
@@ -31,39 +31,37 @@ npcConfig.voices = {
     { text = "My secret meals can make you faster, stronger or heal you completely." }
 }
 
--- Currency: Gold Token
-npcConfig.currency = 22721
+npcConfig.currency = 22118
 
--- ==================== SHOP WITH RANDOM PRICES (2 ~ 5) ====================
 npcConfig.shop = {
-    { name = "banana chocolate shake",      clientId = 9083,  buy = math.random(2, 5) },
-    { name = "blessed acorn",               clientId = 26074, buy = math.random(2, 5) },
-    { name = "blessed steak",               clientId = 9086,  buy = math.random(2, 5) },
-    { name = "blueberry cupcake",           clientId = 28484, buy = math.random(2, 5) },
-    { name = "carrion casserole",           clientId = 26076, buy = math.random(2, 5) },
-    { name = "carrot cake",                 clientId = 9087,  buy = math.random(2, 5) },
-    { name = "carrot pie",                  clientId = 29409, buy = math.random(2, 5) },
-    { name = "chilli con carniphila",       clientId = 26075, buy = math.random(2, 5) },
-    { name = "coconut shrimp bake",         clientId = 11584, buy = math.random(2, 5) },
-    { name = "consecrated beef",            clientId = 26077, buy = math.random(2, 5) },
-    { name = "delicatessen salad",          clientId = 29411, buy = math.random(2, 5) },
-    { name = "demonic candy ball",          clientId = 26079, buy = math.random(2, 5) },
-    { name = "filled jalapeño peppers",     clientId = 9085,  buy = math.random(2, 5) },
-    { name = "hydra tongue salad",          clientId = 9080,  buy = math.random(2, 5) },
-    { name = "lemon cupcake",               clientId = 28483, buy = math.random(2, 5) },
-    { name = "northern fishburger",         clientId = 9088,  buy = math.random(2, 5) },
-    { name = "overcooked noodles",          clientId = 29416, buy = math.random(2, 5) },
-    { name = "pot of blackjack",            clientId = 26080, buy = math.random(2, 5) },
-    { name = "roasted dragon wings",        clientId = 9081,  buy = math.random(2, 5) },
-    { name = "roasted wyvern wings",        clientId = 29408, buy = math.random(2, 5) },
-    { name = "rotworm stew",                clientId = 9089,  buy = math.random(2, 5) },
-    { name = "strawberry cupcake",          clientId = 28482, buy = math.random(2, 5) },
-    { name = "svargrond salmon filet",      clientId = 29413, buy = math.random(2, 5) },
-    { name = "sweet mangonaise elixir",     clientId = 26081, buy = math.random(2, 5) },
-    { name = "tropical fried terrorbird",   clientId = 9082,  buy = math.random(2, 5) },
-    { name = "tropical marinated tiger",    clientId = 26078, buy = math.random(2, 5) },
-    { name = "veggie casserole",            clientId = 9084,  buy = math.random(2, 5) },
-    { name = "zaoan sauce",                 clientId = 26082, buy = math.random(2, 5) },
+    { name = "banana chocolate shake",      clientId = 9083,  buy = math.random(50, 120) },
+    { name = "blessed acorn",               clientId = 26074, buy = math.random(50, 120) },
+    { name = "blessed steak",               clientId = 9086,  buy = math.random(50, 120) },
+    { name = "blueberry cupcake",           clientId = 28484, buy = math.random(50, 120) },
+    { name = "carrion casserole",           clientId = 29414, buy = math.random(50, 120) },
+    { name = "carrot cake",                 clientId = 9087,  buy = math.random(50, 120) },
+    { name = "carrot pie",                  clientId = 29409, buy = math.random(50, 120) },
+    { name = "chilli con carniphila",       clientId = 29412, buy = math.random(50, 120) },
+    { name = "coconut shrimp bake",         clientId = 11584, buy = math.random(50, 120) },
+    { name = "consecrated beef",            clientId = 29415, buy = math.random(50, 120) },
+    { name = "delicatessen salad",          clientId = 29411, buy = math.random(50, 120) },
+    { name = "demonic candy ball",          clientId = 11587, buy = math.random(50, 120) },
+    { name = "filled jalapeño peppers",     clientId = 9085,  buy = math.random(50, 120) },
+    { name = "hydra tongue salad",          clientId = 9080,  buy = math.random(50, 120) },
+    { name = "lemon cupcake",               clientId = 28483, buy = math.random(50, 120) },
+    { name = "northern fishburger",         clientId = 9088,  buy = math.random(50, 120) },
+    { name = "overcooked noodles",          clientId = 29416, buy = math.random(50, 120) },
+    { name = "pot of blackjack",            clientId = 11586, buy = math.random(50, 120) },
+    { name = "roasted dragon wings",        clientId = 9081,  buy = math.random(50, 120) },
+    { name = "roasted wyvern wings",        clientId = 29408, buy = math.random(50, 120) },
+    { name = "rotworm stew",                clientId = 9097,  buy = math.random(50, 120) },
+    { name = "strawberry cupcake",          clientId = 28485, buy = math.random(50, 120) },
+    { name = "svargrond salmon filet",      clientId = 29413, buy = math.random(50, 120) },
+    { name = "sweet mangonaise elixir",     clientId = 11588, buy = math.random(50, 120) },
+    { name = "tropical fried terrorbird",   clientId = 9082,  buy = math.random(50, 120) },
+    { name = "tropical marinated tiger",    clientId = 29410, buy = math.random(50, 120) },
+    { name = "veggie casserole",            clientId = 9084,  buy = math.random(50, 120) },
+    { name = "zaoan sauce",                 clientId = 50334, buy = math.random(50, 120) },
 }
 
 -- On buy / sell / check functions
@@ -76,10 +74,7 @@ npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name
 end
 
 npcType.onCheckItem = function(npc, player, clientId, subType)
-    -- You can leave this empty
 end
-
--- ==================== NPC HANDLER ====================
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
@@ -113,7 +108,6 @@ local function greetCallback(npc, creature)
     return true
 end
 
-keywordHandler:addKeyword({"trade"}, StdModule.say, {npcHandler = npcHandler, text = "Of course! Take a look at my special recipes."})
 keywordHandler:addKeyword({"tokens"}, StdModule.say, {npcHandler = npcHandler, text = "Gold Tokens can be obtained from various bosses. I accept them in exchange for my exclusive meals."})
 
 npcHandler:setCallback(CALLBACK_GREET, greetCallback)

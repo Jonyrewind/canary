@@ -120,6 +120,7 @@ local foods = {
 	[37531] = { 5, "Mmmm." }, -- candy floss
 	[37532] = { 15, "Mmmm." }, -- ice cream cone
 	[37533] = { 60, "Mmmm." }, -- birthday layer cake
+	[48115] = { 185, "Yum." }, -- taiyaki
 	[48116] = { 35, "Yum." }, -- gummy rotworms
 	[48251] = { 25, "Yum." }, -- wafer paper flower
 	[48252] = { 45, "Yum." }, -- brigadeiro

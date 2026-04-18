@@ -151,6 +151,7 @@ bosses = {
 --        { name = "The Moonlight Aster", teleport = Position( , , ) },
 		{ name = "The Nightmare Beast", teleport = Position(32212, 32075, 15) },
 		{ name = "The Pale Worm", teleport = Position(33781, 31502, 14) },
+		{ name = "The Primal Menace", teleport = Position(33556, 32754, 14) },
 --        { name = "The Percht Queen", teleport = Position( , , ) },
 		{ name = "The Sandking", teleport = Position(33461, 32266, 10) },
 --        { name = "The Scion of Havoc", teleport = Position( , , ) },

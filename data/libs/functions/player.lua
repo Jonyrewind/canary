@@ -407,6 +407,33 @@ function Player.updateHazard(self)
 	return true
 end
 
+function Player:addItemContainer(itemId, amount, fromPosition, item)
+    amount = amount or 1
+
+    if fromPosition and fromPosition.x == CONTAINER_POSITION then
+        local parentContainer = nil
+
+        if item and item:getParent() then
+            parentContainer = Container(item:getParent().uid)
+        end
+
+        if parentContainer then
+            local emptySlots = parentContainer:getEmptySlots()
+
+            if emptySlots > 0 then
+                if parentContainer:addItem(itemId, amount) then
+                    return true
+                end
+            end
+        end
+    end
+
+    if self:addItem(itemId, amount) then
+        return true
+    end
+    return false
+end
+
 function Player:addItemStoreInboxEx(item, movable, setOwner)
 	local inbox = self:getStoreInbox()
 	if not movable then

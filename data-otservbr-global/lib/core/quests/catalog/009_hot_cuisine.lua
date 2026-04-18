@@ -8,7 +8,7 @@ local quest = {
 			storageId = Storage.Quest.U8_5.HotCuisineQuest.QuestLog,
 			missionId = 1070,
 			startValue = 1,
-			endValue = 16,
+			endValue = 17,
 			states = {
 				[1] = "You've become the apprentice of Maltre Jean Pierre. \z
 					The first dish he will teach you to prepare is Rotworm Stew. Bring him the ingredients he told you.",
@@ -40,7 +40,9 @@ local quest = {
 					prepare is Demonic Candy Balls. Bring him the ingredients he told you.",
 				[15] = "You have completed the thirteenth dish, the fourteenth dish he will teach you to \z
 					prepare is Sweet Mangonaise Elixir. Bring him the ingredients he told you.",
-				[16] = "You have completed all the dishes. You are now able to make all the dishes in any order you want.",
+				[16] = "You have completed the fourteenth dish, the fifteenth dish he will teach you to \z
+					prepare is Zaoan Sauce. Bring him the ingredients he told you.",
+				[17] = "You have completed all the dishes. You are now able to make all the dishes in any order you want.",
 			},
 		},
 	},

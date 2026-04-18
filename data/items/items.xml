@@ -64271,7 +64271,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="33929" article="a" name="rod" plural="rods">
 		<attribute key="weight" value="90"/>
 	</item>
-	<item id="33930" article="an" name="salt">
+	<item id="33930" name="salt">
 		<attribute key="primarytype" value="food"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="200"/>
@@ -81505,6 +81505,13 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="backpack"/>
 		</attribute>
 	</item>
+	<item id="48115" article="a" name="taiyaki" plural="taiyakis">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="description" value="These waffle fish can be caught in the milk and cocoa lakes of Candia. They are filled with chocolate cream, jam or other sweet stuffings, depending on what they have eaten beforehand.
+"/>
+		<attribute key="weight" value="800"/>
+	</item>
 	<item id="48116" article="a" name="gummy rotworm" plural="gummy rotworms">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="food"/>
@@ -85656,6 +85663,12 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="soul cores"/>
 		<attribute key="description" value="Offers a soul to the Soulpit. Combine with an exalted core to turn it into a lesser soul core."/>
 		<attribute key="weight" value="100"/>
+	</item>
+	<item id="50334" name="zaoan sauce">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="description" value="This sauce is said to be the pinnacle of the culinary sweet and sour sensation. Eating it will have beneficial effects on the harmony and balance of body and soul."/>
+		<attribute key="weight" value="400"/>
 	</item>
 	<item id="51259" article="a" name="reality splinter">
 		<attribute key="primarytype" value="creature products"/>
