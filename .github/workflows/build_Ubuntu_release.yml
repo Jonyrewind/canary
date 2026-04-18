@@ -1,5 +1,5 @@
 ---
-name: Build - Ubuntu
+name: Build - Ubuntu Release
 
 on:
   workflow_dispatch:
