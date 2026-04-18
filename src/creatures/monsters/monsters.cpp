@@ -345,13 +345,33 @@ void Monsters::clear() {
 
 std::shared_ptr<MonsterType> Monsters::getMonsterType(const std::string &name, bool silent /* = false*/) const {
 	std::string lowerCaseName = asLowerCaseString(name);
+
 	if (auto it = monsters.find(lowerCaseName);
 	    it != monsters.end()) {
 		return it->second;
 	}
+
+	// ==================== DETAILED DEBUG FOR PRIMAL PACK BEAST ====================
+	if (lowerCaseName == "primal pack beast") {
+		g_logger().error("==================================================================");
+		g_logger().error("[DEBUG] getMonsterType('Primal Pack Beast') called!");
+		g_logger().error("This lookup is happening during damage processing (as you observed).");
+
+		g_logger().error("Call stack information:");
+		g_logger().error("   → Requested name : {}", name);
+		g_logger().error("   → File           : {}:{}", __FILE__, __LINE__);
+		g_logger().error("   → Function       : Monsters::getMonsterType");
+
+		// Extra context that often helps
+		g_logger().error("   → This usually comes from hazard system or combat damage map.");
+		g_logger().error("==================================================================");
+	}
+	// ===========================================================================
+
 	if (!silent) {
 		g_logger().error("[Monsters::getMonsterType] - Monster with name {} not exist", lowerCaseName);
 	}
+
 	return nullptr;
 }
 
