@@ -44627,11 +44627,11 @@ Awarded by TibiaMagazine.com.ve"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="22117" name="RESERVED SPRITE"/>
-	<item id="22118" name="Tibia coins">
+	<item id="22118" article="a" name="Tibia coin">
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="description" value="Tibia Coins are needed to shop exclusive products in the Store, including fabulous mounts, classy outfits, a Name Change or even Premium Time"/>
-		<attribute key="weight" value="0"/>
+		<attribute key="weight" value="1"/>
 	</item>
 	<item id="22119" article="a" name="burst arrow">
 		<attribute key="primarytype" value="ammunition"/>
@@ -70187,6 +70187,8 @@ Granted by TibiaGoals.com"/>
 	<item id="37090" article="a" name="miniature of a domestikion"/>
 	<item id="37109" article="a" name="sliver" plural="slivers">
 		<attribute key="description" value="This item can be used in the exaltation forge to create exalted cores"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="primarytype" value="other items"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="37110" article="an" name="exalted core" plural="exalted cores">
@@ -76000,6 +76002,36 @@ Granted by TibiaGoals.com"/>
 	<item id="43901" article="a" name="toy ball">
 		<attribute key="weight" value="100" />
 	</item>
+	<item id="43946" article="an" name="abridged promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 3 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43947" article="a" name="basic promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 5 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43948" article="a" name="revised promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 9 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43949" article="an" name="extended promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 13 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43950" article="an" name="advanced promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 20 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
 	<item id="43952" article="a" name="closed door">
 		<attribute key="type" value="door"/>
 		<attribute key="blockProjectile" value="1"/>
@@ -76590,52 +76622,100 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="43845" name="RESERVED SPRITE"/>
 	<item id="43846" article="a" name="decayed finger bone">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43847" article="a" name="rotten vermin ichor">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43848" article="a" name="worm sponge">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43849" article="a" name="rotten roots">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43850" article="a" name="dark obsidian splinter">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43851" article="a" name="darklight matter">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43852" article="a" name="darklight basalt chunk">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
 	</item>
 	<item id="43853" article="a" name="darklight core">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43854" article="a" name="tainted heart">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43855" article="a" name="darklight heart">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43856" article="a" name="bloated maggot">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43857" article="a" name="blooded worm">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43858" article="a" name="basalt crumbs">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43859" article="a" name="basalt core">
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="100"/>
+	</item>
+	<item id="43860" article="a" name="bag you covet">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="weight" value="20"/>
+	</item>
+	<item id="43861" article="a" name="conch shell">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="150"/>
+	</item>
+	<item id="43862" article="a" name="wooden mouthpiece">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="50"/>
 	</item>
 	<item id="43863" article="a" name="conch shell horn">
 		<attribute key="primarytype" value="quest items"/>
@@ -77414,7 +77494,6 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="43895" article="a" name="bag you covet">
 		<attribute key="primarytype" value="valuables"/>
-		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="20"/>
 	</item>
 	<item id="43902" article="a" name="crack">
@@ -78467,42 +78546,60 @@ Granted by TibiaGoals.com"/>
 	<item id="45652" article="a" name="preserved pink seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45653" article="a" name="preserved red seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45654" article="a" name="preserved light blue seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45655" article="a" name="preserved violet seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45656" article="a" name="preserved purple seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
 	</item>
 	<item id="45657" article="a" name="preserved yellow seed">
 		<attribute key="loottype" value="creature products" />
 		<attribute key="primarytype" value="creature products" />
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="30" />
+	</item>
+	<item id="46625" article="a" name="lesser fragment">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="5"/>
+	</item>
+	<item id="46626" article="a" name="greater fragment">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="stacksize" value="250"/>
+		<attribute key="weight" value="10"/>
 	</item>
 	<item id="46627" article="a" name="crusher">
 		<attribute key="loottype" value="tools"/>
 		<attribute key="showCharges" value="1"/>
 		<attribute key="charges" value="10"/>
-		<attribute key="weight" value="30"/>
+		<attribute key="weight" value="300"/>
 	</item>
 	<item id="46628" article="a" name="amber crusher">
 		<attribute key="loottype" value="tools"/>
-		<attribute key="weight" value="30"/>
+		<attribute key="weight" value="300"/>
 	</item>
 	<item id="47367" article="a" name="large obelisk">
 		<attribute key="primarytype" value="pillars"/>
@@ -83881,37 +83978,37 @@ Granted by TibiaGoals.com"/>
 		<attribute key="fluidsource" value="blood"/>
 	</item>
 	<item id="50054" article="a" name="spellreaper staff totem">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="650"/>
 	</item>
 	<item id="50055" article="a" name="hellhunter eye">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="190"/>
 	</item>
 	<item id="50056" article="a" name="brinebrute claw">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="240"/>
 	</item>
 	<item id="50057" article="a" name="sineater wing">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="470"/>
 	</item>
 	<item id="50058" article="a" name="broodrider saddle">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="390"/>
 	</item>
 	<item id="50059" article="a" name="gorger antlers">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="630"/>
@@ -83969,7 +84066,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="floorchange" value="down"/>
 	</item>
 	<item id="50101" article="a" name="bloodstained scythe">
-		<attribute key="loottype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="810"/>

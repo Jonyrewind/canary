@@ -29,7 +29,7 @@ local rewardBags = {
 		{ id = 39177, name = "charged spiritthorn ring" },
 		{ id = 39149, name = "alicorn headguard" },
 		{ id = 39150, name = "alicorn quiver" },
-		{ id = 39180, name = "charged ethereal ring" },
+		{ id = 50148, name = "charged ethereal ring" },
 		{ id = 39151, name = "arcanomancer regalia" },
 		{ id = 39152, name = "arcanomancer folio" },
 		{ id = 39183, name = "charged arcanomancer sigil" },
@@ -37,7 +37,7 @@ local rewardBags = {
 		{ id = 39154, name = "arboreal tome" },
 		{ id = 39186, name = "charged arboreal ring" },
 		{ id = 50147, name = "charged ethereal ring" },
-		{ id = 50150, name = "ethereal ring" },
+		{ id = 50149, name = "ethereal ring" },
 		{ id = 50188, name = "ethereal coned hat" },
 	},
 

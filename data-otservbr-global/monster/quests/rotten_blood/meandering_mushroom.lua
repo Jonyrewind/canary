@@ -13,6 +13,9 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"RottenBloodAreaReward",
+}
 monster.raceId = 2376
 monster.Bestiary = {
 	class = "Slime",

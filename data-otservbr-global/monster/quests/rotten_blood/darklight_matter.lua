@@ -33,6 +33,10 @@ monster.corpse = 43571
 monster.speed = 230
 monster.manaCost = 0
 
+monster.events = {
+	"RottenBloodAreaReward",
+}
+
 monster.changeTarget = {
 	interval = 5000,
 	chance = 0,

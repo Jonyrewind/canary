@@ -25,15 +25,17 @@ npcConfig.flags = {
 
 -- Price settings
 local config = {
-    spread = 1.52,  -- 10% difference between buy and sell
-    minTCPrice = 1,  -- Minimum price
-    maxTCPrice = 150000000, -- Maximum price
     updateInterval = 15 * 60 * 1000  -- Updates every 15 minutes
 }
 
--- State variables
-local currentBuyPrice = 100   -- Price NPC pays per TC
-local currentSellPrice = 20000 -- Price NPC sells per TC
+-- Greedy NPC Settings
+local MIN_BUY  = 1500   -- lowest the NPC will ever buy
+local MAX_BUY  = 5000   -- highest the NPC will ever buy
+local MIN_SELL = 200000 -- lowest the NPC will ever sell
+local MAX_SELL = 250000 -- highest the NPC will ever sell
+
+local currentBuyPrice  = 3000
+local currentSellPrice = 225000
 local lastUpdate = os.time()
 
 -- Format numbers with commas
@@ -70,34 +72,11 @@ end
 
 -- Calculate dynamic prices
 local function calculatePrices()
-    -- Query total gold from players (balance)
-    local goldQuery = db.storeQuery("SELECT COALESCE(SUM(balance), 0) as total FROM players WHERE group_id < 3")
-
-    -- Query total transferable Tibia Coins
-    local tcQuery = db.storeQuery("SELECT COALESCE(SUM(coins_transferable), 0) as total FROM accounts WHERE type != 5")
-
-    local totalGold = goldQuery and Result.getNumber(goldQuery, "total") or 100000000
-    local totalTC = tcQuery and Result.getNumber(tcQuery, "total") or 1000
-
-    if goldQuery then Result.free(goldQuery) end
-    if tcQuery then Result.free(tcQuery) end
-
-    -- Prevent invalid values
-    if totalTC < 100 then totalTC = 100 end
-    if totalGold < 1000000 then totalGold = 1000000 end
-
-    -- Fair price calculation with spread
-    local fairPrice = totalGold / totalTC
-    currentSellPrice = math.max(config.minTCPrice, math.min(config.maxTCPrice, math.floor(fairPrice * (1 + config.spread/2))))
-    currentBuyPrice = math.max(config.minTCPrice, math.min(config.maxTCPrice, math.floor(fairPrice * (1 - config.spread/2))))
-
-    -- Ensure sell price > buy price
-    if currentSellPrice <= currentBuyPrice then
-        currentSellPrice = currentBuyPrice + math.max(1, math.floor(currentBuyPrice * config.spread))
-    end
+    currentBuyPrice  = math.random(MIN_BUY, MAX_BUY)
+    currentSellPrice = math.random(MIN_SELL, MAX_SELL)
 
     lastUpdate = os.time()
-    print("[Agiota] Prices updated - BUY: "..currentBuyPrice..", SELL: "..currentSellPrice)
+    print("[Agiota] Prices updated - BUY: " .. currentBuyPrice .. " | SELL: " .. currentSellPrice)
 end
 
 -- Schedule price updates
@@ -295,5 +274,19 @@ npcHandler:setMessage(MESSAGE_FAREWELL, "Come back anytime!")
 -- Start price update system
 calculatePrices()
 schedulePriceUpdate()
+
+npcConfig.shop = {
+	{ itemName = "Tibia Coins", clientId = 22118, buy = math.random(200000, 250000) },
+}
+-- On buy npc shop message
+npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
+	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+end
+-- On sell npc shop message
+npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+end
+-- On check npc shop message (look item)
+npcType.onCheckItem = function(npc, player, clientId, subType) end
 
 npcType:register(npcConfig)
