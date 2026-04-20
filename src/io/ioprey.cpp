@@ -494,6 +494,7 @@ void IOPrey::parseTaskHuntingAction(const std::shared_ptr<Player> &player, PreyS
 
 		if (const auto &option = getTaskRewardOption(slot)) {
 			uint64_t reward;
+			uint64_t experience;
 			int32_t boostChange = uniform_random(0, 100);
 			if (slot->rarity >= 4 && boostChange <= 5) {
 				boostChange = 20;
@@ -512,21 +513,32 @@ void IOPrey::parseTaskHuntingAction(const std::shared_ptr<Player> &player, PreyS
 				return;
 			}
 
+			const uint32_t level = player->getLevel();
+			if (level <= 82) {
+				experience = static_cast<uint64_t>((25ULL * level * level) - (75ULL * level) + 100ULL);
+			} else if (level < 1000) {
+				experience = static_cast<uint64_t>(std::llround(1994.008 * static_cast<double>(level)));
+			} else {
+				experience = static_cast<uint64_t>((2ULL * level * level) - (6ULL * level) + 8ULL);
+			}
+
 			std::ostringstream ss;
 			reward = static_cast<uint64_t>(std::ceil((reward * boostChange) / 10));
 			ss << "Congratulations! You have earned " << reward;
 			if (boostChange == 20) {
-				ss << " Hunting Task points including a 100% bonus.";
+				ss << " Hunting Task points including a 100% bonus";
 			} else if (boostChange == 15) {
-				ss << " Hunting Task points including a 50% bonus.";
+				ss << " Hunting Task points including a 50% bonus";
 			} else {
-				ss << " Hunting Task points.";
+				ss << " Hunting Task points";
 			}
+			ss << " and " << experience << " experience.";
 
 			slot->eraseTask();
 			slot->reloadReward();
 			slot->state = PreyTaskDataState_Inactive;
 			player->addTaskHuntingPoints(reward);
+			player->onGainExperience(experience, nullptr);
 			player->sendMessageDialog(ss.str());
 			slot->reloadMonsterGrid(player->getTaskHuntingBlackList(), player->getLevel());
 			slot->disabledUntilTimeStamp = OTSYS_TIME() + g_configManager().getNumber(TASK_HUNTING_LIMIT_EXHAUST) * 1000;
