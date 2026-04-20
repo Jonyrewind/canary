@@ -1,0 +1,55 @@
+name: Cleanup old workflow runs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old workflow runs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const keepPerWorkflow = 2;
+            const { owner, repo } = context.repo;
+
+            const workflows = await github.paginate(github.rest.actions.listRepoWorkflows, {
+              owner,
+              repo,
+              per_page: 100
+            });
+
+            for (const workflow of workflows) {
+              core.info(`Checking workflow: ${workflow.name} (${workflow.id})`);
+
+              const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+                owner,
+                repo,
+                workflow_id: workflow.id,
+                per_page: 100,
+                status: 'completed'
+              });
+
+              if (runs.length <= keepPerWorkflow) {
+                core.info(`Keeping all ${runs.length} runs for ${workflow.name}`);
+                continue;
+              }
+
+              const runsToDelete = runs.slice(keepPerWorkflow);
+
+              for (const run of runsToDelete) {
+                core.info(`Deleting run #${run.run_number} from ${workflow.name} (${run.id})`);
+                await github.rest.actions.deleteWorkflowRun({
+                  owner,
+                  repo,
+                  run_id: run.id
+                });
+              }
+
+              core.info(`Kept ${keepPerWorkflow} newest runs for ${workflow.name}, deleted ${runsToDelete.length}`);
+            }
