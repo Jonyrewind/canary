@@ -83,14 +83,18 @@ function updateMonstersSharedLife(hpid, amount, orign, _type, kill)
 	if not hpCompartilhada[hpid] then
 		return false
 	end
+
+	local normalizedAmount = math.abs(amount)
+	local beforeHp = hpCompartilhada[hpid].hp
 	if _type == "healing" then
-		hpCompartilhada[hpid].hp = hpCompartilhada[hpid].hp + amount
+		hpCompartilhada[hpid].hp = hpCompartilhada[hpid].hp + normalizedAmount
 	else
-		hpCompartilhada[hpid].hp = hpCompartilhada[hpid].hp - amount
+		hpCompartilhada[hpid].hp = hpCompartilhada[hpid].hp - normalizedAmount
 	end
 	if hpCompartilhada[hpid].hp < 0 then
 		hpCompartilhada[hpid].hp = 0
 	end
+
 	for _, monster in pairs(hpCompartilhada[hpid].monsters) do
 		local mt = Monster(monster)
 		if mt and mt:getId() ~= orign then
