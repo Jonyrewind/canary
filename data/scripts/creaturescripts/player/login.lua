@@ -2,6 +2,62 @@ local function sendBoostMessage(player, category, isIncreased)
 	return player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Event! %s is %screased. Happy Hunting!", category, isIncreased and "in" or "de"))
 end
 
+local function getExpectedLoginMaxHealth(player)
+	if not player then
+		return nil
+	end
+
+	local level = player:getLevel()
+	if level <= 8 then
+		return player:getBaseMaxHealth()
+	end
+
+	local vocation = player:getVocation()
+	if not vocation then
+		return nil
+	end
+
+	local health = 150
+
+	if vocation:getId() == VOCATION.ID.NONE then
+		local baseLevel = math.max(level - 1, 0)
+		health = health + (baseLevel * vocation:getHealthGain())
+	else
+		local baseVocation = Vocation(VOCATION.ID.NONE)
+		local baseLevel = 7
+		local levelGain = math.max(level - 8, 0)
+		health = health + (baseLevel * baseVocation:getHealthGain()) + (levelGain * vocation:getHealthGain())
+	end
+
+	return health
+end
+
+local function normalizeLoginHealth(player)
+	if not player then
+		return false
+	end
+
+	local expectedMaxHealth = getExpectedLoginMaxHealth(player)
+	if not expectedMaxHealth then
+		return false
+	end
+
+	local currentMaxHealth = player:getBaseMaxHealth()
+	if currentMaxHealth ~= expectedMaxHealth then
+		player:setMaxHealth(expectedMaxHealth)
+		player:setHealth(math.min(player:getHealth(), expectedMaxHealth))
+		logger.warn(
+			"[Login] Normalized max health for {} from {} to {} on login.",
+			player:getName(),
+			currentMaxHealth,
+			expectedMaxHealth
+		)
+		return true
+	end
+
+	return false
+end
+
 local playerLoginGlobal = CreatureEvent("PlayerLoginGlobal")
 
 function playerLoginGlobal.onLogin(player)
@@ -31,6 +87,10 @@ function playerLoginGlobal.onLogin(player)
 		end
 	elseif player:isPromoted() then
 		player:setVocation(vocation:getDemotion())
+	end
+
+	if player:getGroup():getId() < GROUP_TYPE_GAMEMASTER then
+		normalizeLoginHealth(player)
 	end
 
 	-- Boosted

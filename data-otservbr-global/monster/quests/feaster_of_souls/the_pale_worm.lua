@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("The Pale Worm")
 local monster = {}
 
 monster.description = "The Pale Worm"
-monster.experience = 30000
+monster.experience = 128000
 monster.outfit = {
 	lookType = 1272,
 	lookHead = 0,
@@ -13,8 +13,8 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 420000
-monster.maxHealth = 420000
+monster.health = 435000
+monster.maxHealth = 435000
 monster.race = "undead"
 monster.corpse = 32702
 monster.speed = 125
@@ -22,6 +22,8 @@ monster.manaCost = 0
 
 monster.events = {
 	"paleWormDeath",
+	"PaleWormPhase",
+	"PaleWormCleanup",
 	"FeasterOfSoulsBossDeath",
 }
 
@@ -127,16 +129,16 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = 5 },
-	{ type = COMBAT_ENERGYDAMAGE, percent = 5 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 5 },
-	{ type = COMBAT_FIREDAMAGE, percent = 5 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 90 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 90 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 90 },
+	{ type = COMBAT_FIREDAMAGE, percent = 90 },
 	{ type = COMBAT_LIFEDRAIN, percent = 0 },
 	{ type = COMBAT_MANADRAIN, percent = 0 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
-	{ type = COMBAT_ICEDAMAGE, percent = 5 },
-	{ type = COMBAT_HOLYDAMAGE, percent = 5 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 5 },
+	{ type = COMBAT_ICEDAMAGE, percent = 0 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 90 },
+	{ type = COMBAT_DEATHDAMAGE, percent = 90 },
 }
 
 monster.immunities = {
