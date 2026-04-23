@@ -251,27 +251,61 @@ Blessings.BuyAllBlesses = function(player)
 		return true
 	end
 
-	donthavefilter = function(p, b)
-		return not p:hasBlessing(b)
-	end
-
-	local hasToF = Blessings.Config.HasToF and player:hasBlessing(1) or true
-	local missingBless = player:getBlessings(nil, donthavefilter)
-	local missingBlessAmt = #missingBless + (hasToF and 0 or 1)
+	local MAX_BLESS_STACKS = 5
+	local stackableBlessings = {}
+	local currentCounts = {}
+	local maxCount = 0
+	local allEqual = true
+	local firstCount
+	local totalStacks = 0
 	local totalCost = 0
+	local missingTof = Blessings.Config.HasToF and not player:hasBlessing(1) or false
 
-	for _, bless in ipairs(missingBless) do
-		totalCost = totalCost + Blessings.getBlessingCost(player:getLevel(), true, bless.id >= 7)
+	for _, bless in pairs(Blessings.All) do
+		if bless.losscount then
+			stackableBlessings[#stackableBlessings + 1] = bless
+
+			local count = player:getBlessingCount(bless.id)
+			currentCounts[bless.id] = count
+
+			if count > maxCount then
+				maxCount = count
+			end
+
+			if firstCount == nil then
+				firstCount = count
+			elseif firstCount ~= count then
+				allEqual = false
+			end
+		end
 	end
 
-	if missingBlessAmt == 0 then
-		player:sendCancelMessage("You are already blessed.")
+	local targetCount
+	if maxCount == 0 then
+		targetCount = 1
+	elseif allEqual then
+		targetCount = math.min(maxCount + 1, MAX_BLESS_STACKS)
+	else
+		targetCount = math.min(maxCount, MAX_BLESS_STACKS)
+	end
+
+	for _, bless in ipairs(stackableBlessings) do
+		local currentCount = currentCounts[bless.id] or 0
+		if currentCount < targetCount then
+			local missingStacks = targetCount - currentCount
+			totalStacks = totalStacks + missingStacks
+			totalCost = totalCost + (Blessings.getBlessingCost(player:getLevel(), true, bless.id >= 7) * missingStacks)
+		end
+	end
+
+	if missingTof then
+		totalCost = totalCost + Blessings.getPvpBlessingCost(player:getLevel(), true)
+	end
+
+	if totalStacks == 0 and not missingTof then
+		player:sendCancelMessage("You are already fully blessed.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
-	end
-
-	if not hasToF then
-		totalCost = totalCost + Blessings.getPvpBlessingCost(player:getLevel(), true)
 	end
 
 	if player:removeMoneyBank(totalCost) then
@@ -280,14 +314,27 @@ Blessings.BuyAllBlesses = function(player)
 			context = "blessings",
 		})
 
-		for _, bless in ipairs(missingBless) do
-			player:addBlessing(bless.id, 1)
+		for _, bless in ipairs(stackableBlessings) do
+			local currentCount = currentCounts[bless.id] or 0
+			if currentCount < targetCount then
+				player:addBlessing(bless.id, targetCount - currentCount)
+			end
 		end
 
-		player:sendCancelMessage(string.format("You received the remaining %d blesses for a total of %d gold.", missingBlessAmt, totalCost))
+		if missingTof then
+			player:addBlessing(1, 1)
+		end
+
+		if missingTof and totalStacks > 0 then
+			player:sendCancelMessage(string.format("You received %d blessing stacks and Twist of Fate for a total of %d gold.", totalStacks, totalCost))
+		elseif missingTof then
+			player:sendCancelMessage(string.format("You received Twist of Fate for a total of %d gold.", totalCost))
+		else
+			player:sendCancelMessage(string.format("You received %d blessing stacks for a total of %d gold.", totalStacks, totalCost))
+		end
 		player:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
 	else
-		player:sendCancelMessage(string.format("You don't have enough money. You need %d to buy all blesses.", totalCost))
+		player:sendCancelMessage(string.format("You don't have enough money. You need %d to buy the next blessing step.", totalCost))
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 	end
 

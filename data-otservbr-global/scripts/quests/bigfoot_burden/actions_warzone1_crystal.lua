@@ -39,14 +39,14 @@ function bigfootWarzoneCrystal.onUse(player, item, fromPosition, itemEx, toPosit
 				addEvent(function(c, pos)
 					Game.createMonster(c, pos)
 					pos:sendMagicEffect(CONST_ME_TELEPORT)
-				end, i * 20 * 1000, rand_creature, pos)
+				end, i * 10 * 1000, rand_creature, pos)
 			end
 		end
 
 		player:say("The crystals are charging!", TALKTYPE_MONSTER_SAY, false, player, toPosition)
-		addEvent(createTp, 200000) -- 3.33 min
-		addEvent(removeTp, 260000) -- 4.33 min
-		addEvent(warzoneConfig.spawnBoss, 280000, config.boss, config.bossResp) -- 5 min
+		addEvent(createTp, 100000) -- 1.66 min
+		addEvent(removeTp, 160000) -- 2.66 min
+		addEvent(warzoneConfig.spawnBoss, 180000, config.boss, config.bossResp) -- 3 min
 		addEvent(warzoneConfig.resetRoom, 30 * 60 * 1000, config, "You were teleported out by the gnomish emergency device.", true)
 		addEvent(Game.setStorageValue, 30 * 60 * 1000, 96974, 0)
 	else

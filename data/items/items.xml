@@ -75999,57 +75999,6 @@ Granted by TibiaGoals.com"/>
 	<item id="42745" article="a" name="open door">
 		<attribute key="type" value="door"/>
 	</item>
-	<item id="43901" article="a" name="toy ball">
-		<attribute key="weight" value="100" />
-	</item>
-	<item id="43946" article="an" name="abridged promotion scroll">
-		<attribute key="primarytype" value="valuables"/>
-		<attribute key="loottype" value="other"/>
-		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 3 promotion points for the Wheel of Destiny"/>
-		<attribute key="weight" value="120" />
-	</item>
-	<item id="43947" article="a" name="basic promotion scroll">
-		<attribute key="primarytype" value="valuables"/>
-		<attribute key="loottype" value="other"/>
-		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 5 promotion points for the Wheel of Destiny"/>
-		<attribute key="weight" value="120" />
-	</item>
-	<item id="43948" article="a" name="revised promotion scroll">
-		<attribute key="primarytype" value="valuables"/>
-		<attribute key="loottype" value="other"/>
-		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 9 promotion points for the Wheel of Destiny"/>
-		<attribute key="weight" value="120" />
-	</item>
-	<item id="43949" article="an" name="extended promotion scroll">
-		<attribute key="primarytype" value="valuables"/>
-		<attribute key="loottype" value="other"/>
-		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 13 promotion points for the Wheel of Destiny"/>
-		<attribute key="weight" value="120" />
-	</item>
-	<item id="43950" article="an" name="advanced promotion scroll">
-		<attribute key="primarytype" value="valuables"/>
-		<attribute key="loottype" value="other"/>
-		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 20 promotion points for the Wheel of Destiny"/>
-		<attribute key="weight" value="120" />
-	</item>
-	<item id="43952" article="a" name="closed door">
-		<attribute key="type" value="door"/>
-		<attribute key="blockProjectile" value="1"/>
-		<attribute key="transformOnUse" value="43954"/>
-	</item>
-	<item id="43953" article="a" name="closed door">
-		<attribute key="type" value="door"/>
-		<attribute key="blockProjectile" value="1"/>
-		<attribute key="transformOnUse" value="43955"/>
-	</item>
-	<item id="43954" article="a" name="open door">
-		<attribute key="type" value="door"/>
-		<attribute key="transformOnUse" value="43952"/>
-	</item>
-	<item id="43955" article="a" name="open door">
-		<attribute key="type" value="door"/>
-		<attribute key="transformOnUse" value="43953"/>
-	</item>
 		<item id="42964" name="stairs"/>
 	<item id="42965" name="stairs">
 		<attribute key="floorchange" value="north"/>
@@ -77496,6 +77445,9 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="valuables"/>
 		<attribute key="weight" value="20"/>
 	</item>
+	<item id="43901" article="a" name="toy ball">
+		<attribute key="weight" value="100" />
+	</item>
 	<item id="43902" article="a" name="crack">
 		<attribute key="description" value="You see to be able to fit through there" />
 	</item>
@@ -77510,6 +77462,64 @@ Granted by TibiaGoals.com"/>
 	<item id="43917" article="a" name="werepanther trophy">
 		<attribute key="primarytype" value="trophies"/>
 		<attribute key="weight" value="500"/>
+	</item>
+	<item id="43946" article="an" name="abridged promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 3 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43947" article="a" name="basic promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 5 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43948" article="a" name="revised promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 9 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43949" article="an" name="extended promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 13 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43950" article="an" name="advanced promotion scroll">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="loottype" value="other"/>
+		<attribute key="description" value="Only a hero of level 51 or above can decipher this scroll to gain 20 promotion points for the Wheel of Destiny"/>
+		<attribute key="weight" value="120" />
+	</item>
+	<item id="43952" article="a" name="closed door">
+		<attribute key="type" value="door"/>
+		<attribute key="blockProjectile" value="1"/>
+		<attribute key="transformOnUse" value="43954"/>
+	</item>
+	<item id="43953" article="a" name="closed door">
+		<attribute key="type" value="door"/>
+		<attribute key="blockProjectile" value="1"/>
+		<attribute key="transformOnUse" value="43955"/>
+	</item>
+	<item id="43954" article="a" name="open door">
+		<attribute key="type" value="door"/>
+		<attribute key="transformOnUse" value="43952"/>
+	</item>
+	<item id="43955" article="a" name="open door">
+		<attribute key="type" value="door"/>
+		<attribute key="transformOnUse" value="43953"/>
+	</item>
+	<item id="43962" article="a" name="putrefactive figurine">
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="weight" value="50" />
+	</item>
+	<item id="43967" article="a" name="Vemiath's infused basalt">
+		<attribute key="primarytype" value="creature products"/>
+		<attribute key="loottype" value="creatureproduct"/>
+		<attribute key="weight" value="200" />
 	</item>
 	<item id="44012" article="" name="remains of bakragore">
 		<attribute key="containerSize" value="30"/>

@@ -59,10 +59,10 @@ function amberCrusher.onUse(player, item, fromPosition, target, toPosition, isHo
 	target:remove(breakAmount)
 
 	for _ = 1, breakAmount do
-		player:addItem(gemData.fragment, math.random(gemData.range[1], gemData.range[2]))
+		player:addItemContainer(gemData.fragment, math.random(gemData.range[1], gemData.range[2]), fromPosition, item)
 
 		if gemData.bonusFragment and math.random(100) <= gemData.bonusFragment.chance then
-			player:addItem(gemData.bonusFragment.id, gemData.bonusFragment.count)
+			player:addItemContainer(gemData.bonusFragment.id, gemData.bonusFragment.count, fromPosition, item)
 		end
 	end
 
@@ -94,10 +94,10 @@ function crusher.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end
 
 	target:remove(1)
-	player:addItem(gemData.fragment, math.random(gemData.range[1], gemData.range[2]))
+	player:addItemContainer(gemData.fragment, math.random(gemData.range[1], gemData.range[2]), fromPosition, item)
 
 	if gemData.bonusFragment and math.random(100) <= gemData.bonusFragment.chance then
-		player:addItem(gemData.bonusFragment.id, gemData.bonusFragment.count)
+		player:addItemContainer(gemData.bonusFragment.id, gemData.bonusFragment.count, fromPosition, item)
 	end
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, getSuccessMessage(gemData))
