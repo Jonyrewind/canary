@@ -212,6 +212,7 @@ local questTable = {
 	{ storageName = "TheNewFrontier.Mission05.Humgolf", storage = Storage.Quest.U8_54.TheNewFrontier.Mission05.Humgolf, storageValue = 1 },
 	{ storageName = "TheSecretLibrary.Asuras.Questline", storage = Storage.Quest.U11_80.TheSecretLibrary.Asuras.Questline, storageValue = 1 },
 	{ storageName = "TheSecretLibrary.Asuras.FlammingOrchid", storage = Storage.Quest.U11_80.TheSecretLibrary.Asuras.FlammingOrchid, storageValue = 1 },
+	{ storageName = "TheSecretLibrary.Darashia.Questline", storage = Storage.Quest.U11_80.TheSecretLibrary.Darashia.Questline, storageValue = 7 },
 	{ storageName = "TheSecretLibrary.MoTA.Questline", storage = Storage.Quest.U11_80.TheSecretLibrary.MoTA.Questline, storageValue = 8 },
 	{ storageName = "TheSecretLibrary.MoTA.LeverPermission", storage = Storage.Quest.U11_80.TheSecretLibrary.MoTA.LeverPermission, storageValue = 1 },
 	{ storageName = "TheSecretLibrary.MoTA.FinalBasin", storage = Storage.Quest.U11_80.TheSecretLibrary.MoTA.FinalBasin, storageValue = 1 },

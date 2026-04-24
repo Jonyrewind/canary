@@ -37,6 +37,32 @@ local function clearPendingEvents()
 	end
 end
 
+local function refreshCreatureView(creature)
+	if not creature then
+		return
+	end
+
+	local position = creature:getPosition()
+	creature:teleportTo(position)
+	if creature:isPlayer() then
+		creature:getPlayer():sendCreatureAppear()
+	end
+end
+
+local function refreshZonePlayers()
+	local zone = SoulWarQuest.ebbAndFlow.getZone()
+	if not zone then
+		return
+	end
+
+	for _, creature in ipairs(zone:getCreatures()) do
+		local player = creature:getPlayer()
+		if player then
+			refreshCreatureView(player)
+		end
+	end
+end
+
 -- Helper function to unregister all event callbacks
 local function unregisterEventCallbacks()
 	for name, callback in pairs(eventCallbacks) do
@@ -65,10 +91,10 @@ local function loadMapEmpty()
 						local teleportPosition = creature:getPosition()
 						teleportPosition.z = 9
 						creature:teleportTo(teleportPosition)
+						if player then
+							player:sendCreatureAppear()
+						end
 						logger.trace("Teleporting player to down.")
-					end
-					if player then
-						player:sendCreatureAppear()
 					end
 				end
 			end
@@ -79,6 +105,7 @@ local function loadMapEmpty()
 	SoulWarQuest.ebbAndFlow.setLoadedEmptyMap(true)
 	SoulWarQuest.ebbAndFlow.setActive(false)
 
+	addEvent(refreshZonePlayers, 100)
 	local updatePlayers = EventCallback("UpdatePlayersEmptyEbbFlowMap", true)
 	function updatePlayers.mapOnLoad(mapPath)
 		if mapPath ~= SoulWarQuest.ebbAndFlow.mapsPath.empty then
@@ -136,15 +163,18 @@ local function loadMapInundate()
 					if creature:isInBoatSpot() then
 						local nearestCenterPosition = findNearestRoomPosition(creaturePosition)
 						creature:teleportTo(nearestCenterPosition)
+						if player then
+							player:sendCreatureAppear()
+						end
 						logger.trace("Teleporting player to the near center position room and updating tile.")
 					else
 						creature:teleportTo(SoulWarQuest.ebbAndFlow.waitPosition)
+						if player then
+							player:sendCreatureAppear()
+						end
 						logger.trace("Teleporting player to wait position and updating tile.")
 					end
 					creaturePosition:sendMagicEffect(CONST_ME_TELEPORT)
-				end
-				if player then
-					player:sendCreatureAppear()
 				end
 			end
 		end
@@ -154,6 +184,7 @@ local function loadMapInundate()
 	SoulWarQuest.ebbAndFlow.setLoadedEmptyMap(false)
 	SoulWarQuest.ebbAndFlow.setActive(true)
 
+	addEvent(refreshZonePlayers, 100)
 	local updatePlayers = EventCallback("UpdatePlayersInundateEbbFlowMap", true)
 	function updatePlayers.mapOnLoad(mapPath)
 		if mapPath ~= SoulWarQuest.ebbAndFlow.mapsPath.inundate then
@@ -174,7 +205,6 @@ function loadEmptyMap.onStartup()
 
 	Game.loadMap(SoulWarQuest.ebbAndFlow.mapsPath.ebbFlow)
 	loadMapEmpty()
-	SoulWarQuest.ebbAndFlow.updateZonePlayers()
 end
 
 loadEmptyMap:register()

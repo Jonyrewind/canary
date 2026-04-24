@@ -510,11 +510,6 @@ SoulWarQuest = {
 		updateZonePlayers = function()
 			if SoulWarQuest.ebbAndFlow.zone and SoulWarQuest.ebbAndFlow.getZone():countPlayers() > 0 then
 				SoulWarQuest.ebbAndFlow.reloadZone()
-				local players = SoulWarQuest.ebbAndFlow.getZone():getPlayers()
-				for _, player in ipairs(players) do
-					logger.trace("Updating player: {}", player:getName())
-					player:sendCreatureAppear()
-				end
 			end
 		end,
 

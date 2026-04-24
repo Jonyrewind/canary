@@ -310,11 +310,11 @@ end
 
 -- ================== ON USE ==================
 function supremeCube.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-    if not player:getTile():hasFlag(TILESTATE_PROTECTIONZONE) and (player:isPzLocked() or player:getCondition(CONDITION_INFIGHT)) then
+--[[    if not player:getTile():hasFlag(TILESTATE_PROTECTIONZONE) and (player:isPzLocked() or player:getCondition(CONDITION_INFIGHT)) then
         player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You can't use this while in fight.")
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
-    end
+    end ]]--
 
     showMainMenu(player)
     return true
