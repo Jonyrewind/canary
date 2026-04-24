@@ -871,15 +871,10 @@ void Player::addMonsterToCyclopediaTrackerList(const std::shared_ptr<MonsterType
 		return;
 	}
 
-	const uint16_t raceId = mtype ? mtype->info.raceid : 0;
 	auto &tracker = isBoss ? m_bosstiaryMonsterTracker : m_bestiaryMonsterTracker;
 	if (tracker.size() < static_cast<size_t>(std::numeric_limits<uint8_t>::max()) && tracker.emplace(mtype).second) {
-		if (reloadClient && raceId != 0) {
-			if (isBoss) {
-				client->parseSendBosstiary();
-			} else {
-				client->sendBestiaryEntryChanged(raceId);
-			}
+		if (reloadClient && isBoss) {
+			client->parseSendBosstiary();
 		}
 
 		client->refreshCyclopediaMonsterTracker(tracker, isBoss);
@@ -891,16 +886,11 @@ void Player::removeMonsterFromCyclopediaTrackerList(const std::shared_ptr<Monste
 		return;
 	}
 
-	const uint16_t raceId = mtype ? mtype->info.raceid : 0;
 	auto &tracker = isBoss ? m_bosstiaryMonsterTracker : m_bestiaryMonsterTracker;
 
 	if (tracker.erase(mtype) > 0) {
-		if (reloadClient && raceId != 0) {
-			if (isBoss) {
-				client->parseSendBosstiary();
-			} else {
-				client->sendBestiaryEntryChanged(raceId);
-			}
+		if (reloadClient && isBoss) {
+			client->parseSendBosstiary();
 		}
 
 		client->refreshCyclopediaMonsterTracker(tracker, isBoss);

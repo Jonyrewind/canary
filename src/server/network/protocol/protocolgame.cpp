@@ -2599,39 +2599,61 @@ void ProtocolGame::parseBestiarysendMonsterData(NetworkMessage &msg) {
 }
 
 void ProtocolGame::parseCyclopediaMonsterTracker(NetworkMessage &msg) {
-	auto monsterRaceId = msg.get<uint16_t>();
+	if (!player) {
+		return;
+	}
+
+	const uint16_t monsterRaceId = msg.get<uint16_t>();
 	// Bosstiary tracker: 0 = disabled, 1 = enabled
 	// Bestiary tracker: 1 = enabled
-	auto trackerButtonType = msg.getByte();
+	const uint8_t trackerButtonType = msg.getByte();
 
 	// Bosstiary tracker logic
 	if (const auto monsterType = g_ioBosstiary().getMonsterTypeByBossRaceId(monsterRaceId)) {
-		if (player->getBestiaryKillCount(monsterRaceId)) {
-			if (trackerButtonType == 1) {
-				player->addMonsterToCyclopediaTrackerList(monsterType, true, true);
-			} else {
-				player->removeMonsterFromCyclopediaTrackerList(monsterType, true, true);
+		if (!player->getBestiaryKillCount(monsterRaceId)) {
+			return;
+		}
+
+		const bool completed = g_ioBosstiary().getBossCurrentLevel(player, monsterRaceId) == 3;
+		if (trackerButtonType == 1) {
+			if (completed) {
+				return;
 			}
+			player->addMonsterToCyclopediaTrackerList(monsterType, true, true);
+		} else {
+			player->removeMonsterFromCyclopediaTrackerList(monsterType, true, true);
 		}
 		return;
 	}
 
 	// Bestiary tracker logic
 	const auto &bestiaryMonsters = g_game().getBestiaryList();
-	auto it = bestiaryMonsters.find(monsterRaceId);
-	if (it != bestiaryMonsters.end()) {
-		const auto mtype = g_monsters().getMonsterType(it->second);
-		if (!mtype) {
-			g_logger().error("[{}] player {} have wrong boss with race {}", __FUNCTION__, player->getName(), monsterRaceId);
-			return;
-		}
-
-		if (trackerButtonType == 1) {
-			player->addMonsterToCyclopediaTrackerList(mtype, false, true);
-		} else {
-			player->removeMonsterFromCyclopediaTrackerList(mtype, false, true);
-		}
+	const auto it = bestiaryMonsters.find(monsterRaceId);
+	if (it == bestiaryMonsters.end()) {
+		return;
 	}
+
+	const auto mtype = g_monsters().getMonsterType(it->second);
+	if (!mtype) {
+		g_logger().error("[{}] player {} has wrong bestiary race {}", __FUNCTION__, player->getName(), monsterRaceId);
+		return;
+	}
+
+	const bool completed = g_iobestiary().getKillStatus(mtype, player->getBestiaryKillCount(monsterRaceId)) == 4;
+
+	// Completed monsters clicked from the tracker window should only open the bestiary page.
+	// They are already tracked, so do not re-run the tracker add flow, which causes the
+	// page button to light up again.
+	if (completed && trackerButtonType == 1) {
+		return;
+	}
+
+	if (trackerButtonType == 1) {
+		player->addMonsterToCyclopediaTrackerList(mtype, false, true);
+	} else {
+		player->removeMonsterFromCyclopediaTrackerList(mtype, false, true);
+	}
+}
 }
 
 void ProtocolGame::parsePlayerTyping(NetworkMessage &msg) {
