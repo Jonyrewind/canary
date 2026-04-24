@@ -2654,7 +2654,6 @@ void ProtocolGame::parseCyclopediaMonsterTracker(NetworkMessage &msg) {
 		player->removeMonsterFromCyclopediaTrackerList(mtype, false, true);
 	}
 }
-}
 
 void ProtocolGame::parsePlayerTyping(NetworkMessage &msg) {
 	uint8_t typing = msg.getByte();
