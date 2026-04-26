@@ -21,6 +21,7 @@
 #include "game/scheduling/dispatcher.hpp"
 #include "game/scheduling/events_scheduler.hpp"
 #include "game/zones/zone.hpp"
+#include "lua/global/globalevent.hpp"
 #include "io/io_bosstiary.hpp"
 #include "io/iomarket.hpp"
 #include "io/ioprey.hpp"
