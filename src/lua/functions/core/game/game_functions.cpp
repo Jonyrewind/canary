@@ -290,7 +290,7 @@ int GameFunctions::luaGameLoadMap(lua_State* L) {
 int GameFunctions::luaGameLoadCustomMaps(lua_State* L) {
 	// Game.loadCustomMaps(path)
 	const std::string &path = Lua::getString(L, 1);
-	g_dispatcher().addEvent([path]() { g_game().loadCustomMaps(path); }, __FUNCTION__);
+	g_game().loadCustomMaps(path);
 	return 0;
 }
 
