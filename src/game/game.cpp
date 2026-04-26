@@ -1224,7 +1224,7 @@ bool Game::removeCreature(const std::shared_ptr<Creature> &creature, bool isLogo
 
 		for (const auto &spectator : playersSpectators) {
 			if (const auto &player = spectator->getPlayer()) {
-				oldStackPosVector.push_back(player->canSeeCreature(creature) ? tile->getStackposOfCreature(player, creature) : -1);
+				oldStackPosVector.push_back(player->canSeeCreature(creature) ? tile->getClientIndexOfCreature(player, creature) : -1);
 			}
 		}
 
