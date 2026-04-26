@@ -51,7 +51,7 @@ local function creatureSayCallback(npc, creature, type, message)
 
 	message = message:lower()
 	if MsgContains(message, "kneel") then
-		npcHandler:say("Prepare your offer and cling to the sanctitity of this place.", npc, creature)
+		npcHandler:say("Prepare your {offer} and cling to the sanctitity of this place.", npc, creature)
 		npcHandler:setTopic(playerId, 1)
 	elseif MsgContains(message, "offer") and npcHandler:getTopic(playerId) == 1 then
 		npcHandler:say("Five tainted hearts and five darklight hearts drowned in a worldly wealth of 50000000 gold pieces for the righteous. Are you prepared?", npc, creature)
@@ -80,7 +80,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-npcHandler:setMessage(MESSAGE_GREET, "Kneel before the all-devouring power of blooded decay.")
+npcHandler:setMessage(MESSAGE_GREET, "{Kneel} before the all-devouring power of blooded decay.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Bye.")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Bye, |PLAYERNAME|.")
 
