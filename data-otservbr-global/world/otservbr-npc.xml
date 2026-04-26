@@ -2371,7 +2371,7 @@
 		<npc name="Oberon'S Hate" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33361" centery="31320" centerz="9" radius="1">
-		<npc name="" x="0" y="0" z="9" spawntime="60" />
+		<npc name="Oberon'S Spite" x="0" y="0" z="9" spawntime="60" />
 	</npc>
 	<npc centerx="33367" centery="31320" centerz="9" radius="1">
 		<npc name="Oberon'S Ire" x="0" y="0" z="9" spawntime="60" />
