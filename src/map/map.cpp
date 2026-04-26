@@ -104,25 +104,26 @@ void Map::loadMapCustom(const std::string &mapName, bool loadHouses, bool loadMo
 	const auto legacyMapPath = customMapDirectory + mapName + ".otbm";
 	const auto directMapPath = std::filesystem::path(mapName);
 	const auto resolvedMapPath = std::filesystem::exists(directMapPath) ? directMapPath : std::filesystem::path(legacyMapPath);
+	const auto customMapBasePath = resolvedMapPath.parent_path() / resolvedMapPath.stem();
 
 	g_logger().info("[Map::loadMapCustom] loading custom map '{}' from '{}'", mapName, resolvedMapPath.string());
 
 	// Load the map
 	load(resolvedMapPath.string());
 
-	if (loadMonsters && !IOMap::loadMonstersCustom(this, mapName, customMapIndex)) {
+	if (loadMonsters && !IOMap::loadMonstersCustom(this, customMapBasePath.string(), customMapIndex)) {
 		g_logger().warn("Failed to load monster custom data");
 	}
 
-	if (loadHouses && !IOMap::loadHousesCustom(this, mapName, customMapIndex)) {
+	if (loadHouses && !IOMap::loadHousesCustom(this, customMapBasePath.string(), customMapIndex)) {
 		g_logger().warn("Failed to load house custom data");
 	}
 
-	if (loadNpcs && !IOMap::loadNpcsCustom(this, mapName, customMapIndex)) {
+	if (loadNpcs && !IOMap::loadNpcsCustom(this, customMapBasePath.string(), customMapIndex)) {
 		g_logger().warn("Failed to load npc custom spawn data");
 	}
 
-	if (loadZones && !IOMap::loadZonesCustom(this, mapName, customMapIndex)) {
+	if (loadZones && !IOMap::loadZonesCustom(this, customMapBasePath.string(), customMapIndex)) {
 		g_logger().warn("Failed to load zones custom data");
 	}
 
