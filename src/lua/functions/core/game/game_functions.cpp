@@ -43,6 +43,7 @@ void GameFunctions::init(lua_State* L) {
 
 	Lua::registerMethod(L, "Game", "getPlayers", GameFunctions::luaGameGetPlayers);
 	Lua::registerMethod(L, "Game", "loadMap", GameFunctions::luaGameLoadMap);
+	Lua::registerMethod(L, "Game", "loadCustomMaps", GameFunctions::luaGameLoadCustomMaps);
 	Lua::registerMethod(L, "Game", "loadMapChunk", GameFunctions::luaGameloadMapChunk);
 
 	Lua::registerMethod(L, "Game", "getExperienceForLevel", GameFunctions::luaGameGetExperienceForLevel);
@@ -283,6 +284,13 @@ int GameFunctions::luaGameLoadMap(lua_State* L) {
 	// Game.loadMap(path)
 	const std::string &path = Lua::getString(L, 1);
 	g_dispatcher().addEvent([path]() { g_game().loadMap(path); }, __FUNCTION__);
+	return 0;
+}
+
+int GameFunctions::luaGameLoadCustomMaps(lua_State* L) {
+	// Game.loadCustomMaps(path)
+	const std::string &path = Lua::getString(L, 1);
+	g_dispatcher().addEvent([path]() { g_game().loadCustomMaps(path); }, __FUNCTION__);
 	return 0;
 }
 
