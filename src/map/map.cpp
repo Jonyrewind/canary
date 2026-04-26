@@ -106,7 +106,7 @@ void Map::loadMapCustom(const std::string &mapName, bool loadHouses, bool loadMo
 	const auto resolvedMapPath = std::filesystem::exists(directMapPath) ? directMapPath : std::filesystem::path(legacyMapPath);
 	const auto customMapBasePath = resolvedMapPath.parent_path() / resolvedMapPath.stem();
 
-	g_logger().info("[Map::loadMapCustom] loading custom map '{}' from '{}'", mapName, resolvedMapPath.string());
+	g_logger().debug("[Map::loadMapCustom] loading custom map '{}' from '{}'", mapName, resolvedMapPath.string());
 
 	// Load the map
 	load(resolvedMapPath.string());

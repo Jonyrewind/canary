@@ -200,6 +200,8 @@ void CanaryServer::loadMaps() const {
 	try {
 		g_game().loadMainMap(g_configManager().getString(MAP_NAME));
 
+		g_globalEvents().customMapStartup();
+
 		// If "mapCustomEnabled" is true on config.lua, then load the custom map
 		if (g_configManager().getBoolean(TOGGLE_MAP_CUSTOM)) {
 			g_game().loadCustomMaps(g_configManager().getString(DATA_DIRECTORY) + "/world/custom/");

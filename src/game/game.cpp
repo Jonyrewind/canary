@@ -711,7 +711,7 @@ void Game::loadMainMap(const std::string &filename) {
 }
 
 void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
-	g_logger().info("[Game::loadCustomMaps] start path='{}'", customMapPath.string());
+	g_logger().debug("[Game::loadCustomMaps] start path='{}'", customMapPath.string());
 
 	Monster::despawnRange = g_configManager().getNumber(DEFAULT_DESPAWNRANGE);
 	Monster::despawnRadius = g_configManager().getNumber(DEFAULT_DESPAWNRADIUS);
@@ -743,7 +743,7 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 
 		// Filenames that start with a # are ignored.
 		if (filename.at(0) == '#') {
-			g_logger().info("Custom map {} [disabled]", filename);
+			g_logger().debug("Custom map {} [disabled]", filename);
 			continue;
 		}
 
@@ -754,17 +754,15 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 		}
 
 		const auto mapFilePath = realPath.string();
-		g_logger().info("[Game::loadCustomMaps] loading map '{}' at index {}", filename, customMapIndex);
+		g_logger().debug("[Game::loadCustomMaps] loading map '{}' at index {}", filename, customMapIndex);
 		map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
-		g_logger().info("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
+		g_logger().debug("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
 
 		customMapIndex++;
 	}
 
 	// Must be done after all maps have been loaded
-	g_logger().info("[Game::loadCustomMaps] loading house info");
 	map.loadHouseInfo();
-	g_logger().info("[Game::loadCustomMaps] done path='{}'", customMapPath.string());
 }
 
 void Game::loadMap(const std::string &path, const Position &pos) {

@@ -67,6 +67,10 @@ bool GlobalEvents::registerLuaEvent(const std::shared_ptr<GlobalEvent> &globalEv
 	return false;
 }
 
+void GlobalEvents::customMapStartup() const {
+	execute(GLOBALEVENT_CUSTOMMAP_STARTUP);
+}
+
 void GlobalEvents::startup() const {
 	execute(GLOBALEVENT_STARTUP);
 }
@@ -172,6 +176,7 @@ GlobalEventMap GlobalEvents::getEventMap(GlobalEvent_t type) {
 			return thinkMap;
 		case GLOBALEVENT_TIMER:
 			return timerMap;
+		case GLOBALEVENT_CUSTOMMAP_STARTUP:
 		case GLOBALEVENT_PERIODCHANGE:
 		case GLOBALEVENT_STARTUP:
 		case GLOBALEVENT_SHUTDOWN:
@@ -219,8 +224,10 @@ bool GlobalEvent::isLoadedScriptId() const {
 	return m_scriptId != 0;
 }
 
-std::string GlobalEvent::getScriptTypeName() const {
+	std::string GlobalEvent::getScriptTypeName() const {
 	switch (eventType) {
+		case GLOBALEVENT_CUSTOMMAP_STARTUP:
+			return "onCustomMapStartup";
 		case GLOBALEVENT_STARTUP:
 			return "onStartup";
 		case GLOBALEVENT_SHUTDOWN:
