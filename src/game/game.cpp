@@ -753,8 +753,9 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 			continue;
 		}
 
+		const auto mapFilePath = realPath.string();
 		g_logger().info("[Game::loadCustomMaps] loading map '{}' at index {}", filename, customMapIndex);
-		map.loadMapCustom(filename, true, true, true, true, customMapIndex);
+		map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
 		g_logger().info("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
 
 		customMapIndex++;
