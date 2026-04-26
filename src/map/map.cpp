@@ -100,8 +100,15 @@ void Map::loadMap(const std::string &identifier, bool mainMap /*= false*/, bool 
 }
 
 void Map::loadMapCustom(const std::string &mapName, bool loadHouses, bool loadMonsters, bool loadNpcs, bool loadZones, int customMapIndex) {
+	const auto customMapDirectory = g_configManager().getString(DATA_DIRECTORY) + "/world/custom/";
+	const auto legacyMapPath = customMapDirectory + mapName + ".otbm";
+	const auto directMapPath = std::filesystem::path(mapName);
+	const auto resolvedMapPath = std::filesystem::exists(directMapPath) ? directMapPath : std::filesystem::path(legacyMapPath);
+
+	g_logger().info("[Map::loadMapCustom] loading custom map '{}' from '{}'", mapName, resolvedMapPath.string());
+
 	// Load the map
-	load(g_configManager().getString(DATA_DIRECTORY) + "/world/custom/" + mapName + ".otbm");
+	load(resolvedMapPath.string());
 
 	if (loadMonsters && !IOMap::loadMonstersCustom(this, mapName, customMapIndex)) {
 		g_logger().warn("Failed to load monster custom data");
