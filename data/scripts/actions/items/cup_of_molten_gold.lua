@@ -22,7 +22,7 @@ function cupOfMoltenGold.onUse(player, item, fromPosition, target, toPosition, i
 		return false
 	end
 
-	if math.random(100) <= 50 then
+	if math.random(100) <= 10 then
 		if target.itemid == 19111 then
 			target:remove(1)
 		end
