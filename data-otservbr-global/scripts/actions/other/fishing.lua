@@ -1,4 +1,5 @@
-local waterIds = { 622, 4597, 4598, 4599, 4600, 12561, 12563, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 629, 630, 631, 632, 633, 634, 7236, 9582, 13988, 13989, 12560, 21414, 45032 }
+local waterIds = { 622, 4597, 4598, 4599, 4600, 4601, 4602, 4609, 4610, 4611, 4612, 4613, 4614, 629, 630, 631, 632, 633, 634, 7236, 9582, 13988, 13989, 21414, 45032 }
+local dirtywaterIds = { 12558, 12559, 12560, 12561, 12562, 12563 }
 local lootTrash = { 3119, 3123, 3264, 3409, 3578 }
 local lootCommon = { 3035, 3051, 3052, 3580, 236, 237 }
 local lootRare = { 3026, 3029, 3032, 7158, 7159 }
@@ -27,14 +28,30 @@ local function refreeIceHole(position)
 	end
 end
 
+local function rollFishingSuccess(player)
+	return math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.597, 10), 50)
+end
+
 local fishing = Action()
 
 function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if not table.contains(waterIds, target.itemid) then
+	if not table.contains(waterIds, target.itemid) and not table.contains(dirtywaterIds, target.itemid) then
 		return false
 	end
 
 	local targetId = target.itemid
+
+	if table.contains(dirtywaterIds, targetId) and target:getPosition():isInRange(Position(32592, 32638, 7), Position(32634, 32674, 7)) then
+		if useWorms and not player:removeItem("worm", 1) then
+			return true
+		end
+		if rollFishingSuccess(player) then
+			return TwistedWaters.tryFish(player, item, fromPosition, target, toPosition)
+		end
+		toPosition:sendMagicEffect(CONST_ME_LOSEENERGY)
+		return true
+	end
+
 	if targetId == 9582 then
 		local owner = target:getAttribute(ITEM_ATTRIBUTE_CORPSEOWNER)
 		if owner ~= 0 and owner ~= player.uid then
@@ -46,16 +63,21 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		target:transform(target.itemid + 1)
 
 		local chance = math.random(10000)
+		local foundReward = false
 		for i = 1, #elementals.chances do
 			local randomItem = elementals.chances[i]
 			if chance >= randomItem.from and chance <= randomItem.to then
 				player:addItemContainer(randomItem.itemId, 1, fromPosition, item)
-			end
-			if chance > 1115 then
-				player:say("There was just rubbish in it.", TALKTYPE_MONSTER_SAY)
-				return true
+				foundReward = true
+				break
 			end
 		end
+
+		if not foundReward then
+			player:say("There was just rubbish in it.", TALKTYPE_MONSTER_SAY)
+		end
+
+		return true
 	end
 
 	if targetId == 12560 then
@@ -68,7 +90,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		elseif rareChance <= 10 then
 			player:addItemContainer(lootCommon1[math.random(#lootCommon1)], 1, fromPosition, item)
 		else
-			player:addItemContainer(ootTrash[math.random(#lootTrash)], 1, fromPosition, item)
+			player:addItemContainer(lootTrash[math.random(#lootTrash)], 1, fromPosition, item)
 		end
 		return true
 	end
@@ -83,18 +105,20 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 
 	if targetId == 45032 then
 		toPosition:sendMagicEffect(CONST_ME_WHITE_SMOKE)
-		if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.25, 10), 50) then
-			local gummyIds = {8177, 48116}
+		if rollFishingSuccess(player) then
+			local gummyIds = { 8177, 48116 }
 			local removed = false
-        for _, id in ipairs(gummyIds) do
-            if player:removeItem(id, 1) then
-                removed = true
-                break
-            end
-        end
-				if not removed then
-            return true
-        end
+			for _, id in ipairs(gummyIds) do
+				if player:removeItem(id, 1) then
+					removed = true
+					break
+				end
+			end
+
+			if not removed then
+				return true
+			end
+
 			player:addItemContainer(48115, 1, fromPosition, item)
 		end
 		return true
@@ -108,7 +132,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "With a giant splash, you heave an enormous fish out of the water.")
 				return true
 			end
-		elseif math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.597, 10), 50) then
+		elseif rollFishingSuccess(player) then
 			player:addItemContainer(3578, 1, fromPosition, item)
 			logger.info("1")
 		end
@@ -118,7 +142,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		player:addSkillTries(SKILL_FISHING, 1, true)
 	end
 
-	if math.random(100) <= math.min(math.max(10 + (player:getEffectiveSkillLevel(SKILL_FISHING) - 10) * 0.597, 10), 50) then
+	if rollFishingSuccess(player) then
 		if useWorms and not player:removeItem("worm", 1) then
 			return true
 		end
@@ -153,6 +177,7 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		player:addItemContainer(3578, 1, fromPosition, item)
 		player:addAchievementProgress("Here, Fishy Fishy!", 250)
 	end
+
 	return true
 end
 

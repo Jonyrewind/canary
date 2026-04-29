@@ -46158,6 +46158,12 @@
 	<monster centerx="32043" centery="32627" centerz="7" radius="1">
 		<monster name="Cobra" x="1" y="0" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32623" centery="32627" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32643" centery="32627" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="33149" centery="32627" centerz="7" radius="2">
 		<monster name="Sandcrawler" x="1" y="2" z="7" spawntime="90" />
 	</monster>
@@ -46222,6 +46228,9 @@
 	<monster centerx="32085" centery="32632" centerz="7" radius="1">
 		<monster name="Scorpion" x="1" y="1" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32615" centery="32632" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="32886" centery="32632" centerz="7" radius="4">
 		<monster name="Spider" x="0" y="-4" z="7" spawntime="90" />
 		<monster name="Parrot" x="3" y="-1" z="7" spawntime="90" />
@@ -46244,9 +46253,18 @@
 		<monster name="Crab" x="-2" y="-2" z="7" spawntime="90" />
 		<monster name="Crab" x="0" y="1" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32632" centery="32634" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="31959" centery="32635" centerz="7" radius="3">
 		<monster name="Hydra" x="2" y="-1" z="7" spawntime="90" />
 		<monster name="Cobra" x="-2" y="1" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32601" centery="32635" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32609" centery="32635" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32681" centery="32635" centerz="7" radius="5">
 		<monster name="Swamp Troll" x="1" y="-5" z="7" spawntime="90" />
@@ -46308,6 +46326,9 @@
 		<monster name="Cobra" x="1" y="0" z="7" spawntime="90" />
 		<monster name="Pirate Skeleton" x="0" y="1" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32624" centery="32638" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="31932" centery="32639" centerz="7" radius="3">
 		<monster name="Hydra" x="3" y="-1" z="7" spawntime="90" />
 		<monster name="Hydra" x="-2" y="0" z="7" spawntime="90" />
@@ -46322,6 +46343,9 @@
 	</monster>
 	<monster centerx="32053" centery="32641" centerz="7" radius="1">
 		<monster name="Pirate Skeleton" x="1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32608" centery="32641" centerz="7" radius="1">
+		<monster name="Centipede" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="33194" centery="32641" centerz="7" radius="2">
 		<monster name="Sandcrawler" x="0" y="1" z="7" spawntime="90" />
@@ -46342,6 +46366,12 @@
 	</monster>
 	<monster centerx="32362" centery="32642" centerz="7" radius="1">
 		<monster name="Bat" x="-1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32628" centery="32642" centerz="7" radius="1">
+		<monster name="Centipede" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32646" centery="32642" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="33076" centery="32642" centerz="7" radius="1">
 		<monster name="Dragon" x="0" y="0" z="7" spawntime="90" />
@@ -46374,6 +46404,9 @@
 	</monster>
 	<monster centerx="32372" centery="32644" centerz="7" radius="1">
 		<monster name="Bat" x="-1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32642" centery="32644" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32658" centery="32644" centerz="7" radius="3">
 		<monster name="Snake" x="-2" y="-1" z="7" spawntime="90" />
@@ -46470,6 +46503,7 @@
 	<monster centerx="32665" centery="32651" centerz="7" radius="3">
 		<monster name="Bug" x="-2" y="-3" z="7" spawntime="60" />
 		<monster name="Spider" x="-2" y="2" z="7" spawntime="60" />
+		<monster name="Bug" x="0" y="2" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32966" centery="32651" centerz="7" radius="3">
 		<monster name="Flamingo" x="-2" y="0" z="7" spawntime="90" />
@@ -46508,8 +46542,17 @@
 		<monster name="Crocodile" x="3" y="1" z="7" spawntime="90" />
 		<monster name="Slime" x="2" y="3" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32636" centery="32653" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32642" centery="32653" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="33240" centery="32653" centerz="7" radius="2">
 		<monster name="Sandcrawler" x="1" y="0" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32585" centery="32654" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32833" centery="32654" centerz="7" radius="4">
 		<monster name="Bat" x="0" y="-2" z="7" spawntime="90" />
@@ -46551,6 +46594,9 @@
 		<monster name="Poison Spider" x="-1" y="-2" z="7" spawntime="90" />
 		<monster name="Wasp" x="3" y="-2" z="7" spawntime="90" />
 		<monster name="Terror Bird" x="-1" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32592" centery="32657" centerz="7" radius="1">
+		<monster name="Centipede" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32665" centery="32658" centerz="7" radius="3">
 		<monster name="Bug" x="-3" y="2" z="7" spawntime="60" />
@@ -46597,6 +46643,9 @@
 	<monster centerx="32854" centery="32660" centerz="7" radius="1">
 		<monster name="Centipede" x="1" y="0" z="7" spawntime="90" />
 	</monster>
+	<monster centerx="32654" centery="32661" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="32799" centery="32661" centerz="7" radius="5">
 		<monster name="Parrot" x="1" y="-5" z="7" spawntime="90" />
 		<monster name="Centipede" x="-1" y="-3" z="7" spawntime="90" />
@@ -46634,6 +46683,12 @@
 	<monster centerx="31948" centery="32663" centerz="7" radius="3">
 		<monster name="Hydra" x="2" y="0" z="7" spawntime="90" />
 		<monster name="Seagull" x="0" y="3" z="7" spawntime="90" />
+	</monster>
+	<monster centerx="32581" centery="32663" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32594" centery="32663" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="33201" centery="32663" centerz="7" radius="2">
 		<monster name="Sandcrawler" x="1" y="1" z="7" spawntime="90" />
@@ -46761,6 +46816,12 @@
 	<monster centerx="33749" centery="32671" centerz="7" radius="1">
 		<monster name="Parder" x="0" y="0" z="7" spawntime="60" />
 	</monster>
+	<monster centerx="32596" centery="32672" centerz="7" radius="1">
+		<monster name="Centipede" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32609" centery="32672" centerz="7" radius="1">
+		<monster name="Centipede" x="0" y="0" z="7" spawntime="60" />
+	</monster>
 	<monster centerx="32940" centery="32672" centerz="7" radius="1">
 		<monster name="Midnight Asura" x="0" y="0" z="7" spawntime="90" />
 	</monster>
@@ -46832,6 +46893,9 @@
 	</monster>
 	<monster centerx="33757" centery="32674" centerz="7" radius="1">
 		<monster name="Parder" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32604" centery="32675" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 	<monster centerx="32702" centery="32675" centerz="7" radius="5">
 		<monster name="Terror Bird" x="3" y="-3" z="7" spawntime="90" />

@@ -217,6 +217,10 @@ do
 		elseif key == "onTime" then
 			self:onTime(value)
 			return
+		elseif key == "onCustomMapStartup" then
+			self:type("custommapstartup")
+			self:onCustomMapStartup(value)
+			return
 		elseif key == "onStartup" then
 			self:type("startup")
 			self:onStartup(value)

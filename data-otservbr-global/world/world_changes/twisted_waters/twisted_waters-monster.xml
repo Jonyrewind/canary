@@ -1,6 +1,54 @@
 <?xml version="1.0"?>
 <monsters>
-	<monster centerx="32612" centery="32657" centerz="7" radius="1">
+	<monster centerx="32613" centery="32638" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32608" centery="32640" centerz="7" radius="1">
+		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32633" centery="32640" centerz="7" radius="1">
+		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32621" centery="32641" centerz="7" radius="1">
+		<monster name="Bog Frog" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32628" centery="32641" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32602" centery="32646" centerz="7" radius="1">
+		<monster name="Bog Frog" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32636" centery="32650" centerz="7" radius="1">
+		<monster name="Bog Frog" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32597" centery="32653" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32612" centery="32656" centerz="7" radius="1">
+		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32634" centery="32656" centerz="7" radius="1">
+		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32593" centery="32657" centerz="7" radius="1">
+		<monster name="Bog Frog" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32593" centery="32663" centerz="7" radius="1">
+		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32628" centery="32664" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32591" centery="32666" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32622" centery="32669" centerz="7" radius="1">
+		<monster name="Bog Frog" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32609" centery="32672" centerz="7" radius="1">
+		<monster name="Swamp Troll" x="0" y="0" z="7" spawntime="60" />
+	</monster>
+	<monster centerx="32599" centery="32675" centerz="7" radius="1">
 		<monster name="Filth Toad" x="0" y="0" z="7" spawntime="60" />
 	</monster>
 </monsters>

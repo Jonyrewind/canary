@@ -2,6 +2,28 @@ local get = TalkAction("/getkv")
 
 function get.onSay(player, words, param)
 	local key, playerName = string.splitFirst(param, ",")
+	if not key or key == "" then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /getkv <key>[,<playerName>] or /getkv global:<key>")
+		return false
+	end
+
+	local isGlobalKey = key:sub(1, 7) == "global:" or key:sub(1, 7) == "global."
+	if isGlobalKey then
+		local globalKey = key:sub(8)
+		if globalKey == "" then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /getkv global:<key>")
+			return false
+		end
+
+		local value = KV.get(globalKey)
+		if value then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "global kv[" .. globalKey .. "]: " .. PrettyString(value))
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Global key " .. globalKey .. " not found.")
+		end
+		return true
+	end
+
 	if not playerName then
 		playerName = player:getName()
 	end
@@ -76,9 +98,28 @@ local set = TalkAction("/setkv")
 
 function set.onSay(player, words, param)
 	local key, rest = string.splitFirst(param, ",")
-	if not key or not rest then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /setkv <key>,<value>[,<playerName>]")
+	if not key or key == "" or not rest then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /setkv <key>,<value>[,<playerName>] or /setkv global:<key>,<value>")
 		return false
+	end
+
+	local isGlobalKey = key:sub(1, 7) == "global:" or key:sub(1, 7) == "global."
+	if isGlobalKey then
+		local globalKey = key:sub(8)
+		if globalKey == "" then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Usage: /setkv global:<key>,<value>")
+			return false
+		end
+
+		local success, parsedValue = pcall(load("return " .. rest))
+		if not success then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Invalid value format.")
+			return false
+		end
+
+		KV.set(globalKey, parsedValue)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Global KV: [" .. globalKey .. "] = " .. PrettyString(parsedValue) .. " set.")
+		return true
 	end
 
 	local value, playerName = string.splitFirst(rest, ",")
