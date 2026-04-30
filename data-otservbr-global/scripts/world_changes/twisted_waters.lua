@@ -1,80 +1,45 @@
 TwistedWaters = {
-	kv = KV.scoped("worldchanges"):scoped("twistedwaters"),
-	corpseThreshold = 1000,
-	fishThreshold = 1000,
+	corpseThreshold = 30,
+	fishThreshold = 30,
 	mapPath = "data-otservbr-global/world/world_changes/twisted_waters/",
 }
 
-local STATE_CLEAN = "clean"
-local STATE_PENDING_DIRTY = "pending_dirty"
-local STATE_DIRTY = "dirty"
-local STATE_PENDING_CLEAN = "pending_clean"
-
-local function getState()
-	return TwistedWaters.kv:get("state") or STATE_CLEAN
-end
-
-local function setState(value)
-	TwistedWaters.kv:set("state", value)
-end
-
-local function isState(value)
-	return getState() == value
-end
-
-local function isClean()
-	return isState(STATE_CLEAN)
-end
-
-local function isPendingDirty()
-	return isState(STATE_PENDING_DIRTY)
-end
-
-local function isDirty()
-	return isState(STATE_DIRTY)
-end
-
-local function isPendingClean()
-	return isState(STATE_PENDING_CLEAN)
-end
-
 local function getCorpseCount()
-	return TwistedWaters.kv:get("corpsecount") or 0
+	return TwistedWatersState.KV:get("corpsecount") or 0
 end
 
 local function setCorpseCount(value)
-	TwistedWaters.kv:set("corpsecount", math.max(0, value))
+	TwistedWatersState.KV:set("corpsecount", math.max(0, value))
 end
 
 local function getFishCount()
-	return TwistedWaters.kv:get("fishcount") or 0
+	return TwistedWatersState.KV:get("fishcount") or 0
 end
 
 local function setFishCount(value)
-	TwistedWaters.kv:set("fishcount", math.max(0, value))
+	TwistedWatersState.KV:set("fishcount", math.max(0, value))
 end
 
 function TwistedWaters.markPendingClean()
-	setState(STATE_PENDING_CLEAN)
-	logger.info("[World Change] Twisted Waters reached fishing threshold. Lake Equivocolao will become clean after next server save.")
+	if TwistedWatersState.markPendingClean() then
+		logger.info("[World Change] Twisted Waters reached fishing threshold. Lake Equivocolao will become clean after next server save.")
+	end
 end
 
 local function markPendingDirty()
-	if isPendingDirty() or isDirty() then
+	if not TwistedWatersState.markPendingDirty() then
 		return
 	end
 
-	setState(STATE_PENDING_DIRTY)
 	logger.info("[World Change] Twisted Waters reached corpse threshold. Lake Equivocolao will become dirty after next server save.")
 end
 
 local function promoteStateIfPending()
-	if isPendingDirty() then
-		setState(STATE_DIRTY)
+	local promotedState = TwistedWatersState.promotePendingState()
+	if promotedState == TwistedWatersState.DIRTY then
 		setCorpseCount(0)
 		logger.info("[World Change] Twisted Waters promoted to DIRTY on server save.")
-	elseif isPendingClean() then
-		setState(STATE_CLEAN)
+	elseif promotedState == TwistedWatersState.CLEAN then
 		setFishCount(0)
 		logger.info("[World Change] Twisted Waters promoted to CLEAN on server save.")
 	end
@@ -99,7 +64,7 @@ local function getPlayerTwistedWatersKv(player)
 end
 
 function TwistedWaters.tryFish(player, item, fromPosition, target, toPosition)
-	if getState() ~= STATE_DIRTY then
+	if not TwistedWatersState.isDirty() then
 		return false
 	end
 
@@ -129,7 +94,7 @@ end
 local TwistedWatersStartUp = GlobalEvent("TwistedWatersStartUp")
 
 function TwistedWatersStartUp.onCustomMapStartup()
-	if isDirty() then
+	if TwistedWatersState.isDirty() then
 		Game.loadCustomMaps(TwistedWaters.mapPath)
 		logger.info("[World Change] Twisted Waters dirty map loaded on startup.")
 	end
@@ -154,7 +119,7 @@ function TwistedWatersCorpse.onAddItem(moveitem, tileitem, position)
 		return true
 	end
 
-	if not isClean() and not isPendingDirty() then
+	if not TwistedWatersState.isClean() and not TwistedWatersState.isPendingDirty() then
 		return true
 	end
 

@@ -93,8 +93,25 @@ keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHa
 keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The temple can be found in one of the uptown districts. Look for stairs up from the lower city, you'll find the temple in the northwest of the upper city." })
 keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "The First Oramond Bank is an important part of Rathleton, and is situated in the centre of the upper city. I can mark it on your map if you want." })
 keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy almost everything here! Visit one of our shops for weapons, armors, magical equipment, spells, gems, tools, furnitureand everything else you can imagine." })
-keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The depot is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there." })
-keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = " I will help you find your way in the marvellous city of Rathleton. I can mark important locations on your map and give you someinformation about the town and the world status." })
+local function getTwistedWatersStatusText()
+	if TwistedWatersState.isDirty() then
+		local fishCount = TwistedWatersState.KV:get("fishcount") or 0
+		if fishCount > 1000 then
+			return "The {great lake} near {Port Hope} is {dirty}. No shimmer swimmers have been seen under the surface for quite some time now."
+		end
+
+		return "The {great lake} near {Port Hope} is {dirty}. Shimmer swimmers can be seen under the surface."
+	elseif TwistedWatersState.isPendingDirty() then
+		return "Corpses are piling up in the {great lake} near {Port Hope} and the water is about to become {dirty}."
+	end
+
+	return "The {great lake} near {Port Hope} is {clean}."
+end
+
+keywordHandler:addKeyword({ "world status" }, StdModule.say, { npcHandler = npcHandler, text = "If you'd like to know the status of this {world} just say the {keyword} for a {world change}." })
+keywordHandler:addKeyword({ "keyword" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "change" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "twisted waters" }, StdModule.say, { npcHandler = npcHandler, text = getTwistedWatersStatusText() })
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "This city is a modern marvel of progress. The city's wealth and industry is based on the famous glooth. The magistrate runs the city according to the wishes of its inhabitants." })
 keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm Kunibert, of course." })
 

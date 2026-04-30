@@ -1,6 +1,9 @@
 -- Core API functions implemented in Lua
 dofile(DATA_DIRECTORY .. "/lib/core/load.lua")
 
+-- Shared helpers
+dofile(DATA_DIRECTORY .. "/lib/twisted_waters.lua")
+
 -- Others library
 dofile(DATA_DIRECTORY .. "/lib/others/load.lua")
 

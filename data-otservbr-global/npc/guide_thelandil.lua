@@ -89,11 +89,32 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the town, its temple, the bank, shops, spell trainers and the depot, as well as about the world status." })
-keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The temple is built around the elves' holy tree. You can find it north of this harbour." })
-keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "Finarfin is in charge of the bank. You can find him on the lowest floor of the depot." })
-keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy weapons, armor, tools, gems, magical equipment, instruments, furniture, spells and food here." })
-keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The depot is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there." })
+keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the {town}, its {temple}, the {bank}, {shops}, {spell trainers} and the {depot}, as well as about the {world status}." })
+keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The {temple} is built around the elves' holy tree. You can find it north of this {harbour}." })
+keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "{Finarfin} is in charge of the {bank}. You can find him on the lowest floor of the {depot}." })
+keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy {weapons}, {armor}, {tools}, {gems}, {magical equipment}, {instruments}, {furniture}, {spells} and {food} here." })
+keywordHandler:addKeyword({ "spell trainers" }, StdModule.say, { npcHandler = npcHandler, text = "The {spell trainers} can teach you useful spells. Ask me about {world status} if you want to hear about world changes." })
+
+local function getTwistedWatersStatusText()
+	if TwistedWatersState.isDirty() then
+		local fishCount = TwistedWatersState.KV:get("fishcount") or 0
+		if fishCount > 1000 then
+			return "The {great lake} near {Port Hope} is {dirty}. No shimmer swimmers have been seen under the surface for quite some time now."
+		end
+
+		return "The {great lake} near {Port Hope} is {dirty}. Shimmer swimmers can be seen under the surface."
+	elseif TwistedWatersState.isPendingDirty() then
+		return "Corpses are piling up in the {great lake} near {Port Hope} and the water is about to become {dirty}."
+	end
+
+	return "The {great lake} near {Port Hope} is {clean}."
+end
+
+keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The {depot} is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there." })
+keywordHandler:addKeyword({ "world status" }, StdModule.say, { npcHandler = npcHandler, text = "If you'd like to know the status of this {world} just say the {keyword} for a {world change}." })
+keywordHandler:addKeyword({ "keyword" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "change" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "twisted waters" }, StdModule.say, { npcHandler = npcHandler, text = getTwistedWatersStatusText() })
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "The elves have constructed Ab'Dendriel mainly in and on trees. There is also a large underground cave system with shops, a prison and troll caves." })
 
 npcHandler:setMessage(MESSAGE_GREET, "Hello there, |PLAYERNAME| and welcome to Ab'Dendriel! Would you like some information and a map guide?")

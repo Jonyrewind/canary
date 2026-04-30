@@ -29,32 +29,6 @@ npcConfig.voices = {
 
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
-local twistedWatersKV = KV.scoped("worldchanges"):scoped("twistedwaters")
-
-local STATE_CLEAN = "clean"
-local STATE_PENDING_DIRTY = "pending_dirty"
-local STATE_DIRTY = "dirty"
-local STATE_PENDING_CLEAN = "pending_clean"
-
-local function getTwistedWatersState()
-	return twistedWatersKV:get("state") or STATE_CLEAN
-end
-
-local function isClean()
-	return getTwistedWatersState() == STATE_CLEAN
-end
-
-local function isPendingDirty()
-	return getTwistedWatersState() == STATE_PENDING_DIRTY
-end
-
-local function isDirty()
-	return getTwistedWatersState() == STATE_DIRTY
-end
-
-local function isPendingClean()
-	return getTwistedWatersState() == STATE_PENDING_CLEAN
-end
 
 npcType.onThink = function(npc, interval)
 	npcHandler:onThink(npc, interval)
@@ -88,24 +62,24 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 	if MsgContains(message, "fish") or MsgContains(message, "fishing") then
-		if isClean() then
+		if TwistedWatersState.isClean() then
 			npcHandler:say({
-				"Well, just between the two of us - the {lake} is still crystal clear right now. Ya know, it's TOO CLEAN. That ain't attract no shimmer {swimmer}, it doesn't. ...",
+				"Well, just between the two of us - the {lake} is still crystal clear right now. Ya know, it's TOO CLEAN. That ain't attract no {shimmer swimmer}, it doesn't. ...",
 				"The {lake} needs to be dirtier, filthier, murkier yupp. An' I bet ya don't know the secret, eh? How to get it real dirty? {Corpses}. Loads of {corpses}. Piles of 'em. Throw 'em into the water, eh. You'll see.",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
-		elseif isPendingDirty() then
+		elseif TwistedWatersState.isPendingDirty() then
 			npcHandler:say({
 				"Hmmmgh.... fhsh... what? WHAT? It becomes dirty! All will be dirty! Yes! That's enough! That... that surely... *yawn*... surely will attract the shimmer {swimmer}... but... I need to rest... at first. To be ready... when ...",
 				"...oh but be careful!",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
-		elseif isDirty() then
+		elseif TwistedWatersState.isDirty() then
 			npcHandler:say({
-				"Hmmnfgfhsh... eh - WHAT!! FISH? Where!! Did ya see it? Did ya see a shimmer {swimmer}? This lake ya know, is the one an' only place in the whole world of Tibia where ya can find one!",
+				"Hmmnfgfhsh... eh - WHAT!! FISH? Where!! Did ya see it? Did ya see a {shimmer swimmer}? This lake ya know, is the one an' only place in the whole world of Tibia where ya can find one!",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
-		elseif isPendingClean() then
+		elseif TwistedWatersState.isPendingClean() then
 			npcHandler:say({
 				"The lake was dirty, but it won't stay that way much longer... *yawn* better hurry before the next server save.",
 			}, npc, creature, 500)
@@ -119,29 +93,29 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:setTopic(playerId, 0)
 	elseif MsgContains(message, "equivocolao") or MsgContains(message, "lake") then
 		npcHandler:say({
-			"This {lake} is the only place shimmer {swimmers} can be caught. However, if the {lake} is too clean, they will not settle. My guess... *yawn* is that this {lake} has underground connections to... to... caves... *yawn*...",
+			"This {lake} is the only place {shimmer swimmers} can be caught. However, if the {lake} is too clean, they will not settle. My guess... *yawn* is that this {lake} has underground connections to... to... caves... *yawn*...",
 		}, npc, creature, 500)
 		npcHandler:setTopic(playerId, 0)
 	elseif MsgContains(message, "news") then
-		if isDirty() then
+		if TwistedWatersState.isDirty() then
 			npcHandler:say({
-				"Finally, now some shimmer swimmers should arrive... *yawn* as soon as I have taken my nap... I will... start... to...",
+				"Finally, now some {shimmer swimmers} should arrive... *yawn* as soon as I have taken my nap... I will... start... to...",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
-		elseif isClean() then
+		elseif TwistedWatersState.isClean() then
 			npcHandler:say({
-				"A... aaah... *yawn* maybe a shimmer {swimmer} will... appear... if... enough... *yawn*",
+				"A... aaah... *yawn* maybe a {shimmer swimmer} will... appear... if... enough... *yawn*",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
-		elseif isPendingDirty() then
+		elseif TwistedWatersState.isPendingDirty() then
 			npcHandler:say({
 				"Hmmmgh.... fhsh... what? WHAT? It becomes dirty! All will be dirty! Yes! That's enough! That... that surely... *yawn*... surely will attract the shimmer {swimmer}... but... I need to rest... at first. To be ready... when ...",
 			}, npc, creature, 500)
 			npcHandler:setTopic(playerId, 0)
 		end
-	elseif MsgContains(message, "corpses") and isClean() then
+	elseif MsgContains(message, "corpses") and TwistedWatersState.isClean() then
 		npcHandler:say({
-			"Throwing corpses into the water is the fastest way to make it dirty and murky - just perfect to attract shimmer {swimmers}. It doesn't even matter what kind of corpse, heh.",
+			"Throwing corpses into the water is the fastest way to make it dirty and murky - just perfect to attract {shimmer swimmers}. It doesn't even matter what kind of corpse, heh.",
 		}, npc, creature, 500)
 		npcHandler:setTopic(playerId, 0)
 	elseif MsgContains(message, "job") then
@@ -165,6 +139,7 @@ npcHandler:setMessage(MESSAGE_GREET, "Mmhmn... eh? Ahm, so what is it... *yawn* 
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Yeah, yeah... bye, erm... *yawn*")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Yeah, yeah... bye, erm... *yawn*")
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 
 -- npcType registering the npcConfig table
 npcType:register(npcConfig)

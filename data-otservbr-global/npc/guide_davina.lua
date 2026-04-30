@@ -91,14 +91,35 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the town, its temple, the bank, shops, spell trainers and the depot, as well as about the world status." })
-keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The temple is just north west of the depot. You can't miss it." })
-keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "Jefrey, our bank clerk, can be found inside the depot. Easy to find." })
-keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy weapons, armor, tools, gems, magical equipment, furniture and food here." })
-keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The depot is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there." })
-keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "Well, I'm a guide. I can mark important locations on your map and give you some information about the town. I do this for free, but I'm always happy about a small donation if you can spare some money." })
-keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "This city has three main districts - a noble district, a merchant district and the slums. The class difference is clearly visible here. Most shops are in the merchant district. There are also large sugarcane plantations." })
-keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm Davina. Glad to help you today." })
+keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the {town}, its {temple}, the {bank}, {shops}, {spell trainers} and the {depot}, as well as about the {world status}." })
+keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The {temple} is just north west of the {depot}. You can't miss it." })
+keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "{Jefrey}, our {bank} clerk, can be found inside the {depot}. Easy to find." })
+keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy {weapons}, {armor}, {tools}, {gems}, {magical equipment}, {furniture} and {food} here." })
+keywordHandler:addKeyword({ "spell trainers" }, StdModule.say, { npcHandler = npcHandler, text = "The town {spell trainers} can teach you many useful spells. Ask me about {world status} if you want to hear about world changes." })
+
+local function getTwistedWatersStatusText()
+	if TwistedWatersState.isDirty() then
+		local fishCount = TwistedWatersState.KV:get("fishcount") or 0
+		if fishCount > 1000 then
+			return "The {great lake} near {Port Hope} is {dirty}. No shimmer swimmers have been seen under the surface for quite some time now."
+		end
+
+		return "The {great lake} near {Port Hope} is {dirty}. Shimmer swimmers can be seen under the surface."
+	elseif TwistedWatersState.isPendingDirty() then
+		return "Corpses are piling up in the {great lake} near {Port Hope} and the water is about to become {dirty}."
+	end
+
+	return "The {great lake} near {Port Hope} is {clean}."
+end
+
+keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The {depot} is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there." })
+keywordHandler:addKeyword({ "world status" }, StdModule.say, { npcHandler = npcHandler, text = "If you'd like to know the status of this {world} just say the {keyword} for a {world change}." })
+keywordHandler:addKeyword({ "keyword" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "change" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "twisted waters" }, StdModule.say, { npcHandler = npcHandler, text = getTwistedWatersStatusText() })
+keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "Well, I'm a guide. I can mark important locations on your map and give you some information about the {town}. I do this for free, but I'm always happy about a small donation if you can spare some money." })
+keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "This city has three main districts - a noble district, a merchant district and the slums. The class difference is clearly visible here. Most {shops} are in the merchant district. There are also large sugarcane plantations." })
+keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm {Davina}. Glad to help you today." })
 
 npcHandler:setMessage(MESSAGE_GREET, "Hello there, |PLAYERNAME| and welcome to Liberty Bay! Would you like some information and a map guide?")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")

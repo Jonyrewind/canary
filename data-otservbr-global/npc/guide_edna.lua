@@ -88,14 +88,35 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the town, its temple, the bank, shops, spell trainers and the depot, as well as about the world status." })
-keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The temple is just south west of here. Actually, it's a temple raft and the priestess is somewhat... meow... you'll see what I mean." })
-keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "Our bank clerk Znozel is somewhat... special. You can find him north of this harbour and then to the right, past the tavern." })
-keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy weapons, armor, tools, gems, magical equipment, furniture, spells and food here." })
-keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The depot is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there, but it's just north of here." })
-keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "I'm the only feline guide in Tibia. I might not have fingers anymore, but with my paw I can still mark important locations on your map and give you some information about the town and the world status." })
+keywordHandler:addKeyword({ "information" }, StdModule.say, { npcHandler = npcHandler, text = "Currently, I can tell you all about the {town}, its {temple}, the {bank}, {shops}, {spell trainers} and the {depot}, as well as about the {world status}." })
+keywordHandler:addKeyword({ "temple" }, StdModule.say, { npcHandler = npcHandler, text = "The {temple} is just south west of here. Actually, it's a temple raft and the priestess is somewhat... meow... you'll see what I mean." })
+keywordHandler:addKeyword({ "bank" }, StdModule.say, { npcHandler = npcHandler, text = "Our {bank} clerk {Znozel} is somewhat... special. You can find him north of this {harbour} and then to the right, past the {tavern}." })
+keywordHandler:addKeyword({ "shops" }, StdModule.say, { npcHandler = npcHandler, text = "You can buy {weapons}, {armor}, {tools}, {gems}, {magical equipment}, {furniture}, {spells} and {food} here." })
+keywordHandler:addKeyword({ "spell trainers" }, StdModule.say, { npcHandler = npcHandler, text = "The {spell trainers} can teach you useful spells. Ask me about {world status} if you want to hear about world changes." })
+
+local function getTwistedWatersStatusText()
+	if TwistedWatersState.isDirty() then
+		local fishCount = TwistedWatersState.KV:get("fishcount") or 0
+		if fishCount > 1000 then
+			return "The {great lake} near {Port Hope} is {dirty}. No shimmer swimmers have been seen under the surface for quite some time now."
+		end
+
+		return "The {great lake} near {Port Hope} is {dirty}. Shimmer swimmers can be seen under the surface."
+	elseif TwistedWatersState.isPendingDirty() then
+		return "Corpses are piling up in the {great lake} near {Port Hope} and the water is about to become {dirty}."
+	end
+
+	return "The {great lake} near {Port Hope} is {clean}."
+end
+
+keywordHandler:addKeyword({ "depot" }, StdModule.say, { npcHandler = npcHandler, text = "The {depot} is a place where you can safely store your belongings. You are also protected against attacks there. I escort newcomers there, but it's just north of here." })
+keywordHandler:addKeyword({ "world status" }, StdModule.say, { npcHandler = npcHandler, text = "If you'd like to know the status of this {world} just say the {keyword} for a {world change}." })
+keywordHandler:addKeyword({ "keyword" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "change" }, StdModule.say, { npcHandler = npcHandler, text = "Valid {keywords} are: {Horestis}, {Mage Tower}, {Master's Voice}, {Swamp Fever}, {Thornfire}, {Twisted Waters}, {Awash}, {Steamship}, {Horses}, {Overhunting}, {Demon War}, {Sea Serpent}, {Deepling} or {Hive}." })
+keywordHandler:addKeyword({ "twisted waters" }, StdModule.say, { npcHandler = npcHandler, text = getTwistedWatersStatusText() })
+keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "I'm the only feline guide in Tibia. I might not have fingers anymore, but with my paw I can still mark important locations on your map and give you some information about the {town} and the {world status}." })
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "Yalahar is a very old city of gigantic size, consisting of a city centre and eight quarters. The beings that are closest to be called rulers of the city are the Yalahari." })
-keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm Jonathan. Pleased to meet you." })
+keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "I'm {Jonathan}. Pleased to meet you." })
 
 npcHandler:setMessage(MESSAGE_GREET, "Meow, welcome to Yalahar |PLAYERNAME|! Even though I might not look like it, I can give you {information} and a {map} guide. Need some?")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
