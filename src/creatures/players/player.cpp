@@ -6155,6 +6155,7 @@ void Player::onPlacedCreature() {
 			}
 		}
 		g_logger().info("[{}] Active EventScheduler: {}", getName(), eventsList);
+		sendTextMessage(MESSAGE_BOOSTED_CREATURE, fmt::format("Active EventScheduler: {}", eventsList));
 	}
 }
 
