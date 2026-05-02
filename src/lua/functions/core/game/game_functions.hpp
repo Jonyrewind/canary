@@ -39,6 +39,7 @@ private:
 
 	static int luaGameGetGameState(lua_State* L);
 	static int luaGameSetGameState(lua_State* L);
+	static int luaGameGlobalServerSave(lua_State* L);
 
 	static int luaGameGetWorldType(lua_State* L);
 	static int luaGameSetWorldType(lua_State* L);
