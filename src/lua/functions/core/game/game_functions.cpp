@@ -57,6 +57,7 @@ void GameFunctions::init(lua_State* L) {
 
 	Lua::registerMethod(L, "Game", "getGameState", GameFunctions::luaGameGetGameState);
 	Lua::registerMethod(L, "Game", "setGameState", GameFunctions::luaGameSetGameState);
+	Lua::registerMethod(L, "Game", "globalServerSave", GameFunctions::luaGameGlobalServerSave);
 
 	Lua::registerMethod(L, "Game", "getWorldType", GameFunctions::luaGameGetWorldType);
 	Lua::registerMethod(L, "Game", "setWorldType", GameFunctions::luaGameSetWorldType);
@@ -382,6 +383,13 @@ int GameFunctions::luaGameSetGameState(lua_State* L) {
 	// Game.setGameState(state)
 	const GameState_t state = Lua::getNumber<GameState_t>(L, 1);
 	g_game().setGameState(state);
+	Lua::pushBoolean(L, true);
+	return 1;
+}
+
+int GameFunctions::luaGameGlobalServerSave(lua_State* L) {
+	// Game.globalServerSave()
+	g_globalEvents().globalServerSave();
 	Lua::pushBoolean(L, true);
 	return 1;
 }
