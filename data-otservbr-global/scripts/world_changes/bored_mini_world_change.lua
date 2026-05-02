@@ -93,11 +93,11 @@ end
 
 boredMiniWorldChangeStartUp:register()
 
-local boredMiniWorldChangeShutDown = GlobalEvent("boredMiniWorldChangeShutDown")
+local globalServerSave = GlobalEvent("boredMiniWorldChangeGlobalServerSave")
 
-function boredMiniWorldChangeShutDown.onShutdown()
---	config.setActive(false)
+function globalServerSave.onGlobalServerSave()
+	config.setActive(false)
 	return true
 end
 
-boredMiniWorldChangeShutDown:register()
+globalServerSave:register()

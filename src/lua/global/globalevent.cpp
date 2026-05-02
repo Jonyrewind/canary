@@ -83,6 +83,10 @@ void GlobalEvents::save() const {
 	execute(GLOBALEVENT_SAVE);
 }
 
+void GlobalEvents::globalServerSave() const {
+	execute(GLOBALEVENT_GLOBAL_SERVER_SAVE);
+}
+
 void GlobalEvents::timer() {
 	const time_t now = time(nullptr);
 
@@ -181,7 +185,8 @@ GlobalEventMap GlobalEvents::getEventMap(GlobalEvent_t type) {
 		case GLOBALEVENT_STARTUP:
 		case GLOBALEVENT_SHUTDOWN:
 		case GLOBALEVENT_RECORD:
-		case GLOBALEVENT_SAVE: {
+		case GLOBALEVENT_SAVE:
+		case GLOBALEVENT_GLOBAL_SERVER_SAVE: {
 			GlobalEventMap retMap;
 			for (const auto &it : serverMap) {
 				if (it.second->getEventType() == type) {
@@ -242,6 +247,8 @@ bool GlobalEvent::isLoadedScriptId() const {
 			return "onThink";
 		case GLOBALEVENT_SAVE:
 			return "onSave";
+		case GLOBALEVENT_GLOBAL_SERVER_SAVE:
+			return "onGlobalServerSave";
 		default:
 			g_logger().error("[GlobalEvent::getScriptTypeName] - Invalid event type");
 			return {};

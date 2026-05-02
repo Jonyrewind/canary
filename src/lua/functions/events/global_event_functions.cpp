@@ -28,6 +28,7 @@ void GlobalEventFunctions::init(lua_State* L) {
 	Lua::registerMethod(L, "GlobalEvent", "onRecord", GlobalEventFunctions::luaGlobalEventOnCallback);
 	Lua::registerMethod(L, "GlobalEvent", "onPeriodChange", GlobalEventFunctions::luaGlobalEventOnCallback);
 	Lua::registerMethod(L, "GlobalEvent", "onSave", GlobalEventFunctions::luaGlobalEventOnCallback);
+	Lua::registerMethod(L, "GlobalEvent", "onGlobalServerSave", GlobalEventFunctions::luaGlobalEventOnCallback);
 }
 
 int GlobalEventFunctions::luaCreateGlobalEvent(lua_State* L) {
@@ -59,6 +60,8 @@ int GlobalEventFunctions::luaGlobalEventType(lua_State* L) {
 			global->setEventType(GLOBALEVENT_ON_THINK);
 		} else if (tmpStr == "save") {
 			global->setEventType(GLOBALEVENT_SAVE);
+		} else if (tmpStr == "globalserversave") {
+			global->setEventType(GLOBALEVENT_GLOBAL_SERVER_SAVE);
 		} else {
 			g_logger().error("[GlobalEventFunctions::luaGlobalEventType] - "
 			                 "Invalid type for global event: {}");
