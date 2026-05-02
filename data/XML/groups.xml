@@ -114,7 +114,7 @@
 			<flag canillusionall="1" />
 			<flag cansenseinvisibility="1" />
 			<flag ignoredbymonsters="1" />
-			<flag ignoredbynpcs="1" />
+			<flag ignoredbynpcs="0" />
 			<flag notgaininfight="1" />
 			<flag hasinfinitemana="1" />
 			<flag hasinfinitesoul="1" />

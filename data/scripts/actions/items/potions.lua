@@ -85,8 +85,8 @@ function flaskPotion.onUse(player, item, fromPosition, target, toPosition, isHot
 		return true
 	end
 
-	if potion.health or potion.mana or potion.combat then
-		local multiplier = player:getLevel() / 95
+		if potion.health or potion.mana or potion.combat then
+			local multiplier = 0.6 + (math.log(player:getLevel() + 9) / math.log(10) / 5)
 		if potion.health then
 			doTargetCombatHealth(player, target, COMBAT_HEALING, potion.health[1] * multiplier, potion.health[2] * multiplier, CONST_ME_MAGIC_BLUE)
 		end

@@ -241,6 +241,10 @@ do
 			self:type("save")
 			self:onSave(value)
 			return
+		elseif key == "onGlobalServerSave" then
+			self:type("globalserversave")
+			self:onGlobalServerSave(value)
+			return
 		end
 		rawset(self, key, value)
 	end

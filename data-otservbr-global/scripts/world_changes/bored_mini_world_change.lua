@@ -1,9 +1,10 @@
 config = {
 	enable = true,
-	startChance = 100,
+	startChance = 10,
 	wydaPosition = Position(32719, 31983, 7),
 	spawnRadius = 10,
 	spawnAmount = 3,
+	spawnmaxAttempts = 10,
 	spawnMonsterName = "Giant Spider Wyda",
 	monsterDeathEvent = "GiantSpiderWyda",
 	kv = KV.scoped("worldchanges"):scoped("bored"),
@@ -33,71 +34,64 @@ end
 local function spawnFakeGiantSpider(position)
 	local monster = Game.createMonster(config.spawnMonsterName, position, true, true)
 	if not monster then
-		logger.info("[MiniWorldChange] Failed to spawn {} at {}", config.spawnMonsterName, position)
+		logger.error("[MiniWorldChange] Failed to spawn {} at {}", config.spawnMonsterName, position)
 		return false
 	end
 
 	monster:registerEvent(config.monsterDeathEvent)
 	monster:setSpawnPosition()
 	monster:remove()
-
-	logger.info("[MiniWorldChange] Spawned {} at {}", config.spawnMonsterName, position)
 	return true
 end
 
 local function spawnBoredMiniWorldChange()
-	if not config.enable then
-		logger.info("[MiniWorldChange] Bored Mini World Change disabled in config")
-		return true
-	end
-
 	if not config.isActive() then
-		logger.info("[MiniWorldChange] Bored Mini World Change inactive on spawn")
 		return true
 	end
 
 	local spawnedCount = 0
 	local attemptedCount = 0
+	local Attempts = config.spawnAmount * config.spawnmaxAttempts
 
-	for _ = 1, config.spawnAmount do
+	while spawnedCount < config.spawnAmount and attemptedCount < Attempts do
 		attemptedCount = attemptedCount + 1
 		local spawnPosition = getRandomSpawnPosition(config.wydaPosition, config.spawnRadius)
 		if canSpawnAt(spawnPosition) then
 			if spawnFakeGiantSpider(spawnPosition) then
 				spawnedCount = spawnedCount + 1
 			end
-		else
-			logger.info("[MiniWorldChange] Spawn blocked at {}", spawnPosition)
 		end
 	end
-
-	logger.info("[MiniWorldChange] Bored spawn finished: {} spawned out of {} attempts around {} with radius {}", spawnedCount, attemptedCount, config.wydaPosition, config.spawnRadius)
 	return true
 end
 
-local boredMiniWorldChangeStartUp = GlobalEvent("Bored Mini World Change StartUp")
+local boredMiniWorldChangeStartUp = GlobalEvent("BoredMiniWorldChangeStartUp")
 
 function boredMiniWorldChangeStartUp.onStartup()
-	local currentStatus = config.isActive()
-	logger.info("[MiniWorldChange] Startup status value is {}", tostring(currentStatus))
+	if not config.enable then
+		logger.info("[MiniWorldChange] Bored Mini World Change is disabled in config - data-otservbr-global/scripts/world_changes/bored_mini_world_change.lua")
+		return true
+	end
 
 	if not config.isActive() then
 		local rolledActive = math.random(100) <= config.startChance
-		logger.info("[MiniWorldChange] No status stored, rolling start chance {}% -> {}", config.startChance, tostring(rolledActive))
-		config.setActive(true)
-		logger.info("[MiniWorldChange] Status after startup roll is {}", config.isActive())
+		if not rolledActive then
+			return true
+		end
 	end
 
+	config.setActive(true)
+	logger.info("[MiniWorldChange] Bored Mini World Change active")
 	return spawnBoredMiniWorldChange()
 end
 
 boredMiniWorldChangeStartUp:register()
 
-local globalServerSave = GlobalEvent("boredMiniWorldChangeGlobalServerSave")
+local boredMiniWorldChangeGlobalServerSave = GlobalEvent("boredMiniWorldChangeGlobalServerSave")
 
-function globalServerSave.onGlobalServerSave()
+function boredMiniWorldChangeGlobalServerSave.onGlobalServerSave()
 	config.setActive(false)
 	return true
 end
 
-globalServerSave:register()
+boredMiniWorldChangeGlobalServerSave:register()

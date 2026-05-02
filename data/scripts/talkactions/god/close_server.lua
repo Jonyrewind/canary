@@ -8,6 +8,7 @@ function closeServer.onSay(player, words, param)
 		Game.setGameState(GAME_STATE_SHUTDOWN)
 		Webhook.sendMessage(":red_circle: Server was shutdown by: **" .. player:getName() .. "**", announcementChannels["serverAnnouncements"])
 	elseif param == "save" then
+		Game.globalServerSave()
 		if configManager.getBoolean(configKeys.GLOBAL_SERVER_SAVE_CLEAN_MAP) then
 			cleanMap()
 		end
