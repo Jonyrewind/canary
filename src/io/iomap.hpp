@@ -124,14 +124,39 @@ public:
 	 * \returns true if the npcs spawn map custom was loaded successfully
 	 */
 	static bool loadNpcsCustom(Map* map, const std::string &mapName, int customMapIndex) {
-		if (map->npcfile.empty()) {
-			// OTBM file doesn't tell us about the npcfile,
-			// Lets guess it is mapname-npc.xml.
-			map->npcfile = mapName;
-			map->npcfile += "-npc.xml";
+		const auto npcFile = mapName + "-npc.xml";
+		auto &spawnContainer = map->spawnsNpcCustomMaps[customMapIndex];
+
+		g_logger().debug(
+			"[IOMap::loadNpcsCustom] customIndex={} mapBase='{}' resolvedNpcFile='{}' loaded={} started={}",
+			customMapIndex,
+			mapName,
+			npcFile,
+			spawnContainer.isLoaded(),
+			spawnContainer.isStarted()
+		);
+
+		// Custom maps must not reuse stale NPC spawn state from a previous map load.
+		// Reset the slot before parsing the next file so multiple custom maps can coexist.
+		if (spawnContainer.isLoaded() || spawnContainer.isStarted()) {
+			g_logger().debug(
+				"[IOMap::loadNpcsCustom] resetting spawn container for customIndex={} before loading '{}'",
+				customMapIndex,
+				npcFile
+			);
+			spawnContainer.clear();
 		}
 
-		return map->spawnsNpcCustomMaps[customMapIndex].loadFromXml(map->npcfile);
+		const bool loaded = spawnContainer.loadFromXml(npcFile);
+		g_logger().debug(
+			"[IOMap::loadNpcsCustom] customIndex={} file='{}' result={} spawnCount={}",
+			customMapIndex,
+			npcFile,
+			loaded,
+			spawnContainer.getSpawnNpcList().size()
+		);
+
+		return loaded;
 	}
 
 	/**
