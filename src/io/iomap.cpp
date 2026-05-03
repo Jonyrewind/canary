@@ -81,6 +81,7 @@ void IOMap::loadMap(Map* map, const Position &pos) {
 }
 
 void IOMap::parseMapDataAttributes(FileStream &stream, Map* map) {
+	const auto mapBasePath = map->path.parent_path();
 	bool end = false;
 	while (!end) {
 		const uint8_t attr = stream.getU8();
@@ -90,22 +91,18 @@ void IOMap::parseMapDataAttributes(FileStream &stream, Map* map) {
 			} break;
 
 			case OTBM_ATTR_EXT_SPAWN_MONSTER_FILE: {
-				map->monsterfile = map->path.string().substr(0, map->path.string().rfind('/') + 1);
-				map->monsterfile += stream.getString();
+				map->monsterfile = (mapBasePath / stream.getString()).string();
 			} break;
 
 			case OTBM_ATTR_EXT_SPAWN_NPC_FILE: {
-				map->npcfile = map->path.string().substr(0, map->path.string().rfind('/') + 1);
-				map->npcfile += stream.getString();
+				map->npcfile = (mapBasePath / stream.getString()).string();
 			} break;
 			case OTBM_ATTR_EXT_HOUSE_FILE: {
-				map->housefile = map->path.string().substr(0, map->path.string().rfind('/') + 1);
-				map->housefile += stream.getString();
+				map->housefile = (mapBasePath / stream.getString()).string();
 			} break;
 
 			case OTBM_ATTR_EXT_ZONE_FILE: {
-				map->zonesfile = map->path.string().substr(0, map->path.string().rfind('/') + 1);
-				map->zonesfile += stream.getString();
+				map->zonesfile = (mapBasePath / stream.getString()).string();
 			} break;
 
 			default:
