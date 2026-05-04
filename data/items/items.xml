@@ -33198,6 +33198,10 @@
 		<attribute key="absorbpercentdrown" value="100"/>
 		<attribute key="armor" value="8"/>
 		<attribute key="weight" value="4600"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="150"/>
+			<attribute key="slot" value="head"/>
+		</attribute>
 	</item>
 	<item id="14259" name="Eighty outfit"/>
 	<item fromid="14260" toid="14669" name="RESERVED SPRITE"/>

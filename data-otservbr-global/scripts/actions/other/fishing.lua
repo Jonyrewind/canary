@@ -42,10 +42,15 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local targetId = target.itemid
 
 	if table.contains(dirtywaterIds, targetId) and target:getPosition():isInRange(Position(32592, 32638, 7), Position(32634, 32674, 7)) then
-		if useWorms and not player:removeItem("worm", 1) then
-			return true
-		end
 		if rollFishingSuccess(player) then
+			if useWorms and not player:removeItem("worm", 1) then
+				return true
+			end
+
+			if player:getItemCount(3492) > 0 then
+				player:addSkillTries(SKILL_FISHING, 1, true)
+			end
+
 			return TwistedWaters.tryFish(player, item, fromPosition, target, toPosition)
 		end
 		toPosition:sendMagicEffect(CONST_ME_LOSEENERGY)

@@ -1,6 +1,6 @@
 TwistedWaters = {
-	corpseThreshold = 30,
-	fishThreshold = 30,
+	corpseThreshold = 25,
+	fishThreshold = 1000,
 	mapPath = "data-otservbr-global/world/world_changes/twisted_waters/",
 }
 

@@ -3055,7 +3055,7 @@ GlobalStorage = {
 	},
 	WorldBoard = {
 		NightmareIsle = {
-			AnkhramunNorth = 60191,
+			AnkrahmunNorth  = 60191,
 			DarashiaNorth = 60192,
 			DarashiaWest = 60193,
 		},
