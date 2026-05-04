@@ -53610,7 +53610,6 @@
 		<monster name="Insectoid Worker" x="-2" y="-2" z="8" spawntime="90" />
 		<monster name="Spitter" x="0" y="2" z="8" spawntime="90" />
 	</monster>
-	<monster centerx="33463" centery="31265" centerz="8" radius="3" />
 	<monster centerx="33470" centery="31265" centerz="8" radius="3">
 		<monster name="Insectoid Worker" x="-3" y="2" z="8" spawntime="90" />
 	</monster>
@@ -158000,6 +157999,9 @@
 		<monster name="Hand of Cursed Fate" x="-3" y="2" z="13" spawntime="90" />
 		<monster name="Hand of Cursed Fate" x="1" y="3" z="13" spawntime="90" />
 	</monster>
+	<monster centerx="33455" centery="31628" centerz="13" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="13" spawntime="60" />
+	</monster>
 	<monster centerx="32560" centery="31629" centerz="13" radius="3">
 		<monster name="Bonelord" x="-2" y="1" z="13" spawntime="90" />
 		<monster name="Skeleton" x="-1" y="1" z="13" spawntime="90" />
@@ -158130,6 +158132,9 @@
 		<monster name="Destroyer" x="-4" y="3" z="13" spawntime="90" />
 		<monster name="Destroyer" x="0" y="3" z="13" spawntime="60" />
 		<monster name="Dark Torturer" x="3" y="3" z="13" spawntime="60" />
+	</monster>
+	<monster centerx="33453" centery="31638" centerz="13" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="13" spawntime="60" />
 	</monster>
 	<monster centerx="33192" centery="31639" centerz="13" radius="1">
 		<monster name="Minotaur Guard" x="0" y="-1" z="13" spawntime="90" />
@@ -158624,6 +158629,9 @@
 	<monster centerx="33252" centery="31745" centerz="13" radius="1">
 		<monster name="Quara Pincher" x="0" y="0" z="13" spawntime="60" />
 	</monster>
+	<monster centerx="33545" centery="31746" centerz="13" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="13" spawntime="60" />
+	</monster>
 	<monster centerx="33256" centery="31747" centerz="13" radius="1">
 		<monster name="Quara Hydromancer" x="0" y="0" z="13" spawntime="60" />
 	</monster>
@@ -158860,6 +158868,9 @@
 	<monster centerx="33205" centery="31768" centerz="13" radius="1">
 		<monster name="Quara Pincher" x="0" y="0" z="13" spawntime="60" />
 	</monster>
+	<monster centerx="33557" centery="31768" centerz="13" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="13" spawntime="60" />
+	</monster>
 	<monster centerx="33100" centery="31769" centerz="13" radius="1">
 		<monster name="Ice Golem" x="0" y="0" z="13" spawntime="60" />
 	</monster>
@@ -158896,6 +158907,7 @@
 	</monster>
 	<monster centerx="33554" centery="31776" centerz="13" radius="3">
 		<monster name="Sea Serpent" x="3" y="-3" z="13" spawntime="60" />
+		<monster name="Deepsea Blood Crab" x="-2" y="3" z="13" spawntime="60" />
 	</monster>
 	<monster centerx="33090" centery="31777" centerz="13" radius="1">
 		<monster name="Crystal Spider" x="0" y="0" z="13" spawntime="60" />
@@ -169572,6 +169584,9 @@
 	<monster centerx="33156" centery="31624" centerz="14" radius="1">
 		<monster name="Monk" x="1" y="0" z="14" spawntime="90" />
 	</monster>
+	<monster centerx="33503" centery="31624" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33133" centery="31625" centerz="14" radius="1">
 		<monster name="Monk" x="0" y="1" z="14" spawntime="90" />
 	</monster>
@@ -169587,6 +169602,9 @@
 	<monster centerx="33491" centery="31629" centerz="14" radius="3">
 		<monster name="Blood Crab" x="0" y="-3" z="14" spawntime="60" />
 		<monster name="Sea Serpent" x="0" y="-1" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33513" centery="31629" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33747" centery="31629" centerz="14" radius="1">
 		<monster name="Dreadful Harvester" x="0" y="0" z="14" spawntime="10" />
@@ -169615,6 +169633,9 @@
 	</monster>
 	<monster centerx="32799" centery="31632" centerz="14" radius="1">
 		<monster name="Bonelord" x="1" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33453" centery="31632" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33738" centery="31632" centerz="14" radius="1">
 		<monster name="Weeping Soul" x="0" y="0" z="14" spawntime="10" />
@@ -169648,6 +169669,9 @@
 	<monster centerx="32799" centery="31635" centerz="14" radius="1">
 		<monster name="Ghoul" x="1" y="0" z="14" spawntime="90" />
 	</monster>
+	<monster centerx="33470" centery="31635" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33711" centery="31635" centerz="14" radius="1">
 		<monster name="Lesser Splinter of Madness" x="1" y="0" z="14" spawntime="10" />
 	</monster>
@@ -169664,6 +169688,9 @@
 	<monster centerx="33298" centery="31640" centerz="14" radius="1">
 		<monster name="Behemoth" x="-1" y="0" z="14" spawntime="90" />
 	</monster>
+	<monster centerx="33440" centery="31640" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="32786" centery="31641" centerz="14" radius="1">
 		<monster name="Ghoul" x="1" y="0" z="14" spawntime="90" />
 	</monster>
@@ -169677,6 +169704,9 @@
 	</monster>
 	<monster centerx="32807" centery="31642" centerz="14" radius="1">
 		<monster name="Ghoul" x="1" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33555" centery="31642" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32714" centery="31643" centerz="14" radius="1">
 		<monster name="Skeleton" x="1" y="0" z="14" spawntime="90" />
@@ -169733,6 +169763,9 @@
 	<monster centerx="33442" centery="31650" centerz="14" radius="3">
 		<monster name="Blood Crab" x="-1" y="-1" z="14" spawntime="60" />
 		<monster name="Shark" x="0" y="-1" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33573" centery="31653" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32795" centery="31654" centerz="14" radius="1">
 		<monster name="Demon Skeleton" x="1" y="0" z="14" spawntime="90" />
@@ -170141,6 +170174,9 @@
 	<monster centerx="33820" centery="31672" centerz="14" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33560" centery="31673" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33923" centery="31673" centerz="14" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="14" spawntime="60" />
 	</monster>
@@ -170209,6 +170245,9 @@
 	</monster>
 	<monster centerx="33199" centery="31675" centerz="14" radius="2">
 		<monster name="Dark Apprentice" x="-2" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33572" centery="31675" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33812" centery="31675" centerz="14" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="14" spawntime="60" />
@@ -170353,6 +170392,9 @@
 	</monster>
 	<monster centerx="33344" centery="31683" centerz="14" radius="1">
 		<monster name="Behemoth" x="0" y="-1" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33560" centery="31683" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33851" centery="31683" centerz="14" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="14" spawntime="60" />
@@ -170590,6 +170632,9 @@
 	</monster>
 	<monster centerx="33142" centery="31700" centerz="14" radius="1">
 		<monster name="Fire Elemental" x="1" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33560" centery="31700" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33867" centery="31700" centerz="14" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="14" spawntime="60" />
@@ -170924,6 +170969,9 @@
 	<monster centerx="34112" centery="31725" centerz="14" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33528" centery="31726" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33812" centery="31726" centerz="14" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="14" spawntime="60" />
 	</monster>
@@ -171062,6 +171110,9 @@
 	</monster>
 	<monster centerx="34043" centery="31737" centerz="14" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33562" centery="31738" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33847" centery="31738" centerz="14" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="14" spawntime="60" />
@@ -171243,6 +171294,9 @@
 	<monster centerx="34087" centery="31751" centerz="14" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33557" centery="31752" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33822" centery="31752" centerz="14" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="14" spawntime="60" />
 	</monster>
@@ -171251,6 +171305,9 @@
 	</monster>
 	<monster centerx="34032" centery="31752" centerz="14" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33513" centery="31753" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33898" centery="31753" centerz="14" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="14" spawntime="60" />
@@ -171387,6 +171444,9 @@
 	<monster centerx="33876" centery="31762" centerz="14" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33512" centery="31764" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33881" centery="31764" centerz="14" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="14" spawntime="60" />
 	</monster>
@@ -171404,6 +171464,9 @@
 	</monster>
 	<monster centerx="33554" centery="31776" centerz="14" radius="3">
 		<monster name="Sea Serpent" x="-1" y="0" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33513" centery="31777" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32839" centery="31783" centerz="14" radius="3">
 		<monster name="Wiggler" x="0" y="1" z="14" spawntime="90" />
@@ -171488,6 +171551,9 @@
 		<monster name="Mushroom Sniffer" x="3" y="0" z="14" spawntime="90" />
 		<monster name="Wyvern" x="0" y="1" z="14" spawntime="90" />
 	</monster>
+	<monster centerx="33541" centery="31794" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="32871" centery="31796" centerz="14" radius="3">
 		<monster name="Wiggler" x="0" y="1" z="14" spawntime="90" />
 	</monster>
@@ -171547,6 +171613,9 @@
 	</monster>
 	<monster centerx="33294" centery="31803" centerz="14" radius="1">
 		<monster name="Massive Fire Elemental" x="0" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33555" centery="31803" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32845" centery="31804" centerz="14" radius="3">
 		<monster name="Mushroom Sniffer" x="0" y="1" z="14" spawntime="90" />
@@ -171633,6 +171702,9 @@
 		<monster name="Mushroom Sniffer" x="0" y="1" z="14" spawntime="90" />
 		<monster name="Wiggler" x="0" y="3" z="14" spawntime="90" />
 	</monster>
+	<monster centerx="33540" centery="31812" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="32859" centery="31813" centerz="14" radius="3">
 		<monster name="Mushroom Sniffer" x="-1" y="-1" z="14" spawntime="90" />
 		<monster name="Wyvern" x="0" y="1" z="14" spawntime="90" />
@@ -171647,6 +171719,9 @@
 	</monster>
 	<monster centerx="33001" centery="31814" centerz="14" radius="3">
 		<monster name="Crystalcrusher" x="0" y="1" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33411" centery="31814" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32869" centery="31815" centerz="14" radius="3">
 		<monster name="Wyvern" x="0" y="1" z="14" spawntime="90" />
@@ -171867,6 +171942,9 @@
 	<monster centerx="34054" centery="31830" centerz="14" radius="1">
 		<monster name="Darklight Matter" x="0" y="0" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33543" centery="31831" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="32392" centery="31832" centerz="14" radius="3">
 		<monster name="Corym Vanguard" x="1" y="2" z="14" spawntime="90" />
 	</monster>
@@ -171880,6 +171958,9 @@
 	</monster>
 	<monster centerx="33309" centery="31832" centerz="14" radius="1">
 		<monster name="Massive Fire Elemental" x="0" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33555" centery="31832" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="34063" centery="31832" centerz="14" radius="1">
 		<monster name="Walking Pillar" x="0" y="0" z="14" spawntime="60" />
@@ -172102,6 +172183,9 @@
 		<monster name="Infernalist" x="2" y="0" z="14" spawntime="60" />
 		<monster name="Massive Fire Elemental" x="0" y="2" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33493" centery="31846" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33498" centery="31846" centerz="14" radius="3">
 		<monster name="Young Sea Serpent" x="3" y="-2" z="14" spawntime="60" />
 	</monster>
@@ -172125,6 +172209,9 @@
 	</monster>
 	<monster centerx="32622" centery="31848" centerz="14" radius="1">
 		<monster name="Dwarf Guard" x="0" y="0" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33377" centery="31848" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="32627" centery="31849" centerz="14" radius="1">
 		<monster name="Dwarf Guard" x="0" y="0" z="14" spawntime="90" />
@@ -172172,6 +172259,9 @@
 	</monster>
 	<monster centerx="34070" centery="31851" centerz="14" radius="1">
 		<monster name="Darklight Striker" x="0" y="0" z="14" spawntime="60" />
+	</monster>
+	<monster centerx="33395" centery="31852" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="34063" centery="31852" centerz="14" radius="1">
 		<monster name="Darklight Source" x="0" y="0" z="14" spawntime="60" />
@@ -172286,6 +172376,9 @@
 	<monster centerx="33512" centery="31860" centerz="14" radius="3">
 		<monster name="Shark" x="-2" y="-3" z="14" spawntime="60" />
 	</monster>
+	<monster centerx="33540" centery="31860" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
+	</monster>
 	<monster centerx="33547" centery="31860" centerz="14" radius="3">
 		<monster name="Young Sea Serpent" x="-2" y="0" z="14" spawntime="60" />
 	</monster>
@@ -172324,6 +172417,9 @@
 	</monster>
 	<monster centerx="32625" centery="31862" centerz="14" radius="1">
 		<monster name="Dwarf Guard" x="1" y="-1" z="14" spawntime="90" />
+	</monster>
+	<monster centerx="33506" centery="31862" centerz="14" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="14" spawntime="60" />
 	</monster>
 	<monster centerx="33813" centery="31862" centerz="14" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="14" spawntime="60" />
@@ -183273,9 +183369,18 @@
 	<monster centerx="33442" centery="31622" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="3" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33460" centery="31623" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33156" centery="31624" centerz="15" radius="1">
 		<monster name="Hero" x="-1" y="-1" z="15" spawntime="90" />
 		<monster name="Hero" x="1" y="-1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33422" centery="31624" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33428" centery="31624" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33063" centery="31625" centerz="15" radius="3">
 		<monster name="Demon" x="-1" y="0" z="15" spawntime="90" />
@@ -183292,6 +183397,21 @@
 	<monster centerx="33138" centery="31626" centerz="15" radius="1">
 		<monster name="Dark Magician" x="-1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33447" centery="31626" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33463" centery="31626" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33496" centery="31627" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31627" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33433" centery="31628" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32396" centery="31629" centerz="15" radius="3">
 		<monster name="Elf Arcanist" x="1" y="-2" z="15" spawntime="90" />
 		<monster name="Elf Arcanist" x="1" y="1" z="15" spawntime="90" />
@@ -183305,11 +183425,20 @@
 	<monster centerx="33414" centery="31629" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="3" y="-3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33444" centery="31629" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33470" centery="31629" centerz="15" radius="3">
 		<monster name="Shark" x="-1" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33477" centery="31629" centerz="15" radius="3">
 		<monster name="Blood Crab" x="2" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33482" centery="31629" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33508" centery="31629" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33526" centery="31629" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="3" y="-1" z="15" spawntime="60" />
@@ -183326,15 +183455,40 @@
 	<monster centerx="33137" centery="31630" centerz="15" radius="1">
 		<monster name="Priestess" x="0" y="-1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33461" centery="31630" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+		<monster name="Seacrest Serpent" x="1" y="0" z="15" spawntime="60928" />
+	</monster>
+	<monster centerx="33503" centery="31630" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32508" centery="31631" centerz="15" radius="3">
 		<monster name="Warlock" x="1" y="-3" z="15" spawntime="90" />
 		<monster name="Elf Arcanist" x="-1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33456" centery="31632" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33433" centery="31633" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33575" centery="31633" centerz="15" radius="1">
 		<monster name="Blood Beast" x="0" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33456" centery="31635" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33494" centery="31635" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33522" centery="31635" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32432" centery="31636" centerz="15" radius="2">
 		<monster name="Elf Arcanist" x="-2" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33443" centery="31636" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33484" centery="31636" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-1" y="2" z="15" spawntime="60" />
@@ -183366,6 +183520,33 @@
 	<monster centerx="33203" centery="31638" centerz="15" radius="3">
 		<monster name="Demon" x="-2" y="2" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33497" centery="31639" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33444" centery="31640" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33425" centery="31641" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33467" centery="31641" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33481" centery="31641" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33489" centery="31642" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33442" centery="31643" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33463" centery="31643" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33485" centery="31643" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33505" centery="31643" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-1" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183386,17 +183567,35 @@
 	<monster centerx="33547" centery="31643" centerz="15" radius="3">
 		<monster name="Quara Mantassin" x="-3" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33500" centery="31644" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32406" centery="31645" centerz="15" radius="3">
 		<monster name="Warlock" x="-2" y="1" z="15" spawntime="90" />
 	</monster>
 	<monster centerx="32419" centery="31645" centerz="15" radius="3">
 		<monster name="Warlock" x="1" y="2" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33423" centery="31645" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33427" centery="31646" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32508" centery="31647" centerz="15" radius="3">
 		<monster name="Warlock" x="1" y="-2" z="15" spawntime="90" />
 	</monster>
 	<monster centerx="33206" centery="31647" centerz="15" radius="3">
 		<monster name="Demon" x="2" y="-2" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33432" centery="31647" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33435" centery="31647" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33536" centery="31649" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33449" centery="31650" centerz="15" radius="3">
 		<monster name="Blood Crab" x="1" y="-1" z="15" spawntime="60" />
@@ -183412,14 +183611,29 @@
 	<monster centerx="33498" centery="31650" centerz="15" radius="3">
 		<monster name="Quara Predator" x="3" y="3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33506" centery="31650" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33512" centery="31650" centerz="15" radius="3">
 		<monster name="Shark" x="2" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33526" centery="31650" centerz="15" radius="3">
 		<monster name="Quara Mantassin" x="0" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33539" centery="31651" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33301" centery="31653" centerz="15" radius="2">
 		<monster name="Behemoth" x="-1" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33428" centery="31653" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33486" centery="31653" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33439" centery="31654" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32400" centery="31656" centerz="15" radius="3">
 		<monster name="Warlock" x="2" y="-1" z="15" spawntime="90" />
@@ -183428,8 +183642,14 @@
 	<monster centerx="33876" centery="31656" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33424" centery="31657" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33463" centery="31657" centerz="15" radius="3">
 		<monster name="Shark" x="3" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33472" centery="31657" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33491" centery="31657" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="0" y="-3" z="15" spawntime="60" />
@@ -183446,14 +183666,29 @@
 	<monster centerx="33554" centery="31657" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="0" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33444" centery="31658" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33873" centery="31658" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33294" centery="31659" centerz="15" radius="2">
 		<monster name="Behemoth" x="1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33548" centery="31659" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33436" centery="31660" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33510" centery="31660" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33876" centery="31660" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31663" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33874" centery="31663" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
@@ -183468,6 +183703,7 @@
 		<monster name="Blood Crab" x="1" y="1" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33491" centery="31664" centerz="15" radius="3">
+		<monster name="Seacrest Serpent" x="3" y="-3" z="15" spawntime="60" />
 		<monster name="Quara Pincher" x="0" y="-2" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33498" centery="31664" centerz="15" radius="3">
@@ -183484,17 +183720,35 @@
 		<monster name="Skeleton" x="-1" y="0" z="15" spawntime="90" />
 		<monster name="Skeleton" x="2" y="2" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33420" centery="31665" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33513" centery="31665" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33872" centery="31665" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33142" centery="31666" centerz="15" radius="1">
 		<monster name="Fire Elemental" x="0" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33544" centery="31666" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34015" centery="31666" centerz="15" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33298" centery="31667" centerz="15" radius="2">
 		<monster name="Behemoth" x="1" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33438" centery="31669" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33456" centery="31669" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33570" centery="31669" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33873" centery="31669" centerz="15" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="15" spawntime="60" />
@@ -183508,6 +183762,9 @@
 	<monster centerx="33267" centery="31670" centerz="15" radius="2">
 		<monster name="Behemoth" x="1" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33484" centery="31670" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33869" centery="31670" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183516,6 +183773,9 @@
 	</monster>
 	<monster centerx="33428" centery="31671" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-1" y="1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33442" centery="31671" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33463" centery="31671" centerz="15" radius="3">
 		<monster name="Quara Pincher" x="2" y="-2" z="15" spawntime="60" />
@@ -183541,8 +183801,20 @@
 	<monster centerx="33540" centery="31671" centerz="15" radius="3">
 		<monster name="Blood Crab" x="1" y="2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33552" centery="31672" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34019" centery="31672" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33422" centery="31673" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33528" centery="31673" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33444" centery="31674" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33869" centery="31674" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
@@ -183553,6 +183825,9 @@
 	<monster centerx="33274" centery="31675" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="0" y="-1" z="15" spawntime="90" />
 		<monster name="Behemoth" x="2" y="2" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33476" centery="31676" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32676" centery="31677" centerz="15" radius="5">
 		<monster name="Demon Skeleton" x="-1" y="-5" z="15" spawntime="90" />
@@ -183565,6 +183840,18 @@
 		<monster name="Skeleton" x="2" y="2" z="15" spawntime="90" />
 		<monster name="Ghoul" x="4" y="2" z="15" spawntime="90" />
 		<monster name="Skeleton" x="-1" y="4" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33425" centery="31677" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33492" centery="31677" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33531" centery="31677" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33553" centery="31677" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33865" centery="31677" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
@@ -183594,6 +183881,12 @@
 	<monster centerx="33294" centery="31679" centerz="15" radius="2">
 		<monster name="Cyclops" x="1" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33474" centery="31679" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33513" centery="31679" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33280" centery="31680" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="0" y="-1" z="15" spawntime="90" />
 		<monster name="Cyclops Drone" x="2" y="2" z="15" spawntime="90" />
@@ -183603,12 +183896,36 @@
 		<monster name="Cyclops" x="-2" y="1" z="15" spawntime="90" />
 		<monster name="Dwarf Soldier" x="1" y="2" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33422" centery="31680" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34027" centery="31681" centerz="15" radius="1">
 		<monster name="Rotten Man-Maggot" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33454" centery="31682" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33462" centery="31682" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33527" centery="31682" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33558" centery="31682" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33326" centery="31683" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="2" y="-1" z="15" spawntime="60" />
 		<monster name="Cyclops Drone" x="-1" y="1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33515" centery="31683" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33520" centery="31683" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33535" centery="31683" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33865" centery="31683" centerz="15" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="15" spawntime="60" />
@@ -183616,12 +183933,21 @@
 	<monster centerx="33319" centery="31684" centerz="15" radius="2">
 		<monster name="Behemoth" x="0" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33449" centery="31684" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33493" centery="31684" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33296" centery="31685" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="2" y="-1" z="15" spawntime="90" />
 		<monster name="Cyclops" x="-2" y="0" z="15" spawntime="90" />
 	</monster>
 	<monster centerx="33333" centery="31685" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33497" centery="31685" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33547" centery="31685" centerz="15" radius="3">
 		<monster name="Blood Crab" x="0" y="-2" z="15" spawntime="60" />
@@ -183637,11 +183963,17 @@
 		<monster name="Fire Devil" x="-3" y="2" z="15" spawntime="60" />
 		<monster name="Hellfire Fighter" x="0" y="3" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33512" centery="31686" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33863" centery="31686" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34028" centery="31686" centerz="15" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33444" centery="31687" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33860" centery="31687" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
@@ -183651,6 +183983,9 @@
 	</monster>
 	<monster centerx="34106" centery="31687" centerz="15" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33532" centery="31688" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34031" centery="31688" centerz="15" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="15" spawntime="60" />
@@ -183668,6 +184003,9 @@
 		<monster name="Behemoth" x="1" y="-1" z="15" spawntime="90" />
 		<monster name="Cyclops Smith" x="-2" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33517" centery="31689" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34043" centery="31689" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183678,6 +184016,12 @@
 		<monster name="Dwarf Soldier" x="1" y="2" z="15" spawntime="90" />
 		<monster name="Cyclops Drone" x="3" y="2" z="15" spawntime="90" />
 		<monster name="Dwarf Soldier" x="-3" y="3" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33500" centery="31690" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33504" centery="31690" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33897" centery="31690" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
@@ -183728,6 +184072,9 @@
 	<monster centerx="33512" centery="31692" centerz="15" radius="3">
 		<monster name="Quara Pincher" x="2" y="-2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33553" centery="31692" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33833" centery="31692" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183739,6 +184086,9 @@
 	</monster>
 	<monster centerx="33886" centery="31692" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33458" centery="31693" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33827" centery="31693" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
@@ -183767,6 +184117,21 @@
 	<monster centerx="34080" centery="31693" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33430" centery="31694" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33448" centery="31694" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33484" centery="31694" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33528" centery="31694" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33544" centery="31694" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33882" centery="31694" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183793,6 +184158,12 @@
 	</monster>
 	<monster centerx="34083" centery="31695" centerz="15" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33541" centery="31696" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33560" centery="31696" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33820" centery="31696" centerz="15" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="15" spawntime="60" />
@@ -183864,9 +184235,15 @@
 		<monster name="Hellfire Fighter" x="-7" y="5" z="15" spawntime="60" />
 		<monster name="Fire Devil" x="6" y="6" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33421" centery="31699" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33463" centery="31699" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="3" y="1" z="15" spawntime="60" />
 		<monster name="Shark" x="-1" y="3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33488" centery="31699" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33533" centery="31699" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="0" y="2" z="15" spawntime="60" />
@@ -183883,6 +184260,12 @@
 	<monster centerx="34073" centery="31699" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33519" centery="31700" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31700" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33809" centery="31700" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183893,6 +184276,12 @@
 		<monster name="Cyclops Smith" x="2" y="-1" z="15" spawntime="90" />
 		<monster name="Cyclops Smith" x="-1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33509" centery="31701" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33523" centery="31701" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33865" centery="31701" centerz="15" radius="1">
 		<monster name="Oozing Corpus" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183902,6 +184291,12 @@
 	<monster centerx="33144" centery="31702" centerz="15" radius="1">
 		<monster name="Massive Fire Elemental" x="0" y="-1" z="15" spawntime="90" />
 		<monster name="Stalker" x="-1" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33441" centery="31702" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33556" centery="31702" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33806" centery="31702" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
@@ -183918,9 +184313,18 @@
 	<monster centerx="33286" centery="31703" centerz="15" radius="2">
 		<monster name="Cyclops Smith" x="1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33422" centery="31703" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33460" centery="31704" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33306" centery="31705" centerz="15" radius="2">
 		<monster name="Dwarf Soldier" x="2" y="0" z="15" spawntime="90" />
 		<monster name="Behemoth" x="0" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33503" centery="31705" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34044" centery="31705" centerz="15" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="15" spawntime="60" />
@@ -183937,17 +184341,29 @@
 	<monster centerx="33547" centery="31706" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="2" y="2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33559" centery="31706" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33870" centery="31706" centerz="15" radius="1">
 		<monster name="Bloated Man-Maggot" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33296" centery="31707" centerz="15" radius="2">
 		<monster name="Cyclops" x="2" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33492" centery="31707" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33444" centery="31708" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33869" centery="31708" centerz="15" radius="1">
 		<monster name="Mycobiontic Beetle" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33120" centery="31709" centerz="15" radius="1">
 		<monster name="Demon" x="0" y="-1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33526" centery="31709" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33871" centery="31709" centerz="15" radius="1">
 		<monster name="Sopping Corpus" x="0" y="0" z="15" spawntime="60" />
@@ -183967,6 +184383,18 @@
 	<monster centerx="33309" centery="31712" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="0" y="-1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33426" centery="31712" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33460" centery="31712" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33465" centery="31712" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33527" centery="31712" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34047" centery="31712" centerz="15" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -183976,8 +184404,14 @@
 	<monster centerx="33421" centery="31713" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="2" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33487" centery="31713" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33498" centery="31713" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="-2" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33523" centery="31713" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33533" centery="31713" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="2" y="1" z="15" spawntime="60" />
@@ -183992,8 +184426,17 @@
 		<monster name="Cyclops Drone" x="2" y="-2" z="15" spawntime="90" />
 		<monster name="Cyclops Drone" x="-2" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33508" centery="31714" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33516" centery="31714" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33339" centery="31715" centerz="15" radius="2">
 		<monster name="Behemoth" x="1" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33470" centery="31715" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34048" centery="31715" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
@@ -184002,12 +184445,28 @@
 		<monster name="Cyclops Drone" x="0" y="-1" z="15" spawntime="60" />
 		<monster name="Cyclops Drone" x="2" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33432" centery="31716" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+		<monster name="Shark" x="-1" y="1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33475" centery="31716" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33482" centery="31716" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33505" centery="31716" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33300" centery="31717" centerz="15" radius="5">
 		<monster name="Cyclops" x="-2" y="-4" z="15" spawntime="90" />
 		<monster name="Cyclops Drone" x="4" y="-4" z="15" spawntime="90" />
 		<monster name="Dwarf Soldier" x="3" y="-2" z="15" spawntime="90" />
 		<monster name="Cyclops Drone" x="-3" y="0" z="15" spawntime="90" />
 		<monster name="Behemoth" x="1" y="3" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33448" centery="31717" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33067" centery="31718" centerz="15" radius="1">
 		<monster name="Demon" x="1" y="0" z="15" spawntime="90" />
@@ -184024,15 +184483,16 @@
 	<monster centerx="33324" centery="31719" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="-1" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33548" centery="31719" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33074" centery="31720" centerz="15" radius="1">
 		<monster name="Demon" x="1" y="0" z="15" spawntime="90" />
 	</monster>
 	<monster centerx="33268" centery="31720" centerz="15" radius="2">
 		<monster name="Cyclops Drone" x="-1" y="0" z="15" spawntime="90" />
 	</monster>
-	<monster centerx="33428" centery="31720" centerz="15" radius="3">
-		<monster name="Shark" x="3" y="-3" z="15" spawntime="60" />
-	</monster>
+	<monster centerx="33428" centery="31720" centerz="15" radius="3" />
 	<monster centerx="33463" centery="31720" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="3" y="-3" z="15" spawntime="60" />
 	</monster>
@@ -184048,6 +184508,12 @@
 	</monster>
 	<monster centerx="34059" centery="31720" centerz="15" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33470" centery="31721" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33545" centery="31721" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34062" centery="31721" centerz="15" radius="1">
 		<monster name="Rotten Man-Maggot" x="0" y="0" z="15" spawntime="60" />
@@ -184070,6 +184536,9 @@
 	<monster centerx="33085" centery="31723" centerz="15" radius="1">
 		<monster name="Demon" x="1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33421" centery="31723" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34058" centery="31723" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -184082,14 +184551,35 @@
 	<monster centerx="33116" centery="31724" centerz="15" radius="1">
 		<monster name="Demon" x="1" y="-1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33488" centery="31724" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33517" centery="31724" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33512" centery="31725" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33492" centery="31726" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34063" centery="31726" centerz="15" radius="1">
 		<monster name="Oozing Carcass" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33418" centery="31727" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33426" centery="31727" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33435" centery="31727" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="1" y="-1" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33456" centery="31727" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="2" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33521" centery="31727" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33554" centery="31727" centerz="15" radius="3">
 		<monster name="Blood Crab" x="-3" y="1" z="15" spawntime="60" />
@@ -184101,17 +184591,83 @@
 	<monster centerx="34066" centery="31728" centerz="15" radius="1">
 		<monster name="Rotten Man-Maggot" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33496" centery="31729" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34061" centery="31729" centerz="15" radius="1">
 		<monster name="Meandering Mushroom" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33478" centery="31730" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33517" centery="31730" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33540" centery="31730" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33499" centery="31732" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33509" centery="31732" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33558" centery="31732" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33430" centery="31733" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33443" centery="31733" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33473" centery="31733" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34062" centery="31733" centerz="15" radius="1">
 		<monster name="Sopping Carcass" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33449" centery="31734" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33468" centery="31734" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33520" centery="31734" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33539" centery="31734" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33547" centery="31734" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="0" y="-2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33478" centery="31735" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33524" centery="31735" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33301" centery="31736" centerz="15" radius="2">
 		<monster name="Behemoth" x="1" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33490" centery="31736" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33560" centery="31736" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33486" centery="31737" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33555" centery="31737" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33436" centery="31738" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33429" centery="31741" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33463" centery="31741" centerz="15" radius="3">
 		<monster name="Quara Pincher" x="-2" y="-2" z="15" spawntime="60" />
@@ -184128,14 +184684,32 @@
 	<monster centerx="33561" centery="31741" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-1" y="-2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33513" centery="31742" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33542" centery="31742" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33298" centery="31743" centerz="15" radius="2">
 		<monster name="Behemoth" x="0" y="-1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33430" centery="31745" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33518" centery="31745" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33442" centery="31748" centerz="15" radius="3">
 		<monster name="Shark" x="3" y="-3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33448" centery="31748" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33456" centery="31748" centerz="15" radius="3">
 		<monster name="Quara Predator" x="-2" y="1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33481" centery="31748" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33498" centery="31748" centerz="15" radius="3">
 		<monster name="Shark" x="2" y="1" z="15" spawntime="60" />
@@ -184149,6 +184723,21 @@
 	</monster>
 	<monster centerx="33561" centery="31748" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="1" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33528" centery="31750" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33426" centery="31753" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33469" centery="31753" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33477" centery="31753" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33551" centery="31753" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33449" centery="31755" centerz="15" radius="3">
 		<monster name="Shark" x="-3" y="1" z="15" spawntime="60" />
@@ -184171,6 +184760,15 @@
 	</monster>
 	<monster centerx="33561" centery="31755" centerz="15" radius="3">
 		<monster name="Blood Crab" x="0" y="3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33463" centery="31756" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33505" centery="31756" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33442" centery="31757" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33037" centery="31759" centerz="15" radius="10">
 		<monster name="Lich" x="3" y="-5" z="15" spawntime="90" />
@@ -184233,6 +184831,9 @@
 		<monster name="Lich" x="5" y="4" z="15" spawntime="90" />
 		<monster name="Lich" x="-7" y="6" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33556" centery="31759" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33062" centery="31760" centerz="15" radius="10">
 		<monster name="Hand of Cursed Fate" x="-4" y="-6" z="15" spawntime="90" />
 		<monster name="Diabolic Imp" x="-1" y="-6" z="15" spawntime="90" />
@@ -184247,6 +184848,15 @@
 		<monster name="Lich" x="-4" y="6" z="15" spawntime="90" />
 		<monster name="Lich" x="1" y="9" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33499" centery="31760" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33468" centery="31761" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33458" centery="31762" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33477" centery="31762" centerz="15" radius="3">
 		<monster name="Blood Crab" x="-3" y="-2" z="15" spawntime="60" />
 	</monster>
@@ -184259,6 +184869,24 @@
 	<monster centerx="33526" centery="31762" centerz="15" radius="3">
 		<monster name="Shark" x="-1" y="-3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33442" centery="31763" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33540" centery="31763" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33501" centery="31764" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33466" centery="31765" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33443" centery="31767" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33508" centery="31768" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33428" centery="31769" centerz="15" radius="3">
 		<monster name="Shark" x="2" y="-3" z="15" spawntime="60" />
 	</monster>
@@ -184267,6 +184895,9 @@
 	</monster>
 	<monster centerx="33449" centery="31769" centerz="15" radius="3">
 		<monster name="Blood Crab" x="-1" y="3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33470" centery="31769" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33477" centery="31769" centerz="15" radius="3">
 		<monster name="Blood Crab" x="-3" y="-3" z="15" spawntime="60" />
@@ -184282,6 +184913,18 @@
 		<monster name="Blood Crab" x="2" y="2" z="15" spawntime="60" />
 		<monster name="Young Sea Serpent" x="0" y="3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33510" centery="31772" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33521" centery="31773" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33517" centery="31774" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33535" centery="31775" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33422" centery="31776" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-2" y="0" z="15" spawntime="60" />
 	</monster>
@@ -184295,6 +184938,15 @@
 		<monster name="Young Sea Serpent" x="-2" y="-3" z="15" spawntime="60" />
 		<monster name="Shark" x="-3" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33429" centery="31777" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33553" centery="31779" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33450" centery="31780" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33036" centery="31781" centerz="15" radius="10">
 		<monster name="Diabolic Imp" x="2" y="-7" z="15" spawntime="90" />
 		<monster name="Defiler" x="4" y="-7" z="15" spawntime="90" />
@@ -184306,6 +184958,12 @@
 		<monster name="Diabolic Imp" x="3" y="6" z="15" spawntime="90" />
 		<monster name="Warlock" x="5" y="6" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33485" centery="31781" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33492" centery="31781" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33120" centery="31782" centerz="15" radius="10">
 		<monster name="Warlock" x="3" y="-8" z="15" spawntime="90" />
 		<monster name="Hand of Cursed Fate" x="-3" y="-7" z="15" spawntime="90" />
@@ -184314,6 +184972,9 @@
 		<monster name="Undead Dragon" x="4" y="-1" z="15" spawntime="90" />
 		<monster name="Hand of Cursed Fate" x="-7" y="3" z="15" spawntime="90" />
 		<monster name="Undead Dragon" x="3" y="5" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33435" centery="31782" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32448" centery="31783" centerz="15" radius="3">
 		<monster name="Lost Basher" x="2" y="0" z="15" spawntime="90" />
@@ -184368,6 +185029,12 @@
 	<monster centerx="33456" centery="31783" centerz="15" radius="3">
 		<monster name="Shark" x="0" y="3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33497" centery="31783" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33501" centery="31783" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33519" centery="31783" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-1" y="1" z="15" spawntime="60" />
 	</monster>
@@ -184376,6 +185043,9 @@
 	</monster>
 	<monster centerx="33547" centery="31783" centerz="15" radius="3">
 		<monster name="Blood Crab" x="3" y="1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33554" centery="31783" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32844" centery="31784" centerz="15" radius="3">
 		<monster name="Mushroom Sniffer" x="2" y="-1" z="15" spawntime="90" />
@@ -184391,8 +185061,18 @@
 		<monster name="Wiggler" x="-1" y="2" z="15" spawntime="90" />
 		<monster name="Wiggler" x="-2" y="3" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33423" centery="31785" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+		<monster name="Seacrest Serpent" x="1" y="0" z="15" spawntime="60928" />
+	</monster>
+	<monster centerx="33414" centery="31787" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32853" centery="31788" centerz="15" radius="3">
 		<monster name="Wyvern" x="0" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33462" centery="31789" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32455" centery="31790" centerz="15" radius="3">
 		<monster name="Lost Husher" x="2" y="-3" z="15" spawntime="90" />
@@ -184430,9 +185110,15 @@
 		<monster name="Sea Serpent" x="-3" y="0" z="15" spawntime="60" />
 		<monster name="Sea Serpent" x="1" y="2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33550" centery="31790" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32857" centery="31791" centerz="15" radius="3">
 		<monster name="Massive Earth Elemental" x="-2" y="1" z="15" spawntime="90" />
 		<monster name="Mushroom Sniffer" x="0" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33484" centery="31791" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32844" centery="31792" centerz="15" radius="3">
 		<monster name="Wyvern" x="0" y="1" z="15" spawntime="90" />
@@ -184442,8 +185128,29 @@
 		<monster name="Wiggler" x="0" y="1" z="15" spawntime="90" />
 		<monster name="Wyvern" x="2" y="2" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33455" centery="31795" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33482" centery="31795" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33488" centery="31795" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32857" centery="31796" centerz="15" radius="3">
 		<monster name="Massive Earth Elemental" x="0" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33412" centery="31796" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33423" centery="31796" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33426" centery="31796" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33495" centery="31796" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32469" centery="31797" centerz="15" radius="3">
 		<monster name="Lost Husher" x="-3" y="-2" z="15" spawntime="90" />
@@ -184479,6 +185186,12 @@
 	<monster centerx="33519" centery="31797" centerz="15" radius="3">
 		<monster name="Quara Predator" x="-1" y="2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33543" centery="31797" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31797" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32841" centery="31799" centerz="15" radius="3">
 		<monster name="Wiggler" x="0" y="-1" z="15" spawntime="90" />
 		<monster name="Mushroom Sniffer" x="0" y="1" z="15" spawntime="90" />
@@ -184487,6 +185200,9 @@
 	<monster centerx="32845" centery="31799" centerz="15" radius="3">
 		<monster name="Wiggler" x="0" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33413" centery="31800" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32851" centery="31801" centerz="15" radius="3">
 		<monster name="Wiggler" x="0" y="1" z="15" spawntime="90" />
 		<monster name="Wiggler" x="0" y="2" z="15" spawntime="90" />
@@ -184494,10 +185210,22 @@
 	<monster centerx="33286" centery="31801" centerz="15" radius="1">
 		<monster name="Hellfire Fighter" x="0" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33438" centery="31801" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33449" centery="31801" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31801" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32845" centery="31802" centerz="15" radius="3">
 		<monster name="Wiggler" x="-3" y="1" z="15" spawntime="90" />
 		<monster name="Massive Earth Elemental" x="0" y="1" z="15" spawntime="90" />
 		<monster name="Massive Earth Elemental" x="2" y="2" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33506" centery="31802" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33280" centery="31803" centerz="15" radius="1">
 		<monster name="Fury" x="0" y="0" z="15" spawntime="90" />
@@ -184528,6 +185256,9 @@
 	<monster centerx="33498" centery="31804" centerz="15" radius="3">
 		<monster name="Shark" x="-1" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33519" centery="31804" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33533" centery="31804" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="1" y="1" z="15" spawntime="60" />
 	</monster>
@@ -184542,6 +185273,27 @@
 	</monster>
 	<monster centerx="33274" centery="31805" centerz="15" radius="1">
 		<monster name="Hellfire Fighter" x="0" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33427" centery="31805" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33505" centery="31805" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33418" centery="31807" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33510" centery="31808" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33502" centery="31810" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33543" centery="31810" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33552" centery="31810" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32462" centery="31811" centerz="15" radius="3">
 		<monster name="Lost Thrower" x="0" y="2" z="15" spawntime="90" />
@@ -184590,12 +185342,45 @@
 	<monster centerx="33470" centery="31811" centerz="15" radius="3">
 		<monster name="Quara Predator" x="0" y="-1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33478" centery="31811" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33519" centery="31811" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="-1" y="-1" z="15" spawntime="60" />
 		<monster name="Shark" x="3" y="3" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33533" centery="31811" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-2" y="-3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33410" centery="31812" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33448" centery="31813" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33489" centery="31813" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33545" centery="31813" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33404" centery="31814" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33499" centery="31814" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33480" centery="31816" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33409" centery="31817" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33516" centery="31817" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33547" centery="31817" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34002" centery="31817" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
@@ -184624,20 +185409,38 @@
 	<monster centerx="33436" centery="31818" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="0" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33447" centery="31818" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33526" centery="31818" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="1" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33811" centery="31818" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33553" centery="31819" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33277" centery="31820" centerz="15" radius="1">
 		<monster name="Hellfire Fighter" x="0" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33412" centery="31820" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33814" centery="31820" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33481" centery="31821" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33512" centery="31821" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33818" centery="31821" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33459" centery="31822" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33997" centery="31822" centerz="15" radius="1">
 		<monster name="Darklight Striker" x="0" y="0" z="15" spawntime="60" />
@@ -184647,6 +185450,12 @@
 	</monster>
 	<monster centerx="34005" centery="31822" centerz="15" radius="1">
 		<monster name="Darklight Matter" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33528" centery="31824" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33532" centery="31824" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33806" centery="31824" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
@@ -184698,8 +185507,26 @@
 	<monster centerx="33311" centery="31826" centerz="15" radius="1">
 		<monster name="Hellfire Fighter" x="0" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33391" centery="31826" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33431" centery="31826" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33441" centery="31826" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33514" centery="31826" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34007" centery="31826" centerz="15" radius="1">
 		<monster name="Darklight Source" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33457" centery="31827" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33435" centery="31828" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33810" centery="31828" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
@@ -184713,8 +185540,20 @@
 	<monster centerx="34010" centery="31828" centerz="15" radius="1">
 		<monster name="Darklight Matter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33492" centery="31829" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33505" centery="31829" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33824" centery="31829" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33526" centery="31830" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33553" centery="31830" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33807" centery="31830" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
@@ -184750,6 +185589,9 @@
 	<monster centerx="33393" centery="31832" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="2" y="3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33400" centery="31832" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33407" centery="31832" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="0" y="-1" z="15" spawntime="60" />
 		<monster name="Sea Serpent" x="-2" y="0" z="15" spawntime="60" />
@@ -184761,8 +185603,17 @@
 		<monster name="Sea Serpent" x="-2" y="1" z="15" spawntime="60" />
 		<monster name="Blood Crab" x="1" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33450" centery="31832" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33549" centery="31832" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33829" centery="31832" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33504" centery="31833" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33806" centery="31833" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
@@ -184770,8 +185621,23 @@
 	<monster centerx="34011" centery="31833" centerz="15" radius="1">
 		<monster name="Darklight Matter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33383" centery="31834" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33523" centery="31834" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34023" centery="31834" centerz="15" radius="1">
 		<monster name="Darklight Source" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33506" centery="31835" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33511" centery="31835" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33532" centery="31835" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34018" centery="31835" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
@@ -184781,6 +185647,18 @@
 	</monster>
 	<monster centerx="34020" centery="31836" centerz="15" radius="1">
 		<monster name="Darklight Matter" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33418" centery="31837" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33455" centery="31837" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33492" centery="31837" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33525" centery="31838" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33835" centery="31838" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
@@ -184844,6 +185722,15 @@
 	<monster centerx="32220" centery="31842" centerz="15" radius="1">
 		<monster name="Demon Skeleton" x="-1" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33441" centery="31842" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33464" centery="31842" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33532" centery="31842" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="32210" centery="31843" centerz="15" radius="1">
 		<monster name="Ghost" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -184855,6 +185742,12 @@
 	</monster>
 	<monster centerx="32217" centery="31844" centerz="15" radius="1">
 		<monster name="Ghost" x="1" y="-1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33409" centery="31845" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33436" centery="31845" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32213" centery="31846" centerz="15" radius="1">
 		<monster name="Ghost" x="0" y="0" z="15" spawntime="60" />
@@ -184889,6 +185782,9 @@
 	<monster centerx="33386" centery="31846" centerz="15" radius="3">
 		<monster name="Shark" x="-3" y="1" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33414" centery="31846" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33421" centery="31846" centerz="15" radius="3">
 		<monster name="Shark" x="3" y="0" z="15" spawntime="60" />
 	</monster>
@@ -184917,14 +185813,47 @@
 	<monster centerx="32219" centery="31847" centerz="15" radius="1">
 		<monster name="Demon Skeleton" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33394" centery="31847" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33493" centery="31847" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33524" centery="31847" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33517" centery="31848" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33845" centery="31848" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32214" centery="31849" centerz="15" radius="1">
 		<monster name="Demon Skeleton" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33458" centery="31849" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33535" centery="31849" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33383" centery="31851" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33436" centery="31851" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33451" centery="31851" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33499" centery="31851" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33846" centery="31851" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33400" centery="31852" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32427" centery="31853" centerz="15" radius="3">
 		<monster name="Lost Thrower" x="-2" y="0" z="15" spawntime="90" />
@@ -184982,11 +185911,17 @@
 	<monster centerx="33866" centery="31853" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33519" centery="31854" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33860" centery="31854" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33869" centery="31854" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33388" centery="31855" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33854" centery="31855" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
@@ -184997,8 +185932,26 @@
 	<monster centerx="33872" centery="31855" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33457" centery="31856" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33434" centery="31857" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33450" centery="31857" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33515" centery="31857" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33876" centery="31857" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33527" centery="31858" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33542" centery="31859" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33879" centery="31859" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
@@ -185030,6 +185983,9 @@
 	<monster centerx="33421" centery="31860" centerz="15" radius="3">
 		<monster name="Shark" x="1" y="-2" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33455" centery="31860" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33470" centery="31860" centerz="15" radius="3">
 		<monster name="Quara Pincher" x="1" y="1" z="15" spawntime="60" />
 	</monster>
@@ -185039,14 +185995,38 @@
 	<monster centerx="33498" centery="31860" centerz="15" radius="3">
 		<monster name="Shark" x="-3" y="-3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33518" centery="31860" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33533" centery="31860" centerz="15" radius="3">
 		<monster name="Sea Serpent" x="-2" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33550" centery="31860" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33385" centery="31862" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33391" centery="31863" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33883" centery="31863" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33896" centery="31863" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33429" centery="31865" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33435" centery="31865" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33446" centery="31865" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33461" centery="31865" centerz="15" radius="1">
+		<monster name="Shark" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33890" centery="31865" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
@@ -185089,11 +186069,32 @@
 	<monster centerx="33900" centery="31868" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33383" centery="31869" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33420" centery="31869" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33885" centery="31870" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33456" centery="31871" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33901" centery="31871" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33448" centery="31872" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33491" centery="31872" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33385" centery="31873" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33401" centery="31873" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32441" centery="31874" centerz="15" radius="3">
 		<monster name="Lost Basher" x="-3" y="1" z="15" spawntime="90" />
@@ -185112,6 +186113,9 @@
 	</monster>
 	<monster centerx="32634" centery="31874" centerz="15" radius="1">
 		<monster name="Dwarf Soldier" x="0" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33388" centery="31874" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33393" centery="31874" centerz="15" radius="3">
 		<monster name="Shark" x="-3" y="-3" z="15" spawntime="60" />
@@ -185170,6 +186174,9 @@
 		<monster name="Carrion Worm" x="-1" y="0" z="15" spawntime="90" />
 		<monster name="Dwarf Guard" x="1" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33416" centery="31879" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33896" centery="31879" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -185183,6 +186190,9 @@
 	</monster>
 	<monster centerx="32641" centery="31880" centerz="15" radius="1">
 		<monster name="Carrion Worm" x="0" y="1" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33478" centery="31880" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33881" centery="31880" centerz="15" radius="1">
 		<monster name="Converter" x="0" y="0" z="15" spawntime="60" />
@@ -185225,8 +186235,14 @@
 		<monster name="Sea Serpent" x="3" y="-3" z="15" spawntime="60" />
 		<monster name="Blood Crab" x="-2" y="3" z="15" spawntime="60" />
 	</monster>
+	<monster centerx="33399" centery="31881" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33407" centery="31881" centerz="15" radius="3">
 		<monster name="Quara Predator" x="3" y="3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33425" centery="31881" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33456" centery="31881" centerz="15" radius="3">
 		<monster name="Shark" x="0" y="2" z="15" spawntime="60" />
@@ -185260,6 +186276,15 @@
 		<monster name="Dwarf Soldier" x="-1" y="-1" z="15" spawntime="90" />
 		<monster name="Dwarf Guard" x="0" y="1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33413" centery="31882" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33422" centery="31882" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33472" centery="31882" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33896" centery="31882" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -185269,6 +186294,12 @@
 	<monster centerx="32603" centery="31883" centerz="15" radius="1">
 		<monster name="Dwarf Soldier" x="1" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33436" centery="31883" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33442" centery="31883" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33908" centery="31883" centerz="15" radius="1">
 		<monster name="Darklight Emitter" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -185277,6 +186308,9 @@
 	</monster>
 	<monster centerx="32587" centery="31884" centerz="15" radius="1">
 		<monster name="Carrion Worm" x="1" y="0" z="15" spawntime="90" />
+	</monster>
+	<monster centerx="33490" centery="31884" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="34120" centery="31884" centerz="15" radius="1">
 		<monster name="Darklight Striker" x="0" y="0" z="15" spawntime="60" />
@@ -185293,6 +186327,9 @@
 	<monster centerx="32647" centery="31885" centerz="15" radius="1">
 		<monster name="Dwarf Soldier" x="0" y="-1" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33399" centery="31885" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34122" centery="31885" centerz="15" radius="1">
 		<monster name="Walking Pillar" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -185300,11 +186337,17 @@
 		<monster name="Dwarf Soldier" x="1" y="-1" z="15" spawntime="90" />
 		<monster name="Dwarf Soldier" x="-1" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33477" centery="31886" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="33901" centery="31886" centerz="15" radius="1">
 		<monster name="Wandering Pillar" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32174" centery="31887" centerz="15" radius="1">
 		<monster name="Demon Skeleton" x="-1" y="-1" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33500" centery="31887" centerz="15" radius="1">
+		<monster name="Abyssal Calamary" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33897" centery="31887" centerz="15" radius="1">
 		<monster name="Darklight Construct" x="0" y="0" z="15" spawntime="60" />
@@ -185370,6 +186413,12 @@
 	<monster centerx="32635" centery="31890" centerz="15" radius="1">
 		<monster name="Dwarf Guard" x="0" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33498" centery="31890" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33474" centery="31891" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34120" centery="31891" centerz="15" radius="1">
 		<monster name="Darklight Striker" x="0" y="0" z="15" spawntime="60" />
 	</monster>
@@ -185379,8 +186428,14 @@
 	<monster centerx="32667" centery="31892" centerz="15" radius="1">
 		<monster name="Poison Spider" x="-1" y="0" z="15" spawntime="90" />
 	</monster>
+	<monster centerx="33495" centery="31892" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
+	</monster>
 	<monster centerx="34117" centery="31893" centerz="15" radius="1">
 		<monster name="Walking Pillar" x="0" y="0" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33385" centery="31894" centerz="15" radius="1">
+		<monster name="Deepsea Blood Crab" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="32483" centery="31895" centerz="15" radius="3">
 		<monster name="Lost Husher" x="-1" y="-2" z="15" spawntime="90" />
@@ -185413,6 +186468,9 @@
 	<monster centerx="33435" centery="31895" centerz="15" radius="3">
 		<monster name="Quara Pincher" x="-2" y="1" z="15" spawntime="60" />
 		<monster name="Shark" x="0" y="3" z="15" spawntime="60" />
+	</monster>
+	<monster centerx="33448" centery="31895" centerz="15" radius="1">
+		<monster name="Seacrest Serpent" x="0" y="0" z="15" spawntime="60" />
 	</monster>
 	<monster centerx="33456" centery="31895" centerz="15" radius="3">
 		<monster name="Quara Hydromancer" x="1" y="2" z="15" spawntime="60" />
