@@ -1,7 +1,8 @@
----
 assembly-versioning-scheme: MajorMinorPatchTag
-mode: ContinuousDelivery
-branches: {}
-ignore:
-  sha: []
-merge-message-formats: {}
+mode: ContinuousDeployment
+
+branches:
+  mychanges:
+    mode: ContinuousDeployment
+    tag: ''
+    increment: Minor
