@@ -176,52 +176,48 @@ bossCooldown:register()
 local clearBossCooldowns = TalkAction("/clearallcooldowns")
 
 function clearBossCooldowns.onSay(player, words, param)
-    local targetName = param:trim()
-    if targetName == "" then
-        targetName = player:getName()
-    end
+	local targetName = param:trim()
+	if targetName == "" then
+		targetName = player:getName()
+	end
 
-    local targetPlayer = Player(targetName)
-    if not targetPlayer then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Player '" .. targetName .. "' not found.")
-        return false
-    end
+	local targetPlayer = Player(targetName)
+	if not targetPlayer then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Player '" .. targetName .. "' not found.")
+		return false
+	end
 
-    local kv = targetPlayer:kv()
-    local count = 0
+	local kv = targetPlayer:kv()
+	local count = 0
 
-    local allKeys = kv:keys()
+	local allKeys = kv:keys()
 
-    if allKeys then
-        for _, key in pairs(allKeys) do
-            if type(key) == "string" and key:find("^boss%.cooldown%.") then
-                local currentValue = kv:get(key) or 0
-                if currentValue ~= 0 then
-                    kv:set(key, 0)
-                    count = count + 1
-                end
-            end
-        end
-    end
-    targetPlayer:sendBosstiaryCooldownTimer()
+	if allKeys then
+		for _, key in pairs(allKeys) do
+			if type(key) == "string" and key:find("^boss%.cooldown%.") then
+				local currentValue = kv:get(key) or 0
+				if currentValue ~= 0 then
+					kv:set(key, 0)
+					count = count + 1
+				end
+			end
+		end
+	end
+	targetPlayer:sendBosstiaryCooldownTimer()
 
-    if count == 0 then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE,
-            "No active boss cooldowns to clear for " .. targetPlayer:getName() .. ".")
-    else
-        local msg = string.format("Successfully cleared %d boss cooldown(s) for %s.",
-            count, targetPlayer:getName())
+	if count == 0 then
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "No active boss cooldowns to clear for " .. targetPlayer:getName() .. ".")
+	else
+		local msg = string.format("Successfully cleared %d boss cooldown(s) for %s.", count, targetPlayer:getName())
 
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, msg)
-        targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE,
-            "All your boss cooldowns have been cleared.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, msg)
+		targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "All your boss cooldowns have been cleared.")
 
-        -- Log to console for admin tracking
-        print(string.format("[ClearBossCD] %s cleared %d boss cooldown(s) for %s",
-            player:getName(), count, targetPlayer:getName()))
-    end
+		-- Log to console for admin tracking
+		print(string.format("[ClearBossCD] %s cleared %d boss cooldown(s) for %s", player:getName(), count, targetPlayer:getName()))
+	end
 
-    return false
+	return false
 end
 
 clearBossCooldowns:separator(" ")

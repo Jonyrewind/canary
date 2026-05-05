@@ -1,10 +1,10 @@
 local function clearMonstersAndTeleportPlayers()
 	local leverRoomFromPos = Position(33697, 31841, 7)
-	local leverRoomToPos   = Position(33711, 31851, 7)
-	local bossRoomFromPos  = Position(33691, 31816, 7)
-	local bossRoomToPos    = Position(33715, 31840, 7)
+	local leverRoomToPos = Position(33711, 31851, 7)
+	local bossRoomFromPos = Position(33691, 31816, 7)
+	local bossRoomToPos = Position(33715, 31840, 7)
 
-	local exitPos         = Position(33703, 31857, 7)
+	local exitPos = Position(33703, 31857, 7)
 	local bossDestination = Position(33699, 31835, 7)
 	for x = bossRoomFromPos.x, bossRoomToPos.x do
 		for y = bossRoomFromPos.y, bossRoomToPos.y do

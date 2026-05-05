@@ -59,7 +59,6 @@ function spawnPaleWormWeakSpot(boss)
 end
 
 local function resetPaleWormEncounter()
-
 	cleanupRoom(BOSS_ROOM_CENTER)
 	cleanupRoom(LOWER_ROOM_CENTER, ENCOUNTER_RANGE_X + 4, ENCOUNTER_RANGE_Y + 4)
 
@@ -73,7 +72,6 @@ local function resetPaleWormEncounter()
 	encounterKV():remove("hunger-worm-triggered")
 	encounterKV():remove("hunger-worm-damage-accumulator")
 	encounterKV():remove("hunger-worm-next-threshold")
-
 end
 
 local config = {
@@ -130,10 +128,8 @@ local config = {
 				end
 			end
 		end
-
 	end,
 }
-
 
 local lever = BossLever(config)
 lever:position({ x = 33771, y = 31504, z = 14 })

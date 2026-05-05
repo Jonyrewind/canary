@@ -1,21 +1,19 @@
 local function clearMonstersAndTeleportPlayers()
 	-- Areas
 	local leverRoomFromPos = Position(33549, 31902, 8)
-	local leverRoomToPos   = Position(33566, 31908, 8)
+	local leverRoomToPos = Position(33566, 31908, 8)
 
-	local bossRoomFromPos  = Position(33532, 31864, 8)
-	local bossRoomToPos    = Position(33600, 31908, 8)
+	local bossRoomFromPos = Position(33532, 31864, 8)
+	local bossRoomToPos = Position(33600, 31908, 8)
 
-	local exitPos         = Position(33557, 31914, 8)
+	local exitPos = Position(33557, 31914, 8)
 	local bossDestination = Position(33556, 31895, 8)
 
 	local bossZoneName = "boss.lisaroom"
 
 	-- Helper: Check if position is inside lever room
 	local function isInLeverRoom(pos)
-		return pos.x >= leverRoomFromPos.x and pos.x <= leverRoomToPos.x and
-		       pos.y >= leverRoomFromPos.y and pos.y <= leverRoomToPos.y and
-		       pos.z == leverRoomFromPos.z
+		return pos.x >= leverRoomFromPos.x and pos.x <= leverRoomToPos.x and pos.y >= leverRoomFromPos.y and pos.y <= leverRoomToPos.y and pos.z == leverRoomFromPos.z
 	end
 
 	-- Step 1: Clear the boss area using rectangle + zone filter (only real boss tiles)

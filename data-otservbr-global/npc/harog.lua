@@ -25,8 +25,8 @@ npcConfig.flags = {
 npcConfig.shop = {
 	{ name = "metal fitting", clientId = 9115, buy = 500 },
 	{ name = "nail", clientId = 953, sell = 10 },
-	{ name = "flask of rust remover", clientId = 9016, buy = 50},--, storageKey = Storage.Quest.U8_4.TheHiddenCityOfBeregar.JusticeForAll, storageValue = 6 },
-	{ name = "muck remover", clientId = 16101, buy = 5000},
+	{ name = "flask of rust remover", clientId = 9016, buy = 50 }, --, storageKey = Storage.Quest.U8_4.TheHiddenCityOfBeregar.JusticeForAll, storageValue = 6 },
+	{ name = "muck remover", clientId = 16101, buy = 5000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

@@ -272,7 +272,7 @@ function skinning.onUse(player, item, fromPosition, target, toPosition, isHotkey
 		end
 	end
 
-if transform and topItem and topItem ~= false then
+	if transform and topItem and topItem ~= false then
 		topItem:transform(skin.after or topItem:getType():getDecayId() or topItem.itemid + 1)
 	else
 		if not added then

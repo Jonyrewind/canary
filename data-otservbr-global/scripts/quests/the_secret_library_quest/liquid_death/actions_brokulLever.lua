@@ -17,14 +17,15 @@ local config = {
 		to = Position(33496, 31450, 15),
 	},
 	exit = Position(33528, 31464, 14),
---[[	onUseExtra = function(creature, infoPositions)
+	--[[	onUseExtra = function(creature, infoPositions)
 		if creature and creature:isPlayer() then
 			if creature:getStorageValue(Storage.Quest.U11_80.TheSecretLibrary.LiquidDeath.Questline) >= 6 then
 				return true
 			end
 			return false
 		end
-	end,]]--
+	end,]]
+	--
 }
 
 local leverBrokul = BossLever(config)

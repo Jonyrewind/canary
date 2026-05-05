@@ -17,26 +17,25 @@ local boats = {
 	},
 }
 
-
 local actions_boat_shortcuts = Action()
 
 function actions_boat_shortcuts.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if item:getActionId() == 4925 then
 		for _, p in pairs(boats) do
 			local boat = p.boatPosition
---			local value = p.value
+			--			local value = p.value
 			local toPos = p.toPosition
---			local message = p.message
+			--			local message = p.message
 			if item:getPosition() == boat then
---				if player:getStorageValue(Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses) >= value then
-					player:teleportTo(toPos, true)
-					player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
---					if message then
---						player:sendTextMessage(MESSAGE_EVENT_ADVANCE, message)
---					end
-				else
-					player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You can not use this boat yet.")
---				end
+				--				if player:getStorageValue(Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses) >= value then
+				player:teleportTo(toPos, true)
+				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+			--					if message then
+			--						player:sendTextMessage(MESSAGE_EVENT_ADVANCE, message)
+			--					end
+			else
+				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You can not use this boat yet.")
+				--				end
 			end
 		end
 	end

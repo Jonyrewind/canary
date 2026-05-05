@@ -43,9 +43,7 @@ local function isInsidePaleWormEncounter(position)
 	local rangeX, rangeY = 12, 12
 
 	local function inRange(center)
-		return position.z == center.z
-			and math.abs(position.x - center.x) <= rangeX
-			and math.abs(position.y - center.y) <= rangeY
+		return position.z == center.z and math.abs(position.x - center.x) <= rangeX and math.abs(position.y - center.y) <= rangeY
 	end
 
 	return inRange(bossRoomCenter) or inRange(lowerRoomCenter)

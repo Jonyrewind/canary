@@ -46,12 +46,7 @@ local function normalizeLoginHealth(player)
 	if currentMaxHealth ~= expectedMaxHealth then
 		player:setMaxHealth(expectedMaxHealth)
 		player:setHealth(math.min(player:getHealth(), expectedMaxHealth))
-		logger.warn(
-			"[Login] Normalized max health for {} from {} to {} on login.",
-			player:getName(),
-			currentMaxHealth,
-			expectedMaxHealth
-		)
+		logger.warn("[Login] Normalized max health for {} from {} to {} on login.", player:getName(), currentMaxHealth, expectedMaxHealth)
 		return true
 	end
 

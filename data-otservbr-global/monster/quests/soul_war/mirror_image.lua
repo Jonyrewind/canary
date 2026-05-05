@@ -111,7 +111,7 @@ monster.events = {
 }
 
 mType.onPlayerAttack = function(monster, attackerPlayer)
---	logger.info("Player {}, attacking monster {}", attackerPlayer:getName(), monster:getName())
+	--	logger.info("Player {}, attacking monster {}", attackerPlayer:getName(), monster:getName())
 
 	local apparitionType = ""
 

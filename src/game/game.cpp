@@ -724,57 +724,57 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 	}
 
 	int customMapIndex = 0;
-		for (const auto &entry : fs::directory_iterator(customMapPath)) {
-			const auto &realPath = entry.path();
+	for (const auto &entry : fs::directory_iterator(customMapPath)) {
+		const auto &realPath = entry.path();
 
-			g_logger().debug("[Game::loadCustomMaps] inspect file='{}'", realPath.string());
+		g_logger().debug("[Game::loadCustomMaps] inspect file='{}'", realPath.string());
 
-			if (realPath.extension() != ".otbm") {
-				continue;
-			}
-
-			const std::string filename = realPath.stem().string();
-			const auto mainMapPath = std::filesystem::path(g_configManager().getString(DATA_DIRECTORY)) / "world" / (g_configManager().getString(MAP_NAME) + ".otbm");
-
-			// Do not load more maps than possible
-			if (customMapIndex >= 50) {
-				g_logger().warn("Maximum number of custom maps loaded. Custom map {} [ignored]", filename);
-				continue;
-			}
-
-			// Filenames that start with a # are ignored.
-			if (!filename.empty() && filename.at(0) == '#') {
-				g_logger().debug("Custom map {} [disabled]", filename);
-				continue;
-			}
-
-			// Avoid loading the actual main map file again, but allow custom maps that reuse the same base name.
-			if (std::filesystem::equivalent(realPath, mainMapPath)) {
-				g_logger().warn("Custom map {} is main map", filename);
-				continue;
-			}
-
-			const auto mapFilePath = realPath.string();
-			const auto customMapBasePath = std::filesystem::path(mapFilePath).parent_path() / std::filesystem::path(mapFilePath).stem();
-			const auto npcFilePath = customMapBasePath.string() + "-npc.xml";
-
-			g_logger().debug(
-				"[Game::loadCustomMaps] loading map '{}' at index {} mapFile='{}' npcFile='{}'",
-				filename,
-				customMapIndex,
-				mapFilePath,
-				npcFilePath
-			);
-
-			if (!std::filesystem::exists(npcFilePath)) {
-				g_logger().debug("[Game::loadCustomMaps] npc file missing for map '{}' at index {}: '{}'", filename, customMapIndex, npcFilePath);
-			}
-
-			map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
-			g_logger().debug("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
-
-			customMapIndex++;
+		if (realPath.extension() != ".otbm") {
+			continue;
 		}
+
+		const std::string filename = realPath.stem().string();
+		const auto mainMapPath = std::filesystem::path(g_configManager().getString(DATA_DIRECTORY)) / "world" / (g_configManager().getString(MAP_NAME) + ".otbm");
+
+		// Do not load more maps than possible
+		if (customMapIndex >= 50) {
+			g_logger().warn("Maximum number of custom maps loaded. Custom map {} [ignored]", filename);
+			continue;
+		}
+
+		// Filenames that start with a # are ignored.
+		if (!filename.empty() && filename.at(0) == '#') {
+			g_logger().debug("Custom map {} [disabled]", filename);
+			continue;
+		}
+
+		// Avoid loading the actual main map file again, but allow custom maps that reuse the same base name.
+		if (std::filesystem::equivalent(realPath, mainMapPath)) {
+			g_logger().warn("Custom map {} is main map", filename);
+			continue;
+		}
+
+		const auto mapFilePath = realPath.string();
+		const auto customMapBasePath = std::filesystem::path(mapFilePath).parent_path() / std::filesystem::path(mapFilePath).stem();
+		const auto npcFilePath = customMapBasePath.string() + "-npc.xml";
+
+		g_logger().debug(
+			"[Game::loadCustomMaps] loading map '{}' at index {} mapFile='{}' npcFile='{}'",
+			filename,
+			customMapIndex,
+			mapFilePath,
+			npcFilePath
+		);
+
+		if (!std::filesystem::exists(npcFilePath)) {
+			g_logger().debug("[Game::loadCustomMaps] npc file missing for map '{}' at index {}: '{}'", filename, customMapIndex, npcFilePath);
+		}
+
+		map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
+		g_logger().debug("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
+
+		customMapIndex++;
+	}
 
 	// Must be done after all maps have been loaded
 	map.loadHouseInfo();

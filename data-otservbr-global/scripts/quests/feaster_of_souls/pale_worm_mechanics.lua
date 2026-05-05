@@ -572,7 +572,6 @@ end
 
 hungerWormDeath:register()
 
-
 local paleWormCleanup = CreatureEvent("PaleWormCleanup")
 function paleWormCleanup.onDeath(creature, corpse, killer, mostDamage, unjustified, mostDamage_unjustified)
 	if not isPaleWorm(creature) then

@@ -4,11 +4,10 @@ local monster = {}
 monster.description = "A Weak Spot"
 monster.experience = 128000
 monster.outfit = {
-	lookTypeEx="32726"
+	lookTypeEx = "32726",
 }
 
-monster.events = {
-}
+monster.events = {}
 
 monster.health = 435000
 monster.maxHealth = 435000

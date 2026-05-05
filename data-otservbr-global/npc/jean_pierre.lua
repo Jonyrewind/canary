@@ -582,31 +582,31 @@ local function creatureSayCallback(npc, creature, type, message)
 			else
 				npcHandler:say("It seems you have already cooked this dish this year. Please come back next year in August.", npc, creature)
 				npcHandler:setTopic(playerId, 0)
-				end
-			elseif npcHandler:getTopic(playerId) == 33 then
-				if canCookToday(player, Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16) then
-					if playerHasIngredients(creature) then
-						npcHandler:say({
-							"And we are off to start with our sauce! First pour the coconut milk into my cauldron and, yes you may have already expected that, heat it over fire until it's boiling. <salts the young lich worms in the meantime> ...",
-							"Now we're cutting the dragon fruit and toss the sliced goodness into the mix <flubbflubb>. ...",
-							"Now we calmly slice and add the taiyaki to get that certain sweet impression. <drops the slices into the cauldron> There! ...",
-							"How did this ancient saying about this sweet yet sour sauce go, something along the lines of inner harmony and balance of body and soul - well, I can't remember the exact wording right now. ...",
-							"What I do know is that you will absolutely benefit from tasting the soup. Bon appétit!",
-						}, npc, creature)
-						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16, currentDate)
-						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart, 2)
-						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 16)
-						player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestLog, 17)
-						player:addItem(50334, 1)
-						npcHandler:setTopic(playerId, 0)
-					else
-						npcHandler:say("Make sure that you have all the ingredients with you.", npc, creature)
-						npcHandler:setTopic(playerId, 0)
-					end
+			end
+		elseif npcHandler:getTopic(playerId) == 33 then
+			if canCookToday(player, Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16) then
+				if playerHasIngredients(creature) then
+					npcHandler:say({
+						"And we are off to start with our sauce! First pour the coconut milk into my cauldron and, yes you may have already expected that, heat it over fire until it's boiling. <salts the young lich worms in the meantime> ...",
+						"Now we're cutting the dragon fruit and toss the sliced goodness into the mix <flubbflubb>. ...",
+						"Now we calmly slice and add the taiyaki to get that certain sweet impression. <drops the slices into the cauldron> There! ...",
+						"How did this ancient saying about this sweet yet sour sauce go, something along the lines of inner harmony and balance of body and soul - well, I can't remember the exact wording right now. ...",
+						"What I do know is that you will absolutely benefit from tasting the soup. Bon appétit!",
+					}, npc, creature)
+					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.LastInteractionDate16, currentDate)
+					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestStart, 2)
+					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.CurrentDish, 16)
+					player:setStorageValue(Storage.Quest.U8_5.HotCuisineQuest.QuestLog, 17)
+					player:addItem(50334, 1)
+					npcHandler:setTopic(playerId, 0)
 				else
-					npcHandler:say("It seems you have already cooked this dish this year. Please come back next year in August.", npc, creature)
+					npcHandler:say("Make sure that you have all the ingredients with you.", npc, creature)
 					npcHandler:setTopic(playerId, 0)
 				end
+			else
+				npcHandler:say("It seems you have already cooked this dish this year. Please come back next year in August.", npc, creature)
+				npcHandler:setTopic(playerId, 0)
+			end
 		end
 		--Dishes first time
 	elseif MsgContains(message, "rotworm stew") then

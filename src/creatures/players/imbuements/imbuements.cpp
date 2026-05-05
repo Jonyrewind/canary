@@ -552,7 +552,7 @@ void ImbuementDecay::checkImbuementDecay() {
 			it = m_itemsToDecay.erase(it);
 			continue;
 		}
-		
+
 		// Get the player holding the item (if any)
 		auto player = item->getHoldingPlayer();
 		if (!player) {
