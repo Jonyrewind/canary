@@ -1,19 +1,7 @@
+---
 assembly-versioning-scheme: MajorMinorPatchTag
 mode: ContinuousDelivery
-branches:
-  mychanges:
-    regex: ^mychanges$
-    tag: ''
-    increment: Patch
-    is-mainline: true
-    source-branches:
-      - main
-      - mychanges
-      - feature
-      - features
-      - bugfix
-      - hotfix
-      - support
+branches: {}
 ignore:
   sha: []
 merge-message-formats: {}
