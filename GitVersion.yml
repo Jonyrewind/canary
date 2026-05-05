@@ -1,8 +1,8 @@
-assembly-versioning-scheme: MajorMinorPatchTag
 mode: ContinuousDeployment
 
 branches:
   mychanges:
+    regex: ^mychanges$
     mode: ContinuousDeployment
     tag: ''
     increment: Minor
