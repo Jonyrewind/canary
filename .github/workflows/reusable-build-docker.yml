@@ -26,6 +26,9 @@ jobs:
       - name: Determine Version
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.15
+        with:
+          useConfigFile: true
+          configFilePath: GitVersion.yml
 
       - name: Convert repository name to lowercase
         id: repo_lower
