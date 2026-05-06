@@ -6,3 +6,6 @@ branches:
     mode: ContinuousDeployment
     tag: ''
     increment: Minor
+    source-branches:
+      - canary_old
+      - misc.-fixes,-additions
