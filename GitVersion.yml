@@ -15,9 +15,11 @@ branches:
     mode: ContinuousDeployment
     tag: ''
     increment: Minor
+    source-branches: []
 
   misc.-fixes,-additions:
     regex: ^misc\.\-fixes,\-additions$
     mode: ContinuousDeployment
     tag: ''
     increment: Minor
+    source-branches: []
