@@ -9,3 +9,15 @@ branches:
     source-branches:
       - canary_old
       - misc.-fixes,-additions
+
+  canary_old:
+    regex: ^canary_old$
+    mode: ContinuousDeployment
+    tag: ''
+    increment: Minor
+
+  misc.-fixes,-additions:
+    regex: ^misc\.\-fixes,\-additions$
+    mode: ContinuousDeployment
+    tag: ''
+    increment: Minor
