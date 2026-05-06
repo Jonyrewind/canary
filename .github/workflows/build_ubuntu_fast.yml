@@ -73,7 +73,7 @@ jobs:
           key: ccache-linux-fast-release
           restore-keys: |
             ccache-linux-fast
-
+          create-symlink: true
       - name: Install mono for NuGet
         run: sudo apt-get update && sudo apt-get install -y mono-complete
 
@@ -103,8 +103,7 @@ jobs:
         with:
           configurePreset: linux-release
           buildPreset: linux-release
-          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON']"
-
+          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
