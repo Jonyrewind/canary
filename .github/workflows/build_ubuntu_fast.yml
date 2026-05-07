@@ -92,6 +92,10 @@ jobs:
           mono "$NUGET_PATH" setapikey "${NUGET_AUTH_TOKEN}" \
             -source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
 
+      - name: Ensure stable vcpkg binary cache directory exists
+        shell: bash
+        run: mkdir -p "${{ github.workspace }}/vcpkg_cache"
+
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
