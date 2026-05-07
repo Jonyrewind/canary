@@ -103,6 +103,7 @@
         "VCPKG_HOST_TRIPLET": "x64-linux",
         "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed/x64-linux",
         "VCPKG_BUILD_TYPE": "release",
+        "OPTIONS_ENABLE_IPO": "OFF",
         "CANARY_BUILD_TESTS": "OFF"
       },
       "condition": {
