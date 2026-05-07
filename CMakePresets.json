@@ -137,6 +137,7 @@
         "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed/x64-linux-tests-debug",
         "VCPKG_BUILD_TYPE": "debug",
         "VCPKG_MANIFEST_FEATURES": "tests",
+        "OPTIONS_ENABLE_IPO": "OFF",
         "CANARY_BUILD_TESTS": "ON"
       }
     },
@@ -150,6 +151,7 @@
         "DEBUG_LOG": "ON",
         "ASAN_ENABLED": "ON",
         "SPEED_UP_BUILD_UNITY": "OFF",
+        "OPTIONS_ENABLE_IPO": "OFF",
         "VCPKG_HOST_TRIPLET": "x64-linux",
         "VCPKG_INSTALLED_DIR": "${sourceDir}/vcpkg_installed/x64-linux-tests-debug",
         "VCPKG_BUILD_TYPE": "debug",

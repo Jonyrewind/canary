@@ -39,7 +39,7 @@ jobs:
     env:
       CC: gcc-14
       CXX: g++-14
-      VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json,readwrite;nugettimeout,600"
+      VCPKG_BINARY_SOURCES: "nuget,https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json,readwrite;files,${{ github.workspace }}/vcpkg_cache,readwrite;nugettimeout,600"
       VCPKG_NUGET_API_KEY: ${{ secrets.VCPKG_PACKAGES_TOKEN || github.token }}
 
     steps:
@@ -92,19 +92,34 @@ jobs:
           mono "$NUGET_PATH" setapikey "${NUGET_AUTH_TOKEN}" \
             -source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
 
+      - name: Ensure stable vcpkg binary cache directory exists
+        shell: bash
+        run: mkdir -p "${{ github.workspace }}/vcpkg_cache"
+
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgGitURL: "https://github.com/microsoft/vcpkg.git"
           vcpkgGitCommitId: ${{ env.VCPKG_GIT_COMMIT_ID }}
+          binaryCachePath: '${{ github.workspace }}/vcpkg_cache'
 
+      - name: Cache vcpkg binary cache + installed packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            vcpkg_cache
+            vcpkg_installed/x64-linux-tests-debug
+          key: ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-
 
       - name: Run CMake
         uses: lukka/run-cmake@v10
         with:
           configurePreset: linux-debug
           buildPreset: linux-debug
-          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DVCPKG_INSTALL_OPTIONS=','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DOPTIONS_ENABLE_SCCACHE=OFF','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+          buildPresetAdditionalArgs: "['--parallel','$(nproc)']"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
