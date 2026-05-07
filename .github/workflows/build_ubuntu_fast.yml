@@ -98,6 +98,35 @@ jobs:
           vcpkgGitURL: "https://github.com/microsoft/vcpkg.git"
           vcpkgGitCommitId: ${{ env.VCPKG_GIT_COMMIT_ID }}
 
+      - name: Debug vcpkg/cache paths (temporary)
+        shell: bash
+        run: |
+          set -euxo pipefail
+          echo "=== Environment ==="
+          echo "VCPKG_ROOT=${VCPKG_ROOT:-<not-set>}"
+          echo "VCPKG_INSTALLED_DIR(likely preset-defined) will be resolved during configure"
+          echo "HOME=${HOME:-<not-set>}"
+          echo "GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-<not-set>}"
+          echo "PWD=$(pwd)"
+          echo
+
+          echo "=== Preset variable dump (linux-release) ==="
+          # Prints all cache variables that CMake resolves (helps locate vcpkg dirs)
+          cmake --preset linux-release -LAH | sed -n '/^-- Cache values/,/^-+$/p' || true
+          echo
+
+          echo "=== Listing ./vcpkg_installed (if present in repo workspace) ==="
+          ls -la vcpkg_installed || true
+          find vcpkg_installed -maxdepth 4 -type d 2>/dev/null || true
+          echo
+
+          echo "=== Listing common vcpkg cache candidates ==="
+          if [ -n "${VCPKG_ROOT:-}" ] && [ -d "${VCPKG_ROOT:-}" ]; then
+            ls -la "$VCPKG_ROOT" || true
+            ls -la "$VCPKG_ROOT/binary-cache" || true
+          fi
+          ls -la "$HOME/.cache" || true
+          find "$HOME" -maxdepth 3 -type d \( -name "vcpkg_installed" -o -name "binary-cache" -o -name "vcpkg" \) 2>/dev/null || true
 
       - name: Run CMake
         uses: lukka/run-cmake@v10
