@@ -7678,9 +7678,12 @@
 		<attribute key="decayTo" value="2296"/>
 	</item>
 	<item id="3147" article="a" name="blank rune">
+		<attribute key="type" value="rune"/>
 		<attribute key="primarytype" value="magical items"/>
+		<attribute key="runespellname" value="adori blank"/>
 		<attribute key="type" value="rune"/>
 		<attribute key="stacksize" value="250"/>
+		<attribute key="charges" value="1"/>
 		<attribute key="weight" value="210"/>
 	</item>
 	<item id="3148" article="a" name="destroy field rune">
