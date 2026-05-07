@@ -31229,6 +31229,7 @@
 	<item id="12729" name="RESERVED SPRITE"/>
 	<item id="12730" name="eye of a deepling">
 		<attribute key="description" value="Did it just twitch...? No, must have been an optical illusion"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="240"/>
 	</item>
 	<item id="12731" article="a" name="shimmer sword">
@@ -32535,10 +32536,12 @@
 	</item>
 	<item id="14008" article="a" name="spellsinger's seal">
 		<attribute key="description" value="The seal used by the spellsingers of the deep"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="190"/>
 	</item>
 	<item id="14009" article="a" name="key to the Drowned Library">
 		<attribute key="description" value="The strange shape of this key glistens softly in the light"/>
+		<attribute key="stacksize" value="250"/>
 		<attribute key="weight" value="120"/>
 	</item>
 	<item id="14010" article="a" name="deepling guard belt buckle">

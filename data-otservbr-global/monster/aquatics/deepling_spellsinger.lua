@@ -131,4 +131,8 @@ monster.immunities = {
 	{ type = "bleed", condition = false },
 }
 
+monster.events = {
+	"DeeplingSpellsingerDeath",
+}
+
 mType:register(monster)
