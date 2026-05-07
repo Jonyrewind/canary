@@ -98,12 +98,13 @@ jobs:
           vcpkgGitURL: "https://github.com/microsoft/vcpkg.git"
           vcpkgGitCommitId: ${{ env.VCPKG_GIT_COMMIT_ID }}
 
+
       - name: Run CMake
         uses: lukka/run-cmake@v10
         with:
           configurePreset: linux-debug
           buildPreset: linux-debug
-          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DVCPKG_INSTALL_OPTIONS=','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
