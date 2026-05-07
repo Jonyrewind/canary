@@ -39,7 +39,7 @@ jobs:
     env:
       CC: gcc-14
       CXX: g++-14
-      VCPKG_BINARY_SOURCES: "clear;nuget,https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json,readwrite;nugettimeout,600"
+      VCPKG_BINARY_SOURCES: "nuget,https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json,readwrite;files,${{ github.workspace }}/vcpkg_cache,readwrite;nugettimeout,600"
       VCPKG_NUGET_API_KEY: ${{ secrets.VCPKG_PACKAGES_TOKEN || github.token }}
 
     steps:
@@ -97,42 +97,26 @@ jobs:
         with:
           vcpkgGitURL: "https://github.com/microsoft/vcpkg.git"
           vcpkgGitCommitId: ${{ env.VCPKG_GIT_COMMIT_ID }}
+          # Make the binary cache path stable so we can cache it across runs
+          binaryCachePath: '${{ github.workspace }}/vcpkg_cache'
 
-      - name: Debug vcpkg/cache paths (temporary)
-        shell: bash
-        run: |
-          set -euxo pipefail
-          echo "=== Environment (from run-vcpkg) ==="
-          echo "VCPKG_ROOT=${VCPKG_ROOT:-<not-set>}"
-          echo "RUNVCPKG_VCPKG_ROOT=${RUNVCPKG_VCPKG_ROOT:-<not-set>}"
-          echo "VCPKG_DEFAULT_BINARY_CACHE=${VCPKG_DEFAULT_BINARY_CACHE:-<not-set>}"
-          echo "HOME=${HOME:-<not-set>}"
-          echo "GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-<not-set>}"
-          echo "PWD=$(pwd)"
-          echo
-
-          echo "=== Listing ./vcpkg_installed (repo workspace; used by presets) ==="
-          ls -la vcpkg_installed || true
-          find vcpkg_installed -maxdepth 4 -type d 2>/dev/null || true
-          echo
-
-          echo "=== Listing vcpkg binary cache candidates ==="
-          if [ -n "${VCPKG_ROOT:-}" ] && [ -d "${VCPKG_ROOT:-}" ]; then
-            ls -la "$VCPKG_ROOT" || true
-            ls -la "$VCPKG_ROOT/binary-cache" || true
-          fi
-          if [ -n "${VCPKG_DEFAULT_BINARY_CACHE:-}" ]; then
-            ls -la "$VCPKG_DEFAULT_BINARY_CACHE" || true
-          fi
-          find "$HOME" -maxdepth 3 -type d \( -name "binary-cache" -o -name "vcpkg_installed" \) 2>/dev/null || true
+      - name: Cache vcpkg binary cache + installed packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            vcpkg_cache
+            vcpkg_installed/x64-linux
+          key: ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-release-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-release-
 
       - name: Run CMake
         uses: lukka/run-cmake@v10
         with:
-
           configurePreset: linux-release
           buildPreset: linux-release
-          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DVCPKG_INSTALL_OPTIONS=','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+          configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DOPTIONS_ENABLE_SCCACHE=OFF','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
+          buildPresetAdditionalArgs: "['--parallel','$(nproc)']"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
