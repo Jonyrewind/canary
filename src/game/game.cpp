@@ -3357,11 +3357,7 @@ ObjectCategory_t Game::getObjectCategory(const std::shared_ptr<Item> &item) {
 	}
 
 	const ItemType &it = Item::items[item->getID()];
-	const auto itemId = item->getID();
-
-	// Only coin items should be categorized as "gold".
-	// Many non-coin items also have non-zero worth, but they must not be routed into the gold bucket.
-	if (itemId == ITEM_GOLD_COIN || itemId == ITEM_PLATINUM_COIN || itemId == ITEM_CRYSTAL_COIN) {
+	if (item->getWorth() != 0) {
 		category = OBJECTCATEGORY_GOLD;
 	} else {
 		category = getObjectCategory(it);
@@ -3395,6 +3391,12 @@ ObjectCategory_t Game::getObjectCategory(const ItemType &it) {
 				break;
 			case WEAPON_WAND:
 				category = OBJECTCATEGORY_WANDS;
+				if (it.id == 3073 || it.id == 3074) {
+					g_logger().info("[getObjectCategory] wand itemId={} weaponType={} => category={}",
+						it.id,
+						static_cast<int>(it.weaponType),
+						static_cast<int>(category));
+				}
 				break;
 			case WEAPON_AMMO:
 				category = OBJECTCATEGORY_AMMO;

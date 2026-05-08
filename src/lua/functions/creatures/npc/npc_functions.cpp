@@ -621,7 +621,7 @@ int NpcFunctions::luaNpcSellItem(lua_State* L) {
 		}
 	}
 
-	const auto &[_, itemsPurchased, backpacksPurchased] = g_game().createItem(player, itemId, amount, subType, actionId, false, inBackpacks ? ITEM_SHOPPING_BAG : 0);
+	const auto &[_, itemsPurchased, backpacksPurchased] = g_game().createItem(player, itemId, amount, subType, actionId, ignoreCap, inBackpacks ? ITEM_SHOPPING_BAG : 0);
 
 	std::stringstream ss;
 	const uint64_t itemCost = itemsPurchased * pricePerUnit;
