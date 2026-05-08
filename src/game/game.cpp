@@ -2584,13 +2584,34 @@ std::tuple<ReturnValue, uint32_t, uint32_t> Game::addItemBatch(const std::shared
 				}
 			}
 			// If it failed to add to the autoContainer, or it's not set, use the current logic
-			if (!addedToAutoContainer) {
-				ret = internalCollectManagedItems(player, item, g_game().getObjectCategory(item), false);
-				// If it can't place in the player's backpacks, add normally
-				if (ret != RETURNVALUE_NOERROR) {
-					ret = internalAddItem(destination, item, CONST_SLOT_WHEREEVER, flags, false, remainderCount);
-				}
-			}
+						if (!addedToAutoContainer) {
+							const auto itemCategory = g_game().getObjectCategory(item);
+							ret = internalCollectManagedItems(player, item, itemCategory, false);
+
+							g_logger().debug(
+								"[Game::addItemBatch] internalCollectManagedItems attempt player={} itemId={} itemName='{}' itemCount={} category={} destinationCylinderItemId={} destinationCylinderItemName='{}' ret={}",
+								player ? player->getName() : std::string{},
+								item ? item->getID() : 0,
+								item ? item->getName() : std::string{},
+								item ? item->getItemCount() : 0,
+								static_cast<uint32_t>(itemCategory),
+								destination && destination->getItem() ? destination->getItem()->getID() : 0,
+								destination && destination->getItem() ? destination->getItem()->getName() : std::string{},
+								ret);
+
+							// If it can't place in the player's backpacks, add normally
+							if (ret != RETURNVALUE_NOERROR) {
+								g_logger().debug(
+									"[Game::addItemBatch] internalCollectManagedItems failed -> fallback internalAddItem player={} itemId={} destinationCylinderItemId={} destinationCylinderItemName='{}' remainderCountBefore={}",
+									player ? player->getName() : std::string{},
+									item ? item->getID() : 0,
+									destination && destination->getItem() ? destination->getItem()->getID() : 0,
+									destination && destination->getItem() ? destination->getItem()->getName() : std::string{},
+									remainderCount);
+
+								ret = internalAddItem(destination, item, CONST_SLOT_WHEREEVER, flags, false, remainderCount);
+							}
+						}
 
 			if (remainderCount != 0) {
 				std::shared_ptr<Item> remainderItem = Item::CreateItem(item->getID(), remainderCount);
@@ -3319,8 +3340,30 @@ ReturnValue Game::internalCollectManagedItems(const std::shared_ptr<Player> &pla
 	bool fallbackConsumed = false;
 	std::shared_ptr<Container> lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
 	if (!lootContainer) {
+		g_logger().debug(
+			"[Game::internalCollectManagedItems] findManagedContainer failed player={} itemId={} itemName='{}' itemCount={} category={} isLootContainer={} fallbackConsumed={}",
+			player ? player->getName() : std::string{},
+			item ? item->getID() : 0,
+			item ? item->getName() : std::string{},
+			item ? item->getItemCount() : 0,
+			static_cast<uint32_t>(category),
+			isLootContainer,
+			fallbackConsumed);
+
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
+
+	g_logger().debug(
+		"[Game::internalCollectManagedItems] findManagedContainer ok player={} itemId={} itemName='{}' itemCount={} category={} isLootContainer={} fallbackConsumed={} lootContainerId={} lootContainerName='{}'",
+		player ? player->getName() : std::string{},
+		item ? item->getID() : 0,
+		item ? item->getName() : std::string{},
+		item ? item->getItemCount() : 0,
+		static_cast<uint32_t>(category),
+		isLootContainer,
+		fallbackConsumed,
+		lootContainer ? lootContainer->getID() : 0,
+		lootContainer ? lootContainer->getName() : std::string{});
 
 	return processLootItems(player, lootContainer, item, fallbackConsumed);
 }
