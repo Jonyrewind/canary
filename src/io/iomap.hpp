@@ -94,13 +94,39 @@ public:
 	 * \returns true if the monsters spawn map custom was loaded successfully
 	 */
 	static bool loadMonstersCustom(Map* map, const std::string &mapName, int customMapIndex) {
-		if (map->monsterfile.empty()) {
-			// OTBM file doesn't tell us about the monsterfile,
-			// Lets guess it is mapname-monster.xml.
-			map->monsterfile = mapName;
-			map->monsterfile += "-monster.xml";
+		const auto monsterFile = map->monsterfile.empty() ? (mapName + "-monster.xml") : map->monsterfile;
+		auto &spawnContainer = map->spawnsMonsterCustomMaps[customMapIndex];
+
+		g_logger().debug(
+			"[IOMap::loadMonstersCustom] customIndex={} mapBase='{}' resolvedMonsterFile='{}' loaded={} started={}",
+			customMapIndex,
+			mapName,
+			monsterFile,
+			spawnContainer.isLoaded(),
+			spawnContainer.isStarted()
+		);
+
+		// Defensive: if the same slot already got used (order-dependent scenarios),
+		// don't silently skip loading due to SpawnsMonster::loadFromXML() guard.
+		if (spawnContainer.isLoaded() || spawnContainer.isStarted()) {
+			g_logger().debug(
+				"[IOMap::loadMonstersCustom] resetting spawn container for customIndex={} before loading '{}'",
+				customMapIndex,
+				monsterFile
+			);
+			spawnContainer.clear();
 		}
-		return map->spawnsMonsterCustomMaps[customMapIndex].loadFromXML(map->monsterfile);
+
+		const bool loaded = spawnContainer.loadFromXML(monsterFile);
+		g_logger().debug(
+			"[IOMap::loadMonstersCustom] customIndex={} file='{}' result={} spawnCount={}",
+			customMapIndex,
+			monsterFile,
+			loaded,
+			spawnContainer.getspawnMonsterList().size()
+		);
+
+		return loaded;
 	}
 
 	/**
