@@ -566,14 +566,6 @@ int NpcFunctions::luaNpcGetId(lua_State* L) {
 	return 1;
 }
 
-// NOTE: Added detailed debug logs for tracing shop purchase flow:
-// - function entry args
-// - validation failures
-// - room-capacity check result
-// - shop price lookup
-// - createItem results
-// - currency removal success/failure
-// - final message being sent
 int NpcFunctions::luaNpcSellItem(lua_State* L) {
 	// npc:sellItem(player, itemid, amount, <optional: default: 1> subtype, <optional: default: 0> actionid, <optional: default: false> ignoreCap, <optional: default: false> inBackpacks)
 	const auto &npc = Lua::getUserdataShared<Npc>(L, 1, "Npc");
@@ -597,56 +589,27 @@ int NpcFunctions::luaNpcSellItem(lua_State* L) {
 	const bool ignoreCap = Lua::getBoolean(L, 7, false);
 	const bool inBackpacks = Lua::getBoolean(L, 8, false);
 
-	g_logger().debug(
-		"[NpcFunctions::luaNpcSellItem] enter player={} guid={} npc={} currency={} itemId={} amount={} subType={} actionId={} ignoreCap={} inBackpacks={} playerPos={}",
-		player->getName(), player->getGUID(), npc->getName(), npc->getCurrency(), itemId, amount, subType, actionId, ignoreCap, inBackpacks,
-		player->getPosition().toString()
-	);
-
 	const ItemType &it = Item::items[itemId];
 	if (it.id == 0) {
-		g_logger().debug("[NpcFunctions::luaNpcSellItem] invalid itemId={} player={} npc={}", itemId, player->getName(), npc->getName());
 		Lua::pushBoolean(L, false);
 		return 1;
 	}
 
 	constexpr uint32_t shoppingBagPrice = 20;
 	constexpr double shoppingBagSlots = 20;
-
-	double slotsNedeed = 0.0;
-	size_t itemListSize = 0;
-	const int32_t freeBackpackSlots = player->getFreeBackpackSlots();
 	if (const auto &tile = ignoreCap ? player->getTile() : nullptr; tile) {
-		itemListSize = tile->getItemList()->size();
-
+		double slotsNedeed = 0;
 		if (it.stackable) {
 			slotsNedeed = inBackpacks ? std::ceil(std::ceil(amount / it.stackSize) / shoppingBagSlots) : std::ceil(amount / it.stackSize);
 		} else {
 			slotsNedeed = inBackpacks ? std::ceil(amount / shoppingBagSlots) : amount;
 		}
 
-		const double projected = static_cast<double>(itemListSize) + (slotsNedeed - freeBackpackSlots);
-		if (projected > 30) {
-			g_logger().debug(
-				"[NpcFunctions::luaNpcSellItem] not enough room projected={} limit=30 itemListSize={} slotsNeeded={} freeBackpackSlots={} player={} npc={} itemId={} amount={}",
-				projected, itemListSize, slotsNedeed, freeBackpackSlots, player->getName(), npc->getName(), itemId, amount
-			);
-
+		if ((static_cast<double>(tile->getItemList()->size()) + (slotsNedeed - player->getFreeBackpackSlots())) > 30) {
 			Lua::pushBoolean(L, false);
 			player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 			return 1;
 		}
-
-		g_logger().debug(
-			"[NpcFunctions::luaNpcSellItem] room check ok projected={} itemListSize={} slotsNeeded={} freeBackpackSlots={} player={} npc={}",
-			static_cast<double>(itemListSize) + (slotsNedeed - freeBackpackSlots), itemListSize, slotsNedeed, freeBackpackSlots, player->getName(),
-			npc->getName()
-		);
-	} else {
-		g_logger().debug(
-			"[NpcFunctions::luaNpcSellItem] skip room check ignoreCap={} playerHasTile={} player={} npc={}",
-			ignoreCap, (ignoreCap ? (player->getTile() != nullptr) : false), player->getName(), npc->getName()
-		);
 	}
 
 	uint64_t pricePerUnit = 0;
@@ -658,125 +621,62 @@ int NpcFunctions::luaNpcSellItem(lua_State* L) {
 		}
 	}
 
-	if (pricePerUnit == 0) {
-		g_logger().debug(
-			"[NpcFunctions::luaNpcSellItem] price not found or zero price itemId={} npc={} player={} shopBlocks={}",
-			itemId, npc->getName(), player->getName(), shopVector.size()
-		);
-	} else {
-		g_logger().debug(
-			"[NpcFunctions::luaNpcSellItem] pricePerUnit={} itemId={} npc={} player={}", pricePerUnit, itemId, npc->getName(), player->getName()
-		);
-	}
-
 	const auto &[_, itemsPurchased, backpacksPurchased] = g_game().createItem(player, itemId, amount, subType, actionId, ignoreCap, inBackpacks ? ITEM_SHOPPING_BAG : 0);
-
-	g_logger().debug(
-		"[NpcFunctions::luaNpcSellItem] createItem results itemsPurchased={} backpacksPurchased={} requestedAmount={} itemId={} npc={} player={}",
-		itemsPurchased, backpacksPurchased, amount, itemId, npc->getName(), player->getName()
-	);
 
 	std::stringstream ss;
 	const uint64_t itemCost = itemsPurchased * pricePerUnit;
 	const uint64_t backpackCost = backpacksPurchased * shoppingBagPrice;
-
-	g_logger().debug(
-		"[NpcFunctions::luaNpcSellItem] costs computed itemCost={} backpackCost={} total={} currency={} player={} npc={}",
-		itemCost, backpackCost, (itemCost + backpackCost), npc->getCurrency(), player->getName(), npc->getName()
-	);
-
 	if (npc->getCurrency() == ITEM_GOLD_COIN) {
 		if (!g_game().removeMoney(player, itemCost + backpackCost, 0, true)) {
-			g_logger().error(
-				"[NpcFunctions::luaNpcSellItem (removeMoney)] failed player={} npc={} itemId={} amount={} itemsPurchased={} backpacksPurchased={} itemCost={} backpackCost={} currency=gold",
-				player->getName(), npc->getName(), itemId, amount, itemsPurchased, backpacksPurchased, itemCost, backpackCost
-			);
-			g_logger().debug(
-				"[NpcFunctions::luaNpcSellItem] pos={} playerGuid={}", player->getPosition().toString(), player->getGUID()
-			);
-		} else {
-			g_logger().debug(
-				"[NpcFunctions::luaNpcSellItem (removeMoney)] success player={} npc={} totalPaid={}", player->getName(), npc->getName(),
-				itemCost + backpackCost
-			);
-
-			if (backpacksPurchased > 0) {
-				ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " and " << std::to_string(backpacksPurchased);
-				if (backpacksPurchased > 1) {
-					ss << " shopping bags for " << std::to_string(itemCost + backpackCost) << " gold coin";
-				} else {
-					ss << " shopping bag for " << std::to_string(itemCost + backpackCost) << " gold coin";
-				}
-				if ((itemCost + backpackCost) > 1) {
-					ss << "s.";
-				} else {
-					ss << ".";
-				}
+			g_logger().error("[NpcFunctions::luaNpcSellItem (removeMoney)] - Player {} have a problem for buy item {} on shop for npc {}", player->getName(), itemId, npc->getName());
+			g_logger().debug("[Information] Player {} bought {} x item {} on shop for npc {}, at position {}", player->getName(), itemsPurchased, itemId, npc->getName(), player->getPosition().toString());
+		} else if (backpacksPurchased > 0) {
+			ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " and " << std::to_string(backpacksPurchased);
+			if (backpacksPurchased > 1) {
+				ss << " shopping bags for " << std::to_string(itemCost + backpackCost) << " gold coin";
 			} else {
-				ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " gold coin";
-				if (itemCost > 1) {
-					ss << "s.";
-				} else {
-					ss << ".";
-				}
+				ss << " shopping bag for " << std::to_string(itemCost + backpackCost) << " gold coin";
+			}
+			if ((itemCost + backpackCost) > 1) {
+				ss << "s.";
+			} else {
+				ss << ".";
+			}
+		} else {
+			ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " gold coin";
+			if (itemCost > 1) {
+				ss << "s.";
+			} else {
+				ss << ".";
 			}
 		}
 	} else {
-		const bool moneyRemoved = g_game().removeMoney(player, backpackCost, 0, true);
-		if (!moneyRemoved) {
-			g_logger().error(
-				"[NpcFunctions::luaNpcSellItem (removeMoney)] failed for shopping bags player={} npc={} itemId={} backpacksPurchased={} backpackCost={} currency={} playerPos={}",
-				player->getName(), npc->getName(), itemId, backpacksPurchased, backpackCost, npc->getCurrency(), player->getPosition().toString()
-			);
-		} else {
-			const bool currencyRemoved = player->removeItemOfType(npc->getCurrency(), itemCost, -1, false);
-			if (!currencyRemoved) {
-				g_logger().error(
-					"[NpcFunctions::luaNpcSellItem (removeItemOfType)] failed for itemCost player={} npc={} itemId={} itemsPurchased={} itemCost={} currency={} playerPos={}",
-					player->getName(), npc->getName(), itemId, itemsPurchased, itemCost, npc->getCurrency(), player->getPosition().toString()
-				);
+		if (!g_game().removeMoney(player, backpackCost, 0, true) || !player->removeItemOfType(npc->getCurrency(), itemCost, -1, false)) {
+			g_logger().error("[NpcFunctions::luaNpcSellItem (removeItemOfType)] - Player {} have a problem for buy item {} on shop for npc {}", player->getName(), itemId, npc->getName());
+			g_logger().debug("[Information] Player {} buyed item {} on shop for npc {}, at position {}", player->getName(), itemId, npc->getName(), player->getPosition().toString());
+		} else if (backpacksPurchased > 0) {
+			ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " " << Item::items[npc->getCurrency()].name;
+			if (itemCost > 1) {
+				ss << "s";
+			}
+			ss << " and " << std::to_string(backpacksPurchased) << "x shopping bag";
+			if (backpacksPurchased > 1) {
+				ss << "s";
+			}
+			ss << " for " << std::to_string(backpackCost) << " gold coin";
+			if (backpackCost > 1) {
+				ss << "s.";
 			} else {
-				g_logger().debug(
-					"[NpcFunctions::luaNpcSellItem] currency+money removed success player={} npc={} itemCost={} backpackCost={} currency={}",
-					player->getName(), npc->getName(), itemCost, backpackCost, npc->getCurrency()
-				);
-
-				if (backpacksPurchased > 0) {
-					ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " "
-					   << Item::items[npc->getCurrency()].name;
-					if (itemCost > 1) {
-						ss << "s";
-					}
-					ss << " and " << std::to_string(backpacksPurchased) << "x shopping bag";
-					if (backpacksPurchased > 1) {
-						ss << "s";
-					}
-					ss << " for " << std::to_string(backpackCost) << " gold coin";
-					if (backpackCost > 1) {
-						ss << "s.";
-					} else {
-						ss << ".";
-					}
-				} else {
-					ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " "
-					   << Item::items[npc->getCurrency()].name;
-					if (itemCost > 1) {
-						ss << "s.";
-					} else {
-						ss << ".";
-					}
-				}
+				ss << ".";
+			}
+		} else {
+			ss << "Bought " << std::to_string(itemsPurchased) << "x " << it.name << " for " << std::to_string(itemCost) << " " << Item::items[npc->getCurrency()].name;
+			if (itemCost > 1) {
+				ss << "s.";
+			} else {
+				ss << ".";
 			}
 		}
-
-		// Preserve original behavior: even if money/currency removal fails, function still sends ss (possibly empty) and returns true.
-		// The existing code did not stop execution on failure; logs will help identify why ss is empty/unexpected.
-	}
-
-	if (!ss.str().empty()) {
-		g_logger().debug("[NpcFunctions::luaNpcSellItem] sending trade message to player={} npc={} itemId={} message={}", player->getName(), npc->getName(), itemId, ss.str());
-	} else {
-		g_logger().debug("[NpcFunctions::luaNpcSellItem] empty trade message (most likely removal failure) player={} npc={} itemId={}", player->getName(), npc->getName(), itemId);
 	}
 
 	player->sendTextMessage(MESSAGE_TRADE, ss.str());
