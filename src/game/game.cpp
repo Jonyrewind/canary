@@ -3392,10 +3392,7 @@ ObjectCategory_t Game::getObjectCategory(const ItemType &it) {
 			case WEAPON_WAND:
 				category = OBJECTCATEGORY_WANDS;
 				if (it.id == 3073 || it.id == 3074) {
-					g_logger().info("[getObjectCategory] wand itemId={} weaponType={} => category={}",
-						it.id,
-						static_cast<int>(it.weaponType),
-						static_cast<int>(category));
+					g_logger().info("[getObjectCategory] wand itemId={} weaponType={} => category={}", it.id, static_cast<int>(it.weaponType), static_cast<int>(category));
 				}
 				break;
 			case WEAPON_AMMO:
