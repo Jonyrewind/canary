@@ -757,17 +757,22 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 		const auto mapFilePath = realPath.string();
 		const auto customMapBasePath = std::filesystem::path(mapFilePath).parent_path() / std::filesystem::path(mapFilePath).stem();
 		const auto npcFilePath = customMapBasePath.string() + "-npc.xml";
+		const auto monsterFilePath = customMapBasePath.string() + "-monster.xml";
 
 		g_logger().debug(
-			"[Game::loadCustomMaps] loading map '{}' at index {} mapFile='{}' npcFile='{}'",
+			"[Game::loadCustomMaps] loading map '{}' at index {} mapFile='{}' npcFile='{}' monsterFile='{}'",
 			filename,
 			customMapIndex,
 			mapFilePath,
-			npcFilePath
+			npcFilePath,
+			monsterFilePath
 		);
 
 		if (!std::filesystem::exists(npcFilePath)) {
 			g_logger().debug("[Game::loadCustomMaps] npc file missing for map '{}' at index {}: '{}'", filename, customMapIndex, npcFilePath);
+		}
+		if (!std::filesystem::exists(monsterFilePath)) {
+			g_logger().debug("[Game::loadCustomMaps] monster file missing for map '{}' at index {}: '{}'", filename, customMapIndex, monsterFilePath);
 		}
 
 		map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
