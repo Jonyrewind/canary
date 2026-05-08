@@ -2362,11 +2362,42 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 
 	std::shared_ptr<Cylinder> destCylinder = toCylinder;
 	std::shared_ptr<Item> toItem = nullptr;
+
+	g_logger().debug("[{}] enter: toCylinder={} toCylinderItemId={} toCylinderItemName='{}' itemId={} itemName='{}' itemCount={} index={} flags={} test={} addedItemIsRewardContainer={}",
+		__FUNCTION__,
+		static_cast<void*>(toCylinder.get()),
+		addedItem ? addedItem->getID() : 0,
+		addedItem ? addedItem->getName() : std::string{},
+		item ? item->getID() : 0,
+		item ? item->getName() : std::string{},
+		item ? item->getItemCount() : 0,
+		index,
+		flags,
+		test,
+		(addedItem && addedItem->getID() == ITEM_REWARD_CONTAINER));
+
 	toCylinder = toCylinder->queryDestination(index, item, toItem, flags);
+
+	g_logger().debug("[{}] after queryDestination: destCylinderItemId={} destCylinderItemName='{}' resolvedToCylinderItemId={} resolvedToCylinderItemName='{}' toItemId={} toItemCount={}",
+		__FUNCTION__,
+		destCylinder && destCylinder->getItem() ? destCylinder->getItem()->getID() : 0,
+		destCylinder && destCylinder->getItem() ? destCylinder->getItem()->getName() : std::string{},
+		toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getID() : 0,
+		toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getName() : std::string{},
+		toItem ? toItem->getID() : 0,
+		toItem ? toItem->getItemCount() : 0);
 
 	// check if we can add this item
 	ReturnValue ret = toCylinder->queryAdd(index, item, item->getItemCount(), flags);
 	if (ret != RETURNVALUE_NOERROR) {
+		g_logger().debug("[{}] queryAdd rejected: ret={} toCylinderItemId={} itemId={} itemCount={} index={} flags={}",
+			__FUNCTION__,
+			ret,
+			toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getID() : 0,
+			item ? item->getID() : 0,
+			item ? item->getItemCount() : 0,
+			index,
+			flags);
 		return ret;
 	}
 
@@ -2377,6 +2408,13 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 	uint32_t maxQueryCount = 0;
 	ret = destCylinder->queryMaxCount(INDEX_WHEREEVER, item, item->getItemCount(), maxQueryCount, flags);
 
+	g_logger().debug("[{}] queryMaxCount: ret={} maxQueryCount={} destCylinderItemId={} addedItemId={}",
+		__FUNCTION__,
+		ret,
+		maxQueryCount,
+		destCylinder && destCylinder->getItem() ? destCylinder->getItem()->getID() : 0,
+		addedItem ? addedItem->getID() : 0);
+
 	if (ret != RETURNVALUE_NOERROR && addedItem && addedItem->getID() != ITEM_REWARD_CONTAINER) {
 		return ret;
 	}
@@ -2386,6 +2424,14 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 	}
 
 	if (item->isStackable() && item->equals(toItem)) {
+		g_logger().debug("[{}] stack-merge path: itemId={} itemCount={} toItemId={} toItemCount={} toItemStackSize={} maxQueryCount={}",
+			__FUNCTION__,
+			item->getID(),
+			item->getItemCount(),
+			toItem ? toItem->getID() : 0,
+			toItem ? toItem->getItemCount() : 0,
+			toItem ? toItem->getStackSize() : 0,
+			maxQueryCount);
 		uint32_t m = std::min<uint32_t>(item->getItemCount(), maxQueryCount);
 		uint32_t n = std::min<uint32_t>(toItem->getStackSize() - toItem->getItemCount(), m);
 
@@ -2396,13 +2442,29 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 			if (item->getItemCount() != count) {
 				std::shared_ptr<Item> remainderItem = item->clone();
 				remainderItem->setItemCount(count);
+
+				g_logger().debug("[{}] stack split: mergeIntoExisting toItemId={} mergedAmount={} remainderAmount={} remainderItemCount={} destCylinderItemId={}",
+					__FUNCTION__,
+					toItem ? toItem->getID() : 0,
+					n,
+					count,
+					remainderItem->getItemCount(),
+					destCylinder && destCylinder->getItem() ? destCylinder->getItem()->getID() : 0);
+
 				if (internalAddItem(destCylinder, remainderItem, INDEX_WHEREEVER, flags, false) != RETURNVALUE_NOERROR) {
 					remainderCount = count;
+					g_logger().debug("[{}] stack split failed: remainderCount set to {}", __FUNCTION__, remainderCount);
 				}
 			} else {
 				toCylinder->addThing(index, item);
 
 				int32_t itemIndex = toCylinder->getThingIndex(item);
+				g_logger().debug("[{}] stack split merged+added remainder directly: toCylinderItemId={} addedItemId={} itemIndex={}",
+					__FUNCTION__,
+					toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getID() : 0,
+					item->getID(),
+					itemIndex);
+
 				if (itemIndex != -1) {
 					toCylinder->postAddNotification(item, nullptr, itemIndex);
 				}
@@ -2412,14 +2474,34 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 			item->onRemoved();
 
 			int32_t itemIndex = toCylinder->getThingIndex(toItem);
+			g_logger().debug("[{}] stack fully merged: toItemId={} toItemNewCount={} itemIndex={}",
+				__FUNCTION__,
+				toItem ? toItem->getID() : 0,
+				toItem ? toItem->getItemCount() : 0,
+				itemIndex);
+
 			if (itemIndex != -1) {
 				toCylinder->postAddNotification(toItem, nullptr, itemIndex);
 			}
 		}
 	} else {
+		g_logger().debug("[{}] non-stack path: toCylinderItemId={} addingItemId={} itemCount={} index={} flags={}",
+			__FUNCTION__,
+			toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getID() : 0,
+			item->getID(),
+			item->getItemCount(),
+			index,
+			flags);
+
 		toCylinder->addThing(index, item);
 
 		int32_t itemIndex = toCylinder->getThingIndex(item);
+		g_logger().debug("[{}] non-stack added: addedItemId={} itemIndex={} toCylinderItemId={}",
+			__FUNCTION__,
+			item->getID(),
+			itemIndex,
+			toCylinder && toCylinder->getItem() ? toCylinder->getItem()->getID() : 0);
+
 		if (itemIndex != -1) {
 			toCylinder->postAddNotification(item, nullptr, itemIndex);
 		}
@@ -2428,6 +2510,12 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, const st
 	if (addedItem && addedItem->isQuiver()
 	    && addedItem->getHoldingPlayer()
 	    && addedItem->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == addedItem) {
+		g_logger().debug("[{}] quiver UI refresh: player={} quiverItemId={} slot={}",
+			__FUNCTION__,
+			addedItem->getHoldingPlayer() ? addedItem->getHoldingPlayer()->getName() : std::string{},
+			addedItem->getID(),
+			CONST_SLOT_RIGHT);
+
 		addedItem->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
 	}
 
@@ -3391,9 +3479,6 @@ ObjectCategory_t Game::getObjectCategory(const ItemType &it) {
 				break;
 			case WEAPON_WAND:
 				category = OBJECTCATEGORY_WANDS;
-				if (it.id == 3073 || it.id == 3074) {
-					g_logger().info("[getObjectCategory] wand itemId={} weaponType={} => category={}", it.id, static_cast<int>(it.weaponType), static_cast<int>(category));
-				}
 				break;
 			case WEAPON_AMMO:
 				category = OBJECTCATEGORY_AMMO;
