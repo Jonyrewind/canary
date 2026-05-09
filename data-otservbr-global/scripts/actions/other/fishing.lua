@@ -139,7 +139,6 @@ function fishing.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			end
 		elseif rollFishingSuccess(player) then
 			player:addItemContainer(3578, 1, fromPosition, item)
-			logger.info("1")
 		end
 	end
 
