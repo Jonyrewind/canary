@@ -409,3 +409,6 @@ compile_commands.json
 /plan
 /enc_temp_folder
 canary-debug
+.vscode/sftp.json
+data/items/items.xml.bak
+data-otservbr-global/world/world.7z
