@@ -107,7 +107,7 @@ int LootFunctions::luaLootSetIdFromName(lua_State* L) {
 			// Build a list of all conflicting IDs for a useful debug message
 			std::string conflictingIds;
 			for (auto it = ids.first; it != ids.second; ++it) {
-				if (!conflictingIds.empty()) {Expand annotationCheck failure on line R110
+				if (!conflictingIds.empty()) {
 					conflictingIds += ", ";
 				}
 				conflictingIds += std::to_string(it->second);
