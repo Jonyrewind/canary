@@ -8809,8 +8809,7 @@ void ProtocolGame::openImbuementWindow(ImbuementAction action, const std::shared
 			msg.addByte(item->getTier());
 		}
 
-	msg.addByte(item->getImbuementSlot());
-
+		msg.addByte(item->getImbuementSlot());
 
 		// Imbuements applied
 		for (uint8_t slotID = 0; slotID < item->getImbuementSlot(); slotID++) {

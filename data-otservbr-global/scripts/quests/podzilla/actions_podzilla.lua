@@ -1,7 +1,7 @@
 local Podzilla = {
 	storage = Storage.Quest.U13_40.Podzilla.TheRiseofPodzilla,
 	leverPos = Position(33860, 32012, 5),
-	lookType = {1693, 1698},
+	lookType = { 1693, 1698 },
 	playerPositions = {
 		{ pos = Position(33861, 32012, 5), teleport = Position(33873, 31999, 4), effect = CONST_ME_BIGCLOUDS },
 		{ pos = Position(33862, 32012, 5), teleport = Position(33873, 31999, 4), effect = CONST_ME_BIGCLOUDS },
@@ -42,7 +42,7 @@ function shipADangerousJourney.onUse(player, item, fromPosition, target, toPosit
 					spectator:removeCondition(CONDITION_OUTFIT)
 					local conditionOutfit = Condition(CONDITION_OUTFIT)
 					conditionOutfit:setOutfit({ lookType = lookType })
-					conditionOutfit:setTicks(- 1)
+					conditionOutfit:setTicks(-1)
 					spectator:addCondition(conditionOutfit)
 					spectator:setIcon("podzilla-a-dangerous-journey", CreatureIconCategory_Quests, CreatureIconQuests_GreenShield, 100)
 

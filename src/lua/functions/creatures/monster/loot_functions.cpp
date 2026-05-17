@@ -107,14 +107,16 @@ int LootFunctions::luaLootSetIdFromName(lua_State* L) {
 			// Build a list of all conflicting IDs for a useful debug message
 			std::string conflictingIds;
 			for (auto it = ids.first; it != ids.second; ++it) {
-				if (!conflictingIds.empty()) {Expand annotationCheck failure on line R110
-					conflictingIds += ", ";
+				if (!conflictingIds.empty()) {
+					Expand annotationCheck failure on line R110
+						conflictingIds
+						+= ", ";
 				}
 				conflictingIds += std::to_string(it->second);
 			}
 			g_logger().warn("[LootFunctions::luaLootSetIdFromName] - "
 			                "Duplicate item name '{}' found with IDs: [{}]. Using first ID: {}{}",
-			                 name, conflictingIds, ids.first->second, monsterContext);
+			                name, conflictingIds, ids.first->second, monsterContext);
 		}
 
 		loot->lootBlock.id = ids.first->second;
