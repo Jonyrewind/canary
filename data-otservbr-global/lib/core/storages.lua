@@ -2952,9 +2952,27 @@ Storage = {
 				},
 			},
 		},
-		U13_20 = { -- update 13.20 - Reserved Storages 47952 - 47970
+		U13_20 = { -- update 13.20 - Reserved Storages 47952 - 47990
 			RottenBlood = {
 				AccessDoor = 47952,
+			},
+		},
+		U13_30 = { -- update 13.30 Winter Update 2023 - Reserved Storages 47971 - 48010
+		},
+		U13_40 = { -- update 13.40 Summer Update 2024 - Reserved Storages 48011 - 48050
+			Podzilla = {
+				Questline = 48011,
+				TheRiseofPodzilla = {
+					Questline = 48012,
+					Gunther = 48013,
+					NextTry = 48015,
+					Shortcut = 48016,
+					AtuiTalk = 48017,
+					Teleports = 48018,
+					Rooteaten = 48019,
+					TwoLipsTalk = 48020,
+					HandledRoots = 48021,
+				},
 			},
 		},
 		U14_15 = { -- update 14.15 - Reserved Storages 49101 - 49150

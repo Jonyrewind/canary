@@ -78429,6 +78429,22 @@ Granted by TibiaGoals.com"/>
 	<item id="45160" article="a" name="ramp">
 		<attribute key="floorchange" value="south"/>
 	</item>
+	<item id="45394" article="a" name="ramp"/>
+	<item id="45395" article="a" name="ramp">
+		<attribute key="floorchange" value="north"/>
+	</item>
+	<item id="45396" article="a" name="ramp"/>
+	<item id="45397" article="a" name="ramp">
+		<attribute key="floorchange" value="west"/>
+	</item>
+	<item id="45398" article="a" name="ramp"/>
+	<item id="45399" article="a" name="ramp">
+		<attribute key="floorchange" value="east"/>
+	</item>
+	<item id="45400" article="a" name="ramp"/>
+	<item id="45401" article="a" name="ramp">
+		<attribute key="floorchange" value="south"/>
+	</item>
 	<item id="45639" article="a" name="cocoa grimoire">
 		<attribute key="weaponType" value="spellbook"/>
 		<attribute key="description" value="This spellbook was made from rich dark chocolate and is filled with powerful knowledge."/>
@@ -82690,6 +82706,75 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="soul cores"/>
 		<attribute key="description" value="Offers a soul to the Soulpit. Combine with an exalted core to turn it into a lesser soul core."/>
 		<attribute key="weight" value="100"/>
+	</item>
+	<item id="49111" article="a" name="dead herd weevil">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49113"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49112" article="a" name="dead grove guardian">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49121"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49113" article="a" name="dead herd weevil">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49122"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49121" article="a" name="dead grove guardian">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49132"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49122" article="a" name="dead herd weevil">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49138"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49132" article="a" name="dead grove guardian">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49133"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49133" article="a" name="dead grove guardian">
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49138" article="a" name="dead herd weevil">
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49142" article="a" name="dead common beetle">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49143"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49143" article="a" name="dead common beetle">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49144"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49144" article="a" name="dead common beetle">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="49145"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="49145" article="a" name="dead common beetle">
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
 	</item>
 	<item id="49161" article="a" name="stairs">
 		<attribute key="floorchange" value="down"/>

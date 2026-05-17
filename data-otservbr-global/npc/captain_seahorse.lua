@@ -50,6 +50,32 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
+local function creatureSayCallback(npc, creature, type, message)
+	local player = Player(creature)
+	local playerId = player:getId()
+
+	local Podzilla = Storage.Quest.U13_40.Podzilla
+
+	if not npcHandler:checkInteraction(npc, creature) then
+		return false
+	end
+
+	if MsgContains(message, "gunther") then
+		if player:getStorageValue(Podzilla.TheRiseofPodzilla.Gunther) == 1 then
+					npcHandler:say("Ah, yes. I am aware you are to rendezvous with a ship at the high seas. Are you ready to embark? {Yes} or {no}?", npc, creature)
+					npcHandler:setTopic(playerId, 1)
+		end
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 1 then
+		player:setStorageValue(Podzilla.TheRiseofPodzilla.Questline, 2)
+		player:teleportTo(Position(33855, 32011, 6))
+		npcHandler:setTopic(playerId, 0)
+	elseif MsgContains(message, "no") and npcHandler:getTopic(playerId) == 1 then
+		npcHandler:say({"I understand.",}, npc, creature)
+		npcHandler:setTopic(playerId, 0)
+	end
+	return true
+end
+
 -- Travel
 local function addTravelKeyword(keyword, cost, destination, action)
 	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a seek a passage to " .. keyword:titleCase() .. " for |TRAVELCOST|?", cost = cost, discount = "postman" })
@@ -86,6 +112,8 @@ keywordHandler:addKeyword({ "yalahar" }, StdModule.say, { npcHandler = npcHandle
 npcHandler:setMessage(MESSAGE_GREET, "Welcome on board, |PLAYERNAME|. Where may I {sail} you today?")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye. Recommend us if you were satisfied with our service.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye then.")
+
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 

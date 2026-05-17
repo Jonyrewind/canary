@@ -600,6 +600,9 @@
 	<npc centerx="32724" centery="31976" centerz="6" radius="1">
 		<npc name="Wyda" x="0" y="0" z="6" spawntime="60" />
 	</npc>
+	<npc centerx="33807" centery="31981" centerz="6" radius="1">
+		<npc name="Two Lips" x="0" y="1" z="6" spawntime="60" />
+	</npc>
 	<npc centerx="32568" centery="32018" centerz="6" radius="1">
 		<npc name="Kevin" x="0" y="0" z="6" spawntime="60" />
 	</npc>
@@ -1410,6 +1413,9 @@
 	<npc centerx="32383" centery="31776" centerz="7" radius="1">
 		<npc name="Shauna" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33170" centery="31778" centerz="7" radius="1">
+		<npc name="Gunther" x="0" y="1" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="33191" centery="31778" centerz="7" radius="1">
 		<npc name="Falk" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1595,6 +1601,9 @@
 	</npc>
 	<npc centerx="32085" centery="32011" centerz="7" radius="1">
 		<npc name="Shanoya" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="33837" centery="32011" centerz="7" radius="1">
+		<npc name="Atui" x="-1" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32067" centery="32013" centerz="7" radius="1">
 		<npc name="Ula" x="0" y="0" z="7" spawntime="60" />
