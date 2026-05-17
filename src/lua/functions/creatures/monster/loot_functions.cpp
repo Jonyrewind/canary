@@ -108,7 +108,7 @@ int LootFunctions::luaLootSetIdFromName(lua_State* L) {
 			std::string conflictingIds;
 			for (auto it = ids.first; it != ids.second; ++it) {
 				if (!conflictingIds.empty()) {
-						conflictingIds
+					conflictingIds
 						+= ", ";
 				}
 				conflictingIds += std::to_string(it->second);
