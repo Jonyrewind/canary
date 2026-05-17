@@ -108,7 +108,6 @@ int LootFunctions::luaLootSetIdFromName(lua_State* L) {
 			std::string conflictingIds;
 			for (auto it = ids.first; it != ids.second; ++it) {
 				if (!conflictingIds.empty()) {
-					Expand annotationCheck failure on line R110
 						conflictingIds
 						+= ", ";
 				}
