@@ -22,7 +22,7 @@
 #include "utils/vectorsort.hpp"
 
 // --------------------
-// STL Includes
+// Standard STL Includes
 // --------------------
 
 #include <bitset>
@@ -49,6 +49,8 @@
 #include <source_location>
 #include <span>
 #include <compare>
+#include <string>
+#include <iostream>
 
 // --------------------
 // System Includes
@@ -92,6 +94,12 @@ std::enable_if_t<std::is_enum_v<E>, std::underlying_type_t<E>>
 format_as(E e) {
 	return static_cast<std::underlying_type_t<E>>(e);
 }
+
+// OpenSSL
+#include <openssl/bn.h>
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/err.h>
 
 // LUA
 #if __has_include("luajit/lua.hpp")
@@ -140,6 +148,8 @@ format_as(E e) {
 
 #include <boost/di.hpp>
 
+#include <nlohmann/json.hpp>
+
 // -------------------------
 // GIT Metadata Includes
 // -------------------------
@@ -147,13 +157,6 @@ format_as(E e) {
 #if __has_include("gitmetadata.h")
 	#include "gitmetadata.h"
 #endif
-
-// ---------------------
-// Standard STL Includes
-// ---------------------
-
-#include <string>
-#include <iostream>
 
 /**
  * Static custom libraries that can be pre-compiled like DI and messaging
