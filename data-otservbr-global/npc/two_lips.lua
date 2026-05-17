@@ -24,8 +24,7 @@ npcConfig.flags = {
 	floorchange = false,
 }
 
-npcConfig.voices = {
-}
+npcConfig.voices = {}
 
 -- Create keywordHandler and npcHandler
 local keywordHandler = KeywordHandler:new()
@@ -72,13 +71,13 @@ local function creatureSayCallback(npc, creature, type, message)
 	elseif MsgContains(message, "help") or MsgContains(message, "preserver") and npcHandler:getTopic(playerId) == 1 then
 		npcHandler:say("<My people desperate. Invaders came. {Invaders} destroy!>", npc, creature)
 		npcHandler:setTopic(playerId, 2)
-	elseif MsgContains(message, "Invaders") and npcHandler:getTopic(playerId) == 2  then
+	elseif MsgContains(message, "Invaders") and npcHandler:getTopic(playerId) == 2 then
 		npcHandler:say("<You go down! Destroy {leader} of invaders!>", npc, creature)
 		npcHandler:setTopic(playerId, 3)
-	elseif MsgContains(message, "leader") and npcHandler:getTopic(playerId) == 3  then
+	elseif MsgContains(message, "leader") and npcHandler:getTopic(playerId) == 3 then
 		npcHandler:say("<Before you go, prove {worth}!>", npc, creature)
 		npcHandler:setTopic(playerId, 4)
-	elseif MsgContains(message, "worth")  then
+	elseif MsgContains(message, "worth") then
 		if player:getStorageValue(Podzilla.TheRiseofPodzilla.TwoLipsTalk) >= 1 then
 			npcHandler:say("You have to gain the plant people's help. Only then you might proceed downward to confront Marrow.", npc, creature)
 			npcHandler:setTopic(playerId, 0)

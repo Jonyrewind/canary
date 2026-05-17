@@ -70,8 +70,7 @@ monster.loot = {
 	{ name = "carniphila seeds", chance = 6700 },
 }
 
-monster.attacks = {
-}
+monster.attacks = {}
 
 monster.defenses = {
 	defense = 10,

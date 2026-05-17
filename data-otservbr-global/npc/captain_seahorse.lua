@@ -62,15 +62,15 @@ local function creatureSayCallback(npc, creature, type, message)
 
 	if MsgContains(message, "gunther") then
 		if player:getStorageValue(Podzilla.TheRiseofPodzilla.Gunther) == 1 then
-					npcHandler:say("Ah, yes. I am aware you are to rendezvous with a ship at the high seas. Are you ready to embark? {Yes} or {no}?", npc, creature)
-					npcHandler:setTopic(playerId, 1)
+			npcHandler:say("Ah, yes. I am aware you are to rendezvous with a ship at the high seas. Are you ready to embark? {Yes} or {no}?", npc, creature)
+			npcHandler:setTopic(playerId, 1)
 		end
 	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 1 then
 		player:setStorageValue(Podzilla.TheRiseofPodzilla.Questline, 2)
 		player:teleportTo(Position(33855, 32011, 6))
 		npcHandler:setTopic(playerId, 0)
 	elseif MsgContains(message, "no") and npcHandler:getTopic(playerId) == 1 then
-		npcHandler:say({"I understand.",}, npc, creature)
+		npcHandler:say({ "I understand." }, npc, creature)
 		npcHandler:setTopic(playerId, 0)
 	end
 	return true
