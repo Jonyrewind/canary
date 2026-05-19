@@ -53,6 +53,7 @@ local config = {
 			43887,
 			50146,
 			50147,
+			50149,
 			50150,
 			50157,
 			50159,
@@ -64,7 +65,7 @@ local config = {
 		range = { 1, 3 },
 		bonusFragment = {
 			id = 46626,
-			chance = 5,
+			chance = 10,
 			count = 1,
 		},
 	},

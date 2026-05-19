@@ -28,12 +28,32 @@ function rune.onCastSpell(creature, var, isHotkey)
 		return false
 	end
 
-	if Monster(var:getNumber(1073762188)) then
-		player:sendCancelMessage("Sorry, not possible.")
-		player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		return false
+	local target = Monster(var:getNumber(1073762188))
+
+	-- Monster targets: ONLY allow healing for summons owned by a PLAYER.
+	if target and target:isMonster() then
+		local master = target:getMaster()
+		local masterPlayer = master and master:getPlayer() or nil
+		if not masterPlayer then
+			player:sendCancelMessage("Sorry, not possible.")
+			player:getPosition():sendMagicEffect(CONST_ME_POFF)
+			return false
+		end
+
+		-- Heal summons directly (Combat:execute(..., var) doesn't apply the heal to summon targets in this rune)
+		local level = player:getLevel()
+		local maglevel = player:getMagicLevel()
+		local min = math.floor((level / 5) + (maglevel * 7.3) + 42)
+		local max = math.floor((level / 5) + (maglevel * 12.4) + 90)
+
+		-- Dispel paralysis like the original combat parameters did
+		target:removeCondition(CONDITION_PARALYZE)
+
+		doTargetCombatHealth(0, target, COMBAT_HEALING, min, max, CONST_ME_MAGIC_BLUE)
+		return true
 	end
 
+	-- Non-monster targets keep the original behavior
 	return combat:execute(player, var)
 end
 
