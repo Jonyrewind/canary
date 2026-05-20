@@ -109,12 +109,13 @@ function teleportBoss.onStepIn(creature, item, position, fromPosition)
 				creature:say("There's someone fighting with " .. value.bossName .. ".", TALKTYPE_MONSTER_SAY)
 				return true
 			end
-			if not creature:canFightBoss(value.bossName) then
-				creature:teleportTo(fromPosition, true)
-				creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have to wait " .. value.timeToFightAgain .. " hours to face " .. value.bossName .. " again!")
-				return true
-			end
+			local isAccountNormal = creature:getAccountType() < ACCOUNT_TYPE_GAMEMASTER
+				if not creature:canFightBoss(value.bossName) and isAccountNormal then
+					creature:teleportTo(fromPosition, true)
+					creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+					creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have to wait " .. value.timeToFightAgain .. " hours to face " .. value.bossName .. " again!")
+					return true
+				end
 			spec:removeMonsters()
 			local monster = Game.createMonster(value.bossName, value.bossPosition, true, true)
 			if not monster then

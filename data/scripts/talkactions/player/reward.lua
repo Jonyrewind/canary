@@ -7,8 +7,9 @@ local config = {
 		{ id = 35282, charges = 64400 },
 		{ id = 35280, charges = 64400 },
 		{ id = 44066, charges = 64400 },
+		{ id = 50294, charges = 64400 },
 	},
-	storage = tonumber(Storage.PlayerWeaponReward), -- storage key, player can only win once
+	storage = tonumber(Storage.PlayerWeaponReward), -- storage key, player can claim once per 24h
 }
 
 local function sendExerciseRewardModal(player)
@@ -37,7 +38,7 @@ local function sendExerciseRewardModal(player)
 						return
 					end
 					player:sendTextMessage(MESSAGE_LOOK, string.format("Congratulations, you received a %s with %i charges in your store inbox.", iType:getName(), it.charges))
-					player:setStorageValue(config.storage, 1)
+					player:setStorageValue(config.storage, systemTime())
 				else
 					player:sendTextMessage(MESSAGE_LOOK, "You need to have capacity and empty slots to receive.")
 				end
@@ -56,10 +57,18 @@ function exerciseRewardModal.onSay(player, words, param)
 	if not configManager.getBoolean(configKeys.TOGGLE_RECEIVE_REWARD) or player:getTown():getId() < TOWNS_LIST.AB_DENDRIEL then
 		return true
 	end
-	if player:getStorageValue(config.storage) > 0 then
-		player:sendTextMessage(MESSAGE_LOOK, "You already received your exercise weapon reward!")
+	local lastRewardTime = player:getStorageValue(config.storage)
+	local now = systemTime()
+	local rewardCooldown = 24 * 60 * 60
+
+	if lastRewardTime > 0 and (now - lastRewardTime) < rewardCooldown then
+		player:sendTextMessage(
+			MESSAGE_LOOK,
+			string.format("You already received your exercise weapon reward. Come back in %i hours.", math.ceil((rewardCooldown - (now - lastRewardTime)) / 3600))
+		)
 		return true
 	end
+
 	sendExerciseRewardModal(player)
 	return true
 end

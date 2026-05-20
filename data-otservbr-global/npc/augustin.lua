@@ -134,6 +134,8 @@ npcConfig.shop = {
 	{ itemName = "white pearl", clientId = 3026, buy = 320, sell = 160 },
 	{ itemName = "White Silk Flower", clientId = 34008, sell = 9000 },
 	{ itemName = "Yellow Gem", clientId = 3037, sell = 1000 },
+	{ itemName = "lesser fragment", clientId = 46625, buy = 750000, sell = 500 },
+	{ itemName = "greater fragment", clientId = 46626, buy = 2250000, sell = 2500 },
 }
 
 local keywordHandler = KeywordHandler:new()

@@ -128,6 +128,8 @@ npcConfig.shop = {
 	{ itemName = "wedding ring", clientId = 3004, buy = 990 },
 	{ itemName = "white pearl", clientId = 3026, buy = 320, sell = 160 },
 	{ itemName = "white silk flower", clientId = 34008, sell = 9000 },
+	{ itemName = "lesser fragment", clientId = 46625, buy = 750000, sell = 500 },
+	{ itemName = "greater fragment", clientId = 46626, buy = 2250000, sell = 2500 },
 }
 
 -- On buy npc shop message
