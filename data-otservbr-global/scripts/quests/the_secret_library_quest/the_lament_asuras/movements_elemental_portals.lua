@@ -121,7 +121,8 @@ function movements_asura_elemental_portals.onStepIn(creature, item, position, fr
 				end
 				clearBossRoom(k.fromPos, k.toPos, k.exit)
 				if k.storage then
-					if player:getStorageValue(k.storage) < os.time() then
+					local isAccountNormal = creature:getAccountType() > ACCOUNT_TYPE_GAMEMASTER
+					if player:getStorageValue(k.storage) < os.time() or isAccountNormal then
 						startBattle(player:getId(), k.toPosition, k.bossName, k.bossPos)
 						addEvent(expelPlayerFromRoom, 6000000, player:getId(), k.fromPos, k.toPos, k.exit)
 						player:setStorageValue(k.storage, os.time() + (20 * 3600))

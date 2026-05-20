@@ -84,7 +84,8 @@ function teleportBoss.onStepIn(creature, item, position, fromPosition)
 				creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "All the players need to be level " .. value.requiredLevel .. " or higher.")
 				return true
 			end
-			if not creature:canFightBoss(value.bossName) then
+			local isAccountNormal = creature:getAccountType() < ACCOUNT_TYPE_GAMEMASTER
+			if not creature:canFightBoss(value.bossName) and isAccountNormal then
 				creature:teleportTo(fromPosition, true)
 				creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 				creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have to wait " .. value.timeToFightAgain .. " hours to face " .. value.bossName .. " again!")

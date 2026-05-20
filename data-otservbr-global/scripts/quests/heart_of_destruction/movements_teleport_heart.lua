@@ -77,7 +77,8 @@ function teleportHeart.onStepIn(creature, item, position, fromPosition)
 		end
 	elseif data.storage1 then
 		if player:getStorageValue(data.storage1) >= 1 and player:getStorageValue(data.storage2) >= 1 and player:getStorageValue(data.storage3) >= 1 then
-			if player:canFightBoss(data.boss) then
+			local isAccountNormal = creature:getAccountType() > ACCOUNT_TYPE_GAMEMASTER
+			if player:canFightBoss(data.boss) or isAccountNormal then
 				player:teleportTo(data.position)
 			else
 				denyAndReturn(player, fromPosition, "It's too early for you to endure this challenge again.")

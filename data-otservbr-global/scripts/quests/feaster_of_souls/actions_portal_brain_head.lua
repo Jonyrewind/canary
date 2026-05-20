@@ -121,7 +121,8 @@ function teleportBoss.onStepIn(creature, item, position, fromPosition)
 		return false
 	end
 	local timeLeft = player:getBossCooldown(config.bossName) - os.time()
-	if timeLeft > 0 then
+	local isAccountNormal = creature:getAccountType() < ACCOUNT_TYPE_GAMEMASTER
+	if timeLeft > 0 and isAccountNormal then
 		player:teleportTo(config.exitPosition, true)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have to wait " .. Game.getTimeInWords(timeLeft) .. " to face " .. config.bossName .. " again!")
