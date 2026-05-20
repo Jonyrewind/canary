@@ -62,10 +62,7 @@ function exerciseRewardModal.onSay(player, words, param)
 	local rewardCooldown = 24 * 60 * 60
 
 	if lastRewardTime > 0 and (now - lastRewardTime) < rewardCooldown then
-		player:sendTextMessage(
-			MESSAGE_LOOK,
-			string.format("You already received your exercise weapon reward. Come back in %i hours.", math.ceil((rewardCooldown - (now - lastRewardTime)) / 3600))
-		)
+		player:sendTextMessage(MESSAGE_LOOK, string.format("You already received your exercise weapon reward. Come back in %i hours.", math.ceil((rewardCooldown - (now - lastRewardTime)) / 3600)))
 		return true
 	end
 
