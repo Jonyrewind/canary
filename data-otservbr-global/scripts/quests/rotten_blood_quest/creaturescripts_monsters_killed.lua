@@ -72,7 +72,7 @@ local rottenBloodAreaRewardItems = {
 	43855, -- darklight heart
 }
 
-local rottenBloodAreaRewardBaseChance = 100 -- 1.00% at 1 taint and 1x loot rate
+local rottenBloodAreaRewardBaseChance = 50 -- 1.00% at 1 taint and 1x loot rate
 
 local rottenBloodAreaReward = CreatureEvent("RottenBloodAreaReward")
 function rottenBloodAreaReward.onDeath(creature, corpse)

@@ -51,7 +51,8 @@ function grave_enter.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	if creature:getStorageValue(thing.stor) > os.time() then
+	local isAccountNormal = creature:getAccountType() < ACCOUNT_TYPE_GAMEMASTER
+	if creature:getStorageValue(thing.stor) > os.time() and isAccountNormal then
 		local eq = creature:getStorageValue(thing.stor) - os.time()
 		creature:say("You need to wait " .. secondsToClock(eq) .. " before trying to challenge " .. thing.boss .. " again!", TALKTYPE_MONSTER_SAY, false, creature)
 		creature:teleportTo(fromPosition)
