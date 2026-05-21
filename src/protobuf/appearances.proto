@@ -268,7 +268,7 @@ message AppearanceFlagCyclopedia {
 }
 
 message AppearanceFlagSkillWheelGem {
-optional uint32 gem_quality_id = 1;
+	optional uint32 gem_quality_id = 1;
 	optional uint32 vocation_id = 2;
 }
 

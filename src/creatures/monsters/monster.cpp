@@ -2380,6 +2380,7 @@ void Monster::death(const std::shared_ptr<Creature> &lastHitCreature) {
 			g_iobestiary().parseCharmCombat(charm, targetPlayer, getMonster());
 		}
 	}
+
 	const auto equippedWeaponId = targetPlayer->getWeaponId(true);
 
 	const auto weaponExperienceFromBoss = targetPlayer->weaponProficiency().getBosstiaryExperience(m_monsterType->info.bosstiaryRace);
