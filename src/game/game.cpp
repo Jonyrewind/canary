@@ -728,7 +728,8 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 			continue;
 		}
 
-		std::string filename = realPath.stem().string();
+		const std::string filename = realPath.stem().string();
+		const auto mainMapPath = std::filesystem::path(g_configManager().getString(DATA_DIRECTORY)) / "world" / (g_configManager().getString(MAP_NAME) + ".otbm");
 
 		// Do not load more maps than possible
 		if (customMapIndex >= 50) {
@@ -737,18 +738,40 @@ void Game::loadCustomMaps(const std::filesystem::path &customMapPath) {
 		}
 
 		// Filenames that start with a # are ignored.
-		if (filename.at(0) == '#') {
+		if (!filename.empty() && filename.at(0) == '#') {
 			g_logger().info("Custom map {} [disabled]", filename);
 			continue;
 		}
 
-		// Avoid loading main map again.
-		if (filename == g_configManager().getString(MAP_NAME)) {
+		// Avoid loading the actual main map file again, but allow custom maps that reuse the same base name.
+		if (std::filesystem::equivalent(realPath, mainMapPath)) {
 			g_logger().warn("Custom map {} is main map", filename);
 			continue;
 		}
 
-		map.loadMapCustom(filename, true, true, true, true, customMapIndex);
+		const auto mapFilePath = realPath.string();
+		const auto customMapBasePath = std::filesystem::path(mapFilePath).parent_path() / std::filesystem::path(mapFilePath).stem();
+		const auto npcFilePath = customMapBasePath.string() + "-npc.xml";
+		const auto monsterFilePath = customMapBasePath.string() + "-monster.xml";
+
+		g_logger().debug(
+			"[Game::loadCustomMaps] loading map '{}' at index {} mapFile='{}' npcFile='{}' monsterFile='{}'",
+			filename,
+			customMapIndex,
+			mapFilePath,
+			npcFilePath,
+			monsterFilePath
+		);
+
+		if (!std::filesystem::exists(npcFilePath)) {
+			g_logger().debug("[Game::loadCustomMaps] npc file missing for map '{}' at index {}: '{}'", filename, customMapIndex, npcFilePath);
+		}
+		if (!std::filesystem::exists(monsterFilePath)) {
+			g_logger().debug("[Game::loadCustomMaps] monster file missing for map '{}' at index {}: '{}'", filename, customMapIndex, monsterFilePath);
+		}
+
+		map.loadMapCustom(mapFilePath, true, true, true, true, customMapIndex);
+		g_logger().debug("[Game::loadCustomMaps] loaded map '{}' at index {}", filename, customMapIndex);
 
 		customMapIndex++;
 	}
