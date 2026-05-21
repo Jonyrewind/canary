@@ -13,7 +13,7 @@ local chargeItem = {
 	["alicorn ring"] = { noChargeID = 39182, ChargeID = 39180, cost = 5 },
 	["arcanomancer sigil"] = { noChargeID = 39185, ChargeID = 39183, cost = 5 },
 	["arboreal ring"] = { noChargeID = 39188, ChargeID = 39187, cost = 5 },
-	["ethereal ring"] = { noChargeID = 50150, ChargeID = 50147, cost = 5 },
+	["ethereal ring"] = { noChargeID = 50149, ChargeID = 50147, cost = 5 },
 }
 local silverTokenID = 22516
 

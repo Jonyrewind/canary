@@ -84291,7 +84291,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="showduration" value="1"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="duration" value="10800"/>
-		<attribute key="decayTo" value="39182"/>
+		<attribute key="decayTo" value="50149"/>
 		<attribute key="weight" value="85"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="400"/>

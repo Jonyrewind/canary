@@ -112,7 +112,7 @@ local chargeItem = {
 	["arboreal ring"] = { noChargeID = 39188, ChargeID = 39187 },
 	["turtle amulet"] = { noChargeID = 39235, ChargeID = 39233 },
 	["merudri brooch"] = { noChargeID = 50156, ChargeID = 50154 },
-	["ethereal ring"] = { noChargeID = 50150, ChargeID = 50147 },
+	["ethereal ring"] = { noChargeID = 50149, ChargeID = 50147 },
 }
 
 local function creatureSayCallback(npc, creature, type, message)
