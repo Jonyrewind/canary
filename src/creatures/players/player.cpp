@@ -2165,7 +2165,11 @@ void Player::sendCreatePrivateChannel(uint16_t channelId, const std::string &cha
 
 void Player::sendClosePrivate(uint16_t channelId) {
 	if (channelId == CHANNEL_GUILD || channelId == CHANNEL_PARTY) {
-		g_chat().removeUserFromChannel(getPlayer(), channelId);
+		// Unit tests create Player objects without a ProtocolGame client.
+		// Avoid touching chat subsystem in that case.
+		if (client) {
+			g_chat().removeUserFromChannel(getPlayer(), channelId);
+		}
 	}
 
 	if (client) {
