@@ -22,13 +22,25 @@ jobs:
             const repo = context.repo.repo;
 
             // Keep exactly 1 cache per normalized group key (newest by last-used/accessed),
-            // but additionally purge BuildKit blobs after they haven't been used for 2 days.
+            // but additionally purge BuildKit blobs after 2 days based on AGE.
+            //
+            // Note: In your case, buildkit blobs appear to have their "last used" refreshed
+            // every run, so using last_accessed_at/last_used_at may never let them expire.
+            // Using created_at makes them expire even if "last used" is updated.
             const buildkitBlobPrefix = 'buildkit-blob-1-sha256:';
             const purgeBuildkitBlobsOlderThanMs = 2 * 24 * 60 * 60 * 1000; // 2 days
             const purgeCutoffMs = Date.now() - purgeBuildkitBlobsOlderThanMs;
 
             const getCacheTimestampMs = (cache) => {
               const value = cache.last_accessed_at ?? cache.last_used_at ?? cache.created_at ?? null;
+              if (!value) return null;
+              const ms = new Date(value).getTime();
+              return Number.isNaN(ms) ? null : ms;
+            };
+
+            const getBuildkitAgeMs = (cache) => {
+              // Prefer created_at for age-based purging
+              const value = cache.created_at ?? cache.last_accessed_at ?? cache.last_used_at ?? null;
               if (!value) return null;
               const ms = new Date(value).getTime();
               return Number.isNaN(ms) ? null : ms;
@@ -126,9 +138,12 @@ jobs:
               const isNewestInGroup = keepIds.has(id);
               const isBuildkitBlob = key.startsWith(buildkitBlobPrefix);
 
-              // Purge buildkit blobs even if they're the newest in their group,
-              // once they're older than the retention threshold.
-              if (isBuildkitBlob && lastMs < purgeCutoffMs) return true;
+              // Purge buildkit blobs (even if newest in their group) based on AGE (created_at),
+              // so they eventually get deleted even if last_used gets refreshed.
+              if (isBuildkitBlob) {
+                const buildkitAgeMs = getBuildkitAgeMs(cache);
+                if (buildkitAgeMs != null && buildkitAgeMs < purgeCutoffMs) return true;
+              }
 
               // Otherwise: keep only the newest per group; delete everything else.
               if (isNewestInGroup) return false;
@@ -137,7 +152,7 @@ jobs:
 
             core.info(
               `To delete: ${toDelete.length} caches. Rules: delete everything except newest per group, ` +
-                `except for buildkit blobs (${buildkitBlobPrefix}*) which are also deleted if last_used/accessed < ${new Date(purgeCutoffMs).toISOString()}.`
+                `except for buildkit blobs (${buildkitBlobPrefix}*) which are also deleted if created_at < ${new Date(purgeCutoffMs).toISOString()}.`
             );
 
             if (toDelete.length === 0 && duplicateGroups.length > 0) {
