@@ -35,27 +35,45 @@ std::string LogWithSpdLog::getLevel() const {
 }
 
 void LogWithSpdLog::info(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_INFO("{}", msg);
 }
 
 void LogWithSpdLog::warn(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_WARN("{}", msg);
 }
 
 void LogWithSpdLog::error(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_ERROR("{}", msg);
 }
 
 void LogWithSpdLog::critical(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_CRITICAL("{}", msg);
 }
 
 #if defined(DEBUG_LOG)
 void LogWithSpdLog::debug(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_DEBUG("{}", msg);
 }
 
 void LogWithSpdLog::trace(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_TRACE("{}", msg);
 }
 #endif

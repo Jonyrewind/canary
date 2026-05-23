@@ -48,27 +48,45 @@ void Logger::logProfile(const std::string &name, double duration_ms) const {
 }
 
 void Logger::info(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_INFO("{}", msg);
 }
 
 void Logger::warn(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_WARN("{}", msg);
 }
 
 void Logger::error(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_ERROR("{}", msg);
 }
 
 void Logger::critical(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_CRITICAL("{}", msg);
 }
 
 #if defined(DEBUG_LOG)
 void Logger::debug(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_DEBUG("{}", msg);
 }
 
 void Logger::trace(const std::string &msg) const {
+	if (spdlog::default_logger_raw() == nullptr) {
+		return;
+	}
 	SPDLOG_TRACE("{}", msg);
 }
 #endif

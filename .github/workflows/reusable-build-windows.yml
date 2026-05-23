@@ -44,6 +44,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Install Ninja (for CMake preset generator)
+        if: matrix.type == 'CMake'
+        shell: pwsh
+        run: |
+          choco install ninja --yes --no-progress
+          $ninja = Get-Command ninja.exe -ErrorAction SilentlyContinue
+          if (-not $ninja) { throw "ninja.exe not found after installation" }
+          ninja --version
+
       - name: Export GitHub Actions cache environment variables
         uses: actions/github-script@v8
         with:
@@ -77,6 +86,14 @@ jobs:
           key: ccache-windows-release
           restore-keys: |
             ccache-windows
+
+      - name: Disable vcpkg NuGet binary cache restore (CMake job only)
+        if: matrix.type == 'CMake'
+        shell: pwsh
+        run: |
+          # Your log shows lots of "NotFound ... is not found on source" while restoring binary cache nupkgs.
+          # Clearing binary sources here forces vcpkg to build from source, avoiding flaky/invalid cache restores.
+          "VCPKG_BINARY_SOURCES=" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       # IMPORTANT: configure the nuget.exe that MSBuild/vcpkg.targets actually uses (Chocolatey).
       # Use github.token directly so a stale or invalid VCPKG_PACKAGES_TOKEN secret cannot override it.
