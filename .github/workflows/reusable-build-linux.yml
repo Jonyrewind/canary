@@ -68,7 +68,7 @@ jobs:
       - name: Install Linux Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ccache ninja-build gcc-13 g++-13 mysql-client
+          sudo apt-get install -y ccache ninja-build gcc-13 g++-13 mysql-client gdb
           # Ensure ninja is in the path and named correctly
           sudo ln -sf /usr/bin/ninja /usr/bin/ninja-build
           ninja --version
@@ -218,6 +218,28 @@ jobs:
             --gtest_filter=RsaIntegrationTest.StartLoadsPemAndDecryptsFallbackCompatibleBlock \
             --gtest_also_run_disabled_tests \
             2>&1 | tee build/${{ matrix.buildtype }}/test-logs/canary-it-bootstrap-smoke.log
+          binary="build/${{ matrix.buildtype }}/tests/unit/canary_ut"
+          out="build/${{ matrix.buildtype }}/test-logs/gdb-party-disband-null-entries.log"
+
+          echo "=== GDB backtrace for PartyTest.GetPlayersAndDisbandHandleNullEntries (canary_ut) ==="
+          echo "Using binary: ${binary}"
+
+          if [[ -f "${binary}" ]]; then
+            # If it segfaults, gdb should still emit bt full into the log.
+            ulimit -c unlimited || true
+            gdb --batch --quiet \
+              -ex "set pagination off" \
+              -ex "run --gtest_filter=PartyTest.GetPlayersAndDisbandHandleNullEntries --gtest_also_run_disabled_tests" \
+              -ex "bt full" \
+              --args "${binary}" \
+              2>&1 | tee "${out}" || true
+          else
+            echo "canary_ut not found at ${binary}" >&2
+            echo "Listing candidate directories:" >&2
+            ls -lah "build/${{ matrix.buildtype }}/tests/unit" || true
+            find "build/${{ matrix.buildtype }}/tests" -maxdepth 4 -type f -name 'canary_ut*' -print || true
+          fi
+
           ctest --test-dir build/${{ matrix.buildtype }} -N
           ctest --test-dir build/${{ matrix.buildtype }} \
             --output-on-failure \

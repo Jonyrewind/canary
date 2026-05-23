@@ -9015,8 +9015,17 @@ void Game::updateCreatureSkull(const std::shared_ptr<Creature> &creature) const 
 }
 
 void Game::updatePlayerShield(const std::shared_ptr<Player> &player) {
+	if (!player || player->isOffline()) {
+		return;
+	}
+
 	for (const auto &spectator : Spectators().find<Player>(player->getPosition(), true)) {
-		spectator->getPlayer()->sendCreatureShield(player);
+		const auto &spectatorPlayer = spectator ? spectator->getPlayer() : nullptr;
+		if (!spectatorPlayer) {
+			continue;
+		}
+
+		spectatorPlayer->sendCreatureShield(player);
 	}
 }
 
@@ -9152,13 +9161,18 @@ void Game::playerInviteToParty(uint32_t playerId, uint32_t invitedId) {
 }
 
 void Game::updatePlayerHelpers(const std::shared_ptr<Player> &player) {
-	if (!player) {
+	if (!player || player->isOffline()) {
 		return;
 	}
 
 	const uint16_t helpers = player->getHelpers();
 	for (const auto &spectator : Spectators().find<Player>(player->getPosition(), true)) {
-		spectator->getPlayer()->sendCreatureHelpers(player->getID(), helpers);
+		const auto &spectatorPlayer = spectator ? spectator->getPlayer() : nullptr;
+		if (!spectatorPlayer) {
+			continue;
+		}
+
+		spectatorPlayer->sendCreatureHelpers(player->getID(), helpers);
 	}
 }
 

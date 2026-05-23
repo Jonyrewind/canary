@@ -420,6 +420,7 @@
     <ClCompile Include="..\src\canary_server.cpp" />
     <ClCompile Include="..\src\security\argon.cpp" />
     <ClCompile Include="..\src\security\rsa.cpp" />
+    <ClCompile Include="..\src\security\rsa_backend_mbedtls.cpp" />
     <ClCompile Include="..\src\server\network\connection\connection.cpp" />
     <ClCompile Include="..\src\server\network\message\networkmessage.cpp" />
     <ClCompile Include="..\src\server\network\message\outputmessage.cpp" />
