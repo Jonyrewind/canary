@@ -1,0 +1,126 @@
+name: Cleanup Actions Caches
+
+on:
+  schedule:
+    # Daily cleanup
+    - cron: '15 3 * * *' # 03:15 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup old caches (keep latest per key)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // "Yesterday and older" (calendar boundary in UTC):
+            // delete anything last used before the start of "today" (UTC).
+            const now = new Date();
+            const todayStartMs = Date.UTC(
+              now.getUTCFullYear(),
+              now.getUTCMonth(),
+              now.getUTCDate()
+            );
+            const cutoffDate = new Date(todayStartMs);
+
+            const getCacheTimestampMs = (cache) => {
+              const value = cache.last_accessed_at ?? cache.last_used_at ?? cache.created_at ?? null;
+              if (!value) return null;
+              const ms = new Date(value).getTime();
+              return Number.isNaN(ms) ? null : ms;
+            };
+
+            const caches = [];
+            let page = 1;
+
+            while (true) {
+              const res = await github.request('GET /repos/{owner}/{repo}/actions/caches', {
+                owner,
+                repo,
+                per_page: 100,
+                page,
+              });
+
+              const data = res.data || {};
+              const pageItems = data.actions_caches || data.caches || data.items || [];
+              if (!Array.isArray(pageItems) || pageItems.length === 0) break;
+
+              caches.push(...pageItems);
+              page += 1;
+            }
+
+            core.info(`Fetched ${caches.length} cache entries.`);
+
+            const cachesByKey = new Map();
+            for (const cache of caches) {
+              const key = cache.key ?? '';
+              if (!cachesByKey.has(key)) cachesByKey.set(key, []);
+              cachesByKey.get(key).push(cache);
+            }
+
+            // Keep the cache with the latest last_accessed_at for each key.
+            const keepIds = new Set();
+            for (const [key, group] of cachesByKey.entries()) {
+              if (!group.length) continue;
+
+              let newest = group[0];
+              let newestMs = getCacheTimestampMs(newest);
+
+              for (const c of group) {
+                const cMs = getCacheTimestampMs(c);
+                if (cMs == null) continue;
+
+                if (newestMs == null || cMs > newestMs) {
+                  newest = c;
+                  newestMs = cMs;
+                }
+              }
+
+              if (newest && newest.id != null) {
+                keepIds.add(newest.id);
+                core.info(
+                  `Keep newest cache for key="${key}": id=${newest.id}, last_accessed_at=${newest.last_accessed_at ?? ''}, last_used_at=${newest.last_used_at ?? ''}`
+                );
+              }
+            }
+
+            const toDelete = caches.filter((cache) => {
+              const id = cache.id;
+              if (id == null) return false;
+              if (keepIds.has(id)) return false;
+
+              const lastMs = getCacheTimestampMs(cache);
+              if (lastMs == null) return false;
+
+              // strictly before today start => includes yesterday and older
+              return lastMs < cutoffDate.getTime();
+            });
+
+            core.info(`To delete: ${toDelete.length} caches (last used before ${cutoffDate.toISOString()} UTC).`);
+
+            let deletedCount = 0;
+            for (const cache of toDelete) {
+              const id = cache.id;
+              const key = cache.key ?? '';
+
+              const lastMs = getCacheTimestampMs(cache);
+              const last = lastMs == null ? '' : new Date(lastMs).toISOString();
+
+              core.info(`Deleting cache id=${id}, key="${key}", last_used_at_or_accessed=${last}`);
+              await github.request('DELETE /repos/{owner}/{repo}/actions/caches/{cache_id}', {
+                owner,
+                repo,
+                cache_id: id,
+              });
+              deletedCount += 1;
+            }
+
+            core.info(`Deleted ${deletedCount} caches.`);

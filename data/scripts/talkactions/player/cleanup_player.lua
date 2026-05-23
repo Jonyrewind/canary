@@ -1,8 +1,9 @@
 -- Multipurpose cleanup talkactions
 -- Usage:
 --   "!cleanpouch" - remove all items from your gold/loot pouch.
---   "!cleanrewardchest" - remove EMPTY reward containers from your reward chest.
+--   "!cleanrewardchest" - remove ALL reward containers (and their loot) from your reward chest.
 --   "!clean [pouch|rewardchest|all]" - cleanup one or both.
+-- NOTE: !cleanrewardchest empties the reward chest completely.
 
 local function removePouchContents(pouch)
 	local removedCount = 0
@@ -16,9 +17,8 @@ local function removePouchContents(pouch)
 	return removedCount
 end
 
-local function cleanRewardChest(player)
-	-- Important: we only remove EMPTY reward containers.
-	-- This matches the server's internal auto-clean behavior (removeEmptyRewards).
+local function cleanRewardChestEmptyOnly(player)
+	-- Safe mode: only remove EMPTY reward containers.
 	local removedCount = 0
 
 	local rewardChest = player:getRewardChest()
@@ -30,10 +30,29 @@ local function cleanRewardChest(player)
 	for _, rewardId in ipairs(rewardIds) do
 		local reward = player:getReward(rewardId, false)
 		if reward and reward:empty() then
-			-- remove from the actual reward chest container
-			-- (removeItem is consistent with the server's internal removeEmptyRewards)
 			rewardChest:removeItem(reward)
-			-- also remove from rewardMap tracking
+			player:removeReward(rewardId)
+			removedCount = removedCount + 1
+		end
+	end
+
+	return removedCount
+end
+
+local function clearRewardChestAll(player)
+	-- Full mode: remove ALL reward containers (even non-empty).
+	local removedCount = 0
+
+	local rewardChest = player:getRewardChest()
+	if not rewardChest then
+		return 0
+	end
+
+	local rewardIds = player:getRewardList() or {}
+	for _, rewardId in ipairs(rewardIds) do
+		local reward = player:getReward(rewardId, false)
+		if reward then
+			rewardChest:removeItem(reward)
 			player:removeReward(rewardId)
 			removedCount = removedCount + 1
 		end
@@ -74,15 +93,15 @@ function cleanGoldPouch.onSay(player, words, param)
 end
 
 -- !cleanrewardchest
-local cleanRewardChestAction = TalkAction("!cleanrewardchest")
+local clearRewardChestAction = TalkAction("!cleanrewardchest")
 
-function cleanRewardChestAction.onSay(player, words, param)
-	local removedCount = cleanRewardChest(player)
+function clearRewardChestAction.onSay(player, words, param)
+	local removedCount = clearRewardChestAll(player)
 
 	if removedCount == 0 then
-		sendNonNilText(player, "Your reward chest has no empty reward containers to remove.")
+		sendNonNilText(player, "Your reward chest is already empty.")
 	else
-		sendNonNilText(player, string.format("Removed %i empty reward container(s) from your reward chest.", removedCount))
+		sendNonNilText(player, string.format("Removed %i reward container(s) from your reward chest.", removedCount))
 	end
 
 	return true
@@ -108,15 +127,17 @@ function cleanAll.onSay(player, words, param)
 		end
 		totalPouchRemoved = removePouchContents(pouch)
 	elseif target == "rewardchest" or target == "reward" or target == "chest" then
-		totalRewardRemoved = cleanRewardChest(player)
+		-- For !cleanrewardchest we clear everything.
+		-- For !clean rewardchest we keep it safe and empty-only.
+		totalRewardRemoved = cleanRewardChestEmptyOnly(player)
 	elseif target == "all" then
 		-- pouch cleanup
 		local pouch = player:getItemById(ITEM_GOLD_POUCH, true)
 		if pouch and pouch:isContainer() then
 			totalPouchRemoved = removePouchContents(pouch)
 		end
-		-- reward cleanup
-		totalRewardRemoved = cleanRewardChest(player)
+		-- reward cleanup (empty-only for !clean all)
+		totalRewardRemoved = cleanRewardChestEmptyOnly(player)
 	else
 		sendNonNilText(player, "Usage: !cleanpouch | !cleanrewardchest | !clean [pouch|rewardchest|all]")
 		return true
@@ -160,9 +181,9 @@ cleanGoldPouch:separator(" ")
 cleanGoldPouch:groupType("normal")
 cleanGoldPouch:register()
 
-cleanRewardChestAction:separator(" ")
-cleanRewardChestAction:groupType("normal")
-cleanRewardChestAction:register()
+clearRewardChestAction:separator(" ")
+clearRewardChestAction:groupType("normal")
+clearRewardChestAction:register()
 
 cleanAll:separator(" ")
 cleanAll:groupType("normal")
