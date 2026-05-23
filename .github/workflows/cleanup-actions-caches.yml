@@ -21,15 +21,8 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            // "Yesterday and older" (calendar boundary in UTC):
-            // delete anything last used before the start of "today" (UTC).
-            const now = new Date();
-            const todayStartMs = Date.UTC(
-              now.getUTCFullYear(),
-              now.getUTCMonth(),
-              now.getUTCDate()
-            );
-            const cutoffDate = new Date(todayStartMs);
+            // Keep exactly 1 cache per normalized group key (the newest by last-used/accessed),
+            // and delete every other cache in that group (regardless of age).
 
             const getCacheTimestampMs = (cache) => {
               const value = cache.last_accessed_at ?? cache.last_used_at ?? cache.created_at ?? null;
@@ -123,15 +116,10 @@ jobs:
               const id = cache.id;
               if (id == null) return false;
               if (keepIds.has(id)) return false;
-
-              const lastMs = getCacheTimestampMs(cache);
-              if (lastMs == null) return false;
-
-              // strictly before today start => includes yesterday and older
-              return lastMs < cutoffDate.getTime();
+              return true; // delete everything except the newest cache per group
             });
 
-            core.info(`To delete: ${toDelete.length} caches (last used before ${cutoffDate.toISOString()} UTC).`);
+            core.info(`To delete: ${toDelete.length} caches (delete all except newest per group).`);
 
             if (toDelete.length === 0 && duplicateGroups.length > 0) {
               const topGroups = duplicateGroups
