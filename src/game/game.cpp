@@ -1177,7 +1177,7 @@ bool Game::internalPlaceCreature(const std::shared_ptr<Creature> &creature, cons
 		return false;
 	}
 
-	if (!map.placeCreature(pos, creature, extendedPos, forced)) {
+	if (!map.placeCreature(pos, creature, extendedPos, forced, tile)) {
 		return false;
 	}
 
@@ -4618,7 +4618,7 @@ void Game::playerMoveUpContainer(uint32_t playerId, uint8_t cid) {
 }
 
 void Game::playerUpdateContainer(uint32_t playerId, uint8_t cid) {
-	const auto &player = getPlayerByGUID(playerId);
+	const auto &player = getPlayerByID(playerId);
 	if (!player) {
 		return;
 	}

@@ -39,6 +39,7 @@
     <ClInclude Include="..\src\creatures\players\grouping\party.hpp" />
     <ClInclude Include="..\src\creatures\players\grouping\team_finder.hpp" />
     <ClInclude Include="..\src\creatures\players\imbuements\imbuements.hpp" />
+    <ClInclude Include="..\src\creatures\players\livestream\livestream.hpp" />
     <ClInclude Include="..\src\creatures\players\management\ban.hpp" />
     <ClInclude Include="..\src\creatures\players\management\waitlist.hpp" />
     <ClInclude Include="..\src\creatures\players\storages\storages.hpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="..\src\map\house\house.hpp" />
     <ClInclude Include="..\src\map\house\housetile.hpp" />
     <ClInclude Include="..\src\map\map.hpp" />
+    <ClInclude Include="..\src\map\map_download.hpp" />
     <ClInclude Include="..\src\map\mapcache.hpp" />
     <ClInclude Include="..\src\map\map_const.hpp" />
     <ClInclude Include="..\src\map\map_definitions.hpp" />
@@ -264,6 +266,7 @@
     <ClCompile Include="..\src\creatures\players\grouping\guild.cpp" />
     <ClCompile Include="..\src\creatures\players\grouping\party.cpp" />
     <ClCompile Include="..\src\creatures\players\imbuements\imbuements.cpp" />
+    <ClCompile Include="..\src\creatures\players\livestream\livestream.cpp" />
     <ClCompile Include="..\src\creatures\players\management\ban.cpp" />
     <ClCompile Include="..\src\creatures\players\management\waitlist.cpp" />
     <ClCompile Include="..\src\creatures\players\storages\storages.cpp" />
@@ -411,6 +414,7 @@
     <ClCompile Include="..\src\map\utils\astarnodes.cpp" />
     <ClCompile Include="..\src\map\utils\mapsector.cpp" />
     <ClCompile Include="..\src\map\map.cpp" />
+    <ClCompile Include="..\src\map\map_download.cpp" />
     <ClCompile Include="..\src\map\mapcache.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\canary_server.cpp" />
@@ -496,11 +500,17 @@
     <IncludePath>..\src;$(IncludePath)</IncludePath>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)-sln-dbg</TargetName>
+    <LocalDebuggerCommand>$(ProjectDir)..\$(TargetName)$(TargetExt)</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>..\src;$(IncludePath)</IncludePath>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)-sln</TargetName>
+    <LocalDebuggerCommand>$(ProjectDir)..\$(TargetName)$(TargetExt)</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
