@@ -10,6 +10,8 @@
 
 #include "utils/transparent_string_hash.hpp"
 
+#include <spdlog/spdlog.h>
+
 namespace spdlog {
 	class logger;
 }
@@ -78,6 +80,12 @@ public:
 
 	template <typename... Args>
 	void debug(const fmt::format_string<Args...> &fmt, Args &&... args) const {
+		// During shutdown the spdlog registry may already be gone.
+		// We must avoid calling fmt::format(...) with potentially dangling args
+		// if the underlying logging backend is no longer valid.
+		if (spdlog::default_logger_raw() == nullptr) {
+			return;
+		}
 		debug(fmt::format(fmt, std::forward<Args>(args)...));
 	}
 
@@ -85,6 +93,9 @@ public:
 
 	template <typename... Args>
 	void trace(const fmt::format_string<Args...> &fmt, Args &&... args) const {
+		if (spdlog::default_logger_raw() == nullptr) {
+			return;
+		}
 		trace(fmt::format(fmt, std::forward<Args>(args)...));
 	}
 #else
