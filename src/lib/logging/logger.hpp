@@ -79,24 +79,17 @@ public:
 	virtual void debug(const std::string &msg) const;
 
 	template <typename... Args>
-	void debug(const fmt::format_string<Args...> &fmt, Args &&... args) const {
-		// During shutdown the spdlog registry may already be gone.
-		// We must avoid calling fmt::format(...) with potentially dangling args
-		// if the underlying logging backend is no longer valid.
-		if (spdlog::default_logger_raw() == nullptr) {
-			return;
-		}
-		debug(fmt::format(fmt, std::forward<Args>(args)...));
+	void debug(const fmt::format_string<Args...> &, Args &&...) const {
+		// Hardening: during teardown we must not call into any logging backend or run fmt formatting.
+		return;
 	}
 
 	virtual void trace(const std::string &msg) const;
 
 	template <typename... Args>
-	void trace(const fmt::format_string<Args...> &fmt, Args &&... args) const {
-		if (spdlog::default_logger_raw() == nullptr) {
-			return;
-		}
-		trace(fmt::format(fmt, std::forward<Args>(args)...));
+	void trace(const fmt::format_string<Args...> &, Args &&...) const {
+		// Hardening: during teardown we must not call into any logging backend or run fmt formatting.
+		return;
 	}
 #else
 	virtual void debug(const std::string &) const { }
