@@ -5,11 +5,11 @@
 
 local function escape_json_str(s)
 	s = tostring(s or "")
-	s = s:gsub('\\', '\\\\')
+	s = s:gsub("\\", "\\\\")
 	s = s:gsub('"', '\\"')
-	s = s:gsub('\r', '\\r')
-	s = s:gsub('\n', '\\n')
-	s = s:gsub('\t', '\\t')
+	s = s:gsub("\r", "\\r")
+	s = s:gsub("\n", "\\n")
+	s = s:gsub("\t", "\\t")
 	return s
 end
 
@@ -18,7 +18,7 @@ local function ensureDir(dirPath)
 	-- Windows:  package.config path separator is '\'
 	-- *nix/mac: package.config path separator is '/'
 	local sep = package.config:sub(1, 1)
-	if sep == '\\' then
+	if sep == "\\" then
 		-- mkdir dir >nul 2>nul
 		os.execute('mkdir "' .. dirPath .. '" >NUL 2>NUL')
 	else
@@ -30,7 +30,7 @@ end
 local function exportCommandsToAACFile()
 	local sep = package.config:sub(1, 1)
 	local outDir = "data/json/commands"
-	if sep == '\\' then
+	if sep == "\\" then
 		outDir = outDir:gsub("/", "\\")
 	end
 	local outPath = outDir .. sep .. "commands.json"
@@ -61,7 +61,7 @@ local function exportCommandsToAACFile()
 
 				rows[#rows + 1] = {
 					words = words,
-					description = description
+					description = description,
 				}
 			end
 		end
@@ -77,12 +77,12 @@ local function exportCommandsToAACFile()
 		local r = rows[i]
 		json = json .. '{"words":"' .. escape_json_str(r.words) .. '","description":"' .. escape_json_str(r.description) .. '"}'
 		if i < #rows then
-			json = json .. ','
+			json = json .. ","
 		end
 	end
-	json = json .. ']}'
+	json = json .. "]}"
 
-	local f = io.open(outPath, 'w')
+	local f = io.open(outPath, "w")
 	if not f then
 		logger.error("[AAC commands export] Failed to open output file: {}", outPath)
 		return 0
