@@ -59,16 +59,43 @@ jobs:
 
             core.info(`Fetched ${caches.length} cache entries.`);
 
-            const cachesByKey = new Map();
+            // Your cache keys often look like:
+            //   ccache-ccache-linux-fast-debug-2026-05-23T11:11:14.993Z
+            // If we group by exact key, each entry is unique → nothing gets deleted.
+            // So we strip a trailing ISO timestamp suffix and treat the remainder as the "base key".
+            const normalizeKey = (key) => {
+              if (typeof key !== 'string') return '';
+              // ISO like: 2026-05-23T11:11:14.993Z (fraction optional)
+              const isoSuffixRe = /-(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z)$/;
+              return key.replace(isoSuffixRe, '');
+            };
+
+            const cachesByGroupKey = new Map();
             for (const cache of caches) {
-              const key = cache.key ?? '';
-              if (!cachesByKey.has(key)) cachesByKey.set(key, []);
-              cachesByKey.get(key).push(cache);
+              const cacheKey = cache.key ?? '';
+              const groupKey = normalizeKey(cacheKey);
+              if (!cachesByGroupKey.has(groupKey)) cachesByGroupKey.set(groupKey, []);
+              cachesByGroupKey.get(groupKey).push(cache);
             }
 
-            // Keep the cache with the latest last_accessed_at for each key.
+            const duplicateGroups = [];
+            for (const [groupKey, group] of cachesByGroupKey.entries()) {
+              if (group.length > 1) duplicateGroups.push({ groupKey, count: group.length });
+            }
+            duplicateGroups.sort((a, b) => b.count - a.count);
+
+            core.info(`Cache groups total: ${cachesByGroupKey.size}`);
+            core.info(`Cache groups with duplicates (>1 cache entry): ${duplicateGroups.length}`);
+            if (duplicateGroups.length > 0) {
+              core.info(`Top duplicate groups: ${duplicateGroups
+                .slice(0, 5)
+                .map((g) => `${g.groupKey} (${g.count})`)
+                .join(' | ')}`);
+            }
+
+            // Keep the newest cache (by last used) for each normalized group key.
             const keepIds = new Set();
-            for (const [key, group] of cachesByKey.entries()) {
+            for (const [groupKey, group] of cachesByGroupKey.entries()) {
               if (!group.length) continue;
 
               let newest = group[0];
@@ -87,7 +114,7 @@ jobs:
               if (newest && newest.id != null) {
                 keepIds.add(newest.id);
                 core.info(
-                  `Keep newest cache for key="${key}": id=${newest.id}, last_accessed_at=${newest.last_accessed_at ?? ''}, last_used_at=${newest.last_used_at ?? ''}`
+                  `Keep newest cache for group="${groupKey}": id=${newest.id}, last_accessed_at=${newest.last_accessed_at ?? ''}, last_used_at=${newest.last_used_at ?? ''}`
                 );
               }
             }
@@ -105,6 +132,29 @@ jobs:
             });
 
             core.info(`To delete: ${toDelete.length} caches (last used before ${cutoffDate.toISOString()} UTC).`);
+
+            if (toDelete.length === 0 && duplicateGroups.length > 0) {
+              const topGroups = duplicateGroups
+                .slice(0, 3)
+                .map((g) => ({ groupKey: g.groupKey, group: cachesByGroupKey.get(g.groupKey) }))
+                .filter((x) => x.group);
+
+              for (const item of topGroups) {
+                const rows = item.group
+                  .map((cache) => {
+                    const lastMs = getCacheTimestampMs(cache);
+                    return {
+                      id: cache.id,
+                      lastMs,
+                      lastIso: lastMs == null ? '' : new Date(lastMs).toISOString(),
+                    };
+                  })
+                  .sort((a, b) => (a.lastMs ?? -Infinity) - (b.lastMs ?? -Infinity));
+
+                core.info(`Duplicate group debug: ${item.groupKey}`);
+                for (const r of rows) core.info(`  id=${r.id} lastIso=${r.lastIso}`);
+              }
+            }
 
             let deletedCount = 0;
             for (const cache of toDelete) {
