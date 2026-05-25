@@ -1353,7 +1353,7 @@ LootShopConfigTable = {
 		{ itemName = "golden skull", clientId = 35580, sell = 9000 },
 		{ itemName = "golden sun coin", clientId = 43734, sell = 11000 },
 		{ itemName = "golden tiger coin", clientId = 43735, sell = 11000 },
---[[ 		{ itemName = "greater guardian gem", clientId = 44604, sell = 10000 },
+		--[[ 		{ itemName = "greater guardian gem", clientId = 44604, sell = 10000 },
 		{ itemName = "greater marksman gem", clientId = 44607, sell = 10000 },
 		{ itemName = "greater mystic gem", clientId = 44613, sell = 10000 },
 		{ itemName = "greater sage gem", clientId = 44610, sell = 10000 }, ]]
@@ -1362,9 +1362,9 @@ LootShopConfigTable = {
 		{ itemName = "green crystal splinter", clientId = 16122, sell = 400 },
 		{ itemName = "green gem", clientId = 3038, sell = 5000 },
 		{ itemName = "green giant shimmering pearl", clientId = 281, sell = 3000 },
---[[ 		{ itemName = "guardian gem", clientId = 44603, sell = 5000 }, ]]
+		--[[ 		{ itemName = "guardian gem", clientId = 44603, sell = 5000 }, ]]
 		{ itemName = "hexagonal ruby", clientId = 30180, sell = 30000 },
---[[ 		{ itemName = "lesser guardian gem", clientId = 44602, sell = 1000 },
+		--[[ 		{ itemName = "lesser guardian gem", clientId = 44602, sell = 1000 },
 		{ itemName = "lesser marksman gem", clientId = 44605, sell = 1000 },
 		{ itemName = "lesser mystic gem", clientId = 44611, sell = 1000 },
 		{ itemName = "lesser sage gem", clientId = 44608, sell = 1000 }, ]]
