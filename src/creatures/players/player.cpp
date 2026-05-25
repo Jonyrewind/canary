@@ -12070,6 +12070,11 @@ void Player::onCreatureMove(const std::shared_ptr<Creature> &creature, const std
 		updateCreatureWalk();
 	}
 
+	if (shopOwner && (creature == shopOwner || creature.get() == this) && !shopOwner->canInteract(getPosition()) && closeShopWindow()
+	    && creature.get() != this) {
+		return;
+	}
+
 	if (creature != getPlayer()) {
 		return;
 	}
