@@ -43,7 +43,9 @@ function challenger.onStepIn(creature, item, position, fromPosition)
 	if not teleport then
 		return
 	end
-	if player:canFightBoss(teleport.boss) then
+
+	local isAccountNormal = creature:getAccountType() > ACCOUNT_TYPE_GAMEMASTER
+	if player:canFightBoss(teleport.boss) or isAccountNormal then
 		if item.uid == 24882 then
 			if player:getStorageValue(Storage.Quest.U11_02.ForgottenKnowledge.BabyDragon) < 1 then
 				player:teleportTo(teleport.backPos)

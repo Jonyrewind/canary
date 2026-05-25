@@ -84935,7 +84935,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="armor" value="7"/>
 		<attribute key="weight" value="1200"/>
 		<attribute key="imbuementslot" value="2">
-			<attribute key="life leech" value="3"/>
+			<attribute key="mana leech" value="3"/>
 			<attribute key="elemental protection earth" value="3"/>
 			<attribute key="elemental protection fire" value="3"/>
 			<attribute key="elemental protection death" value="3"/>
