@@ -44,6 +44,18 @@ def resolve_base_ref(explicit_base):
         except subprocess.CalledProcessError:
             continue
 
+    # Fallback for push events (non-PR): compare against the parent commit.
+    try:
+        return run_git(["rev-parse", "HEAD~1"]).strip()
+    except subprocess.CalledProcessError:
+        pass
+
+    # Fallback: use the initial commit if there's only one commit.
+    try:
+        return run_git(["rev-list", "--max-parents=0", "HEAD"]).strip()
+    except subprocess.CalledProcessError:
+        pass
+
     raise RuntimeError("could not resolve a base ref for Lua API binding documentation check")
 
 
