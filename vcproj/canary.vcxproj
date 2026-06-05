@@ -137,6 +137,7 @@
     <ClInclude Include="..\src\lua\creature\movement.hpp" />
     <ClInclude Include="..\src\lua\creature\raids.hpp" />
     <ClInclude Include="..\src\lua\creature\talkaction.hpp" />
+    <ClInclude Include="..\src\lua\docgen\lua_api_doc_generator.hpp" />
     <ClInclude Include="..\src\lua\functions\core\core_functions.hpp" />
     <ClInclude Include="..\src\lua\functions\core\game\config_functions.hpp" />
     <ClInclude Include="..\src\lua\functions\core\game\core_game_functions.hpp" />
@@ -348,6 +349,7 @@
     <ClCompile Include="..\src\lua\creature\movement.cpp" />
     <ClCompile Include="..\src\lua\creature\raids.cpp" />
     <ClCompile Include="..\src\lua\creature\talkaction.cpp" />
+    <ClCompile Include="..\src\lua\docgen\lua_api_doc_generator.cpp" />
     <ClCompile Include="..\src\lua\functions\core\game\batch_update_functions.cpp" />
     <ClCompile Include="..\src\lua\functions\core\game\config_functions.cpp" />
     <ClCompile Include="..\src\lua\functions\core\game\game_functions.cpp" />
@@ -518,13 +520,13 @@
     <VcpkgAutoLink>true</VcpkgAutoLink>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgInstalledDir>vcpkg_installed</VcpkgInstalledDir>
+    <VcpkgInstalledDir>$(MSBuildProjectDirectory)\vcpkg_installed</VcpkgInstalledDir>
     <VcpkgTriplet>x64-windows</VcpkgTriplet>
     <VcpkgConfiguration>Release</VcpkgConfiguration>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Vcpkg">
-    <VcpkgInstalledDir>vcpkg_installed</VcpkgInstalledDir>
-    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+    <VcpkgInstalledDir>$(MSBuildProjectDirectory)\vcpkg_installed</VcpkgInstalledDir>
+    <VcpkgTriplet>x64-windows-static-release</VcpkgTriplet>
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgUseMD>false</VcpkgUseMD>
   </PropertyGroup>
@@ -634,6 +636,6 @@
   </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VcpkgRoot)\\scripts\\buildsystems\\msbuild\\vcpkg.targets" Condition="Exists('$(VcpkgRoot)\\scripts\\buildsystems\\msbuild\\vcpkg.targets')" />
+    <Import Project="$(VcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.targets" Condition="'$(_ZVcpkgRoot)'=='' and '$(VcpkgRoot)'!='' and Exists('$(VcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.targets')" />
   </ImportGroup>
 </Project>

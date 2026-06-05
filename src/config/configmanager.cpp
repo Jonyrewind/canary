@@ -89,10 +89,12 @@ bool ConfigManager::load() {
 	loadBoolConfig(L, DISABLE_MONSTER_ARMOR, "disableMonsterArmor", false);
 	loadBoolConfig(L, DISCORD_SEND_FOOTER, "discordSendFooter", true);
 	loadBoolConfig(L, EMOTE_SPELLS, "emoteSpells", false);
+	loadBoolConfig(L, LEARN_SPELLS, "toggleLearnSpells", true);
 	loadBoolConfig(L, ENABLE_PLAYER_PUT_ITEM_IN_AMMO_SLOT, "enablePlayerPutItemInAmmoSlot", false);
 	loadBoolConfig(L, ENABLE_SUPPORT_OUTFIT, "enableSupportOutfit", true);
 	loadBoolConfig(L, EXPERIENCE_FROM_PLAYERS, "experienceByKillingPlayers", false);
 	loadBoolConfig(L, FREE_PREMIUM, "freePremium", false);
+	loadBoolConfig(L, GENERATE_LUA_API_DOCS, "generateLuaApiDocs", true);
 	loadBoolConfig(L, GLOBAL_SERVER_SAVE_CLEAN_MAP, "globalServerSaveCleanMap", false);
 	loadBoolConfig(L, GLOBAL_SERVER_SAVE_CLOSE, "globalServerSaveClose", false);
 	loadBoolConfig(L, GLOBAL_SERVER_SAVE_NOTIFY_MESSAGE, "globalServerSaveNotifyMessage", true);
@@ -394,6 +396,7 @@ bool ConfigManager::load() {
 	loadStringConfig(L, URL, "url", "");
 	loadStringConfig(L, WORLD_TYPE, "worldType", "pvp");
 	loadStringConfig(L, LOGLEVEL, "logLevel", "info");
+	loadStringConfig(L, LUA_API_DOCS_OUTPUT_DIRECTORY, "luaApiDocsOutputDirectory", "docs/lua-api");
 
 	loadLuaOTCFeatures(L);
 
