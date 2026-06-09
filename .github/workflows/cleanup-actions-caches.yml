@@ -1,9 +1,9 @@
 name: Cleanup Actions Caches
 
 on:
-  schedule:
-    # Daily cleanup
-    - cron: '15 3 * * *' # 03:15 UTC
+#  schedule:
+#    # Daily cleanup
+#    - cron: '15 3 * * *' # 03:15 UTC
   workflow_dispatch: {}
 
 permissions:
