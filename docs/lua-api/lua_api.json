@@ -1686,9 +1686,7 @@
       },
       {
         "name": "globalServerSave",
-        "params": [
-          "...: any"
-        ],
+        "params": [],
         "return": "boolean",
         "source": "src/lua/functions/core/game/game_functions.cpp"
       },

@@ -918,9 +918,8 @@ function Game.getTowns(...) end
 ---@return number
 function Game.getWorldType(...) end
 
----@param ... any
 ---@return boolean
-function Game.globalServerSave(...) end
+function Game.globalServerSave() end
 
 ---@param effectId number
 ---@return boolean

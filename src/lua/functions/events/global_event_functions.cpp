@@ -32,6 +32,11 @@ void GlobalEventFunctions::init(lua_State* L) {
 	 * @return boolean
 	 */
 	Lua::registerMethod(L, "GlobalEvent", "onTime", GlobalEventFunctions::luaGlobalEventOnCallback);
+	/***
+	 * @function GlobalEvent:onCustomMapStartup
+	 * @param callback fun(): boolean
+	 * @return boolean
+	 */
 	Lua::registerMethod(L, "GlobalEvent", "onCustomMapStartup", GlobalEventFunctions::luaGlobalEventOnCallback);
 	/***
 	 * @function GlobalEvent:onStartup
@@ -63,6 +68,11 @@ void GlobalEventFunctions::init(lua_State* L) {
 	 * @return boolean
 	 */
 	Lua::registerMethod(L, "GlobalEvent", "onSave", GlobalEventFunctions::luaGlobalEventOnCallback);
+	/***
+	 * @function GlobalEvent:onGlobalServerSave
+	 * @param callback fun(): boolean
+	 * @return boolean
+	 */
 	Lua::registerMethod(L, "GlobalEvent", "onGlobalServerSave", GlobalEventFunctions::luaGlobalEventOnCallback);
 }
 

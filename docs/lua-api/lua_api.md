@@ -1101,7 +1101,7 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `number`
 - Source: `src/lua/functions/core/game/game_functions.cpp`
 
-#### `Game.globalServerSave(...: any)`
+#### `Game.globalServerSave()`
 
 - Returns: `boolean`
 - Source: `src/lua/functions/core/game/game_functions.cpp`

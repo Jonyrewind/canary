@@ -44,6 +44,11 @@ void GameFunctions::init(lua_State* L) {
 
 	Lua::registerMethod(L, "Game", "getPlayers", GameFunctions::luaGameGetPlayers);
 	Lua::registerMethod(L, "Game", "loadMap", GameFunctions::luaGameLoadMap);
+	/***
+	 * @function Game.loadCustomMaps
+	 * @param path string
+	 * @return nil
+	 */
 	Lua::registerMethod(L, "Game", "loadCustomMaps", GameFunctions::luaGameLoadCustomMaps);
 	Lua::registerMethod(L, "Game", "loadMapChunk", GameFunctions::luaGameloadMapChunk);
 
@@ -58,6 +63,10 @@ void GameFunctions::init(lua_State* L) {
 
 	Lua::registerMethod(L, "Game", "getGameState", GameFunctions::luaGameGetGameState);
 	Lua::registerMethod(L, "Game", "setGameState", GameFunctions::luaGameSetGameState);
+	/***
+	 * @function Game.globalServerSave
+	 * @return boolean
+	 */
 	Lua::registerMethod(L, "Game", "globalServerSave", GameFunctions::luaGameGlobalServerSave);
 
 	Lua::registerMethod(L, "Game", "getWorldType", GameFunctions::luaGameGetWorldType);
