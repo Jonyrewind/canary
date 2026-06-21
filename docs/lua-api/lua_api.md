@@ -1101,6 +1101,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `number`
 - Source: `src/lua/functions/core/game/game_functions.cpp`
 
+#### `Game.globalServerSave(...: any)`
+
+- Returns: `boolean`
+- Source: `src/lua/functions/core/game/game_functions.cpp`
+
 #### `Game.hasDistanceEffect(effectId: number)`
 
 - Returns: `boolean`
@@ -1109,6 +1114,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 #### `Game.hasEffect(effectId: number)`
 
 - Returns: `boolean`
+- Source: `src/lua/functions/core/game/game_functions.cpp`
+
+#### `Game.loadCustomMaps(path: string)`
+
+- Returns: `nil`
 - Source: `src/lua/functions/core/game/game_functions.cpp`
 
 #### `Game.loadMap(path: string)`
@@ -1164,6 +1174,16 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 ### GlobalEvent
 
 #### `GlobalEvent:interval(interval: number)`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/events/global_event_functions.cpp`
+
+#### `GlobalEvent:onCustomMapStartup()`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/events/global_event_functions.cpp`
+
+#### `GlobalEvent:onGlobalServerSave()`
 
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/events/global_event_functions.cpp`

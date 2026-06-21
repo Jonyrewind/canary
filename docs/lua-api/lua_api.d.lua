@@ -918,6 +918,10 @@ function Game.getTowns(...) end
 ---@return number
 function Game.getWorldType(...) end
 
+---@param ... any
+---@return boolean
+function Game.globalServerSave(...) end
+
 ---@param effectId number
 ---@return boolean
 function Game.hasDistanceEffect(effectId) end
@@ -925,6 +929,10 @@ function Game.hasDistanceEffect(effectId) end
 ---@param effectId number
 ---@return boolean
 function Game.hasEffect(effectId) end
+
+---@param path string
+---@return nil
+function Game.loadCustomMaps(path) end
 
 ---@param path string
 ---@return nil
@@ -979,6 +987,12 @@ GlobalEvent = {}
 ---@param interval number
 ---@return boolean|nil
 function GlobalEvent:interval(interval) end
+
+---@return boolean|nil
+function GlobalEvent:onCustomMapStartup() end
+
+---@return boolean|nil
+function GlobalEvent:onGlobalServerSave() end
 
 ---@param callback fun(lightState: integer, lightLevel: integer): boolean
 ---@return boolean

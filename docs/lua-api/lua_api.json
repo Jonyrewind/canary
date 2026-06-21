@@ -1685,6 +1685,14 @@
         "source": "src/lua/functions/core/game/game_functions.cpp"
       },
       {
+        "name": "globalServerSave",
+        "params": [
+          "...: any"
+        ],
+        "return": "boolean",
+        "source": "src/lua/functions/core/game/game_functions.cpp"
+      },
+      {
         "name": "hasDistanceEffect",
         "params": [
           "effectId: number"
@@ -1698,6 +1706,14 @@
           "effectId: number"
         ],
         "return": "boolean",
+        "source": "src/lua/functions/core/game/game_functions.cpp"
+      },
+      {
+        "name": "loadCustomMaps",
+        "params": [
+          "path: string"
+        ],
+        "return": "nil",
         "source": "src/lua/functions/core/game/game_functions.cpp"
       },
       {
@@ -1794,6 +1810,18 @@
         "params": [
           "interval: number"
         ],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/events/global_event_functions.cpp"
+      },
+      {
+        "name": "onCustomMapStartup",
+        "params": [],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/events/global_event_functions.cpp"
+      },
+      {
+        "name": "onGlobalServerSave",
+        "params": [],
         "return": "boolean|nil",
         "source": "src/lua/functions/events/global_event_functions.cpp"
       },
