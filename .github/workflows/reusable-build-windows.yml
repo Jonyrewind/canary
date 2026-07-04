@@ -102,6 +102,7 @@ jobs:
 
       - name: CCache
         if: matrix.type == 'CMake'
+        continue-on-error: true
         uses: hendrikmuhs/ccache-action@v1.2.23
         with:
           max-size: "1G"
