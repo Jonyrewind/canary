@@ -1813,14 +1813,18 @@
       },
       {
         "name": "onCustomMapStartup",
-        "params": [],
-        "return": "boolean|nil",
+        "params": [
+          "callback: fun(): boolean"
+        ],
+        "return": "boolean",
         "source": "src/lua/functions/events/global_event_functions.cpp"
       },
       {
         "name": "onGlobalServerSave",
-        "params": [],
-        "return": "boolean|nil",
+        "params": [
+          "callback: fun(): boolean"
+        ],
+        "return": "boolean",
         "source": "src/lua/functions/events/global_event_functions.cpp"
       },
       {

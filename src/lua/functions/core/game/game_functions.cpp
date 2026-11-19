@@ -64,7 +64,7 @@ void GameFunctions::init(lua_State* L) {
 	Lua::registerMethod(L, "Game", "getGameState", GameFunctions::luaGameGetGameState);
 	Lua::registerMethod(L, "Game", "setGameState", GameFunctions::luaGameSetGameState);
 	/***
-	 * @function Game.globalServerSave
+	 * @function Game.globalServerSave()
 	 * @return boolean
 	 */
 	Lua::registerMethod(L, "Game", "globalServerSave", GameFunctions::luaGameGlobalServerSave);

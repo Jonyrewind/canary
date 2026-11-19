@@ -11,6 +11,7 @@ on:
       - "vcpkg.json"
       - "CMakeLists.txt"
       - "CMakePresets.json"
+      - ".github/vcpkg-assets/spdlog/**"
       - ".github/workflows/**"
   push:
     branches:
@@ -22,6 +23,7 @@ on:
       - "vcpkg.json"
       - "CMakeLists.txt"
       - "CMakePresets.json"
+      - ".github/vcpkg-assets/spdlog/**"
       - ".github/workflows/**"
 
 concurrency:
@@ -113,13 +115,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-
 
+      - name: Seed spdlog backport downloads
+        if: env.VCPKG_GIT_COMMIT_ID == '9eec002df1cd109f8f104cd966a763daf9751489'
+        shell: bash
+        run: |
+          downloads_dir="${VCPKG_DOWNLOADS:-$VCPKG_ROOT/downloads}"
+          mkdir -p -- "$downloads_dir"
+          cp -- .github/vcpkg-assets/spdlog/spdlog-backport-{3541,3543}.patch "$downloads_dir/"
+
       - name: Run CMake
+        id: cmake
         uses: lukka/run-cmake@v10
         with:
           configurePreset: linux-debug
           buildPreset: linux-debug
           configurePresetAdditionalArgs: "['-DTOGGLE_BIN_FOLDER=ON','-DOPTIONS_ENABLE_SCCACHE=OFF','-DCMAKE_C_COMPILER_LAUNCHER=ccache','-DCMAKE_CXX_COMPILER_LAUNCHER=ccache']"
           buildPresetAdditionalArgs: "['--parallel','$(nproc)']"
+      - name: Upload vcpkg failure logs
+        if: failure() && steps.cmake.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-24.04-debug-fast-vcpkg-logs
+          path: |
+            build/linux-debug/vcpkg-manifest-install.log
+            build/linux-debug/vcpkg-buildtrees/*/*.log
+          if-no-files-found: ignore
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:

@@ -987,11 +987,13 @@ GlobalEvent = {}
 ---@return boolean|nil
 function GlobalEvent:interval(interval) end
 
----@return boolean|nil
-function GlobalEvent:onCustomMapStartup() end
+---@param callback fun(): boolean
+---@return boolean
+function GlobalEvent:onCustomMapStartup(callback) end
 
----@return boolean|nil
-function GlobalEvent:onGlobalServerSave() end
+---@param callback fun(): boolean
+---@return boolean
+function GlobalEvent:onGlobalServerSave(callback) end
 
 ---@param callback fun(lightState: integer, lightLevel: integer): boolean
 ---@return boolean

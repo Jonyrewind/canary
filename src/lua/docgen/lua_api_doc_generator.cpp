@@ -1123,6 +1123,7 @@ namespace {
 	struct LuaDocBlock {
 		bool found { false };
 		bool hasSelfParameter { false };
+		bool hasEmptyParameterList { false };
 		std::string className;
 		std::string functionName;
 		std::vector<std::string> parameters;
@@ -1139,7 +1140,12 @@ namespace {
 		return line;
 	}
 
-	void parseLuaDocFunction(LuaDocBlock &docBlock, const std::string_view symbol) {
+	void parseLuaDocFunction(LuaDocBlock &docBlock, std::string_view symbol) {
+		docBlock.hasEmptyParameterList = symbol.ends_with("()");
+		if (docBlock.hasEmptyParameterList) {
+			symbol.remove_suffix(2);
+		}
+
 		const auto colon = symbol.find(':');
 		const auto dot = symbol.find('.');
 		const auto separator = colon == std::string::npos ? dot : colon;
@@ -1276,7 +1282,7 @@ namespace {
 		if (!docBlock.className.empty() || !docBlock.functionName.empty()) {
 			info.hasSelfParameter = docBlock.hasSelfParameter;
 		}
-		if (!docBlock.parameters.empty()) {
+		if (docBlock.hasEmptyParameterList || !docBlock.parameters.empty()) {
 			info.parameters = docBlock.parameters;
 		}
 		if (!docBlock.returns.empty()) {

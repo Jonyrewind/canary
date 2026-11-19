@@ -9,6 +9,7 @@ text eol=lf
 .github/**/*.py text eol=lf
 .github/**/*.yml text eol=lf
 .github/**/*.yaml text eol=lf
+.github/vcpkg-assets/spdlog/*.patch text eol=lf whitespace=-blank-at-eol,-blank-at-eof
 docker/Dockerfile.* text eol=lf
 docker/**/Dockerfile text eol=lf
 docker/**/*.sh text eol=lf

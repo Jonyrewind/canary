@@ -1178,14 +1178,14 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/events/global_event_functions.cpp`
 
-#### `GlobalEvent:onCustomMapStartup()`
+#### `GlobalEvent:onCustomMapStartup(callback: fun(): boolean)`
 
-- Returns: `boolean|nil`
+- Returns: `boolean`
 - Source: `src/lua/functions/events/global_event_functions.cpp`
 
-#### `GlobalEvent:onGlobalServerSave()`
+#### `GlobalEvent:onGlobalServerSave(callback: fun(): boolean)`
 
-- Returns: `boolean|nil`
+- Returns: `boolean`
 - Source: `src/lua/functions/events/global_event_functions.cpp`
 
 #### `GlobalEvent:onPeriodChange(callback: fun(lightState: integer, lightLevel: integer): boolean)`

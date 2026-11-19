@@ -84,6 +84,9 @@ Use registration-level docblocks when several Lua names share one C++ handler:
 Lua::registerMethod(L, "TalkAction", "onSay", TalkActionFunctions::luaTalkActionOnSay);
 ```
 
+For a function with zero parameters, use an explicit empty parameter list such as
+`@function Game.globalServerSave()`.
+
 For callable classes, document constructor signatures on the constructor
 handler:
 
