@@ -11,7 +11,8 @@ on:
       - "vcpkg.json"
       - "CMakeLists.txt"
       - "CMakePresets.json"
-      - ".github/vcpkg-assets/spdlog/**"
+      - "vcpkg-configuration.json"
+      - "vcpkg-registry/**"
       - ".github/workflows/**"
   push:
     branches:
@@ -23,7 +24,8 @@ on:
       - "vcpkg.json"
       - "CMakeLists.txt"
       - "CMakePresets.json"
-      - ".github/vcpkg-assets/spdlog/**"
+      - "vcpkg-configuration.json"
+      - "vcpkg-registry/**"
       - ".github/workflows/**"
 
 concurrency:
@@ -111,17 +113,9 @@ jobs:
           path: |
             vcpkg_cache
             vcpkg_installed/x64-linux-tests-debug
-          key: ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-${{ hashFiles('vcpkg.json') }}
+          key: ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', 'vcpkg-registry/**') }}
           restore-keys: |
             ${{ runner.os }}-vcpkg-${{ env.VCPKG_GIT_COMMIT_ID }}-linux-debug-
-
-      - name: Seed spdlog backport downloads
-        if: env.VCPKG_GIT_COMMIT_ID == '9eec002df1cd109f8f104cd966a763daf9751489'
-        shell: bash
-        run: |
-          downloads_dir="${VCPKG_DOWNLOADS:-$VCPKG_ROOT/downloads}"
-          mkdir -p -- "$downloads_dir"
-          cp -- .github/vcpkg-assets/spdlog/spdlog-backport-{3541,3543}.patch "$downloads_dir/"
 
       - name: Run CMake
         id: cmake

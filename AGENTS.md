@@ -30,7 +30,7 @@ The global Git, commit, PR, C++ header, exception, and documentation policies ap
 
 - Before an authorized local build, read `docs/building/local-validation.md`; its maintained entry-point, environment, preset, cache, and MSVC Ninja workflow is mandatory.
 - C++ source/header additions, removals, and renames must update every maintained entry: the relevant CMake list, server `vcproj/canary.vcxproj`, and test CMake list when applicable.
-- When pre-seeding vcpkg downloads in CI, scope the files to the baseline that expects them and validate their filenames and SHA-512 hashes against the pinned port.
+- Keep backports for in-tree vcpkg ports beside the portfile so builds can apply them from disk. Verify each SHA-512 against the pinned upstream recipe, apply the backports in order to the pinned release, and check package resolution for affected triplets.
 
 ### MSVC Ninja dependency tracking
 

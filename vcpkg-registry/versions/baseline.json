@@ -1,8 +1,16 @@
 {
   "default": {
+    "fmt": {
+      "baseline": "12.2.0",
+      "port-version": 2
+    },
     "protobuf": {
       "baseline": "6.33.4",
       "port-version": 1
+    },
+    "spdlog": {
+      "baseline": "1.17.0",
+      "port-version": 2
     }
   }
 }

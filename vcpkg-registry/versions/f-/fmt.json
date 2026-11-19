@@ -1,0 +1,9 @@
+{
+  "versions": [
+    {
+      "version": "12.2.0",
+      "port-version": 2,
+      "path": "$/ports/fmt"
+    }
+  ]
+}
