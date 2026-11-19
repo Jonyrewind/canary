@@ -139,7 +139,7 @@ static void registerPerks(const nlohmann::json &perksJson, ProficiencyLevel &pro
 		uint64_t shiftedValue = 0;
 		if (proficiencyPerk.type == SPECIALIZED_MAGIC_LEVEL) {
 			shiftedValue = perkJson["DamageType"].get<uint64_t>();
-		} else if (proficiencyPerk.type == ELEMENTAL_HIT_CHANCE || proficiencyPerk.type == ELEMENTAL_CRITICAL_EXTRA_DAMAGE) {
+		} else if (proficiencyPerk.type == ELEMENTAL_HIT_CHANCE || proficiencyPerk.type == ELEMENTAL_CRITICAL_EXTRA_DAMAGE || proficiencyPerk.type == ELEMENTAL_PIERCE) {
 			shiftedValue = perkJson["ElementId"].get<uint64_t>();
 		}
 
@@ -1385,16 +1385,20 @@ void WeaponProficiency::applyOn(WeaponProficiencyHealth_t healthType, WeaponProf
 		statsType = gainType == WeaponProficiencyGain_t::KILL ? MANA_GAIN_ON_KILL : MANA_GAIN_ON_HIT;
 	}
 
+	const auto statValue = getStat(statsType);
+	if (statValue <= 0) {
+		return;
+	}
+
 	CombatParams params;
 	params.combatType = COMBAT_HEALING;
-	params.soundImpactEffect = SoundEffect_t::SPELL_LIGHT_HEALING;
 
 	CombatDamage damage;
 
 	damage.origin = ORIGIN_WEAPON_PROFICIENCY;
 
 	damage.primary.type = params.combatType;
-	damage.primary.value = getStat(statsType);
+	damage.primary.value = static_cast<int32_t>(statValue);
 
 	const auto &playerCreature = m_player.getCreature();
 	if (healthType == WeaponProficiencyHealth_t::LIFE) {

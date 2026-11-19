@@ -45115,7 +45115,7 @@ Awarded by TibiaMisterios.com.br"/>
 	<item id="22327" article="a" name="stone spiked club">
 		<attribute key="primarytype" value="tools (objects)"/>
 	</item>
-	<item fromid="22328" toid="22323" article="a" name="large totem pole"/>
+	<item fromid="22328" toid="22333" article="a" name="large totem pole"/>
 	<item fromid="22334" toid="22335" article="a" name="clay hut">
 		<attribute key="primarytype" value="constructions"/>
 	</item>
@@ -48882,7 +48882,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="decayTo" value="0"/>
 	</item>
 	<item fromid="25135" toid="25138" name="unknown item"/>
-	<item fromid="25139" toid="25134" name="RESERVED SPRITE"/>
+	<item fromid="25139" toid="25140" name="RESERVED SPRITE"/>
 	<item id="25141" name="unknown item"/>
 	<item id="25142" name="dragon lair wall"/>
 	<item fromid="25143" toid="25145" name="RESERVED SPRITE"/>
@@ -63610,7 +63610,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="33211" article="a" name="cornerstone"/>
 	<item fromid="33212" toid="33226" article="a" name="wall"/>
-	<item fromid="33231" toid="33227" article="a" name="buttress"/>
+	<item fromid="33227" toid="33231" article="a" name="buttress"/>
 	<item id="33232" article="a" name="ramp"/>
 	<item id="33233" article="a" name="ramp">
 		<attribute key="floorchange" value="north"/>
@@ -69719,18 +69719,21 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="wrapableto" value="23473"/>
 	</item>
 	<item id="36952" article="a" name="folded artefact carpet II">
+		<attribute key="primarytype" value="floor decorations"/>
 		<attribute key="type" value="carpet"/>
 		<attribute key="description" value="This carpet resembles a prime artefact. It feels soft to the touch and seems to have almost no weight"/>
 		<attribute key="weight" value="10"/>
 		<attribute key="wrapableto" value="23473"/>
 	</item>
 	<item id="36953" article="a" name="folded artefact carpet III">
+		<attribute key="primarytype" value="floor decorations"/>
 		<attribute key="type" value="carpet"/>
 		<attribute key="description" value="This carpet resembles a prime artefact. It feels soft to the touch and seems to have almost no weight"/>
 		<attribute key="weight" value="10"/>
 		<attribute key="wrapableto" value="23473"/>
 	</item>
 	<item id="36954" article="a" name="folded artefact carpet IV">
+		<attribute key="primarytype" value="floor decorations"/>
 		<attribute key="type" value="carpet"/>
 		<attribute key="description" value="This carpet resembles a prime artefact. It feels soft to the touch and seems to have almost no weight"/>
 		<attribute key="weight" value="10"/>
@@ -69744,6 +69747,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="wrapableto" value="23473"/>
 	</item>
 	<item id="36956" article="a" name="folded artefact carpet VI">
+		<attribute key="primarytype" value="floor decorations"/>
 		<attribute key="type" value="carpet"/>
 		<attribute key="description" value="This carpet resembles a prime artefact. It feels soft to the touch and seems to have almost no weight"/>
 		<attribute key="weight" value="10"/>
@@ -82829,7 +82833,7 @@ Granted by TibiaGoals.com"/>
 	<item fromid="49297" toid="49301" article="a" name="dark wall">
 		<attribute key="primarytype" value="walls"/>
 	</item>
-	<item fromid="49318" toid="39321" article="a" name="dark wall">
+	<item fromid="49318" toid="49321" article="a" name="dark wall">
 		<attribute key="primarytype" value="walls"/>
 	</item>
 	<item fromid="49330" toid="49359" article="a" name="dark floor" />
@@ -86581,5 +86585,9 @@ Granted by TibiaGoals.com"/>
 	<item id="51747" article="a" name="intricate void scroll">
 		<attribute key="primarytype" value="imbuement scrolls"/>
 		<attribute key="weight" value="250"/>
+	</item>
+	<item id="51978" article="a" name="bounty talisman">
+		<attribute key="primarytype" value="extra slot"/>
+		<attribute key="weight" value="75"/>
 	</item>
 </items>

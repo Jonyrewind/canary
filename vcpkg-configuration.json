@@ -1,6 +1,16 @@
 {
-  "overlay-ports": [
-    "./cmake/overlay-ports"
+  "default-registry": {
+    "kind": "builtin",
+    "baseline": "9eec002df1cd109f8f104cd966a763daf9751489"
+  },
+  "registries": [
+    {
+      "kind": "filesystem",
+      "path": "./vcpkg-registry",
+      "packages": [
+        "protobuf"
+      ]
+    }
   ],
   "overlay-triplets": [
     "./cmake/triplets"

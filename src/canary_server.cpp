@@ -20,6 +20,7 @@
 #include "game/game.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "game/scheduling/events_scheduler.hpp"
+#include "game/scheduling/monster_compute_service.hpp"
 #include "game/zones/zone.hpp"
 #include "lua/global/globalevent.hpp"
 #include "io/io_bosstiary.hpp"
@@ -31,6 +32,7 @@
 #include "lua/modules/modules.hpp"
 #include "lua/scripts/lua_environment.hpp"
 #include "lua/scripts/scripts.hpp"
+#include "map/spectators.hpp"
 #include "server/network/protocol/protocollogin.hpp"
 #include "server/network/protocol/protocol_port_utils.hpp"
 #include "server/network/protocol/protocol_profile.hpp"
@@ -45,6 +47,10 @@
 #endif
 
 namespace {
+	constexpr auto expertPvpWorldType = "expert-pvp";
+	constexpr auto legacyRetroPvpWorldType = "pvp";
+	constexpr auto retroPvpWorldType = "retro-pvp";
+
 	[[nodiscard]] constexpr std::string_view getLuaRuntimeDisplayVersion() {
 #if defined(LUAJIT_VERSION)
 		constexpr std::string_view version = LUAJIT_VERSION;
@@ -147,6 +153,7 @@ bool CanaryServer::generateLuaApiDocs(const bool force) const {
 
 int CanaryServer::generateLuaApiDocsOnly() {
 	const auto shutdownDocgenRuntime = [] {
+		g_monsterComputeService().shutdown();
 		g_dispatcher().shutdown();
 		g_threadPool().shutdown();
 	};
@@ -202,6 +209,18 @@ int CanaryServer::run() {
 				loadModules();
 				setWorldType();
 				loadMaps();
+
+				MonsterComputeConfig monsterComputeConfig;
+				monsterComputeConfig.configuredThreads = static_cast<uint32_t>(std::max<int32_t>(0, g_configManager().getNumber(MONSTER_COMPUTE_THREADS)));
+				monsterComputeConfig.capacity = static_cast<size_t>(std::max<int32_t>(1, g_configManager().getNumber(MONSTER_COMPUTE_QUEUE_CAPACITY)));
+				g_monsterComputeService().start(monsterComputeConfig);
+				const auto monsterComputeStats = g_monsterComputeService().getStats();
+				logger.info(
+					"Monster compute service initialized: mode={}, workers={}, capacity={}",
+					monsterComputeStats.inlineMode ? "inline" : "workers",
+					monsterComputeStats.workerCount,
+					monsterComputeStats.capacity
+				);
 
 				logger.info("Initializing gamestate...");
 				g_game().setGameState(GAME_STATE_INIT);
@@ -290,6 +309,7 @@ int CanaryServer::run() {
 
 	logger.info("{} {}", g_configManager().getString(SERVER_NAME), "server online!");
 	g_logger().setLevel(g_configManager().getString(LOGLEVEL));
+	g_dispatcher().setQueueLatencyLoggingEnabled(true);
 
 	serviceManager.run();
 
@@ -299,7 +319,7 @@ int CanaryServer::run() {
 
 void CanaryServer::setWorldType() {
 	const std::string worldType = asLowerCaseString(g_configManager().getString(WORLD_TYPE));
-	if (worldType == "pvp") {
+	if (worldType == expertPvpWorldType || worldType == legacyRetroPvpWorldType || worldType == retroPvpWorldType) {
 		g_game().setWorldType(WORLD_TYPE_PVP);
 	} else if (worldType == "no-pvp") {
 		g_game().setWorldType(WORLD_TYPE_NO_PVP);
@@ -308,13 +328,14 @@ void CanaryServer::setWorldType() {
 	} else {
 		throw FailedToInitializeCanary(
 			fmt::format(
-				"Unknown world type: {}, valid world types are: pvp, no-pvp and pvp-enforced",
+				"Unknown world type: {}, valid world types are: expert-pvp, retro-pvp, pvp, no-pvp and pvp-enforced",
 				g_configManager().getString(WORLD_TYPE)
 			)
 		);
 	}
 
-	logger.info("World type set as {}", asUpperCaseString(worldType));
+	const auto displayWorldType = worldType == legacyRetroPvpWorldType ? std::string(retroPvpWorldType) : worldType;
+	logger.info("World type set as {}", asUpperCaseString(displayWorldType));
 }
 
 void CanaryServer::loadMaps() const {
@@ -607,8 +628,12 @@ void CanaryServer::modulesLoadHelper(bool loaded, std::string_view identifier) {
 }
 
 void CanaryServer::shutdown() {
+	g_monsterComputeService().shutdown();
 	g_database().createDatabaseBackup(true);
 	g_dispatcher().shutdown();
 	g_metrics().shutdown();
 	g_threadPool().shutdown();
+
+	// Cached snapshots own creatures and must release them while gameplay services are still alive.
+	Spectators::clearCache();
 }

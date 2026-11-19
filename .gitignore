@@ -31,10 +31,15 @@ bld/
 [Oo]bj/
 [Ll]og/
 build/
-vcproj/
+CMakeUserPresets.json
+/vcproj/.canary-shared-cache/
+/vcproj/.vcpkg-buildtrees/
+/vcproj/.vcpkg-packages/
+/vcproj/*
 !vcproj/canary.sln
 !vcproj/canary.vcxproj
 !vcproj/settings.props
+!vcproj/SharedVcpkgCache.targets
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -218,6 +223,9 @@ ecf/
 rcf/
 
 # Windows Store app package directories and files
+
+# Local protocol payload probes used by /protocolprobe.
+/data/scripts/talkactions/god/protocol_probe.local.json
 AppPackages/
 BundleArtifacts/
 Package.StoreAssociation.xml
@@ -393,8 +401,10 @@ sftp-config.json
 # Binaries
 canary
 canary.old
+/backups/executables/
 
 # VCPKG
+.tools/
 vcpkg_installed
 
 # Cppcheck Cache

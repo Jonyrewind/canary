@@ -1743,6 +1743,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean`
 - Source: `src/lua/functions/items/item_functions.cpp`
 
+#### `Item:setExpertPvpFieldContext(owner: Creature)`
+
+- Returns: `boolean`
+- Source: `src/lua/functions/items/item_functions.cpp`
+
 #### `Item:setOwner(creatureOrCreatureId: number|Creature)`
 
 - Returns: `boolean`
@@ -4015,6 +4020,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
+#### `Player:clearRaceIconOverlays(icon: number)`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/creatures/player/player_functions.cpp`
+
 #### `Player:clearSpellCooldowns(spenders: boolean, builder: boolean)`
 
 - Returns: `boolean|nil`
@@ -4132,7 +4142,7 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 
 #### `Player:getClient()`
 
-- Returns: `table|nil`
+- Returns: `{version:integer,versionString:string,os:integer}|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
 #### `Player:getContainerById(id: number)`
@@ -4295,7 +4305,7 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `nil|Item`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
-#### `Player:getItemCount(itemId: number|string, subType?: number)`
+#### `Player:getItemCount(itemId: number|string, subType?: number, ignoreEquipped?: boolean, ignoreStoreInbox?: boolean)`
 
 - Returns: `number|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
@@ -4436,6 +4446,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
 #### `Player:getPronoun()`
+
+- Returns: `number|nil`
+- Source: `src/lua/functions/creatures/player/player_functions.cpp`
+
+#### `Player:getPvpMode()`
 
 - Returns: `number|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
@@ -4605,6 +4620,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
+#### `Player:hasAttacked(targetPlayer: Player)`
+
+- Returns: `boolean`
+- Source: `src/lua/functions/creatures/player/player_functions.cpp`
+
 #### `Player:hasBlessing(blessing: number)`
 
 - Returns: `boolean|nil`
@@ -4750,6 +4770,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
+#### `Player:refreshVisibleCreatureIcons()`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/creatures/player/player_functions.cpp`
+
 #### `Player:reloadData()`
 
 - Returns: `boolean|nil`
@@ -4810,7 +4835,7 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
-#### `Player:removeItem(itemId: number|string, count: number, subType?: number, ignoreEquipped?: boolean)`
+#### `Player:removeItem(itemId: number|string, count: number, subType?: number, ignoreEquipped?: boolean, ignoreStoreInbox?: boolean)`
 
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
@@ -5145,6 +5170,11 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
+#### `Player:setRaceIconOverlay(raceId: number, icon: number, enabled?: boolean)`
+
+- Returns: `boolean|nil`
+- Source: `src/lua/functions/creatures/player/player_functions.cpp`
+
 #### `Player:setRemoveBossTime(arg2: number)`
 
 - Returns: `boolean`
@@ -5235,7 +5265,7 @@ C++ Lua binding handlers and registration lines can override inferred signatures
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`
 
-#### `Player:takeScreenshot(screenshotType: any)`
+#### `Player:takeScreenshot(screenshotType: any, skillId?: number, skillLevel?: number, achievementName?: string, raceId?: number, bestiaryStep?: number)`
 
 - Returns: `boolean|nil`
 - Source: `src/lua/functions/creatures/player/player_functions.cpp`

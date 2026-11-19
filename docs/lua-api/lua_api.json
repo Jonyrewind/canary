@@ -2589,6 +2589,14 @@
         "source": "src/lua/functions/items/item_functions.cpp"
       },
       {
+        "name": "setExpertPvpFieldContext",
+        "params": [
+          "owner: Creature"
+        ],
+        "return": "boolean",
+        "source": "src/lua/functions/items/item_functions.cpp"
+      },
+      {
         "name": "setOwner",
         "params": [
           "creatureOrCreatureId: number|Creature"
@@ -6021,6 +6029,14 @@
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
       },
       {
+        "name": "clearRaceIconOverlays",
+        "params": [
+          "icon: number"
+        ],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/creatures/player/player_functions.cpp"
+      },
+      {
         "name": "clearSpellCooldowns",
         "params": [
           "spenders: boolean",
@@ -6185,7 +6201,7 @@
       {
         "name": "getClient",
         "params": [],
-        "return": "table|nil",
+        "return": "{version:integer,versionString:string,os:integer}|nil",
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
       },
       {
@@ -6404,7 +6420,9 @@
         "name": "getItemCount",
         "params": [
           "itemId: number|string",
-          "subType?: number"
+          "subType?: number",
+          "ignoreEquipped?: boolean",
+          "ignoreStoreInbox?: boolean"
         ],
         "return": "number|nil",
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
@@ -6581,6 +6599,12 @@
       },
       {
         "name": "getPronoun",
+        "params": [],
+        "return": "number|nil",
+        "source": "src/lua/functions/creatures/player/player_functions.cpp"
+      },
+      {
+        "name": "getPvpMode",
         "params": [],
         "return": "number|nil",
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
@@ -6811,6 +6835,14 @@
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
       },
       {
+        "name": "hasAttacked",
+        "params": [
+          "targetPlayer: Player"
+        ],
+        "return": "boolean",
+        "source": "src/lua/functions/creatures/player/player_functions.cpp"
+      },
+      {
         "name": "hasBlessing",
         "params": [
           "blessing: number"
@@ -7022,6 +7054,12 @@
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
       },
       {
+        "name": "refreshVisibleCreatureIcons",
+        "params": [],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/creatures/player/player_functions.cpp"
+      },
+      {
         "name": "reloadData",
         "params": [],
         "return": "boolean|nil",
@@ -7123,7 +7161,8 @@
           "itemId: number|string",
           "count: number",
           "subType?: number",
-          "ignoreEquipped?: boolean"
+          "ignoreEquipped?: boolean",
+          "ignoreStoreInbox?: boolean"
         ],
         "return": "boolean|nil",
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
@@ -7669,6 +7708,16 @@
         "source": "src/lua/functions/creatures/player/player_functions.cpp"
       },
       {
+        "name": "setRaceIconOverlay",
+        "params": [
+          "raceId: number",
+          "icon: number",
+          "enabled?: boolean"
+        ],
+        "return": "boolean|nil",
+        "source": "src/lua/functions/creatures/player/player_functions.cpp"
+      },
+      {
         "name": "setRemoveBossTime",
         "params": [
           "arg2: number"
@@ -7824,7 +7873,12 @@
       {
         "name": "takeScreenshot",
         "params": [
-          "screenshotType: any"
+          "screenshotType: any",
+          "skillId?: number",
+          "skillLevel?: number",
+          "achievementName?: string",
+          "raceId?: number",
+          "bestiaryStep?: number"
         ],
         "return": "boolean|nil",
         "source": "src/lua/functions/creatures/player/player_functions.cpp"

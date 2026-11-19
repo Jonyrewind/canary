@@ -1398,6 +1398,10 @@ function Item:setCustomAttribute(key, value) end
 ---@return boolean
 function Item:setDuration(minDuration, maxDuration, decayTo, showDuration) end
 
+---@param owner Creature
+---@return boolean
+function Item:setExpertPvpFieldContext(owner) end
+
 ---@param creatureOrCreatureId number|Creature
 ---@return boolean
 function Item:setOwner(creatureOrCreatureId) end
@@ -3202,6 +3206,10 @@ function Player:charmExpansion(arg2) end
 ---@return boolean
 function Player:clearAllImbuements(item) end
 
+---@param icon number
+---@return boolean|nil
+function Player:clearRaceIconOverlays(icon) end
+
 ---@param spenders boolean
 ---@param builder boolean
 ---@return boolean|nil
@@ -3285,7 +3293,7 @@ function Player:getCharmMonsterType(arg1) end
 ---@return number
 function Player:getCharmTier(charmId) end
 
----@return table|nil
+---@return {version:integer,versionString:string,os:integer}|nil
 function Player:getClient() end
 
 ---@param id number
@@ -3399,8 +3407,10 @@ function Player:getItemById(itemId, deepSearch, subType) end
 
 ---@param itemId number|string
 ---@param subType? number
+---@param ignoreEquipped? boolean
+---@param ignoreStoreInbox? boolean
 ---@return number|nil
-function Player:getItemCount(itemId, subType) end
+function Player:getItemCount(itemId, subType, ignoreEquipped, ignoreStoreInbox) end
 
 ---@return table|nil
 function Player:getKills() end
@@ -3489,6 +3499,9 @@ function Player:getPreyLootPercentage(raceId) end
 
 ---@return number|nil
 function Player:getPronoun() end
+
+---@return number|nil
+function Player:getPvpMode() end
 
 ---@param rewardId number
 ---@param autoCreate? boolean
@@ -3603,6 +3616,10 @@ function Player:hasAchievement(idOrName) end
 ---@return boolean
 function Player:hasAnimusMastery(monsterType) end
 
+---@param targetPlayer Player
+---@return boolean
+function Player:hasAttacked(targetPlayer) end
+
 ---@param blessing number
 ---@return boolean|nil
 function Player:hasBlessing(blessing) end
@@ -3711,6 +3728,9 @@ function Player:popupFYI(message) end
 function Player:preyThirdSlot(arg2) end
 
 ---@return boolean|nil
+function Player:refreshVisibleCreatureIcons() end
+
+---@return boolean|nil
 function Player:reloadData() end
 
 ---@param idOrName number|string
@@ -3763,8 +3783,9 @@ function Player:removeIconBakragore(iconType) end
 ---@param count number
 ---@param subType? number
 ---@param ignoreEquipped? boolean
+---@param ignoreStoreInbox? boolean
 ---@return boolean|nil
-function Player:removeItem(itemId, count, subType, ignoreEquipped) end
+function Player:removeItem(itemId, count, subType, ignoreEquipped, ignoreStoreInbox) end
 
 ---@param money number
 ---@param flags? number
@@ -4049,6 +4070,12 @@ function Player:setOfflineTrainingSkill(skillId) end
 ---@return boolean|nil
 function Player:setPronoun(newPronoun) end
 
+---@param raceId number
+---@param icon number
+---@param enabled? boolean
+---@return boolean|nil
+function Player:setRaceIconOverlay(raceId, icon, enabled) end
+
 ---@param arg2 number
 ---@return boolean
 function Player:setRemoveBossTime(arg2) end
@@ -4131,8 +4158,13 @@ function Player:setXpBoostTime(timeLeft) end
 function Player:showTextDialog(idOrNameOrUserdata, text, canWrite, length) end
 
 ---@param screenshotType any
+---@param skillId? number
+---@param skillLevel? number
+---@param achievementName? string
+---@param raceId? number
+---@param bestiaryStep? number
 ---@return boolean|nil
-function Player:takeScreenshot(screenshotType) end
+function Player:takeScreenshot(screenshotType, skillId, skillLevel, achievementName, raceId, bestiaryStep) end
 
 ---@param arg2? boolean
 ---@return boolean|nil

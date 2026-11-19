@@ -45,9 +45,6 @@ void ProtocolLogin::getCharacterList(const std::string &accountDescriptor, const
 	if (oldProtocol && !g_configManager().getBoolean(OLD_PROTOCOL)) {
 		disconnectClient(ProtocolProfileRegistry::getUnsupportedClientProtocolMessage(false));
 		return;
-	} else if (!oldProtocol) {
-		disconnectClient(ProtocolProfileRegistry::getUnsupportedClientProtocolMessage(g_configManager().getBoolean(OLD_PROTOCOL)));
-		return;
 	}
 
 	if (account.load() != AccountErrors_t::Ok || !account.authenticate(password)) {
@@ -280,12 +277,9 @@ void ProtocolLogin::onRecvFirstMessage(NetworkMessage &msg) {
 		if (oldProtocol && !g_configManager().getBoolean(OLD_PROTOCOL)) {
 			disconnectClient(ProtocolProfileRegistry::getUnsupportedClientProtocolMessage(false));
 			return;
-		} else if (!oldProtocol) {
-			disconnectClient(ProtocolProfileRegistry::getUnsupportedClientProtocolMessage(g_configManager().getBoolean(OLD_PROTOCOL)));
-			return;
 		}
 
-		g_dispatcher().addEvent(
+		dispatchProtocolTask(
 			[self = std::static_pointer_cast<ProtocolLogin>(shared_from_this()), password] {
 				self->getLivestreamCharacterList(password);
 			},
@@ -299,7 +293,7 @@ void ProtocolLogin::onRecvFirstMessage(NetworkMessage &msg) {
 		return;
 	}
 
-	g_dispatcher().addEvent(
+	dispatchProtocolTask(
 		[self = std::static_pointer_cast<ProtocolLogin>(shared_from_this()), accountDescriptor, password] {
 			self->getCharacterList(accountDescriptor, password);
 		},

@@ -114,7 +114,7 @@ function getJackLastMissionState(player)
 		return true
 	end
 
-	if player:getStorageValue(Storage.TibiaTales.JackFutureQuest.LastMissionState) == 1 then
+	if player:getStorageValue(Storage.Quest.U8_7.JackFutureQuest.LastMissionState) == 1 then
 		return "You told Jack the truth about his personality. You also explained that you and Spectulus \z
 		made a mistake by assuming him as the real Jack."
 	else
@@ -806,14 +806,13 @@ function table.copy(t, out)
 end
 
 function unserializeTable(str, out)
-	local tmp = load("return " .. str)
-	if tmp then
-		tmp = tmp()
-	else
+	local value = table.unserialize(str)
+	if type(value) ~= "table" then
 		logger.warn("[unserializeTable] - Unserialization error: {}", str)
 		return false
 	end
-	return table.copy(tmp, out)
+
+	return table.copy(value, out)
 end
 
 function unpack2(tab, i)

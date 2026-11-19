@@ -28,6 +28,10 @@
     <ClInclude Include="..\src\creatures\creatures_definitions.hpp" />
     <ClInclude Include="..\src\creatures\interactions\chat.hpp" />
     <ClInclude Include="..\src\creatures\monsters\monster.hpp" />
+    <ClInclude Include="..\src\creatures\monsters\monster_combat_intention.hpp" />
+    <ClInclude Include="..\src\creatures\monsters\monster_pathfinding.hpp" />
+    <ClInclude Include="..\src\creatures\monsters\monster_relevance.hpp" />
+    <ClInclude Include="..\src\creatures\monsters\monster_targeting.hpp" />
     <ClInclude Include="..\src\creatures\monsters\monsters.hpp" />
     <ClInclude Include="..\src\creatures\monsters\spawns\spawn_monster.hpp" />
     <ClInclude Include="..\src\creatures\npcs\npc.hpp" />
@@ -55,6 +59,9 @@
     <ClInclude Include="..\src\creatures\players\components\player_storage.hpp" />
     <ClInclude Include="..\src\creatures\players\components\player_title.hpp" />
     <ClInclude Include="..\src\creatures\players\components\player_vip.hpp" />
+    <ClInclude Include="..\src\creatures\players\components\pvp\expert_pvp.hpp" />
+    <ClInclude Include="..\src\creatures\players\components\pvp\expert_pvp_definitions.hpp" />
+    <ClInclude Include="..\src\creatures\players\components\pvp\player_pvp.hpp" />
     <ClInclude Include="..\src\creatures\players\components\wheel\player_wheel.hpp" />
     <ClInclude Include="..\src\creatures\players\components\weapon_proficiency.hpp" />
     <ClInclude Include="..\src\creatures\players\wheel\wheel_definitions.hpp" />
@@ -73,6 +80,12 @@
     <ClInclude Include="..\src\game\movement\teleport.hpp" />
     <ClInclude Include="..\src\game\scheduling\events_scheduler.hpp" />
     <ClInclude Include="..\src\game\scheduling\dispatcher.hpp" />
+    <ClInclude Include="..\src\game\scheduling\dispatcher_budget.hpp" />
+    <ClInclude Include="..\src\game\scheduling\dispatcher_policy.hpp" />
+    <ClInclude Include="..\src\game\scheduling\dispatcher_telemetry.hpp" />
+    <ClInclude Include="..\src\game\scheduling\dispatcher_wdrr.hpp" />
+    <ClInclude Include="..\src\game\scheduling\dispatcher_types.hpp" />
+    <ClInclude Include="..\src\game\scheduling\monster_compute_service.hpp" />
     <ClInclude Include="..\src\game\scheduling\task.hpp" />
     <ClInclude Include="..\src\game\scheduling\save_manager.hpp" />
     <ClInclude Include="..\src\io\fileloader.hpp" />
@@ -213,6 +226,7 @@
     <ClInclude Include="..\src\map\mapcache.hpp" />
     <ClInclude Include="..\src\map\map_const.hpp" />
     <ClInclude Include="..\src\map\map_definitions.hpp" />
+    <ClInclude Include="..\src\map\navigation_snapshot.hpp" />
     <ClInclude Include="..\src\map\spectators.hpp" />
     <ClInclude Include="..\src\map\town.hpp" />
     <ClInclude Include="..\src\map\utils\astarnodes.hpp" />
@@ -259,6 +273,10 @@
     <ClCompile Include="..\src\creatures\creature.cpp" />
     <ClCompile Include="..\src\creatures\interactions\chat.cpp" />
     <ClCompile Include="..\src\creatures\monsters\monster.cpp" />
+    <ClCompile Include="..\src\creatures\monsters\monster_combat_intention.cpp" />
+    <ClCompile Include="..\src\creatures\monsters\monster_pathfinding.cpp" />
+    <ClCompile Include="..\src\creatures\monsters\monster_relevance.cpp" />
+    <ClCompile Include="..\src\creatures\monsters\monster_targeting.cpp" />
     <ClCompile Include="..\src\creatures\monsters\monsters.cpp" />
     <ClCompile Include="..\src\creatures\monsters\spawns\spawn_monster.cpp" />
     <ClCompile Include="..\src\creatures\npcs\npc.cpp" />
@@ -286,6 +304,8 @@
     <ClCompile Include="..\src\creatures\players\components\player_storage.cpp" />
     <ClCompile Include="..\src\creatures\players\components\player_title.cpp" />
     <ClCompile Include="..\src\creatures\players\components\player_vip.cpp" />
+    <ClCompile Include="..\src\creatures\players\components\pvp\expert_pvp.cpp" />
+    <ClCompile Include="..\src\creatures\players\components\pvp\player_pvp.cpp" />
     <ClCompile Include="..\src\creatures\players\components\wheel\player_wheel.cpp" />
     <ClCompile Include="..\src\creatures\players\components\weapon_proficiency.cpp" />
     <ClCompile Include="..\src\database\database.cpp" />
@@ -301,6 +321,9 @@
     <ClCompile Include="..\src\game\movement\teleport.cpp" />
     <ClCompile Include="..\src\game\scheduling\events_scheduler.cpp" />
     <ClCompile Include="..\src\game\scheduling\dispatcher.cpp" />
+    <ClCompile Include="..\src\game\scheduling\dispatcher_budget.cpp" />
+    <ClCompile Include="..\src\game\scheduling\dispatcher_wdrr.cpp" />
+    <ClCompile Include="..\src\game\scheduling\monster_compute_service.cpp" />
     <ClCompile Include="..\src\io\fileloader.cpp" />
     <ClCompile Include="..\src\io\filestream.cpp" />
     <ClCompile Include="..\src\io\functions\iologindata_load_player.cpp" />
@@ -419,6 +442,7 @@
     <ClCompile Include="..\src\map\utils\astarnodes.cpp" />
     <ClCompile Include="..\src\map\utils\mapsector.cpp" />
     <ClCompile Include="..\src\map\map.cpp" />
+    <ClCompile Include="..\src\map\navigation_snapshot.cpp" />
     <ClCompile Include="..\src\map\map_download.cpp" />
     <ClCompile Include="..\src\map\mapcache.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -522,20 +546,35 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
+    <VcpkgRoot Condition="'$(VcpkgRoot)'=='' and '$(VCPKG_ROOT)'!=''">$(VCPKG_ROOT)</VcpkgRoot>
+    <VcpkgRoot Condition="'$(VcpkgRoot)'=='' and Exists('$(MSBuildProjectDirectory)\..\vcpkg\scripts\buildsystems\msbuild\vcpkg.targets')">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\vcpkg'))</VcpkgRoot>
+    <VcpkgManifestRoot Condition="'$(VcpkgManifestRoot)'==''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildProjectDirectory), vcpkg.json))</VcpkgManifestRoot>
+    <CanaryVcpkgManifestInstallTarget Condition="'$(VcpkgRoot)'!='' and Exists('$(VcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.targets')">VcpkgInstallManifestDependencies</CanaryVcpkgManifestInstallTarget>
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
     <VcpkgAutoLink>true</VcpkgAutoLink>
+    <VcpkgHostTriplet>x64-windows</VcpkgHostTriplet>
+    <CanaryVcpkgFeatureFlags>versions</CanaryVcpkgFeatureFlags>
+    <CanaryVcpkgManifestFeatures />
+    <CanaryVcpkgManifestNoDefaultFeatures />
+    <CanaryVcpkgOverlayPorts />
+    <CanaryVcpkgOverlayTriplets>$(VcpkgManifestRoot)\cmake\triplets</CanaryVcpkgOverlayTriplets>
+    <CanaryVcpkgInstallOptions>--clean-packages-after-build;--clean-buildtrees-after-build</CanaryVcpkgInstallOptions>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <VcpkgInstalledDir>$(MSBuildProjectDirectory)\vcpkg_installed</VcpkgInstalledDir>
     <VcpkgTriplet>x64-windows</VcpkgTriplet>
     <VcpkgConfiguration>Release</VcpkgConfiguration>
+    <CanaryVcpkgBuildType />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Vcpkg">
     <VcpkgInstalledDir>$(MSBuildProjectDirectory)\vcpkg_installed</VcpkgInstalledDir>
     <VcpkgTriplet>x64-windows-static-release</VcpkgTriplet>
     <VcpkgUseStatic>false</VcpkgUseStatic>
     <VcpkgUseMD>false</VcpkgUseMD>
+    <CanaryVcpkgBuildType>release</CanaryVcpkgBuildType>
   </PropertyGroup>
+  <Import Project="$(MSBuildProjectDirectory)\.canary-shared-cache\SharedVcpkgCache.props"
+          Condition="'$(CanarySharedVcpkgDisable)'!='true' and Exists('$(MSBuildProjectDirectory)\.canary-shared-cache\SharedVcpkgCache.props')" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
@@ -614,34 +653,36 @@
   <PropertyGroup>
     <RunProtoCompile>true</RunProtoCompile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_WORKSPACE)' != ''">
-    <RunProtoCompile>false</RunProtoCompile>
-  </PropertyGroup>
   <Target Name="DisplayRunProtoCompileValue" BeforeTargets="ProtoCompile">
     <Message Text="RunProtoCompile value: $(RunProtoCompile)" Importance="high" />
   </Target>
   <PropertyGroup>
-    <ProtocPath>$(VcpkgInstalledDir)\$(VcpkgTriplet)\tools\protobuf\protoc.exe</ProtocPath>
-    <ProtoPath>$(SourcePath)\protobuf</ProtoPath>
+    <ProtocPath>$(VcpkgInstalledDir)\$(VcpkgHostTriplet)\tools\protobuf\protoc.exe</ProtocPath>
+    <ProtoPath>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\src\protobuf'))</ProtoPath>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(RunProtoCompile)'=='true'">
     <ProtoFiles Include="$(ProtoPath)\*.proto" />
+    <ClCompile Include="@(ProtoFiles->'generated\%(Filename).pb.cc')">
+      <IncludeInUnityFile>false</IncludeInUnityFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="@(ProtoFiles->'generated\%(Filename).pb.h')" />
   </ItemGroup>
-  <Target Name="ProtoCompile" BeforeTargets="PrepareForBuild" DependsOnTargets="VcpkgInstallManifestDependencies">
-    <Exec Command="&quot;$(ProtocPath)&quot; --proto_path=&quot;$(ProtoPath)&quot; --cpp_out=&quot;generated&quot; &quot;%(ProtoFiles.Identity)&quot;" />
-    <ItemGroup>
-      <ClCompile Include="generated\%(ProtoFiles.Filename).pb.cc">
-        <IncludeInUnityFile>false</IncludeInUnityFile>
-        <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      </ClCompile>
-      <ClInclude Include="generated\%(ProtoFiles.Filename).pb.h">
-        <IncludeInUnityFile>false</IncludeInUnityFile>
-        <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      </ClInclude>
-    </ItemGroup>
+  <Target Name="ValidateProtoCompileDependencies" BeforeTargets="ProtoCompile" Condition="'$(RunProtoCompile)'=='true'">
+    <Error Text="vcpkg MSBuild targets were not found. Set VCPKG_ROOT or pass /p:VcpkgRoot=... so manifest dependencies can be installed before protobuf generation."
+           Condition="'$(CanaryVcpkgManifestInstallTarget)'=='' and !Exists('$(ProtocPath)')" />
+  </Target>
+  <Target Name="ProtoCompile"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(RunProtoCompile)'=='true'"
+          DependsOnTargets="$(CanaryVcpkgManifestInstallTarget);ValidateProtoCompileDependencies"
+          Inputs="@(ProtoFiles);$(ProtocPath)"
+          Outputs="@(ProtoFiles->'$(MSBuildProjectDirectory)\generated\%(Filename).pb.cc');@(ProtoFiles->'$(MSBuildProjectDirectory)\generated\%(Filename).pb.h')">
+    <Exec Command="&quot;$(ProtocPath)&quot; --proto_path=&quot;$(ProtoPath)&quot; --cpp_out=&quot;generated&quot; @(ProtoFiles->'&quot;%(FullPath)&quot;', ' ')" />
   </Target>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.targets" Condition="'$(_ZVcpkgRoot)'=='' and '$(VcpkgRoot)'!='' and Exists('$(VcpkgRoot)\scripts\buildsystems\msbuild\vcpkg.targets')" />
+    <Import Project="SharedVcpkgCache.targets" />
   </ImportGroup>
 </Project>

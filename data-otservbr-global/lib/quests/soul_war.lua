@@ -1094,6 +1094,10 @@ function Monster:createSoulWarWhiteTiles(centerRoomPosition, zonePositions, exec
 end
 
 function MonsterType:calculateBagYouDesireChance(player, itemChance)
+	if not player then
+		return itemChance
+	end
+
 	local playerTaintLevel = player:getTaintLevel()
 	if not playerTaintLevel or playerTaintLevel == 0 then
 		return itemChance
@@ -1339,7 +1343,7 @@ local damageTable = {
 	5600,
 }
 
-function Monster:onThinkGoshnarTormentCounter(interval, maxLimit, intervalBetweenExecutions, bossPosition)
+function Monster:onThinkGoshnarTormentCounter(interval, maxLimit, intervalBetweenExecutions, bossPosition, bossName)
 	local interval = os.time() * 1000
 	if interval - lastExecutionTime < intervalBetweenExecutions then
 		return

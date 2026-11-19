@@ -540,6 +540,17 @@ function Player:calculateLootFactor(monster)
 		suffix = string.format("vip bonus %d%%", math.floor(vipBoost * 100 + 0.5))
 	end
 
+	local taskboard = rawget(_G, "Taskboard")
+	if taskboard and type(taskboard.getLootBonus) == "function" then
+		local ok, bonus = pcall(taskboard.getLootBonus, self, monster)
+		local taskboardBonus = ok and (tonumber(bonus) or 0) or 0
+		if taskboardBonus > 0 then
+			factor = factor * (1 + taskboardBonus)
+			local bonusText = string.format("task board bonus %d%%", math.floor(taskboardBonus * 100 + 0.5))
+			suffix = suffix == "" and bonusText or suffix .. ", " .. bonusText
+		end
+	end
+
 	return {
 		factor = factor,
 		msgSuffix = suffix,
@@ -668,11 +679,19 @@ function Player.setDayStreak(self, value)
 end
 
 function Player.getStreakLevel(self)
-	return self:kv():scoped("daily-reward"):get("streak") or 7
+	return self:kv():scoped("daily-reward"):get("streak") or 0
 end
 
 function Player.setStreakLevel(self, value)
 	self:kv():scoped("daily-reward"):set("streak", value)
+end
+
+function Player.getDailyRewardClaimedServerSave(self)
+	return self:kv():scoped("daily-reward"):get("claimed-server-save")
+end
+
+function Player.setDailyRewardClaimedServerSave(self, value)
+	self:kv():scoped("daily-reward"):set("claimed-server-save", value)
 end
 
 function Player.setNextRewardTime(self, value)

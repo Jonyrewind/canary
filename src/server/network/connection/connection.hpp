@@ -9,6 +9,11 @@
 
 #pragma once
 
+#include <chrono>
+#include <source_location>
+#include <string>
+#include <system_error>
+
 #include "declarations.hpp"
 // TODO: Remove circular includes (maybe shared_ptr?)
 #include "server/network/message/networkmessage.hpp"
@@ -68,7 +73,7 @@ public:
 	Connection(const Connection &) = delete;
 	Connection &operator=(const Connection &) = delete;
 
-	void close(bool force = false);
+	void close(bool force = false, const std::source_location &source = std::source_location::current());
 	// Used by protocols that require server to send first
 	void accept(Protocol_ptr protocolPtr);
 	void acceptInternal(bool toggleParseHeader = true);
@@ -94,10 +99,12 @@ private:
 	void parseHeader(const std::error_code &error);
 	void parsePacket(const std::error_code &error);
 
-	void onWriteOperation(const std::error_code &error);
+	void onWriteOperation(const std::error_code &error, size_t bytesTransferred, size_t requestedBytes, bool socketOpenAtStart);
+	void logWriteError(const std::error_code &error, size_t bytesTransferred, size_t requestedBytes, bool socketOpenAtStart);
 
 	static void handleTimeout(ConnectionWeak_ptr connectionWeak, const std::error_code &error);
 
+	void dispatchProtocolRelease();
 	void closeSocket();
 	void internalWorker();
 	void internalSend(const OutputMessage_ptr &outputMessage);
@@ -108,6 +115,7 @@ private:
 
 	asio::high_resolution_timer readTimer;
 	asio::high_resolution_timer writeTimer;
+	asio::high_resolution_timer protocolReleaseRetryTimer;
 
 	std::recursive_mutex connectionLock;
 
@@ -127,8 +135,20 @@ private:
 	uint32_t ip = 1;
 
 	std::underlying_type_t<ConnectionState_t> connectionState = CONNECTION_STATE_OPEN;
+	uint64_t protocolReleaseRetryAttempts = 0;
 	bool receivedFirst = false;
+
+	// Keep diagnostic identity after close() clears the gameplay IP and closes the socket.
+	const uint64_t connectionId;
+	std::chrono::steady_clock::time_point acceptedAt {};
+	std::string remoteAddress = "unknown";
+	uint16_t remotePort = 0;
+	uint16_t localPort = 0;
+	std::source_location closeSource;
+	bool forcedClose = false;
+	std::error_code firstReadError;
 
 	friend class ServicePort;
 	friend class ConnectionManager;
+	friend class ConnectionWriteDiagnosticsTest;
 };

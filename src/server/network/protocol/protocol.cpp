@@ -33,7 +33,7 @@ void Protocol::onSendMessage(const OutputMessage_ptr &msg) {
 }
 
 bool Protocol::sendRecvMessageCallback(NetworkMessage &msg) {
-	g_dispatcher().addEvent(
+	return dispatchProtocolTask(
 		[&msg, protocolWeak = std::weak_ptr<Protocol>(shared_from_this())]() {
 			if (const auto &protocol = protocolWeak.lock()) {
 				if (const auto &protocolConnection = protocol->getConnection()) {
@@ -44,8 +44,6 @@ bool Protocol::sendRecvMessageCallback(NetworkMessage &msg) {
 		},
 		__FUNCTION__
 	);
-
-	return true;
 }
 
 bool Protocol::onRecvMessage(NetworkMessage &msg) {
@@ -76,6 +74,26 @@ void Protocol::send(OutputMessage_ptr msg) const {
 	if (auto connection = getConnection()) {
 		connection->send(msg);
 	}
+}
+
+bool Protocol::dispatchProtocolTask(std::function<void()> &&task, std::string_view context, uint32_t expiresAfterMs) const {
+	const bool accepted = g_dispatcher().addProtocolEvent(std::move(task), context, reinterpret_cast<uintptr_t>(this), expiresAfterMs);
+	if (!accepted) {
+		if (const auto &connection = getConnection()) {
+			connection->close(FORCE_CLOSE);
+		}
+	}
+	return accepted;
+}
+
+uint64_t Protocol::scheduleProtocolTask(uint32_t delay, std::function<void()> &&task, std::string_view context) const {
+	const auto eventId = g_dispatcher().scheduleEvent(delay, std::move(task), context, DispatcherLane::ProtocolInput, reinterpret_cast<uintptr_t>(this));
+	if (eventId == 0) {
+		if (const auto &connection = getConnection()) {
+			connection->close(FORCE_CLOSE);
+		}
+	}
+	return eventId;
 }
 
 void Protocol::disconnect() const {
@@ -176,14 +194,15 @@ bool Protocol::XTEA_decrypt(NetworkMessage &msg) const {
 
 	XTEA_transform(buffer, messageLength, false);
 
-	uint8_t paddingSize = msg.getByte();
-	uint16_t innerLength = messageLength - paddingSize;
-	if (innerLength + paddingSize > msgLength) {
-		g_logger().error("XTEA_decrypt Failed - invalid inner length: {} + {} > {}", innerLength, paddingSize, msgLength);
+	const uint8_t paddingSize = msg.getByte();
+	if (messageLength <= static_cast<size_t>(paddingSize) + sizeof(uint8_t)) {
+		g_logger().error("XTEA_decrypt Failed - invalid padding size: {} for {} decrypted bytes", paddingSize, messageLength);
 		return false;
 	}
 
-	msg.setLength(messageLength - paddingSize);
+	const auto payloadLength = messageLength - paddingSize - sizeof(uint8_t);
+	msg.setLength(static_cast<NetworkMessage::MsgSize_t>(messageLength - paddingSize));
+	msg.setPayloadLength(static_cast<NetworkMessage::MsgSize_t>(payloadLength));
 	return true;
 }
 

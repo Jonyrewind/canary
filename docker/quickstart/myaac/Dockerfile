@@ -1,6 +1,6 @@
-FROM php:8.3-apache
+FROM php:8.3-apache AS builder
 
-ARG MYAAC_REF=develop
+ARG MYAAC_REF=2.x
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN apt-get update \
@@ -12,11 +12,16 @@ RUN apt-get update \
 		libpng-dev \
 		libzip-dev \
 		unzip \
+		libfreetype6-dev \
+	&& docker-php-ext-configure gd --with-freetype \
 	&& docker-php-ext-install -j"$(nproc)" gd intl mysqli opcache pdo_mysql zip \
-	&& a2enmod headers rewrite \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+	&& apt-get install -y --no-install-recommends nodejs \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
 	curl --retry 5 --retry-delay 2 --retry-connrefused -fsSL "https://github.com/slawkens/myaac/archive/${MYAAC_REF}.tar.gz" -o /tmp/myaac.tar.gz; \
@@ -29,9 +34,29 @@ RUN set -eux; \
 	rm -f login.php; \
 	if [ -f .htaccess.dist ]; then cp .htaccess.dist .htaccess; fi; \
 	mkdir -p system/cache system/cache/twig system/logs system/php_sessions; \
-	chown -R www-data:www-data /var/www/html; \
-	apt-get purge -y --auto-remove git; \
-	rm -rf /tmp/myaac.tar.gz /tmp/myaac-src /root/.cache/composer
+	npm install; \
+	rm -rf /tmp/myaac.tar.gz /tmp/myaac-src /root/.cache
+
+FROM php:8.3-apache
+
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		ca-certificates \
+		curl \
+		libicu-dev \
+		libpng-dev \
+		libzip-dev \
+		unzip \
+		libfreetype6-dev \
+	&& docker-php-ext-configure gd --with-freetype \
+	&& docker-php-ext-install -j"$(nproc)" gd intl mysqli opcache pdo_mysql zip \
+	&& a2enmod headers rewrite \
+	&& rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /var/www/html /var/www/html
+
+RUN rm -rf /var/www/html/node_modules \
+	&& chown -R www-data:www-data /var/www/html
 
 COPY --chmod=755 quickstart/myaac/entrypoint.sh /usr/local/bin/myaac-entrypoint
 COPY quickstart/myaac/bootstrap.php /usr/local/bin/myaac-bootstrap.php
