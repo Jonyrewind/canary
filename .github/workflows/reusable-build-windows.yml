@@ -202,27 +202,56 @@ jobs:
         if: matrix.type == 'CMake' && inputs.run_canary_smoke
         shell: pwsh
         run: |
-          choco install mariadb.install --version=12.2.2 --yes --no-progress --install-arguments="'SERVICENAME=MariaDB PASSWORD=root PORT=3306 UTF8=1'"
-
-          $mysqlBin = Get-ChildItem -Path "C:\Program Files\MariaDB*\bin\mysql.exe" -ErrorAction SilentlyContinue |
-            Sort-Object FullName -Descending |
-            Select-Object -First 1
-          if (-not $mysqlBin) {
-            throw "mysql.exe was not found after MariaDB install"
+          $msiName = "mariadb-12.2.2-winx64.msi"
+          $msiPath = Join-Path $env:RUNNER_TEMP $msiName
+          $urls = @(
+            "https://archive.mariadb.org/mariadb-12.2.2/winx64-packages/$msiName"
+            "https://dlm.mariadb.com/MariaDB/mariadb-12.2.2/winx64-packages/$msiName"
+          )
+          foreach ($url in $urls) {
+            curl.exe --fail --silent --show-error --location --retry 2 --retry-max-time 150 --connect-timeout 15 --max-time 90 --output $msiPath $url
+            if ($LASTEXITCODE -eq 0) {
+              break
+            }
+          }
+          if ($LASTEXITCODE -ne 0) {
+            throw "Could not download $msiName from MariaDB"
+          }
+          $expectedHash = "18b64334b90caad88d68d7281d6ae5cd4deda3728f18dbb3a1816dd0b57cd796"
+          if ((Get-FileHash -LiteralPath $msiPath -Algorithm SHA256).Hash -ne $expectedHash) {
+            throw "SHA-256 mismatch for $msiName"
           }
 
-          Split-Path $mysqlBin.FullName | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          $installDir = Join-Path $env:ProgramFiles "MariaDB 12.2"
+          $logDir = Join-Path $env:GITHUB_WORKSPACE "build/runtime-smoke-logs"
+          New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+          $installLog = Join-Path $logDir "mariadb-install.log"
+          $arguments = @(
+            "/i", ('"{0}"' -f $msiPath), "/qn", "/norestart"
+            "/l*v", ('"{0}"' -f $installLog)
+            ('INSTALLDIR="{0}"' -f $installDir), "SERVICENAME=MariaDB", "PASSWORD=root", "PORT=3306", "UTF8=1"
+          )
+          $installer = Start-Process -FilePath msiexec.exe -ArgumentList $arguments -WindowStyle Hidden -Wait -PassThru
+          if ($installer.ExitCode -notin @(0, 3010)) {
+            throw "MariaDB installation failed with exit code $($installer.ExitCode). See mariadb-install.log in the smoke logs."
+          }
 
-          $mysqlAdmin = Join-Path (Split-Path $mysqlBin.FullName) "mysqladmin.exe"
+          $mysqlDir = Join-Path $installDir "bin"
+          $mysql = Join-Path $mysqlDir "mysql.exe"
+          if (-not (Test-Path -LiteralPath $mysql -PathType Leaf)) {
+            throw "MariaDB client missing after installation: $mysql"
+          }
+
           for ($i = 0; $i -lt 60; $i++) {
-            & $mysqlAdmin --user=root --password=root --host=127.0.0.1 --port=3306 --protocol=tcp ping
+            & $mysql --user=root --password=root --host=127.0.0.1 --port=3306 --protocol=tcp --connect-timeout=2 --execute="SELECT 1" 2>&1 | Out-Null
             if ($LASTEXITCODE -eq 0) {
+              Add-Content -LiteralPath $env:GITHUB_PATH -Encoding utf8 -Value $mysqlDir
               exit 0
             }
             Start-Sleep -Seconds 2
           }
 
-          throw "MariaDB did not become reachable"
+          throw "MariaDB did not accept the smoke test connection on 127.0.0.1:3306"
 
       - name: Smoke test Canary datapack runtime
         if: matrix.type == 'CMake' && inputs.run_canary_smoke
